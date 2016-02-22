@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import classes from './HomeView.scss'
 import logoImage from './logo.svg'
 import step1Image from './step1.svg'
+import step2Image from './step2.svg'
 import Script from 'components/Script'
 import RequestForm from 'components/RequestForm'
 
@@ -18,6 +19,9 @@ export class HomeView extends React.Component {
             </Link>
           </div>
           <div className={classes.headerRight}>
+            <div className={classes.headerRightTwitter}>
+              <a className='twitter-follow-button' href='https://twitter.com/TwitterDev'>Follow @TwitterDev</a>
+            </div>
             <Script className={classes.slack} url='http://slack.graph.cool/slackin.js' />
           </div>
         </div>
@@ -29,9 +33,9 @@ export class HomeView extends React.Component {
             <p>Easily manage the structure of your data in our <strong>intuitive dashboard</strong>. You can browse and edit your data and even import existing data sets.</p>
           </div>
           <div className={classes.contentItem}>
-            <img src={step1Image} height={230} />
+            <img src={step2Image} height={230} />
             <h4>Works with your stack</h4>
-            <p>Never again communicate with your data store using an imperative API. Simply declare your data requirements using GraphQL and let Relay figure out how and when to fetch your data.</p>
+            <p>Our service works with all technologies and is super <strong>simple to integrate</strong>. Setting up a project until it works in your app, shouldn't take longer than 5 minutes.</p>
           </div>
         </div>
         <div className={classes.beta}>
