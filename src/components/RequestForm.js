@@ -21,10 +21,6 @@ export default class RequestForm extends React.Component {
     this.submitRequest = this.submitRequest.bind(this)
   }
 
-  componentDidMount () {
-    findDOMNode(this.refs.email).focus()
-  }
-
   watchForEnter (e) {
     if (e.keyCode === 13) {
       this.submitRequest()
@@ -37,7 +33,7 @@ export default class RequestForm extends React.Component {
       this.setState({ loading: true })
 
       var request = new XMLHttpRequest()
-      var url = 'https://api.parse.com/1/classes/invite'
+      var url = 'https://api.parse.com/1/classes/beta'
 
       request.open('POST', url, true)
       request.setRequestHeader('Content-Type', 'application/json')
