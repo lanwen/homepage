@@ -26,7 +26,7 @@ export class HomeView extends React.Component {
           <div className={classes.contentItem}>
             <img src={step1Image} height={230} />
             <h4>Define your data model</h4>
-            <p>Easily manage the structure of your data with our dashboard. Browse through your data and make changes on the fly.</p>
+            <p>Easily manage the structure of your data in our <strong>intuitive dashboard</strong>. You can browse and edit your data and even import existing data sets.</p>
           </div>
           <div className={classes.contentItem}>
             <img src={step1Image} height={230} />
