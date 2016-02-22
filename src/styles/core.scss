@@ -2,6 +2,27 @@
   @import 'base';
   @import 'vendor/normalize';
 
+  /** Thin */
+  @font-face {
+    font-family: "San Francisco Fallback";
+    font-weight: 200;
+    src: url("./fonts/sanfranciscodisplay-thin-webfont.woff");
+  }
+
+  /** Regular */
+  @font-face {
+    font-family: "San Francisco Fallback";
+    font-weight: normal;
+    src: url("./fonts/sanfranciscodisplay-regular-webfont.woff");
+  }
+
+  /** Semi Bold */
+  @font-face {
+    font-family: "San Francisco Fallback";
+    font-weight: 500;
+    src: url("./fonts/sanfranciscodisplay-semibold-webfont.woff");
+  }
+
   // Some best-practice CSS that's useful for most apps
   // Just remove them if they're not what you want
   html {
@@ -14,6 +35,7 @@
     padding: 0;
     height: 100%;
     background: #fbfdff;
+    font-family: 'BlinkMacSystemFont', "San Francisco Fallback", "Helvetica Neue";
   }
 
   *,
