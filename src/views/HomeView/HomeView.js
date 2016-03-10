@@ -22,7 +22,7 @@ export class HomeView extends React.Component {
             <div className={classes.headerRightTwitter}>
               <a className='twitter-follow-button' href='https://twitter.com/graphcool'>Follow @graphcool</a>
             </div>
-            <Script className={classes.slack} url='http://slack.graph.cool/slackin.js' />
+            <Script className={classes.slack} url='https://slack.graph.cool/slackin.js' />
           </div>
         </div>
         <h1>Flexible GraphQL backend as a service</h1>
