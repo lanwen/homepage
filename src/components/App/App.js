@@ -1,27 +1,15 @@
 import React from 'react'
-// import Icon from 'components/Icon/Icon'
-// import classes from './App.scss'
+import Icon from 'components/Icon/Icon'
+import Header from 'components/Header/Header'
+import classes from './App.scss'
 
-export class SideNav extends React.Component {
+export default class App extends React.Component {
 
   render () {
     return (
-      <div id='container'>
-        <div id='header'>
-          <div id='header-logo'>
-            <a href='http://graph.cool/'><img src='logo with lettering.svg' height='40px' alt='' /></a>
-          </div>
-          <div id='header-signin'>
-            <a id='header-signin-text' href='http://graph.cool/signin/'>Sign In</a>
-          </div>
-          <div id='header-links'>
-            <li><a href='http://graph.cool/blog/'>Blog</a></li>
-            <li><a href='http://graph.cool/docs/'>Docs</a></li>
-            <li><a href='http://graph.cool/pricing/'>Pricing</a></li>
-            <li><a href='http://graph.cool/about/'>About</a></li>
-          </div>
-        </div>
-        <div id='login1'>
+      <div className={classes.container}>
+        <Header />
+        <div className='login1'>
           <div id='log1text'>
             <p>Getting started is easy. Be up and running in minutes.</p>
           </div>
