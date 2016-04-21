@@ -1,5 +1,4 @@
 import React from 'react'
-import Icon from 'components/Icon/Icon'
 import classes from './Header.scss'
 
 export default class Header extends React.Component {
@@ -9,7 +8,7 @@ export default class Header extends React.Component {
       <div className={classes.header}>
         <div className={classes.headerLogo}>
           <a href='http://graph.cool/'>
-            <Icon width={236} height={40} src={require('assets/logo-text.svg')} />
+            <img height={40} src={require('assets/graphics/logo-text.svg')} />
           </a>
         </div>
         <div className={classes.headerSignin}>
