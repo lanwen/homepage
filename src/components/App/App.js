@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from 'components/Header/Header'
 import Login from 'components/Login/Login'
+import Feature from 'components/Feature/Feature'
 import classes from './App.scss'
 
 export default class App extends React.Component {
@@ -10,102 +11,7 @@ export default class App extends React.Component {
       <div className={classes.container}>
         <Header />
         <Login />
-        <div id='features'>
-          <div id='featuretitle1'>
-            <p>Product Features</p>
-          </div>
-          <div id='featuretitle2'>
-            <p>Enjoy all the bells and whistles.</p>
-          </div>
-          <div id='fline1'>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f1.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>Flexible Data Layer</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f2.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>Based on GraphQL</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f3.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>Already familiar</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-          </div>
-          <div id='fline2'>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f4.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>Timesaver</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f5.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>No Maintenance</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-            <div className='fea'>
-              <div className='fsvg'>
-                <img src='f6.svg' height='80px' alt='' />
-              </div>
-              <div className='ftitle'>
-                <p>Security</p>
-              </div>
-              <div className='fdes'>
-                Lorem ipsum dolor sit amet, consetetur <br />
-                sadipscing elitr, sed diam nonumy eirmod <br />
-                tempor invidunt ut labore et dolore magna <br />
-                aliquyam erat, sed diam voluptua.
-              </div>
-            </div>
-          </div>
-        </div>
+        <Feature />
         <div id='howitworks'>
           <div id='howtitle1'>
             <p>How it works</p>
