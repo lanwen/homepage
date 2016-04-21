@@ -44,7 +44,7 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f3.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f3.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>Already familiar</p>
@@ -60,7 +60,7 @@ export default class Login extends React.Component {
         <div className={classes.fline2}>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f4.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f4.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>Timesaver</p>
@@ -74,7 +74,7 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f5.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f5.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>No Maintenance</p>
@@ -88,7 +88,7 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f6.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f6.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>Security</p>
