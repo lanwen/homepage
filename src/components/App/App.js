@@ -1,5 +1,4 @@
 import React from 'react'
-import Icon from 'components/Icon/Icon'
 import Header from 'components/Header/Header'
 import Login from 'components/Login/Login'
 import classes from './App.scss'

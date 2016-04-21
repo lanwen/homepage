@@ -1,5 +1,4 @@
 import React from 'react'
-import Icon from 'components/Icon/Icon'
 import classes from './Login.scss'
 
 export default class Login extends React.Component {
