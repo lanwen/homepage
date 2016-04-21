@@ -1,4 +1,5 @@
 import React from 'react'
+import Icon from 'components/Icon/Icon'
 import classes from './Feature.scss'
 
 export default class Login extends React.Component {
@@ -15,7 +16,7 @@ export default class Login extends React.Component {
         <div className={classes.fline1}>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f1.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f1.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>Flexible Data Layer</p>
@@ -29,7 +30,7 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.fea}>
             <div className={classes.fsvg}>
-              <img src='f2.svg' height='80px' alt='' />
+              <Icon width={80} height={80} src={require('assets/icons/f2.svg')} />
             </div>
             <div className={classes.ftitle}>
               <p>Based on GraphQL</p>
