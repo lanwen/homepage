@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from 'components/Icon/Icon'
 import Header from 'components/Header/Header'
+import Login from 'components/Login/Login'
 import classes from './App.scss'
 
 export default class App extends React.Component {
@@ -9,16 +10,7 @@ export default class App extends React.Component {
     return (
       <div className={classes.container}>
         <Header />
-        <div className='login1'>
-          <div id='log1text'>
-            <p>Getting started is easy. Be up and running in minutes.</p>
-          </div>
-          <div id='log1button'>
-            <div id='log1buttontext'>
-              <p>CREATE A FREE ACCOUNT </p>
-            </div>
-          </div>
-        </div>
+        <Login />
         <div id='features'>
           <div id='featuretitle1'>
             <p>Product Features</p>
