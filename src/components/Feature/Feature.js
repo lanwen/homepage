@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from 'components/Icon/Icon'
 import classes from './Feature.scss'
 
-export default class Login extends React.Component {
+export default class Feature extends React.Component {
 
   render () {
     return (
