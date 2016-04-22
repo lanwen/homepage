@@ -18,6 +18,7 @@ export default class App extends React.Component {
         <Feature />
         <How />
         <Pricing />
+        <Login />
       </div>
     )
   }
