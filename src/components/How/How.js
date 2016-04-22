@@ -36,14 +36,14 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.how2text}>
             <div className={classes.how2title}>
-              <p>Define your data model</p>
+              <p>Import/manage data</p>
             </div>
             <div className={classes.how2des}>
               <p>
-                Define the structure of your data using <br />
-                our intuitive model editor. You can easily <br />
-                manage relationships between models <br />
-                and setup access permissions.
+                Import your existing data (CSV & JSON) <br />
+                or add new data items by hand. Use our<br />
+                simple data browser to manage your<br />
+                data. No database knowledge needed.
               </p>
             </div>
           </div>
@@ -54,14 +54,14 @@ export default class Login extends React.Component {
           </div>
           <div className={classes.how3text}>
             <div className={classes.how3title}>
-              <p>Define your data model</p>
+              <p>Integrate with your app</p>
             </div>
             <div className={classes.how3des}>
               <p>
-                Define the structure of your data using <br />
-                our intuitive model editor. You can easily <br />
-                manage relationships between models <br />
-                and setup access permissions.
+                Connect your app to our GraphQL<br />
+                endpoint using Relay or other client<br />
+                libraries. Everything works out of the box.<br />
+                No further setup required.
               </p>
             </div>
           </div>
