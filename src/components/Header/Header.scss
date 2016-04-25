@@ -1,6 +1,6 @@
-.header {
+  .header {
   background-color: #ffffff;
-  display: flex;
+  display:flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -8,6 +8,7 @@
   align-items: stretch;
   padding-top: 30px;
   padding-bottom: 30px;
+  border-bottom: solid 1px #E2E5EE;
 }
 
 .headerLogo {
@@ -31,13 +32,38 @@
 
 
 .headerSignin {
-  border: solid 1px #36ad64;
+  border: solid 1px #40A166;
   width: 100px;
   height: 36px;
   border-radius: 5px;
   line-height: 2.2;
   margin-left: 20px;
+  color: #36ad64;
+}
 
+.headerSignin a:link {
+  color: #36ad64;
+}
+
+.headerSignin a:visited {
+  color: #36ad64;
+}
+
+.headerSignin a:hover {
+  color: #ffffff;
+}
+.headerSignin:hover {
+  border-color: #40A166;
+  background-color: #36ad64;
+}
+
+.headerSignin a:active {
+  color: #36ad64;
+}
+
+.headerSignin:active {
+  background-color: #ffffff;
+  border-color: #36ad64;
 }
 
 .headerSigninText {
@@ -47,6 +73,7 @@
   display: block;
   font-size: 16px;
   white-space: nowrap;
+  color: #36ad64;
 }
 
 .spacer {

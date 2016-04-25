@@ -6,14 +6,27 @@ export default class Login extends React.Component {
   render () {
     return (
       <div className={classes.login}>
+
+        <div className={classes.spacer}>
+        </div>
+
         <div className={classes.des}>
           <p>Getting started is easy. Be up and running in minutes.</p>
         </div>
-        <div className={classes.button}>
-          <div className={classes.text}>
-            <p>CREATE A FREE ACCOUNT </p>
+
+          <div className={classes.button}>
+
+            <div>
+              <div className={classes.text}>
+                <a href='http://graph.cool/about/'>CREATE A FREE ACCOUNT</a>
+              </div>
+            </div>
+
           </div>
+
+        <div className={classes.spacer}>
         </div>
+
       </div>
     )
   }

@@ -12,7 +12,7 @@ export default class Header extends React.Component {
         </a>
         <div className={classes.headerLinks}>
           <a href='http://graph.cool/blog/'>Blog</a>
-          <a href='http://graph.cool/docs/'>Docs</a>
+          <a href='http://docs.graph.cool/'>Docs</a>
           <a href='http://graph.cool/pricing/'>Pricing</a>
           <a href='http://graph.cool/about/'>About</a>
         </div>
