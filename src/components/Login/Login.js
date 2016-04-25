@@ -17,8 +17,8 @@ export default class Login extends React.Component {
           <div className={classes.button}>
 
             <div>
-              <div className={classes.text}>
-                <a href='http://graph.cool/about/'>CREATE A FREE ACCOUNT</a>
+              <div className={classes.create}>
+                <a className={classes.createtext} href='http://graph.cool/create/'>CREATE A FREE ACCOUNT</a>
               </div>
             </div>
 
