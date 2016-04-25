@@ -1,28 +1,34 @@
 .header {
   background-color: #ffffff;
-  height: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .headerLogo {
-  position: relative;
-  top: 29px;
-  left: 180px;
-  width: 250px;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 400px;
+  margin-right: 20px;
 }
 
 .headerLinks {
-  float: right;
-  position: relative;
-  right: 336px;
-  margin-top: -50px;
-  top: 43px;
+  width: 300px;
+  margin-left: 20px;
+  margin-top: 7px;
 }
 
-.headerLinks li {
+.headerLinks a {
   list-style: none;
-  float: left;
-  padding-left: 32px;
+  margin-left: 20px;
+  white-space: nowrap;
 }
+
 
 .headerSignin {
   border: solid 1px #36ad64;
@@ -30,17 +36,19 @@
   height: 36px;
   border-radius: 5px;
   line-height: 2.2;
-  vertical-align: middle;
-  margin-top: -44px;
-  float: right;
-  position: relative;
-  right: 180px;
-  top: 30px;
+  margin-left: 20px;
+
 }
 
 .headerSigninText {
-  position: relative;
-  left: 24px;
   color: #36ad64;
+  text-align: center;
+  width: 100%;
+  display: block;
   font-size: 16px;
+  white-space: nowrap;
+}
+
+.spacer {
+  flex-grow: 1;
 }
