@@ -26,7 +26,7 @@ module.exports = {
       test: /icons\/.*\.svg$/,
       loader: 'svg-inline?removeTags=true'
     }, {
-      test: /graphics\/.*\.svg$/,
+      test: /graphics\/.*\.(svg|png)$/,
       loader: 'file'
     }]
   },
