@@ -1,96 +1,49 @@
+.pricing
 
-.box1 {
-
-}
-
-.border {
-  border: solid 1px .36ad64;
-  height: 570px;
-  width: 270px;
-  position: relative;
-  top: 10px;
-  margin: auto;
-
-}
-
-.box1text {
-  position: relative;
-  margin-top: -500px;
-  top: 10px;
+.box {
+  border: solid 1px #7d878A;
+  width: 300px;
   text-align: center;
-}
-.timg {
-  position: relative;
-  margin-top: -40px;
-  top: 0px;
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 .t1 {
-  font-size: 17px;
-  position: relative;
-  top: 0px;
-
+  color: #7D878A;
+  margin-bottom: 80px;
+  font-size: 14px;
 }
 
 .t2 {
+  color: #7D878A;
   font-size: 60px;
-  position: relative;
-  top: 0px;
-  color: .7D878A;
-}
-
-.t2 {
-  font-size: 60px;
-  position: relative;
-  top: 10px;
-  color: .36ad64;
+  margin-bottom: -10px;
 }
 
 .t3 {
-  font-size: 15px;
-  position: relative;
-  margin-top: -30px;
-  top: 10px;
-  color: .7D878A;
+  color: #7D878A;
+  margin-bottom: 50px;
 }
 
 .t4 {
-  font-size: 15px;
-  position: relative;
-  top: 40px;
-  line-height: 30px;
-  color: .7D878A;
+  color: #7D878A;
+  padding-bottom: 20px;
 }
 
 .t5 {
-  font-size: 15px;
-  position: relative;
-  top: 100px;
-  color: .7D878A;
-}
-.t6 {
-  font-size: 30px;
-  position: relative;
-  top: 32px;
-  color: .36ad64;
+  color: #7D878A;
 }
 
-.t7 {
-  font-size: 15px;
-  position: relative;
-  top: 80px;
-  line-height: 30px;
-  color: .7D878A;
+.buy {
+  border: solid 1px red;
+  height: 40px;
+  width: 120px;
+  display: block;
+  text-align: center;
 }
 
-.t8 {
-  font-size: 15px;
-  position: relative;
-  top: 140px;
-  color: .7D878A;
-}
-
-.box {
-  width: 25%;
-  float: left;
+.buytext {
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
