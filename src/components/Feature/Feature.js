@@ -22,24 +22,10 @@ export default class Feature extends React.Component {
               <p>Flexible Data Layer</p>
             </div>
             <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
-            </div>
-          </div>
-          <div className={classes.fea}>
-            <div className={classes.fsvg}>
-              <Icon width={80} height={80} src={require('assets/icons/f2.svg')} />
-            </div>
-            <div className={classes.ftitle}>
-              <p>Based on GraphQL</p>
-            </div>
-            <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
+              We provide a flexible backend <br />
+              including data storage and API hosting.<br />
+              Instead of manually defining endpoints on a server, <br />
+              just specify the data you need in your app. <br />
             </div>
           </div>
           <div className={classes.fea}>
@@ -50,10 +36,24 @@ export default class Feature extends React.Component {
               <p>Already familiar</p>
             </div>
             <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
+              Graph.cool works with your favorite framework<br />
+              including React, Angular and many more.<br />
+              Take a look at one of our <a href=''>examples</a> to see<br />
+              how easy it is to get started.
+            </div>
+          </div>
+          <div className={classes.fea}>
+            <div className={classes.fsvg}>
+              <Icon width={80} height={80} src={require('assets/icons/f2.svg')} />
+            </div>
+            <div className={classes.ftitle}>
+              <p>Based on GraphQL</p>
+            </div>
+            <div className={classes.fdes}>
+              GraphQL is the successor of REST APIs <br />
+              and <a href=''>a better way</a> to fetch and update data.<br />
+              GraphQL is perfect for teams and individual developers <br />
+              and helped Facebook to scale easily. <br />
             </div>
           </div>
         </div>
@@ -66,10 +66,10 @@ export default class Feature extends React.Component {
               <p>Timesaver</p>
             </div>
             <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
+              Get an API endpoint in less than a minute and<br />
+              manage your data model in our visual dashboard.<br />
+              No need to setup your own servers.<br />
+              Just focus on what you love: Your product!
             </div>
           </div>
           <div className={classes.fea}>
@@ -80,10 +80,10 @@ export default class Feature extends React.Component {
               <p>No Maintenance</p>
             </div>
             <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
+              It's our job to keep your backend up and running,<br />
+              so you don't have to think about backups or scaling.<br />
+              No more getting up at 3am and fixing critical bugs.<br />
+              We take care of all of that.
             </div>
           </div>
           <div className={classes.fea}>
@@ -94,10 +94,10 @@ export default class Feature extends React.Component {
               <p>Security</p>
             </div>
             <div className={classes.fdes}>
-              Lorem ipsum dolor sit amet, consetetur <br />
-              sadipscing elitr, sed diam nonumy eirmod <br />
-              tempor invidunt ut labore et dolore magna <br />
-              aliquyam erat, sed diam voluptua.
+              Security is essential for every application.<br />
+              Flexible permissions allow you to specify<br />
+              who has access to which data and industry<br />
+              standard encryption keeps your data safe.
             </div>
           </div>
         </div>
