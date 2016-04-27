@@ -15,11 +15,12 @@ export default class RequestForm extends React.Component {
       invalidInput: false,
       submitted: false,
       loading: false,
-      invite: false,
+      invite: false
     }
 
     this.watchForEnter = this.watchForEnter.bind(this)
     this.submitRequest = this.submitRequest.bind(this)
+    this._showInvite = this._showInvite.bind(this)
   }
 
   watchForEnter (e) {
@@ -60,6 +61,10 @@ export default class RequestForm extends React.Component {
     }
   }
 
+  _showInvite () {
+    this.setState({ invite: true })
+  }
+
   render () {
     if (this.state.loading) {
       return (
@@ -78,7 +83,7 @@ export default class RequestForm extends React.Component {
           }
           <span className={classes.button} onClick={this.submitRequest}>Request</span>
           {!this.state.invite &&
-            <span onClick={() => this.setState({ invite: true })} className={classes.showInvite}>I have an invite code</span>
+            <span onClick={this._showInvite} className={classes.showInvite}>I have an invite code</span>
           }
         </div>
       )
