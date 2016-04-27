@@ -7,7 +7,7 @@ export default class Cover extends React.Component {
     return (
       <div className={classes.root}>
         <div className={classes.img}>
-          <img height={600} src={require('assets/graphics/Cover.png')} />
+          <img height={550} src={require('assets/graphics/cover.png')} />
         </div>
       </div>
     )

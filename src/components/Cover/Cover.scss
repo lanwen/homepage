@@ -1,9 +1,17 @@
 .root {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-end;
   width: 100%;
-  height: 600px;
+  height: 550px;
+  background-color: #36ad64;
 }
 
 .img {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
