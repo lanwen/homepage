@@ -14,7 +14,8 @@ export default class RequestForm extends React.Component {
     this.state = {
       invalidInput: false,
       submitted: false,
-      loading: false
+      loading: false,
+      invite: false,
     }
 
     this.watchForEnter = this.watchForEnter.bind(this)
@@ -29,6 +30,7 @@ export default class RequestForm extends React.Component {
 
   submitRequest () {
     const email = findDOMNode(this.refs.email).value
+    const code = findDOMNode(this.refs.code).value
     if (email && validateEmail(email)) {
       this.setState({ loading: true })
 
@@ -48,7 +50,7 @@ export default class RequestForm extends React.Component {
         this.setState({ loading: false })
       }
 
-      var data = JSON.stringify({ email })
+      var data = JSON.stringify({ email, code })
       request.send(data)
     } else {
       this.setState({ invalidInput: true })
@@ -71,7 +73,13 @@ export default class RequestForm extends React.Component {
       return (
         <div className={classes.form}>
           <input className={this.state.invalidInput ? classes.invalid : ''} name='email' onKeyUp={this.watchForEnter} placeholder='Email' ref='email' type='email' />
+          {this.state.invite &&
+            <input className={classes.invite} autoFocus onKeyUp={this.watchForEnter} placeholder='Invite code' ref='code' type='text' />
+          }
           <span className={classes.button} onClick={this.submitRequest}>Request</span>
+          {!this.state.invite &&
+            <span onClick={() => this.setState({ invite: true })} className={classes.showInvite}>I have an invite code</span>
+          }
         </div>
       )
     }

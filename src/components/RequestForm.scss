@@ -28,9 +28,12 @@
 }
 
 .form {
-  width: 560px;
+  width: 660px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
 
   & > div {
     margin-top: 0.25rem;
@@ -38,7 +41,7 @@
   }
 
   input {
-    width: 75%;
+    width: 50%;
     height: 50px;
     background: #45ae50;
     font-size: 18px;
@@ -53,6 +56,11 @@
     @include placeholder {
       color: #94eb9d;
     }
+
+    &.invite {
+      width: 30%;
+      background: #6FC779;
+    }
   }
 
   .button {
@@ -60,7 +68,7 @@
     font-weight: normal;
     line-height: 50px;
     display: block;
-    width: 25%;
+    width: 20%;
     height: 50px;
     background: #c9c9c9;
     color: #616b6d;
@@ -70,6 +78,14 @@
       color: #fff;
       background: #94eb9d;
     }
+  }
+
+  .showInvite {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 20px;
   }
 }
 
