@@ -14,7 +14,7 @@ export default class Login extends React.Component {
         </div>
         <div className={classes.how1}>
           <div className={classes.how1svg}>
-            <img height={262} src={require('assets/graphics/how1.svg')} />
+            <img height={262} src={require('assets/graphics/how1.png')} />
           </div>
           <div className={classes.how1text}>
             <div className={classes.how1title}>
@@ -32,7 +32,7 @@ export default class Login extends React.Component {
         </div>
         <div className={classes.how2}>
           <div className={classes.how2svg}>
-            <img height={262} src={require('assets/graphics/how1.svg')} />
+            <img height={262} src={require('assets/graphics/how2.png')} />
           </div>
           <div className={classes.how2text}>
             <div className={classes.how2title}>
@@ -50,7 +50,7 @@ export default class Login extends React.Component {
         </div>
         <div className={classes.how3}>
           <div className={classes.how3svg}>
-            <img height={262} src={require('assets/graphics/how1.svg')} />
+            <img height={262} src={require('assets/graphics/how3.svg')} />
           </div>
           <div className={classes.how3text}>
             <div className={classes.how3title}>

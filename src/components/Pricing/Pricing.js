@@ -29,7 +29,7 @@ export default class Pricing extends React.Component {
             </div>
 
           </div>
-      </div>
+        </div>
       </div>
     )
   }

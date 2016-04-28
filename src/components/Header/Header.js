@@ -20,7 +20,7 @@ export default class Header extends React.Component {
           <a className={classes.headerSigninText} href='http://graph.cool/signin/'>Sign In</a>
         </div>
         <div className={classes.spacer}></div>
-    </div>
+      </div>
     )
   }
 }
