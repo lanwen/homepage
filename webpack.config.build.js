@@ -37,6 +37,9 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR || '')
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      },
     }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
