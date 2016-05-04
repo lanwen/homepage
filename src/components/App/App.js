@@ -1,24 +1,20 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Header from 'components/Header/Header'
-import Cover from 'components/Cover/Cover'
-import Signup from 'components/Signup/Signup'
-import Features from 'components/Features/Features'
-import How from 'components/How/How'
-import Pricing from 'components/Pricing/Pricing'
+import Footer from 'components/Footer/Footer'
 import './App.scss'
 
 export default class App extends React.Component {
+
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+  }
 
   render () {
     return (
       <div>
         <Header />
-        <Cover />
-        <Signup />
-        <Features />
-        <How />
-        <Pricing />
-        <Signup />
+        {this.props.children}
+        <Footer />
       </div>
     )
   }

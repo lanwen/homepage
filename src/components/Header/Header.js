@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import classes from './Header.scss'
 
 export default class Header extends React.Component {
@@ -7,17 +8,17 @@ export default class Header extends React.Component {
     return (
       <div className={classes.header}>
         <div className={classes.spacer}></div>
-        <a className={classes.headerLogo} href='http://graph.cool/'>
+        <Link className={classes.headerLogo} to='/'>
           <img height={40} src={require('assets/graphics/logo-text.svg')} />
-        </a>
+        </Link>
         <div className={classes.headerLinks}>
           <a href='http://graph.cool/blog/'>Blog</a>
-          <a href='http://docs.graph.cool/'>Docs</a>
-          <a href='http://graph.cool/pricing/'>Pricing</a>
-          <a href='http://graph.cool/about/'>About</a>
+          <a href='https://docs.graph.cool' target='_blank'>Docs</a>
+          <Link to='/pricing'>Pricing</Link>
+          <Link to='/about'>About</Link>
         </div>
         <div className={classes.headerSignin}>
-          <a className={classes.headerSigninText} href='http://graph.cool/signin/'>Sign In</a>
+          <a className={classes.headerSigninText} href='https://dashboard.graph.cool'>Sign In</a>
         </div>
         <div className={classes.spacer}></div>
       </div>
