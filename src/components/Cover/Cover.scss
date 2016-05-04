@@ -1,17 +1,32 @@
+@import '~styles/variables';
+
 .root {
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  align-items: flex-end;
   width: 100%;
   height: 550px;
-  background-color: #36ad64;
-}
+  background-color: $accent;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
 
-.img {
-  width: 100%;
-  height: 100%;
-  text-align: center;
+  h1 {
+    color: #fff;
+    margin: 0;
+    padding-top: 20px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+    width: 100%;
+
+    strong {
+      padding: 0 8px;
+    }
+  }
+
+  img {
+    height: 430px;
+    width: auto;
+  }
 }

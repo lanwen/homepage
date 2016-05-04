@@ -1,24 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+:global {
+  @import '~normalize.css';
+  @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500);
 
-body {
-  background-color: #ffffff;
-  margin: 0px;
-  font-family: 'Roboto', sans-serif;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-a:link {
-  color: #a1a1a1;
-  text-decoration: none;
-  font-weight: 300;
-}
-
-a:visited {
-  color: #a1a1a1;
-}
-
-a:hover {
-  color: #414141;
-}
-
-.container {
+  body {
+    background-color: #ffffff;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
 }

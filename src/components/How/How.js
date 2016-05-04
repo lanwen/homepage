@@ -5,12 +5,12 @@ export default class Login extends React.Component {
 
   render () {
     return (
-      <div className={classes.howitworks}>
-        <div className={classes.howtitle1}>
-          <p>How it works</p>
+      <div className={classes.root}>
+        <div className={classes.title}>
+          How it works
         </div>
-        <div className={classes.howtitle2}>
-          <p>Setup a backend in less than 5 minutes – no coding required</p>
+        <div className={classes.subtitle}>
+          Setup a backend in less than 5 minutes – no coding required
         </div>
         <div className={classes.how1}>
           <div className={classes.how1svg}>

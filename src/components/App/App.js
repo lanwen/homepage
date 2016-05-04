@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from 'components/Header/Header'
 import Cover from 'components/Cover/Cover'
-import Login from 'components/Login/Login'
+import Signup from 'components/Signup/Signup'
 import Feature from 'components/Feature/Feature'
 import How from 'components/How/How'
 // import Pricing from 'components/Pricing/Pricing'
@@ -14,10 +14,10 @@ export default class App extends React.Component {
       <div className={classes.container}>
         <Header />
         <Cover />
-        <Login />
+        <Signup />
         <Feature />
         <How />
-        <Login />
+        <Signup />
       </div>
     )
   }

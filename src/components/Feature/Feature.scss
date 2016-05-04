@@ -1,26 +1,23 @@
-.featuretitle1 {
-  font-size: 24px;
-  color: #596062;
-  text-align: center;
-  position: relative;
-  top: 10px
-}
+@import '~styles/mixins';
+@import '~styles/variables';
 
-.featuretitle2 {
-  font-size: 15px;
-  color: #596062;
-  text-align: center;
-  position: relative;
-  top: 1px;
+.root {
+  @include section;
+  background-color: #ffffff;
 }
 
 .features {
-  background-color: #ffffff;
-  height: 700px;
-  margin-bottom: 120px;
-
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.fsvg {
+
+.feature {
+  width: 320px;
+  margin-bottom: 64px;
+}
+
+.featureIcon {
   text-align: center;
 
   svg {
@@ -28,29 +25,21 @@
   }
 }
 
-.ftitle {
+.featureTitle {
   font-size: 24px;
   color: #596062;
   text-align: center;
+  margin: 49px 0 7px;
 }
 
-.fdes {
-  font-size: 15px;
+.featureDescription {
+  font-size: 14px;
   color: #596062;
   text-align: center;
-}
+  line-height: 25px;
 
-.fea {
-  width: 33%;
-  float: left;
-}
-
-.fline1 {
-  position: relative;
-  top: 40px;
-}
-
-.fline2 {
-  position: relative;
-  top: 110px;
+  a {
+    color: $accent;
+    font-weight: 500;
+  }
 }

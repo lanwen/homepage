@@ -1,4 +1,4 @@
-  .header {
+.header {
   background-color: #ffffff;
   display:flex;
   flex-direction: row;
@@ -9,6 +9,20 @@
   padding-top: 30px;
   padding-bottom: 30px;
   border-bottom: solid 1px #E2E5EE;
+
+  a:link {
+    color: #a1a1a1;
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  a:visited {
+    color: #a1a1a1;
+  }
+
+  a:hover {
+    color: #414141;
+  }
 }
 
 .headerLogo {
