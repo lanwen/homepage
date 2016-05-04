@@ -12,58 +12,52 @@ export default class Login extends React.Component {
         <div className={classes.subtitle}>
           Setup a backend in less than 5 minutes – no coding required
         </div>
-        <div className={classes.how1}>
-          <div className={classes.how1svg}>
+        <div className={classes.imageLeft}>
+          <div className={classes.image}>
             <img height={262} src={require('assets/graphics/how1.png')} />
           </div>
-          <div className={classes.how1text}>
-            <div className={classes.how1title}>
-              <p>Define your data model</p>
-            </div>
-            <div className={classes.how1des}>
-              <p>
-                Define the structure of your data using <br />
-                our intuitive model editor. You can easily <br />
-                manage relationships between models <br />
-                and setup access permissions.
-              </p>
-            </div>
+          <div className={classes.text}>
+            <h3>
+              1. Define your data model
+            </h3>
+            <p>
+              Define the structure of your data using <br />
+              our intuitive model editor. You can easily <br />
+              manage relationships between models <br />
+              and setup access permissions.
+            </p>
           </div>
         </div>
-        <div className={classes.how2}>
-          <div className={classes.how2svg}>
+        <div className={classes.imageRight}>
+          <div className={classes.image}>
             <img height={262} src={require('assets/graphics/how2.png')} />
           </div>
-          <div className={classes.how2text}>
-            <div className={classes.how2title}>
-              <p>Import/manage data</p>
-            </div>
-            <div className={classes.how2des}>
-              <p>
-                Import your existing data (CSV & JSON) <br />
-                or add new data items by hand. Use our<br />
-                simple data browser to manage your<br />
-                data. No database knowledge needed.
-              </p>
-            </div>
+          <div className={classes.text}>
+            <h3>
+              2. Import/manage data
+            </h3>
+            <p>
+              Import your existing data (CSV & JSON) <br />
+              or add new data items by hand. Use our<br />
+              simple data browser to manage your<br />
+              data. No database knowledge needed.
+            </p>
           </div>
         </div>
-        <div className={classes.how3}>
-          <div className={classes.how3svg}>
+        <div className={classes.imageLeft}>
+          <div className={classes.image}>
             <img height={262} src={require('assets/graphics/how3.svg')} />
           </div>
-          <div className={classes.how3text}>
-            <div className={classes.how3title}>
-              <p>Integrate with your app</p>
-            </div>
-            <div className={classes.how3des}>
-              <p>
-                Connect your app to our GraphQL<br />
-                endpoint using Relay or other client<br />
-                libraries. Everything works out of the box.<br />
-                No further setup required.
-              </p>
-            </div>
+          <div className={classes.text}>
+            <h3>
+              3. Integrate with your app
+            </h3>
+            <p>
+              Connect your app to our GraphQL<br />
+              endpoint using Relay or other client<br />
+              libraries. Everything works out of the box.<br />
+              No further setup required.
+            </p>
           </div>
         </div>
       </div>

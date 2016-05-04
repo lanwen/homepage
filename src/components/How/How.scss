@@ -4,77 +4,50 @@
   @include section;
   background-color: #ffffff;
   padding-top: 100px;
-  padding-bottom: 100px;
 }
 
-.title {
+.imageLeft, .imageRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 120px;
   text-align: center;
-  color: #596062;
-  font-size: 24px;
-  position: relative;
 }
 
-.subtitle {
-  text-align: center;
-  color: #596062;
-  font-size: 15px;
-  position: relative;
+.imageLeft {
+  .image, .text {
+    margin: 0 60px 0 0;
+  }
 }
 
-.how1svg {
-  position: relative;
+.imageRight {
+  flex-direction: row-reverse;
+
+  .image, .text {
+    margin: 0 0 0 60px;
+  }
 }
 
-.how1text {
-  position: relative;
-  font-family: roboto;
-  color: #596062;
+.image {
+  width: 400px;
 
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
-.how1title {
-  font-size: 24px;
-}
+.text {
+  width: 325px;
 
-.how1des {
-  font-size: 17px;
-}
+  h3 {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 0 0 11px;
+  }
 
-.how2svg {
-  position: relative;
-}
-
-.how2text {
-  position: relative;
-  margin-left: -101px;
-  font-family: roboto;
-  color: #596062;
-}
-
-.how2title {
-  font-size: 24px;
-}
-
-.how2des {
-  font-size: 17px;
-}
-
-.how3svg {
-  position: relative;
-}
-
-.how3text {
-  position: relative;
-  top: 750px;
-  right: 310px;
-  font-family: roboto;
-  color: #596062;
-}
-
-.how3title {
-  font-size: 24px;
-}
-
-.how3des {
-  font-size: 17px;
+  p {
+    font-size: 17px;
+    line-height: 26px;
+  }
 }
