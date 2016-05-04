@@ -6,10 +6,10 @@ export default class Login extends React.Component {
   render () {
     return (
       <div className={classes.root}>
-        <div className={classes.title}>
+        <div className={classes.sectionTitle}>
           How it works
         </div>
-        <div className={classes.subtitle}>
+        <div className={classes.sectionSubTitle}>
           Setup a backend in less than 5 minutes – no coding required
         </div>
         <div className={classes.imageLeft}>

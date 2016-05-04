@@ -1,49 +1,109 @@
-.pricing
+@import '~styles/mixins';
+@import '~styles/variables';
 
-.box {
-  border: solid 1px #7d878A;
-  width: 300px;
+.root {
+  @include section;
+  background-color: #ffffff;
+  padding-bottom: 100px;
+}
+
+.table {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto;
+}
+
+.sidebar {
+  position: absolute;
+  left: -190px;
+  top: 301px;
+  width: 200px;
+  text-align: right;
+
+  .line {
+    height: 19px;
+    font-size: 14px;
+    padding-top: 1px;
+    margin-bottom: 30px;
+    color: #B4B4B4;
+    font-weight: 300;
+  }
+}
+
+.plan {
+  width: 170px;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 15px;
+  padding: 40px 20px 10px;
+
+  &:nth-child(4) {
+    /*outline: 1px solid $accent;*/
+    box-shadow: 0 0 0 1px $accent;
+    border-radius: 3px;
+    background-color: #fcfcfc;
+  }
+
+  .icon {
+    height: 80px;
+
+    svg {
+      fill: #B4B4B4;
+    }
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 25px 0 28px;
+  }
+
+  .priceAmount {
+    font-size: 32px;
+    color: $accent;
+    margin-bottom: 6px;
+  }
+
+  .priceMonth {
+    font-size: 13px;
+    color: #B4B4B4;
+    margin-bottom: 50px;
+    height: 15px;
+  }
+
+  .line {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
 }
 
-.t1 {
-  color: #7D878A;
-  margin-bottom: 80px;
-  font-size: 14px;
+.enterprise {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 0 0;
 }
 
-.t2 {
-  color: #7D878A;
-  font-size: 60px;
-  margin-bottom: -10px;
+.description {
+  color: #939C9F;
+  font-size: 17px;
+  white-space: nowrap;
+  font-weight: 300;
 }
 
-.t3 {
-  color: #7D878A;
-  margin-bottom: 50px;
-}
+.button {
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-weight: 400;
+  margin-left: 30px;
+  font-size: 13px;
+  text-transform: uppercase;
+  border: 1px solid $accent;
+  background: #fff;
+  color: $accent;
 
-.t4 {
-  color: #7D878A;
-  padding-bottom: 20px;
-}
-
-.t5 {
-  color: #7D878A;
-}
-
-.buy {
-  border: solid 1px red;
-  height: 40px;
-  width: 120px;
-  display: block;
-  text-align: center;
-}
-
-.buytext {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+  &:hover {
+    color: #fff;
+    background: $accent;
+  }
 }

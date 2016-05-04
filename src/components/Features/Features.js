@@ -1,16 +1,16 @@
 import React from 'react'
 import Icon from 'components/Icon/Icon'
-import classes from './Feature.scss'
+import classes from './Features.scss'
 
-export default class Feature extends React.Component {
+export default class Features extends React.Component {
 
   render () {
     return (
       <div className={classes.root}>
-        <div className={classes.title}>
+        <div className={classes.sectionTitle}>
           Product Features
         </div>
-        <div className={classes.subtitle}>
+        <div className={classes.sectionSubTitle}>
           We provide you with a flexible GraphQL backend that just works.
         </div>
         <div className={classes.features}>
