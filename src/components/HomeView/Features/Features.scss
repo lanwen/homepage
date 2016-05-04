@@ -3,19 +3,19 @@
 
 .root {
   @include section;
-  background-color: #ffffff;
-  margin-top: 70px;
+  padding-bottom: 20px;
 }
 
 .features {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .feature {
   width: 320px;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
 }
 
 .featureIcon {

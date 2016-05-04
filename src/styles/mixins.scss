@@ -1,21 +1,19 @@
 @mixin section {
   width: 1030px;
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  padding: 100px 15px;
 
   .sectionTitle {
     text-align: center;
-    color: #596062;
     font-size: 24px;
-    padding: 11px 0;
+    padding: 0 0 11px;
   }
 
   .sectionSubTitle {
     text-align: center;
-    color: #596062;
     font-size: 17px;
     padding-bottom: 70px;
+    font-weight: 300;
   }
 }

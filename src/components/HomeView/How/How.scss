@@ -1,9 +1,15 @@
 @import '~styles/mixins';
 
 .root {
+  background-color: #fcfcfc;
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.wrapper {
   @include section;
-  background-color: #ffffff;
-  padding-top: 100px;
+  padding-bottom: 20px;
 }
 
 .imageLeft, .imageRight {
