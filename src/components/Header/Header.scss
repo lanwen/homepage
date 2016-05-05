@@ -49,7 +49,7 @@
   border: solid 1px #40A166;
   width: 100px;
   height: 36px;
-  border-radius: 5px;
+  border-radius: 200px;
   line-height: 2.2;
   margin-left: 20px;
   color: #36ad64;
@@ -85,9 +85,10 @@
   text-align: center;
   width: 100%;
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   white-space: nowrap;
   color: #36ad64;
+  margin-top: 2px;
 }
 
 .spacer {

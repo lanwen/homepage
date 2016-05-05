@@ -91,7 +91,7 @@
 }
 
 .button {
-  border-radius: 5px;
+  border-radius: 200px;
   padding: 12px 20px;
   font-weight: 400;
   margin-left: 30px;
@@ -100,9 +100,79 @@
   border: 1px solid $accent;
   background: #fff;
   color: $accent;
+  width: 150px;
 
   &:hover {
     color: #fff;
     background: $accent;
   }
+}
+
+.rootbutton {
+  @include section;
+  background-color: #ffffff;
+}
+
+
+.sectionTitle {
+  color: #9898AE;
+}
+
+.sectionSubTitle {
+  color: #9898AE;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 150px;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 90px;
+}
+
+.image {
+  margin-right: 60px;
+  margin-top: -40px;
+}
+
+.info {
+  text-align: left;
+}
+
+.name {
+  color: #9898AE;
+  padding-bottom: 0px;
+  margin-bottom: -13px;
+  font-family: 'open sans';
+  font-weight: 100;
+  font-size: 27px;
+  margin-top: 0px;
+}
+
+.position {
+  color: #BDBDD8;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+  font-family: 'open sans';
+  font-weight: 100;
+  font-size: 19px;
+}
+
+.description {
+  color: #9898AE;
+  font-family: 'open sans';
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 25px;
+
 }
