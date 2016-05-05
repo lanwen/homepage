@@ -18,10 +18,10 @@
 }
 
 .button {
-  border-radius: 5px;
+  border-radius: 200px;
   padding: 12px 20px;
   font-weight: 400;
-  margin-left: 30px;
+  margin-left: 20px;
   font-size: 13px;
   color: #fff;
   background-color: $accent;
@@ -32,4 +32,15 @@
     background: #fff;
     color: $accent;
   }
+}
+
+.field {
+  height: 44px;
+  width: 280px;
+  padding-left: 12px;
+  color: grey;
+  margin-left: 40px;
+  font-weight: 600;
+  background-color: #fafafa;
+  border: solid 1px #CFD5DE;
 }

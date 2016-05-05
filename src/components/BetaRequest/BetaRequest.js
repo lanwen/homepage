@@ -7,10 +7,10 @@ export default class BetaRequest extends React.Component {
     return (
       <div className={classes.root}>
         <span className={classes.description}>
-          Like this? Request a beta invite. Replace this text.
+          Join our private beta
         </span>
-        <input type='text' placeholder='Email' />
-        <a className={classes.button} href='http://graph.cool/create/'>Request beta access</a>
+        <input type='text' placeholder='Email' className={classes.field}/>
+        <a className={classes.button} href='http://graph.cool/create/'>Request access</a>
       </div>
     )
   }
