@@ -37,7 +37,7 @@ export default class Pricing extends React.Component {
           </div>
           <div className={classes.plan}>
             <div className={classes.icon}>
-              <Icon width={60} height={75} src={require('assets/icons/development.svg')} />
+              <Icon width={60} height={75} src={require('assets/icons/project.svg')} />
             </div>
             <div className={classes.title}>Project</div>
             <div className={classes.priceAmount}>$9</div>

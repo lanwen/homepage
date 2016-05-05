@@ -19,13 +19,13 @@ export default class Faq extends React.Component {
           <p>
             Good question! Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            when an unknown printer took a galley of type and scrambled it to make a type specimen
           </p>
           <h3>How can I implement my server business logic?</h3>
           <p>
             Using webhooks. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            when an unknown printer took a galley of type and scrambled it to make a type specimen
           </p>
           <h3>Can I import existing data from services like Parse?</h3>
           <p>
