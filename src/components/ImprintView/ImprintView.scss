@@ -3,4 +3,8 @@
 
 .root {
   @include section;
+
+  a {
+    color: $accent;
+  }
 }
