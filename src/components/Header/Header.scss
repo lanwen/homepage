@@ -13,13 +13,13 @@
   border-bottom: solid 1px #E2E5EE;
 
   a:link {
-    color: #a1a1a1;
+    color: $softlink;
     text-decoration: none;
     font-weight: 300;
   }
 
   a:visited {
-    color: #a1a1a1;
+    color: $softlink;
   }
 
   a:hover {
@@ -66,11 +66,12 @@
 }
 
 .headerSignin a:hover {
-  color: #ffffff;
+  color: $accent;
 }
 .headerSignin:hover {
   border-color: $accent;
-  background-color: $accent;
+  background-color: #ffffff;
+  font-weight: 300;
 }
 
 .headerSignin a:active {

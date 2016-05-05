@@ -22,6 +22,10 @@
   align-items: center;
   padding: 30px 0 0;
 
+  svg {
+    fill: $accent;
+  }
+
   .chatHint {
     color: #939C9F;
     font-weight: 200;
