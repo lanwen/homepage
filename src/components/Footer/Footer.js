@@ -21,25 +21,27 @@ export default class Footer extends React.Component {
             <div className={classes.list}>
               <h4>Product</h4>
               <ul>
-                <li><Link to='https://blog.graph.cool'>Pricing</Link></li>
-                <li><Link to='https://blog.graph.cool'>Documentation</Link></li>
-                <li><Link to='https://blog.graph.cool'>Update Notes</Link></li>
+                <li><Link to='/pricing'>Pricing</Link></li>
+                {
+                  // <li><Link to='https://blog.graph.cool'>Update Notes</Link></li>
+                }
+                <li><a href='http://docs.graph.cool' target='_blank'>Documentation</a></li>
               </ul>
             </div>
             <div className={classes.list}>
               <h4>Company</h4>
               <ul>
-                <li><Link to='https://blog.graph.cool'>About</Link></li>
-                <li><Link to='https://blog.graph.cool'>Blog</Link></li>
-                <li><Link to='https://blog.graph.cool'>Documentation</Link></li>
+                <li><Link to='/about'>About</Link></li>
+                <li><a href='https://medium.com/@graphcool' target='_blank'>Blog</a></li>
+                <li><Link to='/imprint'>Imprint</Link></li>
               </ul>
             </div>
             <div className={classes.list}>
               <h4>Social</h4>
               <ul>
-                <li><Link to='https://blog.graph.cool'>Twitter</Link></li>
-                <li><Link to='https://blog.graph.cool'>Facebook</Link></li>
-                <li><Link to='https://blog.graph.cool'>Github</Link></li>
+                <li><a href='https://twitter.com/graphcool' target='_blank'>Twitter</a></li>
+                <li><a href='https://www.facebook.com/Graphcool-1570682923256087' target='_blank'>Facebook</a></li>
+                <li><a href='https://github.com/graphcool' target='_blank'>Github</a></li>
               </ul>
             </div>
           </div>
