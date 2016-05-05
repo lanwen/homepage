@@ -22,13 +22,13 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/johannes.png')} />
           </div>
           <div className={classes.info}>
-            <p className={classes.name}>Johannes Schickling</p>
-            <p className={classes.position}>Co-founder</p>
-            <p className={classes.description}>
+            <div className={classes.name}>Johannes Schickling</div>
+            <div className={classes.position}>Co-founder</div>
+            <div className={classes.description}>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Aenean commodo ligula eget dolor. Aenean massa.
-            </p>
+            </div>
           </div>
         </div>
         <div className={classes.person}>
@@ -36,13 +36,13 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/soren.png')} />
           </div>
           <div className={classes.info}>
-            <p className={classes.name}>Søren Bramer Schmidt</p>
-            <p className={classes.position}>Co-founder</p>
-            <p className={classes.description}>
+            <div className={classes.name}>Søren Bramer Schmidt</div>
+            <div className={classes.position}>Co-founder</div>
+            <div className={classes.description}>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Aenean commodo ligula eget dolor. Aenean massa.
-            </p>
+            </div>
           </div>
         </div>
         <div className={classes.person}>
@@ -50,13 +50,13 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/fabian.png')} />
           </div>
           <div className={classes.info}>
-            <p className={classes.name}>Fabian Kozdon</p>
-            <p className={classes.position}>Product Designer</p>
-            <p className={classes.description}>
+            <div className={classes.name}>Fabian Kozdon</div>
+            <div className={classes.position}>Product Designer</div>
+            <div className={classes.description}>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Aenean commodo ligula eget dolor. Aenean massa.
-            </p>
+            </div>
           </div>
         </div>
         <div className={classes.person}>
@@ -64,13 +64,13 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/nilan.png')} />
           </div>
           <div className={classes.info}>
-            <p className={classes.name}>Nilan Marktanner</p>
-            <p className={classes.position}>Position</p>
-            <p className={classes.description}>
+            <div className={classes.name}>Nilan Marktanner</div>
+            <div className={classes.position}>Position</div>
+            <div className={classes.description}>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Aenean commodo ligula eget dolor. Aenean massa.
-            </p>
+            </div>
           </div>
         </div>
       </div>

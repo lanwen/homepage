@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from 'components/Signup/Signup'
+import BetaRequest from 'components/BetaRequest/BetaRequest'
 import Pricing from './Pricing/Pricing'
 
 export default class PricingView extends React.Component {
@@ -8,7 +8,7 @@ export default class PricingView extends React.Component {
     return (
       <div>
         <Pricing />
-        <Signup />
+        <BetaRequest />
       </div>
     )
   }

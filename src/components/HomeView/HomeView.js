@@ -1,6 +1,6 @@
 import React from 'react'
 import Cover from './Cover/Cover'
-import Signup from 'components/Signup/Signup'
+import BetaRequest from 'components/BetaRequest/BetaRequest'
 import Features from './Features/Features'
 import How from './How/How'
 import Faq from './Faq/Faq'
@@ -11,11 +11,11 @@ export default class HomeView extends React.Component {
     return (
       <div>
         <Cover />
-        <Signup />
+        <BetaRequest />
         <Features />
         <How />
         <Faq />
-        <Signup />
+        <BetaRequest />
       </div>
     )
   }

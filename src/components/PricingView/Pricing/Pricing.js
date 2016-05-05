@@ -1,6 +1,7 @@
 import React from 'react'
 import Icon from 'components/Icon/Icon'
 import classes from './Pricing.scss'
+import Smooch from 'smooch'
 
 export default class Pricing extends React.Component {
 
@@ -95,7 +96,7 @@ export default class Pricing extends React.Component {
           <span className={classes.description}>
             Looking for more? Let's talk about our enterprise plans.
           </span>
-          <a className={classes.button} href='http://graph.cool/create/'>Get in touch</a>
+          <div onClick={Smooch.open} className={classes.button}>Get in touch</div>
         </div>
       </div>
     )

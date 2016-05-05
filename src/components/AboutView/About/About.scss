@@ -3,91 +3,15 @@
 
 .root {
   @include section;
-  background-color: #ffffff;
 }
 
-.table {
-  width: 900px;
+.buttons {
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  margin: 0 auto;
-}
-
-.sidebar {
-  position: absolute;
-  left: -190px;
-  top: 301px;
-  width: 200px;
-  text-align: right;
-
-  .line {
-    height: 19px;
-    font-size: 14px;
-    padding-top: 1px;
-    margin-bottom: 30px;
-    color: #B4B4B4;
-    font-weight: 300;
-  }
-}
-
-.plan {
-  width: 170px;
-  text-align: center;
-  padding: 40px 20px 10px;
-
-  &:nth-child(4) {
-    /*outline: 1px solid $accent;*/
-    box-shadow: 0 0 0 1px $accent;
-    border-radius: 3px;
-    background-color: #fcfcfc;
-  }
-
-  .icon {
-    height: 80px;
-
-    svg {
-      fill: #B4B4B4;
-    }
-  }
-
-  .title {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 25px 0 28px;
-  }
-
-  .priceAmount {
-    font-size: 32px;
-    color: $accent;
-    margin-bottom: 6px;
-  }
-
-  .priceMonth {
-    font-size: 13px;
-    color: #B4B4B4;
-    margin-bottom: 50px;
-    height: 15px;
-  }
-
-  .line {
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-}
-
-.enterprise {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 70px 0 0;
-}
-
-.description {
-  color: #939C9F;
-  font-size: 17px;
-  white-space: nowrap;
-  font-weight: 300;
+  justify-content: center;
+  margin-bottom: 150px;
+  text-align: center;
+  margin-top: -20px;
 }
 
 .button {
@@ -108,71 +32,33 @@
   }
 }
 
-.rootbutton {
-  @include section;
-  background-color: #ffffff;
-}
-
-
-.sectionTitle {
-  color: #9898AE;
-}
-
-.sectionSubTitle {
-  color: #9898AE;
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 150px;
-    text-align: center;
-    margin-top: -20px;
-}
-
 .person {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-bottom: 40px;
-  text-align: center;
   margin-top: 90px;
 }
 
 .image {
   margin-right: 60px;
-  margin-top: -40px;
-}
-
-.info {
-  text-align: left;
 }
 
 .name {
   color: #9898AE;
-  padding-bottom: 0px;
-  margin-bottom: -13px;
-  font-family: 'open sans';
   font-weight: 100;
   font-size: 27px;
-  margin-top: 0px;
 }
 
 .position {
   color: #BDBDD8;
-  padding-bottom: 0px;
-  margin-bottom: 20px;
-  font-family: 'open sans';
+  margin-bottom: 12px;
   font-weight: 100;
   font-size: 19px;
 }
 
 .description {
   color: #9898AE;
-  font-family: 'open sans';
   font-weight: 100;
   font-size: 18px;
   line-height: 25px;
-
 }

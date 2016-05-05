@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from 'components/Signup/Signup'
+import BetaRequest from 'components/BetaRequest/BetaRequest'
 import About from './About/About'
 
 export default class AboutView extends React.Component {
@@ -8,7 +8,7 @@ export default class AboutView extends React.Component {
     return (
       <div>
         <About />
-        <Signup />
+        <BetaRequest />
       </div>
     )
   }

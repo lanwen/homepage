@@ -1,3 +1,5 @@
+@import '~styles/variables';
+
 .header {
   background-color: #ffffff;
   display:flex;
@@ -46,48 +48,48 @@
 
 
 .headerSignin {
-  border: solid 1px #40A166;
+  border: solid 1px $accent;
   width: 100px;
   height: 36px;
   border-radius: 200px;
   line-height: 2.2;
   margin-left: 20px;
-  color: #36ad64;
+  color: $accent;
 }
 
 .headerSignin a:link {
-  color: #36ad64;
+  color: $accent;
 }
 
 .headerSignin a:visited {
-  color: #36ad64;
+  color: $accent;
 }
 
 .headerSignin a:hover {
   color: #ffffff;
 }
 .headerSignin:hover {
-  border-color: #40A166;
-  background-color: #36ad64;
+  border-color: $accent;
+  background-color: $accent;
 }
 
 .headerSignin a:active {
-  color: #36ad64;
+  color: $accent;
 }
 
 .headerSignin:active {
   background-color: #ffffff;
-  border-color: #36ad64;
+  border-color: $accent;
 }
 
 .headerSigninText {
-  color: #36ad64;
+  color: $accent;
   text-align: center;
   width: 100%;
   display: block;
   font-size: 14px;
   white-space: nowrap;
-  color: #36ad64;
+  color: $accent;
   margin-top: 2px;
 }
 
