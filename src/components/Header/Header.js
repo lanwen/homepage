@@ -12,8 +12,8 @@ export default class Header extends React.Component {
           <img height={40} src={require('assets/graphics/logo-text.svg')} />
         </Link>
         <div className={classes.headerLinks}>
-          <a href='http://graph.cool/blog/'>Blog</a>
-          <a href='https://docs.graph.cool' target='_blank'>Docs</a>
+          <a href='https://medium.com/@graphcool'>Blog</a>
+          <a href='http://docs.graph.cool'>Docs</a>
           <Link to='/pricing'>Pricing</Link>
           <Link to='/about'>About</Link>
         </div>
