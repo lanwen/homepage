@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import classes from './ImprintView.scss'
 
 export default class ImprintView extends React.Component {
@@ -6,6 +7,7 @@ export default class ImprintView extends React.Component {
   render () {
     return (
       <div className={classes.root}>
+        <Helmet title='Imprint' />
         <div className={classes.sectionTitle}>
           Get In Touch
         </div>
