@@ -24,7 +24,7 @@ export default class Features extends React.Component {
             <div className={classes.featureDescription}>
               We provide a flexible backend <br />
               including data storage and API hosting.<br />
-              Instead of manually defining endpoints on a server, <br />
+              Instead of manually creating server endpoints, <br />
               just specify the data you need in your app. <br />
             </div>
           </div>
@@ -65,7 +65,7 @@ export default class Features extends React.Component {
             </div>
             <div className={classes.featureDescription}>
               Get an API endpoint in less than a minute and<br />
-              manage your data model in our visual dashboard.<br />
+              manage your data model in our dashboard.<br />
               No need to setup your own servers.<br />
               Just focus on what you love: Your product!
             </div>
@@ -78,7 +78,7 @@ export default class Features extends React.Component {
               No Maintenance
             </div>
             <div className={classes.featureDescription}>
-              It's our job to keep your backend up and running.<br />
+              We make sure your backend is up and running.<br />
               No need to think about backups or scaling.<br />
               No more getting up at 3am to fix critical bugs.<br />
               We take care of all of that.
