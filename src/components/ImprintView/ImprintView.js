@@ -14,6 +14,16 @@ export default class ImprintView extends React.Component {
         <div className={classes.sectionSubTitle}>
           Feel free to <a href='mailto:hello@graph.cool'>reach out to us</a> anytime. We'd love to talk to you!
         </div>
+        <p>
+          <strong>graph.cool</strong><br />
+          28 Coleman Rd<br />
+          SE5 7TG London<br />
+          United Kingdom<br />
+          <br />
+          Email: <a href='mailto:hello@graph.cool'>hello@graph.cool</a>
+          <br />
+          <br />
+        </p>
         <h3>Copyright</h3>
         <p>
           The copyright of the contents of the graph.cool website lie with graph.cool.
