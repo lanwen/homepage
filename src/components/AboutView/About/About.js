@@ -65,7 +65,7 @@ export default class About extends React.Component {
           </div>
           <div className={classes.info}>
             <div className={classes.name}>Nilan Marktanner</div>
-            <div className={classes.position}>Position</div>
+            <div className={classes.position}>Back-End Developer</div>
             <div className={classes.description}>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br />
