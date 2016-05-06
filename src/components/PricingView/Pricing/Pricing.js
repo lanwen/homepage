@@ -12,7 +12,7 @@ export default class Pricing extends React.Component {
           Pricing
         </div>
         <div className={classes.sectionSubTitle}>
-          We provide a simple and flexible pricing model. Development is free of course.
+          We provide a simple and flexible pricing model. We also have a free plan.
         </div>
         <div className={classes.table}>
           <div className={classes.sidebar}>
