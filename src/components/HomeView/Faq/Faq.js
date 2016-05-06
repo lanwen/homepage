@@ -17,21 +17,19 @@ export default class Faq extends React.Component {
         <div className={classes.questions}>
           <h3>Parse just shot down. Why should I bet on you?</h3>
           <p>
-            Good question! Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen
+            Good question! We loved using parse but it had its shortcomings.
+            One being that apps using parse tend to be very tightly coupled to the parse SDK, requiring a substantial rewrite if you want to switch backend. graph.cool on the other hand embraces the open standard GraphQL ensuring that you can change your backend at any time with only minimal changes to your fronted application.
           </p>
-          <h3>How can I implement my server business logic?</h3>
+          <h3>How can I implement my server-side business logic?</h3>
           <p>
-            Using webhooks. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen
+            We provide a powerful webhook system which lets you implement your custom business logic in a flexible way.
+            You can choose any language/technology you want. <br />
+            <a href='#'>Here is an example.</a>
           </p>
-          <h3>Can I import existing data from services like Parse?</h3>
+          <h3>How does user authentifican work?</h3>
           <p>
-            Yes. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            You can choose from a range of different authentifican providers such as Auth0, Facebook and Twitter.
+            Alternatively we provide a simple JWT based authentifican system you can extend yourself.
           </p>
         </div>
         <div className={classes.chat}>

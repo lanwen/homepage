@@ -9,6 +9,26 @@
   border-bottom: solid 1px #F4F4F4;
   padding: 40px 0;
   font-weight: 200;
+
+  input {
+    border: 1px solid $accent;
+    border-right: none;
+    padding: 11px 20px;
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: 400;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 240px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  strong {
+    padding: 0 5px;
+  }
 }
 
 .description {
@@ -16,26 +36,6 @@
   font-size: 17px;
   white-space: nowrap;
   font-weight: 300;
-}
-
-input {
-  border: 1px solid $accent;
-  border-right: none;
-  padding: 11px 20px;
-  margin-left: 30px;
-  font-size: 15px;
-  font-weight: 400;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  width: 240px;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-strong {
-  padding: 0 5px;
 }
 
 .button {

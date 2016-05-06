@@ -16,6 +16,15 @@
     color: #73787c;
     line-height: 32px;
   }
+
+  a {
+    color: $accent;
+    font-weight: 400;
+
+    &:hover {
+      border-bottom: 1px solid $accent;
+    }
+  }
 }
 
 .chat {
