@@ -17,8 +17,12 @@ export default class Faq extends React.Component {
         <div className={classes.questions}>
           <h3>Parse just shot down. Why should I bet on you?</h3>
           <p>
-            Good question! We loved using parse but it had its shortcomings.
-            One being that apps using parse tend to be very tightly coupled to the parse SDK, requiring a substantial rewrite if you want to switch backend. graph.cool on the other hand embraces the open standard GraphQL ensuring that you can change your backend at any time with only minimal changes to your fronted application.
+            Good question! Besides the fact that Parse was shut down by Facebook because of&nbsp;
+            <a href='http://nyti.ms/1OSPxj1'>strategical reasons</a>,
+            we're embracing an open standard: GraphQL.<br />
+            That means even in the very unlikely case of a shutdown you can still use exactly the same system.
+            (Which is <a href='https://github.com/graphcool'>open source</a> by the way.)
+            So don't worry about vendor lockin.
           </p>
           <h3>How can I implement my server-side business logic?</h3>
           <p>
@@ -29,7 +33,8 @@ export default class Faq extends React.Component {
           <h3>How does user authentifican work?</h3>
           <p>
             You can choose from a range of different authentifican providers such as Auth0, Facebook and Twitter.
-            Alternatively we provide a simple JWT based authentifican system you can extend yourself.
+            Alternatively we provide a simple JWT based authentifican system you can extend yourself.&nbsp;
+            <a href='http://docs.graph.cool/docs/security/'>You can read more about it here.</a>
           </p>
         </div>
         <div className={classes.chat}>
