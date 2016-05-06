@@ -25,7 +25,7 @@ export default class Features extends React.Component {
               We provide a flexible backend <br />
               including data storage and API hosting.<br />
               Instead of manually creating server endpoints, <br />
-              just specify the data you need in your app. <br />
+              just define your data model in our dashboard. <br />
             </div>
           </div>
           <div className={classes.feature}>
