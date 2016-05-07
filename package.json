@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp static/* dist && prep -d dist",
-    "start": "webpack-dev-server -d --hot --inline --progress --colors --history-api-fallback --host 0.0.0.0 --port 5000"
+    "start": "webpack-dev-server -d --hot --inline --progress --colors --history-api-fallback --host 0.0.0.0 --port 5000",
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp static/* dist && prep dist",
+    "deploy": "npm run build && surge dist"
   },
   "dependencies": {
     "normalize.css": "^4.1.1",
@@ -39,9 +40,10 @@
     "html-webpack-plugin": "^2.16.0",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.2",
-    "prep": "^0.1.0",
+    "prep": "^0.1.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "surge": "^0.18.0",
     "svg-inline-loader": "^0.4.1",
     "url-loader": "^0.5.7",
     "webpack": "1.13.0",
