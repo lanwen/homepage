@@ -1,6 +1,8 @@
 machine:
   node:
     version: 5.6.0
+  services:
+    - docker
 
 dependencies:
   override:
@@ -13,6 +15,10 @@ test:
 
 deployment:
   production:
-    branch: [master, dev]
+    branch: master
     commands:
-      - npm run deploy
+      - docker run -v $(pwd)/dist:/s3 schickling/s3cmd --access_key=$S3_KEY --secret_key=$S3_SECRET --force --no-preserve --cf-invalidate --acl-public --no-mime-magic --guess-mime-type --default-mime-type="image/svg+xml" sync . s3://$S3_BUCKET
+  dev:
+    branch: dev
+    commands:
+      - docker run -v $(pwd)/dist:/s3 schickling/s3cmd --access_key=$S3_KEY --secret_key=$S3_SECRET --force --no-preserve --acl-public --no-mime-magic --guess-mime-type --default-mime-type="image/svg+xml" sync . s3://$S3_DEV_BUCKET
