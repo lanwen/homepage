@@ -40,7 +40,7 @@
     "html-webpack-plugin": "^2.16.0",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.2",
-    "prep": "^0.1.4",
+    "prep": "^0.1.5",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "surge": "^0.18.0",
