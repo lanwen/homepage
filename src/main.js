@@ -26,7 +26,7 @@ if (userId) {
     integrations: {
       'All': false,
       'Mixpanel': true,
-    }
+    },
   })
 }
 
