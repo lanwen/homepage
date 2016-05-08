@@ -35,6 +35,10 @@ module.exports = {
       favicon: 'static/favicon.png',
       template: 'src/index.html'
     }),
+    new webpack.DefinePlugin({
+      __SEGMENT_TOKEN__: '"mxShPAuQCvtbX7K1u5xcmFeqz9X7S7HN"',
+      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
+    }),
   ],
   postcss: [
     cssnano({

@@ -25,6 +25,10 @@ export default class BetaRequest extends React.Component {
     }
   }
 
+  _trackFocus () {
+    analytics.track('beta enters email')
+  }
+
   _submitRequest () {
     const email = findDOMNode(this.refs.email).value
     if (email && validateEmail(email)) {
@@ -41,6 +45,7 @@ export default class BetaRequest extends React.Component {
       request.onload = () => {
         if (request.status >= 200 && request.status < 400) {
           this.setState({ submitted: true })
+          analytics.track('beta requested', { email })
         }
 
         this.setState({ loading: false })
@@ -80,6 +85,7 @@ export default class BetaRequest extends React.Component {
           name='email'
           type='email'
           placeholder='Email'
+          onFocus={this._trackFocus}
           onKeyUp={::this._watchForEnter}
           ref='email'
         />

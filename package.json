@@ -6,6 +6,7 @@
     "deploy": "npm run build && surge dist"
   },
   "dependencies": {
+    "js-cookie": "^2.1.1",
     "normalize.css": "^4.1.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

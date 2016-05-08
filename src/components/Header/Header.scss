@@ -1,13 +1,11 @@
 @import '~styles/variables';
 
 .header {
-  background-color: #ffffff;
-  display:flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-content: stretch;
-  align-items: stretch;
+  align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
   border-bottom: solid 1px #E2E5EE;
@@ -37,7 +35,6 @@
 .headerLinks {
   width: 300px;
   margin-left: 20px;
-  margin-top: 7px;
 }
 
 .headerLinks a {
@@ -49,50 +46,25 @@
 
 .headerSignin {
   border: solid 1px $accent;
-  width: 100px;
-  height: 36px;
   border-radius: 200px;
-  line-height: 2.2;
   margin-left: 20px;
-  color: $accent;
-}
-
-.headerSignin a:link {
-  color: $accent;
-}
-
-.headerSignin a:visited {
-  color: $accent;
-}
-
-.headerSignin a:hover {
-  color: $accent;
-}
-.headerSignin:hover {
-  border-color: $accent;
-  background-color: #ffffff;
-  font-weight: 300;
-}
-
-.headerSignin a:active {
-  color: $accent;
-}
-
-.headerSignin:active {
-  background-color: #ffffff;
-  border-color: $accent;
-}
-
-.headerSigninText {
-  color: $accent;
-  text-align: center;
-  width: 100%;
-  display: block;
+  color: $accent !important;
+  padding: 12px 25px;
   font-size: 14px;
-  white-space: nowrap;
-  color: $accent;
-  margin-top: 2px;
+
+  &:hover {
+    font-weight: 300;
+    color: #fff !important;
+    background: $accent;
+  }
+
+  &:active {
+    color: $accent;
+    background-color: #ffffff;
+    border-color: $accent;
+  }
 }
+
 
 .spacer {
   flex-grow: 1;

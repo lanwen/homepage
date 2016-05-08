@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
+import cookies from 'js-cookie'
 import classes from './Header.scss'
 
 export default class Header extends React.Component {
 
   render () {
+    const userId = cookies.get('graphcool_user_id')
+
     return (
       <div className={classes.header}>
         <div className={classes.spacer}></div>
@@ -17,9 +20,9 @@ export default class Header extends React.Component {
           <Link to='/pricing'>Pricing</Link>
           <Link to='/about'>About</Link>
         </div>
-        <div className={classes.headerSignin}>
-          <a className={classes.headerSigninText} href='https://dashboard.graph.cool'>SIGN IN</a>
-        </div>
+        <a className={classes.headerSignin} href='https://dashboard.graph.cool'>
+          {userId ? 'OPEN DASHBOARD' : 'SIGN IN'}
+        </a>
         <div className={classes.spacer}></div>
       </div>
     )
