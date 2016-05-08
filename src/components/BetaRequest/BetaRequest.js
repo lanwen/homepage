@@ -29,8 +29,14 @@ export default class BetaRequest extends React.Component {
     analytics.track('beta enters email')
   }
 
+  _showInvite () {
+    this.setState({ invite: true })
+    findDOMNode(this.refs.email).focus()
+  }
+
   _submitRequest () {
     const email = findDOMNode(this.refs.email).value
+    const code = findDOMNode(this.refs.code).value
     if (email && validateEmail(email)) {
       this.setState({ loading: true })
 
@@ -45,13 +51,13 @@ export default class BetaRequest extends React.Component {
       request.onload = () => {
         if (request.status >= 200 && request.status < 400) {
           this.setState({ submitted: true })
-          analytics.track('beta requested', { email })
+          analytics.track('beta requested', { email, code })
         }
 
         this.setState({ loading: false })
       }
 
-      var data = JSON.stringify({ email })
+      var data = JSON.stringify({ email, code })
       request.send(data)
     } else {
       this.setState({ invalidInput: true })
@@ -82,6 +88,7 @@ export default class BetaRequest extends React.Component {
           We're currently in beta.
         </span>
         <input
+          className={classes.email}
           name='email'
           type='email'
           placeholder='Email'
@@ -89,12 +96,29 @@ export default class BetaRequest extends React.Component {
           onKeyUp={::this._watchForEnter}
           ref='email'
         />
+        {this.state.invite &&
+          <input
+            className={classes.invite}
+            type='text'
+            placeholder='Invite code'
+            onKeyUp={::this._watchForEnter}
+            ref='code'
+          />
+        }
         <div
           className={classes.button}
           onClick={::this._submitRequest}
         >
           Request beta access
         </div>
+        {!this.state.invite &&
+          <div
+            className={classes.showInvite}
+            onClick={::this._showInvite}
+          >
+            Use invite code
+          </div>
+        }
       </div>
     )
   }

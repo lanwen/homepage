@@ -14,15 +14,22 @@
     border: 1px solid $accent;
     border-right: none;
     padding: 11px 20px;
-    margin-left: 30px;
     font-size: 15px;
     font-weight: 400;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     width: 240px;
 
     &:focus {
       outline: none;
+    }
+
+    &.email {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      margin-left: 30px;
+    }
+
+    &.invite {
+      border-left: 1px solid #d4d4d4;
     }
   }
 
@@ -56,13 +63,8 @@
   }
 }
 
-.field {
-  height: 44px;
-  width: 280px;
-  padding-left: 12px;
-  color: grey;
-  margin-left: 40px;
-  font-weight: 600;
-  background-color: #fafafa;
-  border: solid 1px #CFD5DE;
+.showInvite {
+  font-size: 14px;
+  margin-left: 15px;
+  cursor: pointer;
 }
