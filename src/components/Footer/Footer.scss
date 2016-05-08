@@ -36,6 +36,15 @@
   }
 }
 
+.mixpanel {
+  margin-top: 30px;
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .lists {
   display: flex;
   justify-content: flex-end;

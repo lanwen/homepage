@@ -16,6 +16,9 @@ export default class Footer extends React.Component {
             <div className={classes.check}>
               <i /> Simple GraphQL Endpoint
             </div>
+            <a className={classes.mixpanel} href='https://mixpanel.com/f/partner' rel='nofollow'>
+              <img src='//cdn.mxpnl.com/site_media/images/partner/badge_blue.png' alt='Mobile Analytics' />
+            </a>
           </div>
           <div className={classes.lists}>
             <div className={classes.list}>
