@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './About.scss'
+import Icon from 'components/Icon/Icon'
 import Smooch from 'smooch'
 
 export default class About extends React.Component {
@@ -35,7 +36,18 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/johannes.png')} />
           </div>
           <div className={classes.info}>
-            <div className={classes.name}>Johannes Schickling</div>
+            <div className={classes.name}>
+              Johannes Schickling
+              <a href='https://www.linkedin.com/in/schickling' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/linkedin.svg')} />
+              </a>
+              <a href='https://twitter.com/_schickling' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/twitter.svg')} />
+              </a>
+              <a href='https://github.com/schickling' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/github.svg')} />
+              </a>
+            </div>
             <div className={classes.position}>Co-founder</div>
             <div className={classes.description}>
               Obsessed with cutting edge technologies.<br />
@@ -49,7 +61,18 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/soren.png')} />
           </div>
           <div className={classes.info}>
-            <div className={classes.name}>Søren Bramer Schmidt</div>
+            <div className={classes.name}>
+              Søren Bramer Schmidt
+              <a href='https://www.linkedin.com/in/sorenbs' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/linkedin.svg')} />
+              </a>
+              <a href='https://twitter.com/sorenbs' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/twitter.svg')} />
+              </a>
+              <a href='https://github.com/sorenbs' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/github.svg')} />
+              </a>
+            </div>
             <div className={classes.position}>Co-founder</div>
             <div className={classes.description}>
               Entrepreneur and employee #1 at Trustpilot.com.<br />
@@ -63,7 +86,18 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/fabian.png')} />
           </div>
           <div className={classes.info}>
-            <div className={classes.name}>Fabian Kozdon</div>
+            <div className={classes.name}>
+              Fabian Kozdon
+              <a href='https://www.linkedin.com/in/fabiankozdon' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/linkedin.svg')} />
+              </a>
+              <a href='https://twitter.com/fabiankozdon' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/twitter.svg')} />
+              </a>
+              <a href='https://github.com/fabiankozdon' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/github.svg')} />
+              </a>
+            </div>
             <div className={classes.position}>UI/UX Designer</div>
             <div className={classes.description}>
               Impresses with a great sense for detail.<br />
@@ -77,7 +111,18 @@ export default class About extends React.Component {
             <img height={120} src={require('assets/graphics/nilan.png')} />
           </div>
           <div className={classes.info}>
-            <div className={classes.name}>Nilan Marktanner</div>
+            <div className={classes.name}>
+              Nilan Marktanner
+              <a href='https://www.linkedin.com/in/nilanm' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/linkedin.svg')} />
+              </a>
+              <a href='https://twitter.com/_marktani' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/twitter.svg')} />
+              </a>
+              <a href='https://github.com/marktani' target='_blank'>
+                <Icon width={20} height={20} src={require('assets/icons/github.svg')} />
+              </a>
+            </div>
             <div className={classes.position}>Developer</div>
             <div className={classes.description}>
               Studies math + computer science in Germany.<br />

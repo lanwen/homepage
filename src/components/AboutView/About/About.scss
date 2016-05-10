@@ -53,10 +53,28 @@
 
 .name {
   color: #555555;
-  //color: #9898AE;
   font-weight: 100;
   font-size: 27px;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+
+  a {
+    margin-left: 15px;
+    display: flex;
+
+    &:first-child {
+      margin-left: 25px;
+    }
+
+    svg {
+      fill: #CCC;
+    }
+
+    &:hover svg {
+      fill: #555;
+    }
+  }
 }
 
 .position {
