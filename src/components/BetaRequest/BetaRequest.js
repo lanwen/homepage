@@ -85,7 +85,7 @@ export default class BetaRequest extends React.Component {
     return (
       <div className={classes.root}>
         <span className={classes.description}>
-          We're currently in beta.
+          Want to give it a try?
         </span>
         <input
           className={classes.email}
@@ -109,7 +109,7 @@ export default class BetaRequest extends React.Component {
           className={classes.button}
           onClick={::this._submitRequest}
         >
-          Request beta access
+          Request early access
         </div>
         {!this.state.invite &&
           <div
