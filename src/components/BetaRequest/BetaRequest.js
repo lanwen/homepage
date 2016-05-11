@@ -36,7 +36,7 @@ export default class BetaRequest extends React.Component {
 
   _submitRequest () {
     const email = findDOMNode(this.refs.email).value
-    const code = findDOMNode(this.refs.code).value
+    const code = this.refs.code ? findDOMNode(this.refs.code).value : ''
     if (email && validateEmail(email)) {
       this.setState({ loading: true })
 
