@@ -62,9 +62,7 @@ export default function () {
     var script = document.createElement('script')
     script.type = 'text/javascript'
     script.async = true
-    script.src = (document.location.protocol === 'https:' ? 'https://' : 'http://') +
-      'cdn.segment.com/analytics.js/v1/' +
-      key + '/analytics.min.js'
+    script.src = 'https://cdn.segment.com/analytics.js/v1/' + key + '/analytics.min.js'
 
     // Insert our script next to the first script element.
     var first = document.getElementsByTagName('script')[0]
