@@ -30,10 +30,10 @@ export default class Faq extends React.Component {
             You can choose any language/technology you want. <br />
             <a href='#'>Here is an example.</a>
           </p>
-          <h3>How does user authentification work?</h3>
+          <h3>How does user authentication work?</h3>
           <p>
-            You can choose from a range of different authentification providers such as Auth0, Facebook and Twitter.
-            Alternatively we provide a simple JWT based authentification system you can extend yourself.&nbsp;
+            You can choose from a range of different authentication providers such as Auth0, Facebook and Twitter.
+            Alternatively we provide a simple JWT based authentication system you can extend yourself.&nbsp;
             <a href='http://docs.graph.cool/docs/security/'>You can read more about it here.</a>
           </p>
         </div>
