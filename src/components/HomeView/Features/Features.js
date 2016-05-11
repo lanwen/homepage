@@ -51,7 +51,7 @@ export default class Features extends React.Component {
             </div>
             <div className={classes.featureDescription}>
               GraphQL is the successor of REST APIs <br />
-              and <a href=''>a better way</a> to fetch and update data.<br />
+              and a better way to fetch and update data.<br />
               It's perfect for teams and individual developers <br />
               and helped Facebook to scale easily. <br />
             </div>
