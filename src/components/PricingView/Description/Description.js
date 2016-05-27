@@ -25,9 +25,9 @@ export default class Description extends React.Component {
           </div>
         </div>
         <div className={classes.pdes}>
-          GraphCool includes a flexible User Type that allows you to easily sign up and authenticate users.<br />
-          You can sign up users via email as well as social logins such as facebook or twitter. <br />
-          A user counts towards your quota as soon as they have signed up.
+          graph.cool includes a flexible <i>user type</i> that allows you to easily sign up and authenticate users.<br />
+          You can sign up users via email as well as social logins such as Facebook or Twitter. <br />
+          A user counts towards your quota as soon as they have signed up or have been created.
         </div>
         <div className={classes.pricedes}>
           <div className={classes.picon}>
@@ -38,7 +38,7 @@ export default class Description extends React.Component {
           </div>
         </div>
         <div className={classes.pdes}>
-          With GraphQL you make two types of request: queries and mutations. <br />
+          With GraphQL you make two types of requests: queries and mutations. <br />
           Both count towards your monthly request limit. <br />
           Because GraphQL allows you to specify all the data you need in a single request GraphQL applications <br />
           typically make 3-10 times less requests than a REST based application. <br />
@@ -52,7 +52,7 @@ export default class Description extends React.Component {
           </div>
         </div>
         <div className={classes.pdes}>
-          All items you store in GraphQL counts towards your storage quota.<br />
+          All data items you store in our service count towards your storage quota.<br />
           If you are only storing text and numbers you should be able to store millions of items
           even on the smallest plan.
         </div>
@@ -67,7 +67,7 @@ export default class Description extends React.Component {
         <div className={classes.pdes}>
           The integrity of your data is really important to us. This is why we always store your data
           in multiple physical locations. <br />
-          In addition to this all paid plans includes automatic backups.
+          In addition to this all paid plans include automatic backups.
         </div>
         <div className={classes.enterprise}>
           <span className={classes.description}>
