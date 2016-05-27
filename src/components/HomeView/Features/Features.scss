@@ -19,7 +19,8 @@
 }
 
 .featureIcon {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 
   svg {
     fill: $accent;

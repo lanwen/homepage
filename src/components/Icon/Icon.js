@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import classes from './Icon.scss'
 
 export default function Icon ({
   ...props,
@@ -8,15 +9,16 @@ export default function Icon ({
   height = 16,
   className = '',
 }) {
+  const fillCode = color ? `fill="${color}"` : ''
+  const styleCode = `style="width: ${width}px; height: ${height}px"`
+  const __html = src.replace(/<svg/, `<svg ${fillCode} ${styleCode}`)
+
   return (
-    <svg
+    <i
       {...props}
-      className={className}
-      width={width}
-      height={height}
-      fill={color}
-      dangerouslySetInnerHTML={{__html: src}}
-      />
+      className={`${classes.root} ${className}`}
+      dangerouslySetInnerHTML={{ __html }}
+    />
   )
 }
 

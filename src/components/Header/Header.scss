@@ -2,13 +2,12 @@
 
 .header {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
   border-bottom: solid 1px #E2E5EE;
+  width: 1020px;
+  padding: 30px 10px;
+  margin: 0 auto;
 
   a:link {
     color: $softlink;
@@ -26,10 +25,12 @@
 }
 
 .headerLogo {
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: 400px;
   margin-right: 20px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
 }
 
 .headerLinks {
@@ -42,7 +43,6 @@
   margin-left: 30px;
   white-space: nowrap;
 }
-
 
 .headerSignin {
   border: solid 1px $accent;
@@ -63,9 +63,4 @@
     background-color: #ffffff;
     border-color: $accent;
   }
-}
-
-
-.spacer {
-  flex-grow: 1;
 }
