@@ -97,6 +97,88 @@ export default class Pricing extends React.Component {
           </span>
           <a className={classes.button} href='http://graph.cool/create/'>Get in touch</a>
         </div>
+        <div className={classes.section2}>
+          <div className={classes.sectionTitle}>
+            Frequently Asked Questions
+          </div>
+          <div className={classes.sectionSubTitle}>
+            What are the features
+          </div>
+        </div>
+          <div className={classes.pricedes}>
+            <div className={classes.picon}>
+              <Icon width={30} height={30} color='#ACAFC6' src={require('assets/icons/user.svg')} />
+            </div>
+            <div className={classes.ptitle}>
+              Maximal Users
+            </div>
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </div>
+          <div className={classes.pdes2}>
+             when an unknown printer took a galley of type and scrambled it to make a type
+          </div>
+          <div className={classes.pricedes}>
+            <div className={classes.picon}>
+              <Icon width={30} height={30} color='#ACAFC6' src={require('assets/icons/request.svg')} />
+            </div>
+            <div className={classes.ptitle}>
+              Incl. Requests
+            </div>
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </div>
+          <div className={classes.pdes2}>
+             when an unknown printer took a galley of type and scrambled it to make a type
+          </div>
+          <div className={classes.pricedes}>
+            <div className={classes.picon}>
+              <Icon width={30} height={30} color='#ACAFC6' src={require('assets/icons/database.svg')} />
+            </div>
+            <div className={classes.ptitle}>
+              Database Storage
+            </div>
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </div>
+          <div className={classes.pdes2}>
+             when an unknown printer took a galley of type and scrambled it to make a type
+          </div>
+          <div className={classes.pricedes}>
+            <div className={classes.picon}>
+              <Icon width={40} height={40} color='#ACAFC6' src={require('assets/icons/backup.svg')} />
+            </div>
+            <div className={classes.ptitle}>
+              Backups
+            </div>
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          </div>
+          <div className={classes.pdes}>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </div>
+          <div className={classes.pdes3}>
+             when an unknown printer took a galley of type and scrambled it to make a type
+          </div>
+          <div className={classes.enterprise}>
+            <span className={classes.description}>
+              You have a question?
+            </span>
+            <a className={classes.button} href='http://graph.cool/create/'>Get in touch</a>
+          </div>
       </div>
     )
   }
