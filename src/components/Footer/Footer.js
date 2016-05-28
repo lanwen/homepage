@@ -35,7 +35,7 @@ export default class Footer extends React.Component {
               <h4>Company</h4>
               <ul>
                 <li><Link to='/about'>About</Link></li>
-                <li><a href='https://medium.com/@graphcool' target='_blank'>Blog</a></li>
+                <li><a href='https://blog.graph.cool' target='_blank'>Blog</a></li>
                 <li><Link to='/imprint'>Imprint</Link></li>
               </ul>
             </div>
