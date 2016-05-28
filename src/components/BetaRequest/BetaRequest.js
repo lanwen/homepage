@@ -1,6 +1,9 @@
 import React from 'react'
 import { findDOMNode } from 'react-dom'
+import { Lokka } from 'lokka'
+import { Transport } from 'lokka-transport-http'
 import classes from './BetaRequest.scss'
+
 
 function validateEmail (email) {
   const re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
@@ -40,25 +43,24 @@ export default class BetaRequest extends React.Component {
     if (email && validateEmail(email)) {
       this.setState({ loading: true })
 
-      var request = new XMLHttpRequest()
-      var url = 'https://api.parse.com/1/classes/beta'
+      const client = new Lokka({
+        transport: new Transport('https://api.graph.cool/simple/v1/UHJvamVjdDpjaW9xOTVvZXAwMmtrMDFvMGlqb3N4cTR6')
+      })
 
-      request.open('POST', url, true)
-      request.setRequestHeader('Content-Type', 'application/json')
-      request.setRequestHeader('X-Parse-Application-Id', 'z17SUVXKL2JqHShB3jMSjphyMqPiCZ9nqTX7Fn7M')
-      request.setRequestHeader('X-Parse-REST-API-Key', 'f3uFeCxiRQkgDWMYmMEGinF53VpIffhg1m5jWgdu')
-
-      request.onload = () => {
-        if (request.status >= 200 && request.status < 400) {
-          this.setState({ submitted: true })
+      client.mutate(`{
+        createRequest(
+          email: "${email}"
+          code: "${code}"
+        ) { id }
+      }`)
+        .then(() => {
+          this.setState({
+            submitted: true,
+            loading: false,
+          })
           analytics.track('beta requested', { email, code })
-        }
+        })
 
-        this.setState({ loading: false })
-      }
-
-      var data = JSON.stringify({ email, code })
-      request.send(data)
     } else {
       this.setState({ invalidInput: true })
       setTimeout(() => {
