@@ -28,7 +28,7 @@ export default class Faq extends React.Component {
           <p>
             We provide a powerful webhook system which lets you implement your custom business logic in a flexible way.
             You can choose any language/technology you want. <br />
-            <a href='#'>Here is an example.</a>
+            <a href='https://github.com/graphcool-examples/webhook-express-example' target='_blank'>Here is an example.</a>
           </p>
           <h3>How does user authentication work?</h3>
           <p>
