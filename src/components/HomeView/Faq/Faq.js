@@ -15,7 +15,7 @@ export default class Faq extends React.Component {
           We already have the answers for your questions.
         </div>
         <div className={classes.questions}>
-          <h3>Parse just shot down. Why should I bet on you?</h3>
+          <h3>Parse just shut down. Why should I bet on you?</h3>
           <p>
             Good question! Besides the fact that Parse was shut down by Facebook because of&nbsp;
             <a href='http://nyti.ms/1OSPxj1'>strategical reasons</a>,
