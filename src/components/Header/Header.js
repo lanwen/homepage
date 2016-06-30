@@ -16,7 +16,7 @@ export default class Header extends React.Component {
           </Link>
           <div className={classes.headerRight}>
             <div className={classes.headerLinks}>
-              <a href='https://blog.graph.cool'>Blog</a>
+              <a href='https://blog.graph.cool' target='_blank'>Blog</a>
               <a href='http://docs.graph.cool'>Docs</a>
               <Link to='/pricing'>Pricing</Link>
               <Link to='/about'>About</Link>
