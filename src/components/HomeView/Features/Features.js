@@ -38,7 +38,7 @@ export default class Features extends React.Component {
             <div className={classes.featureDescription}>
               Graph.cool works with your favorite framework<br />
               including React, Angular and many more.<br />
-              Take a look at one of our <a href=''>examples</a> to see<br />
+              Take a look at one of our <a href='https://github.com/graphcool-examples'>examples</a> to see<br />
               how easy it is to get started.
             </div>
           </div>
