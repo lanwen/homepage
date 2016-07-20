@@ -44,7 +44,7 @@ export default class BetaRequest extends React.Component {
       this.setState({ loading: true })
 
       const client = new Lokka({
-        transport: new Transport('https://api.graph.cool/simple/v1/UHJvamVjdDpjaW9xOTVvZXAwMmtrMDFvMGlqb3N4cTR6')
+        transport: new Transport('https://api.graph.cool/simple/v1/cioq95oep02kk01o0ijosxq4z')
       })
 
       client.mutate(`{
