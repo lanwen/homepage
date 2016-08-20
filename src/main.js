@@ -18,9 +18,9 @@ import loadAnalytics from './utils/analytics.js'
 
 loadAnalytics()
 
-const userId = cookies.get('graphcool_user_id')
-if (userId) {
-  analytics.identify(userId, {
+const clientId = cookies.get('graphcool_client_id')
+if (clientId) {
+  analytics.identify(clientId, {
     'Product': 'Homepage',
   }, {
     integrations: {

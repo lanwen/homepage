@@ -6,7 +6,7 @@ import classes from './Header.scss'
 export default class Header extends React.Component {
 
   render () {
-    const userId = cookies.get('graphcool_user_id')
+    const clientId = cookies.get('graphcool_client_id')
 
     return (
       <div className={classes.root}>
@@ -22,7 +22,7 @@ export default class Header extends React.Component {
               <Link to='/about'>About</Link>
             </div>
             <a className={classes.headerSignin} href='https://dashboard.graph.cool'>
-              {userId ? 'OPEN DASHBOARD' : 'SIGN IN'}
+              {clientId ? 'OPEN DASHBOARD' : 'SIGN IN'}
             </a>
           </div>
         </div>
