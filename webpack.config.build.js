@@ -17,6 +17,9 @@ module.exports = {
       exclude: /node_modules/,
     }],
     loaders: [{
+      test: /\.json/, // TODO check if still needed
+      loader: 'json',
+    }, {
       test: /\.scss/,
       loader: 'style!css?modules!postcss!sass',
     }, {
@@ -29,6 +32,9 @@ module.exports = {
     }, {
       test: /graphics\/.*\.(svg|png)$/,
       loader: 'file',
+    }, { // TODO remove this loader and also `imports-loader` dependency
+      test: /load-image/,
+      loader: 'imports?define=>false',
     }]
   },
   plugins: [
@@ -52,6 +58,7 @@ module.exports = {
         warnings: false,
       }
     }),
+    new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
   ],
   postcss: [
     cssnano({

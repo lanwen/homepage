@@ -26,7 +26,7 @@ export default class Pricing extends React.Component {
             </div>
             <div className={classes.title}>Developer</div>
             <div className={classes.priceAmount}>Free</div>
-            <div className={classes.priceMonth}></div>
+            <div className={classes.priceMonth} />
             <div className={classes.line}>50</div>
             <div className={classes.line}>20,000</div>
             <div className={classes.line}>100 MB</div>

@@ -25,7 +25,8 @@ export default class Description extends React.Component {
           </div>
         </div>
         <div className={classes.pdes}>
-          graph.cool includes a flexible <i>user type</i> that allows you to easily sign up and authenticate users.<br />
+          graph.cool includes a flexible <i>user type</i>&nbsp;
+          that allows you to easily sign up and authenticate users.<br />
           You can sign up users via email as well as social logins such as Facebook or Twitter. <br />
           A user counts towards your quota as soon as they have signed up or have been created.
         </div>

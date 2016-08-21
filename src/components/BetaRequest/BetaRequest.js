@@ -14,6 +14,7 @@ export default class BetaRequest extends React.Component {
 
   constructor (props) {
     super(props)
+
     this.state = {
       invalidInput: false,
       submitted: false,
@@ -22,7 +23,7 @@ export default class BetaRequest extends React.Component {
     }
   }
 
-  _watchForEnter (e) {
+  _watchForEnter = (e) => {
     if (e.keyCode === 13) {
       this._submitRequest()
     }
@@ -32,19 +33,19 @@ export default class BetaRequest extends React.Component {
     analytics.track('beta enters email')
   }
 
-  _showInvite () {
+  _showInvite = () => {
     this.setState({ invite: true })
     findDOMNode(this.refs.email).focus()
   }
 
-  _submitRequest () {
+  _submitRequest = () => {
     const email = findDOMNode(this.refs.email).value
     const code = this.refs.code ? findDOMNode(this.refs.code).value : ''
     if (email && validateEmail(email)) {
       this.setState({ loading: true })
 
       const client = new Lokka({
-        transport: new Transport('https://api.graph.cool/simple/v1/cioq95oep02kk01o0ijosxq4z')
+        transport: new Transport('https://api.graph.cool/simple/v1/cioq95oep02kk01o0ijosxq4z'),
       })
 
       client.mutate(`{
@@ -60,7 +61,6 @@ export default class BetaRequest extends React.Component {
           })
           analytics.track('beta requested', { email, code })
         })
-
     } else {
       this.setState({ invalidInput: true })
       setTimeout(() => {
@@ -95,7 +95,7 @@ export default class BetaRequest extends React.Component {
           type='email'
           placeholder='Email'
           onFocus={this._trackFocus}
-          onKeyUp={::this._watchForEnter}
+          onKeyUp={this._watchForEnter}
           ref='email'
         />
         {this.state.invite &&
@@ -103,20 +103,20 @@ export default class BetaRequest extends React.Component {
             className={classes.invite}
             type='text'
             placeholder='Invite code'
-            onKeyUp={::this._watchForEnter}
+            onKeyUp={this._watchForEnter}
             ref='code'
           />
         }
         <div
           className={classes.button}
-          onClick={::this._submitRequest}
+          onClick={this._submitRequest}
         >
           Request early access
         </div>
         {!this.state.invite &&
           <div
             className={classes.showInvite}
-            onClick={::this._showInvite}
+            onClick={this._showInvite}
           >
             Use invite code
           </div>

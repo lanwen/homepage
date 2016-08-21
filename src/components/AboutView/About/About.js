@@ -83,31 +83,6 @@ export default class About extends React.Component {
         </div>
         <div className={classes.person}>
           <div className={classes.image}>
-            <img height={120} src={require('assets/graphics/fabian.png')} />
-          </div>
-          <div className={classes.info}>
-            <div className={classes.name}>
-              Fabian Kozdon
-              <a href='https://www.linkedin.com/in/fabiankozdon' target='_blank'>
-                <Icon width={20} height={20} src={require('assets/icons/linkedin.svg')} />
-              </a>
-              <a href='https://twitter.com/fabiankozdon' target='_blank'>
-                <Icon width={20} height={20} src={require('assets/icons/twitter.svg')} />
-              </a>
-              <a href='https://github.com/fabiankozdon' target='_blank'>
-                <Icon width={20} height={20} src={require('assets/icons/github.svg')} />
-              </a>
-            </div>
-            <div className={classes.position}>UI/UX Designer</div>
-            <div className={classes.description}>
-              Impresses with a great sense for detail.<br />
-              Background in almost every possible design space.<br />
-              Loves steak and Club Mate.
-            </div>
-          </div>
-        </div>
-        <div className={classes.person}>
-          <div className={classes.image}>
             <img height={120} src={require('assets/graphics/nilan.png')} />
           </div>
           <div className={classes.info}>
