@@ -42,6 +42,7 @@ ReactDOM.render(
       <Route path='pricing' component={PricingView} />
       <Route path='about' component={AboutView} />
       <Route path='imprint' component={ImprintView} />
+      <Route path='hack' onEnter={() => { window.location = 'https://docs.graph.cool/hackathon/hackzurich2016' }} />
     </Route>
   </Router>,
   document.getElementById('root')
