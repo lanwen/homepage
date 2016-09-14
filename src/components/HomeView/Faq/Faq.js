@@ -36,7 +36,7 @@ export default class Faq extends React.Component {
           <p>
             You can choose from a range of different authentication providers such as Auth0, Facebook and Twitter.
             Alternatively we provide a simple JWT based authentication system you can extend yourself.&nbsp;
-            <a href='http://docs.graph.cool/docs/security/'>You can read more about it here.</a>
+            <a href='https://docs.graph.cool/reference/platform#authentication'>You can read more about it here.</a>
           </p>
         </div>
         <div className={classes.chat}>
