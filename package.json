@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server -d --hot --inline --progress --colors --history-api-fallback --host 0.0.0.0 --port 5000",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist && prep dist",
-    "deploy": "npm run build && surge dist -d graphcool.surge.sh"
+    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
+    "deploy": "npm run build && prep dist && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN"
   },
   "dependencies": {
     "js-cookie": "^2.1.2",
@@ -43,6 +43,7 @@
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
+    "netlify-cli": "^1.0.3",
     "node-noop": "^1.0.0",
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.10.1",
@@ -50,7 +51,6 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "surge": "^0.18.0",
     "svgo-loader": "^1.1.0",
     "url-loader": "^0.5.7",
     "webpack": "1.13.2",

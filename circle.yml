@@ -12,7 +12,11 @@ test:
     - echo 'No tests yet'
 
 deployment:
-  surge:
-    branch: [master, dev]
+  master:
+    branch: master
     commands:
-      - npm run deploy
+      - NETLIFY_ID=graph-cool npm run deploy
+  dev:
+    branch: dev
+    commands:
+      - NETLIFY_ID=dev-graph-cool npm run deploy
