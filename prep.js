@@ -1,9 +1,8 @@
-{
-  "routes": [
+exports.default = {
+  routes: [
     "/",
     "/about",
     "/imprint",
-    "/hack",
     "/pricing"
   ]
 }
