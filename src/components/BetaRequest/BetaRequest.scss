@@ -46,25 +46,18 @@
 }
 
 .button {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
   padding: 12px 20px;
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: 300;
+  font-size: 15px;
   color: #fff;
   background-color: $accent;
-  text-transform: uppercase;
   border: 1px solid $accent;
   cursor: pointer;
+  margin-left: 30px;
 
   &:hover {
     background: #fff;
     color: $accent;
   }
-}
-
-.showInvite {
-  font-size: 14px;
-  margin-left: 15px;
-  cursor: pointer;
 }

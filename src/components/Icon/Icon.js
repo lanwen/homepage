@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react'
 import classes from './Icon.scss'
 
 export default function Icon ({
-  ...props,
   src,
   color = '',
   width = 16,
   height = 16,
   className = '',
+  ...props
 }) {
   const fillCode = color ? `fill="${color}"` : ''
   const styleCode = `style="width: ${width}px; height: ${height}px"`

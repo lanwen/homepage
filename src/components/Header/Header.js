@@ -21,8 +21,8 @@ export default class Header extends React.Component {
               <Link to='/pricing'>Pricing</Link>
               <Link to='/about'>About</Link>
             </div>
-            <a className={classes.headerSignin} href='https://dashboard.graph.cool'>
-              {clientId ? 'OPEN DASHBOARD' : 'SIGN IN'}
+            <a className={classes.headerSignin} href='https://console.graph.cool/login'>
+              {clientId ? 'OPEN CONSOLE' : 'SIGN IN'}
             </a>
           </div>
         </div>
