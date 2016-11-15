@@ -1,68 +1,57 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const cssnano = require('cssnano')
 const path = require('path')
 
 module.exports = {
-  entry: './src/main.js',
+  devtool: 'cheap-module-eval-source-map',
+  entry: {
+    app: './src/main.tsx',
+    styles: 'graphcool-styles/dist/styles.css',
+  },
   output: {
+    filename: '[name].[hash].js',
     publicPath: '/',
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint',
-      exclude: /node_modules/,
-    }],
-    loaders: [{
-      test: /\.json/, // TODO check if still needed
-      loader: 'json',
-    }, {
-      test: /\.scss/,
-      loader: 'style!css?modules&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap',
+    rules: [{
+      enforce: 'pre',
+      test: /\.ts(x?)$/,
+      loader: 'tslint-loader',
       exclude: /node_modules/,
     }, {
-      test: /\.js$/,
-      loader: 'babel',
+      test: /\.css$/,
+      loader: 'style-loader!css-loader',
+    }, {
+      test: /\.ts(x?)$/,
       exclude: /node_modules/,
+      loader: 'awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
-      loader: 'raw!svgo?{"plugins":[{"removeStyleElement":true}]}',
+      loader: 'raw-loader!svgo-loader',
     }, {
-      test: /graphics\/.*\.(svg|png)$/,
-      loader: 'file',
-    }, { // TODO remove this loader and also `imports-loader` dependency
-      test: /load-image/,
-      loader: 'imports?define=>false',
+      test: /(graphics|gifs)\/.*\.(png|gif)$/,
+      loader: 'file-loader',
     }],
   },
   plugins: [
+    new webpack.DefinePlugin({
+    }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
-      template: 'src/index.html'
+      template: 'src/index.html',
     }),
-    new webpack.DefinePlugin({
-      __SEGMENT_TOKEN__: '"mxShPAuQCvtbX7K1u5xcmFeqz9X7S7HN"',
-      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
-    }),
-    new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
-  ],
-  postcss: [
-    cssnano({
-      autoprefixer: {
-        add: true,
-        remove: true,
-        browsers: ['last 2 versions'],
-      },
-      discardComments: {
-        removeAll: true,
-      },
-      safe: true,
-      sourcemap: true,
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        svgo: {
+          plugins: [
+            {removeStyleElement: true},
+          ],
+        },
+      }
     }),
   ],
   resolve: {
-    root: [path.resolve('./src'), path.resolve('node_modules')],
-    extensions: ['', '.js'],
+    modules: [path.resolve('./src'), 'node_modules'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
 }

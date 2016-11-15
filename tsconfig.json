@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "jsx": "react",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": "lib",
+    "lib": ["dom", "es5", "es2015"]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./custom.d.ts"
+  ]
+}
