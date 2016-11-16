@@ -15,8 +15,14 @@ deployment:
   master:
     branch: master
     commands:
-      - NETLIFY_ID=graph-cool npm run deploy
+      - npm run deploy:
+          environment:
+            NETLIFY_ID: graph-cool
+            GRAPHCOOL_SUBDOMAIN: ''
   dev:
     branch: dev
     commands:
-      - NETLIFY_ID=dev-graph-cool npm run deploy
+      - npm run deploy:
+          environment:
+            NETLIFY_ID: dev-graph-cool
+            GRAPHCOOL_SUBDOMAIN: 'dev.'

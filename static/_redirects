@@ -1,2 +1,3 @@
-/docs/*    https://docs.graph.cool/:splat   200!
-/*    /index.html   200
+/docs     https://__SUBDOMAIN__docs.graph.cool/   200!
+/docs/*   https://__SUBDOMAIN__docs.graph.cool/:splat   200!
+/*        /index.html   200
