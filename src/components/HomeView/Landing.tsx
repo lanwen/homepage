@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $g, $v } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
@@ -48,13 +48,13 @@ const Steps = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
-  height: ${parseInt($v.fontSize20) + parseInt($v.size16) * 2}px
+  height: ${parseFloat($v.fontSize20) + parseFloat($v.size16) * 2}px
   background: ${$v.white}
   border-radius: 2px;
   box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
   
   @media (min-width: ${breakpoints.p5}px) {
-    height: ${parseInt($v.size25) + parseInt($v.size16) * 2}px;
+    height: ${parseFloat($v.size25) + parseFloat($v.size16) * 2}px;
   }
 `
 
@@ -143,5 +143,3 @@ export default class Landing extends React.Component<{}, {}> {
     )
   }
 }
-
-
