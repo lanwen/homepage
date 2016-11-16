@@ -6,6 +6,10 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-0.0.32.tgz#449abcd9a826807811ef101e58df9f83cfc61713"
 
+"@types/node@^6.0.48":
+  version "6.0.48"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.48.tgz#86ccc15f66b73cbbc5eb3483398936c585122b3c"
+
 "@types/react-dom@0.14.14":
   version "0.14.14"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.14.tgz#7371f5e7c60709647b5aadaa8865d3cadd9b940b"
