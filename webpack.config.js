@@ -4,10 +4,7 @@ const path = require('path')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: {
-    app: './src/main.tsx',
-    styles: 'graphcool-styles/dist/styles.css',
-  },
+  entry: ['graphcool-styles/dist/styles.css', './src/main.tsx'],
   output: {
     filename: '[name].[hash].js',
     publicPath: '/',

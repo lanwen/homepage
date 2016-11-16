@@ -27,20 +27,20 @@ const Logo = styled.img`
 
 const NavOpened = `
   @media (max-width: ${breakpoints.p2}px) {
-    display: block !important;
+    display: block;
   }
 `
 const Nav = styled.nav`
   font-size: ${$v.size14};
   
   @media (max-width: ${breakpoints.p2}px) {
-    display: none !important;
+    display: none;
     position: absolute;
     right: 22px;
     top: 22px;
     background: ${$v.white};
     flex-direction: column;
-    align-items: flex-start !important;
+    align-items: flex-start;
     padding: ${$v.size16};
     border-radius: 2px;
     box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
