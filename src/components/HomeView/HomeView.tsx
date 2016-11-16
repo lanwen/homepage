@@ -16,6 +16,14 @@ import OpenSource from './OpenSource'
 
 export default class HomeView extends React.Component<{}, {}> {
 
+  componentDidMount() {
+    window.addEventListener('resize', this.rerender)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.rerender)
+  }
+
   render() {
     return (
       <div>
@@ -33,6 +41,10 @@ export default class HomeView extends React.Component<{}, {}> {
         <Footer/>
       </div>
     )
+  }
+
+  private rerender = () => {
+    this.forceUpdate()
   }
 }
 
