@@ -213,11 +213,8 @@ const Step = styled.div`
       padding-right: ${$v.size10};
     }
   }
-  
 
-    
   ${props => props.active && ActiveStep}
-
 `
 
 export default class Landing extends React.Component<{}, {}> {
