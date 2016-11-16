@@ -26,6 +26,10 @@ export default class Landing extends React.Component<{}, {}> {
           <p className={cx($p.f25, $p.fw3, $p.black50, $p.mt60)}>
             Setup a production-ready GraphQL backend in 5 minutes. Use any language to implement your business logic. Includes realtime subscriptions, managed database, service integrations and more.
           </p>
+          <div className={cx($p.flex)}>
+            <button className={cx($g.uppercaseButton, $p.f25, $p.bgBlack04, $p.black40, $p.mr25)}>Quickstart</button>
+            <button className={cx($g.uppercaseButton, $p.f25, $p.bgGreen, $p.white)}>Sign Up</button>
+          </div>
         </div>
       </Root>
     )
