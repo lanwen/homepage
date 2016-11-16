@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $g, Icon, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 
 export default class Functions extends React.Component<{}, {}> {
 

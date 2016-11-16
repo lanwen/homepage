@@ -1,6 +1,4 @@
 import * as React from 'react'
-// import * as cx from 'classnames'
-// import { $p, Icon } from 'graphcool-styles'
 import Header from './Header'
 import Footer from './Footer'
 import Landing from './Landing'
@@ -47,5 +45,3 @@ export default class HomeView extends React.Component<{}, {}> {
     this.forceUpdate()
   }
 }
-
-// <Icon src={require('../../assets/icons/backup.svg')} width={50} height={50}/>
