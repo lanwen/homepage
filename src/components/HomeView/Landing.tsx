@@ -7,36 +7,116 @@ import LandingCallToAction from './LandingCallToAction'
 
 const Root = styled.div`
   max-width: ${maxWidth}px;
+  margin-top: ${$v.size38};
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    margin-top: ${$v.size25};
+  }
 `
 
 const Hero = styled.div`
-  padding-left: ${$v.size38};
-  padding-right: ${$v.size60};  
+  padding-left: ${$v.size16};
+  padding-right: ${$v.size38};
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 0 ${$v.size38};
+  }
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding: 0 ${$v.size25};
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding-left: ${$v.size38};
+    padding-right: ${$v.size60};
+  }
+`
+
+const HeroImage = styled.div`
+  width: 55%;
+
+  @media (max-width: ${breakpoints.p900}px) {
+    width: 100%;
+    max-width: 95vh;
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    width: 50%;
+  }
+`
+
+const HeroText = styled.div`
+  justify-content: center;
+  margin-left: ${$v.size38};
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-left: 0;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: ${breakpoints.p500}px) {
+    text-align: left;
+  }
+
+  @media (min-width: ${breakpoints.p1200}px) {
+    justify-content: space-between;
+    margin-left: ${$v.size60};
+  }
 `
 
 const Headline = styled.h1`
-  font-size: ${$v.fontSize30};
-  padding-top: ${$v.size38};
+  font-size: ${$v.size25};
   
-  @media (min-width: ${breakpoints.p5}px) {
+  @media (min-width: ${breakpoints.p1000}px) {
+    font-size: ${$v.fontSize30};
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    font-size: ${$v.fontSize32};
+    padding-top: ${$v.size38};
+  }
+  
+  @media (min-width: ${breakpoints.p1360}px) {
     font-size: ${$v.fontSize32};
   }
   
-  @media (min-width: ${breakpoints.p6}px) {
+  @media (min-width: ${breakpoints.p1440}px) {
     font-size: ${$v.size38};
   }
 `
 
-const Copy = styled.p`
-  font-size: ${$v.fontSize20};
-  margin-top: ${$v.size25};
+const BuiltFor = styled.div`
+  font-weight: 400;
+    
+  @media (min-width: ${breakpoints.p1000}px) {
+    font-weight: 300;
+  }  
   
-  @media (min-width: ${breakpoints.p5}px) {
+  @media (max-width: ${breakpoints.p1200}px) {
+    margin-top: ${$v.size16};
+  }
+`
+
+const Copy = styled.p`
+  font-size: ${$v.size16};
+  margin-top: ${$v.size25};
+  font-weight: 400;
+  
+  @media (min-width: ${breakpoints.p1000}px) {
+    font-size: ${$v.fontSize20};
+    font-weight: 300;
+  }
+  
+  @media (min-width: ${breakpoints.p1360}px) {
     font-size: ${$v.size25};
     margin-top: ${$v.size60};      
   }
   
-  @media (min-width: ${breakpoints.p6}px) {
+  @media (min-width: ${breakpoints.p1440}px) {
     margin-top: ${$v.size60};
   }
 `
@@ -48,24 +128,39 @@ const Steps = styled.div`
   bottom: 0;
   display: flex;
   align-items: center;
-  height: ${parseFloat($v.fontSize20) + parseFloat($v.size16) * 2}px
-  background: ${$v.white}
-  border-radius: 2px;
-  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
+  transform: translate(0, 100%);
+  padding: ${$v.size10} 0 0;
   
-  @media (min-width: ${breakpoints.p5}px) {
+  @media (max-width: ${breakpoints.p900}px) {
+    position: relative;
+    transform: none;
+    justify-content: center;
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding: 0;
+    height: ${parseFloat($v.fontSize20) + parseFloat($v.size16) * 2}px
+    background: ${$v.white}
+    border-radius: 2px;
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
+    transform: none;
+  }
+  
+  @media (min-width: ${breakpoints.p1360}px) {
     height: ${parseFloat($v.size25) + parseFloat($v.size16) * 2}px;
   }
 `
 
 const ActiveStep = `
-  background: ${$v.green};
-  color: ${$v.white};
   cursor: default;
+
+  &:before {
+    background: ${$v.green};
+    color: ${$v.white};
+  }
 `
 
 const Step = styled.div`
-  
   color: ${$v.gray30};
   text-transform: uppercase;
   font-weight: 600;
@@ -73,10 +168,7 @@ const Step = styled.div`
   font-size: ${$v.size16};
   padding-left: ${$v.size10};
   cursor: pointer;
-  
-  &:last-child {
-    padding-right: ${$v.size10};
-  }
+  white-space: nowrap;
   
   > span {
     display: inline-block;
@@ -97,9 +189,35 @@ const Step = styled.div`
     border-radius: 500px;
     background: ${$v.lightGreen20};
     color: ${$v.green}
-    
-    ${props => props.active && ActiveStep}
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    font-size: ${$v.size14};
+    
+    > span {
+      margin-right: 0;
+    }
+    
+    &:before {
+      height: ${$v.size14};
+      width: ${$v.size14};
+    }
+  
+    &:first-child {
+      padding-left: 0
+    }
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    &:last-child {
+      padding-right: ${$v.size10};
+    }
+  }
+  
+
+    
+  ${props => props.active && ActiveStep}
+
 `
 
 export default class Landing extends React.Component<{}, {}> {
@@ -108,8 +226,8 @@ export default class Landing extends React.Component<{}, {}> {
     return (
       <Root className={cx($p.center)}>
         <Hero className={cx($p.flex, $p.itemsStretch)}>
-          <div className={cx($p.w50, $p.flexFixed, $p.relative)}>
-            <img className={cx($p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')} />
+          <HeroImage className={cx($p.flexFixed, $p.relative)}>
+            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/browser.svg')} />
             <Steps>
               <Step active>
                 <span>Define Data Model</span>
@@ -118,12 +236,12 @@ export default class Landing extends React.Component<{}, {}> {
               <Step></Step>
               <Step></Step>
             </Steps>
-          </div>
-          <div className={cx($p.ml60, $p.flex, $p.flexColumn, $p.justifyBetween)}>
+          </HeroImage>
+          <HeroText className={cx($p.flex, $p.flexColumn)}>
             <div>
               <Headline className={cx($p.fw3)}>
                 Flexible backend platform combining GraphQL + <span className={cx($p.nowrap)}>AWS Lambda</span>
-                <div className={cx($p.green, $p.nowrap)}>built for frontend developers.</div>
+                <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
               </Headline>
               <Copy className={cx($p.f25, $p.fw3, $p.black50)}>
                 {
@@ -131,12 +249,12 @@ export default class Landing extends React.Component<{}, {}> {
                 }
               </Copy>
             </div>
-            {window.innerWidth > breakpoints.p4 &&
+            {(window.innerWidth > breakpoints.p1200 || window.innerWidth < breakpoints.p900) &&
               <LandingCallToAction/>
             }
-          </div>
+          </HeroText>
         </Hero>
-        {window.innerWidth <= breakpoints.p4 &&
+        {breakpoints.p900 <= window.innerWidth && window.innerWidth <= breakpoints.p1200 &&
           <LandingCallToAction/>
         }
       </Root>

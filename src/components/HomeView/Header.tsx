@@ -8,10 +8,10 @@ const Root = styled.div`
   padding: ${$v.size38};
   max-width: ${maxWidth}px;
   
-  @media (min-width: ${breakpoints.p4}px) {
+  @media (min-width: ${breakpoints.p1200}px) {
     padding: ${$v.size60};
   }
-  @media (max-width: ${breakpoints.p1}px) {
+  @media (max-width: ${breakpoints.p400}px) {
     padding: ${$v.size25};
   }
 `
@@ -20,20 +20,20 @@ const Logo = styled.img`
   height: 36px;
   width: auto;
   
-  @media (min-width: ${breakpoints.p3}px) {
+  @media (min-width: ${breakpoints.p900}px) {
     height: 41px;
   }
 `
 
 const NavOpened = `
-  @media (max-width: ${breakpoints.p2}px) {
+  @media (max-width: ${breakpoints.p750}px) {
     display: block;
   }
 `
 const Nav = styled.nav`
   font-size: ${$v.size14};
   
-  @media (max-width: ${breakpoints.p2}px) {
+  @media (max-width: ${breakpoints.p750}px) {
     display: none;
     position: absolute;
     right: 22px;
@@ -46,12 +46,12 @@ const Nav = styled.nav`
     box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
   }
   
-  @media (max-width: ${breakpoints.p1}px) {
+  @media (max-width: ${breakpoints.p400}px) {
     right: 9px;
     top: 9px;
   }
   
-  @media (min-width: ${breakpoints.p3}px) {
+  @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16};
   }
   
@@ -69,17 +69,17 @@ const NavPoint = styled.div`
     color: ${$v.gray50};
   }
   
-  @media (min-width: ${breakpoints.p3}px) {
+  @media (min-width: ${breakpoints.p900}px) {
     margin-right: ${$v.size38};
   }
   
-  @media (max-width: ${breakpoints.p2}px) {
+  @media (max-width: ${breakpoints.p750}px) {
     padding: ${$v.size10};
   }
 `
 
 const Signin = styled.div`
-  @media (max-width: ${breakpoints.p2}px) {
+  @media (max-width: ${breakpoints.p750}px) {
     padding-top: ${$v.size16};
   }
 `
@@ -87,7 +87,7 @@ const Signin = styled.div`
 const Button = styled.button`
   font-size: ${$v.size14} !important;
   
-  @media (min-width: ${breakpoints.p3}px) {
+  @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
   }
 `
@@ -98,7 +98,7 @@ const Hamburger = styled.div`
   top: ${$v.size38};
   right: ${$v.size38};
   
-  @media (max-width: ${breakpoints.p1}px) {
+  @media (max-width: ${breakpoints.p400}px) {
     top: ${$v.size25}
     right: ${$v.size25}
   }
@@ -148,7 +148,7 @@ export default class Header extends React.Component<{}, State> {
     return (
       <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
         <Logo src={require('../../assets/graphics/graphcool.svg')}/>
-        {window.innerWidth < breakpoints.p2 &&
+        {window.innerWidth < breakpoints.p750 &&
           <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
             <Icon src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
           </Hamburger>
@@ -157,7 +157,7 @@ export default class Header extends React.Component<{}, State> {
           className={cx($p.fw6, $p.black30, $p.tracked, $p.ttu, $p.flex, $p.itemsCenter)}
           opened={this.state.menuOpened}
         >
-          {window.innerWidth < breakpoints.p2 &&
+          {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           <NavPoint>Docs</NavPoint>
