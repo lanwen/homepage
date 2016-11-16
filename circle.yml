@@ -18,11 +18,11 @@ deployment:
       - npm run deploy:
           environment:
             NETLIFY_ID: graph-cool
-            GRAPHCOOL_SUBDOMAIN: ''
+            RESOURCE_DOCS: 'https://docs.graph.cool'
   dev:
     branch: dev
     commands:
       - npm run deploy:
           environment:
             NETLIFY_ID: dev-graph-cool
-            GRAPHCOOL_SUBDOMAIN: 'dev.'
+            RESOURCE_DOCS: 'https://dev.docs.graph.cool'
