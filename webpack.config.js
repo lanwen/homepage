@@ -29,7 +29,7 @@ module.exports = {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
     }, {
-      test: /(graphics|gifs)\/.*\.(png|gif)$/,
+      test: /(graphics|gifs)\/.*\.(svg|png|gif)$/,
       loader: 'file-loader',
     }],
   },
