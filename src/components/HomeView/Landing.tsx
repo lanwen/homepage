@@ -4,6 +4,7 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
+import LogoBar from './LogoBar'
 
 const Root = styled.div`
   margin-top: ${$v.size38};
@@ -249,10 +250,6 @@ const Step = styled.div`
   ${props => props.active && ActiveStep}
 `
 
-const Logo = styled.img`
-  margin: ${$v.size16};
-`
-
 interface State {
   activeStep: number
 }
@@ -316,17 +313,7 @@ export default class Landing extends React.Component<{}, {}> {
         {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
           <LandingCallToAction/>
         }
-        <div className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
-          <Logo src={require('../../assets/graphics/logos/react.svg')} />
-          <Logo src={require('../../assets/graphics/logos/angular.svg')} />
-          <Logo src={require('../../assets/graphics/logos/relay.svg')} />
-          <Logo src={require('../../assets/graphics/logos/apollo.svg')} />
-          <Logo src={require('../../assets/graphics/logos/ios.svg')} />
-          <Logo src={require('../../assets/graphics/logos/android.svg')} />
-          <Logo src={require('../../assets/graphics/logos/serverless.svg')} />
-          <Logo src={require('../../assets/graphics/logos/googlecloudfunctions.svg')} />
-          <Logo src={require('../../assets/graphics/logos/azurefunctions.svg')} />
-        </div>
+        <LogoBar/>
       </Root>
     )
   }
