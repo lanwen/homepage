@@ -253,7 +253,15 @@ const Logo = styled.img`
   margin: ${$v.size16};
 `
 
+interface State {
+  activeStep: number
+}
+
 export default class Landing extends React.Component<{}, {}> {
+
+  state: State = {
+    activeStep: 0,
+  }
 
   render() {
     return (
@@ -262,17 +270,29 @@ export default class Landing extends React.Component<{}, {}> {
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/browser.svg')} />
             <Steps>
-              <Step active>
-                <span>Define Data Model</span>
+              <Step
+                active={this.state.activeStep === 0}
+                onClick={() => this.setState({ activeStep: 0 } as State)}
+              >
+                <span>Define your schema</span>
               </Step>
-              <Step>
-                <span>Define Data Model</span>
+              <Step
+                active={this.state.activeStep === 1}
+                onClick={() => this.setState({ activeStep: 1 } as State)}
+              >
+                <span>Manage your data</span>
               </Step>
-              <Step>
-                <span>Define Data Model</span>
+              <Step
+                active={this.state.activeStep === 2}
+                onClick={() => this.setState({ activeStep: 2 } as State)}
+              >
+                <span>Developer-friendly GraphQL API</span>
               </Step>
-              <Step>
-                <span>Define Data Model</span>
+              <Step
+                active={this.state.activeStep === 3}
+                onClick={() => this.setState({ activeStep: 3 } as State)}
+              >
+                <span>Connect your app</span>
               </Step>
             </Steps>
           </HeroImage>

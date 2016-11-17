@@ -9,7 +9,6 @@ const Root = styled.div`
   margin: ${parseFloat($v.size60) + parseFloat($v.size16) + parseFloat($v.size10) * 3}px 0 ${$v.size60};
   justify-content: center;
   
-  
   @media (min-width: ${breakpoints.p1200}px) {
     margin: 0
     justify-content: flex-start;
