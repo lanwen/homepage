@@ -6,7 +6,6 @@ import { breakpoints, maxWidth } from '../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
 
 const Root = styled.div`
-  max-width: ${maxWidth}px;
   margin-top: ${$v.size38};
   
   @media (max-width: ${breakpoints.p500}px) {
@@ -17,7 +16,8 @@ const Root = styled.div`
 const Hero = styled.div`
   padding-left: ${$v.size16};
   padding-right: ${$v.size38};
-  
+  max-width: ${maxWidth}px;
+
   @media (max-width: ${breakpoints.p900}px) {
     flex-direction: column-reverse;
     align-items: center;
@@ -221,8 +221,8 @@ export default class Landing extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root className={cx($p.center)}>
-        <Hero className={cx($p.flex, $p.itemsStretch)}>
+      <Root>
+        <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/browser.svg')} />
             <Steps>
