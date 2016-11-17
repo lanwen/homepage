@@ -13,6 +13,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-helmet": "^3.1.0",
+    "react-hot-loader": "^3.0.0-beta.6",
     "react-router": "^2.8.0",
     "styled-components": "^1.0.11"
   },
@@ -31,7 +32,7 @@
     "tslint-loader": "^2.1.5",
     "typescript": "rc",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-server": "^2.1.0-beta.11"
   }
 }
