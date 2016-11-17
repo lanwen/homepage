@@ -6,17 +6,21 @@ import { breakpoints } from '../../utils/constants'
 
 const Root = styled.div`
   
-  @media (max-width: ${breakpoints.p1200}px) {
-    margin: ${parseFloat($v.size60) + parseFloat($v.size16) + parseFloat($v.size10) * 3}px 0 ${$v.size60};
-    justify-content: center;
-  }
+  margin: ${parseFloat($v.size60) + parseFloat($v.size16) + parseFloat($v.size10) * 3}px 0 ${$v.size60};
+  justify-content: center;
   
-  @media (max-width: ${breakpoints.p1200}px) {
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    margin: 0
     justify-content: flex-start;
   }
-
+  
   @media (max-width: ${breakpoints.p900}px) {
     margin: ${$v.size38} 0;
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    justify-content: flex-start;
   }
 `
 

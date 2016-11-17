@@ -77,6 +77,9 @@ const Headline = styled.h1`
   
   @media (min-width: ${breakpoints.p1200}px) {
     font-size: ${$v.fontSize32};
+  }
+  
+  @media (min-width: ${breakpoints.p1250}px) {
     padding-top: ${$v.size38};
   }
   
@@ -91,13 +94,14 @@ const Headline = styled.h1`
 
 const BuiltFor = styled.div`
   font-weight: 400;
+  margin-top: ${$v.size16};
     
   @media (min-width: ${breakpoints.p1000}px) {
     font-weight: 300;
   }  
   
-  @media (max-width: ${breakpoints.p1200}px) {
-    margin-top: ${$v.size16};
+  @media (min-width: ${breakpoints.p1200}px) {
+    margin-top: 0;
   }
 `
 
@@ -137,6 +141,11 @@ const Steps = styled.div`
     justify-content: center;
   }
   
+  @media (max-width: ${breakpoints.p400}px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
   @media (min-width: ${breakpoints.p1200}px) {
     padding: 0;
     height: ${parseFloat($v.fontSize20) + parseFloat($v.size16) * 2}px
@@ -153,10 +162,20 @@ const Steps = styled.div`
 
 const ActiveStep = `
   cursor: default;
+  
+  > span {
+    display: inline-block;
+  }
 
   &:before {
     background: ${$v.green};
     color: ${$v.white};
+  }
+  
+  @media {
+    > span {
+      opacity: 1;
+    }
   }
 `
 
@@ -171,7 +190,7 @@ const Step = styled.div`
   white-space: nowrap;
   
   > span {
-    display: inline-block;
+    display: none;
     margin-left: ${$v.size10};
     margin-right: ${$v.size16};
   }
@@ -208,6 +227,17 @@ const Step = styled.div`
     }
   }
   
+  @media (max-width: ${breakpoints.p400}px) {
+    padding-left: 0;
+    padding-top: ${$v.size16};
+    
+    > span {
+      display: inline-block;
+      opacity: .5;
+    }
+    
+  }
+  
   @media (min-width: ${breakpoints.p1200}px) {
     &:last-child {
       padding-right: ${$v.size10};
@@ -229,9 +259,15 @@ export default class Landing extends React.Component<{}, {}> {
               <Step active>
                 <span>Define Data Model</span>
               </Step>
-              <Step></Step>
-              <Step></Step>
-              <Step></Step>
+              <Step>
+                <span>Define Data Model</span>
+              </Step>
+              <Step>
+                <span>Define Data Model</span>
+              </Step>
+              <Step>
+                <span>Define Data Model</span>
+              </Step>
             </Steps>
           </HeroImage>
           <HeroText className={cx($p.flex, $p.flexColumn)}>
@@ -246,12 +282,12 @@ export default class Landing extends React.Component<{}, {}> {
                 }
               </Copy>
             </div>
-            {(window.innerWidth > breakpoints.p1200 || window.innerWidth < breakpoints.p900) &&
+            {(window.innerWidth >= breakpoints.p1200 || window.innerWidth <= breakpoints.p900) &&
               <LandingCallToAction/>
             }
           </HeroText>
         </Hero>
-        {breakpoints.p900 <= window.innerWidth && window.innerWidth <= breakpoints.p1200 &&
+        {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
           <LandingCallToAction/>
         }
       </Root>
