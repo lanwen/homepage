@@ -31,6 +31,7 @@ const Hero = styled.div`
   @media (min-width: ${breakpoints.p1200}px) {
     padding-left: ${$v.size38};
     padding-right: ${$v.size60};
+    margin-bottom: ${$v.size60};
   }
 `
 
@@ -40,6 +41,7 @@ const HeroImage = styled.div`
   @media (max-width: ${breakpoints.p900}px) {
     width: 100%;
     max-width: 95vh;
+    margin-bottom: ${$v.size60};
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
@@ -247,6 +249,10 @@ const Step = styled.div`
   ${props => props.active && ActiveStep}
 `
 
+const Logo = styled.img`
+  margin: ${$v.size16};
+`
+
 export default class Landing extends React.Component<{}, {}> {
 
   render() {
@@ -290,6 +296,17 @@ export default class Landing extends React.Component<{}, {}> {
         {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
           <LandingCallToAction/>
         }
+        <div className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
+          <Logo src={require('../../assets/graphics/logos/react.svg')} />
+          <Logo src={require('../../assets/graphics/logos/angular.svg')} />
+          <Logo src={require('../../assets/graphics/logos/relay.svg')} />
+          <Logo src={require('../../assets/graphics/logos/apollo.svg')} />
+          <Logo src={require('../../assets/graphics/logos/ios.svg')} />
+          <Logo src={require('../../assets/graphics/logos/android.svg')} />
+          <Logo src={require('../../assets/graphics/logos/serverless.svg')} />
+          <Logo src={require('../../assets/graphics/logos/googlecloudfunctions.svg')} />
+          <Logo src={require('../../assets/graphics/logos/azurefunctions.svg')} />
+        </div>
       </Root>
     )
   }
