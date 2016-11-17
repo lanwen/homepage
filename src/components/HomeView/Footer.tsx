@@ -2,12 +2,16 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
-import { maxWidth } from '../../utils/constants'
+import { maxWidth, breakpoints } from '../../utils/constants'
 import ServiceStatus from './ServiceStatus'
 import LogoBar from './LogoBar'
 
 const Root = styled.footer`
-  padding: 0 ${$v.size96} ${$v.size96};
+  padding: 0 ${$v.size38} ${$v.size96};
+  
+  @media (min-width: ${breakpoints.p1360}px) {
+    padding: 0 ${$v.size96} ${$v.size96};
+  }
 `
 
 const Container = styled.div`
@@ -88,6 +92,8 @@ export default class Footer extends React.Component<{}, {}> {
           >
             <Icon src={require('../../assets/icons/graphcool.svg')} width={18} height={21} color={$v.white}/>
           </LogoFlag>
+
+          {window.innerWidth > breakpoints.p1360 &&
           <MissionColumn>
             <Headline>Our Mission</Headline>
             <p>
@@ -96,6 +102,8 @@ export default class Footer extends React.Component<{}, {}> {
               }
             </p>
           </MissionColumn>
+          }
+          {window.innerWidth >= breakpoints.p1360 &&
           <Column>
             <Headline>
               Service Status
@@ -106,6 +114,27 @@ export default class Footer extends React.Component<{}, {}> {
               <ServiceStatus />
             </div>
           </Column>
+          }
+          {window.innerWidth < breakpoints.p1360 &&
+          <MissionColumn>
+            <Headline>
+              Service Status
+              <div className={cx($p.f12, $p.mt4)}>Last 30 days</div>
+            </Headline>
+            <div>
+              <ServiceStatus />
+              <ServiceStatus />
+            </div>
+
+            <Headline className={cx($p.mt38)}>Our Mission</Headline>
+            <p>
+              {
+                `It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.` // tslint:disable-line
+              }
+            </p>
+          </MissionColumn>
+          }
+
           <Column>
             <Headline>Product</Headline>
             <List>
@@ -137,19 +166,19 @@ export default class Footer extends React.Component<{}, {}> {
           <SocialColumn>
             <Headline>Stay in touch</Headline>
             <div className={cx($p.flex, $p.mb38)}>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/twitter.svg')} /></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/github.svg')} /></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')} /></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')} /></SocialLink>
+              <SocialLink href=''><img src={require('../../assets/graphics/logos/twitter.svg')}/></SocialLink>
+              <SocialLink href=''><img src={require('../../assets/graphics/logos/github.svg')}/></SocialLink>
+              <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')}/></SocialLink>
+              <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')}/></SocialLink>
             </div>
             <p>Sign up for our monthly newsletter</p>
             <input
               type='text'
               className={cx($p.mt16, $p.pa16, $p.f16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white)}
-              placeholder='Just type your Email...' />
+              placeholder='Just type your Email...'/>
           </SocialColumn>
         </Container>
-        <LogoBar/>
+        <LogoBar white/>
       </Root>
     )
   }
