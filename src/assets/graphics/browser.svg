@@ -3,16 +3,19 @@
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="771px" height="586px" viewBox="0 0 771 586" style="enable-background:new 0 0 771 586;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#F5F5F5;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#C9C9C9;}
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#F5F5F5;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#C9C9C9;}
 </style>
+<path id="XMLID_72_" class="st0" d="M770.5,580.32c0,1.66-1.36,3.01-3.03,3.01H6.53c-1.67,0-3.03-1.35-3.03-3.01V28.99h767V580.32z"
+	/>
 <g id="XMLID_17_">
-	<path id="FRAME" class="st0" d="M763,1H8C4.14,1,1,4.13,1,7.99v570.02c0,3.85,3.13,6.99,7,6.99h755c3.86,0,7-3.13,7-6.99V7.99
+	<path id="FRAME" class="st1" d="M763,1H8C4.14,1,1,4.13,1,7.99v570.02c0,3.85,3.13,6.99,7,6.99h755c3.86,0,7-3.13,7-6.99V7.99
 		C770,4.14,766.87,1,763,1z M766,578.01c0,1.65-1.35,2.99-3,2.99H8c-1.66,0-3-1.34-3-2.99V30.99h761V578.01z"/>
 	<g id="DOTS">
-		<circle id="XMLID_13_" class="st1" cx="16.47" cy="16.11" r="5.16"/>
-		<circle id="XMLID_8_" class="st1" cx="32.98" cy="16.11" r="5.16"/>
-		<ellipse id="XMLID_3_" class="st1" cx="49.53" cy="16.11" rx="5.21" ry="5.16"/>
+		<circle id="XMLID_13_" class="st2" cx="16.47" cy="16.11" r="5.16"/>
+		<circle id="XMLID_8_" class="st2" cx="32.98" cy="16.11" r="5.16"/>
+		<ellipse id="XMLID_3_" class="st2" cx="49.53" cy="16.11" rx="5.21" ry="5.16"/>
 	</g>
 </g>
 </svg>
