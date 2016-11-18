@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
-import { breakpoints } from '../../utils/constants';
+import { breakpoints } from '../../utils/constants'
 
 export default () => (
   <div className={cx(window.innerWidth < breakpoints.p580 ? $p.mt38 : '')}>

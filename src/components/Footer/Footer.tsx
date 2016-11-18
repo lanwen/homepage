@@ -9,7 +9,6 @@ import Product from './Product'
 import Docs from './Docs'
 import Company from './Company'
 import Social from './Social'
-
 import LogoBar from '../HomeView/LogoBar'
 
 const Root = styled.footer`
@@ -88,7 +87,6 @@ const MissionColumn = styled(Column)`
     width: 20%;
   }
 `
-
 
 const SocialColumn = styled(Column)`
   width: 175px;
