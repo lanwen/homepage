@@ -1,8 +1,10 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { maxWidth } from '../../utils/constants'
+
+import FeatureIndicator from './ConsoleFeatureIndicator'
 
 const Root = styled.div`
   &:before{
@@ -17,56 +19,6 @@ const Root = styled.div`
 
 const Container = styled.div`
   max-width: ${maxWidth}px;
-`
-
-const pulseAnimation = keyframes`
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  
-  30% {
-    opacity: 1
-  }
-  
-  50% {
-    opacity: 1;
-  }
-  
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-`
-
-const FeatureIndicator = styled.div`
-  position: absolute;
-  top: 200px;
-  left: 200px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    background: ${$v.blue};
-    border-radius: 500px;
-    width: 100%;
-    height: 100%;
-  }
-  
-  &:before {
-    animation: ${pulseAnimation} 1.5s linear infinite;
-  }
-  
-  &:after {
-    animation: ${pulseAnimation} 1.5s linear .6s infinite;        
-  }
-  
 `
 
 const FeatureDescription = styled.div`
@@ -124,8 +76,8 @@ export default class Console extends React.Component<{}, {}> {
     return (
       <Root className={cx($p.relative)}>
         <Container className={cx($p.center, $p.relative, $p.flex)}>
-          <div className={cx($p.pl96, $p.w100)}>
-            <FeatureIndicator />
+          <div className={cx($p.pl96, $p.w100, $p.relative)}>
+            <FeatureIndicator top={30} left={60} />
             <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')} />
           </div>
           <FeatureDescription className={cx($p.ph60, $p.mv16, $p.pv60, $p.flex, $p.flexColumn, $p.justifyBetween)}>

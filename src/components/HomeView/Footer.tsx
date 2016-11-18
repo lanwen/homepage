@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { maxWidth, breakpoints } from '../../utils/constants'
-import ServiceStatus from './ServiceStatus'
+import ServiceStatus from './FooterServiceStatus'
 import LogoBar from './LogoBar'
 
 const Root = styled.footer`
