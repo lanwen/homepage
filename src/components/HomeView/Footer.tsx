@@ -125,42 +125,19 @@ const NewsletterInput = styled.input`
   }
 `
 
-export default class Footer extends React.Component<{}, {}> {
+export default () => (
+  <Root className={cx($p.bgDarkBlue, $p.white70)}>
+    <Container className={cx($p.relative, $p.center, $p.flex, $p.justifyBetween)}>
+      <LogoFlag
+        className={cx($p.absolute, $p.left0, $p.bgGreen, $p.br2, $p.flex, $p.itemsCenter, $p.justifyCenter)}
+      >
+        <Icon src={require('../../assets/icons/graphcool.svg')} width={18} height={21} color={$v.white}/>
+      </LogoFlag>
 
-  render() {
-    return (
-      <Root className={cx($p.bgDarkBlue, $p.white70)}>
-        <Container className={cx($p.relative, $p.center, $p.flex, $p.justifyBetween)}>
-          <LogoFlag
-            className={cx($p.absolute, $p.left0, $p.bgGreen, $p.br2, $p.flex, $p.itemsCenter, $p.justifyCenter)}
-          >
-            <Icon src={require('../../assets/icons/graphcool.svg')} width={18} height={21} color={$v.white}/>
-          </LogoFlag>
-
-          <MissionColumn>
-            {window.innerWidth < breakpoints.p1360 &&
-              <div>
-                <Headline className={cx($p.pb16)}>
-                  Service Status
-                  <div className={cx($p.f12, $p.mt4)}>Last 30 days</div>
-                </Headline>
-                <div>
-                  <ServiceStatus />
-                  <ServiceStatus />
-                </div>
-              </div>
-            }
-            <Headline className={cx(window.innerWidth < breakpoints.p1360 ? $p.mt38 : '')}>Our Mission</Headline>
-            <p>
-              {
-                `It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.` // tslint:disable-line
-              }
-            </p>
-          </MissionColumn>
-
-          {window.innerWidth >= breakpoints.p1360 &&
-          <Column>
-            <Headline>
+      <MissionColumn>
+        {window.innerWidth < breakpoints.p1360 &&
+          <div>
+            <Headline className={cx($p.pb16)}>
               Service Status
               <div className={cx($p.f12, $p.mt4)}>Last 30 days</div>
             </Headline>
@@ -168,86 +145,104 @@ export default class Footer extends React.Component<{}, {}> {
               <ServiceStatus />
               <ServiceStatus />
             </div>
-          </Column>
+          </div>
+        }
+        <Headline className={cx(window.innerWidth < breakpoints.p1360 ? $p.mt38 : '')}>Our Mission</Headline>
+        <p>
+          {
+            `It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.` // tslint:disable-line
           }
+        </p>
+      </MissionColumn>
 
-          <Column>
-            <Headline>Product</Headline>
-            <List>
-              <li><a href=''>Getting Started</a></li>
-              <li><a href=''>Examples</a></li>
-              <li><a href=''>Pricing</a></li>
-              <li><a href=''>FAQ</a></li>
-            </List>
-            {window.innerWidth < breakpoints.p1000 &&
-            <div>
-              <Headline className={cx($p.mt38)}>Docs</Headline>
-              <List>
-                <li><a href=''>Guides</a></li>
-                <li><a href=''>Platform</a></li>
-                <li><a href=''>Simple API</a></li>
-                <li><a href=''>Relay API</a></li>
-              </List>
-            </div>
-            }
-          </Column>
+      {window.innerWidth >= breakpoints.p1360 &&
+      <Column>
+        <Headline>
+          Service Status
+          <div className={cx($p.f12, $p.mt4)}>Last 30 days</div>
+        </Headline>
+        <div>
+          <ServiceStatus />
+          <ServiceStatus />
+        </div>
+      </Column>
+      }
 
-          {window.innerWidth >= breakpoints.p1000 &&
-          <Column>
-            <Headline>Docs</Headline>
-            <List>
-              <li><a href=''>Guides</a></li>
-              <li><a href=''>Platform</a></li>
-              <li><a href=''>Simple API</a></li>
-              <li><a href=''>Relay API</a></li>
-            </List>
-          </Column>
-          }
+      <Column>
+        <Headline>Product</Headline>
+        <List>
+          <li><a href=''>Getting Started</a></li>
+          <li><a href=''>Examples</a></li>
+          <li><a href=''>Pricing</a></li>
+          <li><a href=''>FAQ</a></li>
+        </List>
+        {window.innerWidth < breakpoints.p1000 &&
+        <div>
+          <Headline className={cx($p.mt38)}>Docs</Headline>
+          <List>
+            <li><a href=''>Guides</a></li>
+            <li><a href=''>Platform</a></li>
+            <li><a href=''>Simple API</a></li>
+            <li><a href=''>Relay API</a></li>
+          </List>
+        </div>
+        }
+      </Column>
 
-          {window.innerWidth >= breakpoints.p750 &&
-          <Column>
-            <Headline>Company</Headline>
-            <List>
-              <li><a href=''>About</a></li>
-              <li><a href=''>Jobs</a></li>
-              <li><a href=''>Blog</a></li>
-              <li><a href=''>Open Source</a></li>
-              <li><a href=''>Imprint</a></li>
-            </List>
-          </Column>
-          }
+      {window.innerWidth >= breakpoints.p1000 &&
+      <Column>
+        <Headline>Docs</Headline>
+        <List>
+          <li><a href=''>Guides</a></li>
+          <li><a href=''>Platform</a></li>
+          <li><a href=''>Simple API</a></li>
+          <li><a href=''>Relay API</a></li>
+        </List>
+      </Column>
+      }
 
-          <SocialColumn>
-            {window.innerWidth < breakpoints.p750 &&
-            <div>
-              <Headline>Company</Headline>
-              <List>
-                <li><a href=''>About</a></li>
-                <li><a href=''>Jobs</a></li>
-                <li><a href=''>Blog</a></li>
-                <li><a href=''>Open Source</a></li>
-                <li><a href=''>Imprint</a></li>
-              </List>
-            </div>
-            }
-            <Headline className={cx(window.innerWidth < breakpoints.p750 ? $p.mt38 : '')}>Stay in touch</Headline>
-            <SocialLinks className={cx($p.flex)}>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/twitter.svg')}/></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/github.svg')}/></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')}/></SocialLink>
-              <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')}/></SocialLink>
-            </SocialLinks>
-            <p>Sign up for our monthly newsletter</p>
-            <NewsletterInput
-              type='text'
-              className={cx($p.mt16, $p.w100, $p.pa16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white, $p.bbox)}
-              placeholder='Just type your Email...'
-            />
-          </SocialColumn>
+      {window.innerWidth >= breakpoints.p750 &&
+      <Column>
+        <Headline>Company</Headline>
+        <List>
+          <li><a href=''>About</a></li>
+          <li><a href=''>Jobs</a></li>
+          <li><a href=''>Blog</a></li>
+          <li><a href=''>Open Source</a></li>
+          <li><a href=''>Imprint</a></li>
+        </List>
+      </Column>
+      }
 
-        </Container>
-        <LogoBar white/>
-      </Root>
-    )
-  }
-}
+      <SocialColumn>
+        {window.innerWidth < breakpoints.p750 &&
+        <div>
+          <Headline>Company</Headline>
+          <List>
+            <li><a href=''>About</a></li>
+            <li><a href=''>Jobs</a></li>
+            <li><a href=''>Blog</a></li>
+            <li><a href=''>Open Source</a></li>
+            <li><a href=''>Imprint</a></li>
+          </List>
+        </div>
+        }
+        <Headline className={cx(window.innerWidth < breakpoints.p750 ? $p.mt38 : '')}>Stay in touch</Headline>
+        <SocialLinks className={cx($p.flex)}>
+          <SocialLink href=''><img src={require('../../assets/graphics/logos/twitter.svg')}/></SocialLink>
+          <SocialLink href=''><img src={require('../../assets/graphics/logos/github.svg')}/></SocialLink>
+          <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')}/></SocialLink>
+          <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')}/></SocialLink>
+        </SocialLinks>
+        <p>Sign up for our monthly newsletter</p>
+        <NewsletterInput
+          type='text'
+          className={cx($p.mt16, $p.w100, $p.pa16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white, $p.bbox)}
+          placeholder='Just type your Email...'
+        />
+      </SocialColumn>
+
+    </Container>
+    <LogoBar white/>
+  </Root>
+)
