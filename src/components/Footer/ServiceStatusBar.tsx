@@ -21,7 +21,7 @@ const Block = styled.div`
   ${props => props.failed && FailedBlock}
 `
 
-export default class ServiceStatus extends React.Component<{}, {}> {
+export default class ServiceStatusBar extends React.Component<{}, {}> {
 
   render() {
     return (
@@ -38,7 +38,7 @@ export default class ServiceStatus extends React.Component<{}, {}> {
           <Block />
           <Block />
         </div>
-        <div>Relay Endpoint</div>
+        <div className={cx($p.nowrap)}>Relay Endpoint</div>
       </div>
     )
   }

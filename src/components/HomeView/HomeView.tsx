@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Header from './Header'
-import Footer from './Footer'
+import Footer from '../Footer/Footer'
 import Landing from './Landing'
 import Timeline from './Timeline'
 import QueryEditor from './QueryEditor'
