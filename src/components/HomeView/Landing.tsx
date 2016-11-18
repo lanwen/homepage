@@ -136,7 +136,7 @@ const Steps = styled.div`
     height: ${parseFloat($v.fontSize20) + parseFloat($v.size16) * 2}px
     background: ${$v.white}
     border-radius: 2px;
-    box-shadow: 0 1px 6px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
     transform: none;
   }
   
