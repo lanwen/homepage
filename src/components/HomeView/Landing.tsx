@@ -72,26 +72,8 @@ const HeroText = styled.div`
 `
 
 const Headline = styled.h1`
-  font-size: ${$v.size25};
-  
-  @media (min-width: ${breakpoints.p1000}px) {
-    font-size: ${$v.fontSize30};
-  }
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    font-size: ${$v.fontSize32};
-  }
-  
   @media (min-width: ${breakpoints.p1250}px) {
     padding-top: ${$v.size38};
-  }
-  
-  @media (min-width: ${breakpoints.p1360}px) {
-    font-size: ${$v.fontSize32};
-  }
-  
-  @media (min-width: ${breakpoints.p1440}px) {
-    font-size: ${$v.size38};
   }
 `
 
@@ -295,11 +277,11 @@ export default class Landing extends React.Component<{}, {}> {
           </HeroImage>
           <HeroText className={cx($p.flex, $p.flexColumn)}>
             <div>
-              <Headline className={cx($p.fw3)}>
+              <Headline>
                 Flexible backend platform combining GraphQL + <span className={cx($p.nowrap)}>AWS Lambda</span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
               </Headline>
-              <Copy className={cx($p.f25, $p.fw3, $p.black50)}>
+              <Copy className={cx($p.f25, $p.black50)}>
                 {
                   `Setup a production-ready GraphQL backend in 5 minutes. Use any language to implement your business logic. Includes realtime subscriptions, managed database, service integrations and more.` // tslint:disable-line
                 }
