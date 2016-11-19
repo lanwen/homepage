@@ -28,11 +28,11 @@ module.exports = {
   },
   module: {
     rules: [{
-      enforce: 'pre',
-      test: /\.ts(x?)$/,
-      loader: 'tslint-loader',
-      exclude: /node_modules/,
-    }, {
+      //enforce: 'pre',
+      //test: /\.ts(x?)$/,
+      //loader: 'tslint-loader',
+      //exclude: /node_modules/,
+    //}, {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
