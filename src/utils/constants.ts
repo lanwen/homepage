@@ -9,7 +9,7 @@ const breakpoints = {
   p1200: 1200,
   p1250: 1250,
   p1360: 1360,
-  p1440: 1440,
+  p1440: 1450,
 }
 
 const maxWidth = 1440
