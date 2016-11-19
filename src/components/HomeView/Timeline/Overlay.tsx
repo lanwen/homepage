@@ -3,22 +3,29 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import Bar from './Bar'
+import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.div`
-  position: absolute;
-  z-index: 5000;
-  left: -15px;
-  top: 0;
-  right: -15px;
   background: ${$v.white};
   border-radius: 2px;
   box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
   overflow: hidden;
   
-  transform: translate(0, -127px);
-  
   .label {
     color: ${$v.gray30} !important;
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    transform: translate(0, -127px);
+  }
+  
+  @media (min-width: ${breakpoints.p1000}px) {
+    position: absolute;
+    z-index: 5000;
+    left: -15px;
+    top: 0;
+    right: -15px;
+    transform: translate(0, -127px);
   }
 `
 
@@ -37,7 +44,6 @@ interface Props {
 }
 
 export default class Overlay extends React.Component<Props, {}> {
-
   render() {
     return (
       <Root>

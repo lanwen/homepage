@@ -7,6 +7,7 @@ import { maxWidth, breakpoints } from '../../utils/constants'
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
 import SectionHeader from './SectionHeader'
+import Pagination from './Pagination'
 
 const Root = styled.div`
   @media (min-width: ${breakpoints.p1000}px) {
@@ -48,14 +49,6 @@ const FeatureDescription = styled.div`
   
 `
 
-const ActivePaginationBullet = `
-  background: ${$v.green};
-  
-  &:hover {
-    background: ${$v.green};
-  }
-`
-
 const Copy = styled.div`
   padding-top: ${$v.size25};
   
@@ -64,32 +57,8 @@ const Copy = styled.div`
   }
 `
 
-const PaginationBullet = styled.div`
-  width: ${$v.size10};
-  height: ${$v.size10};
-  border-radius: 500px;
-  margin-left: ${$v.size10};
-  background: ${$v.lightGreen20};
-  cursor: pointer;
-  transition: color ${$v.duration} linear;
-  
-  &:hover {
-    background: ${$v.lightGreen50};
-  }
-  
-  &:first-child {
-    margin-left: 0;
-  }
-
-  @media (min-width: ${breakpoints.p1200}px) {
-    margin-left: ${$v.size16};
-  }
- 
-  ${props => props.active && ActivePaginationBullet}
-`
-
 const PaginationNext = styled.button`
-  margin-left: ${$v.size25};
+  margin-left: ${$v.size16};
   transition: background ${$v.duration} linear;  
   cursor: pointer;
   
@@ -106,7 +75,7 @@ const PaginationNext = styled.button`
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
-    margin-left: ${$v.size16};
+    margin-left: ${$v.size25};
   }
 `
 
@@ -137,13 +106,7 @@ export default class Console extends React.Component<{}, {}> {
                 </Copy>
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>
-                <PaginationBullet />
-                <PaginationBullet active/>
-                <PaginationBullet />
-                <PaginationBullet />
-                <PaginationBullet />
-                <PaginationBullet />
-                <PaginationBullet />
+                <Pagination bullets={7} />
                 <PaginationNext className={cx($p.pa10, $p.brPill, $p.bgLightgreen20)}>
                   <Icon src={require('../../assets/icons/arrowRight.svg')} width={26} height={26} color={$v.green}/>
                 </PaginationNext>
@@ -153,7 +116,7 @@ export default class Console extends React.Component<{}, {}> {
           }
 
           {window.innerWidth < breakpoints.p1000 &&
-          <div>
+          <div className={cx($p.overflowHidden)}>
             <FeaturePreview
               headline='Whatever headline we have here.'
               copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
