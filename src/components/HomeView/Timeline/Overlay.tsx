@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Bar from './Bar'
 import { breakpoints } from '../../../utils/constants'
@@ -48,7 +48,12 @@ export default class Overlay extends React.Component<Props, {}> {
     return (
       <Root>
         <div className={cx($p.ph25, $p.pt25)}>
-          <div className={cx('label', $p.pb16)}>{this.props.label}</div>
+          <div className={cx('label', $p.pb16, $p.flex, $p.justifyBetween)}>
+            <span>{this.props.label}</span>
+            {window.innerWidth < breakpoints.p1000 &&
+            <span className={cx($p.black50)}>The old way</span>
+            }
+            </div>
           <List className={cx($p.black50)}>
             <li>Database migration</li>
             <li>Test in staging</li>
@@ -57,8 +62,18 @@ export default class Overlay extends React.Component<Props, {}> {
           </List>
           <Bar active />
         </div>
-        <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25)}>
+        <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25, $p.relative)}>
           <Bar graphcool active />
+          {window.innerWidth < breakpoints.p1000 &&
+          <div className={cx($p.absolute, $p.right25, $p.top25)}>
+            <Icon
+              src={require('../../../assets/icons/graphcool.svg')}
+              width={18 * 1.5}
+              height={21 * 1.5}
+              color={$v.green}
+            />
+          </div>
+          }
           <List className={cx($p.green)}>
             <li>Clone project</li>
             <li>Adjust datamodel</li>
