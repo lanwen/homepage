@@ -1,28 +1,18 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-
-const vendor = [
-  'classnames',
-  'graphcool-styles',
-  'styled-components',
-  'react',
-  'react-dom',
-  'react-helmet',
-  'react-router',
-]
+const config = require('./webpack.config')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
-      'react-hot-loader/patch',
       'graphcool-styles/dist/styles.css',
       './src/main.tsx'
     ],
-    vendor,
+    vendor: config.entry.vendor,
   },
   output: {
+    path: './dist',
     filename: '[name].[hash].js',
     publicPath: '/',
   },
@@ -38,7 +28,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'react-hot-loader/webpack!awesome-typescript-loader',
+      loader: 'awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
@@ -49,9 +39,21 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      },
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false,
+      }
+    }),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
