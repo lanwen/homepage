@@ -71,10 +71,7 @@ const PreviewImage = styled.div`
   }
 `
 
-interface Props {
-  headline: string,
-  copy: string,
-}
+
 
 export default class FeaturePreview extends React.Component<Props, {}> {
 
