@@ -18,8 +18,7 @@ const Copy=styled.div`
         width: 90%;
     }`
 const Learn=styled.div`
-    background-image: url('../../assets/graphics/Grey.jpg');
-    background-repeat: no-repeat;
+    background: linear-gradient(to top, #fff 25%, rgba(0, 0, 0, 0.03) 25%,rgba(0, 0, 0, 0.03) 75%,#fff 75%);
 `
 
 export default class OpenSource extends React.Component<{}, {}> {
@@ -51,7 +50,7 @@ export default class OpenSource extends React.Component<{}, {}> {
                 <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter)}>
                     Try it out for free – and setup your own backend in less than 5 minutes.
                 </Copy>
-                <Button className={cx($p.selfCenter)}>Sing Up</Button>
+                <Button className={cx($p.selfCenter, $p.pv25)}>Sign Up</Button>
             </div>
         )
     }

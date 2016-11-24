@@ -98,7 +98,7 @@ export default class Console extends React.Component<{}, {}> {
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>
-                <h3>Whatever headline we have here</h3>
+                <h3>What headline we have here</h3>
                 <Copy className={cx($p.black50)}>
                   {
                     `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall.` // tslint:disable-line
