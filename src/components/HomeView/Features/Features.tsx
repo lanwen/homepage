@@ -8,7 +8,7 @@ import FeaturesContent from './FeaturesContent'
 export default class Features extends React.Component<{}, {}> {
 
   render() {
-    const Container= styled.div`
+    const Container = styled.div`
       display: flex;
       flex-wrap: wrap;
       padding: 10px 50px;   

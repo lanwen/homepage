@@ -4,7 +4,7 @@ import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
 
-const Root=styled.div`
+const Root = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center; 
@@ -12,8 +12,8 @@ const Root=styled.div`
       padding: 20px 300px;
       
       @media (max-width: ${breakpoints.p1200}px) {
-      padding: 50px 150px;
-      background-color: violet;
+        padding: 50px 150px;
+        background-color: violet;
       }
       @media (max-width: ${breakpoints.p1000}px) {
         padding: 50px 100px;
