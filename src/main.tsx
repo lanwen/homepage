@@ -71,7 +71,7 @@ function render() {
         <Route path='/' component={HomeView}/>
       </Router>
     </AppContainer>,
-    document.getElementById('root')
+    document.getElementById('root'),
   )
 }
 
