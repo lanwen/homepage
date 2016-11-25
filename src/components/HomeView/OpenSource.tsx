@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints} from "../../utils/constants";
+import {breakpoints} from "../../utils/constants"
 import Button from './Button'
 
 const Heart = styled.div`

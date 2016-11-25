@@ -2,7 +2,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --history-api-fallback --host 0.0.0.0 --port 5000",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist && cat static/_redirects | sed \"s|__RESOURCE_DOCS__|${RESOURCE_DOCS}|g\" > dist/_redirects",
-    "deploy": "npm run build && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN"
+    "deploy": "npm run build && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN",
+    "test": "tslint \"src/**/*.ts{,x}\""
   },
   "dependencies": {
     "@types/classnames": "^0.0.32",
@@ -10,11 +11,11 @@
     "@types/react-dom": "0.14.14",
     "classnames": "^2.2.5",
     "graphcool-styles": "^0.0.55",
-    "react": "^15.4.0",
-    "react-dom": "^15.4.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-helmet": "^3.1.0",
     "react-router": "^2.8.0",
-    "styled-components": "^1.0.11"
+    "styled-components": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^6.0.48",
@@ -28,8 +29,8 @@
     "style-loader": "^0.13.1",
     "svgo-loader": "^1.1.2",
     "tslint": "^4.0.0",
-    "tslint-config-standard": "^1.5.0",
-    "tslint-loader": "^2.1.5",
+    "tslint-config-standard": "^2.0.0",
+    "tslint-loader": "^3.2.0",
     "typescript": "rc",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.27",
