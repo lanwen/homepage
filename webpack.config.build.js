@@ -18,11 +18,11 @@ module.exports = {
   },
   module: {
     rules: [{
-      //enforce: 'pre',
-      //test: /\.ts(x?)$/,
-      //loader: 'tslint-loader',
-      //exclude: /node_modules/,
-    //}, {
+      enforce: 'pre',
+      test: /\.ts(x?)$/,
+      loader: 'tslint-loader',
+      exclude: /node_modules/,
+    }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
@@ -33,7 +33,7 @@ module.exports = {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
     }, {
-      test: /(graphics|gifs)\/.*\.(svg|png|gif)$/,
+      test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
       loader: 'file-loader',
     }],
   },
