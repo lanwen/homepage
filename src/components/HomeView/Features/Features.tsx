@@ -9,11 +9,10 @@ export default class Features extends React.Component<{}, {}> {
 
   render() {
     const Container = styled.div`
-      display: flex;
       flex-wrap: wrap;
-      padding: 10px 50px;   
+      padding: 10px 50px;
       margin: 45px auto;
-      justify-content: space-around;
+      max-width: ${breakpoints.p1250}px;
       `
     const SmallContainer = styled.div`
       margin: 5px;
@@ -22,11 +21,12 @@ export default class Features extends React.Component<{}, {}> {
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
       @media (max-width: ${breakpoints.p750}px) {
-      :nth-child(7) {
-        margin-left: 250px;
-      }}
+        :nth-child(7) {
+          margin-left: 250px;
+        }
+      }
       `
 
     const Icon = styled.div`
@@ -45,11 +45,11 @@ export default class Features extends React.Component<{}, {}> {
         <div className={cx($p.f20, $p.o50, $p.tc, $p.pb96)}>
           Graphcool is built by developers for developers.
         </div>
-        <Container>
+        <Container className={cx($p.flex, $p.justifyCenter)}>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Interactive Docs'
+                headline='Instant Setup'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
@@ -63,42 +63,42 @@ export default class Features extends React.Component<{}, {}> {
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Works with your stack'
+                headline='Works with everything'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='No vendor lock-in'
+                headline='Auto-Scaling'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Auto-scaling'
+                headline='Powerful Integrations'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Integrations'
+                headline='Unlimited Flexibility'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Extensibility'
+                headline='No Vendor Lock-In'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
             <Icon />
             <FeaturesContent
-                headline='Zero maintenance'
+                headline='Interactive Docs'
                 content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
