@@ -32,9 +32,13 @@ export default class Features extends React.Component<{}, {}> {
     const Icon = styled.div`
       width: 116px;
       height: 116px;
-      border-radius: 50%;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.03);
+      box-sizing: border-box;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     `
 
     return (
@@ -47,94 +51,75 @@ export default class Features extends React.Component<{}, {}> {
         </div>
         <Container className={cx($p.flex, $p.justifyCenter)}>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-1.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Interactive Docs'
+              headline='Instant Setup'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Instant Setup'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-2.svg')} />
+            </Icon>
             <FeaturesContent
               headline='Flexible Data Model'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-3.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Works with your stack'
+              headline='Works with everything'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Works with everything'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-4.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='No vendor lock-in'
+              headline='Auto-Scaling'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Auto-Scaling'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-5.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Auto-scaling'
+              headline='Powerful Integrations'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Powerful Integrations'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-6.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Integrations'
+              headline='Unlimited Flexibility'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Unlimited Flexibility'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-7.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Extensibility'
+              headline='No Vendor Lock-In'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='No Vendor Lock-In'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
           <SmallContainer>
-            <Icon />
+            <Icon>
+              <img src={require('../../../assets/graphics/feature-8.svg')} />
+            </Icon>
             <FeaturesContent
-<<<<<<< HEAD
-              headline='Zero maintenance'
+              headline='Interactive Docs'
               content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
-=======
-                headline='Interactive Docs'
-                content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
->>>>>>> 16270b788c46699f2267eb3d19c3ef6ec96234ce
             />
           </SmallContainer>
         </Container>
