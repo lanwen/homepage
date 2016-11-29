@@ -62,6 +62,16 @@ injectGlobal`
       font-weight: 300;
     }
   }
+  
+  pre {
+    font-size: ${$v.size16};
+  }
+  
+  code {
+    font-size: ${$v.size16};
+    line-height: 1.5;
+  }
+  
 `
 
 function render() {
