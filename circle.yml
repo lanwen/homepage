@@ -7,10 +7,6 @@ dependencies:
     - npm install -g yarn
     - yarn
 
-test:
-  override:
-    - echo 'No tests yet'
-
 deployment:
   master:
     branch: master
