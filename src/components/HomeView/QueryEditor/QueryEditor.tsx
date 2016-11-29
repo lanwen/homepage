@@ -2,7 +2,9 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
+import SchemaSection from './SchemaSection'
+import SchemaGraph from '../SchemaGraph'
 
 const Root = styled.div`
   
@@ -89,7 +91,6 @@ const SchemaTab = styled(Tab)`
   }
   
   ${props => props.active && ActiveSchemaTab};
-
 `
 
 export default class QueryEditor extends React.Component<{}, {}> {
@@ -119,6 +120,12 @@ export default class QueryEditor extends React.Component<{}, {}> {
                   <SchemaTab active>Post</SchemaTab>
                   <SchemaTab>Comment</SchemaTab>
                 </TabBar>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <SchemaSection title='id' type='GraphQLId' required system />
+                  <SchemaSection title='title' type='String' required  />
+                  <SchemaSection title='imgUrl' type='String' />
+                  <SchemaSection title='comments' type='Comment' relation />
+                </div>
               </div>
             </div>
           </Editor>
