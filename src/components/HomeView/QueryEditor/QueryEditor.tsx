@@ -72,6 +72,32 @@ const Editor = styled.div`
 
 `
 
+const ActiveViewTab = `
+  ${ActiveTab}
+  padding: ${parseFloat($v.size06) + 1}px;
+  background: #B9BFC4;
+  color: ${$v.darkerBlue};
+  
+  &:hover {
+    background: #B9BFC4;
+    color: ${$v.darkerBlue};
+  }
+`
+
+const ViewTab = styled(Tab)`
+  background: ${$v.darkerBlue};
+  color: ${$v.white30};
+  font-size: ${$v.size12};
+  padding: ${$v.size06};
+
+  &:hover {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
+  
+  ${props => props.active && ActiveViewTab};
+`
+
 const ActiveSchemaTab = `
   ${ActiveTab}
   background: ${$v.green};
@@ -111,8 +137,12 @@ export default class QueryEditor extends React.Component<{}, {}> {
           </TabBar>
           <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16)}>
             <div className={cx($p.bgDarkBlue, $p.pa16)}>
-              <div className={cx($p.justifyBetween)}>
+              <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween)}>
                 <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
+                <TabBar>
+                  <ViewTab active>Visual</ViewTab>
+                  <ViewTab>IDL</ViewTab>
+                </TabBar>
               </div>
               <div className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
                 <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
