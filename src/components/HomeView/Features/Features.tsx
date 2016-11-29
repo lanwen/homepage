@@ -56,7 +56,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Instant Setup'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -65,7 +65,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Flexible Data Model'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -74,7 +74,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Works with everything'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -83,7 +83,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Auto-Scaling'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -92,7 +92,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Powerful Integrations'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -101,7 +101,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Unlimited Flexibility'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -110,7 +110,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='No Vendor Lock-In'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
           <SmallContainer>
@@ -119,7 +119,7 @@ export default class Features extends React.Component<{}, {}> {
             </Icon>
             <FeaturesContent
               headline='Interactive Docs'
-              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.'
+              content='It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.' // tslint:disable-line
             />
           </SmallContainer>
         </Container>

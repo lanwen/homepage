@@ -44,7 +44,9 @@ export default class OpenSource extends React.Component<{}, {}> {
           </div>
         </div>
         <Copy className={cx($p.f20, $p.o50, $p.tc, $p.pb16, $p.selfCenter)}>
-          I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.
+          {
+            `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.` // tslint:disable-line
+          }
         </Copy>
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
           <span className={cx($p.mh10, $p.mv10)}>
@@ -57,7 +59,7 @@ export default class OpenSource extends React.Component<{}, {}> {
           </span>
         </Learn>
         <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter)}>
-          Try it out for free – and setup your own backend in less than 5 minutes.
+          {'Try it out for free - and setup your own backend in less than 5 minutes.'}
         </Copy>
         <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.mv38)}>Sign up</Button>
       </div>

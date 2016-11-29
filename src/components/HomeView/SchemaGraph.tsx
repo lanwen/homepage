@@ -41,7 +41,9 @@ export default class SchemaGraph extends React.Component<{}, {}> {
           How it works
         </div>
         <div className={cx($p.f20, $p.o50, $p.tc, $p.pb16)}>
-          I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.
+          {
+            `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.` // tslint:disable-line
+          }
         </div>
         <img className={cx($p.w100)} src={require('../../assets/graphics/architecture.svg')} alt='Architecture'/>
       </Root>
