@@ -1,11 +1,19 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import SectionHeader from './SectionHeader'
 
 const Root = styled.div`
   
+`
+
+const TabBar = styled.ul`
+  list-style-type: none;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 `
 
 const ActiveTab = `
@@ -21,7 +29,7 @@ const ActiveTab = `
   }
 `
 
-const Tab = styled.div`
+const Tab = styled.li`
   color: ${$v.gray30};
   letter-spacing: 1px;
   font-size: ${$v.size16};
@@ -48,9 +56,40 @@ const Tab = styled.div`
     background: ${$v.gray10};
     color: ${$v.gray50};
   }
+`
+
+const ActiveExampleTab = `
+  ${ActiveTab}
+`
+
+const ExampleTab = styled(Tab)`
+  ${props => props.active && ActiveExampleTab};
+`
+
+const Editor = styled.div`
+
+`
+
+const ActiveSchemaTab = `
+  ${ActiveTab}
+  background: ${$v.green};
+
+  &:hover {
+    background: ${$v.green};
+  }
+`
+
+const SchemaTab = styled(Tab)`
+  background: ${$v.darkerBlue};
+  color: ${$v.white30};
   
-  ${props => props.active && ActiveTab}
+  &:hover {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
   
+  ${props => props.active && ActiveSchemaTab};
+
 `
 
 export default class QueryEditor extends React.Component<{}, {}> {
@@ -63,12 +102,26 @@ export default class QueryEditor extends React.Component<{}, {}> {
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
         <Root>
-          <div className={cx($p.flex, $p.relative, $p.itemsCenter, $p.justifyCenter)}>
-            <Tab>Instagram</Tab>
-            <Tab active>Twitter</Tab>
-            <Tab>To do list</Tab>
-            <Tab>Pokedex</Tab>
-          </div>
+          <TabBar>
+            <ExampleTab>Instagram</ExampleTab>
+            <ExampleTab active>Twitter</ExampleTab>
+            <ExampleTab>To do list</ExampleTab>
+            <ExampleTab>Pokedex</ExampleTab>
+          </TabBar>
+          <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16)}>
+            <div className={cx($p.bgDarkBlue, $p.pa16)}>
+              <div className={cx($p.justifyBetween)}>
+                <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
+              </div>
+              <div className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
+                <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
+                  <SchemaTab>User</SchemaTab>
+                  <SchemaTab active>Post</SchemaTab>
+                  <SchemaTab>Comment</SchemaTab>
+                </TabBar>
+              </div>
+            </div>
+          </Editor>
         </Root>
       </section>
     )
