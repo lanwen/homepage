@@ -8,7 +8,7 @@ import Console from './Console'
 import Functions from './Functions'
 import Features from './Features/Features'
 import References from './References'
-import ComparisonChart from './ComparisonChart'
+import ComparisonChart from './ComparisonChart/ComparisonChart'
 import SchemaGraph from './SchemaGraph'
 import OpenSource from './OpenSource'
 
