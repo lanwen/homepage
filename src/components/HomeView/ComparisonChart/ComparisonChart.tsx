@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import SectionHeader from '../SectionHeader'
@@ -9,6 +10,7 @@ import { breakpoints } from '../../../utils/constants'
 const Root = styled.section`
   
   .cell {
+    min-width: 175px;
     position: relative;
     display: flex;
     align-items: center;
@@ -41,11 +43,12 @@ const Table = styled.div`
 
 const RowBase = styled.div`
   display: flex;
-  width: 100%;
   cursor: default;
+  min-width: ${4 * (175 + 2 * 16 + 1) + (160 + 2 * 16)}px;
 `
 
 const Row = styled(RowBase)`
+  flex: 1;
   font-size: ${$v.size14};
   font-weight: 600;
   letter-spacing: 1px;
@@ -102,164 +105,166 @@ export default class ComparisonChart extends React.Component<{}, {}> {
           headline='Whatever headline we have here'
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
-        <Table className={cx($p.flex, $p.flexColumn, $p.w100)}>
-          <HeadRow>
-            <MetricsCell className='cell'></MetricsCell>
-            <div className='cell'>
-              <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/graphcool.svg')} />
-              Graphcool
-            </div>
-            <div className='cell'>
-              <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/firebase.svg')} />
-              Firebase
-            </div>
-            <div className='cell'>
-              <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/parse.svg')} />
-              Parse
-            </div>
-            <div className='cell'>
-              <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/scaphold.svg')} />
-              Scaphold
-            </div>
-          </HeadRow>
-          <Row>
-            <MetricsCell className='cell'>Developer friendly API</MetricsCell>
-            <Cell
-              title='Open Standard'
-              description='Coherent API based on GraphQL'
-              veryGood
-            />
-            <Cell
-              title='Proprietary'
-              description='Proprietary SDK'
-              good
-            />
-            <Cell
-              title='Proprietary'
-              description='Proprietary SDK'
-              veryGood
-            />
-            <Cell
-              title='Open Standard'
-              description='API based on GraphQL. Incoherent and difficult to use'
-              bad
-            />
-          </Row>
-          <Row>
-            <MetricsCell className='cell'>Datamodel Flexibility</MetricsCell>
-            <Cell
-              title='Object Graph'
-              description='Nodes and relations can represent any data model'
-              veryGood
-            />
-            <Cell
-              title='Tree Structure'
-              description={`Data models relying on relations don't fit the tree structure imposed by Firebase`}
-              bad
-            />
-            <Cell
-              title='Objects'
-              description='Flexible data structure, but query capability is limited'
-              good
-            />
-            <Cell
-              title='Object Graph'
-              description='Fixed system models'
-              good
-            />
-          </Row>
-          <Row>
-            <MetricsCell className='cell'>Expressiveness of Permission System</MetricsCell>
-            <Cell
-              title='Query System'
-              description='Permissions are based on GraphQL queries which is more powerful than role or path based permissions' // tslint:disable-line
-              veryGood
-            />
-            <Cell
-              title='Path System'
-              description='Permissions are based on the object path'
-              good
-            />
-            <Cell
-              title='Role System'
-              description='Permissions are User role based'
-              bad
-            />
-            <Cell
-              title='Role System'
-              description='Permissions are User role based'
-              bad
-            />
-          </Row>
-          <Row>
-            <MetricsCell className='cell'>External service integrations</MetricsCell>
-            <Cell
-              title='Seamless'
-              description='Integrations fit in seamlessly with the data model'
-              veryGood
-            />
-            <Cell
-              title='Limited'
-              description='No integrations besides Social Login'
-              bad
-            />
-            <Cell
-              title='Custom Code'
-              description='Based on custom code and Cloud Modules'
-              good
-            />
-            <Cell
-              title='Disjointed'
-              description={`integrations mirror external APIs and don't integrate seamlessly`}
-              good
-            />
-          </Row>
-          <Row>
-            <MetricsCell className='cell'>Realtime API</MetricsCell>
-            <Cell
-              title='GraphQL Subscriptions'
-              description='Sophisticated GraphQL Subscription system supporting live queries and mutation channels'
-              good
-            />
-            <Cell
-              title='Data Binding'
-              description='SDK based realtime data binding'
-              veryGood
-            />
-            <Cell
-              title='Live Queries'
-              description='Available in self hosted version'
-              good
-            />
-            <Cell
-              title='GraphQL Subscriptions'
-              description='Basic GraphQL subscriptions based on mutation channels'
-              good
-            />
-          </Row>
-          <Row>
-            <MetricsCell className='cell'>Extensibility with Custom code</MetricsCell>
-            <Cell
-              title='Any language / technology'
-              description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code (AWS Lambda or similar' // tslint:disable-line
-              veryGood
-            />
-            <Cell
-              title='Limited'
-              description='You can connect your own server to act as an additional client'
-              bad
-            />
-            <Cell
-              title='Proprietary CloudCode'
-              description='Proprietary runtime environment based on Javascript SDK'
-              good
-            />
-            <Cell
-              title='Limited'
-              description='You can only define one basic webhook integration for one mutation'
-              bad
-            />
-          </Row>
+        <Table>
+          <div className={cx($p.flex, $p.flexColumn)}>
+            <HeadRow>
+              <MetricsCell className='cell'></MetricsCell>
+              <div className='cell'>
+                <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/graphcool.svg')}/>
+                Graphcool
+              </div>
+              <div className='cell'>
+                <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/firebase.svg')}/>
+                Firebase
+              </div>
+              <div className='cell'>
+                <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/parse.svg')}/>
+                Parse
+              </div>
+              <div className='cell'>
+                <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/scaphold.svg')}/>
+                Scaphold
+              </div>
+            </HeadRow>
+            <Row>
+              <MetricsCell className='cell'>Developer friendly API</MetricsCell>
+              <Cell
+                title='Open Standard'
+                description='Coherent API based on GraphQL'
+                veryGood
+              />
+              <Cell
+                title='Proprietary'
+                description='Proprietary SDK'
+                good
+              />
+              <Cell
+                title='Proprietary'
+                description='Proprietary SDK'
+                veryGood
+              />
+              <Cell
+                title='Open Standard'
+                description='API based on GraphQL. Incoherent and difficult to use'
+                bad
+              />
+            </Row>
+            <Row>
+              <MetricsCell className='cell'>Datamodel Flexibility</MetricsCell>
+              <Cell
+                title='Object Graph'
+                description='Nodes and relations can represent any data model'
+                veryGood
+              />
+              <Cell
+                title='Tree Structure'
+                description={`Data models relying on relations don't fit the tree structure imposed by Firebase`}
+                bad
+              />
+              <Cell
+                title='Objects'
+                description='Flexible data structure, but query capability is limited'
+                good
+              />
+              <Cell
+                title='Object Graph'
+                description='Fixed system models'
+                good
+              />
+            </Row>
+            <Row>
+              <MetricsCell className='cell'>Expressiveness of Permission System</MetricsCell>
+              <Cell
+                title='Query System'
+                description='Permissions are based on GraphQL queries which is more powerful than role or path based permissions' // tslint:disable-line
+                veryGood
+              />
+              <Cell
+                title='Path System'
+                description='Permissions are based on the object path'
+                good
+              />
+              <Cell
+                title='Role System'
+                description='Permissions are User role based'
+                bad
+              />
+              <Cell
+                title='Role System'
+                description='Permissions are User role based'
+                bad
+              />
+            </Row>
+            <Row>
+              <MetricsCell className='cell'>External service integrations</MetricsCell>
+              <Cell
+                title='Seamless'
+                description='Integrations fit in seamlessly with the data model'
+                veryGood
+              />
+              <Cell
+                title='Limited'
+                description='No integrations besides Social Login'
+                bad
+              />
+              <Cell
+                title='Custom Code'
+                description='Based on custom code and Cloud Modules'
+                good
+              />
+              <Cell
+                title='Disjointed'
+                description={`integrations mirror external APIs and don't integrate seamlessly`}
+                good
+              />
+            </Row>
+            <Row>
+              <MetricsCell className='cell'>Realtime API</MetricsCell>
+              <Cell
+                title='GraphQL Subscriptions'
+                description='Sophisticated GraphQL Subscription system supporting live queries and mutation channels'
+                good
+              />
+              <Cell
+                title='Data Binding'
+                description='SDK based realtime data binding'
+                veryGood
+              />
+              <Cell
+                title='Live Queries'
+                description='Available in self hosted version'
+                good
+              />
+              <Cell
+                title='GraphQL Subscriptions'
+                description='Basic GraphQL subscriptions based on mutation channels'
+                good
+              />
+            </Row>
+            <Row>
+              <MetricsCell className='cell'>Extensibility with Custom code</MetricsCell>
+              <Cell
+                title='Any language / technology'
+                description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code (AWS Lambda or similar' // tslint:disable-line
+                veryGood
+              />
+              <Cell
+                title='Limited'
+                description='You can connect your own server to act as an additional client'
+                bad
+              />
+              <Cell
+                title='Proprietary CloudCode'
+                description='Proprietary runtime environment based on Javascript SDK'
+                good
+              />
+              <Cell
+                title='Limited'
+                description='You can only define one basic webhook integration for one mutation'
+                bad
+              />
+            </Row>
+          </div>
         </Table>
       </Root>
     )

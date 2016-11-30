@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
@@ -91,6 +92,7 @@ const Con = styled(RatingBase)`
 
 interface State {
   showOverlay: boolean,
+  isInViewport: boolean,
 }
 
 interface Props {
@@ -106,6 +108,12 @@ export default class Cell extends React.Component<Props, State> {
 
   state: State = {
     showOverlay: false,
+    isInViewport: true,
+  }
+
+  componentDidMount() {
+    const position = ReactDOM.findDOMNode(this).getBoundingClientRect()
+    this.setState({isInViewport: position.right < window.innerWidth} as State)
   }
 
   render() {
@@ -121,7 +129,7 @@ export default class Cell extends React.Component<Props, State> {
           {this.props.bad && <Con />}
         </Rating>
         {this.props.title}
-        {this.state.showOverlay &&
+        {this.state.showOverlay && this.state.isInViewport &&
         <Overlay>
           <OverlayHead className={cx($p.bgLightgreen10, $p.green, $p.flex, $p.itemsCenter)}>
             <Rating>
