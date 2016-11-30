@@ -1,8 +1,9 @@
 import * as React from 'react'
 import * as cx from 'classnames'
+import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints, maxWidth} from '../../utils/constants'
+import {breakpoints, maxWidth} from '../utils/constants'
 
 const Root = styled.div`
   padding: ${$v.size38};
@@ -58,12 +59,13 @@ const Nav = styled.nav`
   ${props => props.opened && NavOpened}
 `
 
-const NavPoint = styled.div`
+const NavLink = styled(Link)`
   color: ${$v.gray30};
   margin-right: ${$v.size25};
   cursor: pointer;
   line-height: 1;
   transition: color ${$v.duration} linear;
+  text-decoration: none;
 
   &:hover {
     color: ${$v.gray50};
@@ -147,10 +149,12 @@ export default class Header extends React.Component<{}, State> {
   render() {
     return (
       <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
-        <Logo src={require('../../assets/graphics/logos/graphcool.svg')}/>
+        <Link to='/'>
+          <Logo src={require('../assets/graphics/logos/graphcool.svg')}/>
+        </Link>
         {window.innerWidth < breakpoints.p750 &&
           <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
-            <Icon src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
+            <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
           </Hamburger>
         }
         <Nav
@@ -160,10 +164,10 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
-          <NavPoint>Docs</NavPoint>
-          <NavPoint>FAQ</NavPoint>
-          <NavPoint>Pricing</NavPoint>
-          <NavPoint>About</NavPoint>
+          <NavLink>Docs</NavLink>
+          <NavLink>FAQ</NavLink>
+          <NavLink to='/pricing'>Pricing</NavLink>
+          <NavLink to='/about'>About</NavLink>
           <Signin>
             <Button className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}>Log in</Button>
             <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}>Sign up</Button>

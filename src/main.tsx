@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
 import HomeView from './components/HomeView/HomeView'
 import { AppContainer } from 'react-hot-loader'
+import PricingView from './components/PricingView/PricingView'
+import AboutView from './components/AboutView/AboutView'
 
 import { $v } from 'graphcool-styles'
 import { injectGlobal } from 'styled-components'
@@ -69,6 +71,8 @@ function render() {
     <AppContainer>
       <Router history={browserHistory}>
         <Route path='/' component={HomeView}/>
+        <Route path='/pricing' component={PricingView}/>
+        <Route path='/about' component={AboutView}/>
       </Router>
     </AppContainer>,
     document.getElementById('root'),
