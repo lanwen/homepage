@@ -27,7 +27,7 @@ const OverlayBody = styled.div`
   letter-spacing: 0;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: 0 ${$v.fontSize20};
+    padding: ${parseFloat($v.fontSize20) + 3}px;
   }
 `
 
