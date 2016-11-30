@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 
@@ -10,11 +10,6 @@ const Overlay = styled.div`
   left: -3px;
   top: -3px;
   right: -3px;
-  background: ${$v.white};
-  border-radius: 2px;
-  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
-  overflow: hidden;  
-  z-index: 1000;
 `
 
 const OverlayHead = styled.header`
@@ -130,7 +125,7 @@ export default class Cell extends React.Component<Props, State> {
         </Rating>
         {this.props.title}
         {this.state.showOverlay && this.state.isInViewport &&
-        <Overlay>
+        <Overlay className={cx($g.overlay)}>
           <OverlayHead className={cx($p.bgLightgreen10, $p.green, $p.flex, $p.itemsCenter)}>
             <Rating>
               {(this.props.good || this.props.veryGood) && <Pro />}

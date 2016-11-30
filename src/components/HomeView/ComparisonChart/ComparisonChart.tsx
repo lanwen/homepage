@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import SectionHeader from '../SectionHeader'
