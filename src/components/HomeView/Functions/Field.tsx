@@ -2,41 +2,67 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
+import { breakpoints } from '../../../utils/constants'
+import Overlay from './Overlay'
 
 const Root = styled.div`
-  padding: ${$v.size38} ${$v.size38} 0;
-`
-
-const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${$v.size20};
-  border-radius: 500px;
-  width: ${$v.size60};
-  height: ${$v.size60};
-  background: ${$v.white10};
+  .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: ${$v.size20};
+    border-radius: 500px;
+    width: ${$v.size60};
+    height: ${$v.size60};
+    background: ${$v.white10};
+    
+    svg {
+      fill: ${$v.white50};
+    }
+  }
   
-  svg {
-    fill: ${$v.white50};
+  @media (max-width: 650px) {
+    padding: 0 ${$v.size06} ${$v.size16};
+    
+    &:first-child {
+      padding-left: ${$v.size60};
+    }
+    
+    &:last-child {
+      padding-right: ${$v.size60};
+    }
+    
+    @media (max-width: ${breakpoints.p500}px) {
+      &:first-child {
+        padding-left: ${$v.size38};
+      }
+      
+      &:last-child {
+        padding-right: ${$v.size38};
+      }
+    }
+  
+    @media (max-width: ${breakpoints.p400}px) {
+      &:first-child {
+        padding-left: ${$v.size25};
+      }
+      
+      &:last-child {
+        padding-right: ${$v.size25};
+      }
+    }
   }
 `
 
-const Overlay = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 0;
-  box-sizing: border-box;
-  width: 100%
-  min-width: 260px;
-  transform: translate(-50%,0)  
-`
-
-const OverlayIconContainer = styled(IconContainer)`
-  background: ${$v.darkBlue};
+const Container = styled.div`
+  padding: ${$v.size38};
   
-  svg {
-    fill: ${$v.white};
+  @media (min-width: ${breakpoints.p1000}px) {
+    padding: ${$v.size38} ${$v.size25};
+  }
+
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding: ${$v.size38};
   }
 `
 
@@ -58,28 +84,32 @@ export default class Field extends React.Component<Props, State> {
 
   render() {
     return (
-      <Root
-        className={cx($p.relative, $p.flex, $p.flexColumn, $p.itemsCenter, $p.pt38)}
-        onMouseEnter={() => this.setState({showOverlay: true} as State)}
-        onMouseLeave={() => this.setState({showOverlay: false} as State)}
-      >
-        <IconContainer>
-          <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32} />
-        </IconContainer>
-        <h4 className={cx($g.uppercaseLabel, $p.white50)}>{this.props.title}</h4>
-        {this.state.showOverlay &&
-        <Overlay
-          className={cx(
-            $g.overlay,
-            $p.flex, $p.flexColumn, $p.itemsCenter, $p.pv38, $p.ph25,
-          )}
+      <Root>
+        {window.innerWidth > breakpoints.p650 &&
+        <Container
+          className={cx($p.relative, $p.flex, $p.flexColumn, $p.itemsCenter)}
+          onMouseEnter={() => this.setState({showOverlay: true} as State)}
+          onMouseLeave={() => this.setState({showOverlay: false} as State)}
         >
-          <OverlayIconContainer>
-            <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32}/>
-          </OverlayIconContainer>
-          <h4 className={cx($g.uppercaseLabel, $p.darkBlue)}>{this.props.title}</h4>
-          <p className={cx($p.f16, $p.fw4, $p.black50, $p.mt25)}>{this.props.description}</p>
-        </Overlay>
+          <div className='iconContainer'>
+            <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32} />
+          </div>
+          <h4 className={cx($g.uppercaseLabel, $p.white50)}>{this.props.title}</h4>
+          {this.state.showOverlay &&
+          <Overlay
+            icon={this.props.icon}
+            title={this.props.title}
+            description={this.props.description}
+          />
+          }
+        </Container>
+        }
+        {window.innerWidth <= breakpoints.p650 &&
+        <Overlay
+          icon={this.props.icon}
+          title={this.props.title}
+          description={this.props.description}
+        />
         }
       </Root>
     )

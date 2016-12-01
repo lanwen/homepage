@@ -4,7 +4,8 @@ import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import Example from './Example'
-import Field from './Field'
+import Fields from './Fields'
+import { breakpoints } from '../../../utils/constants'
 
 const Examples = styled.div`
   &:before{
@@ -110,10 +111,6 @@ const Tab = styled.li`
   ${props => props.active && ActiveTab};
 `
 
-const Fields = styled.div`
-  margin-top: -${$v.size16};
-`
-
 export default class Functions extends React.Component<{}, {}> {
 
   render() {
@@ -152,7 +149,7 @@ export default class Functions extends React.Component<{}, {}> {
                 <div className={cx($g.uppercaseLabel, $p.black20)}>Payload</div>
                 <Payload>
                   <code>
-                  {`{
+                    {`{
   createdNode {
     stars,
     description,
@@ -204,41 +201,7 @@ export default class Functions extends React.Component<{}, {}> {
             </div>
           </div>
         </Examples>
-        <Fields className={cx($p.tc, $p.bgDarkBlue, $p.pa96)}>
-          <header>
-            <h3 className={cx($p.white)}>
-              What Serverless functions can do for you
-            </h3>
-          </header>
-          <div className={cx($p.flex, $p.justifyCenter)}>
-            <Field
-              icon='action'
-              title='Actions'
-              description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
-            />
-            <Field
-              icon='permission'
-              title='Permissions'
-              description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
-            />
-            <Field
-              icon='validation'
-              title='Validation'
-              description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
-            />
-            <Field
-              icon='query'
-              title='Mutations/Queries'
-              description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
-            />
-            <Field
-              icon='fields'
-              title='Computed fields'
-              description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
-            />
-          </div>
-        </Fields>
-
+        <Fields />
       </section>
     )
   }

@@ -52,7 +52,7 @@ injectGlobal`
   }
   
   h3 {
-    font-size ${$v.size20};
+    font-size: ${$v.size20};
     font-weight: 300;
     
     @media (min-width: ${breakpoints.p500}px) {
