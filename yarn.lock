@@ -652,6 +652,14 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+codemirror-graphql@^0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.5.8.tgz#b57a56841b32fb571919f116ba6ee0c7fb97a581"
+
+codemirror@^5.15.2:
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.21.0.tgz#9ec4caeda50807575b2115226bf12414f85d2246"
+
 color-convert@^1.3.0:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.8.2.tgz#be868184d7c8631766d54e7078e2672d7c7e3339"
@@ -1629,14 +1637,23 @@ graceful-fs@^4.1.2:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphcool-styles@^0.0.60:
-  version "0.0.60"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.60.tgz#d941b7b79992ff0bbf75868d4facd44f0dd714cc"
+graphcool-styles@^0.0.63:
+  version "0.0.63"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.63.tgz#c5141a84171f714edfa2cfb717d4f4a48b8727c2"
   dependencies:
     html-webpack-plugin "^2.24.1"
+    interactive "^0.1.9"
     object-assign "^4.1.0"
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
+
+graphiql@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-0.8.0.tgz#9a6ff1ca15dec23d5981967735bb2ea465271b1e"
+  dependencies:
+    codemirror "^5.15.2"
+    codemirror-graphql "^0.5.8"
+    marked "^0.3.5"
 
 handle-thing@^1.2.4:
   version "1.2.5"
@@ -1899,6 +1916,10 @@ inquirer@^0.11.0:
     string-width "^1.0.1"
     strip-ansi "^3.0.0"
     through "^2.3.6"
+
+interactive@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/interactive/-/interactive-0.1.9.tgz#6dd3e2f9a00341863bc7dd84afce9d191b6f9e8e"
 
 interpret@^1.0.0:
   version "1.0.1"
@@ -2275,6 +2296,10 @@ lru-queue@0.1:
 macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
+
+marked@^0.3.5:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.14"
