@@ -6,14 +6,6 @@ import { breakpoints, maxWidth } from '../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
 import LogoBar from './LogoBar'
 
-const Root = styled.div`
-  margin-top: ${$v.size38};
-  
-  @media (max-width: ${breakpoints.p500}px) {
-    margin-top: ${$v.size25};
-  }
-`
-
 const Hero = styled.div`
   padding-left: ${$v.size16};
   padding-right: ${$v.size38};
@@ -244,7 +236,7 @@ export default class Landing extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root>
+      <section>
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/browser.svg')} />
@@ -296,7 +288,7 @@ export default class Landing extends React.Component<{}, {}> {
           <LandingCallToAction/>
         }
         <LogoBar/>
-      </Root>
+      </section>
     )
   }
 }
