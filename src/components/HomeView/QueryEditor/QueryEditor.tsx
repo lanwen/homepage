@@ -339,7 +339,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                   >
                     <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
                       <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
-                        https://api.graph.cool/simple/v1/ciasdfasdfm
+                        {'https://api.graph.cool/simple/v1/ciasdfasdfm'}
                       </div>
                     </div>
                     <Copy

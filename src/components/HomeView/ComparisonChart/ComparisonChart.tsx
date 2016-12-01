@@ -48,11 +48,9 @@ const RowBase = styled.div`
 
 const Row = styled(RowBase)`
   flex: 1;
-  font-size: ${$v.size14};
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: ${$v.gray20};
+  font-size: ${$v.size16};
+  
+  color: ${$v.gray30};
   border-top: 1px solid ${$v.gray10};
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
   
@@ -62,7 +60,7 @@ const Row = styled(RowBase)`
   
   &:hover {
     background: ${$v.gray04};
-    color: ${$v.gray30};
+    color: ${$v.gray50};
   }
 `
 
