@@ -10,6 +10,11 @@ const Root = styled.div`
   } 
 `
 
+const Tag = styled.div`
+   font-family: Consolas, monospace;
+   padding-bottom: 8px;
+`
+
 interface Props {
   title: string,
   type: string,
@@ -35,19 +40,19 @@ export default class SchemaSection extends React.Component<Props, {}> {
           </span>
           }
         </h4>
-        <div className={cx($p.flex, $p.pa10, $p.bgWhite07, $p.br2, $p.lhSolid)}>
+        <Tag className={cx($p.flex, $p.itemsCenter, $p.pa10, $p.bgWhite07, $p.br2, $p.lhSolid)}>
           {this.props.relation &&
-            <Icon
-              stroke
-              className={cx($p.mr6)}
-              color={$v.white}
-              strokeWidth={4}
-              src={require('graphcool-styles/icons/stroke/relationsSmall.svg')}
-            />
+          <Icon
+            stroke
+            className={cx($p.mr6)}
+            color={$v.white}
+            strokeWidth={4}
+            src={require('graphcool-styles/icons/stroke/relationsSmall.svg')}
+          />
           }
           {this.props.type}
           {this.props.required ? ' !' : ''}
-          </div>
+        </Tag>
       </Root>
     )
   }

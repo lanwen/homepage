@@ -4,18 +4,42 @@ import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import SchemaSection from './SchemaSection'
-import { breakpoints } from '../../../utils/constants'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 
-const Root = styled.div`
-  
+const Root = styled.section`
+  position: relative;
+
+  @media (min-width: ${breakpoints.p1440}px) {
+    &:before{
+      content: "";
+      position: absolute;
+      top: ${$v.size16};
+      bottom: ${$v.size16};
+      width: 100%;
+      background: ${$v.gray02};
+    }
+  }
+`
+
+const Container = styled.div`
+  position: relative;
+  max-width: ${maxWidth}px;
+  margin: 0 auto;
 `
 
 const Editor = styled.div`
-
+  @media (min-width: ${breakpoints.p1440}px) {
+    border-radius: 2px;
+    overflow: hidden;
+  }
 `
 
 const Schema = styled.div`
-
+  padding: ${$v.size25};
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    padding: ${$v.size16};
+  }
 `
 
 const TabBar = styled.ul`
@@ -125,8 +149,12 @@ const SchemaTab = styled(Tab)`
 `
 
 const CodeSection = styled.div`
-  padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
+  padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};
   overflow: hidden;
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
+  }
 
   @media (min-width: ${breakpoints.p1360}px) {
     &:first-child {
@@ -154,12 +182,16 @@ const Separator = styled.div`
     content: "";
     position: absolute;
     left: ${$v.size04};
-    top: ${$v.size16};
+    top: ${$v.size25};
     height: 0;
     width: 0;
     border-style: solid;
     border-width: 8px 0 8px 10px;
     border-color: transparent transparent transparent ${$v.darkBlue};
+  }
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    top: ${$v.size16};
   }
 `
 
@@ -218,42 +250,43 @@ export default class QueryEditor extends React.Component<{}, {}> {
           headline='Whatever headline we have here'
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
+        <TabBar>
+          <ExampleTab>Instagram</ExampleTab>
+          <ExampleTab active>Twitter</ExampleTab>
+          <ExampleTab>To do list</ExampleTab>
+          <ExampleTab>Pokedex</ExampleTab>
+        </TabBar>
         <Root>
-          <TabBar>
-            <ExampleTab>Instagram</ExampleTab>
-            <ExampleTab active>Twitter</ExampleTab>
-            <ExampleTab>To do list</ExampleTab>
-            <ExampleTab>Pokedex</ExampleTab>
-          </TabBar>
-          <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
-            { window.innerWidth >= breakpoints.p1000 &&
-            <Schema className={cx($p.bgDarkBlue, $p.pa16)}>
-              <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16)}>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
-                <TabBar>
-                  <ViewTab active>Visual</ViewTab>
-                  <ViewTab>IDL</ViewTab>
-                </TabBar>
-              </div>
-              <div className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
-                <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
-                  <SchemaTab>User</SchemaTab>
-                  <SchemaTab active>Post</SchemaTab>
-                  <SchemaTab>Comment</SchemaTab>
-                </TabBar>
-                <div className={cx($p.flex, $p.flexColumn)}>
-                  <SchemaSection title='id' type='GraphQLId' required system />
-                  <SchemaSection title='title' type='String' required />
-                  <SchemaSection title='imgUrl' type='String' />
-                  <SchemaSection title='comments' type='Comment' relation />
+          <Container>
+            <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
+              { window.innerWidth >= breakpoints.p1000 &&
+              <Schema className={cx($p.bgDarkBlue)}>
+                <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16)}>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
+                  <TabBar>
+                    <ViewTab active>Visual</ViewTab>
+                    <ViewTab>IDL</ViewTab>
+                  </TabBar>
                 </div>
-              </div>
-            </Schema>
-            }
-            <div className={cx($p.flex, $p.w100, $p.bbox)}>
-              <CodeSection>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
-                <Pre>
+                <div className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
+                  <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
+                    <SchemaTab>User</SchemaTab>
+                    <SchemaTab active>Post</SchemaTab>
+                    <SchemaTab>Comment</SchemaTab>
+                  </TabBar>
+                  <div className={cx($p.flex, $p.flexColumn)}>
+                    <SchemaSection title='id' type='GraphQLId' required system/>
+                    <SchemaSection title='title' type='String' required/>
+                    <SchemaSection title='imgUrl' type='String'/>
+                    <SchemaSection title='comments' type='Comment' relation/>
+                  </div>
+                </div>
+              </Schema>
+              }
+              <div className={cx($p.flex, $p.w100, $p.bbox)}>
+                <CodeSection>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
+                  <Pre>
                   <RowNumbers>
                     {`1
 2
@@ -285,11 +318,11 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     </code>
                   </CodeContainer>
                 </Pre>
-              </CodeSection>
-              <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}></Separator>
-              <CodeSection>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
-                <Pre>
+                </CodeSection>
+                <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}></Separator>
+                <CodeSection>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
+                  <Pre>
                   <RowNumbers>
                     {`1
 2
@@ -333,9 +366,10 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     </code>
                   </CodeContainer>
                 </Pre>
-              </CodeSection>
-            </div>
-          </Editor>
+                </CodeSection>
+              </div>
+            </Editor>
+          </Container>
         </Root>
       </section>
     )

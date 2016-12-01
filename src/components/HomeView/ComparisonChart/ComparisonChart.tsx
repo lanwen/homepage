@@ -72,7 +72,8 @@ const HeadRow = styled(RowBase)`
   font-weight: 400; 
   
   img {
-    transform: scale(.8);
+    width: 24px;
+    height: 32px;
   }
   
   @media (min-width: ${breakpoints.p1250}px) {
@@ -80,7 +81,8 @@ const HeadRow = styled(RowBase)`
     font-weight: 300;
     
     img {
-      transform: scale(1);
+      width: 30px;
+      height: 40px;
     }
   }
 `
