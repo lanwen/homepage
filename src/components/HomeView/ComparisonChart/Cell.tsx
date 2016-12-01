@@ -36,6 +36,7 @@ const Rating = styled.div`
   align-items: center;
   flex: 0 0 auto;
   width: 50px;
+  padding-right: ${$v.size10};
 `
 
 const RatingBase = styled.div`
