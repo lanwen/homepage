@@ -4,20 +4,19 @@ import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import Field from './Field'
+import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 
 const Root = styled.section`
   position: relative;
 
-  @media (min-width: ${breakpoints.p1440}px) {
-    &:before {
-      content: "";
-      position: absolute;
-      top: ${$v.size16};
-      bottom: ${$v.size16};
-      width: 100%;
-      background: ${$v.gray02};
-    }
+  &:before {
+    content: "";
+    position: absolute;
+    top: ${$v.size16};
+    bottom: 0;
+    width: 100%;
+    background: ${$v.gray02};
   }
 `
 
@@ -254,7 +253,7 @@ const Endpoint = styled.div`
   height: ${parseFloat($v.size38) + 20}px;
   margin-left: -12px;
   margin-right: -12px;
-  width: calc(100% + 24px)
+  width: calc(100% + 24px);
   
   @media (max-width: ${breakpoints.p650}px) {
     margin: 0;
@@ -330,7 +329,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     <Field title='comments' type='Comment' relation/>
                   </div>
                 </Models>
-                <div className={cx($p.pt25)}>
+                <div className={cx($p.pt38)}>
                   <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
                   <Endpoint
                     className={cx(
@@ -453,6 +452,9 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </CodeSection>
               </div>
             </Editor>
+            {window.innerWidth > breakpoints.p580 &&
+            <TryOut />
+            }
           </Container>
         </Root>
       </section>
