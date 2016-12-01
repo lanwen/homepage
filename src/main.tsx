@@ -26,11 +26,11 @@ injectGlobal`
     font-weight: 300;
   
     @media (min-width: ${breakpoints.p1000}px) {
-      font-size: ${$v.fontSize30};
+      font-size: ${$v.size30};
     }
     
     @media (min-width: ${breakpoints.p1200}px) {
-      font-size: ${$v.fontSize32};
+      font-size: ${$v.size32};
     }
     
     @media (min-width: ${breakpoints.p1440}px) {
@@ -43,16 +43,16 @@ injectGlobal`
     font-weight: 300;
     
     @media (min-width: ${breakpoints.p1000}px) {
-      font-size: ${$v.fontSize30};
+      font-size: ${$v.size30};
     }
     
     @media (min-width: ${breakpoints.p1200}px) {
-      font-size: ${$v.fontSize32};
+      font-size: ${$v.size32};
     }
   }
   
   h3 {
-    font-size ${$v.fontSize20};
+    font-size: ${$v.size20};
     font-weight: 300;
     
     @media (min-width: ${breakpoints.p500}px) {
@@ -64,7 +64,7 @@ injectGlobal`
     font-size ${$v.size16};
 
     @media (min-width: ${breakpoints.p1000}px) {
-      font-size: ${$v.fontSize20};
+      font-size: ${$v.size20};
       font-weight: 300;
     }
   }

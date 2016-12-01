@@ -15,11 +15,11 @@ const Root = styled.section`
     align-items: center;
     width: 25%;
     padding: 0 ${$v.size16};
-    height: ${parseFloat($v.fontSize20) * 2 + parseFloat($v.size14) * 1.5}px;
+    height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5}px;
     border-left: 1px solid ${$v.gray10};
     
     @media (min-width: ${breakpoints.p1250}px) {
-      padding: 0 ${$v.fontSize20};
+      padding: 0 ${$v.size20};
       height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
     }
   }
@@ -48,11 +48,9 @@ const RowBase = styled.div`
 
 const Row = styled(RowBase)`
   flex: 1;
-  font-size: ${$v.size14};
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: ${$v.gray20};
+  font-size: ${$v.size16};
+  
+  color: ${$v.gray30};
   border-top: 1px solid ${$v.gray10};
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
   
@@ -62,7 +60,7 @@ const Row = styled(RowBase)`
   
   &:hover {
     background: ${$v.gray04};
-    color: ${$v.gray30};
+    color: ${$v.gray50};
   }
 `
 
@@ -72,15 +70,17 @@ const HeadRow = styled(RowBase)`
   font-weight: 400; 
   
   img {
-    transform: scale(.8);
+    width: 24px;
+    height: 32px;
   }
   
   @media (min-width: ${breakpoints.p1250}px) {
-    font-size: ${$v.fontSize20};
+    font-size: ${$v.size20};
     font-weight: 300;
     
     img {
-      transform: scale(1);
+      width: 30px;
+      height: 40px;
     }
   }
 `

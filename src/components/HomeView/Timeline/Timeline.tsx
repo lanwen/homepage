@@ -14,6 +14,7 @@ const Root = styled.div`
     content: "";
     position: absolute;
     top: ${parseFloat($v.size16) + parseFloat($v.size10)}px;
+    left: 0;
     bottom: 0;
     width: 100%;
     background: ${$v.gray02};

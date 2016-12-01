@@ -14,11 +14,11 @@ const Overlay = styled.div`
 
 const OverlayHead = styled.header`
   padding: 0 ${parseFloat($v.size16) + 3}px;
-  height: ${parseFloat($v.fontSize20) * 2 + parseFloat($v.size14) * 1.5 + 6}px;
+  height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5 + 6}px;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: 0 ${$v.fontSize20};
-    height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
+    padding: 0 ${parseFloat($v.size20) + 3}px;
+    height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5 + 6}px;
   }
 `
 
@@ -27,7 +27,7 @@ const OverlayBody = styled.div`
   letter-spacing: 0;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: ${parseFloat($v.fontSize20) + 3}px;
+    padding: ${parseFloat($v.size20) + 3}px;
   }
 `
 
@@ -36,6 +36,7 @@ const Rating = styled.div`
   align-items: center;
   flex: 0 0 auto;
   width: 50px;
+  padding-right: ${$v.size10};
 `
 
 const RatingBase = styled.div`

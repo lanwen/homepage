@@ -27,7 +27,7 @@ const Button = styled.button`
   font-size: ${$v.size16};
   
   @media (min-width: ${breakpoints.p1000}px) {
-    font-size: ${$v.fontSize20};
+    font-size: ${$v.size20};
   }
   
   @media (min-width: ${breakpoints.p1360}px) {

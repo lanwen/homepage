@@ -7,6 +7,7 @@ import { breakpoints } from '../../utils/constants'
 interface Props {
   bullets: number,
   grayscale?: boolean,
+  onDark?: boolean,
 }
 
 export default class Pagination extends React.Component<Props, {}> {
@@ -23,6 +24,20 @@ export default class Pagination extends React.Component<Props, {}> {
       &:hover {
         background: ${$v.gray20};
       }
+    `
+
+    const ActiveWhiteBullet = `
+      background: ${$v.white70};
+    `
+
+    const WhiteBullet = `
+      background: ${$v.white30};
+      
+      &:hover {
+        background: ${$v.white50};
+      }
+      
+      ${props => props.active && ActiveWhiteBullet}
     `
 
     const ActiveBullet = `
@@ -58,11 +73,12 @@ export default class Pagination extends React.Component<Props, {}> {
      
       ${props => props.active && ActiveBullet}
       ${props => props.grayscale && GrayscaleBullet}
+      ${props => props.white && WhiteBullet}
     `
 
     let bullets = []
     for (let i = 0; i < this.props.bullets; i++) {
-      bullets.push(<Bullet grayscale={this.props.grayscale} key={i}/>)
+      bullets.push(<Bullet grayscale={this.props.grayscale} white={this.props.onDark} key={i}/>)
     }
 
     return (

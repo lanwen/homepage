@@ -8,12 +8,12 @@ const Root = styled.header`
   padding: ${$v.size96} ${$v.size38} ${$v.size60};
   text-align: center;
   
-  @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size96} ${$v.size60} ${$v.size60}
-  }
-  
   @media (min-width: ${breakpoints.p750}px) {
     padding: ${$v.size60} ${$v.size60} ${$v.size38}
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding: ${$v.size96} ${$v.size60} ${$v.size60}
   }
   
   @media (max-width: ${breakpoints.p500}px) {
@@ -36,7 +36,7 @@ export default class SectionHeader extends React.Component<Props, {}> {
     return (
       <Root>
         <h2>{this.props.headline}</h2>
-        <p className={cx($p.mt38, $p.black50)}>{this.props.copy}</p>
+        <p className={cx($p.mt25, $p.black50)}>{this.props.copy}</p>
       </Root>
     )
   }

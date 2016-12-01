@@ -1,21 +1,54 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, $g } from 'graphcool-styles'
-import styled from 'styled-components'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
+import styled, { keyframes } from 'styled-components'
 import SectionHeader from '../SectionHeader'
-import SchemaSection from './SchemaSection'
-import { breakpoints } from '../../../utils/constants'
+import Field from './Field'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 
-const Root = styled.div`
-  
+const Root = styled.section`
+  position: relative;
+
+  @media (min-width: ${breakpoints.p1440}px) {
+    &:before {
+      content: "";
+      position: absolute;
+      top: ${$v.size16};
+      bottom: ${$v.size16};
+      width: 100%;
+      background: ${$v.gray02};
+    }
+  }
+`
+
+const Container = styled.div`
+  position: relative;
+  max-width: ${maxWidth}px;
+  margin: 0 auto;
 `
 
 const Editor = styled.div`
-
+  @media (min-width: ${breakpoints.p1440}px) {
+    border-radius: 2px;
+    overflow: hidden;
+  }
 `
 
 const Schema = styled.div`
+  padding: ${$v.size25};
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    padding: ${$v.size16};
+  }
+`
 
+const Models = styled.div`
+  margin-left: -12px;
+  margin-right: -12px;
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    margin: 0;
+  }
 `
 
 const TabBar = styled.ul`
@@ -125,8 +158,12 @@ const SchemaTab = styled(Tab)`
 `
 
 const CodeSection = styled.div`
-  padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
+  padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};
   overflow: hidden;
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
+  }
 
   @media (min-width: ${breakpoints.p1360}px) {
     &:first-child {
@@ -154,12 +191,16 @@ const Separator = styled.div`
     content: "";
     position: absolute;
     left: ${$v.size04};
-    top: ${$v.size16};
+    top: ${$v.size25};
     height: 0;
     width: 0;
     border-style: solid;
     border-width: 8px 0 8px 10px;
     border-color: transparent transparent transparent ${$v.darkBlue};
+  }
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    top: ${$v.size16};
   }
 `
 
@@ -209,6 +250,46 @@ const CodeContainer = styled.div`
   }
 `
 
+const Endpoint = styled.div`
+  height: ${parseFloat($v.size38) + 20}px;
+  margin-left: -12px;
+  margin-right: -12px;
+  width: calc(100% + 24px)
+  
+  @media (max-width: ${breakpoints.p650}px) {
+    margin: 0;
+    width: 100%;
+  }
+`
+
+const Copy = styled.div`
+  background: #B9BFC4;
+  cursor: pointer;
+`
+
+const movingCopyIndicator = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  }
+`
+
+const CopyIndicator = styled.div`
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%,0);
+  animation: ${movingCopyIndicator} .7s linear
+`
+
 export default class QueryEditor extends React.Component<{}, {}> {
 
   render() {
@@ -218,42 +299,78 @@ export default class QueryEditor extends React.Component<{}, {}> {
           headline='Whatever headline we have here'
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
+        <TabBar>
+          <ExampleTab>Instagram</ExampleTab>
+          <ExampleTab active>Twitter</ExampleTab>
+          <ExampleTab>To do list</ExampleTab>
+          <ExampleTab>Pokedex</ExampleTab>
+        </TabBar>
         <Root>
-          <TabBar>
-            <ExampleTab>Instagram</ExampleTab>
-            <ExampleTab active>Twitter</ExampleTab>
-            <ExampleTab>To do list</ExampleTab>
-            <ExampleTab>Pokedex</ExampleTab>
-          </TabBar>
-          <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
-            { window.innerWidth >= breakpoints.p1000 &&
-            <Schema className={cx($p.bgDarkBlue, $p.pa16)}>
-              <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16)}>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
-                <TabBar>
-                  <ViewTab active>Visual</ViewTab>
-                  <ViewTab>IDL</ViewTab>
-                </TabBar>
-              </div>
-              <div className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
-                <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
-                  <SchemaTab>User</SchemaTab>
-                  <SchemaTab active>Post</SchemaTab>
-                  <SchemaTab>Comment</SchemaTab>
-                </TabBar>
-                <div className={cx($p.flex, $p.flexColumn)}>
-                  <SchemaSection title='id' type='GraphQLId' required system />
-                  <SchemaSection title='title' type='String' required />
-                  <SchemaSection title='imgUrl' type='String' />
-                  <SchemaSection title='comments' type='Comment' relation />
+          <Container>
+            <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
+              { window.innerWidth >= breakpoints.p1000 &&
+              <Schema className={cx($p.bgDarkBlue)}>
+                <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16)}>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
+                  <TabBar>
+                    <ViewTab active>Visual</ViewTab>
+                    <ViewTab>IDL</ViewTab>
+                  </TabBar>
                 </div>
-              </div>
-            </Schema>
-            }
-            <div className={cx($p.flex, $p.w100, $p.bbox)}>
-              <CodeSection>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
-                <Pre>
+                <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
+                  <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
+                    <SchemaTab>User</SchemaTab>
+                    <SchemaTab active>Post</SchemaTab>
+                    <SchemaTab>Comment</SchemaTab>
+                  </TabBar>
+                  <div className={cx($p.flex, $p.flexColumn)}>
+                    <Field title='id' type='GraphQLId' required system/>
+                    <Field title='title' type='String' required/>
+                    <Field title='imgUrl' type='String'/>
+                    <Field title='comments' type='Comment' relation/>
+                  </div>
+                </Models>
+                <div className={cx($p.pt25)}>
+                  <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
+                  <Endpoint
+                    className={cx(
+                      $p.br2, $p.bgDarkerBlue, $p.w100, $p.lhSolid, $p.white, $p.relative, $p.ph16, $p.bbox,
+                    )}
+                  >
+                    <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
+                      <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
+                        {'https://api.graph.cool/simple/v1/ciasdfasdfm'}
+                      </div>
+                    </div>
+                    <Copy
+                      className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
+                    >
+                      <CopyIndicator
+                        className={cx(
+                        $p.o0,
+                        $p.absolute,
+                        $p.f14,
+                        $p.fw6,
+                        $p.white,
+                      )}
+                      >
+                        Copied
+                      </CopyIndicator>
+                      <Icon
+                        width={38}
+                        height={38}
+                        color={$v.darkerBlue}
+                        src={require('graphcool-styles/icons/fill/copy.svg')}
+                      />
+                    </Copy>
+                  </Endpoint>
+                </div>
+              </Schema>
+              }
+              <div className={cx($p.flex, $p.w100, $p.bbox)}>
+                <CodeSection>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
+                  <Pre>
                   <RowNumbers>
                     {`1
 2
@@ -285,11 +402,11 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     </code>
                   </CodeContainer>
                 </Pre>
-              </CodeSection>
-              <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}></Separator>
-              <CodeSection>
-                <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
-                <Pre>
+                </CodeSection>
+                <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)} />
+                <CodeSection>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
+                  <Pre>
                   <RowNumbers>
                     {`1
 2
@@ -333,9 +450,10 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     </code>
                   </CodeContainer>
                 </Pre>
-              </CodeSection>
-            </div>
-          </Editor>
+                </CodeSection>
+              </div>
+            </Editor>
+          </Container>
         </Root>
       </section>
     )
