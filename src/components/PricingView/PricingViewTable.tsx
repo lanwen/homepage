@@ -32,7 +32,7 @@ export default class PricingViewTable extends React.Component<{}, {}> {
           </Images>
           <h5>PROJECT</h5>
           <div className={cx($p.green, $p.pv16)}>
-            <h1 className={cx($p.di}>$9</h1><span className={cx($p.di}>/mo</span>
+            <h1 className={cx($p.di)}>$9</h1><span className={cx($p.di)}>/mo</span>
           </div>
           <p>200 Users</p>
           <p>100k Requests</p>
