@@ -60,7 +60,7 @@ export default () => (
       <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')}/></SocialLink>
       <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')}/></SocialLink>
     </SocialLinks>
-    <p>Sign up for our monthly newsletter</p>
+    <p className={cx($p.fw4)}>Sign up for our monthly newsletter</p>
     <NewsletterInput
       type='text'
       className={cx($p.mt16, $p.w100, $p.pa16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white, $p.bbox)}
