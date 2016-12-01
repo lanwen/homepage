@@ -17,8 +17,8 @@ const OverlayHead = styled.header`
   height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5 + 6}px;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: 0 ${$v.size20};
-    height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
+    padding: 0 ${parseFloat($v.size20) + 3}px;
+    height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5 + 6}px;
   }
 `
 
