@@ -4,9 +4,6 @@ import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
 
-const Heart = styled.div`
-    margin-top: -20px;
-`
 const Copy = styled.div`
   width: 60%;
   
@@ -19,11 +16,15 @@ const Copy = styled.div`
 `
 const Learn = styled.div`
   background: linear-gradient(to top, #fff 25%, rgba(0, 0, 0, 0.03) 25%,rgba(0, 0, 0, 0.03) 75%,#fff 75%);
+  
+    @media(max-width: 891px) {
+      background: linear-gradient(to top, #fff 15%, rgba(0, 0, 0, 0.03) 15%,rgba(0, 0, 0, 0.03) 85%,#fff 85%);
+    }
 `
 const Button = styled.button`
-  font-size: ${$v.size14} !important;
+  font-size: ${$v.size25} !important;
   
-  @media (min-width: ${breakpoints.p900}px) {
+  @media (max-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
   }
 `
@@ -34,14 +35,11 @@ export default class OpenSource extends React.Component<{}, {}> {
     return (
       <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
         <div className={cx($p.pt96, $p.tc, $p.f38, $p.fw3, $p.flex, $p.flexRow, $p.justifyCenter)}>
-          <div>
             <div className={cx($p.mb0, $p.pb0)}>
-              <span>W </span>
-              <img src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
+              <span>We </span>
+              <img className={$p.ph10} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
               <span> Open Source</span>
             </div>
-            <Heart className={$p.tl}>e</Heart>
-          </div>
         </div>
         <Copy className={cx($p.f20, $p.o50, $p.tc, $p.pb16, $p.selfCenter)}>
           {
@@ -49,12 +47,12 @@ export default class OpenSource extends React.Component<{}, {}> {
           }
         </Copy>
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
-          <span className={cx($p.mh10, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto)} src={require('../../assets/graphics/LearnRelay.png')}
+          <span className={cx($p.mh25, $p.mv10)}>
+            <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnRelay.png')}
                  alt='Learn Relay'/>
           </span>
-          <span className={cx($p.mh10, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto)} src={require('../../assets/graphics/LearnApollo.png')}
+          <span className={cx($p.mh25, $p.mv10)}>
+            <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnApollo.png')}
                  alt='Learn Apollo'/>
           </span>
         </Learn>

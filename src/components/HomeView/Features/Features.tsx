@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import FeaturesContent from './FeaturesContent'
@@ -9,15 +9,13 @@ export default class Features extends React.Component<{}, {}> {
 
   render() {
     const Container = styled.div`
-      flex-wrap: wrap;
-      padding: 10px 50px;
-      margin: 45px auto;
+      margin: ${$v.size38} auto;
       max-width: ${breakpoints.p1250}px;
       `
     const SmallContainer = styled.div`
-      margin: 5px;
-      padding: 25px 20px;
-      flex: 0 0 250px;
+      margin: ${$v.size16};
+      padding: ${$v.size10} ${$v.size06};
+      flex: 0 0 260px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -30,9 +28,9 @@ export default class Features extends React.Component<{}, {}> {
       `
 
     const Icon = styled.div`
-      width: 116px;
-      height: 116px;
-      padding: 10px;
+      width: 10rem;
+      height: 10rem;
+      padding: 1.5rem;
       box-sizing: border-box;
 
       img {
@@ -49,7 +47,7 @@ export default class Features extends React.Component<{}, {}> {
         <div className={cx($p.f20, $p.o50, $p.tc, $p.pb96)}>
           Graphcool is built by developers for developers.
         </div>
-        <Container className={cx($p.flex, $p.justifyCenter)}>
+        <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
           <SmallContainer>
             <Icon>
               <img src={require('../../../assets/graphics/feature-1.svg')} />
