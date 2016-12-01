@@ -56,6 +56,17 @@ const TabBar = styled.ul`
   position: relative;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size25};
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    overflow: auto;
+    justify-content: flex-start;
+    padding-left: ${$v.size38};
+  }
+  
 `
 
 const ActiveTab = `
@@ -69,6 +80,10 @@ const ActiveTab = `
     background: ${$v.darkBlue};
     color: ${$v.white};
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    padding: ${$v.size16};
+  }  
 `
 
 const Tab = styled.li`
@@ -99,6 +114,11 @@ const Tab = styled.li`
     background: ${$v.gray10};
     color: ${$v.gray50};
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    font-size: ${$v.size14};
+    padding: ${$v.size14};
+  }  
 `
 
 const ActiveExampleTab = `
