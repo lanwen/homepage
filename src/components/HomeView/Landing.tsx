@@ -283,7 +283,7 @@ export default class Landing extends React.Component<{}, {}> {
               </Headline>
               <Copy className={cx($p.f25, $p.black50)}>
                 {
-                  `Setup a production-ready GraphQL backend in 5 minutes. Use any language to implement your business logic. Includes realtime subscriptions, managed database, service integrations and more.` // tslint:disable-line
+                  `Production-ready GraphQL backend in 5 minutes. Implement your business logic with any language. Includes realtime subscriptions, user management, service integrations and more.` // tslint:disable-line
                 }
               </Copy>
             </div>

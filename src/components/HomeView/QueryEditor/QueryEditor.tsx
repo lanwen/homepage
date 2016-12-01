@@ -247,8 +247,8 @@ export default class QueryEditor extends React.Component<{}, {}> {
     return (
       <section>
         <SectionHeader
-          headline='Whatever headline we have here'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          headline='Your data schema generates a developer-friendly GraphQL API'
+          copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.'
         />
         <TabBar>
           <ExampleTab>Instagram</ExampleTab>
