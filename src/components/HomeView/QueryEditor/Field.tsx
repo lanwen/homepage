@@ -23,7 +23,7 @@ interface Props {
   relation?: boolean
 }
 
-export default class SchemaSection extends React.Component<Props, {}> {
+export default class Field extends React.Component<Props, {}> {
 
   render() {
     return (
