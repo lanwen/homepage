@@ -150,7 +150,7 @@ export default class Header extends React.Component<{}, State> {
     return (
       <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
         <Link to='/'>
-          <Logo src={require('../assets/graphics/logos/graphcool.svg')}/>
+          <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
         </Link>
         {window.innerWidth < breakpoints.p750 &&
           <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>

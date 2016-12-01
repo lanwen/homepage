@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../../utils/constants'
+// import { breakpoints } from '../../../utils/constants'
 import Example from './Example'
 
 const Root = styled.div`
@@ -108,7 +108,6 @@ const Tab = styled.li`
   
   ${props => props.active && ActiveTab};
 `
-
 
 export default class Examples extends React.Component<{}, {}> {
 
