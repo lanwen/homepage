@@ -90,9 +90,11 @@ export default class Fields extends React.Component<{}, {}> {
             description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
           />
         </Container>
+        {window.innerWidth <= breakpoints.p650 &&
         <div className={cx($p.mt25, $p.flex, $p.justifyCenter)}>
-          <Pagination bullets={5} onDark />
+          <Pagination bullets={5} onDark/>
         </div>
+        }
       </Root>
     )
   }

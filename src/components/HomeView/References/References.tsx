@@ -8,6 +8,7 @@ import Pagination from '../Pagination'
 
 const Container = styled.div`
   max-width: ${maxWidth}px;
+  margin: 0 auto;
 `
 
 export default class References extends React.Component<{}, {}> {
