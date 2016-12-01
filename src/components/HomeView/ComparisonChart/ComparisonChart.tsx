@@ -15,11 +15,11 @@ const Root = styled.section`
     align-items: center;
     width: 25%;
     padding: 0 ${$v.size16};
-    height: ${parseFloat($v.fontSize20) * 2 + parseFloat($v.size14) * 1.5}px;
+    height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5}px;
     border-left: 1px solid ${$v.gray10};
     
     @media (min-width: ${breakpoints.p1250}px) {
-      padding: 0 ${$v.fontSize20};
+      padding: 0 ${$v.size20};
       height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
     }
   }
@@ -76,7 +76,7 @@ const HeadRow = styled(RowBase)`
   }
   
   @media (min-width: ${breakpoints.p1250}px) {
-    font-size: ${$v.fontSize20};
+    font-size: ${$v.size20};
     font-weight: 300;
     
     img {

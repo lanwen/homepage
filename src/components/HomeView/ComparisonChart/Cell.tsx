@@ -14,10 +14,10 @@ const Overlay = styled.div`
 
 const OverlayHead = styled.header`
   padding: 0 ${parseFloat($v.size16) + 3}px;
-  height: ${parseFloat($v.fontSize20) * 2 + parseFloat($v.size14) * 1.5 + 6}px;
+  height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5 + 6}px;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: 0 ${$v.fontSize20};
+    padding: 0 ${$v.size20};
     height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
   }
 `
@@ -27,7 +27,7 @@ const OverlayBody = styled.div`
   letter-spacing: 0;
   
   @media (min-width: ${breakpoints.p1250}px) {
-    padding: ${parseFloat($v.fontSize20) + 3}px;
+    padding: ${parseFloat($v.size20) + 3}px;
   }
 `
 
