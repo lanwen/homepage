@@ -1,15 +1,11 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, Icon } from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Bar from './Bar'
 import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.div`
-  background: ${$v.white};
-  border-radius: 2px;
-  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
-  overflow: hidden;
   
   .label {
     color: ${$v.gray30} !important;
@@ -46,7 +42,7 @@ interface Props {
 export default class Overlay extends React.Component<Props, {}> {
   render() {
     return (
-      <Root>
+      <Root className={cx($g.overlay)}>
         <div className={cx($p.ph25, $p.pt25)}>
           <div className={cx('label', $p.pb16, $p.flex, $p.justifyBetween)}>
             <span>{this.props.label}</span>

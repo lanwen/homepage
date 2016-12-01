@@ -15,6 +15,10 @@ injectGlobal`
   
   body {
     color: ${$v.gray80};
+    
+    #root {
+      overflow: hidden;
+    }
   }
   
   h1 {
