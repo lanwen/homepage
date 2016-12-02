@@ -7,6 +7,7 @@ import Field from './Field'
 import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import QueryBox from './QueryBox'
+import {projects} from './projects'
 
 const Root = styled.section`
   position: relative;
@@ -218,9 +219,22 @@ const CopyIndicator = styled.div`
   animation: ${movingCopyIndicator} .7s linear
 `
 
-export default class QueryEditor extends React.Component<{}, {}> {
+interface State {
+  activeProjectName: string
+  activeModelName: string
+}
+
+export default class QueryEditor extends React.Component<{}, State> {
+
+  state = {
+    activeProjectName: projects[0].name,
+    activeModelName: projects[0].models[0].name,
+  }
 
   render() {
+    const activeProject = projects.find(p => this.state.activeProjectName === p.name)!
+    const activeModel = activeProject.models.find(m => this.state.activeModelName === m.name)!
+
     return (
       <section>
         <SectionHeader
@@ -228,10 +242,15 @@ export default class QueryEditor extends React.Component<{}, {}> {
           copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.'
         />
         <TabBar>
-          <ExampleTab>Instagram</ExampleTab>
-          <ExampleTab active>Twitter</ExampleTab>
-          <ExampleTab>To do list</ExampleTab>
-          <ExampleTab>Pokedex</ExampleTab>
+          {projects.map(p => (
+            <ExampleTab
+              key={p.name}
+              active={activeProject.name === p.name}
+              onClick={() => this.setState({ activeModelName: p.models[0].name, activeProjectName: p.name } as State)}
+            >
+              {p.name}
+            </ExampleTab>
+          ))}
         </TabBar>
         <Root>
           <Container>
@@ -247,15 +266,27 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </div>
                 <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
                   <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
-                    <SchemaTab>User</SchemaTab>
-                    <SchemaTab active>Post</SchemaTab>
-                    <SchemaTab>Comment</SchemaTab>
+                    {activeProject.models.map(model => (
+                      <SchemaTab
+                        key={model.name}
+                        active={activeModel.name === model.name}
+                        onClick={() => this.setState({ activeModelName: model.name } as State)}
+                      >
+                        {model.name}
+                      </SchemaTab>
+                    ))}
                   </TabBar>
                   <div className={cx($p.flex, $p.flexColumn)}>
-                    <Field title='id' type='GraphQLId' required system/>
-                    <Field title='title' type='String' required/>
-                    <Field title='imgUrl' type='String'/>
-                    <Field title='comments' type='Comment' relation/>
+                    {activeModel.fields.map(field => (
+                      <Field
+                        key={field.name}
+                        title={field.name}
+                        type={field.type}
+                        required={field.required}
+                        system={field.system}
+                        relation={field.relation}
+                      />
+                    ))}
                   </div>
                 </Models>
                 <div className={cx($p.pt38)}>
@@ -267,7 +298,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                   >
                     <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
                       <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
-                        {'https://api.graph.cool/simple/v1/ciasdfasdfm'}
+                        {activeProject.endpoint}
                       </div>
                     </div>
                     <Copy
@@ -295,7 +326,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </div>
               </Schema>
               }
-              <QueryBox endpoint='https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2'/>
+              <QueryBox endpoint={activeProject.endpoint}/>
             </Editor>
             {window.innerWidth > breakpoints.p580 &&
             <TryOut />
