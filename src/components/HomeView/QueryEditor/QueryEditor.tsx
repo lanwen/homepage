@@ -7,7 +7,7 @@ import Field from './Field'
 import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import QueryBox from './QueryBox'
-import {projects} from './projects'
+import { projects } from './projects'
 
 const Root = styled.section`
   position: relative;
@@ -178,7 +178,6 @@ const SchemaTab = styled(Tab)`
   ${props => props.active && ActiveSchemaTab};
 `
 
-
 const Endpoint = styled.div`
   height: ${parseFloat($v.size38) + 20}px;
   margin-left: -12px;
@@ -304,15 +303,7 @@ export default class QueryEditor extends React.Component<{}, State> {
                     <Copy
                       className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
                     >
-                      <CopyIndicator
-                        className={cx(
-                        $p.o0,
-                        $p.absolute,
-                        $p.f14,
-                        $p.fw6,
-                        $p.white,
-                      )}
-                      >
+                      <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
                         Copied
                       </CopyIndicator>
                       <Icon

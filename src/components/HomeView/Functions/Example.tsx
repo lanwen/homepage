@@ -64,13 +64,14 @@ interface Props {
   case: string,
   description: string,
   active?: boolean,
+  onClick: () => void,
 }
 
 export default class Functions extends React.Component<Props, {}> {
 
   render() {
     return (
-      <Root active={this.props.active}>
+      <Root active={this.props.active} onClick={this.props.onClick}>
         <Label className={cx($g.uppercaseLabel, $p.lightgreen50)}>{this.props.case}</Label>
         <Text className={cx($p.green, $p.pt16)}>{this.props.description}</Text>
       </Root>

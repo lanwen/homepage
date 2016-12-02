@@ -19,7 +19,7 @@ interface Field {
 
 export const projects: Project[] = [{
   name: 'Instagram',
-  endpoint: 'https://api.graph.cool/simple/v1/ciasdfasdf',
+  endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
   models: [{
     name: 'User',
     fields: [{
@@ -70,7 +70,7 @@ export const projects: Project[] = [{
   }],
 }, {
   name: 'Twitter',
-  endpoint: 'https://api.graph.cool/simple/v1/ciasdfasdf',
+  endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
   models: [{
     name: 'User',
     fields: [{

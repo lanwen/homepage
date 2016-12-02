@@ -6,6 +6,10 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-0.0.32.tgz#449abcd9a826807811ef101e58df9f83cfc61713"
 
+"@types/codemirror@*":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@types/codemirror/-/codemirror-0.0.35.tgz#74c431247d1908acb86bc9642b569c5136f4c69e"
+
 "@types/graphql@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.8.2.tgz#271c6df47a449ebce5d971f8df7f5da0b401edca"
@@ -14,13 +18,20 @@
   version "6.0.48"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.48.tgz#86ccc15f66b73cbbc5eb3483398936c585122b3c"
 
+"@types/react-codemirror@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@types/react-codemirror/-/react-codemirror-0.2.5.tgz#a059e1c4e2cf4804c77bf85f15d84a9c9cef0ae5"
+  dependencies:
+    "@types/codemirror" "*"
+    "@types/react" "*"
+
 "@types/react-dom@0.14.14":
   version "0.14.14"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.14.tgz#7371f5e7c60709647b5aadaa8865d3cadd9b940b"
   dependencies:
     "@types/react" "0.14.*"
 
-"@types/react@0.14.*", "@types/react@0.14.40":
+"@types/react@*", "@types/react@0.14.*", "@types/react@0.14.40":
   version "0.14.40"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.40.tgz#49090d68fe64394c98ee33337fcd179079380807"
 
@@ -670,7 +681,7 @@ codemirror-graphql@^0.5.8:
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.5.8.tgz#b57a56841b32fb571919f116ba6ee0c7fb97a581"
 
-codemirror@^5.15.2:
+codemirror@^5.15.2, codemirror@^5.18.2:
   version "5.21.0"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.21.0.tgz#9ec4caeda50807575b2115226bf12414f85d2246"
 
@@ -2259,6 +2270,10 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash.indexof@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/lodash.indexof/-/lodash.indexof-4.0.5.tgz#53714adc2cddd6ed87638f893aa9b6c24e31ef3c"
@@ -3230,6 +3245,14 @@ rc@^1.0.1, rc@^1.1.6, rc@~1.1.6:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
+
+react-codemirror@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-codemirror/-/react-codemirror-0.3.0.tgz#cd6bd6ef458ec1e035cfd8b3fe7b30c8c7883c6c"
+  dependencies:
+    classnames "^2.2.5"
+    codemirror "^5.18.2"
+    lodash.debounce "^4.0.8"
 
 react-deep-force-update@^2.0.1:
   version "2.0.1"
