@@ -6,6 +6,8 @@ import SectionHeader from '../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
+import QueryBox from './QueryBox'
+import { projects } from './projects'
 
 const Root = styled.section`
   position: relative;
@@ -176,99 +178,6 @@ const SchemaTab = styled(Tab)`
   ${props => props.active && ActiveSchemaTab};
 `
 
-const CodeSection = styled.div`
-  padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};
-  overflow: hidden;
-  
-  @media (max-width: ${breakpoints.p650}px) {
-    padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
-  }
-
-  @media (min-width: ${breakpoints.p1360}px) {
-    &:first-child {
-      width: 30%;
-    }
-    
-    &:last-child {
-      width: 70%;
-    }
-  }
-  
-  @media (max-width: ${breakpoints.p1000 - 1}px) {
-    &:first-child {
-      width: 30%;
-    }
-    
-    &:last-child {
-      width: 70%;
-    }
-  }
-`
-
-const Separator = styled.div`
-  &:before {
-    content: "";
-    position: absolute;
-    left: ${$v.size04};
-    top: ${$v.size25};
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-width: 8px 0 8px 10px;
-    border-color: transparent transparent transparent ${$v.darkBlue};
-  }
-  
-  @media (max-width: ${breakpoints.p650}px) {
-    top: ${$v.size16};
-  }
-`
-
-const RowNumbers = styled.div`
-  padding-top: 2px;
-  line-height: 24px;
-  white-space: pre;
-  color: ${$v.white20};
-  font-size: ${$v.size12};
-  text-align: right;
-  padding-right: ${$v.size06};
-  flex: 0 0 auto;
-`
-
-const Pre = styled.pre`
-  margin-top: ${$v.size38};
-  color: ${$v.white};
-  display: flex;
-`
-
-const CodeContainer = styled.div`    
-  position: relative;
-  overflow: hidden;
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: ${$v.size16};
-  }
-  
-  &:before {
-    left: 0;
-    background: linear-gradient(to right, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  &:after {
-    right: 0;
-    background: linear-gradient(to left, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  code {
-    display: block;
-    padding: 0 ${$v.size16};
-    overflow: auto;
-  }
-`
-
 const Endpoint = styled.div`
   height: ${parseFloat($v.size38) + 20}px;
   margin-left: -12px;
@@ -309,9 +218,22 @@ const CopyIndicator = styled.div`
   animation: ${movingCopyIndicator} .7s linear
 `
 
-export default class QueryEditor extends React.Component<{}, {}> {
+interface State {
+  activeProjectName: string
+  activeModelName: string
+}
+
+export default class QueryEditor extends React.Component<{}, State> {
+
+  state = {
+    activeProjectName: projects[0].name,
+    activeModelName: projects[0].models[0].name,
+  }
 
   render() {
+    const activeProject = projects.find(p => this.state.activeProjectName === p.name)!
+    const activeModel = activeProject.models.find(m => this.state.activeModelName === m.name)!
+
     return (
       <section>
         <SectionHeader
@@ -319,10 +241,15 @@ export default class QueryEditor extends React.Component<{}, {}> {
           copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.'
         />
         <TabBar>
-          <ExampleTab>Instagram</ExampleTab>
-          <ExampleTab active>Twitter</ExampleTab>
-          <ExampleTab>To do list</ExampleTab>
-          <ExampleTab>Pokedex</ExampleTab>
+          {projects.map(p => (
+            <ExampleTab
+              key={p.name}
+              active={activeProject.name === p.name}
+              onClick={() => this.setState({ activeModelName: p.models[0].name, activeProjectName: p.name } as State)}
+            >
+              {p.name}
+            </ExampleTab>
+          ))}
         </TabBar>
         <Root>
           <Container>
@@ -338,15 +265,27 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </div>
                 <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
                   <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
-                    <SchemaTab>User</SchemaTab>
-                    <SchemaTab active>Post</SchemaTab>
-                    <SchemaTab>Comment</SchemaTab>
+                    {activeProject.models.map(model => (
+                      <SchemaTab
+                        key={model.name}
+                        active={activeModel.name === model.name}
+                        onClick={() => this.setState({ activeModelName: model.name } as State)}
+                      >
+                        {model.name}
+                      </SchemaTab>
+                    ))}
                   </TabBar>
                   <div className={cx($p.flex, $p.flexColumn)}>
-                    <Field title='id' type='GraphQLId' required system/>
-                    <Field title='title' type='String' required/>
-                    <Field title='imgUrl' type='String'/>
-                    <Field title='comments' type='Comment' relation/>
+                    {activeModel.fields.map(field => (
+                      <Field
+                        key={field.name}
+                        title={field.name}
+                        type={field.type}
+                        required={field.required}
+                        system={field.system}
+                        relation={field.relation}
+                      />
+                    ))}
                   </div>
                 </Models>
                 <div className={cx($p.pt38)}>
@@ -358,21 +297,13 @@ export default class QueryEditor extends React.Component<{}, {}> {
                   >
                     <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
                       <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
-                        {'https://api.graph.cool/simple/v1/ciasdfasdfm'}
+                        {activeProject.endpoint}
                       </div>
                     </div>
                     <Copy
                       className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
                     >
-                      <CopyIndicator
-                        className={cx(
-                        $p.o0,
-                        $p.absolute,
-                        $p.f14,
-                        $p.fw6,
-                        $p.white,
-                      )}
-                      >
+                      <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
                         Copied
                       </CopyIndicator>
                       <Icon
@@ -386,91 +317,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </div>
               </Schema>
               }
-              <div className={cx($p.flex, $p.w100, $p.bbox)}>
-                <CodeSection>
-                  <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
-                  <Pre>
-                  <RowNumbers>
-                    {`1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-`}
-                  </RowNumbers>
-                  <CodeContainer>
-                    <code>
-                    {`{
-  allPosts {
-    title,
-    imageUrl,
-    comments {
-      text
-    }
-  }
-}`}
-                    </code>
-                  </CodeContainer>
-                </Pre>
-                </CodeSection>
-                <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)} />
-                <CodeSection>
-                  <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
-                  <Pre>
-                  <RowNumbers>
-                    {`1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18`}
-                  </RowNumbers>
-                  <CodeContainer>
-                    <code>
-                    {`{
-  "data": {
-    "allPosts": [
-      {
-        "title": "My only Post",
-        "imageUrl": "http://whatev.org/OEIR5.jpg",
-        "comments": [
-          {
-            "text": "This is the first comment"
-          },
-          {
-            "text": "This is the second comment"
-          }
-        ]
-      }
-    }
-  }
-}`}
-                    </code>
-                  </CodeContainer>
-                </Pre>
-                </CodeSection>
-              </div>
+              <QueryBox endpoint={activeProject.endpoint}/>
             </Editor>
             {window.innerWidth > breakpoints.p580 &&
             <TryOut />

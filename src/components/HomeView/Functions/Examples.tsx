@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Example from './Example'
 import { maxWidth, breakpoints } from '../../../utils/constants'
 import Pagination from '../Pagination'
+import { examples } from './examples'
+import * as CodeMirror from 'react-codemirror'
 
 const Root = styled.div`
   
@@ -198,32 +200,41 @@ const Tab = styled.li`
   ${props => props.active && ActiveTab};
 `
 
-export default class Examples extends React.Component<{}, {}> {
+interface State {
+  selectedExample: string
+  selectedLanguage: string
+}
+
+export default class Examples extends React.Component<{}, State> {
+
+  state = {
+    selectedExample: examples[0].name,
+    selectedLanguage: examples[0].snippets[0].language,
+  }
 
   render() {
+    const selectedExample = examples.find(e => e.name === this.state.selectedExample)!
+    const selectedSnippet = selectedExample.snippets.find(s => s.language === this.state.selectedLanguage)!
+
     return (
       <Root className={cx($p.relative)}>
         <Container className={cx($p.flex, $p.relative)}>
           <Selection className={cx()}>
             {window.innerWidth <= breakpoints.p900 &&
             <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-              <Pagination bullets={3} />
+              <Pagination bullets={3}/>
             </div>
             }
             <ExamplesContainer className={cx($p.flex)}>
-              <Example
-                case='AirBnB'
-                description='Send an Email to the host, everytime he gets a new rating.'
-                active
-              />
-              <Example
-                case='Instagram'
-                description='Send a push notification to the author, everytime his post gets a new comment.'
-              />
-              <Example
-                case='Webshop'
-                description='Verify & process cart items of a customer and submit the order to Stripe.'
-              />
+              {examples.map(e => (
+                <Example
+                  key={e.name}
+                  case={e.name}
+                  description={e.description}
+                  active={e.name === selectedExample.name}
+                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language})}
+                />
+              ))}
             </ExamplesContainer>
           </Selection>
           <Overlay className={cx($g.overlay, $p.flex, $p.w100)}>
@@ -231,21 +242,15 @@ export default class Examples extends React.Component<{}, {}> {
               <Block>
                 <div className={cx($g.uppercaseLabel, $p.black20)}>Trigger</div>
                 <div className={cx($p.flex, $p.br2, $p.overflowHidden, $p.lhSolid, $p.mv38)}>
-                  <div className={cx($p.bgBlack07, $p.black40, $p.ph16, $p.pv10)}>Rating</div>
-                  <div className={cx($p.bgGreen, $p.white, $p.ph16, $p.pv10)}>is created</div>
+                  <div className={cx($p.bgBlack07, $p.black40, $p.ph16, $p.pv10)}>{selectedExample.trigger.model}</div>
+                  <div className={cx($p.bgGreen, $p.white, $p.ph16, $p.pv10)}>{selectedExample.trigger.mutation}</div>
                 </div>
               </Block>
               <Block className={cx($p.bgBlack04, $p.h100)}>
                 <div className={cx($g.uppercaseLabel, $p.black20)}>Payload</div>
                 <Payload>
                   <code>
-                    {`{
-    createdNode {
-      stars,
-      description,
-      author
-    }
-  }`}
+                    {selectedExample.payloadQuery}
                   </code>
                 </Payload>
               </Block>
@@ -255,38 +260,17 @@ export default class Examples extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.justifyBetween)}>
                   <div className={cx($g.uppercaseLabel, $p.white30)}>Payload</div>
                   <TabBar>
-                    <Tab>JS</Tab>
-                    <Tab active>Go</Tab>
-                    <Tab>Ruby</Tab>
-                    <Tab>PHP</Tab>
+                    {selectedExample.snippets.map(({ language }) => (
+                      <Tab
+                        key={language}
+                        active={language === selectedSnippet.language}
+                      >
+                        {language.toUpperCase()}
+                      </Tab>
+                    ))}
                   </TabBar>
                 </div>
-                <Pre>
-                    <RowNumbers>
-                      {`1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
-  10
-  11
-  12
-  13
-  14
-  `}
-                    </RowNumbers>
-                    <CodeContainer>
-                      <code>
-                      {`module.exports = function (cb) {
-    cb(null, 'hello webtasks!');
-  }`}
-                      </code>
-                    </CodeContainer>
-                  </Pre>
+                <CodeMirror value={selectedSnippet.code} />
               </Block>
             </div>
           </Overlay>
