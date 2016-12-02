@@ -39,7 +39,7 @@ const Root = styled.div`
         bottom: 0;
         right: 0;
         width: ${$v.size96}
-        background: linear-gradient(to right, rgba(0,0,0,0) 0%, #fafafa 70%)
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, #fafafa 70%)
       }
     }
   }

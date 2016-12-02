@@ -1,13 +1,15 @@
 import * as React from 'react'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
+import styled from 'styled-components'
+import { breakpoints } from '../../../utils/constants'
 
 interface Props {
   headline: string
   content: string
 }
-export default class FeaturesContent extends React.Component<Props, {}> {
 
+export default class FeaturesContent extends React.Component<Props, {}> {
   render() {
     return (
       <div>

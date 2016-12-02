@@ -9,11 +9,11 @@ export default class AboutView extends React.Component<{}, {}> {
 
   render() {
     const About = styled.div`
-      flex: 1 300px;
+      flex: 1 400px;
       color: rgba(0, 0, 0, 0, 0.8);
 `
     const Description = styled.div`
-      flex: 1 400px;
+      flex: 1 300px;
 `
     const Name = styled.div`
       font-weight: 100;
@@ -68,26 +68,26 @@ export default class AboutView extends React.Component<{}, {}> {
     return (
       <div>
         <Header/>
-        <div className={cx($p.flex, $p.flexWrap, $p.flexAuto, $p.mh38, $p.mv96)}>
+        <section className={cx($p.flex, $p.flexWrap, $p.flexAuto, $p.mh38, $p.mb60)}>
           <Description className={cx($p.itemsCenter, $p.flex, $p.ph38, $p.f38, $p.fw3)}>
             We want to build the only backend you’ll ever need.
           </Description>
-          <About className={cx($p.itemsCenter, $p.flex, $p.pa38, $p.f20, $p.o50)}>
+          <About className={cx($p.itemsCenter, $p.flex, $p.pa38, $p.f20, $p.o50, $p.fw4)}>
             We enable frontend developers to build products from scratch without the need to develop their own backend.
 We ourselves have built countless backend applications and got tired of reinventing the wheel over and over again. GraphQL is a massive paradigm shift. It finally gives developers the flexibility to do all the work in the frontend. Our job is to take care of the rest and invent the wheel one last time for you. business logic?
           </About>
-        </div>
-        <div className={cx($p.bgBlack04, $p.pv96)}>
-          <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn, $p.pb38)}>
+        </section>
+        <section className={cx($p.bgBlack04, $p.pt96)}>
+          <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn)}>
             <h1 className={cx($p.selfCenter)}>We’re frontend developers on our own.</h1>
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
-          </div>
-          <div className={cx($p.flex, $p.justifyAround, $p.pv38, $p.flexWrap)}>
+          </article>
+          <div className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
             <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Johannes.png')}/>
               <Name>Johannes Schickling</Name>
               <Position>CO-FOUNDER</Position>
-              <div className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Johannes.png')}/>
                 <Name>Johannes Schickling</Name>
                 <Position className={cx($p.pb25)}>CO-FOUNDER</Position>
@@ -103,13 +103,13 @@ We ourselves have built countless backend applications and got tired of reinvent
                   </div>
                 </div>
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
-              </div>
+              </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Soren.png')}/>
               <Name>Søren Bramer Schmidt</Name>
               <Position>CO-FOUNDER</Position>
-              <div className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Soren.png')}/>
                 <Name>Søren Bramer Schmidt</Name>
                 <Position className={cx($p.pb25)}>CO-FOUNDER</Position>
@@ -125,13 +125,13 @@ We ourselves have built countless backend applications and got tired of reinvent
                   </div>
                 </div>
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
-              </div>
+              </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Nilan.png')}/>
               <Name>Nilan Marktanner</Name>
               <Position>DEVELOPER</Position>
-              <div className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Nilan.png')}/>
                 <Name>Nilan Marktanner</Name>
                 <Position className={cx($p.pb25)}>DEVELOPER</Position>
@@ -147,10 +147,10 @@ We ourselves have built countless backend applications and got tired of reinvent
                   </div>
                 </div>
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
-              </div>
+              </section>
             </Founder>
           </div>
-        </div>
+        </section>
         <Footer/>
       </div>
     )

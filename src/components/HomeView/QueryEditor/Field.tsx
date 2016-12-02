@@ -40,10 +40,12 @@ export default class Field extends React.Component<Props, {}> {
           </span>
           }
         </h4>
-        <Tag className={cx($p.flex, $p.itemsCenter, $p.pa10, $p.bgWhite07, $p.br2, $p.lhSolid)}>
+        <Tag className={cx($p.flex, $p.f14, $p.itemsCenter, $p.pa10, $p.bgWhite07, $p.br2, $p.lhSolid)}>
           {this.props.relation &&
           <Icon
             stroke
+            width={parseFloat($v.size14)}
+            height={parseFloat($v.size14)}
             className={cx($p.mr6)}
             color={$v.white}
             strokeWidth={4}

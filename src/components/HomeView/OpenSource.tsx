@@ -22,44 +22,47 @@ const Learn = styled.div`
     }
 `
 const Button = styled.button`
-  font-size: ${$v.size25} !important;
+  font-size: ${$v.size16};
   
-  @media (max-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size16} !important;
+  @media (min-width: ${breakpoints.p1000}px) {
+    font-size: ${$v.size20};
+  }
+  
+  @media (min-width: ${breakpoints.p1360}px) {
+    font-size: ${$v.size25};
   }
 `
-
 export default class OpenSource extends React.Component<{}, {}> {
 
   render() {
     return (
       <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
-        <div className={cx($p.pt96, $p.tc, $p.f38, $p.fw3, $p.flex, $p.flexRow, $p.justifyCenter)}>
+        <section className={cx($p.pt96, $p.tc, $p.f38, $p.fw3, $p.flex, $p.flexRow, $p.justifyCenter)}>
             <div className={cx($p.mb0, $p.pb0)}>
               <span>We </span>
               <img className={$p.ph10} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
               <span> Open Source</span>
             </div>
-        </div>
-        <Copy className={cx($p.f20, $p.o50, $p.tc, $p.pb16, $p.selfCenter)}>
+        </section>
+        <Copy className={cx($p.f20, $p.o50, $p.tc, $p.pb16, $p.selfCenter, $p.fw4)}>
           {
             `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.` // tslint:disable-line
           }
         </Copy>
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
-          <span className={cx($p.mh25, $p.mv10)}>
+          <figure className={cx($p.mh25, $p.mv10)}>
             <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnRelay.png')}
                  alt='Learn Relay'/>
-          </span>
-          <span className={cx($p.mh25, $p.mv10)}>
+          </figure>
+          <figure className={cx($p.mh25, $p.mv10)}>
             <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnApollo.png')}
                  alt='Learn Apollo'/>
-          </span>
+          </figure>
         </Learn>
-        <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter)}>
+        <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter, $p.fw3)}>
           {'Try it out for free - and setup your own backend in less than 5 minutes.'}
         </Copy>
-        <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.mv38)}>Sign up</Button>
+        <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.pa16)}>Sign up</Button>
       </div>
     )
   }

@@ -41,12 +41,12 @@ export default class Features extends React.Component<{}, {}> {
 
     return (
       <div>
-        <div className={cx($p.pt96, $p.pb38, $p.tc, $p.f38, $p.fw3)}>
+        <section className={cx($p.pt96, $p.pb38, $p.tc, $p.f38, $p.fw3)}>
           Features optimized for developer experience
-        </div>
-        <div className={cx($p.f20, $p.o50, $p.tc, $p.pb96)}>
+        </section>
+        <section className={cx($p.f20, $p.o50, $p.tc, $p.pb96, $p.fw4)}>
           Graphcool is built by developers for developers.
-        </div>
+        </section>
         <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
           <SmallContainer>
             <Icon>

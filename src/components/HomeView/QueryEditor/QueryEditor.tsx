@@ -4,20 +4,19 @@ import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import Field from './Field'
+import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 
 const Root = styled.section`
   position: relative;
 
-  @media (min-width: ${breakpoints.p1440}px) {
-    &:before {
-      content: "";
-      position: absolute;
-      top: ${$v.size16};
-      bottom: ${$v.size16};
-      width: 100%;
-      background: ${$v.gray02};
-    }
+  &:before {
+    content: "";
+    position: absolute;
+    top: ${$v.size16};
+    bottom: 0;
+    width: 100%;
+    background: ${$v.gray02};
   }
 `
 
@@ -57,6 +56,17 @@ const TabBar = styled.ul`
   position: relative;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size25};
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    overflow: auto;
+    justify-content: flex-start;
+    padding-left: ${$v.size38};
+  }
+  
 `
 
 const ActiveTab = `
@@ -70,6 +80,10 @@ const ActiveTab = `
     background: ${$v.darkBlue};
     color: ${$v.white};
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    padding: ${$v.size16};
+  }  
 `
 
 const Tab = styled.li`
@@ -100,6 +114,11 @@ const Tab = styled.li`
     background: ${$v.gray10};
     color: ${$v.gray50};
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    font-size: ${$v.size14};
+    padding: ${$v.size14};
+  }  
 `
 
 const ActiveExampleTab = `
@@ -254,7 +273,7 @@ const Endpoint = styled.div`
   height: ${parseFloat($v.size38) + 20}px;
   margin-left: -12px;
   margin-right: -12px;
-  width: calc(100% + 24px)
+  width: calc(100% + 24px);
   
   @media (max-width: ${breakpoints.p650}px) {
     margin: 0;
@@ -296,8 +315,8 @@ export default class QueryEditor extends React.Component<{}, {}> {
     return (
       <section>
         <SectionHeader
-          headline='Whatever headline we have here'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          headline='Your data schema generates a developer-friendly GraphQL API'
+          copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.'
         />
         <TabBar>
           <ExampleTab>Instagram</ExampleTab>
@@ -330,7 +349,7 @@ export default class QueryEditor extends React.Component<{}, {}> {
                     <Field title='comments' type='Comment' relation/>
                   </div>
                 </Models>
-                <div className={cx($p.pt25)}>
+                <div className={cx($p.pt38)}>
                   <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
                   <Endpoint
                     className={cx(
@@ -453,6 +472,9 @@ export default class QueryEditor extends React.Component<{}, {}> {
                 </CodeSection>
               </div>
             </Editor>
+            {window.innerWidth > breakpoints.p580 &&
+            <TryOut />
+            }
           </Container>
         </Root>
       </section>
