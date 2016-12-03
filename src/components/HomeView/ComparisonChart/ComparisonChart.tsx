@@ -5,6 +5,7 @@ import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import Cell from './Cell'
 import { breakpoints } from '../../../utils/constants'
+import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.section`
   
@@ -105,9 +106,9 @@ export default class ComparisonChart extends React.Component<{}, {}> {
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
         <Table>
-          <div className={cx($p.flex, $p.flexColumn)}>
+          <HorScrollbox className={cx($p.flex, $p.flexColumn)}>
             <HeadRow>
-              <MetricsCell className='cell'></MetricsCell>
+              <MetricsCell className='cell'/>
               <div className='cell'>
                 <img className={cx($p.mr10)} src={require('../../../assets/graphics/logos/graphcool.svg')}/>
                 Graphcool
@@ -263,7 +264,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                 bad
               />
             </Row>
-          </div>
+          </HorScrollbox>
         </Table>
       </Root>
     )

@@ -7,6 +7,7 @@ import { maxWidth, breakpoints } from '../../../utils/constants'
 import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
+import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.div`
   
@@ -92,7 +93,7 @@ const Selection = styled.div`
   }
 `
 
-const ExamplesContainer = styled.div`
+const ExamplesContainer = styled(HorScrollbox)`
   flex-direction: column;
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -100,7 +101,6 @@ const ExamplesContainer = styled.div`
     overflow: auto;
     padding-bottom: ${$v.size25};
   }
-  
 `
 
 const Block = styled.div`

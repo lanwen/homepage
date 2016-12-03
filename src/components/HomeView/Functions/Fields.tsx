@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import Field from './Field'
 import Pagination from '../Pagination'
+import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.div`
   margin-top: -${$v.size16};
@@ -31,7 +32,7 @@ const Header = styled.header`
   }
 `
 
-const Container = styled.div`
+const Container = styled(HorScrollbox)`
   flex-wrap: wrap;
   justify-content: center;
   padding: ${$v.size25} 0 0;

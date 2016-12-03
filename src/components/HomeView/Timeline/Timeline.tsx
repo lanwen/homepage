@@ -6,6 +6,7 @@ import { maxWidth, breakpoints } from '../../../utils/constants'
 import SectionHeader from '../SectionHeader'
 import Block from './Block'
 import Pagination from '../Pagination'
+import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.div`
   overflow: hidden;
@@ -40,8 +41,7 @@ const Root = styled.div`
   
 `
 
-const Container = styled.div`
-  overflow: auto;
+const Container = styled(HorScrollbox)`
   max-width: ${maxWidth}px;
   padding: ${$v.size10} 0 ${$v.size25};
   font-size: ${$v.size14};
@@ -102,9 +102,9 @@ export default class Timeline extends React.Component<{}, {}> {
             <Block label='Scaling'/>
           </Container>
           {window.innerWidth < breakpoints.p500 &&
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-              <Pagination bullets={3} grayscale />
-            </div>
+          <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
+            <Pagination bullets={3} grayscale/>
+          </div>
           }
         </Root>
       </section>
