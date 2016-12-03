@@ -38,7 +38,7 @@ export default class PricingViewTable extends React.Component<{}, {}> {
 `
     const Paragraph = styled.div`
       margin-bottom: ${$v.size16};
-      font-size: ${$v.fontSize20};
+      font-size: ${$v.size20};
       font-weight: 400;
 `
     const Price = styled.div`

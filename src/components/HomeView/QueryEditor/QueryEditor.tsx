@@ -7,7 +7,7 @@ import Field from './Field'
 import TryOut from './TryOut'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import QueryBox from './QueryBox'
-import { projects } from './projects'
+import { projects } from './data'
 
 const Root = styled.section`
   position: relative;

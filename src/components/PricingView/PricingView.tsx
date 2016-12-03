@@ -12,7 +12,7 @@ export default class PricingView extends React.Component<{}, {}> {
   render() {
     const PricingText = styled.div`
       max-width: 800px;
-      font-size: ${$v.fontSize20};
+      font-size: ${$v.size20};
       font-weight: 400;
       
       @media (max-width: ${breakpoints.p500}px) {

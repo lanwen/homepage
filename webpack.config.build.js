@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     app: [
       'graphcool-styles/dist/styles.css',
+      'graphiql/graphiql.css',
       './src/main.tsx'
     ],
     vendor: config.entry.vendor,

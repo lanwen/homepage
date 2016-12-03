@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Example from './Example'
 import { maxWidth, breakpoints } from '../../../utils/constants'
 import Pagination from '../Pagination'
-import { examples } from './examples'
+import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 
 const Root = styled.div`
@@ -270,7 +270,7 @@ export default class Examples extends React.Component<{}, State> {
                     ))}
                   </TabBar>
                 </div>
-                <CodeMirror value={selectedSnippet.code} />
+                <CodeMirror value={selectedSnippet.code} options={{lineNumbers: true}} />
               </Block>
             </div>
           </Overlay>
