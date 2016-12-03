@@ -257,8 +257,8 @@ export default class Examples extends React.Component<{}, State> {
             </div>
             <div className={cx($p.bgDarkerBlue, $p.w100)}>
               <Block>
-                <div className={cx($p.flex, $p.justifyBetween)}>
-                  <div className={cx($g.uppercaseLabel, $p.white30)}>Payload</div>
+                <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
+                  <div className={cx($g.uppercaseLabel, $p.white30)}>Code</div>
                   <TabBar>
                     {selectedExample.snippets.map(({ language }) => (
                       <Tab
@@ -270,7 +270,7 @@ export default class Examples extends React.Component<{}, State> {
                     ))}
                   </TabBar>
                 </div>
-                <CodeMirror value={selectedSnippet.code} options={{lineNumbers: true}} />
+                <CodeMirror value={selectedSnippet.code}  options={{lineNumbers: true, mode: 'javascript', theme: 'dracula'}} />
               </Block>
             </div>
           </Overlay>

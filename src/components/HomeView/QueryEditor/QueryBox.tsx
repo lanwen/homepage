@@ -135,7 +135,7 @@ export default class QueryBox extends React.Component<Props, State> {
     return (
       <div className={cx($p.flex, $p.w100, $p.bbox)}>
         <CodeSection>
-          <div className={cx($g.uppercaseLabel, $p.white30)}>Query</div>
+          <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
           <QueryEditor
             schema={this.state.schema}
             value={this.state.query}
@@ -144,7 +144,7 @@ export default class QueryBox extends React.Component<Props, State> {
         </CodeSection>
         <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}/>
         <CodeSection>
-          <div className={cx($g.uppercaseLabel, $p.white30)}>Response</div>
+          <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
           <ResultViewer value={this.state.result} />
         </CodeSection>
       </div>
