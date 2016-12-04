@@ -7,6 +7,7 @@ import LandingCallToAction from './LandingCallToAction'
 import LogoBar from '../LogoBar'
 import Hint from './Hint'
 import Video from './Video'
+import Caret from './Caret'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -283,7 +284,9 @@ export default class Landing extends React.Component<{}, {}> {
                   AWS Lambda
                   <Hint text='Serverless functions are alsow awesome' />
                 </span>
-                <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
+                <BuiltFor className={cx($p.green, $p.nowrap)}>
+                  built for <Caret options={['frontend developers.', 'backend developers.', 'startups.', 'agencies.']} />
+                </BuiltFor>
               </Headline>
               <Copy className={cx($p.f25, $p.black50)}>
                 {
