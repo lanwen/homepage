@@ -121,11 +121,11 @@ const Steps = styled.div`
   }
   
   @media (max-width: ${breakpoints.p400}px) {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: -25px;
+    margin-right: -25px;
+    overflow: auto;
   }
-  
-  
 `
 
 const ActiveStep = `
@@ -196,14 +196,13 @@ const Step = styled.div`
   }
   
   @media (max-width: ${breakpoints.p400}px) {
-    padding-left: 0;
-    padding-top: ${$v.size16};
-    
-    > span {
-      display: inline-block;
-      opacity: .5;
+    &:first-child {
+      padding-left: ${$v.size25};
     }
     
+    &:last-child {
+      padding-right: ${$v.size25};
+    }
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
