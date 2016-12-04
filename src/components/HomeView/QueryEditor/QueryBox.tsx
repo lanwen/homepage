@@ -17,24 +17,32 @@ const CodeSection = styled.div`
   @media (max-width: ${breakpoints.p650}px) {
     padding: ${$v.size16} 0 ${$v.size16} ${$v.size16};
   }
+  
+  &:first-child {
+    padding: ${$v.size25};
+    
+    @media (max-width: ${breakpoints.p650}px) {
+      padding: ${$v.size16};
+    }
+  }
 
   @media (min-width: ${breakpoints.p1360}px) {
     &:first-child {
-      width: 30%;
+      width: 40%;
     }
     
     &:last-child {
-      width: 70%;
+      width: 60%;
     }
   }
   
   @media (max-width: ${breakpoints.p1000 - 1}px) {
     &:first-child {
-      width: 30%;
+      width: 40%;
     }
     
     &:last-child {
-      width: 70%;
+      width: 60%;
     }
   }
   

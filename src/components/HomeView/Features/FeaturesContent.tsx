@@ -16,7 +16,7 @@ export default class FeaturesContent extends React.Component<Props, {}> {
         <div className={cx($p.mv16, $p.f25, $p.tc, $p.fw3)}>
           <span>{this.props.headline}</span>
         </div>
-        <p className={cx($p.f16, $p.o50, $p.tc)}>
+        <p className={cx($p.f16, $p.fw4, $p.o50, $p.tc)}>
           {this.props.content}
         </p>
       </div>

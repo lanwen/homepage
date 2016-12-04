@@ -42,7 +42,7 @@
 /* CURSOR */
 
 .CodeMirror div.CodeMirror-cursor {
-    border-left: 1px solid black;
+    border-left: 1px solid white;
 }
 /* Shown when moving in bi-directional text */
 .CodeMirror div.CodeMirror-secondarycursor {
@@ -153,7 +153,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     color: white !important;
     border: none;
 }
-.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.2); }
+.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.1); }
 .cm-s-default .CodeMirror-cursor { border-left: solid thin #f8f8f0; }
 .cm-s-default .CodeMirror-linenumber { color: rgba(255,255,255,0.2); }
 .cm-s-default .CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }
@@ -353,7 +353,7 @@ div.CodeMirror-dragcursors {
 }
 
 .CodeMirror-selected { background: #d9d9d9; }
-.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
+.CodeMirror-focused .CodeMirror-selected { background: rgba(255,255,255,0.15); }
 .CodeMirror-crosshair { cursor: crosshair; }
 
 .cm-searching {
