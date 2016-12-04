@@ -6,6 +6,7 @@ import { breakpoints, maxWidth } from '../../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
 import LogoBar from '../LogoBar'
 import Hint from './Hint'
+import Video from './Video'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -226,14 +227,6 @@ const Step = styled.div`
   ${props => props.active && ActiveStep}
 `
 
-const VideoContainer = styled.div`
-  position: absolute;
-  top: 5.3%;
-  bottom: 0.5%;
-  right: 0.7%;
-  left: 0.7%;
-`
-
 interface State {
   activeStep: number
 }
@@ -250,14 +243,11 @@ export default class Landing extends React.Component<{}, {}> {
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
-            <VideoContainer>
-              <video
-                className={cx($p.w100)}
-                src='http://graphcool-random.s3.amazonaws.com/header.mp4'
-                autoPlay
-                loop
-              />
-            </VideoContainer>
+
+            <Video
+              step={this.state.activeStep}
+              setStep={(step) => this.setState({ activeStep: step } as State)}
+            />
             <Steps>
               <Step
                 active={this.state.activeStep === 0}
