@@ -52,6 +52,12 @@ const Container = styled(HorScrollbox)`
     flex-wrap: nowrap;
     padding: ${$v.size25} 0 0;
   }
+  
+  @media (min-width: ${breakpoints.p650 + 1}px) {
+    overflow: visible;
+    -webkit-overflow-scrolling: initial;
+    box-sizing: content-box;
+  }
 `
 
 export default class Fields extends React.Component<{}, {}> {
