@@ -103,7 +103,12 @@ export default class Timeline extends React.Component<{}, {}> {
           </Container>
           {window.innerWidth < breakpoints.p500 &&
           <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-            <Pagination bullets={3} grayscale/>
+            <Pagination
+              bullets={3}
+              grayscale
+              active={0}
+              onSelect={() => null}
+            />
           </div>
           }
         </Root>

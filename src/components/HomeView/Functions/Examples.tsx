@@ -223,7 +223,11 @@ export default class Examples extends React.Component<{}, State> {
           <Selection className={cx()}>
             {window.innerWidth <= breakpoints.p900 &&
             <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-              <Pagination bullets={3}/>
+              <Pagination
+                bullets={3}
+                active={0}
+                onSelect={() => null}
+              />
             </div>
             }
             <ExamplesContainer className={cx($p.flex)}>

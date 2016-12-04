@@ -41,7 +41,6 @@ export default class Video extends React.Component<Props, State> {
   componentWillReceiveProps(props: Props) {
     const seconds = this.video!.currentTime
     const closestMarkerIndex = markers.length - 1 - markers.slice(0).reverse().findIndex(m => m < seconds)
-    console.log(seconds, props.step, closestMarkerIndex)
     if (props.step !== closestMarkerIndex) {
       this.video!.currentTime = markers[props.step]
     }

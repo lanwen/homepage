@@ -59,7 +59,7 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'text',
+      name: 'quote',
       type: 'String',
       required: true,
     }, {
@@ -110,7 +110,7 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'text',
+      name: 'quote',
       type: 'String',
       required: true,
     }, {
@@ -161,7 +161,7 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'text',
+      name: 'quote',
       type: 'String',
       required: true,
     }, {

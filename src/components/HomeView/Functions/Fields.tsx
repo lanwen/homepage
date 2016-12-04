@@ -93,7 +93,12 @@ export default class Fields extends React.Component<{}, {}> {
         </Container>
         {window.innerWidth <= breakpoints.p650 &&
         <div className={cx($p.mt25, $p.flex, $p.justifyCenter)}>
-          <Pagination bullets={5} onDark/>
+          <Pagination
+            bullets={5}
+            onDark
+            active={0}
+            onSelect={() => null}
+          />
         </div>
         }
       </Root>

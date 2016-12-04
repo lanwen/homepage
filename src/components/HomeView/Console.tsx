@@ -106,7 +106,11 @@ export default class Console extends React.Component<{}, {}> {
                 </Copy>
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>
-                <Pagination bullets={7} />
+                <Pagination
+                  bullets={7}
+                  active={0}
+                  onSelect={() => null}
+                />
                 <PaginationNext className={cx($p.pa10, $p.brPill, $p.bgLightgreen20)}>
                   <Icon src={require('../../assets/icons/arrowRight.svg')} width={26} height={26} color={$v.green}/>
                 </PaginationNext>
