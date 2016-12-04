@@ -77,7 +77,8 @@ const Command = styled.span`
   white-space: nowrap;
 `
 
-const Button = styled.button`
+const Button = styled.a`
+  text-decoration: none;
   border-radius: 2px;
   font-size: ${$v.size16};
   letter-spacing: 1px;
@@ -85,23 +86,43 @@ const Button = styled.button`
   font-weight: 600;
   display: flex;
   align-items: center;
+  cursor: pointer;
   padding: ${$v.size10} ${$v.size16} ${$v.size10} ${$v.size10};
+  transition: background ${$v.duration} linear, color ${$v.duration} linear;
+   
+  svg {
+    transition: fill ${$v.duration} linear;
+  }
   
-  img {
-    height: ${$v.size25};
-    width: auto;
+  svg {
     margin-right: ${$v.size10};
+  }
+  
+  &:hover {
+    color: ${$v.white};
+    
+    svg {
+      fill: ${$v.white};
+    }
   }
 `
 
 const ReactButton = styled(Button)`
   background: rgba(0, 216, 255, 0.15);
   color: rgba(0, 216, 255, 1);
+  
+  &:hover {
+    background: rgba(0, 216, 255, 1);
+  }
 `
 
 const AngularButton = styled(Button)`
   background: rgba(221, 0, 49, 0.15);
   color: rgba(221, 0, 49, 1);
+  
+  &:hover {
+    background: rgba(221, 0, 49, 1);
+  }
 `
 
 export default class TryOut extends React.Component<{}, {}> {
@@ -115,12 +136,22 @@ export default class TryOut extends React.Component<{}, {}> {
         <Steps className={cx($p.flex, $p.itemsCenter)}>
           <Step>
             <span className={cx($g.uppercaseLabel, $p.black40)}>Download Code</span>
-            <ReactButton className={cx($p.ml16)}>
-              <img src={require('../../../assets/graphics/logos/react.svg')} />
+            <ReactButton href='' target='_blank' className={cx($p.ml16)}>
+              <Icon
+                src={require('../../../assets/icons/react.svg')}
+                width={25}
+                height={25}
+                color='rgba(0, 216, 255, 1)'
+              />
               React
             </ReactButton>
-            <AngularButton className={cx($p.ml10)}>
-              <img src={require('../../../assets/graphics/logos/angular.svg')} />
+            <AngularButton href='' target='_blank' className={cx($p.ml10)}>
+              <Icon
+                src={require('../../../assets/icons/angular.svg')}
+                width={25}
+                height={25}
+                color='rgba(221, 0, 49, 1)'
+              />
               Angular
             </AngularButton>
           </Step>

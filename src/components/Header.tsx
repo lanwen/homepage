@@ -33,6 +33,7 @@ const NavOpened = `
 `
 const Nav = styled.nav`
   font-size: ${$v.size14};
+  z-index: 1000;
   
   @media (max-width: ${breakpoints.p750}px) {
     display: none;
