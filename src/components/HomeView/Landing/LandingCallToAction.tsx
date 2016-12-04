@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $g, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../utils/constants'
+import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.div`
   

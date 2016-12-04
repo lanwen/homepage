@@ -2,9 +2,10 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints, maxWidth } from '../../utils/constants'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
-import LogoBar from './LogoBar'
+import LogoBar from '../LogoBar'
+import Hint from './Hint'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -248,7 +249,7 @@ export default class Landing extends React.Component<{}, {}> {
       <section>
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
-            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/browser.svg')} />
+            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
             <VideoContainer>
               <video
                 className={cx($p.w100)}
@@ -287,7 +288,11 @@ export default class Landing extends React.Component<{}, {}> {
           <HeroText className={cx($p.flex, $p.flexColumn)}>
             <div>
               <Headline>
-                Flexible backend platform combining GraphQL + <span className={cx($p.nowrap)}>AWS Lambda</span>
+                Flexible backend platform combining GraphQL
+                <Hint text='GraphQL is awesome'/> + <span className={cx($p.nowrap)}>
+                  AWS Lambda
+                  <Hint text='Serverless functions are alsow awesome' />
+                </span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
               </Headline>
               <Copy className={cx($p.f25, $p.black50)}>
