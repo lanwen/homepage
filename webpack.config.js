@@ -20,7 +20,7 @@ module.exports = {
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
       './src/styles/graphiql.css',
-      'codemirror/lib/codemirror.css',
+      // 'codemirror/lib/codemirror.css',
       'codemirror/theme/dracula.css',
       './src/main.tsx'
     ],
