@@ -9,6 +9,7 @@ import { QueryEditor } from 'graphiql/dist/components/QueryEditor'
 import { ResultViewer } from 'graphiql/dist/components/ResultViewer'
 import { validate } from 'graphql/validation/validate'
 import { parse } from 'graphql/language'
+import Icon from 'graphcool-styles/dist/components/Icon/Icon';
 
 const CodeSection = styled.div`
   padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};
@@ -36,6 +37,10 @@ const CodeSection = styled.div`
     &:last-child {
       width: 70%;
     }
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    width: 100% !important;
   }
 `
 
@@ -103,11 +108,20 @@ const CodeContainer = styled.div`
   }
 `
 
+const Switch = styled.div`
+  transition: opacity ${$v.duration} linear;
+  
+  &:hover {
+    opacity: .8;
+  }
+`
+
 const defaultQuery = `{
   allPosts {
     id
   }
 }`
+
 
 interface Props {
   endpoint: string
@@ -135,18 +149,38 @@ export default class QueryBox extends React.Component<Props, State> {
     return (
       <div className={cx($p.flex, $p.w100, $p.bbox)}>
         <CodeSection>
-          <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
+          <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
+            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
+            { window.innerWidth < breakpoints.p500 &&
+            <Switch className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pr16, $p.pointer)}>
+              Response
+              <Icon
+                src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                width={9}
+                height={15}
+                color={$v.white}
+                stroke
+                strokeWidth={10}
+                className={cx($p.ml10)}
+              />
+            </Switch>
+            }
+          </div>
           <QueryEditor
             schema={this.state.schema}
             value={this.state.query}
             onEdit={this.onEditQuery}
           />
         </CodeSection>
+        { window.innerWidth >= breakpoints.p500 &&
         <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}/>
+        }
+        { window.innerWidth >= breakpoints.p500 &&
         <CodeSection>
           <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
-          <ResultViewer value={this.state.result} />
+          <ResultViewer value={this.state.result}/>
         </CodeSection>
+        }
       </div>
     )
   }
@@ -159,7 +193,7 @@ export default class QueryBox extends React.Component<Props, State> {
         if (validate(schema, parse(query)).length === 0) {
           const result = await queryEndpoint(this.props.endpoint, query)
           const resultString = JSON.stringify(result, null, 2)
-          this.setState({ result: resultString } as State)
+          this.setState({result: resultString} as State)
         }
       } catch (err) {
         // ignore
