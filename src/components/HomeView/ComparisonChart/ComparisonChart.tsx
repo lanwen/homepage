@@ -41,6 +41,11 @@ const Table = styled.div`
   }
 `
 
+const TableContainer = styled(HorScrollbox)`
+  padding-bottom: 500px;
+  margin-bottom: -500px;
+`
+
 const RowBase = styled.div`
   display: flex;
   cursor: default;
@@ -106,7 +111,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
         <Table>
-          <HorScrollbox className={cx($p.flex, $p.flexColumn)}>
+          <TableContainer className={cx($p.flex, $p.flexColumn)}>
             <HeadRow>
               <MetricsCell className='cell'/>
               <div className='cell'>
@@ -217,6 +222,11 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                 description={`integrations mirror external APIs and don't integrate seamlessly`}
                 good
               />
+              <Cell
+                title='Disjointed'
+                description={`integrations mirror external APIs and don't integrate seamlessly`}
+                good
+              />
             </Row>
             <Row>
               <MetricsCell className='cell'>Realtime API</MetricsCell>
@@ -264,7 +274,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                 bad
               />
             </Row>
-          </HorScrollbox>
+          </TableContainer>
         </Table>
       </Root>
     )

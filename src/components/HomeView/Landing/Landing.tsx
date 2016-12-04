@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
 import LogoBar from '../LogoBar'
+import Hint from './Hint'
 import Video from './Video'
 
 const Hero = styled.div`
@@ -242,6 +243,7 @@ export default class Landing extends React.Component<{}, {}> {
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
+
             <Video
               step={this.state.activeStep}
               setStep={(step) => this.setState({ activeStep: step } as State)}
@@ -276,7 +278,11 @@ export default class Landing extends React.Component<{}, {}> {
           <HeroText className={cx($p.flex, $p.flexColumn)}>
             <div>
               <Headline>
-                Flexible backend platform combining GraphQL + <span className={cx($p.nowrap)}>AWS Lambda</span>
+                Flexible backend platform combining GraphQL
+                <Hint text='GraphQL is awesome'/> + <span className={cx($p.nowrap)}>
+                  AWS Lambda
+                  <Hint text='Serverless functions are alsow awesome' />
+                </span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
               </Headline>
               <Copy className={cx($p.f25, $p.black50)}>
