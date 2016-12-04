@@ -8,6 +8,7 @@ import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 import HorScrollbox from '../../HorScrollbox'
+import Icon from 'graphcool-styles/dist/components/Icon/Icon';
 
 const Root = styled.div`
   
@@ -200,9 +201,18 @@ const Tab = styled.li`
   ${props => props.active && ActiveTab};
 `
 
+const Switch = styled.div`
+  transition: opacity ${$v.duration} linear;
+  
+  &:hover {
+    opacity: .8;
+  }
+`
+
 interface State {
   selectedExample: string
   selectedLanguage: string
+  showTrigger: boolean
 }
 
 export default class Examples extends React.Component<{}, State> {
@@ -210,6 +220,7 @@ export default class Examples extends React.Component<{}, State> {
   state = {
     selectedExample: examples[0].name,
     selectedLanguage: examples[0].snippets[0].language,
+    showTrigger: true,
   }
 
   render() {
@@ -232,12 +243,13 @@ export default class Examples extends React.Component<{}, State> {
                   case={e.name}
                   description={e.description}
                   active={e.name === selectedExample.name}
-                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language})}
+                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language} as State)}
                 />
               ))}
             </ExamplesContainer>
           </Selection>
           <Overlay className={cx($g.overlay, $p.flex, $p.w100)}>
+            { this.state.showTrigger &&
             <div className={cx($p.flex, $p.flexColumn, $p.flexFixed)}>
               <Block>
                 <div className={cx($g.uppercaseLabel, $p.black20)}>Trigger</div>
@@ -255,12 +267,31 @@ export default class Examples extends React.Component<{}, State> {
                 </Payload>
               </Block>
             </div>
+            }
             <div className={cx($p.bgDarkerBlue, $p.w100)}>
-              <Block>
+              <Block className={cx($p.relative)}>
                 <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
+                  { window.innerWidth < breakpoints.p500 && !this.state.showTrigger &&
+                    <Switch
+                      className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
+                      onClick={() => this.setState({ showTrigger: true } as State)}
+                    >
+                      <Icon
+                        src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
+                        width={9}
+                        height={15}
+                        color={$v.white}
+                        stroke
+                        strokeWidth={10}
+                        className={cx($p.mr16)}
+                      />
+                      Trigger
+                    </Switch>
+                  }
                   <div className={cx($g.uppercaseLabel, $p.white30)}>Code</div>
+                  { window.innerWidth >= breakpoints.p500 &&
                   <TabBar>
-                    {selectedExample.snippets.map(({ language }) => (
+                    {selectedExample.snippets.map(({language}) => (
                       <Tab
                         key={language}
                         active={language === selectedSnippet.language}
@@ -269,15 +300,33 @@ export default class Examples extends React.Component<{}, State> {
                       </Tab>
                     ))}
                   </TabBar>
+                  }
+                  { window.innerWidth < breakpoints.p500 && this.state.showTrigger &&
+                  <Switch
+                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
+                    onClick={() => this.setState({ showTrigger: false } as State)}
+                  >
+                    <Icon
+                      src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                      width={9}
+                      height={15}
+                      color={$v.white}
+                      stroke
+                      strokeWidth={10}
+                    />
+                  </Switch>
+                  }
                 </div>
-                <CodeMirror
-                  value={selectedSnippet.code}
-                  options={{
+                <div className={cx($p.absolute, $p.top60, $p.left0)}>
+                  <CodeMirror
+                    value={selectedSnippet.code}
+                    options={{
                     lineNumbers: true,
                     mode: 'javascript',
                     theme: 'dracula',
                   }}
-                />
+                  />
+                </div>
               </Block>
             </div>
           </Overlay>
