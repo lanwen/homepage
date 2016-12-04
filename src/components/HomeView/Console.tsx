@@ -27,15 +27,20 @@ const Container = styled.div`
 `
 
 const Browser = styled.div`
-  padding-left: ${$v.size16};
+  margin-left: ${$v.size16};
+  overflow: hidden;
   
   @media (min-width: ${breakpoints.p1200}px) {
-    padding-left: ${$v.size96};
+    margin-left: ${$v.size96};
   }
   
   @media (min-width: ${maxWidth + $v.size96 + $v.size60}px) {
-    padding-left: 0;
+    margin-left: 0;
   }
+`
+
+const BrowserContainer = styled.div`
+  left: 0;
 `
 
 const FeatureDescription = styled.div`
@@ -80,10 +85,11 @@ const PaginationNext = styled.button`
 `
 
 const ConsoleContent = styled.img`
-  width: 96.6%;
+  width: 98.4%;
   height: auto;
-  left: 0.65%;
-  top: 5.4%;
+  left: 50%;
+  transform: translate(-50%,0);
+  top: 5.5%;
 `
 
 const FeaturesList = styled.div`
@@ -115,10 +121,10 @@ export default class Console extends React.Component<{}, {}> {
           <Container className={cx($p.center, $p.relative, $p.flex)}>
             <Browser className={cx($p.w100, $p.relative)}>
               <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')}/>
-              <div className={cx($p.absolute, $p.left16, $p.top0, $p.w100, $p.h100)}>
-                <ConsoleContent className={cx($p.db, $p.absolute)} src={require('../../assets/graphics/product-1.png')}/>
+              <BrowserContainer className={cx($p.absolute, $p.top0, $p.right0, $p.h100)}>
+                <ConsoleContent className={cx($p.db, $p.absolute)} src='https://placehold.it/761x550/ffffff/000000'/>
                 <FeatureIndicator top={30} left={60}/>
-              </div>
+              </BrowserContainer>
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>

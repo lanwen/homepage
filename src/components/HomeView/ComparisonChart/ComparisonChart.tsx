@@ -4,7 +4,7 @@ import { $p, $v } from 'graphcool-styles'
 import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import Cell from './Cell'
-import { breakpoints } from '../../../utils/constants'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.section`
@@ -28,8 +28,6 @@ const Root = styled.section`
 `
 
 const Table = styled.div`
-  position: relative;
-  
   &:after {
     content: "";
     position: absolute;
@@ -50,7 +48,14 @@ const RowBase = styled.div`
   display: flex;
   cursor: default;
   min-width: ${4 * (175 + 2 * 16 + 1) + (160 + 2 * 16)}px;
+  max-width: ${maxWidth}px;
 `
+
+// const RowContainer = styled.div`
+//   &:before, &:after {
+//     content: "";
+//   }
+// `
 
 const Row = styled(RowBase)`
   flex: 1;
@@ -68,6 +73,8 @@ const Row = styled(RowBase)`
     background: ${$v.gray04};
     color: ${$v.gray50};
   }
+  
+  
 `
 
 const HeadRow = styled(RowBase)`
@@ -111,7 +118,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
           // Should we leave out the first sentence?
           copy='Previous generation Backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerfull scalable applications'
         />
-        <Table>
+        <Table className={cx($p.flex, $p.justifyCenter, $p.relative)}>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>
             <HeadRow>
               <MetricsCell className='cell'/>
@@ -133,27 +140,27 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               </div>
             </HeadRow>
             <Row>
-              <MetricsCell className='cell'>Developer friendly API</MetricsCell>
-              <Cell
-                title='Open Standard'
-                description='Coherent API based on GraphQL'
-                veryGood
-              />
-              <Cell
-                title='Proprietary'
-                description='Proprietary SDK'
-                good
-              />
-              <Cell
-                title='Proprietary'
-                description='Proprietary SDK'
-                veryGood
-              />
-              <Cell
-                title='Open Standard'
-                description='API based on GraphQL. Incoherent and difficult to use'
-                bad
-              />
+                <MetricsCell className='cell'>Developer friendly API</MetricsCell>
+                <Cell
+                  title='Open Standard'
+                  description='Coherent API based on GraphQL'
+                  veryGood
+                />
+                <Cell
+                  title='Proprietary'
+                  description='Proprietary SDK'
+                  good
+                />
+                <Cell
+                  title='Proprietary'
+                  description='Proprietary SDK'
+                  veryGood
+                />
+                <Cell
+                  title='Open Standard'
+                  description='API based on GraphQL. Incoherent and difficult to use'
+                  bad
+                />
             </Row>
             <Row>
               <MetricsCell className='cell'>Datamodel Flexibility</MetricsCell>

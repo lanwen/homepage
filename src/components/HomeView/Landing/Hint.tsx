@@ -24,6 +24,8 @@ const Overlay = styled.span`
   width: 150px;
   white-space: initial;
   overflow: visible;
+  font-size: ${$v.size12};
+  padding: ${$v.size10};
   
   &:before {
     content: "";
@@ -36,6 +38,11 @@ const Overlay = styled.span`
     border-style: solid;
     border-width: 0 6px 6px 6px;
     border-color: transparent transparent ${$v.white} transparent;
+  }
+  
+  @media (min-width: ${breakpoints.p750}px) {
+    font-size: ${$v.size14};
+    padding: ${$v.size16};
   }
 `
 
@@ -63,7 +70,7 @@ export default class Hint extends React.Component<Props, State> {
         onMouseLeave={() => this.setState({showOverlay: false} as State)}
       >
         {this.state.showOverlay &&
-        <Overlay className={cx($g.overlay, $p.absolute, $p.f12, $p.fw4, $p.pa10, $p.left50, $p.tlHCenter, $p.tc)}>
+        <Overlay className={cx($g.overlay, $p.absolute, $p.fw4, $p.left50, $p.tlHCenter, $p.tc)}>
           {this.props.text}
           <a className={cx($p.db, $p.pt10)} href={this.props.linkUrl} target='_blank'>
             {this.props.linkText}

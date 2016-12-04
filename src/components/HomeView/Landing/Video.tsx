@@ -6,10 +6,11 @@ import styled from 'styled-components'
 
 const VideoContainer = styled.div`
   position: absolute;
-  width: 100%%;
+  width: 98.4%;
   height: auto;
-  left: 0;
-  bottom: 0;
+  top: 5.4%;
+  left: 50%;
+  transform: translate(-50%,0);
 `
 
 const markers = [0, 23, 49, 72]
@@ -49,9 +50,10 @@ export default class Video extends React.Component<Props, State> {
   render() {
     return (
       <VideoContainer>
+        <img className={cx($p.w100)} src='https://placehold.it/761x550/ffffff/000000' />
         <video
           ref='video'
-          className={cx($p.w100)}
+          className={cx($p.w100, $p.dn)}
           src='http://graphcool-random.s3.amazonaws.com/header.mp4'
           autoPlay
           loop
