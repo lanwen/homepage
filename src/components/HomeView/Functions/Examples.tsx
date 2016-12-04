@@ -313,7 +313,7 @@ export default class Examples extends React.Component<{}, State> {
                   }
                   { window.innerWidth < breakpoints.p500 && this.state.showTrigger &&
                   <Switch
-                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
+                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.mr16, $p.pointer)}
                     onClick={() => this.setState({ showTrigger: false } as State)}
                   >
                     <Icon
