@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, $g } from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Example from './Example'
 import { maxWidth, breakpoints } from '../../../utils/constants'
@@ -8,7 +8,7 @@ import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 import HorScrollbox from '../../HorScrollbox'
-import Icon from 'graphcool-styles/dist/components/Icon/Icon';
+require('codemirror/mode/javascript/javascript')
 
 const Root = styled.div`
   
