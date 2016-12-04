@@ -11,10 +11,6 @@ const Root = styled.div`
     color: ${$v.gray30} !important;
   }
   
-  @media (min-width: ${breakpoints.p1200}px) {
-    transform: translate(0, -127px);
-  }
-  
   @media (min-width: ${breakpoints.p1000}px) {
     position: absolute;
     z-index: 5000;
@@ -22,6 +18,10 @@ const Root = styled.div`
     top: 0;
     right: -15px;
     transform: translate(0, -115px);
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    transform: translate(0, -127px);
   }
 `
 
