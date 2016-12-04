@@ -222,6 +222,11 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                 description={`integrations mirror external APIs and don't integrate seamlessly`}
                 good
               />
+              <Cell
+                title='Disjointed'
+                description={`integrations mirror external APIs and don't integrate seamlessly`}
+                good
+              />
             </Row>
             <Row>
               <MetricsCell className='cell'>Realtime API</MetricsCell>

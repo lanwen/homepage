@@ -268,25 +268,30 @@ export default class Examples extends React.Component<{}, State> {
               </Block>
             </div>
             }
-            <div className={cx($p.bgDarkerBlue, $p.w100)}>
-              <Block className={cx($p.relative)}>
+            <div className={cx($p.bgDarkerBlue, $p.w100, $p.overflowAuto)}>
+              <Block
+                className={cx($p.relative, $p.flex, $p.flexColumn)}
+                style={{
+                  maxHeight: 500
+                }}
+              >
                 <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
                   { window.innerWidth < breakpoints.p500 && !this.state.showTrigger &&
-                    <Switch
-                      className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
-                      onClick={() => this.setState({ showTrigger: true } as State)}
-                    >
-                      <Icon
-                        src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
-                        width={9}
-                        height={15}
-                        color={$v.white}
-                        stroke
-                        strokeWidth={10}
-                        className={cx($p.mr16)}
-                      />
-                      Trigger
-                    </Switch>
+                  <Switch
+                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
+                    onClick={() => this.setState({ showTrigger: true } as State)}
+                  >
+                    <Icon
+                      src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
+                      width={9}
+                      height={15}
+                      color={$v.white}
+                      stroke
+                      strokeWidth={10}
+                      className={cx($p.mr16)}
+                    />
+                    Trigger
+                  </Switch>
                   }
                   <div className={cx($g.uppercaseLabel, $p.white30)}>Code</div>
                   { window.innerWidth >= breakpoints.p500 &&
@@ -317,13 +322,12 @@ export default class Examples extends React.Component<{}, State> {
                   </Switch>
                   }
                 </div>
-                <div className={cx($p.absolute, $p.top60, $p.left0)}>
+                <div className={cx($p.h100, $p.overflowAuto, $p.w100)}>
                   <CodeMirror
                     value={selectedSnippet.code}
                     options={{
                     lineNumbers: true,
-                    mode: 'javascript',
-                    theme: 'dracula',
+                    mode: 'javascript'
                   }}
                   />
                 </div>
