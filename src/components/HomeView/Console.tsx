@@ -86,6 +86,18 @@ const ConsoleContent = styled.img`
   top: 5.4%;
 `
 
+const FeaturesList = styled.div`
+  &:after {
+    content: "";
+    display: block;
+    width: ${$v.size96};
+    height: ${$v.size04};
+    margin: 0 auto;
+    margin-top: ${$v.size96};
+    background: ${$v.gray20};
+  }
+`
+
 
 
 export default class Console extends React.Component<{}, {}> {
@@ -132,7 +144,7 @@ export default class Console extends React.Component<{}, {}> {
           }
 
           {window.innerWidth < breakpoints.p1000 &&
-          <div className={cx($p.overflowHidden)}>
+          <FeaturesList className={cx($p.overflowHidden)}>
             <FeaturePreview
               headline='Whatever headline we have here.'
               copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
@@ -161,7 +173,7 @@ export default class Console extends React.Component<{}, {}> {
               headline='Whatever headline we have here.'
               copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
             />
-          </div>
+          </FeaturesList>
           }
         </Root>
       </section>

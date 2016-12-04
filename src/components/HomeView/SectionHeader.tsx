@@ -5,11 +5,11 @@ import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
 
 const Root = styled.header`
-  padding: ${$v.size96} ${$v.size38} ${$v.size38};
+  padding: ${$v.size96} ${$v.size38} ${$v.size60};
   text-align: center;
   
   @media (min-width: ${breakpoints.p750}px) {
-    padding: ${$v.size96} ${$v.size60} ${$v.size38}
+    padding: ${$v.size96} ${$v.size60} ${$v.size60}
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
