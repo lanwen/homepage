@@ -242,12 +242,13 @@ export default class Landing extends React.Component<{}, {}> {
       <section>
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
-            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
+
 
             <Video
               step={this.state.activeStep}
               setStep={(step) => this.setState({ activeStep: step } as State)}
             />
+            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
             <Steps>
               <Step
                 active={this.state.activeStep === 0}
