@@ -26,7 +26,7 @@ const Root = styled.header`
 `
 
 interface Props {
-  headline: string,
+  headline: string | JSX.Element,
   copy: string,
 }
 
