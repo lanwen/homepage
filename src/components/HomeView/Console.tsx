@@ -79,6 +79,15 @@ const PaginationNext = styled.button`
   }
 `
 
+const ConsoleContent = styled.img`
+  width: 96.6%;
+  height: auto;
+  left: 0.65%;
+  top: 5.4%;
+`
+
+
+
 export default class Console extends React.Component<{}, {}> {
 
   render() {
@@ -93,9 +102,11 @@ export default class Console extends React.Component<{}, {}> {
           {window.innerWidth >= breakpoints.p1000 &&
           <Container className={cx($p.center, $p.relative, $p.flex)}>
             <Browser className={cx($p.w100, $p.relative)}>
-              <FeatureIndicator top={30} left={60}/>
               <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')}/>
-              <img className={cx($p.db, $p.absolute, $p.top0, $p.left0, $p.right0, $p.bottom0)} src={require('../../assets/graphics/product-1.png')}/>
+              <div className={cx($p.absolute, $p.left16, $p.top0, $p.w100, $p.h100)}>
+                <ConsoleContent className={cx($p.db, $p.absolute)} src={require('../../assets/graphics/product-1.png')}/>
+                <FeatureIndicator top={30} left={60}/>
+              </div>
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>

@@ -279,9 +279,16 @@ export default class Landing extends React.Component<{}, {}> {
             <div>
               <Headline>
                 Flexible backend platform combining GraphQL
-                <Hint text='GraphQL is awesome'/> + <span className={cx($p.nowrap)}>
+                <Hint
+                  text='GraphQL is awesome'
+                  linkText="More on GraphQL"
+                  linkUrl='http://www.graph.cool' /> + <span className={cx($p.nowrap)}>
                   AWS Lambda
-                  <Hint text='Serverless functions are alsow awesome' />
+                  <Hint
+                    text='Serverless functions are alsow awesome'
+                    linkText='More on Serverless'
+                    linkUrl='http://www.graph.cool'
+                  />
                 </span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>built for frontend developers.</BuiltFor>
               </Headline>
