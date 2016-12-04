@@ -243,12 +243,13 @@ export default class Landing extends React.Component<{}, {}> {
       <section>
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
-            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
+
 
             <Video
               step={this.state.activeStep}
               setStep={(step) => this.setState({ activeStep: step } as State)}
             />
+            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
             <Steps>
               <Step
                 active={this.state.activeStep === 0}
@@ -280,9 +281,16 @@ export default class Landing extends React.Component<{}, {}> {
             <div>
               <Headline>
                 Flexible backend platform combining GraphQL
-                <Hint text='GraphQL is awesome'/> + <span className={cx($p.nowrap)}>
+                <Hint
+                  text='GraphQL is awesome'
+                  linkText="More on GraphQL"
+                  linkUrl='http://www.graph.cool' /> + <span className={cx($p.nowrap)}>
                   AWS Lambda
-                  <Hint text='Serverless functions are alsow awesome' />
+                  <Hint
+                    text='Serverless functions are alsow awesome'
+                    linkText='More on Serverless'
+                    linkUrl='http://www.graph.cool'
+                  />
                 </span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>
                   built for <Caret options={['frontend developers.', 'backend developers.', 'startups.', 'agencies.']} />

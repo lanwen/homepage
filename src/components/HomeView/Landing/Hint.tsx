@@ -41,6 +41,8 @@ const Overlay = styled.span`
 
 interface Props {
   text: string,
+  linkText?: string,
+  linkUrl?: string,
 }
 
 interface State {
@@ -63,6 +65,9 @@ export default class Hint extends React.Component<Props, State> {
         {this.state.showOverlay &&
         <Overlay className={cx($g.overlay, $p.absolute, $p.f12, $p.fw4, $p.pa10, $p.left50, $p.tlHCenter, $p.tc)}>
           {this.props.text}
+          <a className={cx($p.db, $p.pt10)} href={this.props.linkUrl} target='_blank'>
+            {this.props.linkText}
+          </a>
         </Overlay>
         }
       </Root>
