@@ -108,13 +108,11 @@ const Copy = styled.p`
 
 const Steps = styled.div`
   counter-reset: step;
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: flex;
   align-items: center;
-  transform: translate(0, 100%);
   padding: ${$v.size10} 0 0;
+  justify-content: flex-end;
   
   @media (max-width: ${breakpoints.p900}px) {
     position: relative;
@@ -127,18 +125,7 @@ const Steps = styled.div`
     align-items: flex-start;
   }
   
-  @media (min-width: ${breakpoints.p1200}px) {
-    padding: 0;
-    height: ${parseFloat($v.size20) + parseFloat($v.size16) * 2}px
-    background: ${$v.white}
-    border-radius: 2px;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
-    transform: none;
-  }
   
-  @media (min-width: ${breakpoints.p1360}px) {
-    height: ${parseFloat($v.size25) + parseFloat($v.size16) * 2}px;
-  }
 `
 
 const ActiveStep = `

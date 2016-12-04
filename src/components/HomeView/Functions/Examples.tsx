@@ -279,9 +279,6 @@ export default class Examples extends React.Component<{}, State> {
             <div className={cx($p.bgDarkerBlue, $p.w100, $p.overflowAuto)}>
               <CodeBlock
                 className={cx($p.relative, $p.flex, $p.flexColumn)}
-                style={{
-                  maxHeight: 500
-                }}
               >
                 <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
                   { window.innerWidth < breakpoints.p500 && !this.state.showTrigger &&

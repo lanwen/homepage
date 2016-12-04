@@ -8,7 +8,7 @@ const VideoContainer = styled.div`
   position: absolute;
   width: 98.4%;
   height: auto;
-  top: 5.4%;
+  top: 4.7%;
   left: 50%;
   transform: translate(-50%,0);
 `
