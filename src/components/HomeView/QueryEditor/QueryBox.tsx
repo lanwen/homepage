@@ -131,6 +131,7 @@ interface State {
   schema: GraphQLSchema | null
   query: string
   result: any | null
+  responseVisible: boolean
 }
 
 export default class QueryBox extends React.Component<Props, State> {
@@ -139,6 +140,7 @@ export default class QueryBox extends React.Component<Props, State> {
     schema: null,
     query: defaultQuery,
     result: null,
+    responseVisible: false,
   }
 
   componentWillMount() {
@@ -148,11 +150,15 @@ export default class QueryBox extends React.Component<Props, State> {
   render() {
     return (
       <div className={cx($p.flex, $p.w100, $p.bbox)}>
+        { !this.state.responseVisible &&
         <CodeSection>
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
             <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
             { window.innerWidth < breakpoints.p500 &&
-            <Switch className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pr16, $p.pointer)}>
+            <Switch
+              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pr16, $p.pointer)}
+              onClick={() => this.setState({ responseVisible: true } as State)}
+            >
               Response
               <Icon
                 src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
@@ -172,12 +178,32 @@ export default class QueryBox extends React.Component<Props, State> {
             onEdit={this.onEditQuery}
           />
         </CodeSection>
+        }
         { window.innerWidth >= breakpoints.p500 &&
         <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}/>
         }
-        { window.innerWidth >= breakpoints.p500 &&
+        { (window.innerWidth >= breakpoints.p500 || this.state.responseVisible) &&
         <CodeSection>
-          <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
+          <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
+            { window.innerWidth < breakpoints.p500 &&
+            <Switch
+              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pointer)}
+              onClick={() => this.setState({ responseVisible: false } as State)}
+            >
+              <Icon
+                src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
+                width={9}
+                height={15}
+                color={$v.white}
+                stroke
+                strokeWidth={10}
+                className={cx($p.mr10)}
+              />
+              Query
+            </Switch>
+            }
+            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25, $p.pr16)}>Response</div>
+          </div>
           <ResultViewer value={this.state.result}/>
         </CodeSection>
         }
