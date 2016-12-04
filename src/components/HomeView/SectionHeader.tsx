@@ -5,11 +5,11 @@ import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
 
 const Root = styled.header`
-  padding: ${$v.size96} ${$v.size38} ${$v.size60};
+  padding: ${$v.size96} ${$v.size38} ${$v.size38};
   text-align: center;
   
   @media (min-width: ${breakpoints.p750}px) {
-    padding: ${$v.size60} ${$v.size60} ${$v.size38}
+    padding: ${$v.size96} ${$v.size60} ${$v.size38}
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
@@ -23,6 +23,16 @@ const Root = styled.header`
   @media (max-width: ${breakpoints.p400}px) {
     padding: ${$v.size60} ${$v.size25} ${$v.size38}
   }
+  
+  // &:before {
+  //   content: "";
+  //   display: block;
+  //   margin: 0 auto;
+  //   width: 50px;
+  //   height: 4px;
+  //   background: ${$v.gray10};
+  //   margin-bottom: ${$v.size60};
+  // }
 `
 
 interface Props {

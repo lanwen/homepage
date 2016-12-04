@@ -28,7 +28,7 @@ const Logo = styled.img`
 
 const NavOpened = `
   @media (max-width: ${breakpoints.p750}px) {
-    display: block;
+    display: flex;
   }
 `
 const Nav = styled.nav`

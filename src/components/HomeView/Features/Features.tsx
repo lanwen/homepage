@@ -3,8 +3,8 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
-import SectionHeader from '../SectionHeader'
 import FeaturesContent from './FeaturesContent'
+import SectionHeader from '../SectionHeader'
 
 const Container = styled.div`
   margin: 0 auto ${$v.size38};

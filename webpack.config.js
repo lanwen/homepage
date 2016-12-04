@@ -18,7 +18,10 @@ module.exports = {
     app: [
       'react-hot-loader/patch',
       'graphcool-styles/dist/styles.css',
-      'graphiql/graphiql.css',
+      './src/styles/codemirror.css',
+      './src/styles/graphiql.css',
+      'codemirror/lib/codemirror.css',
+      'codemirror/theme/dracula.css',
       './src/main.tsx'
     ],
     vendor,

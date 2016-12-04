@@ -102,7 +102,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
     return (
       <Root className={cx($p.pb96)}>
         <SectionHeader
-          headline='Whatever headline we have here'
+          headline='A backend platform for more than just prototyping'
           copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
         />
         <Table>
