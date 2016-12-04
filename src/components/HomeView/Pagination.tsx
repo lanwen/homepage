@@ -13,25 +13,33 @@ interface Props {
 }
 
 const ActiveGrayscaleBullet = `
-  background: ${$v.gray30};
+  &:before {
+    background: ${$v.gray30};
+  }
 `
 
 const GrayscaleBullet = `
-  background: ${$v.gray10};
+  &:before {
+    background: ${$v.gray10};
+  }
   
-  &:hover {
+  &:hover:before {
     background: ${$v.gray20};
   }
 `
 
 const ActiveWhiteBullet = `
-  background: ${$v.white70};
+  &:before {
+    background: ${$v.white70};
+  }
 `
 
 const WhiteBullet = `
-  background: ${$v.white30};
+  &:before {
+    background: ${$v.white30};
+  }
   
-  &:hover {
+  &:hover:before {
     background: ${$v.white50};
   }
   
@@ -39,9 +47,12 @@ const WhiteBullet = `
 `
 
 const ActiveBullet = `
-  background: ${$v.green};
+
+  &:before {
+    background: ${$v.green};
+  }
   
-  &:hover {
+  &:hover:before {
     background: ${$v.green};
   }
   
@@ -49,24 +60,25 @@ const ActiveBullet = `
 `
 
 const Bullet = styled.div`
-  width: ${$v.size10};
-  height: ${$v.size10};
-  border-radius: 500px;
-  margin-left: ${$v.size10}
-  background: ${$v.lightGreen20};
+  padding: ${parseFloat($v.size10) * 0.5}px;
   cursor: pointer;
-  transition: background ${$v.duration} linear;
   
-  &:hover {
-    background: ${$v.lightGreen50};
+  &:before {
+    content: "";
+    display: block;
+    width: ${$v.size10};
+    height: ${$v.size10};
+    border-radius: 500px;
+    background: ${$v.lightGreen20};
+    transition: background ${$v.duration} linear;
   }
   
-  &:first-child {
-    margin-left: 0;
+  &:hover:before {
+    background: ${$v.lightGreen50};
   }
 
   @media (min-width: ${breakpoints.p1200}px) {
-    margin-left: ${$v.size16};
+    padding: ${parseFloat($v.size16) * 0.5}px;
   }
  
   ${props => props.active && ActiveBullet}
@@ -78,7 +90,7 @@ export default class Pagination extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div className={cx($p.flex)}>
+      <div className={cx($p.flex, $p.relative)}>
         {Array.from(Array(this.props.bullets)).map((b, i) => (
           <Bullet
             key={i}

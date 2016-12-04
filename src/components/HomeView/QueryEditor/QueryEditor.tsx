@@ -61,15 +61,16 @@ const TabBar = styled.ul`
   
   @media (max-width: ${breakpoints.p400}px) {
     padding-left: ${$v.size25};
-  }
-  
-  @media (max-width: ${breakpoints.p500}px) {
-    overflow: auto;
-    justify-content: flex-start;
-    padding-left: ${$v.size38};
-  }
-  
+  } 
 `
+
+// if tabbar is wider than viewport
+// @media (max-width: ${breakpoints.p500}px) {
+//   overflow: auto;
+//   justify-content: flex-start;
+//   padding-left: ${$v.size38};
+// }
+
 
 const ActiveTab = `
   padding: ${parseFloat($v.size16) + 2}px;
