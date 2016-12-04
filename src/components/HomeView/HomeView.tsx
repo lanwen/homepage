@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
-import Landing from './Landing'
+import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
 import QueryEditor from './QueryEditor/QueryEditor'
 import Console from './Console'
