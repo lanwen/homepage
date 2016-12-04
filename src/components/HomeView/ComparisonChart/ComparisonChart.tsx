@@ -108,7 +108,8 @@ export default class ComparisonChart extends React.Component<{}, {}> {
       <Root className={cx($p.pb96)}>
         <SectionHeader
           headline='A backend platform for more than just prototyping'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          // Should we leave out the first sentence?
+          copy='Previous generation Backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerfull scalable applications'
         />
         <Table>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>
@@ -173,7 +174,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               />
               <Cell
                 title='Object Graph'
-                description='Fixed system models'
+                description='Api is verbose and difficult to work with'
                 good
               />
             </Row>
@@ -181,22 +182,22 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               <MetricsCell className='cell'>Expressiveness of Permission System</MetricsCell>
               <Cell
                 title='Query System'
-                description='Permissions are based on GraphQL queries which is more powerful than role or path based permissions' // tslint:disable-line
+                description='Permissions are based on GraphQL queries or Serverless Functions allowing full flexibility' // tslint:disable-line
                 veryGood
               />
               <Cell
                 title='Path System'
-                description='Permissions are based on the object path'
+                description='Permissions are based on the object path requiring significant upfront planning'
                 good
               />
               <Cell
                 title='Role System'
-                description='Permissions are User role based'
+                description='Permissions are User role based making it difficult to implement many use cases'
                 bad
               />
               <Cell
                 title='Role System'
-                description='Permissions are User role based'
+                description='Permissions are User role based making it difficult to implement many use cases'
                 bad
               />
             </Row>
@@ -219,12 +220,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               />
               <Cell
                 title='Disjointed'
-                description={`integrations mirror external APIs and don't integrate seamlessly`}
-                good
-              />
-              <Cell
-                title='Disjointed'
-                description={`integrations mirror external APIs and don't integrate seamlessly`}
+                description={`Integrations mirror external APIs and don't integrate seamlessly`}
                 good
               />
             </Row>
@@ -255,7 +251,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               <MetricsCell className='cell'>Extensibility with Custom code</MetricsCell>
               <Cell
                 title='Any language / technology'
-                description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code (AWS Lambda or similar' // tslint:disable-line
+                description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code' // tslint:disable-line
                 veryGood
               />
               <Cell
@@ -270,7 +266,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               />
               <Cell
                 title='Limited'
-                description='You can only define one basic webhook integration for one mutation'
+                description='You can define a single basic webhook integration'
                 bad
               />
             </Row>

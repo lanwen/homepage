@@ -79,8 +79,8 @@ export default class Timeline extends React.Component<{}, {}> {
     return (
       <section>
         <SectionHeader
-          headline='Don’t reinvent the wheel. Build apps faster.'
-          copy='Stop wasting time writing error-prone database migrations or monitoring log files. Graphcool handles all of that and let’s you focus on what you really want to do: Building your app.'
+          headline='Don’t reinvent the wheel. Build apps faster'
+          copy='Stop wasting time writing error-prone database migrations and monitoring log files. Graphcool handles all of that so you can focus on what matters: Building your app.'
         />
         <Root className={cx($p.relative)}>
           <Container className={cx($p.center, $p.flex, $p.relative)}>

@@ -67,34 +67,34 @@ export default class Fields extends React.Component<{}, {}> {
       <Root className={cx($p.tc, $p.bgDarkBlue)}>
         <Header>
           <h3 className={cx($p.white)}>
-            What Serverless functions can do for you
+            What Serverless Functions can do for you
           </h3>
         </Header>
         <Container className={cx($p.flex)}>
           <Field
             icon='action'
-            title='Actions'
-            description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
+            title='Mutation Callbacks'
+            description='Send a welcome mail to new users or run sofisticated spam detection when a new comment is posted'
           />
           <Field
             icon='permission'
             title='Permissions'
-            description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
+            description='Integrate with existing authentication system or run arbitrary code to decide who can see and do what'
           />
           <Field
             icon='validation'
             title='Validation'
-            description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
+            description='Make sure your data stays consistent by performing custom validation before saving new data'
           />
           <Field
             icon='query'
             title='Mutations/Queries'
-            description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
+            description='Extend your GraphQL schema with custom fields and mutations that can integrate with legacy or third party systems'
           />
           <Field
             icon='fields'
-            title='Computed fields'
-            description='I have hinted that I would often jerk poor Queequeg from between the whale and the ship.'
+            title='Computed Fields'
+            description='Add data display logic to your schema with Custom Fields. displayName could return userName if available and fall back to firstName and lastName concatenated'
           />
         </Container>
         {window.innerWidth <= breakpoints.p650 &&
