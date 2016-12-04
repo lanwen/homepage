@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, $g } from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import { GraphQLSchema } from 'graphql/type/schema'
@@ -9,7 +9,6 @@ import { QueryEditor } from 'graphiql/dist/components/QueryEditor'
 import { ResultViewer } from 'graphiql/dist/components/ResultViewer'
 import { validate } from 'graphql/validation/validate'
 import { parse } from 'graphql/language'
-import Icon from 'graphcool-styles/dist/components/Icon/Icon';
 
 const CodeSection = styled.div`
   padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};

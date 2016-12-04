@@ -112,6 +112,10 @@ const Block = styled.div`
   }
 `
 
+const CodeBlock = styled(Block)`
+  padding-right: 0 !important;
+`
+
 const RowNumbers = styled.div`
   padding-top: 2px;
   line-height: 24px;
@@ -273,7 +277,7 @@ export default class Examples extends React.Component<{}, State> {
             </div>
             }
             <div className={cx($p.bgDarkerBlue, $p.w100, $p.overflowAuto)}>
-              <Block
+              <CodeBlock
                 className={cx($p.relative, $p.flex, $p.flexColumn)}
                 style={{
                   maxHeight: 500
@@ -299,7 +303,7 @@ export default class Examples extends React.Component<{}, State> {
                   }
                   <div className={cx($g.uppercaseLabel, $p.white30)}>Code</div>
                   { window.innerWidth >= breakpoints.p500 &&
-                  <TabBar>
+                  <TabBar className={cx($p.mr16)}>
                     {selectedExample.snippets.map(({language}) => (
                       <Tab
                         key={language}
@@ -335,7 +339,7 @@ export default class Examples extends React.Component<{}, State> {
                   }}
                   />
                 </div>
-              </Block>
+              </CodeBlock>
             </div>
           </Overlay>
         </Container>

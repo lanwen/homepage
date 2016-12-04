@@ -6,10 +6,10 @@ import styled from 'styled-components'
 
 const VideoContainer = styled.div`
   position: absolute;
-  top: 5.3%;
-  bottom: 0.5%;
-  right: 0.7%;
-  left: 0.7%;
+  width: 100%%;
+  height: auto;
+  left: 0;
+  bottom: 0;
 `
 
 const markers = [0, 23, 49, 72]
