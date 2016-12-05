@@ -16,12 +16,18 @@ interface Snippet {
 
 export const examples: Example[] = [{
   name: 'Airbnb',
-  description: 'Send an Email to the host, everytime he gets a new rating.',
+  description: 'Send an email to the host when a new rating is created',
   payloadQuery: `{
   createdNode {
     stars,
-    description,
-    author
+    text,
+    home {
+      name
+      owner {
+        name,
+        email
+      }
+    }
   }
 }`,
   trigger: {
@@ -30,50 +36,16 @@ export const examples: Example[] = [{
   },
   snippets: [{
     language: 'js',
-    code: `module.exports = function (cb) {
-  cb(null, 'hello webtasks!');
-}`,
-  }],
-}, {
-  name: 'Instagram',
-  description: 'Send a push notification to the author, everytime his post gets a new comment.',
-  payloadQuery: `{
-  createdNode {
-    stars,
-    description,
-    author
-  }
-}`,
-  trigger: {
-    model: 'Comment',
-    mutation: 'is created',
-  },
-  snippets: [{
-    language: 'js',
     code: `var request = require('request');
 
-module.exports = (context, req, res) => {
-  const MAILGUN_API_KEY = context.secrets.MAILGUN_API_KEY
-  const MAILGUN_URL = context.secrets.MAILGUN_URL
+module.exports = (context, cb) => {
+  
+  const rating = context.data.createdNode
+  const recipient = rating.home.owner
 
-  if (!MAILGUN_API_KEY || !MAILGUN_URL) {
-    console.log('Mailgun configuration is missing')
-    return res.end('Mailgun configuration is missing')
-  }
-
-  const comment = context.data.createdNode
-
-  if (!comment.post || !comment.post.author) {
-    console.log('Comment or post author invalid')
-    return res.end('Comment or post author invalid')
-  }
-
-  const recipient = comment.post.author
-
-  const from = 'Instacat Notification Service \<notifications@instacat.net>'
   const to = \`\${recipient.name} <\${recipient.email}>\`
-  const subject = \`A New Instacat Notification for \${recipient.name}\`
-  const text = \`Hey \${recipient.name}, \${comment.author.name} just posted this comment: \${comment.text}\`
+  const subject = \`A New rating for your property \${rating.home.name}\`
+  const text = \`Hey \${recipient.name}, your property just received a new rating: \${rating.text}\`
 
   request.post(MAILGUN_URL)
     .auth('api', MAILGUN_API_KEY)
@@ -82,13 +54,56 @@ module.exports = (context, req, res) => {
       to: to,
       subject: subject,
       text: text
-    }).on('error', (err) => {
-      console.log('Error sending mail ' + err.toString())
-      res.end('Error sending mail')
     }).on('response', (response) => {
-      console.log('Response ' + JSON.stringify(response))
-      res.end()
+      cb(null, 'success')
     })
+}`,
+  }],
+}, {
+  name: 'Instagram',
+  description: 'Send a push notification to the author when a comment is added',
+  payloadQuery: `{
+  createdNode {
+    text,
+    author {
+      name
+    },
+    post{
+      author {
+        iosToken
+      }
+    }
+  }
+}`,
+  trigger: {
+    model: 'Comment',
+    mutation: 'is created',
+  },
+  snippets: [{
+    language: 'js',
+    code: `var PushNotification = require('push-notification');
+
+module.exports = (context, cb) => {
+
+  const comment = context.data.createdNode
+  const recipient = comment.post.author
+  
+  var DeviceType = PushNotification.DeviceType;
+  var path = require('path');
+   
+  PushNotification.init({
+      apn: {
+          cert: path.resolve('./keys/cert.pem'),
+          key: path.resolve('./keys/key.pem')
+      }
+  });
+   
+  var message = 'new comment: \${comment.text}';
+   
+  // send a notification to a single device 
+  PushNotification.pushSingle(DeviceType.IOS, recipient.iosToken, message, null, null, null);
+
+  cb(null, 'success')
 }`,
   }, {
     language: 'go',
@@ -98,7 +113,7 @@ module.exports = (context, req, res) => {
   }],
 }, {
   name: 'Webshop',
-  description: 'Verify & process cart items of a customer and submit the order to Stripe.',
+  description: 'Verify & process order and submit to Stripe',
   payloadQuery: `{
   createdNode {
     stars,
