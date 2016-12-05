@@ -121,8 +121,8 @@ export default class Product extends React.Component<{}, State> {
     return (
       <section>
         <SectionHeader
-          headline='Whatever headline we have here'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          headline='It’s easy to control every aspect of your backend'
+          copy='With the Graphcool Console you can discover and manage every aspect of your backend'
         />
         <Root className={cx($p.relative)}>
 
