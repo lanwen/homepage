@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer'
 import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
 import QueryEditor from './QueryEditor/QueryEditor'
-import Console from './Console'
+import Product from './Product/Product'
 import Functions from './Functions/Functions'
 import Features from './Features/Features'
 import References from './References/References'
@@ -29,7 +29,7 @@ export default class HomeView extends React.Component<{}, {}> {
         <Landing/>
         <Timeline/>
         <QueryEditor/>
-        <Console/>
+        <Product/>
         <Functions/>
         <Features/>
         <References/>

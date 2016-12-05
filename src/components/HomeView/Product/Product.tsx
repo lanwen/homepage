@@ -2,12 +2,13 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
-import { maxWidth, breakpoints } from '../../utils/constants'
+import { maxWidth, breakpoints } from '../../../utils/constants'
+import { features }from './data'
 
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
-import SectionHeader from './SectionHeader'
-import Pagination from './Pagination'
+import SectionHeader from '../SectionHeader'
+import Pagination from '../Pagination'
 
 const Root = styled.div`
   @media (min-width: ${breakpoints.p1000}px) {
@@ -104,11 +105,19 @@ const FeaturesList = styled.div`
   }
 `
 
+interface State {
+  activeIndex: number,
+}
 
+export default class Product extends React.Component<{}, State> {
 
-export default class Console extends React.Component<{}, {}> {
+  state = {
+    activeIndex: 0,
+  }
 
   render() {
+    const feature = features[this.state.activeIndex]
+
     return (
       <section>
         <SectionHeader
@@ -120,13 +129,13 @@ export default class Console extends React.Component<{}, {}> {
           {window.innerWidth >= breakpoints.p1000 &&
           <Container className={cx($p.center, $p.relative, $p.flex)}>
             <Browser className={cx($p.w100, $p.relative)}>
-              <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')}/>
+              <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../../assets/graphics/browser.svg')}/>
               <BrowserContainer className={cx($p.absolute, $p.top0, $p.right0, $p.h100)}>
                 <ConsoleContent className={cx($p.db, $p.absolute)}>
                   <video
                     ref='video'
                     className={cx($p.w100)}
-                    src='/videos/landing.mp4'
+                    src={feature.videoUrl}
                     autoPlay
                     loop
                   />
@@ -136,21 +145,20 @@ export default class Console extends React.Component<{}, {}> {
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>
-                <h3>What headline we have here</h3>
-                <Copy className={cx($p.black50)}>
-                  {
-                    `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall.` // tslint:disable-line
-                  }
-                </Copy>
+                <h3>{feature.title}</h3>
+                <Copy className={cx($p.black50)}>{feature.description}</Copy>
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>
                 <Pagination
-                  bullets={7}
-                  active={0}
-                  onSelect={() => null}
+                  bullets={features.length}
+                  active={this.state.activeIndex}
+                  onSelect={activeIndex => this.setState({ activeIndex } as State)}
                 />
-                <PaginationNext className={cx($p.pa10, $p.brPill, $p.bgLightgreen20)}>
-                  <Icon src={require('../../assets/icons/arrowRight.svg')} width={26} height={26} color={$v.green}/>
+                <PaginationNext
+                  className={cx($p.pa10, $p.brPill, $p.bgLightgreen20)}
+                  onClick={this.next}
+                >
+                  <Icon src={require('../../../assets/icons/arrowRight.svg')} width={26} height={26} color={$v.green}/>
                 </PaginationNext>
               </div>
             </FeatureDescription>
@@ -159,39 +167,22 @@ export default class Console extends React.Component<{}, {}> {
 
           {window.innerWidth < breakpoints.p1000 &&
           <FeaturesList className={cx($p.overflowHidden)}>
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
-            <FeaturePreview
-              headline='Whatever headline we have here.'
-              copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where.'
-            />
+            {features.map(feature => (
+              <FeaturePreview
+                key={feature.title}
+                headline={feature.title}
+                copy={feature.description}
+              />
+            ))}
           </FeaturesList>
           }
         </Root>
       </section>
 
     )
+  }
+
+  private next = () => {
+    this.setState({activeIndex: (this.state.activeIndex + 1) % features.length} as State)
   }
 }
