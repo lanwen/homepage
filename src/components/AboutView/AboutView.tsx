@@ -97,10 +97,13 @@ export default class AboutView extends React.Component<{}, {}> {
           <Description className={cx($p.itemsCenter, $p.flex, $p.ph38, $p.f38, $p.fw3)}>
             We want to build the only backend you’ll ever need.
           </Description>
-          <About className={cx($p.itemsCenter, $p.flex, $p.pa38, $p.f20, $p.o50, $p.fw4)}>
-            We enable frontend developers to build products from scratch without the need to develop their own backend.
+            <About className={cx($p.itemsCenter, $p.flex, $p.pa38, $p.f20, $p.o50, $p.fw4)}>
+              {//tslint:disable-next-line
+                <article>We enable frontend developers to build products from scratch without the need to develop their own backend.
 We ourselves have built countless backend applications and got tired of reinventing the wheel over and over again. GraphQL is a massive paradigm shift. It finally gives developers the flexibility to do all the work in the frontend. Our job is to take care of the rest and invent the wheel one last time for you. business logic?
-          </About>
+                </article>
+              }
+            </About>
         </section>
         <section className={cx($p.bgBlack04, $p.pt96)}>
           <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn)}>
@@ -120,14 +123,26 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
-                  <div className={cx('hr')}>
+                   {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                         alt='LinkedIn Logo'/>
+                   }
+                   {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')}
+                         alt='Twitter Logo'/>
+                   }
+                   {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')}
+                         alt='GitHub Logo'/>
+                   }
+                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                {//tslint:disable-next-line
+                  (<h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                    Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>)
+                }
               </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96)}>
@@ -142,14 +157,26 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                         alt='LinkedIn Logo'/>
+                  }
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')}
+                         alt='Twitter Logo'/>
+                  }
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')}
+                         alt='GitHub Logo'/>
+                  }
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                {//tslint:disable-next-line
+                  (<h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                    Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>)
+                }
               </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96)}>
@@ -164,14 +191,26 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                         alt='LinkedIn Logo'/>
+                  }
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')}
+                         alt='Twitter Logo'/>
+                  }
+                  {//tslint:disable-next-line
+                    <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')}
+                         alt='GitHub Logo'/>
+                  }
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                {//tslint:disable-next-line
+                  <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                    Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                }
               </section>
             </Founder>
           </PhotoSection>

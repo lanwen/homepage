@@ -66,8 +66,11 @@ export default class OpenSource extends React.Component<{}, {}> {
                  alt='Learn Relay'/>
           </figure>
           <figure className={cx($p.mh25, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)} src={require('../../assets/graphics/LearnApollo.png')}
-                 alt='Learn Apollo'/>
+            {//tslint:disable-next-line
+              <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
+                   src={require('../../assets/graphics/LearnApollo.png')}
+                   alt='Learn Apollo'/>
+            }
           </figure>
         </Learn>
         <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter, $p.fw3)}>
