@@ -59,6 +59,7 @@ const HeroText = styled.div`
 
   @media (max-width: ${breakpoints.p500}px) {
     text-align: left;
+    width: 100%;
   }
 
   @media (min-width: ${breakpoints.p1200}px) {
