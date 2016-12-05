@@ -21,7 +21,11 @@ const Block = styled.div`
   ${props => props.failed && FailedBlock}
 `
 
-export default class ServiceStatusBar extends React.Component<{}, {}> {
+interface Props {
+  name: string
+}
+
+export default class ServiceStatusBar extends React.Component<Props, {}> {
 
   render() {
     return (
@@ -31,14 +35,14 @@ export default class ServiceStatusBar extends React.Component<{}, {}> {
           <Block />
           <Block />
           <Block />
-          <Block failed/>
+          <Block />
           <Block />
           <Block />
           <Block />
           <Block />
           <Block />
         </div>
-        <div className={cx($p.nowrap)}>Relay Endpoint</div>
+        <div className={cx($p.nowrap)}>{this.props.name}</div>
       </div>
     )
   }
