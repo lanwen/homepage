@@ -103,11 +103,16 @@ export default class QueryBox extends React.Component<Props, State> {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({query: props.defaultQuery} as State)
+    this.setState({
+      query: props.defaultQuery,
+      result: null,
+    } as State)
+
+    this.fetchSchema(props.defaultQuery, props.endpoint)
   }
 
   componentWillMount() {
-    this.fetchSchema()
+    this.fetchSchema(this.props.defaultQuery, this.props.endpoint)
   }
 
   render() {
@@ -174,13 +179,13 @@ export default class QueryBox extends React.Component<Props, State> {
     )
   }
 
-  private onEditQuery = async(query: string) => {
+  private onEditQuery = async(query: string, endpoint = this.props.endpoint) => {
     this.setState({query} as State)
     const {schema} = this.state
     if (schema) {
       try {
         if (validate(schema, parse(query)).length === 0) {
-          const result = await queryEndpoint(this.props.endpoint, query)
+          const result = await queryEndpoint(endpoint, query)
           const resultString = JSON.stringify(result, null, 2)
           this.setState({result: resultString} as State)
         }
@@ -190,9 +195,9 @@ export default class QueryBox extends React.Component<Props, State> {
     }
   }
 
-  private async fetchSchema() {
-    const schema = await getSchema(this.props.endpoint)
+  private async fetchSchema(defaultQuery: string, endpoint: string) {
+    const schema = await getSchema(endpoint)
 
-    this.setState({schema} as State)
+    this.setState({schema} as State, () => this.onEditQuery(defaultQuery, endpoint))
   }
 }
