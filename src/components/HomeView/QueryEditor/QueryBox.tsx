@@ -69,52 +69,6 @@ const Separator = styled.div`
   }
 `
 
-const RowNumbers = styled.div`
-  padding-top: 2px;
-  line-height: 24px;
-  white-space: pre;
-  color: ${$v.white20};
-  font-size: ${$v.size12};
-  text-align: right;
-  padding-right: ${$v.size06};
-  flex: 0 0 auto;
-`
-
-const Pre = styled.pre`
-  margin-top: ${$v.size38};
-  color: ${$v.white};
-  display: flex;
-`
-
-const CodeContainer = styled.div`    
-  position: relative;
-  overflow: hidden;
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: ${$v.size16};
-  }
-  
-  &:before {
-    left: 0;
-    background: linear-gradient(to right, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  &:after {
-    right: 0;
-    background: linear-gradient(to left, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  code {
-    display: block;
-    padding: 0 ${$v.size16};
-    overflow: auto;
-  }
-`
-
 const Switch = styled.div`
   transition: opacity ${$v.duration} linear;
   
@@ -123,31 +77,33 @@ const Switch = styled.div`
   }
 `
 
-const defaultQuery = `{
-  allPosts {
-    id
-  }
-}`
-
-
 interface Props {
-  endpoint: string
+  endpoint: string,
+  defaultQuery: string,
 }
 
 interface State {
-  schema: GraphQLSchema | null
-  query: string
-  result: any | null
-  responseVisible: boolean
+  schema: GraphQLSchema | null,
+  query: string,
+  result: any | null,
+  responseVisible: boolean,
 }
 
 export default class QueryBox extends React.Component<Props, State> {
 
-  state = {
-    schema: null,
-    query: defaultQuery,
-    result: null,
-    responseVisible: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      schema: null,
+      query: props.defaultQuery,
+      result: null,
+      responseVisible: false,
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({query: props.defaultQuery} as State)
   }
 
   componentWillMount() {
