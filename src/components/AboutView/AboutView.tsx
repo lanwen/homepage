@@ -95,14 +95,25 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                    alt='LinkedIn Logo'
+                  />
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')}
+                    alt='Twitter Logo'
+                  />
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')}
+                    alt='GitHub Logo'
+                  />
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                  {'Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.'} // tslint:disable-line
+                </h4>
               </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
@@ -117,14 +128,19 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                       alt='LinkedIn Logo'/>
+                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')}
+                       alt='Twitter Logo'/>
+                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')}
+                       alt='GitHub Logo'/>
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                  Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.
+                </h4>
               </section>
             </Founder>
             <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
@@ -139,14 +155,22 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')}
+                    alt='LinkedIn Logo'/>
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')}
+                    alt='Twitter Logo'/>
+                  <img
+                    className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')}
+                    alt='GitHub Logo'/>
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
                 </div>
-                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
+                <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                  Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.
+                </h4>
               </section>
             </Founder>
           </div>

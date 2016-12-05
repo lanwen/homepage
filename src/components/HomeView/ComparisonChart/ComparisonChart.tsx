@@ -40,6 +40,7 @@ const Table = styled.div`
 `
 
 const TableContainer = styled(HorScrollbox)`
+  padding-right: ${$v.size10};
   padding-bottom: 500px;
   margin-bottom: -500px;
 `
