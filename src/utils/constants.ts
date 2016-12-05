@@ -14,8 +14,10 @@ const breakpoints = {
 }
 
 const maxWidth = 1440
+const movingDuration = '.3s'
 
 export {
   breakpoints,
-  maxWidth
+  maxWidth,
+  movingDuration,
 }

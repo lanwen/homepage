@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
-import { breakpoints, maxWidth } from '../../../utils/constants'
+import { breakpoints, maxWidth, movingDuration } from '../../../utils/constants'
 import QueryBox from './QueryBox'
 import { projects } from './data'
 
@@ -29,6 +29,10 @@ const Container = styled.div`
 `
 
 const Editor = styled.div`
+  
+  height: 500px;
+  transition: height ${movingDuration} ease;
+
   @media (min-width: ${breakpoints.p1440}px) {
     border-radius: 2px;
     overflow: hidden;
@@ -179,6 +183,10 @@ const SchemaTab = styled(Tab)`
   ${props => props.active && ActiveSchemaTab};
 `
 
+const EndpointContainer = styled.div`
+  margin-top: auto;
+`
+
 const Endpoint = styled.div`
   height: ${parseFloat($v.size38) + 20}px;
   margin-left: -12px;
@@ -256,15 +264,15 @@ export default class QueryEditor extends React.Component<{}, State> {
           <Container>
             <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
               { window.innerWidth >= breakpoints.p1000 &&
-              <Schema className={cx($p.bgDarkBlue)}>
-                <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16)}>
+              <Schema className={cx($p.bgDarkBlue, $p.flex, $p.flexColumn)}>
+                <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16, $p.flexFixed)}>
                   <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
                   <TabBar>
                     <ViewTab active>Visual</ViewTab>
                     <ViewTab>IDL</ViewTab>
                   </TabBar>
                 </div>
-                <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative)}>
+                <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
                   <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
                     {activeProject.models.map(model => (
                       <SchemaTab
@@ -289,7 +297,7 @@ export default class QueryEditor extends React.Component<{}, State> {
                     ))}
                   </div>
                 </Models>
-                <div className={cx($p.pt38)}>
+                <EndpointContainer className={cx($p.pt38, $p.flexFixed)}>
                   <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
                   <Endpoint
                     className={cx(
@@ -315,7 +323,7 @@ export default class QueryEditor extends React.Component<{}, State> {
                       />
                     </Copy>
                   </Endpoint>
-                </div>
+                </EndpointContainer>
               </Schema>
               }
               <QueryBox endpoint={activeProject.endpoint} defaultQuery={activeProject.defaultQuery} />
