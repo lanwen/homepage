@@ -41,6 +41,8 @@ const Editor = styled.div`
 
 const Schema = styled.div`
   padding: ${$v.size25};
+  width: 280px;
+  flex: 0 0 auto;
   
   @media (max-width: ${breakpoints.p650}px) {
     padding: ${$v.size16};
