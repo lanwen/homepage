@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
+import { breakpoints } from '../../utils/constants'
 
 export default class AboutView extends React.Component<{}, {}> {
 
@@ -25,9 +26,18 @@ export default class AboutView extends React.Component<{}, {}> {
       font-size: ${$v.size16};
       font-weight: 600;
 `
+    const PhotoSection = styled.div`
+      @media(min-width: ${breakpoints.p1250}px) {
+        padding-left: ${$v.size96};
+        padding-right: ${$v.size96};
+        }
+`
     const Founder = styled.div`
-    position: relative;
-    overflow: visible;
+      position: relative;
+      overflow: visible;
+      box-sizing: border-box; 
+      flex: 0;
+      flex-basis: 32%;
        
        .asd {
           display: none;
@@ -40,14 +50,29 @@ export default class AboutView extends React.Component<{}, {}> {
           position: absolute;
           top: 0%;
           left: 0%;
-          max-width: 340px;
        }
        
        &:hover .asd {
         display: flex;
+        flex: 1;
         z-index: 10;
        }
        
+       @media(min-width: ${breakpoints.p1250}px) {
+        flex: 0;
+        flex-basis: 30%;
+        }
+        
+       @media(max-width: ${breakpoints.p900}px) {
+        flex: 0;
+        flex-basis: 40%;
+        }
+       
+       @media(max-width: ${breakpoints.p650}px) {
+        flex: 0;
+        flex-basis: 70%;
+        }
+  
        .line {
           width: 100%;
           float: left;
@@ -82,12 +107,12 @@ We ourselves have built countless backend applications and got tired of reinvent
             <h1 className={cx($p.selfCenter)}>We’re frontend developers on our own.</h1>
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
           </article>
-          <div className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
-            <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
+          <PhotoSection className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
+            <Founder className={cx($p.tc, $p.pv96)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Johannes.png')}/>
               <Name>Johannes Schickling</Name>
               <Position>CO-FOUNDER</Position>
-              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Johannes.png')}/>
                 <Name>Johannes Schickling</Name>
                 <Position className={cx($p.pb25)}>CO-FOUNDER</Position>
@@ -95,9 +120,9 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                   <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
+                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
+                   <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
@@ -105,11 +130,11 @@ We ourselves have built countless backend applications and got tired of reinvent
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
               </section>
             </Founder>
-            <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
+            <Founder className={cx($p.tc, $p.pv96)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Soren.png')}/>
               <Name>Søren Bramer Schmidt</Name>
               <Position>CO-FOUNDER</Position>
-              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Soren.png')}/>
                 <Name>Søren Bramer Schmidt</Name>
                 <Position className={cx($p.pb25)}>CO-FOUNDER</Position>
@@ -117,9 +142,9 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
@@ -127,11 +152,11 @@ We ourselves have built countless backend applications and got tired of reinvent
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
               </section>
             </Founder>
-            <Founder className={cx($p.tc, $p.pv96, $p.ph60)}>
+            <Founder className={cx($p.tc, $p.pv96)}>
               <img className={cx($p.pb38)} src={require('../../assets/graphics/Nilan.png')}/>
               <Name>Nilan Marktanner</Name>
               <Position>DEVELOPER</Position>
-              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap, $p.flexFixed)}>
+              <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
                 <Image className={cx($p.pv38, $p.selfCenter)} src={require('../../assets/graphics/Nilan.png')}/>
                 <Name>Nilan Marktanner</Name>
                 <Position className={cx($p.pb25)}>DEVELOPER</Position>
@@ -139,9 +164,9 @@ We ourselves have built countless backend applications and got tired of reinvent
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
-                  <img className={cx($p.pa10, $p.bbox)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/LinkedInLogo.png')} alt='LinkedIn Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/TwitterLogo.png')} alt='Twitter Logo'/>
+                  <img className={cx($p.pa10, $p.bbox, $p.db)} src={require('../../assets/graphics/GitHubLogo.png')} alt='GitHub Logo'/>
                   <div className={cx('hr')}>
                     <div className={cx('line')}></div>
                   </div>
@@ -149,7 +174,7 @@ We ourselves have built countless backend applications and got tired of reinvent
                 <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>Entrepreneur and employee #1 at Trustpilot.com. Studied computer science in Denmark. Loves tinkering with new technology.</h4>
               </section>
             </Founder>
-          </div>
+          </PhotoSection>
         </section>
         <Footer/>
       </div>

@@ -12,8 +12,8 @@ const Container = styled.div`
 `
 
 const SmallContainer = styled.div`
-  margin: ${$v.size16};
-  padding: ${$v.size10} ${$v.size06};
+
+  padding: ${$v.size25} ${$v.size25};
   flex: 0 0 260px;
   display: flex;
   flex-direction: column;

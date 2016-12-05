@@ -11,14 +11,26 @@ interface Props {
 
 export default class FeaturesContent extends React.Component<Props, {}> {
   render() {
+    const Content = styled.p`
+      @media(max-width: ${breakpoints.p500}px) {
+        text-align: left;
+        padding-left: ${$v.size38};
+        padding-right: ${$v.size38};
+      }
+      
+      @media(max-width: ${breakpoints.p400}px) {
+        padding-left: ${$v.size25};
+        padding-right: ${$v.size25};
+      }
+`
     return (
       <div>
         <div className={cx($p.mv16, $p.f25, $p.tc, $p.fw3)}>
           <span>{this.props.headline}</span>
         </div>
-        <p className={cx($p.f16, $p.fw4, $p.o50, $p.tc)}>
+        <Content className={cx($p.f16, $p.fw4, $p.o50, $p.tc)}>
           {this.props.content}
-        </p>
+        </Content>
       </div>
     )
   }

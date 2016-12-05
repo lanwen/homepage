@@ -36,7 +36,7 @@ export default class SchemaGraph extends React.Component<{}, {}> {
           copy='Graphcool is built by developers for developers.'
         />
         <Graph>
-          <img className={cx($p.w100, $p.hAuto)} src={require('../../assets/graphics/Architecture2.png')} alt='Architecture'/>
+          <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../assets/graphics/Architecture2.png')} alt='Architecture'/>
         </Graph>
       </Root>
     )

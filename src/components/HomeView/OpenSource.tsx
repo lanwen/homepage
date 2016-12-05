@@ -12,7 +12,14 @@ const Copy = styled.div`
     width: 80%;
   }
   @media(max-width: ${breakpoints.p500}px) {
-    width: 90%;
+    padding-left: ${$v.size38};
+    padding-right: ${$v.size38};
+    text-align: left;
+  }
+ 
+ @media(max-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size25};
+    padding-right: ${$v.size25};
   }
 `
 
@@ -42,7 +49,7 @@ export default class OpenSource extends React.Component<{}, {}> {
     const headline = (
       <div className={cx($p.mb0, $p.pb0)}>
         <span>We </span>
-        <img className={$p.ph10} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
+        <img className={cx($p.ph10)} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
         <span> Open Source</span>
       </div>
     )
@@ -55,11 +62,11 @@ export default class OpenSource extends React.Component<{}, {}> {
         />
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
           <figure className={cx($p.mh25, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnRelay.png')}
+            <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)} src={require('../../assets/graphics/LearnRelay.png')}
                  alt='Learn Relay'/>
           </figure>
           <figure className={cx($p.mh25, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto, $p.bbox)} src={require('../../assets/graphics/LearnApollo.png')}
+            <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)} src={require('../../assets/graphics/LearnApollo.png')}
                  alt='Learn Apollo'/>
           </figure>
         </Learn>
