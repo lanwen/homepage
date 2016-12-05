@@ -6,6 +6,7 @@ import styled from 'styled-components'
 interface Props {
   graphcool?: boolean,
   active?: boolean,
+  segments: number[],
 }
 
 export default class Bar extends React.Component<Props, {}> {
@@ -49,10 +50,7 @@ export default class Bar extends React.Component<Props, {}> {
 
     return (
       <Root active={this.props.active} graphcool={this.props.graphcool}>
-        <Segment className={cx($p.w10)}/>
-        <Segment className={cx($p.w40)}/>
-        <Segment className={cx($p.w20)}/>
-        <Segment className={cx($p.w30)}/>
+      {this.props.segments.map((size) => <Segment className={cx($p[`w${size}`])}/>)}
       </Root>
     )
   }
