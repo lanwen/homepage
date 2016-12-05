@@ -105,30 +105,65 @@ module.exports = (context, cb) => {
 
   cb(null, 'success')
 }`,
-  }, {
-    language: 'go',
-    code: `module.exports = function (cb) {
-  cb(null, 'hello instagram!');
-}`,
   }],
 }, {
   name: 'Webshop',
   description: 'Verify & process order and submit to Stripe',
   payloadQuery: `{
   createdNode {
-    stars,
-    description,
-    author
+    id,
+    cart {
+      items {
+        price
+      }
+    },
+    delivery,
+    user {
+      id
+    }
   }
 }`,
   trigger: {
-    model: 'Order',
+    model: 'Transaction',
     mutation: 'is created',
   },
   snippets: [{
     language: 'js',
-    code: `module.exports = function (cb) {
-  cb(null, 'hello webshop!');
+    code: `module.exports = (context, cb) => {
+
+  const client = new Lokka({
+    transport: new Transport('https://api.graph.cool/simple/v1/__PROJECT_ID__', {'Authorization': 'Bearer __PERMANENT_AUTH_TOKEN__'})
+  })
+
+  const stripe = require("stripe")(STRIPE_SECRET);
+
+  const transaction = context.data.createdNode
+  const amount = transaction.cart.items.reduce((sum, item) => sum + item.price) + transaction.delivery
+
+  const charge = stripe.charges.create({
+    amount: amount,
+    currency: "usd",
+    source: transaction.stripeToken,
+    description: \`Charge for \${transaction.user.id}\`
+  }, function(err, charge) {
+    if (err && err.type === 'StripeCardError') {
+      setTransactionStatus(transaction.id, "DECLINED")
+      .then(() => cb(e, {}))
+    } else {
+      setTransactionStatus(transaction.id, "COMPLETED")
+      .then(() => cb(null, 'success'))
+    }
+  });
+
+  cb(null, 'success')
+}
+
+function setTransactionStatus(id, status) {
+  return client.mutate(\`{
+    updateTransaction(id: "\${id}", status: "\${status}"){
+      id
+    }
+  }\`)
 }`,
   }],
 }]

@@ -283,7 +283,7 @@ export default class Landing extends React.Component<{}, {}> {
                   linkUrl='http://www.graph.cool' /> + <span className={cx($p.nowrap)}>
                   AWS Lambda
                   <Hint
-                    text='Serverless functions are alsow awesome'
+                    text='Serverless functions are also awesome'
                     linkText='More on Serverless'
                     linkUrl='http://www.graph.cool'
                   />
