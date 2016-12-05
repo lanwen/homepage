@@ -53,14 +53,14 @@ export default class Overlay extends React.Component<Props, {}> {
             {window.innerWidth < breakpoints.p1000 &&
             <span className={cx($p.black50)}>The old way</span>
             }
-            </div>
+          </div>
           <List className={cx($p.black50)}>
             {this.props.old.map((x) => <li>{x}</li>)}
           </List>
-          <Bar active segments={this.props.oldSegments} />
+          <Bar active segments={this.props.oldSegments}/>
         </div>
         <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25, $p.relative)}>
-          <Bar graphcool active segments={this.props.newSegments} />
+          <Bar graphcool active segments={this.props.newSegments}/>
           {window.innerWidth < breakpoints.p1000 &&
           <div className={cx($p.absolute, $p.right25, $p.top25)}>
             <Icon
@@ -72,7 +72,7 @@ export default class Overlay extends React.Component<Props, {}> {
           </div>
           }
           <List className={cx($p.green)}>
-            {this.props.new.map((x) => <li>{x}</li>)}
+            {this.props.new.map((text) => <li key={text}>{text}</li>)}
           </List>
         </div>
       </Root>

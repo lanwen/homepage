@@ -77,26 +77,25 @@ export default class Timeline extends React.Component<{}, {}> {
 
   render() {
 
-  const data = [
-  {
-    title: "Initial Setup",
-    old: ['Pick language and framework', 'Setup servers', 'Configure database', 'Add tables and ORM mapping code'],
-    new: ['Create your first model in minutes'],
-    oldSegments: [10,50,30,20],
-    newWegments: [20]
-  },{
-    title: "Iterate",
-    old: ['Migrate database', 'Adjust ORM mapping', 'Add infrastructure to support new features', 'Coordinate releases between teams'],
-    new: ['Change your data model with a few clicks', 'Add integrations'],
-    oldSegments: [10,30,50,10],
-    newWegments: [20, 10]
-  },{
-    title: "Scaling",
-    old: ['Create database indexes', 'Monitor server load', 'Install load balancer', 'Configure data replication and active failover'],
-    new: ['Graphcool indexes your data as required', 'Pay only for the operations you consume'],
-    oldSegments: [10,30,20,40],
-    newWegments: [10, 10]
-  }]
+    const data = [{
+      title: 'Initial Setup',
+      old: ['Pick language and framework', 'Setup servers', 'Configure database', 'Add tables and ORM mapping code'],
+      new: ['Create your first model in minutes'],
+      oldSegments: [10, 50, 30, 20],
+      newWegments: [20]
+    }, {
+      title: 'Iterate',
+      old: ['Migrate database', 'Adjust ORM mapping', 'Add infrastructure to support new features', 'Coordinate releases between teams'],
+      new: ['Change your data model with a few clicks', 'Add integrations'],
+      oldSegments: [10, 30, 50, 10],
+      newWegments: [20, 10]
+    }, {
+      title: 'Scaling',
+      old: ['Create database indexes', 'Monitor server load', 'Install load balancer', 'Configure data replication and active failover'],
+      new: ['Graphcool indexes your data as required', 'Pay only for the operations you consume'],
+      oldSegments: [10, 30, 20, 40],
+      newWegments: [10, 10]
+    }]
 
     return (
       <section>
@@ -120,7 +119,16 @@ export default class Timeline extends React.Component<{}, {}> {
             </Legend>
             }
 
-            {data.map((x) => <Block label={x.title} old={x.old} new={x.new} oldSegments={x.oldSegments} newSegments={x.newWegments}/>)}
+            {data.map((item) => (
+              <Block
+                key={item.title}
+                label={item.title}
+                old={item.old}
+                new={item.new}
+                oldSegments={item.oldSegments}
+                newSegments={item.newWegments}
+              />
+            ))}
 
           </Container>
           {window.innerWidth < breakpoints.p500 &&

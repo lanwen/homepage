@@ -318,10 +318,10 @@ export default class QueryEditor extends React.Component<{}, State> {
                 </div>
               </Schema>
               }
-              <QueryBox endpoint={activeProject.endpoint}/>
+              <QueryBox endpoint={activeProject.endpoint} defaultQuery={activeProject.defaultQuery} />
             </Editor>
-            {window.innerWidth > breakpoints.p580 &&
-            <TryOut />
+            {window.innerWidth > breakpoints.p580 && activeProject.code &&
+            <TryOut reactLink={activeProject.code.reactLink} angularLink={activeProject.code.angularLink} />
             }
           </Container>
         </Root>
