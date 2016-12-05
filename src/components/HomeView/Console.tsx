@@ -84,7 +84,7 @@ const PaginationNext = styled.button`
   }
 `
 
-const ConsoleContent = styled.img`
+const ConsoleContent = styled.div`
   width: 98.4%;
   height: auto;
   left: 50%;
@@ -122,7 +122,15 @@ export default class Console extends React.Component<{}, {}> {
             <Browser className={cx($p.w100, $p.relative)}>
               <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../assets/graphics/browser.svg')}/>
               <BrowserContainer className={cx($p.absolute, $p.top0, $p.right0, $p.h100)}>
-                <ConsoleContent className={cx($p.db, $p.absolute)} src='https://placehold.it/761x550/ffffff/000000'/>
+                <ConsoleContent className={cx($p.db, $p.absolute)}>
+                  <video
+                    ref='video'
+                    className={cx($p.w100)}
+                    src='/videos/landing.mp4'
+                    autoPlay
+                    loop
+                  />
+                </ConsoleContent>
                 <FeatureIndicator top={30} left={60}/>
               </BrowserContainer>
             </Browser>

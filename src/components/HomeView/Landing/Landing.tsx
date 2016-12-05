@@ -214,6 +214,15 @@ const Step = styled.div`
   ${props => props.active && ActiveStep}
 `
 
+const VideoContainer = styled.div`
+  position: absolute;
+  width: 98.4%;
+  height: auto;
+  top: 4.7%;
+  left: 50%;
+  transform: translate(-50%,0);
+`
+
 interface State {
   activeStep: number
 }
@@ -229,12 +238,13 @@ export default class Landing extends React.Component<{}, {}> {
       <section>
         <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
           <HeroImage className={cx($p.flexFixed, $p.relative)}>
-
-
-            <Video
-              step={this.state.activeStep}
-              setStep={(step) => this.setState({ activeStep: step } as State)}
-            />
+            <VideoContainer>
+              <Video
+                step={this.state.activeStep}
+                setStep={(step) => this.setState({ activeStep: step } as State)}
+                markers={[0, 22, 43, 61]}
+              />
+            </VideoContainer>
             <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
             <Steps>
               <Step
