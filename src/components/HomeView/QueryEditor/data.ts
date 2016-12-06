@@ -30,6 +30,10 @@ export const projects: Project[] = [{
   defaultQuery: `{
   allPosts {
     id
+    description
+    comments {
+      text
+    }
   }
 }`,
   code: {
@@ -60,7 +64,7 @@ export const projects: Project[] = [{
       type: 'String',
       required: true,
     }, {
-      name: 'imgUrl',
+      name: 'imageUrl',
       type: 'String',
     }, {
       name: 'comments',
@@ -75,7 +79,7 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'quote',
+      name: 'text',
       type: 'String',
       required: true,
     }, {
@@ -85,15 +89,24 @@ export const projects: Project[] = [{
     }],
   }],
 }, {
-  name: 'Twitter',
-  endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
+  name: 'Pokemon',
+  endpoint: 'https://api.graph.cool/simple/v1/ciwdaxg682vpi0171tw2ga8fy',
   defaultQuery: `{
-  allPokemons {
+  Trainer(name: "Ash Ketchum") {
     id
+    ownedPokemons {
+      name
+      types
+    }
+  }
+  allMatches(filter: {location: "Indigo Plateau"}) {
+    winner {
+      name
+    }
   }
 }`,
   models: [{
-    name: 'User',
+    name: 'Trainer',
     fields: [{
       name: 'id',
       type: 'GraphQLId',
@@ -103,49 +116,69 @@ export const projects: Project[] = [{
       name: 'name',
       type: 'String',
       required: true,
+    }, {
+      name: 'ownedPokemons',
+      type: '[Pokemon]',
+    }, {
+      name: 'matches',
+      type: '[Match]',
+    }, {
+      name: 'wonMatches',
+      type: '[Match]',
     }],
   }, {
-    name: 'Tweet',
+    name: 'Pokemon',
     fields: [{
       name: 'id',
       type: 'GraphQLId',
       system: true,
       required: true,
     }, {
-      name: 'title',
+      name: 'name',
       type: 'String',
       required: true,
     }, {
-      name: 'imgUrl',
+      name: 'url',
       type: 'String',
     }, {
-      name: 'comments',
-      type: '[Comment]',
-      relation: true,
+      name: 'types',
+      type: '[Enum]',
+    }, {
+      name: 'trainer',
+      type: 'Trainer',
     }],
   }, {
-    name: 'Location',
+    name: 'Match',
     fields: [{
       name: 'id',
       type: 'GraphQLId',
       system: true,
       required: true,
     }, {
-      name: 'quote',
+      name: 'location',
       type: 'String',
       required: true,
     }, {
-      name: 'post',
-      type: 'Post',
-      relation: true,
+      name: 'trainers',
+      type: '[Trainer]',
+    }, {
+      name: 'winner',
+      type: 'Trainer',
     }],
   }],
 }, {
   name: 'Airbnb',
-  endpoint: 'https://api.graph.cool/simple/v1/ciasdfasdf',
+  endpoint: 'https://api.graph.cool/simple/v1/ciwdcrl622wty01714p2f8e0q',
   defaultQuery: `{
-  allTweets {
+  allListings {
     id
+    available
+    host {
+      name
+    }
+    guests {
+      name
+    }
   }
 }`,
   models: [{
@@ -159,6 +192,9 @@ export const projects: Project[] = [{
       name: 'name',
       type: 'String',
       required: true,
+    }, {
+      name: 'listings',
+      type: '[Listing]'
     }],
   }, {
     name: 'Guest',
@@ -168,16 +204,12 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'title',
+      name: 'name',
       type: 'String',
       required: true,
     }, {
-      name: 'imgUrl',
-      type: 'String',
-    }, {
-      name: 'comments',
-      type: '[Comment]',
-      relation: true,
+      name: 'listings',
+      type: '[Listing]'
     }],
   }, {
     name: 'Listing',
@@ -187,13 +219,26 @@ export const projects: Project[] = [{
       system: true,
       required: true,
     }, {
-      name: 'quote',
+      name: 'location',
       type: 'String',
       required: true,
     }, {
-      name: 'post',
-      type: 'Post',
-      relation: true,
+      name: 'available',
+      type: 'boolean',
+    }, {
+      name: 'startDate',
+      type: 'DateTime',
+      required: true,
+    }, {
+      name: 'endDate',
+      type: 'DateTime',
+      required: true,
+    }, {
+      name: 'host',
+      type: 'Host',
+    }, {
+      name: 'guests',
+      type: '[Guest]',
     }],
   }],
 }]
