@@ -34,7 +34,6 @@ export default class References extends React.Component<{}, State> {
 
   render() {
     const reference = references[this.state.currentIndex]
-    
     return (
       <section className={cx($p.bgLightgreen10, $p.pa60, $p.pb38, $p.tc)}>
         <Container>

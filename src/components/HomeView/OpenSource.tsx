@@ -58,7 +58,7 @@ export default class OpenSource extends React.Component<{}, {}> {
       <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
         <SectionHeader
           headline={headline}
-          copy='Help us move the GraphQL community forward. The Graphcool team works on various open source projects and would love your help. The easiest way to get started is to submit improvements to the examples or create examples and guides for new technologies'
+          copy = 'Help us move the GraphQL community forward. The Graphcool team works on various open source projects and would love your help. The easiest way to get started is to submit improvements to the examples or create examples and guides for new technologies' // tslint:disable-line
         />
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
           <figure className={cx($p.mh25, $p.mv10)}>
@@ -66,11 +66,10 @@ export default class OpenSource extends React.Component<{}, {}> {
                  alt='Learn Relay'/>
           </figure>
           <figure className={cx($p.mh25, $p.mv10)}>
-            {//tslint:disable-next-line
               <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
                    src={require('../../assets/graphics/LearnApollo.png')}
-                   alt='Learn Apollo'/>
-            }
+                   alt='Learn Apollo'
+              />
           </figure>
         </Learn>
         <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter, $p.fw3)}>

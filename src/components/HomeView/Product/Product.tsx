@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { maxWidth, breakpoints } from '../../../utils/constants'
-import { features }from './data'
+import { features } from './data'
 
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'

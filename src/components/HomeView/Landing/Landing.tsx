@@ -290,7 +290,8 @@ export default class Landing extends React.Component<{}, {}> {
                   />
                 </span>
                 <BuiltFor className={cx($p.green, $p.nowrap)}>
-                  built for <Caret options={['frontend developers.', 'backend developers.', 'startups.', 'agencies.']} />
+                  built for
+                  <Caret options={['frontend developers.', 'backend developers.', 'startups.', 'agencies.']} />
                 </BuiltFor>
               </Headline>
               <Copy className={cx($p.f25, $p.black50)}>

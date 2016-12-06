@@ -82,26 +82,28 @@ export default class Timeline extends React.Component<{}, {}> {
       old: ['Pick language and framework', 'Setup servers', 'Configure database', 'Add tables and ORM mapping code'],
       new: ['Create your first model in minutes'],
       oldSegments: [10, 50, 30, 20],
-      newWegments: [20]
+      newWegments: [20],
     }, {
       title: 'Iterate',
-      old: ['Migrate database', 'Adjust ORM mapping', 'Add infrastructure to support new features', 'Coordinate releases between teams'],
+      old: ['Migrate database', 'Adjust ORM mapping', 'Add infrastructure to support new features',
+        'Coordinate releases between teams'],
       new: ['Change your data model with a few clicks', 'Add integrations'],
       oldSegments: [10, 30, 50, 10],
-      newWegments: [20, 10]
+      newWegments: [20, 10],
     }, {
       title: 'Scaling',
-      old: ['Create database indexes', 'Monitor server load', 'Install load balancer', 'Configure data replication and active failover'],
+      old: ['Create database indexes', 'Monitor server load', 'Install load balancer',
+        'Configure data replication and active failover'],
       new: ['Graphcool indexes your data as required', 'Pay only for the operations you consume'],
       oldSegments: [10, 30, 20, 40],
-      newWegments: [10, 10]
+      newWegments: [10, 10],
     }]
 
     return (
       <section>
         <SectionHeader
           headline='Don’t reinvent the wheel. Build apps faster'
-          copy='Stop wasting time writing error-prone database migrations and monitoring log files. Graphcool handles all of that so you can focus on what matters: Building your app.'
+          copy='Stop wasting time writing error-prone database migrations and monitoring log files. Graphcool handles all of that so you can focus on what matters: Building your app.' // tslint:disable-line
         />
         <Root className={cx($p.relative)}>
           <Container className={cx($p.center, $p.flex, $p.relative)}>

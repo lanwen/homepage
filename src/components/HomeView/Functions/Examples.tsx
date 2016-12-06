@@ -254,7 +254,7 @@ export default class Examples extends React.Component<{}, State> {
                   case={e.name}
                   description={e.description}
                   active={e.name === selectedExample.name}
-                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language} as State)}
+                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language} as State)} // tslint:disable-line
                 />
               ))}
             </ExamplesContainer>
@@ -335,7 +335,7 @@ export default class Examples extends React.Component<{}, State> {
                     value={selectedSnippet.code}
                     options={{
                     lineNumbers: true,
-                    mode: 'javascript'
+                    mode: 'javascript',
                   }}
                   />
                 </div>
