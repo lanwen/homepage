@@ -58,7 +58,7 @@ export default class OpenSource extends React.Component<{}, {}> {
       <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
         <SectionHeader
           headline={headline}
-          copy='Graphcool is built by developers for developers.'
+          copy='Help us move the GraphQL community forward. The Graphcool team works on various open source projects and would love your help. The easiest way to get started is to submit improvements to the examples or create examples and guides for new technologies'
         />
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
           <figure className={cx($p.mh25, $p.mv10)}>

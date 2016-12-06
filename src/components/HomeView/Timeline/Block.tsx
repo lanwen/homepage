@@ -47,6 +47,10 @@ const Root = styled.div`
 
 interface Props {
   label: string,
+  old: string[],
+  new: string[],
+  oldSegments: number[],
+  newSegments: number[],
 }
 
 interface State {
@@ -63,21 +67,33 @@ export default class Block extends React.Component<Props, State> {
     return (
       <Root>
         {window.innerWidth >= breakpoints.p1000 &&
-          <div
-            onMouseEnter={() => this.setState({showOverlay: true} as State)}
-            onMouseLeave={() => this.setState({showOverlay: false} as State)}
-          >
-            <div className='label'>{this.props.label}</div>
-            <Bar />
-            <Bar graphcool />
-            {this.state.showOverlay &&
-              <Overlay label={this.props.label} />
-            }
-          </div>
+        <div
+          onMouseEnter={() => this.setState({showOverlay: true} as State)}
+          onMouseLeave={() => this.setState({showOverlay: false} as State)}
+        >
+          <div className='label'>{this.props.label}</div>
+          <Bar segments={this.props.oldSegments}/>
+          <Bar graphcool segments={this.props.newSegments}/>
+          {this.state.showOverlay &&
+          <Overlay
+            label={this.props.label}
+            old={this.props.old}
+            new={this.props.new}
+            oldSegments={this.props.oldSegments}
+            newSegments={this.props.newSegments}
+          />
+          }
+        </div>
         }
 
         {window.innerWidth < breakpoints.p1000 &&
-          <Overlay label={this.props.label} />
+        <Overlay
+          label={this.props.label}
+          old={this.props.old}
+          new={this.props.new}
+          oldSegments={this.props.oldSegments}
+          newSegments={this.props.newSegments}
+        />
         }
       </Root>
     )

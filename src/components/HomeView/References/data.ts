@@ -16,15 +16,11 @@ Kitze (repeat agency)
 */
 
 export const references: Reference[] = [{
-  quote: 'We really, really like this product. We don’t need backend-devs anymore. That’s great!',
-  who: 'Random CTO',
-  url: 'https://google.com',
+  quote: 'We help big companies innovate like startups. Graphcools integrated console enabled us to build a product for Twitter and quickly iterate as we gathered analytics from users.',
+  who: 'Hackerbay CEO',
+  url: 'https://hackerbay.com/',
 }, {
-  quote: 'We 2, really like this product. We don’t need backend-devs anymore. That’s great!',
-  who: 'Random CTO2',
-  url: 'https://google.com',
-}, {
-  quote: 'We 3, really like this product. We don’t need backend-devs anymore. That’s great! We 3, really like this product. We don’t need backend-devs anymore. That’s great!',
-  who: 'Random CTO3',
-  url: 'https://google.com',
+  quote: 'I am an experienced Angular developer but had never used GraphQL before. With Graphcool I can focus on the user experience and rely on Graphcool to handle the data and service integrations I need.',
+  who: 'Emil',
+  url: 'https://github.com/emolr',
 }]

@@ -125,7 +125,12 @@ const AngularButton = styled(Button)`
   }
 `
 
-export default class TryOut extends React.Component<{}, {}> {
+interface Props {
+  reactLink: string,
+  angularLink: string,
+}
+
+export default class TryOut extends React.Component<Props, {}> {
 
   render() {
     return (
@@ -136,7 +141,7 @@ export default class TryOut extends React.Component<{}, {}> {
         <Steps className={cx($p.flex, $p.itemsCenter)}>
           <Step>
             <span className={cx($g.uppercaseLabel, $p.black40)}>Download Code</span>
-            <ReactButton href='' target='_blank' className={cx($p.ml16)}>
+            <ReactButton href={this.props.reactLink} target='_blank' className={cx($p.ml16)}>
               <Icon
                 src={require('../../../assets/icons/react.svg')}
                 width={25}
@@ -145,7 +150,7 @@ export default class TryOut extends React.Component<{}, {}> {
               />
               React
             </ReactButton>
-            <AngularButton href='' target='_blank' className={cx($p.ml10)}>
+            <AngularButton href={this.props.angularLink} target='_blank' className={cx($p.ml10)}>
               <Icon
                 src={require('../../../assets/icons/angular.svg')}
                 width={25}

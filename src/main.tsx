@@ -9,6 +9,7 @@ import AboutView from './components/AboutView/AboutView'
 import { $v } from 'graphcool-styles'
 import { injectGlobal } from 'styled-components'
 import { breakpoints } from './utils/constants'
+import DocsView from './components/DocsView/DocsView'
 
 // tslint:disable-next-line
 injectGlobal`
@@ -87,6 +88,7 @@ function render() {
         <Route path='/' component={HomeView}/>
         <Route path='/pricing' component={PricingView}/>
         <Route path='/about' component={AboutView}/>
+        <Route path='/docs' component={DocsView}/>
       </Router>
     </AppContainer>,
     document.getElementById('root'),

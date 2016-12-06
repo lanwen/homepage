@@ -1,7 +1,14 @@
 interface Project {
   name: string
   endpoint: string
+  defaultQuery: string
+  code?: Code
   models: Model[]
+}
+
+interface Code {
+  reactLink: string
+  angularLink: string
 }
 
 interface Model {
@@ -19,7 +26,16 @@ interface Field {
 
 export const projects: Project[] = [{
   name: 'Instagram',
-  endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
+  endpoint: 'https://api.graph.cool/simple/v1/ciwce5xw82kh7017179gwzn7q',
+  defaultQuery: `{
+  allPosts {
+    id
+  }
+}`,
+  code: {
+    reactLink: 'https://github.com/graphcool-examples/react-apollo-instagram-example/archive/master.zip',
+    angularLink: 'https://github.com/graphcool-examples/angular-apollo-instagram-example/archive/master.zip',
+  },
   models: [{
     name: 'User',
     fields: [{
@@ -71,6 +87,11 @@ export const projects: Project[] = [{
 }, {
   name: 'Twitter',
   endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
+  defaultQuery: `{
+  allPokemons {
+    id
+  }
+}`,
   models: [{
     name: 'User',
     fields: [{
@@ -122,6 +143,11 @@ export const projects: Project[] = [{
 }, {
   name: 'Airbnb',
   endpoint: 'https://api.graph.cool/simple/v1/ciasdfasdf',
+  defaultQuery: `{
+  allTweets {
+    id
+  }
+}`,
   models: [{
     name: 'Host',
     fields: [{

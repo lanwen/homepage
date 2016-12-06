@@ -37,6 +37,10 @@ const List = styled.div`
 
 interface Props {
   label: string,
+  old: string[],
+  new: string[],
+  oldSegments: number[],
+  newSegments: number[],
 }
 
 export default class Overlay extends React.Component<Props, {}> {
@@ -49,17 +53,14 @@ export default class Overlay extends React.Component<Props, {}> {
             {window.innerWidth < breakpoints.p1000 &&
             <span className={cx($p.black50)}>The old way</span>
             }
-            </div>
+          </div>
           <List className={cx($p.black50)}>
-            <li>Database migration</li>
-            <li>Test in staging</li>
-            <li>Adjust endpoint-database mapping</li>
-            <li>Deploy</li>
+            {this.props.old.map((x) => <li>{x}</li>)}
           </List>
-          <Bar active />
+          <Bar active segments={this.props.oldSegments}/>
         </div>
         <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25, $p.relative)}>
-          <Bar graphcool active />
+          <Bar graphcool active segments={this.props.newSegments}/>
           {window.innerWidth < breakpoints.p1000 &&
           <div className={cx($p.absolute, $p.right25, $p.top25)}>
             <Icon
@@ -71,9 +72,7 @@ export default class Overlay extends React.Component<Props, {}> {
           </div>
           }
           <List className={cx($p.green)}>
-            <li>Clone project</li>
-            <li>Adjust datamodel</li>
-            <li>Configure Permissions</li>
+            {this.props.new.map((text) => <li key={text}>{text}</li>)}
           </List>
         </div>
       </Root>

@@ -13,8 +13,8 @@ export default class Functions extends React.Component<{}, {}> {
     return (
       <section>
         <SectionHeader
-          headline='Whatever headline we have here'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          headline='Extend your backend with AWS Lambda using any language'
+          copy='With Serverless Functions you can implement any feature you need. Graphcool automatically fetches the data you need and invokes your function at the right time'
         />
         <Examples />
         <Fields />

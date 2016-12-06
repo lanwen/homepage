@@ -32,24 +32,38 @@ const Root = styled.div`
       padding-right: ${$v.size60};
     }
     
-    @media (max-width: ${breakpoints.p500}px) {
-      &:first-child {
-        padding-left: ${$v.size38};
-      }
-      
-      &:last-child {
-        padding-right: ${$v.size38};
+    // HACK (consider the widths if changing content)
+    
+    &:nth-child(4) {
+      > div {
+        width: 250px;
       }
     }
-  
-    @media (max-width: ${breakpoints.p400}px) {
-      &:first-child {
-        padding-left: ${$v.size25};
+    
+    &:nth-child(5) {
+      > div {
+        width: 330px;
       }
-      
-      &:last-child {
-        padding-right: ${$v.size25};
-      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.p500}px) {
+    &:first-child {
+      padding-left: ${$v.size38};
+    }
+    
+    &:last-child {
+      padding-right: ${$v.size38};
+    }
+  }
+
+  @media (max-width: ${breakpoints.p400}px) {
+    &:first-child {
+      padding-left: ${$v.size25};
+    }
+    
+    &:last-child {
+      padding-right: ${$v.size25};
     }
   }
 `

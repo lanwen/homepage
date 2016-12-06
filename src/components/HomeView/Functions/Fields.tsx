@@ -45,7 +45,7 @@ const Container = styled(HorScrollbox)`
   }
   
   @media (min-width: 920px) {
-    padding: ${$v.size25} ${$v.size96} 0;
+    padding: ${$v.size25} ${$v.size60} 0;
   }
   
   @media (min-width: ${breakpoints.p1000}px) {
