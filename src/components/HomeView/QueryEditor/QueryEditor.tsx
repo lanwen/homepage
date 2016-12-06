@@ -30,7 +30,7 @@ const Container = styled.div`
 
 const Editor = styled.div`
   
-  height: 500px;
+  height: 700px;
   transition: height ${movingDuration} ease;
 
   @media (min-width: ${breakpoints.p1440}px) {

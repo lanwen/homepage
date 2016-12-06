@@ -171,14 +171,14 @@ export const projects: Project[] = [{
   endpoint: 'https://api.graph.cool/simple/v1/ciwdcrl622wty01714p2f8e0q',
   defaultQuery: `{
   allListings {
-    id
+    location
     available
     host {
       name
     }
-    guests {
-      name
-    }
+  }
+  allGuests {
+    name
   }
 }`,
   models: [{
@@ -225,14 +225,6 @@ export const projects: Project[] = [{
     }, {
       name: 'available',
       type: 'boolean',
-    }, {
-      name: 'startDate',
-      type: 'DateTime',
-      required: true,
-    }, {
-      name: 'endDate',
-      type: 'DateTime',
-      required: true,
     }, {
       name: 'host',
       type: 'Host',
