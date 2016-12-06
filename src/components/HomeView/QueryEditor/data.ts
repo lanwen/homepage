@@ -88,7 +88,7 @@ export const projects: Project[] = [{
   name: 'Twitter',
   endpoint: 'https://api.graph.cool/simple/v1/civ2ev5rv0j680182w9vjgwx2',
   defaultQuery: `{
-  allTweets {
+  allPokemons {
     id
   }
 }`,

@@ -110,7 +110,9 @@ export default class Cell extends React.Component<Props, State> {
       <div
         className={cx('cell')}
         onMouseEnter={() => this.setState({showOverlay: true} as State)}
+        onTouchStart={() => this.setState({showOverlay: true} as State)}
         onMouseLeave={() => this.setState({showOverlay: false} as State)}
+        onTouchEnd={() => this.setState({showOverlay: false} as State)}
       >
         <Rating>
           {(this.props.good || this.props.veryGood) && <Pro />}

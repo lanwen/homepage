@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Example from './Example'
-import { maxWidth, breakpoints } from '../../../utils/constants'
+import { maxWidth, breakpoints, movingDuration } from '../../../utils/constants'
 import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
@@ -55,6 +55,9 @@ const Container = styled.div`
 `
 
 const Overlay = styled.div`
+  height: 500px;
+  transition: height ${movingDuration} ease;
+
   @media (max-width: ${breakpoints.p1360}px) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -298,7 +301,7 @@ export default class Examples extends React.Component<{}, State> {
                     Trigger
                   </Switch>
                   }
-                  <div className={cx($g.uppercaseLabel, $p.white30)}>Code</div>
+                  <div className={cx($g.uppercaseLabel, $p.white30, $p.mr16)}>Code</div>
                   { window.innerWidth >= breakpoints.p500 &&
                   <TabBar className={cx($p.mr16)}>
                     {selectedExample.snippets.map(({language}) => (
@@ -327,7 +330,7 @@ export default class Examples extends React.Component<{}, State> {
                   </Switch>
                   }
                 </div>
-                <div className={cx($p.h100, $p.overflowAuto, $p.w100)}>
+                <div className={cx($p.overflowAuto, $p.w100)}>
                   <CodeMirror
                     value={selectedSnippet.code}
                     options={{

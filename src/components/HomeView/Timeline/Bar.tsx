@@ -50,7 +50,7 @@ export default class Bar extends React.Component<Props, {}> {
 
     return (
       <Root active={this.props.active} graphcool={this.props.graphcool}>
-      {this.props.segments.map((size) => <Segment className={cx($p[`w${size}`])}/>)}
+        {this.props.segments.map((size, i) => <Segment key={i} className={cx($p[`w${size}`])}/>)}
       </Root>
     )
   }

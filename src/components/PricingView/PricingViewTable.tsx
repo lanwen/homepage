@@ -105,7 +105,7 @@ export default class PricingViewTable extends React.Component<{}, {}> {
           <Paragraph><strong className={cx($p.black50)}>10GB</strong> DB storage</Paragraph>
           <Paragraph><strong className={cx($p.black50)}>Daily Backups</strong></Paragraph>
         </section>
-        <section className={cx($p.tc, $p.black30, $p.pv60,  $p.ph38)}>
+        <section className={cx($p.tc, $p.black30, $p.pv60, $p.ph38)}>
           <Images>
             <img className={cx($p.bbox)} src={require('../../assets/graphics/pricing-5.png')} alt='GROWTH'/>
           </Images>
