@@ -102,13 +102,15 @@ export default class QueryBox extends React.Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      query: props.defaultQuery,
-      result: null,
-    } as State)
+  componentWillReceiveProps(props: Props) {
+    if (props.defaultQuery !== this.props.defaultQuery || props.endpoint !== this.props.endpoint) {
+      this.setState({
+        query: props.defaultQuery,
+        result: null,
+      } as State)
 
-    this.fetchSchema(props.defaultQuery, props.endpoint)
+      this.fetchSchema(props.defaultQuery, props.endpoint)
+    }
   }
 
   componentWillMount() {

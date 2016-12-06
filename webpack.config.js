@@ -22,7 +22,7 @@ module.exports = {
       './src/styles/graphiql.css',
       // 'codemirror/lib/codemirror.css',
       'codemirror/theme/dracula.css',
-      './src/main.tsx'
+      './src/main.tsx',
     ],
     vendor,
   },

@@ -6,10 +6,11 @@ const config = require('./webpack.config')
 module.exports = {
   entry: {
     app: [
+      'whatwg-fetch',
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
       './src/styles/graphiql.css',
-      './src/main.tsx'
+      './src/main.tsx',
     ],
     vendor: config.entry.vendor,
   },

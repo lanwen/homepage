@@ -44,6 +44,8 @@ export default class Video extends React.Component<Props, State> {
         className={cx($p.w100)}
         src='/videos/landing.mp4'
         autoPlay
+        playsInline
+        muted
         loop
       />
     )
