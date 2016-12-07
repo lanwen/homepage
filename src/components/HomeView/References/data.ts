@@ -4,18 +4,12 @@ interface Reference {
   url: string
 }
 
-/*
-Who could give a quote:
-
-Hackerbay (agency + twitter)
-Emil (indie)
-Kitze (repeat agency)
- (big company - hackerbay L`Oreal connection would be great)
- (somebody inside facebook, airbnb - quick prototyping)
-
-*/
-
+// tslint:disable
 export const references: Reference[] = [{
+  quote: 'Graphcool helped me to put together a reactive backend in record time so I could focus on building features and the user experience. They were also easy to contact whenever I got stuck and even offered suggestions on how I can better organize my data. I highly recommend Graphcool for your next project!',
+  who: 'Matthew Mueller',
+  url: 'https://github.com/matthewmueller',
+}, {
   quote: 'We help big companies innovate like startups. Graphcools integrated console enabled us to build a product for Twitter and quickly iterate as we gathered analytics from users.',
   who: 'Hackerbay CEO',
   url: 'https://hackerbay.com/',

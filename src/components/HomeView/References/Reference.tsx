@@ -7,11 +7,12 @@ import { movingDuration } from '../../../utils/constants'
 interface Props {
   quote: string,
   author: string,
+  link: string,
 }
 
 const Root = styled.div`
-  height: 250px;
-  transition: height ${movingDuration} ease;
+  max-height: 1000px;
+  transition: max-height ${movingDuration} ease;
 `
 
 export default class References extends React.Component<Props, {}> {
@@ -20,7 +21,12 @@ export default class References extends React.Component<Props, {}> {
     return (
       <Root>
         <h2 className={cx($p.green)}>{this.props.quote}</h2>
-        <p className={cx($p.lightgreen50, $p.f16, $p.fw6, $p.mt25, $p.mb38)}>— {this.props.author}</p>
+        <a
+          className={cx($p.lightgreen50, $p.f16, $p.fw6, $p.mt25, $p.mb38, $p.dib, $p.noUnderline)}
+          href={this.props.link}
+        >
+          — {this.props.author}
+        </a>
       </Root>
     )
   }

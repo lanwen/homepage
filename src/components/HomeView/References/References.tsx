@@ -41,6 +41,7 @@ export default class References extends React.Component<{}, State> {
           <Reference
             quote={reference.quote}
             author={reference.who}
+            link={reference.url}
           />
         </Container>
         <div className={cx($p.flex, $p.justifyCenter)}>
