@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
+import CopyToClipboard = require('react-copy-to-clipboard')
 import SectionHeader from '../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
@@ -30,7 +31,7 @@ const Container = styled.div`
 
 const Editor = styled.div`
   
-  height: 500px;
+  height: 700px;
   transition: height ${movingDuration} ease;
 
   @media (min-width: ${breakpoints.p1440}px) {
@@ -230,6 +231,7 @@ const CopyIndicator = styled.div`
 interface State {
   activeProjectName: string
   activeModelName: string
+  copied: boolean
 }
 
 export default class QueryEditor extends React.Component<{}, State> {
@@ -237,6 +239,7 @@ export default class QueryEditor extends React.Component<{}, State> {
   state = {
     activeProjectName: projects[0].name,
     activeModelName: projects[0].models[0].name,
+    copied: false,
   }
 
   render() {
@@ -309,19 +312,23 @@ export default class QueryEditor extends React.Component<{}, State> {
                         {activeProject.endpoint}
                       </div>
                     </div>
-                    <Copy
-                      className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
-                    >
-                      <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
-                        Copied
-                      </CopyIndicator>
-                      <Icon
-                        width={38}
-                        height={38}
-                        color={$v.darkerBlue}
-                        src={require('graphcool-styles/icons/fill/copy.svg')}
-                      />
-                    </Copy>
+                    <CopyToClipboard text={activeProject.endpoint} onCopy={this.onCopy}>
+                      <Copy
+                        className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
+                      >
+                        {this.state.copied &&
+                        <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
+                          Copied
+                        </CopyIndicator>
+                        }
+                        <Icon
+                          width={38}
+                          height={38}
+                          color={$v.darkerBlue}
+                          src={require('graphcool-styles/icons/fill/copy.svg')}
+                        />
+                      </Copy>
+                    </CopyToClipboard>
                   </Endpoint>
                 </EndpointContainer>
               </Schema>
@@ -335,5 +342,11 @@ export default class QueryEditor extends React.Component<{}, State> {
         </Root>
       </section>
     )
+  }
+
+  private onCopy = () => {
+    this.setState({ copied: true } as State)
+
+    setTimeout(() => this.setState({ copied: false } as State), 400)
   }
 }

@@ -8,6 +8,7 @@ import { breakpoints } from '../../utils/constants'
 
 export default class DocsView extends React.Component<{}, {}> {
 
+<<<<<<< HEAD
   componentDidMount() {
     window.addEventListener('resize', this.rerender)
   }
@@ -23,6 +24,10 @@ export default class DocsView extends React.Component<{}, {}> {
         <Footer/>
       </div>
     )
+=======
+  render() {
+    return <span />
+>>>>>>> 21f425d79d9985d5cb4749aadf17d4a7c374df9e
   }
 
   private rerender = () => {

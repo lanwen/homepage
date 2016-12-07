@@ -14,6 +14,7 @@ interface Snippet {
   code: string
 }
 
+// tslint:disable
 export const examples: Example[] = [{
   name: 'Airbnb',
   description: 'Send an email to the host when a new rating is created',
