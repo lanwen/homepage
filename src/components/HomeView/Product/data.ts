@@ -32,14 +32,8 @@ export const features: ProductFeature[] = [{
   videoUrl: '/videos/product-5.mp4',
 }, {
   title: 'API Endpoints',
-<<<<<<< HEAD
-  description: 'Connect your Graphcool project to your web or mobile app',
-  imageUrl: '/videos/product-2.mp4',
-  videoUrl: '/videos/product-2.mp4',
-}]
-=======
+
   description: 'Connect your Graphcool project to your web or mobile app. As GraphQL is an open standard you can use the client that best suits your needs whether you are developing websites or native apps. Your Graphcool api will work with all of them, and if you are using Relay we even have a special endpoint with dedicated Relay support.',
   imageUrl: '/videos/product-6.mp4',
   videoUrl: '/videos/product-6.mp4',
 }]
->>>>>>> 21f425d79d9985d5cb4749aadf17d4a7c374df9e
