@@ -25,15 +25,15 @@
     "@types/codemirror" "*"
     "@types/react" "*"
 
-"@types/react-dom@0.14.14":
-  version "0.14.14"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.14.tgz#7371f5e7c60709647b5aadaa8865d3cadd9b940b"
+"@types/react-dom@^0.14.19":
+  version "0.14.19"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.19.tgz#698a14335e32fb1bc61db65f5647c9668a7fc2eb"
   dependencies:
-    "@types/react" "0.14.*"
+    "@types/react" "*"
 
-"@types/react@*", "@types/react@0.14.*", "@types/react@0.14.40":
-  version "0.14.40"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.40.tgz#49090d68fe64394c98ee33337fcd179079380807"
+"@types/react@*", "@types/react@^0.14.54":
+  version "0.14.54"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.54.tgz#0fb0dadad895febeb468a885d0fa2284d5bbefae"
 
 "@types/whatwg-fetch@^0.0.32":
   version "0.0.32"
@@ -4343,17 +4343,13 @@ websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
 
-whatwg-fetch@>=0.10.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.0.tgz#cde428ac2b1dab717c96bc6785feb557619b249e"
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.1.tgz#078b9461bbe91cea73cbce8bb122a05f9e92b772"
 
 whatwg-fetch@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-0.9.0.tgz#0e3684c6cb9995b43efc9df03e4c365d95fd9cc0"
-
-whatwg-fetch@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.1.tgz#078b9461bbe91cea73cbce8bb122a05f9e92b772"
 
 when@^3.7.5:
   version "3.7.7"

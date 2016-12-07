@@ -52,16 +52,20 @@ const Root = styled.div`
 interface Props {
   top: number,
   left: number,
+  onClick: () => any
 }
 
 export default class FeatureIndicator extends React.Component<Props, {}> {
 
   render() {
     return (
-      <Root style={{
-        top: `${this.props.top}%`,
-        left: `${this.props.left}%`,
-      }}/>
+      <Root
+        style={{
+          top: `${this.props.top}%`,
+          left: `${this.props.left}%`,
+        }}
+        onClick={this.props.onClick}
+      />
     )
   }
 }

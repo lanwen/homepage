@@ -6,15 +6,15 @@ interface ProductFeature {
 }
 
 export const features: ProductFeature[] = [{
-  title: 'Relations',
-  description: 'Create advanced data models with relations. For example a relation could specify that a customer has a list of purchases. Graphcool ensures that your data stays consistent and automatically extends your api so you can query related data nodes.',
-  imageUrl: '/videos/product-1.mp4',
-  videoUrl: '/videos/product-1.mp4',
-}, {
   title: 'Data Browser',
   description: `Explore your data in the powerful data browser. With built in tools to filter and update data many teams find that they they can use the Graphcool data browser as their primary admin tool.`,
   imageUrl: '/videos/product-2.mp4',
   videoUrl: '/videos/product-2.mp4',
+}, {
+  title: 'Relations',
+  description: 'Create advanced data models with relations. For example a relation could specify that a customer has a list of purchases. Graphcool ensures that your data stays consistent and automatically extends your api so you can query related data nodes.',
+  imageUrl: '/videos/product-1.mp4',
+  videoUrl: '/videos/product-1.mp4',
 }, {
   title: 'Permissions',
   description: 'Make your project secure by setting up permissions. Graphcool allows you to define permission rules using custom code or by writing a query specifying who should have access to the given data. The permission system is easy to set up and designed to be flexible enough to work with any application.',

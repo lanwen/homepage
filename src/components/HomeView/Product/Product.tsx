@@ -140,7 +140,16 @@ export default class Product extends React.Component<{}, State> {
                     loop
                   />
                 </ConsoleContent>
-                <FeatureIndicator top={30} left={60}/>
+                {this.state.activeIndex === 0 &&
+                  <div>
+                    <FeatureIndicator top={8} left={83} onClick={() => this.setState({activeIndex: 1} as State)}/>
+                    <FeatureIndicator top={44} left={14} onClick={() => this.setState({activeIndex: 1} as State)}/>
+                    <FeatureIndicator top={51} left={16} onClick={() => this.setState({activeIndex: 2} as State)}/>
+                    <FeatureIndicator top={58} left={22} onClick={() => this.setState({activeIndex: 3} as State)}/>
+                    <FeatureIndicator top={65} left={16} onClick={() => this.setState({activeIndex: 4} as State)}/>
+                    <FeatureIndicator top={92} left={14} onClick={() => this.setState({activeIndex: 5} as State)}/>
+                  </div>
+                }
               </BrowserContainer>
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
