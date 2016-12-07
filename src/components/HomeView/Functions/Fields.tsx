@@ -74,7 +74,7 @@ export default class Fields extends React.Component<{}, {}> {
           <Field
             icon='action'
             title='Mutation Callbacks'
-            description='Send a welcome mail to new users or run sofisticated spam detection when a new comment is posted' // tslint:disable-line
+            description='Send a welcome mail to new users or run sophisticated spam detection when a new comment is posted' // tslint:disable-line
           />
           <Field
             icon='permission'
