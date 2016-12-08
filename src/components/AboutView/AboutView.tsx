@@ -70,7 +70,7 @@ export default class AboutView extends React.Component<{}, {}> {
        
        @media(max-width: ${breakpoints.p650}px) {
         flex: 0;
-        flex-basis: 70%;
+        flex-basis: 80%;
         }
   
        .line {
