@@ -5,9 +5,9 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
+import ListItems from './ListItemsPrima';
 
 export default class DocsView extends React.Component<{}, {}> {
-
 
   componentDidMount() {
     window.addEventListener('resize', this.rerender)

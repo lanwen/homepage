@@ -72,6 +72,11 @@ export default class AboutView extends React.Component<{}, {}> {
         flex: 0;
         flex-basis: 80%;
         }
+        
+        @media(max-width: ${breakpoints.p580}px) {
+        flex: 0;
+        flex-basis: 90%;
+        }
   
        .line {
           width: 100%;
@@ -106,7 +111,7 @@ We ourselves have built countless backend applications and got tired of reinvent
             </About>
         </section>
         <section className={cx($p.bgBlack04, $p.pt96)}>
-          <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn)}>
+          <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn, $p.ph38)}>
             <h1 className={cx($p.selfCenter)}>We’re frontend developers on our own.</h1>
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
           </article>
