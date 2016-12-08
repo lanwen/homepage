@@ -94,7 +94,7 @@ export const projects: Project[] = [{
   defaultQuery: `{
   Trainer(name: "Ash Ketchum") {
     id
-    ownedPokemons {
+    ownedPokemons(first: 1) {
       name
       types
     }
