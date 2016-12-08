@@ -55,16 +55,26 @@ export default () => (
   <div className={cx(window.innerWidth < breakpoints.p750 ? $p.mt38 : '')}>
     <h4 className='headline'>Stay in touch</h4>
     <SocialLinks className={cx($p.flex)}>
-      <SocialLink href=''><img src={require('../../assets/graphics/logos/twitter.svg')}/></SocialLink>
-      <SocialLink href=''><img src={require('../../assets/graphics/logos/github.svg')}/></SocialLink>
-      <SocialLink href=''><img src={require('../../assets/graphics/logos/facebook.svg')}/></SocialLink>
-      <SocialLink href=''><img src={require('../../assets/graphics/logos/youtube.svg')}/></SocialLink>
+      <SocialLink href='https://twitter.com/graphcool' target='_blank'>
+        <img src={require('../../assets/graphics/logos/twitter.svg')}/>
+      </SocialLink>
+      <SocialLink href='https://github.com/graphcool' target='_blank'>
+        <img src={require('../../assets/graphics/logos/github.svg')}/>
+      </SocialLink>
+      <SocialLink href='https://www.facebook.com/GraphcoolHQ/' target='_blank'>
+        <img src={require('../../assets/graphics/logos/facebook.svg')}/>
+      </SocialLink>
+      <SocialLink href='https://www.youtube.com/channel/UCptAHlN1gdwD89tFM3ENb6w' target='_blank'>
+        <img src={require('../../assets/graphics/logos/youtube.svg')}/>
+      </SocialLink>
     </SocialLinks>
-    <p className={cx($p.fw4)}>Sign up for our monthly newsletter</p>
-    <NewsletterInput
-      type='text'
-      className={cx($p.mt16, $p.w100, $p.pa16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white, $p.bbox)}
-      placeholder='Just type your Email...'
-    />
+    {/*
+     <p className={cx($p.fw4)}>Sign up for our monthly newsletter</p>
+     <NewsletterInput
+     type='text'
+     className={cx($p.mt16, $p.w100, $p.pa16, $p.lhSolid, $p.br2, $p.bgDarkerBlue, $p.white, $p.bbox)}
+     placeholder='Just type your Email...'
+     />
+    */}
   </div>
 )

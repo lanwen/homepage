@@ -60,7 +60,13 @@ const Nav = styled.nav`
   ${props => props.opened && NavOpened}
 `
 
-const NavLink = styled(Link)`
+const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
+  to.startsWith('http')
+    ? <a href={to} className={className}>{children}</a>
+    : <Link to={to} className={className}>{children}</Link>
+)
+
+const NavLink = styled(SplitLink)`
   color: ${$v.gray30};
   margin-right: ${$v.size25};
   cursor: pointer;
@@ -165,8 +171,8 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
-          <NavLink>Docs</NavLink>
-          <NavLink>FAQ</NavLink>
+          <NavLink to='https://graph.cool/docs'>Docs</NavLink>
+          <NavLink to='https://graph.cool/docs/guides'>FAQ</NavLink>
           <NavLink to='/pricing'>Pricing</NavLink>
           <NavLink to='/about'>About</NavLink>
           <Signin>

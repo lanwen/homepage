@@ -74,8 +74,6 @@ const Row = styled(RowBase)`
     background: ${$v.gray04};
     color: ${$v.gray50};
   }
-  
-  
 `
 
 const HeadRow = styled(RowBase)`
@@ -117,7 +115,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
         <SectionHeader
           headline='A backend platform for more than just prototyping'
           // Should we leave out the first sentence?
-          copy='Previous generation Backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerfull scalable applications'
+          copy='Previous generation Backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerfull scalable applications' // tslint:disable-line
         />
         <Table className={cx($p.flex, $p.justifyCenter, $p.relative)}>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>

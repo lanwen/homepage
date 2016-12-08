@@ -54,7 +54,7 @@ export default class Video extends React.Component<Props, State> {
   private onProgress = () => {
     const markers = this.props.markers
     const seconds = this.video!.currentTime
-    const closestMarkerIndex = markers.length - 1 - markers.slice(0).reverse().findIndex(m => m < seconds)
+    const closestMarkerIndex = markers.length - 1 - markers.slice(0).reverse().findIndex(m => m <= seconds)
     if (this.props.step !== closestMarkerIndex) {
       this.props.setStep(closestMarkerIndex)
     }

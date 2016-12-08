@@ -3,7 +3,7 @@ interface Example {
   description: string
   trigger: {
     model: string
-    mutation: string
+    mutation: string,
   }
   payloadQuery: string
   snippets: Snippet[]
@@ -168,3 +168,4 @@ function setTransactionStatus(id, status) {
 }`,
   }],
 }]
+

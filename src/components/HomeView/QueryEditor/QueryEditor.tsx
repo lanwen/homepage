@@ -70,14 +70,12 @@ const TabBar = styled.ul`
     padding-left: ${$v.size25};
   } 
 `
-
 // if tabbar is wider than viewport
 // @media (max-width: ${breakpoints.p500}px) {
 //   overflow: auto;
 //   justify-content: flex-start;
 //   padding-left: ${$v.size38};
 // }
-
 
 const ActiveTab = `
   padding: ${parseFloat($v.size16) + 2}px;
@@ -230,13 +228,17 @@ const CopyIndicator = styled.div`
   animation: ${movingCopyIndicator} .7s linear
 `
 
+interface Props {
+  inViewPort: boolean
+}
+
 interface State {
   activeProjectName: string
   activeModelName: string
   copied: boolean
 }
 
-export default class QueryEditor extends React.Component<{}, State> {
+export default class QueryEditor extends React.Component<Props, State> {
 
   state = {
     activeProjectName: projects[0].name,
@@ -252,7 +254,7 @@ export default class QueryEditor extends React.Component<{}, State> {
       <section>
         <SectionHeader
           headline='Your data schema generates a developer-friendly GraphQL API'
-          copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.'
+          copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.' // tslint:disable-line
         />
         <TabBar>
           {projects.map(p => (
