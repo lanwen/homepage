@@ -6,6 +6,7 @@ declare module 'fastclick'
 declare module 'graphql'
 declare module 'graphiql'
 declare module 'graphiql/*'
+declare module 'react-collapsible'
 
 interface NodeModule {
   hot: { accept: Function }
