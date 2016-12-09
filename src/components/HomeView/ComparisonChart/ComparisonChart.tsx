@@ -61,6 +61,7 @@ const RowBase = styled.div`
 const Row = styled(RowBase)`
   flex: 1;
   font-size: ${$v.size16};
+  height: 61px;
   
   color: ${$v.gray30};
   border-top: 1px solid ${$v.gray10};
