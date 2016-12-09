@@ -3,191 +3,137 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints, maxWidth} from '../../utils/constants'
-
-const Root = styled.div`
-  padding: ${$v.size38};
-  max-width: ${maxWidth}px;
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size60};
-  }
-  @media (max-width: ${breakpoints.p400}px) {
-    padding: ${$v.size25};
-  }
-`
-
-const NavOpened = `
-  @media (max-width: ${breakpoints.p750}px) {
-    display: flex;
-  }
-`
-const Nav = styled.nav`
-  font-size: ${$v.size14};
-  z-index: 1000;
-  
-  @media (max-width: ${breakpoints.p750}px) {
-    display: none;
-    position: absolute;
-    right: 22px;
-    top: 22px;
-    background: ${$v.white};
-    flex-direction: column;
-    align-items: flex-start;
-    padding: ${$v.size16};
-    border-radius: 2px;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
-  }
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    right: 9px;
-    top: 9px;
-  }
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size16};
-  }
-  
-  ${props => props.opened && NavOpened}
-`
-
-const NavLink = styled(Link)`
-  color: ${$v.gray30};
-  margin-right: ${$v.size25};
-  cursor: pointer;
-  line-height: 1;
-  transition: color ${$v.duration} linear;
-  text-decoration: none;
-
-  &:hover {
-    color: ${$v.gray50};
-  }
-  @media (max-width: ${breakpoints.p1440}px) {
-    color: lila;
-  }
-  @media (max-width: ${breakpoints.p1360}px) {
-    color: pink;
-  }
-  @media (max-width: ${breakpoints.p1250}px) {
-    color: green;
-  }
-  @media (max-width: ${breakpoints.p1200}px) {
-    color: orange;
-    }
-  @media (max-width: ${breakpoints.p1000}px) {
-    padding: ${$v.size10};
-    color: red;
-  }
-  @media (max-width: ${breakpoints.p900}px) {
-    margin-right: ${$v.size38};
-    color: blue;
-  }
-  @media (max-width: ${breakpoints.p750}px) {
-    padding: ${$v.size10};
-    color: yellow;
-  }
-   @media (max-width: ${breakpoints.p650}px) {}
-`
-const Hamburger = styled.div`
-  position: absolute;
-  cursor: pointer;
-  top: ${$v.size38};
-  right: ${$v.size38};
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    top: ${$v.size25}
-    right: ${$v.size25}
-  }
-`
-
-const Close = styled.div`
-  position: absolute;
-  top: ${$v.size16};
-  right: ${$v.size16};
-  width: 36px;
-  height: 36px;
-  opacity: .2;
-  cursor: pointer;
-  transition: opacity ${$v.duration} linear;
-  
-  &:hover {
-    opacity: .4;
-  }
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    background: ${$v.black};
-    left: 50%;
-    top: 50%;
-    width: 80%;
-    height: 2px;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-`
-  const Searchbox = styled.input`
-    width: 300px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 2px;
-    font-size: 16px;
-    background-color: #fff;
-    background-image: url(require('../../assets/graphics/Lupa.png'));
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    margin-right: 200em;
-    
-      @media (max-width: ${breakpoints.p1440}px) {
-        margin-right: 0;
-        width: 220px;
-      }
-  `
+import { breakpoints, maxWidth } from '../../utils/constants'
 
 interface State {
   menuOpened: boolean
 }
-
-export default class NavHorDocs extends React.Component<{}, State> {
-
+export default class NavHorDocs extends React.Component<{}, {}> {
   state: State = {
     menuOpened: false,
   }
 
   render() {
+    const Root = styled.div`
+      justify-content: space-around;
+      display: flex;
+      flex-wrap: wrap;
+      padding-right: ${$v.size16};
+      z-index: 100;
+      
+      @media (max-width: ${breakpoints.p1200}px) {
+          margin-left: -10%;
+          padding-top: ${$v.size25}
+    }
+`
+    const NavigationLinks = styled.div`
+      color: ${$v.gray30};
+      cursor: pointer;
+      transition: color ${$v.duration} linear;
+
+      &:hover {
+        color: ${$v.gray50};
+  }
+`
+    const Searchbox = styled.input`
+     
+      width: 300px;
+      margin-left: -30%;
+      box-sizing: border-box;
+      box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
+      0 -8px 18px rgba(0, 0, 0, 0.1);
+      border-radius: 2px;
+      font-size: 16px;
+      background-color: #fff;
+      background-image: url(${require('../../assets/graphics/Lupa.png')});
+      background-position: 10px 15px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      
+        @media (max-width: ${breakpoints.p1200}px) {
+          width: 200px;
+          margin-left: 0%;
+    }
+`
+    const Hamburger = styled.div`
+      position: absolute;
+      cursor: pointer;
+      top: ${$v.size38};
+      right: ${$v.size38};
+`
+    const styles = {
+      active: {
+        display: 'block',
+      },
+      inactive: {
+        display: 'none',
+      },
+    }
+    const FirstUlStyle = styled.div`
+      background-color: #fff;
+      margin: -${$v.size10} ${$v.size16} ${$v.size38} ${$v.size16};
+      box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
+      0 -8px 18px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      cursor: pointer;
+      top: ${$v.size25};
+      right: ${$v.size25};
+
+      .border {
+        border-left: solid 3px rgba(28, 191, 50, 0.2);
+      }
+    `
+    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
     return (
-      <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
-        {window.innerWidth < breakpoints.p750 &&
-          <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
-            <Icon src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
-          </Hamburger>
-        }
-        <Nav
-          className={cx($p.fw6, $p.black30, $p.tracked, $p.ttu, $p.flex, $p.itemsCenter)}
-          opened={this.state.menuOpened}
-        >
-          {window.innerWidth < breakpoints.p750 &&
-            <Close onClick={() => this.setState({ menuOpened: false } as State)} />
-          }
-            <NavLink>
+      <div>
+        {window.innerWidth > breakpoints.p1200 ? (
+          <Root className={cx($p.flex, $p.pv60)}>
+            <NavigationLinks>
               <form>
-               <Searchbox type='text' name='search' placeholder='Search..'/>
+                <Searchbox type='text' name='search' placeholder='Search..'/>
               </form>
-            </NavLink>
-            <NavLink>QUICKSTART</NavLink>
-            <NavLink>RESOURCES</NavLink>
-            <NavLink>REFERENCE</NavLink>
-            <NavLink>BLOG</NavLink>
-            <NavLink>Comunity</NavLink>
-            <NavLink>
-              <img src={require('../../assets/graphics/APIEndpoints.png')}/>
-            </NavLink>
-        </Nav>
-      </Root>
+            </NavigationLinks>
+            <NavigationLinks className={cx($p.pt10, $p.fw6)}>QUICKSTART</NavigationLinks>
+            <NavigationLinks className={cx($p.mt10, $p.fw6)}>RESOURCES</NavigationLinks>
+            <NavigationLinks className={cx($p.mt10, $p.fw6)}>REFERENCE</NavigationLinks>
+            <NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks>
+            <NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks>
+            <NavigationLinks className={cx($p.mt4)}>
+              <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
+            </NavigationLinks>
+          </Root>
+        ) : (
+          <Root className={cx($p.flex, $p.pv60)}>
+            <Hamburger>
+              <Icon style={stateStyles}
+                    onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                    src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
+              />
+            </Hamburger>
+            <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90)}>
+              <NavigationLinks>
+                <form>
+                  <Searchbox type='text' name='search' placeholder='Search..'/>
+                </form>
+              </NavigationLinks>
+              <NavigationLinks className={cx($p.mt10, $p.fw6)}>QUICKSTART</NavigationLinks>
+              <NavigationLinks className={cx($p.mt10, $p.fw6)}>RESOURCES</NavigationLinks>
+              <NavigationLinks className={cx($p.mt10, $p.fw6)}>REFERENCE</NavigationLinks>
+              <NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks>
+              <NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks>
+              <NavigationLinks className={cx($p.mt4)}>
+                <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
+              </NavigationLinks>
+            </FirstUlStyle>
+            <Hamburger>
+              <Icon style={stateStyles}
+                    onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                    src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
+              />
+            </Hamburger>
+          </Root>
+        )}
+      </div>
     )
   }
 }
