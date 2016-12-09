@@ -38,7 +38,6 @@ export default class ListItems extends React.Component<Props, State> {
     const text = {
       active: {
         color: 'rgba(0, 0, 0, 0.5)',
-        // borderLeft: 'solid 3px rgba(28, 191, 50, 0.7)',
       },
       inactive: {
         color: 'rgba(0, 0, 0, 0.3)',
