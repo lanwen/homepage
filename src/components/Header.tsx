@@ -93,8 +93,9 @@ const Signin = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = styled.a`
   font-size: ${$v.size14} !important;
+  text-decoration: none;
   
   @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
@@ -176,8 +177,18 @@ export default class Header extends React.Component<{}, State> {
           <NavLink to='/pricing'>Pricing</NavLink>
           <NavLink to='/about'>About</NavLink>
           <Signin>
-            <Button className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}>Log in</Button>
-            <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}>Sign up</Button>
+            <Button
+              href='https://console.graph.cool/login'
+              className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+            >
+              Log in
+            </Button>
+            <Button
+              href='https://console.graph.cool/signup'
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+            >
+              Sign up
+            </Button>
           </Signin>
         </Nav>
       </Root>

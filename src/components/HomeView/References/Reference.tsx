@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import { $p, $v } from 'graphcool-styles'
-import { movingDuration, breakpoints } from '../../../utils/constants'
+import { movingDuration, breakpoints, maxWidth } from '../../../utils/constants'
 import calcSize from 'calculate-size'
 
 interface Props {
@@ -28,8 +28,9 @@ function getFontSize (): string {
 export default class References extends React.Component<Props, {}> {
 
   render() {
+    const width = Math.min(window.innerWidth - 120, maxWidth)
     const { height } = calcSize(this.props.quote, {
-      width: `${window.innerWidth - 120}px`,
+      width: `${width}px`,
       font: 'Open Sans,sans-serif',
       fontSize: getFontSize(),
       fontWeight: '300',
@@ -41,6 +42,7 @@ export default class References extends React.Component<Props, {}> {
         <a
           className={cx($p.lightgreen50, $p.f16, $p.fw6, $p.mt25, $p.mb38, $p.dib, $p.noUnderline)}
           href={this.props.link}
+          target='_blank'
         >
           — {this.props.author}
         </a>

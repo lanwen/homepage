@@ -8,7 +8,7 @@ export default () => (
     <h4 className='headline'>Our Mission</h4>
     <p className={cx($p.fw4)}>
       {
-        `Building sophisticated applications should be like clicking lego bricks together. GraphQL finally enables you to create modular software and Graphcool is the platform that brings everything together` // tslint:disable-line
+        `Building sophisticated applications should be like clicking lego bricks together. GraphQL and AWS Lambda enable you to create truly modular software – our platform brings everything together.` // tslint:disable-line
       }
     </p>
   </div>
