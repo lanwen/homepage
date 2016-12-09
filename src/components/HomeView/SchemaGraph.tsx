@@ -1,51 +1,47 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
+import SectionHeader from './SectionHeader'
 
 const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
   background-color: rgba(0, 0, 0, 0.03);
-  padding: 20px 300px;
+  padding: 0 300px ${$v.size60};
       
-    @media (max-width: ${breakpoints.p1200}px) {
-      padding: 50px 150px;
-      background-color: violet;
-    }
-    @media (max-width: ${breakpoints.p1000}px) {
-      padding: 50px 100px;
-      background-color: red;
-    }
-    @media (max-width: ${breakpoints.p750}px) {
-      padding: 25px 40px;
-      background-color: blue;
-    }
-    @media (max-width: ${breakpoints.p580}px) {
-      background-color: green;
-      padding: 15px 15px;
-    }
-    @media (max-width: ${breakpoints.p500}px) {
-      background-color: yellow;
-      padding: 10px 10px;
-    }
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding: 0 200px ${$v.size96};
+  }
+  
+  @media (max-width: ${breakpoints.p1000}px) {
+    padding: 0 ${$v.size96} ${$v.size96};
+  }
+
+  @media (max-width: ${breakpoints.p580}px) {
+    padding: 0 ${$v.size10} ${$v.size96};
+  }
 `
+
+const Graph = styled.div`
+  max-width: 934px; 
+`
+
 export default class SchemaGraph extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root>
-        <div className={cx($p.pt38, $p.pb38, $p.tc, $p.f38, $p.fw3)}>
-          How it works
-        </div>
-        <div className={cx($p.f20, $p.o50, $p.tc, $p.pb16)}>
-          {
-            `I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would occasionally fall, from the incessant rolling and swaying of both.` // tslint:disable-line
-          }
-        </div>
-        <img className={cx($p.w100)} src={require('../../assets/graphics/architecture.svg')} alt='Architecture'/>
+      <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter)}>
+        <SectionHeader
+          headline='How it works'
+          copy='Graphcool is the platform that ties everything together. Set up your data model in the console and use the simple api to store and query data. Add integrations and custom logic with serverless functions, and easily connect your frontend application using one of the many open source GraphQL clients' // tslint:disable-line
+        />
+        <Graph>
+            <img
+              className={cx($p.w100, $p.hAuto, $p.db)}
+              src={require('../../assets/graphics/Architecture2.png')}
+              alt='Architecture'
+            />
+        </Graph>
       </Root>
     )
   }

@@ -6,9 +6,9 @@ import { breakpoints } from '../../utils/constants'
 export default () => (
   <div className={cx(window.innerWidth < breakpoints.p1360 ? $p.mt38 : '')}>
     <h4 className='headline'>Our Mission</h4>
-    <p>
+    <p className={cx($p.fw4)}>
       {
-        `It was a humorously perilous business for both of us. For, before we proceed further, it must be said that the monkey-rope was fast at both ends.` // tslint:disable-line
+        `Building sophisticated applications should be like clicking lego bricks together. GraphQL and AWS Lambda enable you to create truly modular software – our platform brings everything together.` // tslint:disable-line
       }
     </p>
   </div>

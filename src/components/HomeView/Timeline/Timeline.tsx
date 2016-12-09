@@ -6,6 +6,7 @@ import { maxWidth, breakpoints } from '../../../utils/constants'
 import SectionHeader from '../SectionHeader'
 import Block from './Block'
 import Pagination from '../Pagination'
+import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.div`
   overflow: hidden;
@@ -14,6 +15,7 @@ const Root = styled.div`
     content: "";
     position: absolute;
     top: ${parseFloat($v.size16) + parseFloat($v.size10)}px;
+    left: 0;
     bottom: 0;
     width: 100%;
     background: ${$v.gray02};
@@ -39,8 +41,7 @@ const Root = styled.div`
   
 `
 
-const Container = styled.div`
-  overflow: auto;
+const Container = styled(HorScrollbox)`
   max-width: ${maxWidth}px;
   padding: ${$v.size10} 0 ${$v.size25};
   font-size: ${$v.size14};
@@ -75,11 +76,34 @@ const GraphcoolLogo = styled.div`
 export default class Timeline extends React.Component<{}, {}> {
 
   render() {
+
+    const data = [{
+      title: 'Initial Setup',
+      old: ['Choose language/framework', 'Configure database', 'Setup server infrastructure', 'Setup deployment'],
+      new: ['Define your data schema', 'Connect your frontend app'],
+      oldSegments: [10, 50, 30, 20],
+      newWegments: [20, 10],
+    }, {
+      title: 'Iterate',
+      old: ['Write database migrations', 'Rewrite backend endpoints', 'Adjust infrastructure',
+        'Migrate database'],
+      new: ['Adjust data schema', 'Implement business logic'],
+      oldSegments: [10, 30, 50, 10],
+      newWegments: [20, 10],
+    }, {
+      title: 'Scaling',
+      old: ['Create database indexes', 'Monitor server load', 'Setup load balancer',
+        'Setup database sharding'],
+      new: ['Zero-config autoscaling', 'Cheaper than self-hosted'],
+      oldSegments: [10, 30, 20, 40],
+      newWegments: [10, 10],
+    }]
+
     return (
       <section>
         <SectionHeader
-          headline='Whatever headline we have here'
-          copy='I have hinted that I would often jerk poor Queequeg from between the whale and the ship where he would.'
+          headline='Don’t reinvent the wheel. Build apps faster.'
+          copy='Stop wasting time writing error-prone database migrations and monitoring log files. Graphcool handles all of that so you can focus on what matters: Building your app.' // tslint:disable-line
         />
         <Root className={cx($p.relative)}>
           <Container className={cx($p.center, $p.flex, $p.relative)}>
@@ -96,14 +120,28 @@ export default class Timeline extends React.Component<{}, {}> {
               </GraphcoolLogo>
             </Legend>
             }
-            <Block label='Initial Setup'/>
-            <Block label='Iteration'/>
-            <Block label='Scaling'/>
+
+            {data.map((item) => (
+              <Block
+                key={item.title}
+                label={item.title}
+                old={item.old}
+                new={item.new}
+                oldSegments={item.oldSegments}
+                newSegments={item.newWegments}
+              />
+            ))}
+
           </Container>
           {window.innerWidth < breakpoints.p500 &&
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-              <Pagination bullets={3} grayscale />
-            </div>
+          <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
+            <Pagination
+              bullets={3}
+              grayscale
+              active={0}
+              onSelect={() => null}
+            />
+          </div>
           }
         </Root>
       </section>

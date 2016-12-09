@@ -11,8 +11,8 @@ export default () => (
       <div className={cx($p.f12, $p.mt4)}>Last 30 days</div>
     </h4>
     <div>
-      <ServiceStatusBar />
-      <ServiceStatusBar />
+      <ServiceStatusBar name='Relay Endpoint' />
+      <ServiceStatusBar name='Simple Endpoint' />
     </div>
   </div>
 )

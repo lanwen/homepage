@@ -1,22 +1,14 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, Icon } from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Bar from './Bar'
 import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.div`
-  background: ${$v.white};
-  border-radius: 2px;
-  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
-  overflow: hidden;
   
   .label {
     color: ${$v.gray30} !important;
-  }
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    transform: translate(0, -127px);
   }
   
   @media (min-width: ${breakpoints.p1000}px) {
@@ -25,6 +17,10 @@ const Root = styled.div`
     left: -15px;
     top: 0;
     right: -15px;
+    transform: translate(0, -115px);
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
     transform: translate(0, -127px);
   }
 `
@@ -41,29 +37,30 @@ const List = styled.div`
 
 interface Props {
   label: string,
+  old: string[],
+  new: string[],
+  oldSegments: number[],
+  newSegments: number[],
 }
 
 export default class Overlay extends React.Component<Props, {}> {
   render() {
     return (
-      <Root>
+      <Root className={cx($g.overlay)}>
         <div className={cx($p.ph25, $p.pt25)}>
           <div className={cx('label', $p.pb16, $p.flex, $p.justifyBetween)}>
             <span>{this.props.label}</span>
             {window.innerWidth < breakpoints.p1000 &&
             <span className={cx($p.black50)}>The old way</span>
             }
-            </div>
+          </div>
           <List className={cx($p.black50)}>
-            <li>Database migration</li>
-            <li>Test in staging</li>
-            <li>Adjust endpoint-database mapping</li>
-            <li>Deploy</li>
+            {this.props.old.map((x, i) => <li key={i}>{x}</li>)}
           </List>
-          <Bar active />
+          <Bar active segments={this.props.oldSegments}/>
         </div>
         <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25, $p.relative)}>
-          <Bar graphcool active />
+          <Bar graphcool active segments={this.props.newSegments}/>
           {window.innerWidth < breakpoints.p1000 &&
           <div className={cx($p.absolute, $p.right25, $p.top25)}>
             <Icon
@@ -75,9 +72,7 @@ export default class Overlay extends React.Component<Props, {}> {
           </div>
           }
           <List className={cx($p.green)}>
-            <li>Clone project</li>
-            <li>Adjust datamodel</li>
-            <li>Configure Permissions</li>
+            {this.props.new.map((text) => <li key={text}>{text}</li>)}
           </List>
         </div>
       </Root>

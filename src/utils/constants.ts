@@ -3,6 +3,7 @@ const breakpoints = {
   p400: 400,
   p500: 500,
   p580: 580,
+  p650: 650,
   p750: 750,
   p900: 900,
   p1000: 1000,
@@ -13,8 +14,10 @@ const breakpoints = {
 }
 
 const maxWidth = 1440
+const movingDuration = '.3s'
 
 export {
   breakpoints,
-  maxWidth
+  maxWidth,
+  movingDuration,
 }
