@@ -8,6 +8,9 @@ declare module 'graphiql'
 declare module 'graphiql/*'
 declare module 'react-collapsible'
 
+declare var Smooch: any
+declare var __SMOOCH_TOKEN__: string
+
 interface NodeModule {
   hot: { accept: Function }
 }
