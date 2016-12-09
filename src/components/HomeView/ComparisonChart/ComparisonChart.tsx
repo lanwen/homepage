@@ -62,6 +62,13 @@ const Row = styled(RowBase)`
   flex: 1;
   font-size: ${$v.size16};
   
+  /* Needed for prerendering */
+  min-height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5}px;
+  
+  @media (min-width: ${breakpoints.p1250}px) {
+    min-height: ${parseFloat($v.size25) * 2 + parseFloat($v.size16) * 1.5}px;
+  }
+  
   color: ${$v.gray30};
   border-top: 1px solid ${$v.gray10};
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
@@ -114,8 +121,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
       <Root className={cx($p.pb96)}>
         <SectionHeader
           headline='A backend platform for more than just prototyping'
-          // Should we leave out the first sentence?
-          copy='Previous generation Backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerfull scalable applications' // tslint:disable-line
+          copy='Previous generation backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerful scalable applications.' // tslint:disable-line
         />
         <Table className={cx($p.flex, $p.justifyCenter, $p.relative)}>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>

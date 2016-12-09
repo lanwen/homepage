@@ -122,7 +122,7 @@ export default class Product extends React.Component<{}, State> {
       <section>
         <SectionHeader
           headline='It’s easy to control every aspect of your backend'
-          copy='With the Graphcool Console you can discover and manage every aspect of your backend'
+          copy='With the Graphcool Console you can discover and manage every aspect of your backend.'
         />
         <Root className={cx($p.relative)}>
 
