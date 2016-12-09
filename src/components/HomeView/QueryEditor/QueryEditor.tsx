@@ -228,13 +228,17 @@ const CopyIndicator = styled.div`
   animation: ${movingCopyIndicator} .7s linear
 `
 
+interface Props {
+  inViewPort: boolean
+}
+
 interface State {
   activeProjectName: string
   activeModelName: string
   copied: boolean
 }
 
-export default class QueryEditor extends React.Component<{}, State> {
+export default class QueryEditor extends React.Component<Props, State> {
 
   state = {
     activeProjectName: projects[0].name,

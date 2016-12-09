@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { $p, $v, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import NavHorDocs from './NavHorDocs'
-import Footer from '../Footer/Footer'
 
 export default class HeaderDocs extends React.Component<{}, {}> {
   render() {
@@ -89,7 +88,6 @@ export default class HeaderDocs extends React.Component<{}, {}> {
           </VerticalContainer>
         <NavigationHorizontal>
           <NavHorDocs/>
-          <Footer/>
         </NavigationHorizontal>
         </div>
     )

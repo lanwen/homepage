@@ -23,7 +23,7 @@ const Root = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = styled.a`
   font-size: ${$v.size16};
   
   @media (min-width: ${breakpoints.p1000}px) {
@@ -33,7 +33,6 @@ const Button = styled.button`
   @media (min-width: ${breakpoints.p1360}px) {
     font-size: ${$v.size25};
   }
-
 `
 
 export default class LandingCallToAction extends React.Component<{}, {}> {
@@ -41,11 +40,17 @@ export default class LandingCallToAction extends React.Component<{}, {}> {
     return (
       <Root className={cx($p.flex)}>
         <Button
-          className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black40, $p.mr25)}
+          href='https://graph.cool/docs/guides/setting-up-a-graphql-backend-in-5-minutes'
+          className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black40, $p.mr25, $p.noUnderline)}
         >
           Quickstart
         </Button>
-        <Button className={cx($g.uppercaseButton, $p.pa16, $p.bgGreen, $p.white)}>Sign Up</Button>
+        <Button
+          href='https://console.graph.cool/signup'
+          className={cx($g.uppercaseButton, $p.pa16, $p.bgGreen, $p.white, $p.noUnderline)}
+        >
+          Sign Up
+        </Button>
       </Root>
     )
   }

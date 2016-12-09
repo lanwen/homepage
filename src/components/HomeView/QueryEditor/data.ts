@@ -24,6 +24,7 @@ interface Field {
   relation?: boolean
 }
 
+// tslint:disable
 export const projects: Project[] = [{
   name: 'Instagram',
   endpoint: 'https://api.graph.cool/simple/v1/ciwce5xw82kh7017179gwzn7q',
@@ -64,7 +65,7 @@ export const projects: Project[] = [{
       type: 'String',
       required: true,
     }, {
-      name: 'imageUrl',
+      name: 'image',
       type: 'String',
     }, {
       name: 'comments',

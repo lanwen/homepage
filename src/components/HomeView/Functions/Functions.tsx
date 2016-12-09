@@ -7,16 +7,20 @@ import Examples from './Examples'
 import Fields from './Fields'
 import { breakpoints } from '../../../utils/constants'
 
-export default class Functions extends React.Component<{}, {}> {
+interface Props {
+  inViewPort: boolean
+}
+
+export default class Functions extends React.Component<Props, {}> {
 
   render() {
     return (
       <section>
         <SectionHeader
           headline='Extend your backend with AWS Lambda using any language'
-          copy='With Serverless Functions you can implement any feature you need. Graphcool automatically fetches the data you need and invokes your function at the right time'
+          copy='With Serverless Functions you can implement any feature you need. Graphcool automatically fetches the data you need and invokes your function at the right time' // tslint:disable-line
         />
-        <Examples />
+        <Examples inViewPort={this.props.inViewPort} />
         <Fields />
       </section>
     )

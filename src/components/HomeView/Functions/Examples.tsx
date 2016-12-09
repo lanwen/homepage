@@ -119,17 +119,6 @@ const CodeBlock = styled(Block)`
   padding-right: 0 !important;
 `
 
-const RowNumbers = styled.div`
-  padding-top: 2px;
-  line-height: 24px;
-  white-space: pre;
-  color: ${$v.white20};
-  font-size: ${$v.size12};
-  text-align: right;
-  padding-right: ${$v.size06};
-  flex: 0 0 auto;
-`
-
 const Pre = styled.pre`
   margin-top: ${$v.size38};
   color: ${$v.white};
@@ -138,35 +127,6 @@ const Pre = styled.pre`
 
 const Payload = styled(Pre)`
   color: ${$v.gray40};
-`
-
-const CodeContainer = styled.div`    
-  position: relative;
-  overflow: hidden;
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: ${$v.size16};
-  }
-  
-  &:before {
-    left: 0;
-    background: linear-gradient(to right, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  &:after {
-    right: 0;
-    background: linear-gradient(to left, ${$v.darkerBlue}, ${$v.darkerBlue0});
-  }
-  
-  code {
-    display: block;
-    padding: 0 ${$v.size16};
-    overflow: auto;
-  }
 `
 
 const TabBar = styled.ul`
@@ -216,26 +176,46 @@ const Switch = styled.div`
   }
 `
 
-interface State {
-  selectedExample: string
-  selectedLanguage: string
-  showTrigger: boolean
+interface Props {
+  inViewPort: boolean
 }
 
-export default class Examples extends React.Component<{}, State> {
+interface State {
+  selectedExampleIndex: number
+  selectedLanguage: string
+  showTrigger: boolean
+  hover: boolean
+}
+
+export default class Examples extends React.Component<Props, State> {
 
   state = {
-    selectedExample: examples[0].name,
+    selectedExampleIndex: 0,
     selectedLanguage: examples[0].snippets[0].language,
     showTrigger: true,
+    hover: false,
+  }
+
+  private rotateInterval: number | null
+
+  componentDidMount() {
+    this.rotateInterval = window.setInterval(this.rotate, 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.rotateInterval!)
   }
 
   render() {
-    const selectedExample = examples.find(e => e.name === this.state.selectedExample)!
+    const selectedExample = examples[this.state.selectedExampleIndex]
     const selectedSnippet = selectedExample.snippets.find(s => s.language === this.state.selectedLanguage)!
 
     return (
-      <Root className={cx($p.relative)}>
+      <Root
+        className={cx($p.relative)}
+        onMouseOver={() => this.setState({ hover: true } as State)}
+        onMouseOut={() => this.setState({ hover: false } as State)}
+      >
         <Container className={cx($p.flex, $p.relative)}>
           <Selection className={cx()}>
             {window.innerWidth <= breakpoints.p900 &&
@@ -248,13 +228,13 @@ export default class Examples extends React.Component<{}, State> {
             </div>
             }
             <ExamplesContainer className={cx($p.flex)}>
-              {examples.map(e => (
+              {examples.map((e, i) => (
                 <Example
                   key={e.name}
                   case={e.name}
                   description={e.description}
                   active={e.name === selectedExample.name}
-                  onClick={() => this.setState({selectedExample: e.name, selectedLanguage: e.snippets[0].language} as State)} // tslint:disable-line
+                  onClick={() => this.forceSetIndex(i)}
                 />
               ))}
             </ExamplesContainer>
@@ -345,5 +325,21 @@ export default class Examples extends React.Component<{}, State> {
         </Container>
       </Root>
     )
+  }
+
+  private rotate = () => {
+    if (this.state.hover || !this.props.inViewPort) {
+      return
+    }
+
+    const selectedExampleIndex = (this.state.selectedExampleIndex + 1) % examples.length
+    const selectedLanguage = examples[selectedExampleIndex].snippets[0].language
+    this.setState({selectedExampleIndex, selectedLanguage} as State)
+  }
+
+  private forceSetIndex = (selectedExampleIndex) => {
+    this.setState({selectedExampleIndex} as State)
+    clearInterval(this.rotateInterval!)
+    this.rotateInterval = window.setInterval(this.rotate, 5000)
   }
 }

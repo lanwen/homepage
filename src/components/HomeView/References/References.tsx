@@ -12,14 +12,20 @@ const Container = styled.div`
   margin: 0 auto;
 `
 
-interface State {
-  currentIndex: number
+interface Props {
+  inViewPort: boolean
 }
 
-export default class References extends React.Component<{}, State> {
+interface State {
+  currentIndex: number
+  hover: boolean
+}
+
+export default class References extends React.Component<Props, State> {
 
   state = {
     currentIndex: 0,
+    hover: false,
   }
 
   private rotateInterval: number | null
@@ -40,9 +46,14 @@ export default class References extends React.Component<{}, State> {
           <Reference
             quote={reference.quote}
             author={reference.who}
+            link={reference.url}
           />
         </Container>
-        <div className={cx($p.flex, $p.justifyCenter)}>
+        <div
+          className={cx($p.flex, $p.justifyCenter)}
+          onMouseOver={() => this.setState({ hover: true } as State)}
+          onMouseOut={() => this.setState({ hover: false } as State)}
+        >
           <Pagination
             bullets={references.length}
             active={this.state.currentIndex}
@@ -54,12 +65,16 @@ export default class References extends React.Component<{}, State> {
   }
 
   private rotate = () => {
+    if (this.state.hover || !this.props.inViewPort) {
+      return
+    }
+
     const currentIndex = (this.state.currentIndex + 1) % references.length
-    this.setState({ currentIndex } as State)
+    this.setState({currentIndex} as State)
   }
 
   private forceSetIndex = (currentIndex) => {
-    this.setState({ currentIndex } as State)
+    this.setState({currentIndex} as State)
     clearInterval(this.rotateInterval!)
     this.rotateInterval = window.setInterval(this.rotate, 5000)
   }

@@ -60,7 +60,13 @@ const Nav = styled.nav`
   ${props => props.opened && NavOpened}
 `
 
-const NavLink = styled(Link)`
+const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
+  to.startsWith('http')
+    ? <a href={to} className={className}>{children}</a>
+    : <Link to={to} className={className}>{children}</Link>
+)
+
+const NavLink = styled(SplitLink)`
   color: ${$v.gray30};
   margin-right: ${$v.size25};
   cursor: pointer;
@@ -87,8 +93,9 @@ const Signin = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = styled.a`
   font-size: ${$v.size14} !important;
+  text-decoration: none;
   
   @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
@@ -165,13 +172,23 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
-          <NavLink>Docs</NavLink>
-          <NavLink>FAQ</NavLink>
+          <NavLink to='https://graph.cool/docs'>Docs</NavLink>
+          <NavLink to='https://graph.cool/docs/guides'>FAQ</NavLink>
           <NavLink to='/pricing'>Pricing</NavLink>
           <NavLink to='/about'>About</NavLink>
           <Signin>
-            <Button className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}>Log in</Button>
-            <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}>Sign up</Button>
+            <Button
+              href='https://console.graph.cool/login'
+              className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+            >
+              Log in
+            </Button>
+            <Button
+              href='https://console.graph.cool/signup'
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+            >
+              Sign up
+            </Button>
           </Signin>
         </Nav>
       </Root>

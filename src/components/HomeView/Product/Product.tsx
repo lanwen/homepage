@@ -181,6 +181,7 @@ export default class Product extends React.Component<{}, State> {
                 key={feature.title}
                 headline={feature.title}
                 copy={feature.description}
+                image={feature.image}
               />
             ))}
           </FeaturesList>

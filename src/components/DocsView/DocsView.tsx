@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
 
-
 export default class DocsView extends React.Component<{}, {}> {
 
   componentDidMount() {
@@ -21,7 +20,6 @@ export default class DocsView extends React.Component<{}, {}> {
     return (
       <div>
         <HeaderDocs/>
-        <Footer/>
       </div>
     )
   }

@@ -74,6 +74,7 @@ const PreviewImage = styled.div`
 interface Props {
   headline: string,
   copy: string,
+  image: string,
 }
 
 export default class FeaturePreview extends React.Component<Props, {}> {
@@ -82,7 +83,10 @@ export default class FeaturePreview extends React.Component<Props, {}> {
     return (
       <Root className={cx($p.flex, $p.ph96)}>
         <PreviewImage className={cx('nestedImage')}>
-          <div className={cx($p.bgBlack07, $p.w100, $p.h100, $p.brPill)}></div>
+          <img
+            src={require(`../../../assets/graphics/${this.props.image}`)}
+            className={cx($p.bgBlack07, $p.w100, $p.h100, $p.brPill)}
+          />
         </PreviewImage>
         <div>
           <h3 className={cx($p.f25, $p.fw3)}>{this.props.headline}</h3>

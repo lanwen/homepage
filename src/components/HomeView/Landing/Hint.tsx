@@ -68,6 +68,7 @@ export default class Hint extends React.Component<Props, State> {
         className={cx($p.relative, $p.tc, $p.dib)}
         onMouseEnter={() => this.setState({showOverlay: true} as State)}
         onMouseLeave={() => this.setState({showOverlay: false} as State)}
+        onClick={() => this.setState({showOverlay: !this.state.showOverlay} as State)}
       >
         {this.state.showOverlay &&
         <Overlay className={cx($g.overlay, $p.absolute, $p.fw4, $p.left50, $p.tlHCenter, $p.tc)}>

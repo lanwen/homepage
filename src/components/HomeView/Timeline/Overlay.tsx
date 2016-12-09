@@ -55,7 +55,7 @@ export default class Overlay extends React.Component<Props, {}> {
             }
           </div>
           <List className={cx($p.black50)}>
-            {this.props.old.map((x) => <li>{x}</li>)}
+            {this.props.old.map((x, i) => <li key={i}>{x}</li>)}
           </List>
           <Bar active segments={this.props.oldSegments}/>
         </div>

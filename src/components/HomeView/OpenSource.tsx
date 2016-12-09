@@ -31,7 +31,7 @@ const Learn = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = styled.a`
   font-size: ${$v.size16};
   
   @media (min-width: ${breakpoints.p1000}px) {
@@ -58,24 +58,32 @@ export default class OpenSource extends React.Component<{}, {}> {
       <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
         <SectionHeader
           headline={headline}
-          copy = 'Help us move the GraphQL community forward. The Graphcool team works on various open source projects and would love your help. The easiest way to get started is to submit improvements to the examples or create examples and guides for new technologies' // tslint:disable-line
+          copy='Help us move the GraphQL community forward. The Graphcool team works on various open source projects and would love your help. The easiest way to get started is to submit improvements to the examples or create examples and guides for new technologies' // tslint:disable-line
         />
         <Learn className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.pv60, $p.ph38)}>
-          <figure className={cx($p.mh25, $p.mv10)}>
-            <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)} src={require('../../assets/graphics/LearnRelay.png')}
-                 alt='Learn Relay'/>
-          </figure>
-          <figure className={cx($p.mh25, $p.mv10)}>
-              <img className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
-                   src={require('../../assets/graphics/LearnApollo.png')}
-                   alt='Learn Apollo'
-              />
-          </figure>
+          <a className={cx($p.mh25, $p.mv10)} href='https://learnrelay.org' target='_blank'>
+            <img
+              className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
+              src={require('../../assets/graphics/LearnRelay.png')}
+              alt='Learn Relay'/>
+          </a>
+          <a className={cx($p.mh25, $p.mv10)} href='https://learnapollo.com' target='_blank'>
+            <img
+              className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
+              src={require('../../assets/graphics/LearnApollo.png')}
+              alt='Learn Apollo'
+            />
+          </a>
         </Learn>
         <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter, $p.fw3)}>
           {'Try it out for free - and setup your own backend in less than 5 minutes.'}
         </Copy>
-        <Button className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.pa16)}>Sign up</Button>
+        <Button
+          className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.pa16, $p.noUnderline)}
+          href='https://console.graph.cool/signup'
+        >
+          Sign up
+        </Button>
       </div>
     )
   }

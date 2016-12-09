@@ -79,22 +79,22 @@ export default class Timeline extends React.Component<{}, {}> {
 
     const data = [{
       title: 'Initial Setup',
-      old: ['Pick language and framework', 'Setup servers', 'Configure database', 'Add tables and ORM mapping code'],
-      new: ['Create your first model in minutes'],
+      old: ['Choose language/framework', 'Configure database', 'Setup server infrastructure', 'Setup deployment'],
+      new: ['Define your data schema', 'Connect your frontend app'],
       oldSegments: [10, 50, 30, 20],
-      newWegments: [20],
+      newWegments: [20, 10],
     }, {
       title: 'Iterate',
-      old: ['Migrate database', 'Adjust ORM mapping', 'Add infrastructure to support new features',
-        'Coordinate releases between teams'],
-      new: ['Change your data model with a few clicks', 'Add integrations'],
+      old: ['Write database migrations', 'Rewrite backend endpoints', 'Adjust infrastructure',
+        'Migrate database'],
+      new: ['Adjust data schema', 'Implement business logic'],
       oldSegments: [10, 30, 50, 10],
       newWegments: [20, 10],
     }, {
       title: 'Scaling',
-      old: ['Create database indexes', 'Monitor server load', 'Install load balancer',
-        'Configure data replication and active failover'],
-      new: ['Graphcool indexes your data as required', 'Pay only for the operations you consume'],
+      old: ['Create database indexes', 'Monitor server load', 'Setup load balancer',
+        'Setup database sharding'],
+      new: ['Zero-config autoscaling', 'Cheaper than self-hosted'],
       oldSegments: [10, 30, 20, 40],
       newWegments: [10, 10],
     }]
@@ -102,7 +102,7 @@ export default class Timeline extends React.Component<{}, {}> {
     return (
       <section>
         <SectionHeader
-          headline='Don’t reinvent the wheel. Build apps faster'
+          headline='Don’t reinvent the wheel. Build apps faster.'
           copy='Stop wasting time writing error-prone database migrations and monitoring log files. Graphcool handles all of that so you can focus on what matters: Building your app.' // tslint:disable-line
         />
         <Root className={cx($p.relative)}>
