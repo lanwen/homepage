@@ -111,12 +111,15 @@ export default class NavHorDocs extends React.Component<{}, {}> {
               />
             </Hamburger>
             <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90)}>
+<<<<<<< HEAD
               <Hamburger>
                 <Icon style={stateStyles}
                       onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
                       src={require('../../assets/icons/react.svg')} width={36} height={36} color={$v.gray20}
                 />
               </Hamburger>
+=======
+>>>>>>> 9a5df7d7b5e080b967b51b5ec4a4497cd7126cd4
               <NavigationLinks>
                 <form>
                   <Searchbox type='text' name='search' placeholder='Search..'/>
@@ -131,6 +134,15 @@ export default class NavHorDocs extends React.Component<{}, {}> {
                 <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
               </NavigationLinks>
             </FirstUlStyle>
+<<<<<<< HEAD
+=======
+            <Hamburger>
+              <Icon style={stateStyles}
+                    onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                    src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
+              />
+            </Hamburger>
+>>>>>>> 9a5df7d7b5e080b967b51b5ec4a4497cd7126cd4
           </Root>
         )}
       </div>
