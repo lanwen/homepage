@@ -17,7 +17,13 @@ function render() {
         <Route path='/' component={HomeView}/>
         <Route path='/pricing' component={PricingView}/>
         <Route path='/about' component={AboutView}/>
-        <Route path='/docs' component={DocsView}/>
+        <Route path='/docs' component={DocsView}>
+          <Route path='/quickstart' component={DocsView}/>
+          <Route path='/resources' component={DocsView}/>
+          <Route path='/reference' component={DocsView}/>
+          <Route path='/blog' component={DocsView}/>
+          <Route path='/community' component={DocsView}/>
+        </Route>
       </Router>
     </AppContainer>,
     document.getElementById('root'),

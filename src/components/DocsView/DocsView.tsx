@@ -56,7 +56,6 @@ export default class DocsView extends React.Component<{}, {}> {
     return (
       <div>
         <Markdown ast={this.state.ast}/>
-        <HeaderDocs/>
       </div>
     )
   }

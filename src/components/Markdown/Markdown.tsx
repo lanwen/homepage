@@ -1,6 +1,9 @@
 import * as React from 'react'
 import {Node, Parser} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
+import HeaderDocs from '../DocsView/HeaderDocs'
+import {PrismCode} from 'react-prism'
+import Header from "../Header";
 
 interface Props {
   ast: Node
@@ -41,9 +44,9 @@ export default class Markdown extends React.Component<Props, {}> {
         const className = props.language && 'language-' + props.language
         return (
           <pre>
-            {/*<PrismCode className={className}>*/}
-              {/*{props.literal}*/}
-            {/*</PrismCode>*/}
+            <PrismCode className={className}>
+              {props.literal}
+            </PrismCode>
           </pre>
         )
       },
@@ -74,7 +77,7 @@ export default class Markdown extends React.Component<Props, {}> {
 
     return (
       <div className={`relative`}>
-        {this.props.ast !== null ? renderer.render(this.props.ast) : '<h1>Loading....</h1>'}
+        {self.props.ast !== null ? <HeaderDocs content={renderer.render(this.props.ast)}/> : <h1>Loading....</h1>}
       </div>
     )
   }
