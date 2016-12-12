@@ -18,8 +18,9 @@ export default class DocsView extends React.Component<{}, {}> {
 
   render() {
     return (
-      <div>
-        <HeaderDocs/>
+      <div className={cx($p.flex, $p.flexColumn)}>
+         <HeaderDocs/>
+         <Footer/>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {findDOMNode} from 'react-dom'
 import { Link } from 'react-router'
 import ListItems from './ListItems'
 import styled from 'styled-components'
@@ -9,6 +10,10 @@ import Footer from '../Footer/Footer'
 import { breakpoints, maxWidth } from '../../utils/constants'
 
 export default class HeaderDocs extends React.Component<{}, {}> {
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll)
+  }
   render() {
     const FixedNavigation = styled.div`
       position: fixed;
@@ -34,7 +39,7 @@ export default class HeaderDocs extends React.Component<{}, {}> {
       }
 `
     return (
-      <div className={cx($p.flex)}>
+      <div className={cx($p.flex)} ref='root'>
         <VerticalContainer>
           <FixedNavigation>
             <Link to='/'>
@@ -141,34 +146,16 @@ export default class HeaderDocs extends React.Component<{}, {}> {
             Building sophisticated applications should be like clicking lego bricks together.
             GraphQL and AWS Lambda enable you to create truly modular
             software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
-            Building sophisticated applications should be like clicking lego bricks together.
-            GraphQL and AWS Lambda enable you to create truly modular
-            software – our platform brings everything together.
           </section>
-          <Footer/>
         </RightSection>
       </div>
     )
+  }
+
+  private onScroll = (e: Event) => {
+    console.log(e)
+
+    const el = findDOMNode(this.refs['root'])
+    el.scrollTop = 96759
   }
 }
