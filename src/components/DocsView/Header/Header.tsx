@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints, maxWidth } from '../../utils/constants'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 
 interface State {
   menuOpened: boolean
@@ -45,7 +45,7 @@ export default class NavHorDocs extends React.Component<{}, {}> {
       border-radius: 2px;
       font-size: 16px;
       background-color: #fff;
-      background-image: url(${require('../../assets/graphics/Lupa.png')});
+      background-image: url(${require('../../../assets/graphics/Lupa.png')});
       background-position: 10px 15px; 
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
@@ -128,7 +128,7 @@ export default class NavHorDocs extends React.Component<{}, {}> {
             <NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks>
             <NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks>
             <NavigationLinks className={cx($p.mt4)}>
-              <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
+              <img className={cx($p.bbox, $p.db)} src={require('../../../assets/graphics/APIEndpoints.png')}/>
             </NavigationLinks>
           </Root>
         ) : (
@@ -136,7 +136,7 @@ export default class NavHorDocs extends React.Component<{}, {}> {
             <Hamburger>
               <Icon style={stateStyles}
                     onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-                    src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
+                    src={require('../../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
               />
             </Hamburger>
             <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90)}>
@@ -156,7 +156,7 @@ export default class NavHorDocs extends React.Component<{}, {}> {
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks>
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks>
               <NavigationLinks className={cx($p.mt16)}>
-                <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
+                <img className={cx($p.bbox, $p.db)} src={require('../../../assets/graphics/APIEndpoints.png')}/>
               </NavigationLinks>
             </FirstUlStyle>
           </Root>

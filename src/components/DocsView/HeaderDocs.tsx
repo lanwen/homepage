@@ -1,18 +1,23 @@
 import * as React from 'react'
+import {findDOMNode} from 'react-dom'
 import { Link } from 'react-router'
-import ListItems from './ListItems'
+import ListItems from '../ListItems'
 import styled from 'styled-components'
 import { $p, $v, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import NavHorDocs from './NavHorDocs'
-import Footer from '../Footer/Footer'
-import { breakpoints, maxWidth } from '../../utils/constants'
+import Footer from '../../Footer/Footer'
+import { breakpoints, maxWidth } from '../../../utils/constants'
 
 interface Props {
   content: any
 }
 
 export default class HeaderDocs extends React.Component<Props, {}> {
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll)
+  }
+
   render() {
     const FixedNavigation = styled.div`
       position: fixed;
@@ -38,11 +43,11 @@ export default class HeaderDocs extends React.Component<Props, {}> {
       }
 `
     return (
-      <div className={cx($p.flex)}>
+      <div className={cx($p.flex)} ref='root'>
         <VerticalContainer>
           <FixedNavigation>
             <Link to='/'>
-              <LogoDocs className={cx($p.pa60)} src={require('../../assets/graphics/logos/DockLogo.svg')}/>
+              <LogoDocs className={cx($p.pa60)} src={require('../../../assets/graphics/logos/DockLogo.svg')}/>
             </Link>
             <ListItems
               title='GETTING STARTED'
@@ -99,9 +104,15 @@ export default class HeaderDocs extends React.Component<Props, {}> {
           <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
             {this.props.content}
           </section>
-          <Footer/>
         </RightSection>
       </div>
     )
+  }
+
+  private onScroll = (e: Event) => {
+    console.log(e)
+
+    const el = findDOMNode(this.refs['root'])
+    el.scrollTop = 96759
   }
 }

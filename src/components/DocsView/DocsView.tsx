@@ -54,8 +54,9 @@ export default class DocsView extends React.Component<{}, {}> {
 
   render() {
     return (
-      <div>
+      <div className={cx($p.flex, $p.flexColumn)}>
         <Markdown ast={this.state.ast}/>
+        <Footer/>
       </div>
     )
   }
