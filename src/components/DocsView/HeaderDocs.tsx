@@ -25,7 +25,7 @@ export default class HeaderDocs extends React.Component<{}, {}> {
     }
 `
     const RightSection = styled.div`
-       flex: 1 1;
+       flex: 1 1 100px;
        z-index: 100;
 `
     const LogoDocs = styled.img`
@@ -90,8 +90,82 @@ export default class HeaderDocs extends React.Component<{}, {}> {
             />
           </FixedNavigation>
         </VerticalContainer>
-        <RightSection>
+        <RightSection className={cx($p.flexWrap)}>
           <NavHorDocs/>
+          <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+            Building sophisticated applications should be like clicking lego bricks together.
+            GraphQL and AWS Lambda enable you to create truly modular
+            software – our platform brings everything together.
+          </section>
           <Footer/>
         </RightSection>
       </div>

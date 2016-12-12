@@ -50,9 +50,9 @@ export default class NavHorDocs extends React.Component<{}, {}> {
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
       
-        @media (max-width: ${breakpoints.p1200}px) {
-          width: 200px;
-          margin-left: 0%;
+        @media (max-width: ${breakpoints.p1360}px) {
+          width: 250px;
+          margin-left: -23%;
     }
 `
     const Hamburger = styled.div`
@@ -76,11 +76,40 @@ export default class NavHorDocs extends React.Component<{}, {}> {
       0 -8px 18px rgba(0, 0, 0, 0.1);
       position: absolute;
       cursor: pointer;
-      top: ${$v.size25};
-      right: ${$v.size25};
+      top: ${$v.size38};
+      right: ${$v.size10};
 
       .border {
         border-left: solid 3px rgba(28, 191, 50, 0.2);
+      }
+    `
+    const Close = styled.div`
+      position: absolute;
+      top: ${$v.size16};
+      right: ${$v.size16};
+      width: 36px;
+      height: 36px;
+      opacity: .2;
+      cursor: pointer;
+      transition: opacity ${$v.duration} linear;
+      
+      &:hover {
+        opacity: .4;
+      }
+      
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        background: ${$v.black};
+        left: 50%;
+        top: 50%;
+        width: 80%;
+        height: 2px;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      
+      &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
       }
     `
     let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
@@ -111,18 +140,14 @@ export default class NavHorDocs extends React.Component<{}, {}> {
               />
             </Hamburger>
             <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90)}>
-<<<<<<< HEAD
-              <Hamburger>
-                <Icon style={stateStyles}
-                      onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-                      src={require('../../assets/icons/react.svg')} width={36} height={36} color={$v.gray20}
-                />
-              </Hamburger>
-=======
->>>>>>> 9a5df7d7b5e080b967b51b5ec4a4497cd7126cd4
+              <Close
+                style={stateStyles}
+                onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+              />
               <NavigationLinks>
-                <form>
-                  <Searchbox type='text' name='search' placeholder='Search..'/>
+                <form className={cx($p.pl38, $p.pb16)}>
+                  <Searchbox type='text' name='search' placeholder='Search..'
+                  />
                 </form>
               </NavigationLinks>
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>QUICKSTART</NavigationLinks>
@@ -130,19 +155,10 @@ export default class NavHorDocs extends React.Component<{}, {}> {
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>REFERENCE</NavigationLinks>
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks>
               <NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks>
-              <NavigationLinks className={cx($p.mt4)}>
+              <NavigationLinks className={cx($p.mt16)}>
                 <img className={cx($p.bbox, $p.db)} src={require('../../assets/graphics/APIEndpoints.png')}/>
               </NavigationLinks>
             </FirstUlStyle>
-<<<<<<< HEAD
-=======
-            <Hamburger>
-              <Icon style={stateStyles}
-                    onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-                    src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
-              />
-            </Hamburger>
->>>>>>> 9a5df7d7b5e080b967b51b5ec4a4497cd7126cd4
           </Root>
         )}
       </div>
