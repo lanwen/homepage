@@ -178,7 +178,7 @@ export default class Header extends React.Component<{}, State> {
           <NavLink to='/about'>About</NavLink>
           <Signin>
             <Button
-              href='https://console.graph.cool/login'
+              href='https://console.graph.cool'
               className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
             >
               Log in
