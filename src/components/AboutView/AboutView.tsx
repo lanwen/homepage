@@ -16,16 +16,34 @@ export default class AboutView extends React.Component<{}, {}> {
   }
 
   render() {
+    const Intro = styled.div`
+       @media(max-width: ${breakpoints.p1200}px) {
+        margin-right: ${$v.size20};
+        margin-left: ${$v.size20};
+       }
+       
+        @media(max-width: ${breakpoints.p900}px) {
+        margin-right: ${$v.size10};
+        margin-left: ${$v.size10};
+       }
+`
     const About = styled.div`
       flex: 1 400px;
       color: rgba(0, 0, 0, 0, 0.8);
+      
+      @media(max-width: ${breakpoints.p1200}px) {
+        font-size: ${$v.size16};
+        }
 `
     const Description = styled.div`
       flex: 1 300px;
+      
+        @media(max-width: ${breakpoints.p1200}px) {
+        font-size: ${$v.size32};
+        }
 `
     const Name = styled.div`
       font-weight: 100;
-      font-size: ${$v.size25};
       padding-bottom: ${$v.size06};
 `
     const Position = styled.div`
@@ -90,7 +108,7 @@ export default class AboutView extends React.Component<{}, {}> {
     const Border = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.05),
         0 -8px 18px rgba(0, 0, 0, 0.05);
-      min-width: 240px;
+      min-width: 230px;
       
      .line {
           width: 100%;
@@ -110,7 +128,7 @@ export default class AboutView extends React.Component<{}, {}> {
     return (
       <div>
         <Header/>
-        <section className={cx($p.flex, $p.flexWrap, $p.flexAuto, $p.mh38, $p.mb60)}>
+        <Intro className={cx($p.flex, $p.flexWrap, $p.flexAuto, $p.mh38, $p.mb60)}>
           <Description className={cx($p.itemsCenter, $p.flex, $p.ph38, $p.f38, $p.fw3)}>
             We're building the only backend you’ll ever need.
           </Description>
@@ -124,10 +142,10 @@ export default class AboutView extends React.Component<{}, {}> {
               </article>
             }
           </About>
-        </section>
+        </Intro>
         <section className={cx($p.bgBlack04, $p.pt96)}>
           <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn, $p.ph38, $p.pb16)}>
-            <h1 className={cx($p.selfCenter)}>We’re developers on our own.</h1>
+            <h1 className={cx($p.selfCenter, $p.pb10)}>We’re developers on our own.</h1>
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
           </article>
           <div>
@@ -145,7 +163,7 @@ export default class AboutView extends React.Component<{}, {}> {
               {persons.map(person => (
                 <Border className={cx($p.flex1, $p.tc, $p.ma16, $p.pa16)}>
                   <img className={cx($p.pv38)} src={person.image}/>
-                  <Name className={cx($p.f10)}>{person.name}</Name>
+                  <Name className={cx($p.f20, $p.fw6)}>{person.name}</Name>
                   <Position className={cx($p.pb16)}>{person.title}</Position>
                   <div className={cx($p.flex, $p.justifyCenter)}>
                     <div className={cx('hr')}>
@@ -176,9 +194,9 @@ export default class AboutView extends React.Component<{}, {}> {
                       <div className={cx('line')}></div>
                     </div>
                   </div>
-                  <h4 className={cx($p.black50, $p.fw3, $p.pv38)}>
+                  <h5 className={cx($p.black50, $p.fw4, $p.pv20)}>
                     {person.description}
-                  </h4>
+                  </h5>
                 </Border>
               ))}
             </Container>
@@ -187,11 +205,11 @@ export default class AboutView extends React.Component<{}, {}> {
             {persons.map(person => (
               <Person className={cx($p.tc, $p.pv96)}>
                 <img className={cx($p.pb38)} src={person.image}/>
-                <Name>{person.name}</Name>
+                <Name className={cx($p.f25)}>{person.name}</Name>
                 <Position>{person.title}</Position>
                 <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
                   <Image className={cx($p.pv38, $p.selfCenter)} src={person.image}/>
-                  <Name>{person.name}</Name>
+                  <Name className={cx($p.f25)}>{person.name}</Name>
                   <Position className={cx($p.pb25)}>{person.title}</Position>
                   <div className={cx($p.flex, $p.justifyCenter)}>
                     <div className={cx('hr')}>
