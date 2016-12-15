@@ -38,7 +38,7 @@ export default class AboutView extends React.Component<{}, {}> {
        overflow: visible;
        box-sizing: border-box; 
        flex: 0;
-       flex-basis: 32%;
+       flex-basis: 35%;
        
        .asd {
           display: none;
@@ -61,14 +61,19 @@ export default class AboutView extends React.Component<{}, {}> {
        
        @media(min-width: ${breakpoints.p1250}px) {
         flex: 0;
-        flex-basis: 30%;
+        flex-basis: 35%;
         }
         
        @media(max-width: ${breakpoints.p900}px) {
         flex: 0;
-        flex-basis: 40%;
+        flex-basis: 45%;
         }
-       
+        
+       @media(max-width: ${breakpoints.p750}px) {
+        flex: 0;
+        flex-basis: 50%;
+        }
+        
        @media(max-width: ${breakpoints.p650}px) {
         flex: 0;
         flex-basis: 80%;
