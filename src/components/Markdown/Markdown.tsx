@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {Node, Parser} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
-import HeaderDocs from '../DocsView/HeaderDocs'
 import {PrismCode} from 'react-prism'
 import Header from "../Header";
 
@@ -77,7 +76,7 @@ export default class Markdown extends React.Component<Props, {}> {
 
     return (
       <div className={`relative`}>
-        {self.props.ast !== null ? <HeaderDocs content={renderer.render(this.props.ast)}/> : <h1>Loading....</h1>}
+        {renderer.render(this.props.ast)}
       </div>
     )
   }
