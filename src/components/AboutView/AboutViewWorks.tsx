@@ -1,19 +1,17 @@
 import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
-import { $p, $v,} from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
 import { persons } from './data'
 import DiffView = CodeMirror.MergeView.DiffView
+import { flexWrap, selfCenter } from 'graphcool-styles/dist/particles.css'
 import HorScrollbox from '../HorScrollbox'
 import Pagination from '../HomeView/Pagination'
 
 export default class AboutView extends React.Component<{}, {}> {
-  componentDidMount() {
-    window.addEventListener('resize', this.rerender)
-  }
 
   render() {
     const About = styled.div`
@@ -44,7 +42,7 @@ export default class AboutView extends React.Component<{}, {}> {
        overflow: visible;
        box-sizing: border-box; 
        flex: 0;
-       flex-basis: 32%;
+       flex-basis: 35%;
        
        .asd {
           display: none;
@@ -65,9 +63,29 @@ export default class AboutView extends React.Component<{}, {}> {
         z-index: 10;
        }
        
-       @media(max-width: ${breakpoints.p1200}px) {
+       @media(min-width: ${breakpoints.p1250}px) {
         flex: 0;
         flex-basis: 35%;
+        }
+        
+       @media(max-width: ${breakpoints.p900}px) {
+        flex: 0;
+        flex-basis: 45%;
+        }
+        
+       @media(max-width: ${breakpoints.p750}px) {
+        flex: 0;
+        flex-basis: 50%;
+        }
+        
+       @media(max-width: ${breakpoints.p650}px) {
+        flex: 0;
+        flex-basis: 80%;
+        }
+        
+        @media(max-width: ${breakpoints.p580}px) {
+        flex: 0;
+        flex-basis: 90%;
         }
   
        .line {
@@ -90,7 +108,7 @@ export default class AboutView extends React.Component<{}, {}> {
     const Border = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.05),
         0 -8px 18px rgba(0, 0, 0, 0.05);
-      min-width: 240px;
+      min-width: 280px;
       
      .line {
           width: 100%;
@@ -126,26 +144,65 @@ export default class AboutView extends React.Component<{}, {}> {
           </About>
         </section>
         <section className={cx($p.bgBlack04, $p.pt96)}>
-          <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn, $p.ph38, $p.pb16)}>
+          <article className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexColumn, $p.ph38)}>
             <h1 className={cx($p.selfCenter)}>We’re developers on our own.</h1>
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
           </article>
           <div>
-          {window.innerWidth < breakpoints.p900 ? (
-          <div className={cx($p.flex, $p.justifyCenter, $p.flexColumn, $p.pb25)}>
-            <div className={cx($p.selfCenter, $p.pv16)}>
-              <Pagination
-                bullets={4}
-                grayscale
-                active={0}
-                onSelect={() => null}
-              />
-            </div>
-            <Container className={cx($p.flex, $p.justifyBetween, $p.pb60)}>
+            <PhotoSection className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
+              {persons.map(person => (
+                <Person className={cx($p.tc, $p.pv96)}>
+                  <img className={cx($p.pb38)} src={person.image}/>
+                  <Name>{person.name}</Name>
+                  <Position>{person.title}</Position>
+                  <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
+                    <Image className={cx($p.pv38, $p.selfCenter)} src={person.image}/>
+                    <Name>{person.name}</Name>
+                    <Position className={cx($p.pb25)}>{person.title}</Position>
+                    <div className={cx($p.flex, $p.justifyCenter)}>
+                      <div className={cx('hr')}>
+                        <div className={cx('line')}></div>
+                      </div>
+                      <a href={person.links.linkedin} target='_blank'>
+                        <img
+                          className={cx($p.pa10, $p.bbox, $p.db)}
+                          src={require('../../assets/graphics/LinkedInLogo.png')}
+                          alt='LinkedIn Logo'
+                        />
+                      </a>
+                      <a href={person.links.twitter} target='_blank'>
+                        <img
+                          className={cx($p.pa10, $p.bbox, $p.db)}
+                          src={require('../../assets/graphics/TwitterLogo.png')}
+                          alt='Twitter Logo'
+                        />
+                      </a>
+                      <a href={person.links.github} target='_blank'>
+                        <img
+                          className={cx($p.pa10, $p.bbox, $p.db)}
+                          src={require('../../assets/graphics/GitHubLogo.png')}
+                          alt='GitHub Logo'
+                        />
+                      </a>
+                      <div className={cx('hr')}>
+                        <div className={cx('line')}></div>
+                      </div>
+                    </div>
+                    <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                      {person.description}
+                    </h4>
+                  </section>
+                </Person>
+              ))}
+            </PhotoSection>
+          }
+          </div>
+          {window.innerWidth < breakpoints.p900 &&
+            <Container className={cx($p.flex, $p.justifyBetween)}>
               {persons.map(person => (
                 <Border className={cx($p.flex1, $p.tc, $p.ma16, $p.pa16)}>
                   <img className={cx($p.pv38)} src={person.image}/>
-                  <Name className={cx($p.f10)}>{person.name}</Name>
+                  <Name>{person.name}</Name>
                   <Position className={cx($p.pb16)}>{person.title}</Position>
                   <div className={cx($p.flex, $p.justifyCenter)}>
                     <div className={cx('hr')}>
@@ -182,61 +239,20 @@ export default class AboutView extends React.Component<{}, {}> {
                 </Border>
               ))}
             </Container>
-          </div>) : (
-          <PhotoSection className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
-            {persons.map(person => (
-              <Person className={cx($p.tc, $p.pv96)}>
-                <img className={cx($p.pb38)} src={person.image}/>
-                <Name>{person.name}</Name>
-                <Position>{person.title}</Position>
-                <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
-                  <Image className={cx($p.pv38, $p.selfCenter)} src={person.image}/>
-                  <Name>{person.name}</Name>
-                  <Position className={cx($p.pb25)}>{person.title}</Position>
-                  <div className={cx($p.flex, $p.justifyCenter)}>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                    <a href={person.links.linkedin} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/LinkedInLogo.png')}
-                        alt='LinkedIn Logo'
-                      />
-                    </a>
-                    <a href={person.links.twitter} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/TwitterLogo.png')}
-                        alt='Twitter Logo'
-                      />
-                    </a>
-                    <a href={person.links.github} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/GitHubLogo.png')}
-                        alt='GitHub Logo'
-                      />
-                    </a>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                  </div>
-                  <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
-                    {person.description}
-                  </h4>
-                </section>
-              </Person>
-            ))}
-          </PhotoSection>
-            )}
+          }
+          {window.innerWidth < breakpoints.p750 &&
+          <div className={cx($p.flex, $p.justifyCenter, $p.pv25)}>
+            <Pagination
+              bullets={4}
+              grayscale
+              active={0}
+              onSelect={() => null}
+            />
           </div>
+          }
         </section>
         <Footer/>
       </div>
     )
-  }
-  private rerender = () => {
-    this.forceUpdate()
   }
 }
