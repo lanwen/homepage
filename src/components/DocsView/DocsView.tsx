@@ -30,10 +30,14 @@ interface Props {
   children: any
 }
 
+interface Item {
+  body: string
+}
+
 export default class DocsView extends React.Component<Props, State> {
 
   state = {
-    ast: null
+    ast: null,
   }
 
   componentDidMount() {
@@ -47,12 +51,14 @@ export default class DocsView extends React.Component<Props, State> {
         }
       }
   `).then(result => {
-        const parser = new Parser();
-        const parsedDecodedResult = _.map(result.allItems, (item) => parser.parse(decode64(item.body as string)))
+        const parser = new Parser()
+        const parsedDecodedResult = _.map(result.allItems, (item) => {
+          parser.parse(decode64((item as Item).body))
+        })
         console.log(parsedDecodedResult)
         this.setState({ast: parsedDecodedResult[1]} as State)
         console.log(this.state)
-      });
+      })
 
     window.addEventListener('resize', this.rerender)
   }
@@ -95,14 +101,7 @@ export default class DocsView extends React.Component<Props, State> {
             <LeftSidebar/>
             <RightSection className={cx($p.flexWrap)}>
               <Header/>
-              {
-                (() => {
-                  console.log(this.props.location.pathname)
-                  if(this.props.location.pathname === '/docs/reference') {
-                    return <h1>We are on the reference page!</h1>
-                  }
-                })()
-              }
+
               <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
                 {/*{this.state.ast === null ? <h1>Loading...</h1> : <Markdown ast={this.state.ast}/>}*/}
                 {this.props.children}
