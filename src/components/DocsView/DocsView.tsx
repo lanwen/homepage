@@ -13,6 +13,7 @@ import ListItems from './ListItems'
 import Header from './Header/Header'
 import RelatedContent from './RelatedContent/RelatedContent'
 import {Link} from 'react-router'
+import LeftSidebar from './LeftSidebar';
 
 const decode64 = (str: string): string => atob(str);
 
@@ -26,6 +27,7 @@ interface State {
 
 interface Props {
   location: any
+  children: any
 }
 
 export default class DocsView extends React.Component<Props, State> {
@@ -90,71 +92,20 @@ export default class DocsView extends React.Component<Props, State> {
         <div className={cx($p.flex, $p.flexColumn)}>
 
           <div className={cx($p.flex)} ref='root'>
-            <VerticalContainer>
-              <FixedNavigation>
-                <Link to='/'>
-                  <LogoDocs className={cx($p.pa60)} src={require('../../assets/graphics/logos/DockLogo.svg')}/>
-                </Link>
-                <ListItems
-                  title='GETTING STARTED'
-                  subtitle1=''
-                  subsubtitle1=''
-                  subsubsubtitle1=''
-                  subtitle2=''
-                  subsubtitle2=''
-                />
-                <ListItems
-                  title='CONSOLE'
-                  subtitle1=''
-                  subsubtitle1=''
-                  subsubsubtitle1=''
-                  subtitle2=''
-                  subsubtitle2=''
-                />
-                <ListItems
-                  title='AUTHENTICATION'
-                  subtitle1=''
-                  subsubtitle1=''
-                  subsubsubtitle1=''
-                  subtitle2=''
-                  subsubtitle2=''
-                />
-                <ListItems
-                  title='FILE MANAGEMENT'
-                  subtitle1=''
-                  subsubtitle1=''
-                  subsubsubtitle1=''
-                  subtitle2=''
-                  subsubtitle2=''
-                />
-                <ListItems
-                  title='SIMPLE API'
-                  subtitle1='Introduction'
-                  subsubtitle1='Details'
-                  subsubsubtitle1='Super Details'
-                  subtitle2='Making API Requests'
-                  subsubtitle2=''
-                />
-                <ListItems
-                  title='RELAY API'
-                  subtitle1=''
-                  subsubtitle1=''
-                  subsubsubtitle1=''
-                  subtitle2=''
-                  subsubtitle2=''
-                />
-              </FixedNavigation>
-            </VerticalContainer>
+            <LeftSidebar/>
             <RightSection className={cx($p.flexWrap)}>
               <Header/>
               {
                 (() => {
                   console.log(this.props.location.pathname)
-                  if(this.props.location.pathname === '/docs/reference') return <h1>We are on the reference page!</h1>
+                  if(this.props.location.pathname === '/docs/reference') {
+                    return <h1>We are on the reference page!</h1>
+                  }
                 })()
               }
               <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
-                {this.state.ast === null ? <h1>Loading...</h1> : <Markdown ast={this.state.ast}/>}
+                {/*{this.state.ast === null ? <h1>Loading...</h1> : <Markdown ast={this.state.ast}/>}*/}
+                {this.props.children}
               </section>
               <RelatedContent />
             </RightSection>
