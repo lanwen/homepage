@@ -49,6 +49,9 @@ module.exports = {
     }, {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
       loader: 'file-loader',
+    }, {
+      test: /\.json$/,
+      loader: "json-loader"
     }],
   },
   plugins: [

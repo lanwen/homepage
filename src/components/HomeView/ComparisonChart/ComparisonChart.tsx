@@ -61,6 +61,7 @@ const RowBase = styled.div`
 const Row = styled(RowBase)`
   flex: 1;
   font-size: ${$v.size16};
+  height: 61px;
   
   /* Needed for prerendering */
   min-height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5}px;
