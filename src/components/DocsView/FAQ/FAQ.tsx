@@ -88,7 +88,7 @@ export default class FAQ extends React.Component<{}, {}> {
                 </Circle>
                 <p className={cx($p.black60, $p.f20, $p.fw4)}>How does filtering work?</p>
               </div>
-              <Square className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mv38}>
+              <Square className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mv38)}>
                 <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pv25)}>
                   <p className={cx($p.lightgreen50, $p.fw6, $p.f16, $p.pl25)}>MORE ABOUT</p>
                   <p className={cx($p.green, $p.fw6, $p.f16, $p.pl6)}>VENDOR LOCK IN</p>

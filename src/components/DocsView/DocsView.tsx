@@ -1,25 +1,23 @@
 import * as React from 'react'
 import Footer from '../Footer/Footer'
-import { $p, $v, $g } from 'graphcool-styles'
+import {$p, $v} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import { breakpoints } from '../../utils/constants'
-import Markdown from '../Markdown/Markdown';
+import {breakpoints} from '../../utils/constants'
 import Lokka from 'lokka'
 import Transport from 'lokka-transport-http'
 import * as _ from 'lodash'
 import {Node, Parser} from 'commonmark'
-import ListItems from './ListItems'
 import Header from './Header/Header'
 import RelatedContent from './RelatedContent/RelatedContent'
 import {Link} from 'react-router'
-import LeftSidebar from './LeftSidebar';
+import LeftSidebar from './LeftSidebar'
 
-const decode64 = (str: string): string => atob(str);
+const decode64 = (str: string): string => atob(str)
 
 const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk')
-});
+  transport: new Transport('https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk'),
+})
 
 interface State {
   ast: any

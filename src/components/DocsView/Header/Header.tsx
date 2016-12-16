@@ -23,8 +23,8 @@ export default class Header extends React.Component<{}, {}> {
       @media (max-width: ${breakpoints.p1200}px) {
           margin-left: -10%;
           padding-top: ${$v.size25}
-    }
-`
+      }
+    `
     const NavigationLinks = styled.div`
       color: ${$v.gray30};
       cursor: pointer;
@@ -32,8 +32,8 @@ export default class Header extends React.Component<{}, {}> {
 
       &:hover {
         color: ${$v.gray50};
-  }
-`
+      }
+    `
     const Searchbox = styled.input`
      
       width: 300px;
@@ -49,17 +49,17 @@ export default class Header extends React.Component<{}, {}> {
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
       
-        @media (max-width: ${breakpoints.p1360}px) {
-          width: 250px;
-          margin-left: -23%;
-    }
-`
+      @media (max-width: ${breakpoints.p1360}px) {
+        width: 250px;
+        margin-left: -23%;
+      }
+    `
     const Hamburger = styled.div`
       position: absolute;
       cursor: pointer;
       top: ${$v.size38};
       right: ${$v.size38};
-`
+    `
     const styles = {
       active: {
         display: 'block',
@@ -111,7 +111,7 @@ export default class Header extends React.Component<{}, {}> {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     `
-    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive;
+    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
 
     let links = (
       <div>
@@ -146,7 +146,7 @@ export default class Header extends React.Component<{}, {}> {
                     src={require('../../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}
               />
             </Hamburger>
-            <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90)+' z1'}>
+            <FirstUlStyle style={stateStyles} className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
               <Close
                 style={stateStyles}
                 onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
