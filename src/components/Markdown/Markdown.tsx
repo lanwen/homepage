@@ -2,7 +2,8 @@ import * as React from 'react'
 import {Node, Parser} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import {PrismCode} from 'react-prism'
-import Header from "../Header";
+const styles: any = require('./Markdown.module.css')
+
 
 interface Props {
   ast: Node

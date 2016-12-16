@@ -15,6 +15,8 @@ import ReferencePage from './pages/reference/ReferencePage'
 import ResourcesPage from './pages/resources/ResourcesPage'
 import BlogPage from './pages/blog/BlogPage'
 import CommunityPage from './pages/community/CommunityPage'
+import ContentHandler from './components/DocsView/ContentHandler/ContentHandler'
+import NotFound from './components/DocsView/ContentHandler/NotFound'
 
 function render() {
   ReactDOM.render(
@@ -30,7 +32,9 @@ function render() {
           <Route path='reference' component={ReferencePage}/>
           <Route path='blog' component={BlogPage}/>
           <Route path='community' component={CommunityPage}/>
+          <Route path='**' component={ContentHandler}></Route>
         </Route>
+        <Route path='/404' component={NotFound}/>
       </Router>
     </AppContainer>,
     document.getElementById('root'),
