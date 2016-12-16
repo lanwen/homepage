@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
-import { $p, $v,} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
@@ -31,15 +31,15 @@ export default class AboutView extends React.Component<{}, {}> {
       flex: 1 400px;
       color: rgba(0, 0, 0, 0, 0.8);
       
-      @media(max-width: ${breakpoints.p1200}px) {
-        font-size: ${$v.size16};
+        @media(max-width: ${breakpoints.p1200}px) {
+          font-size: ${$v.size16};
         }
 `
     const Description = styled.div`
       flex: 1 300px;
       
         @media(max-width: ${breakpoints.p1200}px) {
-        font-size: ${$v.size32};
+          font-size: ${$v.size32};
         }
 `
     const Name = styled.div`
@@ -89,16 +89,16 @@ export default class AboutView extends React.Component<{}, {}> {
         }
   
        .line {
-          width: 100%;
-          float: left;
-          margin-top:27px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+         width: 100%;
+         float: left;
+         margin-top:27px;
+         border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 }
        .hr {
-           height:15px;
-           padding-bottom: 15px;
-           width: 25%;
-           float: left;
+         height:15px;
+         padding-bottom: 15px;
+         width: 25%;
+         float: left;
 }
 
 `
@@ -107,20 +107,20 @@ export default class AboutView extends React.Component<{}, {}> {
 `
     const Border = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.05),
-        0 -8px 18px rgba(0, 0, 0, 0.05);
+      0 -8px 18px rgba(0, 0, 0, 0.05);
       min-width: 230px;
       
      .line {
-          width: 100%;
-          float: left;
-          margin-top:27px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+       width: 100%;
+       float: left;
+       margin-top:27px;
+       border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 }
        .hr {
-           height:15px;
-           padding-bottom: 15px;
-           width: 25%;
-           float: left;
+         height:15px;
+         padding-bottom: 15px;
+         width: 25%;
+         float: left;
 }
 `
     const Container = styled(HorScrollbox)`
@@ -149,104 +149,104 @@ export default class AboutView extends React.Component<{}, {}> {
             <h4 className={cx($p.selfCenter, $p.o50)}>… and basically built the product we always wanted ourselves.</h4>
           </article>
           <div>
-          {window.innerWidth < breakpoints.p900 ? (
-          <div className={cx($p.flex, $p.justifyCenter, $p.flexColumn, $p.pb25)}>
-            <div className={cx($p.selfCenter, $p.pv16)}>
-              <Pagination
-                bullets={4}
-                grayscale
-                active={0}
-                onSelect={() => null}
-              />
-            </div>
-            <Container className={cx($p.flex, $p.justifyBetween, $p.pb60)}>
-              {persons.map(person => (
-                <Border className={cx($p.flex1, $p.tc, $p.ma16, $p.pa16)}>
-                  <img className={cx($p.pv38)} src={person.image}/>
-                  <Name className={cx($p.f20, $p.fw6)}>{person.name}</Name>
-                  <Position className={cx($p.pb16)}>{person.title}</Position>
-                  <div className={cx($p.flex, $p.justifyCenter)}>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                    <a href={person.links.linkedin} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/LinkedInLogo.png')}
-                        alt='LinkedIn Logo'
-                      />
-                    </a>
-                    <a href={person.links.twitter} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/TwitterLogo.png')}
-                        alt='Twitter Logo'
-                      />
-                    </a>
-                    <a href={person.links.github} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/GitHubLogo.png')}
-                        alt='GitHub Logo'
-                      />
-                    </a>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                  </div>
-                  <h5 className={cx($p.black50, $p.fw4, $p.pv20)}>
-                    {person.description}
-                  </h5>
-                </Border>
-              ))}
-            </Container>
-          </div>) : (
-          <PhotoSection className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
-            {persons.map(person => (
-              <Person className={cx($p.tc, $p.pv96)}>
-                <img className={cx($p.pb38)} src={person.image}/>
-                <Name className={cx($p.f25)}>{person.name}</Name>
-                <Position>{person.title}</Position>
-                <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
-                  <Image className={cx($p.pv38, $p.selfCenter)} src={person.image}/>
-                  <Name className={cx($p.f25)}>{person.name}</Name>
-                  <Position className={cx($p.pb25)}>{person.title}</Position>
-                  <div className={cx($p.flex, $p.justifyCenter)}>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                    <a href={person.links.linkedin} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/LinkedInLogo.png')}
-                        alt='LinkedIn Logo'
-                      />
-                    </a>
-                    <a href={person.links.twitter} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/TwitterLogo.png')}
-                        alt='Twitter Logo'
-                      />
-                    </a>
-                    <a href={person.links.github} target='_blank'>
-                      <img
-                        className={cx($p.pa10, $p.bbox, $p.db)}
-                        src={require('../../assets/graphics/GitHubLogo.png')}
-                        alt='GitHub Logo'
-                      />
-                    </a>
-                    <div className={cx('hr')}>
-                      <div className={cx('line')}></div>
-                    </div>
-                  </div>
-                  <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
-                    {person.description}
-                  </h4>
-                </section>
-              </Person>
-            ))}
-          </PhotoSection>
+            {window.innerWidth < breakpoints.p900 ? (
+              <div className={cx($p.flex, $p.justifyCenter, $p.flexColumn, $p.pb25)}>
+                <div className={cx($p.selfCenter, $p.pv16)}>
+                  <Pagination
+                    bullets={4}
+                    grayscale
+                    active={0}
+                    onSelect={() => null}
+                  />
+                </div>
+                <Container className={cx($p.flex, $p.justifyBetween, $p.pb60)}>
+                  {persons.map(person => (
+                    <Border className={cx($p.flex1, $p.tc, $p.ma16, $p.pa16)}>
+                      <img className={cx($p.pv38)} src={person.image}/>
+                      <Name className={cx($p.f20, $p.fw6)}>{person.name}</Name>
+                      <Position className={cx($p.pb16)}>{person.title}</Position>
+                      <div className={cx($p.flex, $p.justifyCenter)}>
+                        <div className={cx('hr')}>
+                          <div className={cx('line')}></div>
+                        </div>
+                        <a href={person.links.linkedin} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/LinkedInLogo.png')}
+                            alt='LinkedIn Logo'
+                          />
+                        </a>
+                        <a href={person.links.twitter} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/TwitterLogo.png')}
+                            alt='Twitter Logo'
+                          />
+                        </a>
+                        <a href={person.links.github} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/GitHubLogo.png')}
+                            alt='GitHub Logo'
+                          />
+                        </a>
+                        <div className={cx('hr')}>
+                          <div className={cx('line')}></div>
+                        </div>
+                      </div>
+                      <h5 className={cx($p.black50, $p.fw4, $p.pv20)}>
+                        {person.description}
+                      </h5>
+                    </Border>
+                  ))}
+                </Container>
+              </div>) : (
+              <PhotoSection className={cx($p.flex, $p.justifyAround, $p.pb38, $p.flexWrap)}>
+                {persons.map(person => (
+                  <Person className={cx($p.tc, $p.pv96)}>
+                    <img className={cx($p.pb38)} src={person.image}/>
+                    <Name className={cx($p.f25)}>{person.name}</Name>
+                    <Position>{person.title}</Position>
+                    <section className={cx('asd', $p.flexColumn, $p.flex, $p.flexWrap)}>
+                      <Image className={cx($p.pv38, $p.selfCenter)} src={person.image}/>
+                      <Name className={cx($p.f25)}>{person.name}</Name>
+                      <Position className={cx($p.pb25)}>{person.title}</Position>
+                      <div className={cx($p.flex, $p.justifyCenter)}>
+                        <div className={cx('hr')}>
+                          <div className={cx('line')}></div>
+                        </div>
+                        <a href={person.links.linkedin} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/LinkedInLogo.png')}
+                            alt='LinkedIn Logo'
+                          />
+                        </a>
+                        <a href={person.links.twitter} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/TwitterLogo.png')}
+                            alt='Twitter Logo'
+                          />
+                        </a>
+                        <a href={person.links.github} target='_blank'>
+                          <img
+                            className={cx($p.pa10, $p.bbox, $p.db)}
+                            src={require('../../assets/graphics/GitHubLogo.png')}
+                            alt='GitHub Logo'
+                          />
+                        </a>
+                        <div className={cx('hr')}>
+                          <div className={cx('line')}></div>
+                        </div>
+                      </div>
+                      <h4 className={cx($p.ph38, $p.pv38, $p.black50, $p.fw3)}>
+                        {person.description}
+                      </h4>
+                    </section>
+                  </Person>
+                ))}
+              </PhotoSection>
             )}
           </div>
         </section>
@@ -254,6 +254,7 @@ export default class AboutView extends React.Component<{}, {}> {
       </div>
     )
   }
+
   private rerender = () => {
     this.forceUpdate()
   }

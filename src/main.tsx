@@ -8,7 +8,7 @@ import AboutView from './components/AboutView/AboutView'
 import DocsView from './components/DocsView/DocsView'
 import * as FastClick from 'fastclick'
 import './style'
-import HeaderDocs from "./components/DocsView/HeaderDocs";
+import HeaderDocs from './components/DocsView/HeaderDocs'
 
 function render() {
   ReactDOM.render(
