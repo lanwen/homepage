@@ -4,15 +4,14 @@ import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
-import { bgBlack20 } from 'graphcool-styles/dist/particles.css';
-
 
 export default class RelatedContent extends React.Component<{}, {}> {
 
   render() {
     const Container = styled.div`
       background: linear-gradient(to top, #fff 13%, rgba(0, 0, 0, 0.03) 13%,rgba(0, 0, 0, 0.03) 95%,#fff 95%);
-      @media(max-width: ${breakpoints.p1000}px) {
+      
+        @media(max-width: ${breakpoints.p1000}px) {
           background: linear-gradient(to top, #fff 5%, rgba(0, 0, 0, 0.03) 5%,rgba(0, 0, 0, 0.03) 95%,#fff 95%);
 `
     const Square = styled.div`
@@ -33,8 +32,8 @@ export default class RelatedContent extends React.Component<{}, {}> {
       margin-bottom: ${$v.size25};
       margin-top: ${$v.size25};
       
-      @media(max-width: ${breakpoints.p900}px) {
-        padding-left: 0;
+     @media(max-width: ${breakpoints.p900}px) {
+       padding-left: 0;
 `
     return (
       <div>
@@ -63,7 +62,7 @@ export default class RelatedContent extends React.Component<{}, {}> {
               <Circle
                 background='rgba(164, 3, 111, 0.2)'
                 className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
-                >
+              >
                 <img
                   src={require('../../../assets/graphics/Guide.svg')}
                   width={25}
@@ -87,7 +86,7 @@ export default class RelatedContent extends React.Component<{}, {}> {
                 />
               </Circle>
               <div className={cx()}>
-                <p className={cx($p.black60, $p.f20, $p.fw4)}>Thinking in terms of graphs</p>
+                <p className={cx($p.black60, $p.f20, $p.fw4)}>React/Apollo KMS example</p>
                 <p className={cx($p.black30, $p.f14, $p.fw6)}>EXAMPLE</p>
               </div>
             </div>
@@ -103,7 +102,7 @@ export default class RelatedContent extends React.Component<{}, {}> {
                 />
               </Circle>
               <div className={cx()}>
-                <p className={cx($p.black60, $p.f20, $p.fw4)}>Thinking in terms of graphs</p>
+                <p className={cx($p.black60, $p.f20, $p.fw4)}>How to use Lokka</p>
                 <p className={cx($p.black30, $p.f14, $p.fw6)}>ARTICLE</p>
               </div>
             </div>

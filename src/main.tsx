@@ -6,6 +6,7 @@ import HomeView from './components/HomeView/HomeView'
 import PricingView from './components/PricingView/PricingView'
 import AboutView from './components/AboutView/AboutView'
 import DocsView from './components/DocsView/DocsView'
+import FAQ from './components/DocsView/FAQ/FAQ'
 import * as FastClick from 'fastclick'
 import './style'
 import HeaderDocs from './components/DocsView/HeaderDocs'
@@ -17,6 +18,7 @@ function render() {
         <Route path='/' component={HomeView}/>
         <Route path='/pricing' component={PricingView}/>
         <Route path='/about' component={AboutView}/>
+        <Route path='/faq' component={FAQ}/>
         <Route path='/docs' component={DocsView}>
           <Route path='quickstart' component={DocsView}/>
           <Route path='resources' component={DocsView}/>
