@@ -10,11 +10,20 @@ export default class FAQ extends React.Component<{}, {}> {
 
   render() {
     const RightSection = styled.div`
-      flex: 0 0 300px;
+      flex: 0 0 400px;
       background-color: rgba(0, 0, 0, 0.02);
 `
     const LeftSection = styled.div`
       flex: 1 1 100px;
+`
+    const NavigationLinks = styled.div`
+      color: ${$v.gray30};
+      cursor: pointer;
+      transition: color ${$v.duration} linear;
+
+      &:hover {
+        color: ${$v.gray50};
+  }
 `
     const Circle = styled.div`
       background-color: ${(props) => props.background};
@@ -31,8 +40,12 @@ export default class FAQ extends React.Component<{}, {}> {
       <div>
         <div className={cx($p.flex)}>
           <LeftSection>nwdxjwed.x;k</LeftSection>
-          <RightSection className={cx($p.pl25, $p.pr10)}>
-            <div>
+          <RightSection className={cx($p.pl25, $p.pr10, $p.pv38)}>
+            <div className={cx($p.flex, $p.pb96)}>
+              <NavigationLinks className={cx($p.mt10, $p.fw6, $p.mr60)}>COMMUNITY</NavigationLinks>
+              <NavigationLinks className={cx($p.mt4)}>
+                <img className={cx($p.bbox, $p.db)} src={require('../../../assets/graphics/APIEndpoints.png')}/>
+              </NavigationLinks>
             </div>
             <div>
               <p className={cx($p.f16, $p.fw6, $p.black30)}>RELATED QUESTIONS</p>
