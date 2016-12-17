@@ -32,4 +32,3 @@ export default class TemporaryNavigation extends React.Component<Props, {}> {
     )
   }
 }
-

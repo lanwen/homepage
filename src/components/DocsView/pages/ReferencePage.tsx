@@ -40,4 +40,3 @@ const ReferencePageWithData = graphql(getItem, {
   })(ReferencePage)
 
 export default withRouter(ReferencePageWithData)
-
