@@ -18,7 +18,7 @@ import CommunityPage from './pages/community/CommunityPage'
 import ContentHandler from './components/DocsView/ContentHandler/ContentHandler'
 import NotFound from './components/DocsView/ContentHandler/NotFound'
 import ApolloClient, {createNetworkInterface} from 'apollo-client'
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo'
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk' }),
