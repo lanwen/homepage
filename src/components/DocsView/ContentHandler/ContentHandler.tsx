@@ -1,34 +1,32 @@
 import * as React from 'react'
-import Lokka from 'lokka'
-import Transport from 'lokka-transport-http'
 import {Node, Parser} from 'commonmark'
 import Markdown from '../../Markdown/Markdown'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import { withRouter } from 'react-router'
+import DocsView from '../DocsView'
 
 interface Props {
   location: any
   history: any
+  data: any
+  router: any
 }
 
-interface State {
-  ast: any
-}
-
-const decode64 = (str: string): string => atob(str)
-
-const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk'),
-})
+const getItem = gql`query getItem($alias: String) {
+    Item(alias: $alias) {
+        id
+        body
+        layout
+        tags
+    }
+}`
 
 interface Item {
   body: string
 }
 
-interface Context {
-  router: any
-}
-
-export default class ContentHandler extends React.Component<Props, State> {
-  context: Context
+class ContentHandler extends React.Component<Props, {}> {
   constructor(props) {
     super(props)
     this.state = {
@@ -36,44 +34,42 @@ export default class ContentHandler extends React.Component<Props, State> {
     }
   }
 
-  componentDidMount() {
-    const pathname = this.props.location.pathname.split('/')
-    const contentAlias = pathname[pathname.length - 1]
-    const queryParams = {alias: contentAlias}
-    const query = `
-      query getItem($alias: String) {
-        Item(alias: $alias) {
-          id
-          body
-          layout
-          tags
-        }
-      }
-    `
-
-    client.query(query, queryParams).then(result => {
-      if (result.Item) {
-        const parsedDecodedResult = new Parser().parse(decode64(result.Item.body))
-        this.setState({ast: parsedDecodedResult} as State)
-      } else {
-        this.context.router.push('/404')
-      }
-    })
-  }
-
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
+    if (nextProps.data.Item === null && !nextProps.data.loading) {
+      console.log(nextProps.data, 'about to redirect')
+      alert('error, redirecting')
+      this.props.router.push('/404')
+    } else {
+      console.log('no error')
+    }
     console.log(nextProps)
   }
 
   render() {
+    const str64ToAst = (str: string): Node => new Parser().parse(atob(str))
+
     return (
       <div>
-        <h1>Content handler</h1>
-        <p>{this.state.ast ?
-          <Markdown ast={this.state.ast}/>
-          : 'loading...'}</p>
-        {location.toString()}
+        <div>{this.props.data.loading ?
+          'loading...'
+          : <DocsView><Markdown ast={str64ToAst(this.props.data.Item.body)} /></DocsView>
+        }</div>
       </div>
     )
   }
 }
+
+const ContentHandlerWithData = graphql(getItem, {
+  options: (ownProps) => {
+    const pathname = ownProps.location.pathname.split('/')
+    const contentAlias = pathname[pathname.length - 1]
+    console.log(contentAlias)
+    return ({
+      variables: {
+        alias: contentAlias,
+      },
+    })
+  },
+})(ContentHandler)
+
+export default withRouter(ContentHandlerWithData)

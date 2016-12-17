@@ -17,25 +17,33 @@ import BlogPage from './pages/blog/BlogPage'
 import CommunityPage from './pages/community/CommunityPage'
 import ContentHandler from './components/DocsView/ContentHandler/ContentHandler'
 import NotFound from './components/DocsView/ContentHandler/NotFound'
+import ApolloClient, {createNetworkInterface} from 'apollo-client'
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk' }),
+})
 
 function render() {
   ReactDOM.render(
     <AppContainer>
-      <Router history={browserHistory}>
-        <Route path='/' component={HomeView}/>
-        <Route path='/pricing' component={PricingView}/>
-        <Route path='/about' component={AboutView}/>
-        <Route path='/faq' component={FAQ}/>
-        <Route path='/docs' component={DocsView}>
-          <Route path='quickstart' component={QuickstartPage}/>
-          <Route path='resources' component={ResourcesPage}/>
-          <Route path='reference' component={ReferencePage}/>
-          <Route path='blog' component={BlogPage}/>
-          <Route path='community' component={CommunityPage}/>
+      <ApolloProvider client={client}>
+        <Router history={browserHistory}>
+          <Route path='/' component={HomeView}/>
+          <Route path='/pricing' component={PricingView}/>
+          <Route path='/about' component={AboutView}/>
+          <Route path='/faq' component={FAQ}/>
+          <Route path='/docs' component={DocsView}>
+            <Route path='quickstart' component={QuickstartPage}/>
+            <Route path='resources' component={ResourcesPage}/>
+            <Route path='reference' component={ReferencePage}/>
+            <Route path='blog' component={BlogPage}/>
+            <Route path='community' component={CommunityPage}/>
+          </Route>
+          <Route path='/404' component={NotFound}/>
           <Route path='**' component={ContentHandler}></Route>
-        </Route>
-        <Route path='/404' component={NotFound}/>
-      </Router>
+        </Router>
+      </ApolloProvider>
     </AppContainer>,
     document.getElementById('root'),
   )

@@ -11,17 +11,11 @@ import LeftSidebar from './LeftSidebar'
 
 interface Props {
   location: any
-  children: any
+  children: React.ReactNode
 }
 
 export default class DocsView extends React.Component<Props, {}> {
-
-  state = {
-    ast: null,
-  }
-
   componentDidMount() {
-
     window.addEventListener('resize', this.rerender)
   }
 
@@ -35,6 +29,7 @@ export default class DocsView extends React.Component<Props, {}> {
       top: 0;
       left: 0;
       height: 100vh;
+      
     `
 
     const VerticalContainer = styled.div`
