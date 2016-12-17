@@ -44,3 +44,9 @@ if (module.hot) {
 }
 
 FastClick.attach(document.body)
+
+if (Smooch) {
+  Smooch.init({
+    appToken: __SMOOCH_TOKEN__,
+  })
+}

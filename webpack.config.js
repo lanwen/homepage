@@ -56,6 +56,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),

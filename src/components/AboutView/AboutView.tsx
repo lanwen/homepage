@@ -194,7 +194,7 @@ export default class AboutView extends React.Component<{}, {}> {
                           <div className={cx('line')}></div>
                         </div>
                       </div>
-                      <h5 className={cx($p.black50, $p.fw4, $p.pv20)}>
+                      <h5 className={cx($p.black50, $p.fw4, $p.pv25)}>
                         {person.description}
                       </h5>
                     </Border>
