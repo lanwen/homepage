@@ -3,12 +3,13 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import Footer from '../../Footer/Footer'
-import { breakpoints, maxWidth } from '../../../utils/constants'
+import Footer from '../../../Footer/Footer'
+import { breakpoints, maxWidth } from '../../../../utils/constants'
 
 export default class FAQ extends React.Component<{}, {}> {
-
   render() {
+    const assetsPath = '../../../../../assets/graphics/'
+
     const RightSection = styled.div`
       flex: 0 0 400px;
       background-color: rgba(0, 0, 0, 0.02);
@@ -44,7 +45,7 @@ export default class FAQ extends React.Component<{}, {}> {
             <div className={cx($p.flex, $p.pb96)}>
               <NavigationLinks className={cx($p.mt10, $p.fw6, $p.mr60)}>COMMUNITY</NavigationLinks>
               <NavigationLinks className={cx($p.mt4)}>
-                <img className={cx($p.bbox, $p.db)} src={require('../../../assets/graphics/APIEndpoints.png')}/>
+                <img className={cx($p.bbox, $p.db)} src={require(assetsPath + 'APIEndpoints.png')}/>
               </NavigationLinks>
             </div>
             <div>
@@ -55,7 +56,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                 >
                   <img
-                    src={require('../../../assets/graphics/QuestionMark.svg')}
+                    src={require(assetsPath + 'QuestionMark.svg')}
                     width={25}
                     height={25}
                   />
@@ -68,7 +69,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                 >
                   <img
-                    src={require('../../../assets/graphics/QuestionMark.svg')}
+                    src={require(assetsPath + 'QuestionMark.svg')}
                     width={25}
                     height={25}
                   />
@@ -81,7 +82,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                 >
                   <img
-                    src={require('../../../assets/graphics/QuestionMark.svg')}
+                    src={require(assetsPath + 'QuestionMark.svg')}
                     width={25}
                     height={25}
                   />
@@ -92,7 +93,7 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pv25)}>
                   <p className={cx($p.lightgreen50, $p.fw6, $p.f16, $p.pl25)}>MORE ABOUT</p>
                   <p className={cx($p.green, $p.fw6, $p.f16, $p.pl6)}>VENDOR LOCK IN</p>
-                  <img src={require('../../../assets/graphics/info.svg')}
+                  <img src={require(assetsPath + 'info.svg')}
                        className={cx($p.bbox, $p.db, $p.pl25)}
                   />
                 </div>
@@ -103,7 +104,7 @@ export default class FAQ extends React.Component<{}, {}> {
                       className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                     >
                       <img
-                        src={require('../../../assets/graphics/Guide.svg')}
+                        src={require(assetsPath + 'Guide.svg')}
                         width={25}
                         height={25}
                       />
@@ -119,7 +120,7 @@ export default class FAQ extends React.Component<{}, {}> {
                       className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                     >
                       <img
-                        src={require('../../../assets/graphics/Example.svg')}
+                        src={require(assetsPath + 'Example.svg')}
                         width={25}
                         height={25}
                       />
@@ -135,7 +136,7 @@ export default class FAQ extends React.Component<{}, {}> {
                       className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                     >
                       <img
-                        src={require('../../../assets/graphics/Feather.svg')}
+                        src={require(assetsPath + 'Feather.svg')}
                         width={25}
                         height={25}
                       />
@@ -154,7 +155,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                 >
                   <img
-                    src={require('../../../assets/graphics/QuestionMark.svg')}
+                    src={require(assetsPath + 'QuestionMark.svg')}
                     width={25}
                     height={25}
                   />
@@ -170,7 +171,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}
                 >
                   <img
-                    src={require('../../../assets/graphics/Filters.svg')}
+                    src={require(assetsPath + 'Filters.svg')}
                     width={25}
                     height={25}
                   />
