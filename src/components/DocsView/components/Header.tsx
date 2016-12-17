@@ -15,13 +15,12 @@ export default class Header extends React.Component<{}, {}> {
 
   render() {
     const Root = styled.div`
-      justify-content: space-around;
+      justify-content: space-between;
       display: flex;
       flex-wrap: wrap;
       padding-right: ${$v.size16};
       
       @media (max-width: ${breakpoints.p1200}px) {
-          margin-left: -10%;
           padding-top: ${$v.size25}
       }
     `
@@ -37,8 +36,7 @@ export default class Header extends React.Component<{}, {}> {
     const Searchbox = styled.input`
      
       width: 300px;
-      margin-left: -30%;
-      box-sizing: border-box;
+        box-sizing: border-box;
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
       0 -8px 18px rgba(0, 0, 0, 0.1);
       border-radius: 2px;
@@ -51,7 +49,6 @@ export default class Header extends React.Component<{}, {}> {
       
       @media (max-width: ${breakpoints.p1360}px) {
         width: 250px;
-        margin-left: -23%;
       }
     `
     const Hamburger = styled.div`
@@ -111,28 +108,34 @@ export default class Header extends React.Component<{}, {}> {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     `
-    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
-
-    let links = (
-      <div>
-        <Link to='/docs/quickstart'><NavigationLinks className={cx($p.pt10, $p.fw6)}>QUICKSTART</NavigationLinks></Link>
-        <Link to='/docs/resources'><NavigationLinks className={cx($p.mt10, $p.fw6)}>RESOURCES</NavigationLinks></Link>
-        <Link to='/docs/reference'><NavigationLinks className={cx($p.mt10, $p.fw6)}>REFERENCE</NavigationLinks></Link>
-        <Link to='/docs/blog'><NavigationLinks className={cx($p.mt10, $p.fw6)}>BLOG</NavigationLinks></Link>
-        <Link to='/docs/community'><NavigationLinks className={cx($p.mt10, $p.fw6)}>COMMUNITY</NavigationLinks></Link>
+    const stateStyles = this.state.menuOpened ? styles.active : styles.inactive
+    const linkContent = [
+      {src: '/docs/quickstart', title: 'QUICKSTART'},
+      {src: '/docs/resources', title: 'RESOURCES'},
+      {src: '/docs/reference', title: 'REFERENCE'},
+      {src: '/docs/blog', title: 'BLOG'},
+      {src: '/docs/community', title: 'COMMUNITY'},
+    ]
+    const links = (
+      <div className={cx($p.flex, $p.flexRow)}>
+        {linkContent.map((link, index) => {
+          return <Link key={index} className={cx($p.ph25, $p.noUnderline)} to={link.src}>
+            <NavigationLinks className={cx($p.mt10, $p.fw6)}>
+              {link.title}
+            </NavigationLinks>
+          </Link>
+        })
+        }
       </div>
     )
 
     return (
-      <div>
+      <div className={cx($p.absolute, $p.top0, $p.right0)} style={{left: '230px'}}>
         {window.innerWidth > breakpoints.p1200 ? (
-          <Root className={cx($p.flex, $p.pv60)}>
-
-            <NavigationLinks>
+          <Root className={cx($p.flex, $p.pv60, $p.ml10)}>
               <form>
                 <Searchbox type='text' name='search' placeholder='Search..'/>
               </form>
-            </NavigationLinks>
             {links}
             <NavigationLinks className={cx($p.mt4)}>
               <img className={cx($p.bbox, $p.db)} src={require('../../../assets/graphics/APIEndpoints.png')}/>

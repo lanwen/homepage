@@ -60,7 +60,7 @@ export default class FAQ extends React.Component<{}, {}> {
                     height={25}
                   />
                 </Circle>
-                  <p className={cx($p.black60, $p.f20, $p.fw4)}>How can I implement my server-side business logic?</p>
+                <p className={cx($p.black60, $p.f20, $p.fw4)}>How can I implement my server-side business logic?</p>
               </div>
               <div className={cx($p.flex, $p.pv10)}>
                 <Circle

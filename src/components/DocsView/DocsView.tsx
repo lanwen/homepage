@@ -4,60 +4,17 @@ import {$p, $v} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import {breakpoints} from '../../utils/constants'
-import Lokka from 'lokka'
-import Transport from 'lokka-transport-http'
-import * as _ from 'lodash'
-import {Node, Parser} from 'commonmark'
-import Header from './Header/Header'
-import RelatedContent from './RelatedContent/RelatedContent'
-import {Link} from 'react-router'
-import LeftSidebar from './LeftSidebar'
-
-const decode64 = (str: string): string => atob(str)
-
-const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk'),
-})
-
-interface State {
-  ast: any
-}
+import Header from './components/Header'
+import RelatedContent from './components/RelatedContent'
+import LeftSidebar from './components/LeftSidebar'
 
 interface Props {
   location: any
   children: any
 }
 
-interface Item {
-  body: string
-}
-
-export default class DocsView extends React.Component<Props, State> {
-
-  state = {
-    ast: null,
-  }
-
+export default class DocsView extends React.Component<Props, {}> {
   componentDidMount() {
-    client.query(`
-      query {
-        allItems {
-          id
-          body
-          layout
-          tags
-        }
-      }
-  `).then(result => {
-        const parser = new Parser()
-        const parsedDecodedResult = _.map(result.allItems, (item) => {
-          parser.parse(decode64((item as Item).body))
-        })
-        console.log(parsedDecodedResult)
-        this.setState({ast: parsedDecodedResult[1]} as State)
-        console.log(this.state)
-      })
-
     window.addEventListener('resize', this.rerender)
   }
 
@@ -83,25 +40,21 @@ export default class DocsView extends React.Component<Props, State> {
   `
     const RightSection = styled.div`
        flex: 1 1 100px;
-       z-index: 100;
-`
+  `
     const LogoDocs = styled.img`
       @media (max-width: ${breakpoints.p1360}px) {
         padding-left: ${$v.size38}
       }
-`
+  `
 
     return (
       <div>
         <div className={cx($p.flex, $p.flexColumn)}>
-
+          <Header/>
           <div className={cx($p.flex)} ref='root'>
             <LeftSidebar/>
             <RightSection className={cx($p.flexWrap)}>
-              <Header/>
-
-              <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
-                {/*{this.state.ast === null ? <h1>Loading...</h1> : <Markdown ast={this.state.ast}/>}*/}
+              <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
                 {this.props.children}
               </section>
               <RelatedContent />
