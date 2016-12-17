@@ -17,6 +17,8 @@ const getItem = gql`query getItem($alias: String) {
     Item(alias: $alias) {
         id
         body
+        alias
+        path
         layout
         tags
     }
@@ -35,23 +37,30 @@ class ContentHandler extends React.Component<Props, {}> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
+    const currentPath = this.props.location.pathname
+
     if (nextProps.data.Item === null && !nextProps.data.loading) {
-      console.log(nextProps.data, 'about to redirect')
-      alert('error, redirecting')
-      this.props.router.push('/404')
-    } else {
-      console.log('no error')
+      alert('Resource not found, redirecting')
+      this.props.router.push('/docs')
+    } else if (typeof nextProps.data.Item.path !== 'undefined') {
+      const contentUrl = `${nextProps.data.Item.path}${nextProps.data.Item.alias}`
+      const currentPath = this.props.location.pathname
+      if (contentUrl !== currentPath) {
+        this.props.router.push(contentUrl)
+      }
     }
-    console.log(nextProps)
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return !(nextProps.data.Item === null && !nextProps.data.loading)
   }
 
   render() {
     const str64ToAst = (str: string): Node => new Parser().parse(atob(str))
-
     return (
       <div>
         <div>{this.props.data.loading ?
-          'loading...'
+          ''
           : <DocsView><Markdown ast={str64ToAst(this.props.data.Item.body)} /></DocsView>
         }</div>
       </div>
@@ -63,7 +72,6 @@ const ContentHandlerWithData = graphql(getItem, {
   options: (ownProps) => {
     const pathname = ownProps.location.pathname.split('/')
     const contentAlias = pathname[pathname.length - 1]
-    console.log(contentAlias)
     return ({
       variables: {
         alias: contentAlias,

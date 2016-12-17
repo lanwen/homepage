@@ -8,15 +8,12 @@ import AboutView from './components/AboutView/AboutView'
 import DocsView from './components/DocsView/DocsView'
 import FAQ from './components/DocsView/FAQ/FAQ'
 import * as FastClick from 'fastclick'
-import './style'
-import HeaderDocs from './components/DocsView/HeaderDocs'
 import QuickstartPage from './pages/quickstart/QuickstartPage'
 import ReferencePage from './pages/reference/ReferencePage'
 import ResourcesPage from './pages/resources/ResourcesPage'
 import BlogPage from './pages/blog/BlogPage'
 import CommunityPage from './pages/community/CommunityPage'
 import ContentHandler from './components/DocsView/ContentHandler/ContentHandler'
-import NotFound from './components/DocsView/ContentHandler/NotFound'
 import ApolloClient, {createNetworkInterface} from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 
@@ -40,7 +37,6 @@ function render() {
             <Route path='blog' component={BlogPage}/>
             <Route path='community' component={CommunityPage}/>
           </Route>
-          <Route path='/404' component={NotFound}/>
           <Route path='**' component={ContentHandler}></Route>
         </Router>
       </ApolloProvider>

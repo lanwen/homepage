@@ -118,8 +118,8 @@ export default class Header extends React.Component<{}, {}> {
     ]
     let links = (
       <div className={cx($p.flex, $p.flexRow)}>
-        {linkContent.map((link) => {
-          return <Link className={cx($p.ph25, $p.noUnderline)} to={link.src}>
+        {linkContent.map((link, index) => {
+          return <Link key={index} className={cx($p.ph25, $p.noUnderline)} to={link.src}>
             <NavigationLinks className={cx($p.mt10, $p.fw6)}>
               {link.title}
             </NavigationLinks>
