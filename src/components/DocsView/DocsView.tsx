@@ -28,7 +28,6 @@ export default class DocsView extends React.Component<Props, {}> {
       top: 0;
       left: 0;
       height: 100vh;
-      
     `
 
     const VerticalContainer = styled.div`

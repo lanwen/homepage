@@ -24,9 +24,11 @@ export default class TemporaryNavigation extends React.Component<Props, {}> {
         <ul>
           {this.props.links.map((link) => (
             <li key={link.id}>
-              <Link to={link.path + '/' + link.alias}>{link.title}
+              <Link to={link.path + '/' + link.alias}>
+                {link.title}
               </Link>
-            </li>))}
+            </li>
+          ))}
         </ul>
       </div>
     )

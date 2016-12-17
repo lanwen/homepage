@@ -108,15 +108,15 @@ export default class Header extends React.Component<{}, {}> {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     `
-    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
-    let linkContent = [
+    const stateStyles = this.state.menuOpened ? styles.active : styles.inactive
+    const linkContent = [
       {src: '/docs/quickstart', title: 'QUICKSTART'},
       {src: '/docs/resources', title: 'RESOURCES'},
       {src: '/docs/reference', title: 'REFERENCE'},
       {src: '/docs/blog', title: 'BLOG'},
       {src: '/docs/community', title: 'COMMUNITY'},
     ]
-    let links = (
+    const links = (
       <div className={cx($p.flex, $p.flexRow)}>
         {linkContent.map((link, index) => {
           return <Link key={index} className={cx($p.ph25, $p.noUnderline)} to={link.src}>

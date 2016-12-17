@@ -14,14 +14,14 @@ interface Props {
 }
 
 const getItem = gql`query getItem($alias: String) {
-    Item(alias: $alias) {
-        id
-        body
-        alias
-        path
-        layout
-        tags
-    }
+  Item(alias: $alias) {
+    id
+    body
+    alias
+    path
+    layout
+    tags
+  }
 }`
 
 interface Item {
