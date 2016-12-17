@@ -47,25 +47,21 @@ export default class DocsView extends React.Component<Props, {}> {
   `
     const RightSection = styled.div`
        flex: 1 1 100px;
-       z-index: 100;
-`
+  `
     const LogoDocs = styled.img`
       @media (max-width: ${breakpoints.p1360}px) {
         padding-left: ${$v.size38}
       }
-`
+  `
 
     return (
       <div>
         <div className={cx($p.flex, $p.flexColumn)}>
-
+          <Header/>
           <div className={cx($p.flex)} ref='root'>
             <LeftSidebar/>
             <RightSection className={cx($p.flexWrap)}>
-              <Header/>
-
-              <section className={cx($p.flex, $p.flexWrap, $p.pa10)}>
-                {/*{this.state.ast === null ? <h1>Loading...</h1> : <Markdown ast={this.state.ast}/>}*/}
+              <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
                 {this.props.children}
               </section>
               <RelatedContent />

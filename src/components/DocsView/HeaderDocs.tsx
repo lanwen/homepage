@@ -35,8 +35,7 @@ export default class HeaderDocs extends React.Component<Props, {}> {
 `
     const RightSection = styled.div`
        flex: 1 1 100px;
-       z-index: 100;
-`
+    `
     const LogoDocs = styled.img`
       @media (max-width: ${breakpoints.p1360}px) {
         padding-left: ${$v.size38}

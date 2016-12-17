@@ -61,6 +61,7 @@ export default class ContentHandler extends React.Component<Props, State> {
       }
     })
   }
+
   componentWillReceiveProps(nextProps) {
     console.log(nextProps)
   }
