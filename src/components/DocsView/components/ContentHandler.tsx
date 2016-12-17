@@ -59,7 +59,9 @@ class ContentHandler extends React.Component<Props, {}> {
       <div>
         <div>{this.props.data.loading ?
           ''
-          : <DocsView><Markdown ast={str64ToAst(this.props.data.Item.body)} /></DocsView>
+          : <DocsView children={
+                <Markdown ast={str64ToAst(this.props.data.Item.body)} />
+              } location={this.props.location}/>
         }</div>
       </div>
     )
