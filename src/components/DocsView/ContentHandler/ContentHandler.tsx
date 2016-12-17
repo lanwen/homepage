@@ -19,7 +19,6 @@ const client = new Lokka({
   transport: new Transport('https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk'),
 })
 
-
 interface Item {
   body: string
 }

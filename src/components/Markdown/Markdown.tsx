@@ -4,7 +4,6 @@ import * as ReactRenderer from 'commonmark-react-renderer'
 import {PrismCode} from 'react-prism'
 const styles: any = require('./Markdown.module.css')
 
-
 interface Props {
   ast: Node
 }
