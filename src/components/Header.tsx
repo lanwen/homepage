@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints, maxWidth} from '../../../../utils/constants'
+import {breakpoints, maxWidth} from '../utils/constants'
 
 const Root = styled.div`
   padding: ${$v.size38};
@@ -158,11 +158,11 @@ export default class Header extends React.Component<{}, State> {
     return (
       <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
         <Link to='/'>
-          <Logo src={require('../../../../assets/graphics/logos/graphcoolFull.svg')}/>
+          <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
         </Link>
         {window.innerWidth < breakpoints.p750 &&
           <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
-            <Icon src={require('../../../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
+            <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
           </Hamburger>
         }
         <Nav
@@ -170,7 +170,7 @@ export default class Header extends React.Component<{}, State> {
           opened={this.state.menuOpened}
         >
           {window.innerWidth < breakpoints.p750 &&
-            <div className={cx($g.close)} onClick={() => this.setState({ menuOpened: false } as State)} />
+            <div onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           <NavLink to='https://graph.cool/docs'>Docs</NavLink>
           <NavLink to='https://graph.cool/docs/guides'>FAQ</NavLink>

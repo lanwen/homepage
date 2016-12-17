@@ -4,9 +4,9 @@ import {$p, $v} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import {breakpoints} from '../../utils/constants'
-import Header from './Header/Header'
-import RelatedContent from './RelatedContent/RelatedContent'
-import LeftSidebar from './components/LeftSidebar/LeftSidebar'
+import Header from './components/Header'
+import RelatedContent from './components/RelatedContent'
+import LeftSidebar from './components/LeftSidebar'
 
 interface Props {
   location: any
