@@ -6,8 +6,7 @@ import * as cx from 'classnames'
 import {breakpoints} from '../../utils/constants'
 import Header from './Header/Header'
 import RelatedContent from './RelatedContent/RelatedContent'
-import {Link} from 'react-router'
-import LeftSidebar from './LeftSidebar'
+import LeftSidebar from './components/LeftSidebar/LeftSidebar'
 
 interface Props {
   location: any

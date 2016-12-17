@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Node, Parser} from 'commonmark'
-import Markdown from '../../Markdown/Markdown'
+import Markdown from '../components/Markdown/Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
@@ -43,7 +43,7 @@ class ContentHandler extends React.Component<Props, {}> {
       alert('Resource not found, redirecting')
       this.props.router.push('/docs')
     } else if (typeof nextProps.data.Item.path !== 'undefined') {
-      const contentUrl = `${nextProps.data.Item.path}${nextProps.data.Item.alias}`
+      const contentUrl = `${nextProps.data.Item.path}/${nextProps.data.Item.alias}`
       const currentPath = this.props.location.pathname
       if (contentUrl !== currentPath) {
         this.props.router.push(contentUrl)

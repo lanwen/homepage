@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { findDOMNode } from 'react-dom'
-import Header from '../Header'
+import Header from '../DocsView/components/Header/Header'
 import Footer from '../Footer/Footer'
 import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
