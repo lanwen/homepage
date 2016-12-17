@@ -15,7 +15,7 @@ export default class Header extends React.Component<{}, {}> {
 
   render() {
     const Root = styled.div`
-      justify-content: space-around;
+      justify-content: space-between;
       display: flex;
       flex-wrap: wrap;
       padding-right: ${$v.size16};
@@ -119,7 +119,7 @@ export default class Header extends React.Component<{}, {}> {
     let links = (
       <div className={cx($p.flex, $p.flexRow)}>
         {linkContent.map((link) => {
-          return <Link className={cx($p.ph6, $p.noUnderline)} to={link.src}>
+          return <Link className={cx($p.ph25, $p.noUnderline)} to={link.src}>
             <NavigationLinks className={cx($p.mt10, $p.fw6)}>
               {link.title}
             </NavigationLinks>
@@ -130,7 +130,7 @@ export default class Header extends React.Component<{}, {}> {
     )
 
     return (
-      <div className={cx($p.absolute, $p.top0, $p.right0)} style={{left: '180px'}}>
+      <div className={cx($p.absolute, $p.top0, $p.right0)} style={{left: '230px'}}>
         {window.innerWidth > breakpoints.p1200 ? (
           <Root className={cx($p.flex, $p.pv60, $p.ml10)}>
               <form>
