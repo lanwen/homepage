@@ -5,7 +5,7 @@ import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 
-interface Link {
+interface LinkItem {
   path: string
   title: string
   id: string
@@ -13,7 +13,7 @@ interface Link {
 }
 
 interface Props {
-  links: Array<Link>
+  links: LinkItem[]
 }
 
 export default class TemporaryNavigation extends React.Component<Props, {}> {
