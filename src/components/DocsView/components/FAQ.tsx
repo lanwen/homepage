@@ -12,10 +12,10 @@ export default class FAQ extends React.Component<{}, {}> {
     const RightSection = styled.div`
       flex: 0 0 400px;
       background-color: rgba(0, 0, 0, 0.02);
-`
+    `
     const LeftSection = styled.div`
       flex: 1 1 100px;
-`
+    `
     const NavigationLinks = styled.div`
       color: ${$v.gray30};
       cursor: pointer;
@@ -23,19 +23,19 @@ export default class FAQ extends React.Component<{}, {}> {
 
       &:hover {
         color: ${$v.gray50};
-  }
-`
+      }
+      `
     const Circle = styled.div`
       background-color: ${(props) => props.background};
       border-radius: 50%;
       width: 20px;
       height: 20px;
-`
+    `
     const Square = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.03),
       0 -8px 18px rgba(0, 0, 0, 0.03);
       margin-left: -${$v.size38}
-`
+    `
     return (
       <div>
         <div className={cx($p.flex)}>

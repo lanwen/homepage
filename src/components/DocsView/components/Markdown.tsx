@@ -13,7 +13,6 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   render() {
-    const self = this
     const renderers = {
       Heading (props) {
         const padding = {
