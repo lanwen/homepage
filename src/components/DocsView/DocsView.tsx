@@ -10,7 +10,7 @@ import LeftSidebar from './components/LeftSidebar'
 
 interface Props {
   location: any
-  children: any
+  children?: JSX.Element
 }
 
 export default class DocsView extends React.Component<Props, {}> {

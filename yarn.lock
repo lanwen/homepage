@@ -1781,9 +1781,22 @@ graphql-anywhere@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-1.1.2.tgz#897d2868d35723ce7d8b4ead3455c285ea51a2d2"
 
+graphql-syntax-highlighter-react@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-syntax-highlighter-react/-/graphql-syntax-highlighter-react-0.1.0.tgz#9d391c648855c008d030878e755a4e75192c70b9"
+  dependencies:
+    graphql "^0.7.0"
+    react "15.3.1"
+
 graphql-tag@^1.1.1, graphql-tag@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-1.1.2.tgz#3e9951d5664e73c1aceee0329f0152bf3020fbb7"
+
+graphql@^0.7.0:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.7.2.tgz#cc894a32823399b8a0cb012b9e9ecad35cd00f72"
+  dependencies:
+    iterall "1.0.2"
 
 graphql@^0.8.2:
   version "0.8.2"
@@ -3471,6 +3484,14 @@ react-side-effect@1.0.2:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.0.2.tgz#98e354decdbf0281e4223d87852d33e345eda561"
   dependencies:
     fbjs "0.1.0-alpha.10"
+
+react@15.3.1:
+  version "15.3.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.3.1.tgz#f78501ed8c2ec6e6e31c3223652e97f1369d2bd6"
+  dependencies:
+    fbjs "^0.8.4"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
 
 react@^15.4.1:
   version "15.4.1"
