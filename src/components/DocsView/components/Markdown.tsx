@@ -5,7 +5,6 @@ import { PrismCode } from 'react-prism'
 import MouseEventHandler = React.MouseEventHandler
 import * as cx from 'classnames'
 import {$p} from 'graphcool-styles'
-import {flexColumn} from 'graphcool-styles/dist/particles.css'
 
 interface Props {
   ast: Node
