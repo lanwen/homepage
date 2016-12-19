@@ -1,10 +1,10 @@
-interface Element {
+export interface ReferenceSidebarElement {
   alias: string
-  children?: Element[]
+  children?: ReferenceSidebarElement[]
 }
 
-export const elements: Element[] = [{
-  alias: 'chohbah0eo', //platform
+export const elements: ReferenceSidebarElement[] = [{
+  alias: 'chohbah0eo', // platform
   children: [{
     alias: 'uh8shohxie', // console
     children: [{

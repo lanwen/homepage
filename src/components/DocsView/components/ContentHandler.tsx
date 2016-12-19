@@ -6,7 +6,7 @@ import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
-import LeftSidebar from './LeftSidebar'
+import ReferenceSidenav from './ReferenceSidenav'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
 import RelatedContent from './WasHelpful'
@@ -65,7 +65,7 @@ class ContentHandler extends React.Component<Props, {}> {
       <div onClick={this.onClick}>
         <DocsView location={this.props.location}>
           <div className={cx($p.flex)}>
-            {item.layout === 'REFERENCE' && <LeftSidebar/>}
+            {item.layout === 'REFERENCE' && <ReferenceSidenav/>}
             <RightSection className={cx($p.flexWrap)}>
               <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.justifyCenter)} style={{paddingTop: '12rem'}}>
                 <Markdown ast={ast} />

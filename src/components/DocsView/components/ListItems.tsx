@@ -11,11 +11,9 @@ interface State {
 }
 interface Props {
   title: string
-  subtitle1: string
-  subsubtitle1: string
-  subsubsubtitle1: string
-  subtitle2: string
-  subsubtitle2: string
+  subtitle: string
+  subsubtitle: string
+  subsubsubtitle: string
 }
 
 export default class ListItems extends React.Component<Props, State> {
@@ -62,12 +60,12 @@ export default class ListItems extends React.Component<Props, State> {
         background: rgba(0, 0, 0, 0.03);
       }
 `
-    let stateStyles = this.state.menuOpened ? styles.active : styles.inactive
-    let stateTitles = this.state.menuOpened ? text.active : text.inactive
-    let stateSubTitles = this.state.subMenuOpened ? text.active : text.inactive
-    let stateSubSubTitles = this.state.subSubMenuOpened ? text.active : text.inactive
-    let stateSubStyles = this.state.subMenuOpened ? styles.active : styles.inactive
-    let stateSubSubStyles = this.state.subSubMenuOpened ? styles.active : styles.inactive
+    const stateStyles = this.state.menuOpened ? styles.active : styles.inactive
+    const stateTitles = this.state.menuOpened ? text.active : text.inactive
+    const stateSubTitles = this.state.subMenuOpened ? text.active : text.inactive
+    const stateSubSubTitles = this.state.subSubMenuOpened ? text.active : text.inactive
+    const stateSubStyles = this.state.subMenuOpened ? styles.active : styles.inactive
+    const stateSubSubStyles = this.state.subSubMenuOpened ? styles.active : styles.inactive
     return (
       <ul>
         <div>
@@ -83,7 +81,7 @@ export default class ListItems extends React.Component<Props, State> {
                   onClick={() => this.setState({ subMenuOpened: !this.state.subMenuOpened } as State)}
                   style={stateSubTitles}
                 >
-                  {this.props.subtitle1}
+                  {this.props.subtitle}
                 </p>
               </Hline>
               <Hline>
@@ -93,13 +91,13 @@ export default class ListItems extends React.Component<Props, State> {
                     className={cx($p.pl38, $p.list, $p.black30, $p.f14, $p.pb10, $p.pointer, 'hl')}
                     style={stateSubSubTitles}
                   >
-                    {this.props.subsubtitle1}</li>
+                    {this.props.subsubtitle}</li>
                 </ul>
               </Hline>
               <Hline>
                 <ul style={stateSubSubStyles}>
                   <li className={cx($p.pl60, $p.list, $p.black30, $p.f14, $p.pb10, 'hl')}>
-                    {this.props.subsubsubtitle1}</li>
+                    {this.props.subsubsubtitle}</li>
                 </ul>
               </Hline>
             </section>
