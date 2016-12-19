@@ -7,7 +7,6 @@ declare module 'graphql'
 declare module 'graphiql'
 declare module 'graphiql/*'
 declare module 'react-collapsible'
-declare module 'graphql-syntax-highlighter-react'
 
 declare var Smooch: any
 declare var __SMOOCH_TOKEN__: string

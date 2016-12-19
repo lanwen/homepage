@@ -6,7 +6,6 @@ import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import {$p, $v} from 'graphcool-styles'
-import {GraphqlCodeBlock} from 'graphql-syntax-highlighter-react'
 
 interface Props {
   ast: Node
@@ -94,19 +93,13 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
-        const codeBlock = (
+        return (
             <pre className={cx($p.overflowScroll)}>
               <PrismCode className={className}>
                 {props.literal}
               </PrismCode>
             </pre>
           )
-        const graphqlBlock = (
-          <div className={cx($p.bgBlack04, $p.pa16, $p.overflowXScroll, $p.pb25)}>
-            <GraphqlCodeBlock className={cx('GraphqlCodeBlock')} queryBody={props.literal}/>
-          </div>
-        )
-        return props.language === 'graphql' ? graphqlBlock : codeBlock
       },
       HtmlBlock (props) {
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
