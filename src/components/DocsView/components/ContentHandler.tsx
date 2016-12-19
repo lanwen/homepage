@@ -60,24 +60,21 @@ class ContentHandler extends React.Component<Props, {}> {
     const RightSection = styled.div`
        flex: 1 1 100px;
     `
-    const children = (
-      <div className={cx($p.flex)}>
-        {item.layout === 'REFERENCE' && <LeftSidebar/>}
-        <RightSection className={cx($p.flexWrap)}>
-          <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
-            <div>
-              <Markdown ast={ast} />
-            </div>
-          </section>
-          <RelatedContent />
-        </RightSection>
-        {item.layout === 'FAQ' && <FAQ/>}
-      </div>
-    )
 
     return (
       <div onClick={this.onClick}>
-        <DocsView children={children} location={this.props.location}/>
+        <DocsView location={this.props.location}>
+          <div className={cx($p.flex)}>
+            {item.layout === 'REFERENCE' && <LeftSidebar/>}
+            <RightSection className={cx($p.flexWrap)}>
+              <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.justifyCenter)} style={{paddingTop: '12rem'}}>
+                <Markdown ast={ast} />
+              </section>
+              <RelatedContent />
+            </RightSection>
+            {item.layout === 'FAQ' && <FAQ/>}
+          </div>
+        </DocsView>
       </div>
     )
   }

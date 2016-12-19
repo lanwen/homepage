@@ -32,6 +32,7 @@
     "graphcool-styles": "^0.0.64",
     "graphiql": "^0.8.0",
     "graphql": "^0.8.2",
+    "graphql-syntax-highlighter-react": "^0.1.0",
     "graphql-tag": "^1.1.2",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",

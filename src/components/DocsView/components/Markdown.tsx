@@ -5,15 +5,85 @@ import { PrismCode } from 'react-prism'
 import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import {$p} from 'graphcool-styles'
+import {$p, $v} from 'graphcool-styles'
+import {GraphqlCodeBlock} from 'graphql-syntax-highlighter-react'
 
 interface Props {
   ast: Node
 }
 
 const Container = styled.div`
-  h1 {
-    color: pink !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  p, blockquote, h1, h2, h3, code, pre, div {
+    line-height: 1.7;
+    margin-top: ${$v.size38};
+    max-width: 920px;
+    dislay: flex;
+    margin-bottom: 0;
+  }
+  
+  p { 
+    color: ${$v.gray60}; 
+    font-size: ${$v.size20}
+  }
+  
+  blockquote {
+    border-left: solid ${$v.size06} ${$v.green50};
+    padding: ${$v.size20};
+  }
+  
+  blockquote p {
+    margin-top: 0;
+  }
+  
+  a {
+    color: ${$v.gray80};
+  }
+  
+  h2, h3 {
+    color: ${$v.black};
+    font-weight: 600; 
+    margin-top: ${$v.size60};
+  }
+  
+  h2 {
+    size: ${$v.size25};
+    opacity: .80;
+  }
+  
+  h3 {
+    opacity: 0.6;
+    font-size: ${$v.size20};
+  }
+  
+  code {
+    background-color: ${$v.gray04};
+    border-radius: 2px;
+    padding: ${$v.size04}
+  }
+  
+  .GraphqlCodeBlock {
+    // https://codepen.io/elomatreb/pen/hbgxp
+    
+    margin-top: 0;
+    counter-reset: line;
+
+    pre {
+      margin-top: 0;
+      
+      &:before {
+        font-size: ${$v.size12};
+        counter-increment: line;
+        content: counter(line);
+        display: inline-block;
+        margin-right: ${$v.size12};
+        color: black;
+        opacity: 0.2;
+      }
+    }
   }
 `
 
@@ -22,39 +92,21 @@ export default class Markdown extends React.Component<Props, {}> {
   render() {
     // const self = this
     const renderers = {
-      Heading (props) {
-        // const padding = {
-        //   1: () => 2.3,
-        //   2: () => 1.5,
-        //   3: () => 1.3,
-        //   4: () => 1.2,
-        //   5: () => 1,
-        // }[props.level]()
-        const elProps = {
-          key: props.nodeKey,
-          // id: slug(childrenToString(props.children)),
-          className: 'accent',
-          style: {
-            fontWeight: 300,
-            paddingTop: 30,
-            paddingBottom: `1rem`,
-            marginTop: `calc(1rem - 30px)`,
-            marginBottom: '1.6rem',
-            borderBottom: 'solid rgba(0,0,0,0.1) 1px',
-          },
-        }
-        return React.createElement('h' + props.level, elProps, props.children)
-      },
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
-        // return (
-        //   <pre className={cx($p.overflowScroll)}>
-        //     <PrismCode className={className}>
-        //       {props.literal}
-        //     </PrismCode>
-        //   </pre>
-        // )
-        return <h1>CODE</h1>
+        const codeBlock = (
+            <pre className={cx($p.overflowScroll)}>
+              <PrismCode className={className}>
+                {props.literal}
+              </PrismCode>
+            </pre>
+          )
+        const graphqlBlock = (
+          <div className={cx($p.bgBlack04, $p.pa16, $p.overflowXScroll, $p.pb25)}>
+            <GraphqlCodeBlock className={cx('GraphqlCodeBlock')} queryBody={props.literal}/>
+          </div>
+        )
+        return props.language === 'graphql' ? graphqlBlock : codeBlock
       },
       HtmlBlock (props) {
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
