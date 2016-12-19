@@ -37,7 +37,7 @@ function render() {
             <Route path='blog' component={BlogPage}/>
             <Route path='community' component={CommunityPage}/>
           </Route>
-          <Route path='*' component={ContentHandler}></Route>
+          <Route path='*' component={ContentHandler}/>
         </Router>
       </ApolloProvider>
     </AppContainer>,
