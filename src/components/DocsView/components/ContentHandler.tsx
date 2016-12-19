@@ -8,13 +8,13 @@ import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
 
 interface Props {
-  location: any
-  history: any
+  location: any,
+  history: any,
   data: {
-    loading: boolean
-    Item: Item
-  }
-  router: ReactRouter.InjectedRouter
+    loading: boolean,
+    Item: Item,
+  },
+  router: ReactRouter.InjectedRouter,
 }
 
 class ContentHandler extends React.Component<Props, {}> {
