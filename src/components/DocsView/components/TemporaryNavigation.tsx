@@ -5,7 +5,7 @@ import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 
-interface Link {
+interface LinkItem {
   path: string
   title: string
   id: string
@@ -14,7 +14,7 @@ interface Link {
 }
 
 interface Props {
-  links: Array<Link>
+  links: LinkItem[]
 }
 
 export default class TemporaryNavigation extends React.Component<Props, {}> {
@@ -25,7 +25,7 @@ export default class TemporaryNavigation extends React.Component<Props, {}> {
         <ul>
           {this.props.links.map((link) => (
             <li className={$p.mt25} key={link.id}>
-              <Link to={link.path + '/' + link.alias}>
+              <Link to={link.path + '-' + link.alias}>
                 <h2>{link.title}</h2>
               </Link>
               <p>{link.description}</p>

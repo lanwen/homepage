@@ -1,25 +1,78 @@
 import * as React from 'react'
-import {Node, Parser} from 'commonmark'
+import { Node, Parser } from 'commonmark'
 import Markdown from './Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import DocsView from '../DocsView'
-import {$p} from 'graphcool-styles'
-import LeftSidebar from './LeftSidebar'
-import RelatedContent from './RelatedContent'
-import styled from 'styled-components'
-import * as cx from 'classnames'
-import ContentWindow from './ContentWindow'
+import { Item } from '../../../types/types'
 
 interface Props {
-  location: any
-  history: any
-  data: any
-  router: any
+  location: any,
+  history: any,
+  data: {
+    loading: boolean,
+    Item: Item,
+  },
+  router: ReactRouter.InjectedRouter,
 }
 
-const getItem = gql`query getItem($alias: String) {
+class ContentHandler extends React.Component<Props, {}> {
+
+  componentWillReceiveProps(nextProps: Props) {
+
+    if (nextProps.data.loading) {
+      return
+    }
+
+    // resource not found
+    if (nextProps.data.Item === null) {
+      alert('Resource not found, redirecting')
+      this.props.router.push('/docs')
+      return
+    }
+
+    // rewrite url if it doesn't already match item path
+    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
+    const currentPath = this.props.location.pathname
+    if (contentUrl !== currentPath) {
+      this.props.router.replace(contentUrl)
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.data.Item !== null && !nextProps.data.loading
+  }
+
+  render() {
+    if (this.props.data.loading) {
+      return null
+    }
+
+    const ast = new Parser().parse(atob(this.props.data.Item.body))
+    const markdown = <Markdown ast={ast}/>
+
+    return (
+      <div onClick={this.onClick}>
+        <DocsView
+          children={markdown}
+          location={this.props.location}
+        />
+      </div>
+    )
+  }
+
+  private onClick = (e: React.MouseEvent<HTMLElement>): void => {
+    if (e.target instanceof HTMLAnchorElement) {
+      if (e.target.hostname === window.location.hostname) {
+        e.preventDefault()
+        this.props.router.push(e.target.pathname)
+      }
+    }
+  }
+}
+
+const getItemQuery = gql`query getItem($alias: String) {
   Item(alias: $alias) {
     id
     body
@@ -30,69 +83,13 @@ const getItem = gql`query getItem($alias: String) {
   }
 }`
 
-interface Item {
-  body: string
-}
-
-class ContentHandler extends React.Component<Props, {}> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      ast: null,
-    }
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    if (nextProps.data.Item === null && !nextProps.data.loading) {
-      alert('Resource not found, redirecting')
-      this.props.router.push('/docs')
-    } else if (typeof nextProps.data.Item.path !== 'undefined') {
-      const contentUrl = `${nextProps.data.Item.path}/${nextProps.data.Item.alias}`
-      const currentPath = this.props.location.pathname
-      if (contentUrl !== currentPath) {
-        this.props.router.replace(contentUrl)
-      }
-    }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return !(nextProps.data.Item === null && !nextProps.data.loading)
-  }
-
-  render() {
-    const str64ToAst = (str: string): Node => new Parser().parse(atob(str))
-    const RightSection = styled.div`
-       flex: 1 1 100px;
-    `
-    const children = (
-      <div className={cx($p.flex)} ref='root'>
-        <LeftSidebar/>
-         <RightSection className={cx($p.flexWrap)}>
-            <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
-              <div>{
-                !this.props.data.loading &&
-                <Markdown ast={str64ToAst(this.props.data.Item.body)} />
-              }</div>
-            </section>
-            <RelatedContent />
-          </RightSection>
-      </div>
-    )
-    return (
-      <DocsView children={children} location={this.props.location}/>
-    )
-  }
-}
-
-const ContentHandlerWithData = graphql(getItem, {
+const ContentHandlerWithData = graphql(getItemQuery, {
   options: (ownProps) => {
-    const pathname = ownProps.location.pathname.split('/')
-    const contentAlias = pathname[pathname.length - 1]
-    return ({
-      variables: {
-        alias: contentAlias,
-      },
-    })
+    // get last element of a path that looks like this: /some/url/with-some-title-alias15235
+    const alias = ownProps.location.pathname.split('/').reverse()[0].split('-').reverse()[0]
+    return {
+      variables: {alias},
+    }
   },
 })(ContentHandler)
 

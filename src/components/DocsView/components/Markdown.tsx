@@ -1,7 +1,8 @@
 import * as React from 'react'
-import {Node, Parser} from 'commonmark'
+import { Node, Parser } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
-import {PrismCode} from 'react-prism'
+import { PrismCode } from 'react-prism'
+import MouseEventHandler = React.MouseEventHandler
 import * as cx from 'classnames'
 import {$p} from 'graphcool-styles'
 import {flexColumn} from 'graphcool-styles/dist/particles.css'
@@ -11,20 +12,18 @@ interface Props {
 }
 
 export default class Markdown extends React.Component<Props, {}> {
-  constructor(props, state) {
-    super(props)
-  }
 
   render() {
+    // const self = this
     const renderers = {
       Heading (props) {
-        const padding = {
-          1: () => 2.3,
-          2: () => 1.5,
-          3: () => 1.3,
-          4: () => 1.2,
-          5: () => 1,
-        }[props.level]()
+        // const padding = {
+        //   1: () => 2.3,
+        //   2: () => 1.5,
+        //   3: () => 1.3,
+        //   4: () => 1.2,
+        //   5: () => 1,
+        // }[props.level]()
         const elProps = {
           key: props.nodeKey,
           // id: slug(childrenToString(props.children)),
