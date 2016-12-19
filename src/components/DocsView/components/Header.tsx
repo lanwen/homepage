@@ -116,7 +116,7 @@ export default class Header extends React.Component<{}, {}> {
       {src: '/docs/community', title: 'COMMUNITY'},
     ]
     const links = (
-      <div className={cx($p.flex, $p.flexRow)}>
+      <div className={cx($p.flex, window.innerWidth < breakpoints.p1200 ? $p.flexColumn : $p.flexRow)}>
         {linkContent.map((link, index) => {
           return <Link key={index} className={cx($p.ph16, $p.noUnderline)} to={link.src}>
             <NavigationLinks className={cx($p.mt10, $p.fw6)}>
