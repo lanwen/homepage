@@ -3,6 +3,8 @@ import { Node, Parser } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import { PrismCode } from 'react-prism'
 import MouseEventHandler = React.MouseEventHandler
+import * as cx from 'classnames'
+import {$p} from 'graphcool-styles'
 
 interface Props {
   ast: Node
@@ -38,13 +40,14 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
-        return (
-          <pre>
-            <PrismCode className={className}>
-              {props.literal}
-            </PrismCode>
-          </pre>
-        )
+        // return (
+        //   <pre className={cx($p.overflowScroll)}>
+        //     <PrismCode className={className}>
+        //       {props.literal}
+        //     </PrismCode>
+        //   </pre>
+        // )
+        return <h1>CODE</h1>
       },
       HtmlBlock (props) {
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
@@ -72,7 +75,7 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <div className={`relative`}>
+      <div className={cx($p.flexColumn)}>
         {renderer.render(this.props.ast)}
       </div>
     )

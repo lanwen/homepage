@@ -6,6 +6,11 @@ import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
+import LeftSidebar from './LeftSidebar'
+import {$p} from 'graphcool-styles'
+import styled from 'styled-components'
+import RelatedContent from './RelatedContent'
+import * as cx from 'classnames'
 
 interface Props {
   location: any,
@@ -50,14 +55,26 @@ class ContentHandler extends React.Component<Props, {}> {
     }
 
     const ast = new Parser().parse(atob(this.props.data.Item.body))
-    const markdown = <Markdown ast={ast}/>
+    const RightSection = styled.div`
+       flex: 1 1 100px;
+    `
+    const children = (
+      <div className={cx($p.flex)}>
+        {/*<LeftSidebar/>*/}
+        <RightSection className={cx($p.flexWrap)}>
+          <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
+            <div>
+              <Markdown ast={ast} />
+            </div>
+          </section>
+          <RelatedContent />
+        </RightSection>
+      </div>
+    )
 
     return (
       <div onClick={this.onClick}>
-        <DocsView
-          children={markdown}
-          location={this.props.location}
-        />
+        <DocsView children={children} location={this.props.location}/>
       </div>
     )
   }

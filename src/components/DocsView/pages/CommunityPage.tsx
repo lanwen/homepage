@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
 import TemporaryNavigation from '../components/TemporaryNavigation'
 import {getItemsByLayout} from '../fragments/getItemsByLayout'
+import ContentWindow from '../components/ContentWindow'
 
 interface Props {
   data: any
@@ -11,10 +12,10 @@ interface Props {
 class CommunityPage extends React.Component<Props, {}> {
   render() {
     return (
-      <div>
+      <ContentWindow>
         <h1>Landing page for the community page</h1>
         {this.props.data.loading ? 'loading...' : <TemporaryNavigation links={this.props.data.allItems} />}
-      </div>
+      </ContentWindow>
     )
   }
 }
