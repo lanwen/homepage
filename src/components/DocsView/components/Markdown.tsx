@@ -3,12 +3,19 @@ import { Node, Parser } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import { PrismCode } from 'react-prism'
 import MouseEventHandler = React.MouseEventHandler
+import styled from 'styled-components'
 import * as cx from 'classnames'
 import {$p} from 'graphcool-styles'
 
 interface Props {
   ast: Node
 }
+
+const Container = styled.div`
+  h1 {
+    color: pink !important;
+  }
+`
 
 export default class Markdown extends React.Component<Props, {}> {
 
@@ -75,9 +82,9 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <div className={cx($p.flexColumn)}>
+      <Container className={cx($p.flexColumn)}>
         {renderer.render(this.props.ast)}
-      </div>
+      </Container>
     )
   }
 }

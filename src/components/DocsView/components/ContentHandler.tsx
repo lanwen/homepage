@@ -9,8 +9,9 @@ import { Item } from '../../../types/types'
 import LeftSidebar from './LeftSidebar'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
-import RelatedContent from './RelatedContent'
+import RelatedContent from './WasHelpful'
 import * as cx from 'classnames'
+import FAQ from './FAQ'
 
 interface Props {
   location: any,
@@ -54,13 +55,14 @@ class ContentHandler extends React.Component<Props, {}> {
       return null
     }
 
+    const item = this.props.data.Item
     const ast = new Parser().parse(atob(this.props.data.Item.body))
     const RightSection = styled.div`
        flex: 1 1 100px;
     `
     const children = (
       <div className={cx($p.flex)}>
-        {/*<LeftSidebar/>*/}
+        {item.layout === 'REFERENCE' && <LeftSidebar/>}
         <RightSection className={cx($p.flexWrap)}>
           <section className={cx($p.flex, $p.flexWrap, $p.ph60)} style={{paddingTop: '12rem'}}>
             <div>
@@ -69,6 +71,7 @@ class ContentHandler extends React.Component<Props, {}> {
           </section>
           <RelatedContent />
         </RightSection>
+        {item.layout === 'FAQ' && <FAQ/>}
       </div>
     )
 

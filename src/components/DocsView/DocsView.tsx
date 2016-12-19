@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import {breakpoints} from '../../utils/constants'
 import Header from './components/Header'
-import RelatedContent from './components/RelatedContent'
+import RelatedContent from './components/WasHelpful'
 import LeftSidebar from './components/LeftSidebar'
 
 interface Props {
