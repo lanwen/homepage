@@ -85,6 +85,7 @@ const getItemQuery = gql`query getItem($alias: String) {
 
 const ContentHandlerWithData = graphql(getItemQuery, {
   options: (ownProps) => {
+    // get last element of a path that looks like this: /some/url/with-some-title-alias15235
     const alias = ownProps.location.pathname.split('/').reverse()[0].split('-').reverse()[0]
     return {
       variables: {alias},

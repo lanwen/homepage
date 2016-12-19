@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import TemporaryNavigation from '../components/TemporaryNavigation'
+import {getItemsByLayout} from '../fragments/getItemsByLayout'
 
 interface Props {
   data: any
@@ -19,19 +20,7 @@ class ReferencePage extends React.Component<Props, {}> {
   }
 }
 
-const getItem = gql`query getItemsByLayout($layout: ITEM_LAYOUT) {
-  allItems(filter: {layout: $layout}) {
-    id
-    body
-    alias
-    path
-    title
-    layout
-    tags
-  }
-}`
-
-const ReferencePageWithData = graphql(getItem, {
+const ReferencePageWithData = graphql(getItemsByLayout, {
   options: {
       variables: {
         layout: 'REFERENCE',
