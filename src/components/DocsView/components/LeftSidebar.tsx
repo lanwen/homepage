@@ -2,7 +2,7 @@ import * as React from 'react'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import { breakpoints } from '../../utils/constants'
+import { breakpoints } from '../../../utils/constants'
 import {Node, Parser} from 'commonmark'
 import ListItems from './ListItems'
 import {Link} from 'react-router'
@@ -10,10 +10,8 @@ import {Link} from 'react-router'
 export default class LeftSidebar extends React.Component<{}, {}> {
   render () {
     const FixedNavigation = styled.div`
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
+      margin-top: 120px;
+      height: 100%;
     `
     const VerticalContainer = styled.div`
       flex: 0 0 300px;
@@ -25,19 +23,10 @@ export default class LeftSidebar extends React.Component<{}, {}> {
     `
     const RightSection = styled.div`
        flex: 1 1 100px;
-       z-index: 100;
-    `
-    const LogoDocs = styled.img`
-      @media (max-width: ${breakpoints.p1360}px) {
-        padding-left: ${$v.size38}
-      }
     `
     return (
       <VerticalContainer>
         <FixedNavigation>
-          <Link to='/'>
-            <LogoDocs className={cx($p.pa60)} src={require('../../assets/graphics/logos/DockLogo.svg')}/>
-          </Link>
           <ListItems
             title='GETTING STARTED'
             subtitle1=''

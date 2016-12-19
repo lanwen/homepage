@@ -1,4 +1,11 @@
 {
+  "name": "graphcool-homepage",
+  "private": true,
+  "graphql": {
+    "request": {
+      "url": "https://api.graph.cool/simple/v1/ciwlyk90l0gq80101eao599fk"
+    }
+  },
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base static --progress --history-api-fallback --host 0.0.0.0 --port 5000",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist && cat static/_redirects | sed \"s|__RESOURCE_DOCS__|${RESOURCE_DOCS}|g\" > dist/_redirects",
@@ -6,13 +13,17 @@
     "test": "tslint \"src/**/*.ts{,x}\""
   },
   "dependencies": {
+    "@types/chai": "^3.4.34",
     "@types/classnames": "^0.0.32",
     "@types/graphql": "^0.8.2",
+    "@types/isomorphic-fetch": "^0.0.31",
     "@types/lodash": "^4.14.43",
     "@types/react": "^0.14.54",
     "@types/react-codemirror": "^0.2.5",
     "@types/react-dom": "^0.14.19",
+    "@types/react-router": "^2.0.41",
     "@types/whatwg-fetch": "^0.0.32",
+    "apollo-client": "^0.5.20",
     "calculate-size": "^1.1.1",
     "classnames": "^2.2.5",
     "commonmark": "^0.27.0",
@@ -21,11 +32,11 @@
     "graphcool-styles": "^0.0.64",
     "graphiql": "^0.8.0",
     "graphql": "^0.8.2",
+    "graphql-tag": "^1.1.2",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",
-    "lokka": "^1.7.0",
-    "lokka-transport-http": "^1.6.1",
     "react": "^15.4.1",
+    "react-apollo": "^0.7.1",
     "react-codemirror": "^0.3.0",
     "react-copy-to-clipboard": "^4.2.3",
     "react-dom": "^15.4.1",
@@ -33,6 +44,7 @@
     "react-prism": "^4.0.0",
     "react-router": "^2.8.0",
     "styled-components": "^1.1.3",
+    "typed-graphql": "^1.0.2",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {

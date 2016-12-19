@@ -6,32 +6,40 @@ import HomeView from './components/HomeView/HomeView'
 import PricingView from './components/PricingView/PricingView'
 import AboutView from './components/AboutView/AboutView'
 import DocsView from './components/DocsView/DocsView'
-import FAQ from './components/DocsView/FAQ/FAQ'
+import FAQ from './components/DocsView/components/FAQ'
 import * as FastClick from 'fastclick'
-import './style'
-import HeaderDocs from './components/DocsView/HeaderDocs'
-import QuickstartPage from './pages/quickstart/QuickstartPage'
-import ReferencePage from './pages/reference/ReferencePage'
-import ResourcesPage from './pages/resources/ResourcesPage'
-import BlogPage from './pages/blog/BlogPage'
-import CommunityPage from './pages/community/CommunityPage'
+import QuickstartPage from './components/DocsView/pages/QuickstartPage'
+import ReferencePage from './components/DocsView/pages/ReferencePage'
+import ResourcesPage from './components/DocsView/pages/ResourcesPage'
+import BlogPage from './components/DocsView/pages/BlogPage'
+import CommunityPage from './components/DocsView/pages/CommunityPage'
+import ContentHandler from './components/DocsView/components/ContentHandler'
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
+})
 
 function render() {
   ReactDOM.render(
     <AppContainer>
-      <Router history={browserHistory}>
-        <Route path='/' component={HomeView}/>
-        <Route path='/pricing' component={PricingView}/>
-        <Route path='/about' component={AboutView}/>
-        <Route path='/faq' component={FAQ}/>
-        <Route path='/docs' component={DocsView}>
-          <Route path='quickstart' component={QuickstartPage}/>
-          <Route path='resources' component={ResourcesPage}/>
-          <Route path='reference' component={ReferencePage}/>
-          <Route path='blog' component={BlogPage}/>
-          <Route path='community' component={CommunityPage}/>
-        </Route>
-      </Router>
+      <ApolloProvider client={client}>
+        <Router history={browserHistory}>
+          <Route path='/' component={HomeView}/>
+          <Route path='/pricing' component={PricingView}/>
+          <Route path='/about' component={AboutView}/>
+          <Route path='/faq' component={FAQ}/>
+          <Route path='/docs' component={DocsView}>
+            <Route path='quickstart' component={QuickstartPage}/>
+            <Route path='resources' component={ResourcesPage}/>
+            <Route path='reference' component={ReferencePage}/>
+            <Route path='blog' component={BlogPage}/>
+            <Route path='community' component={CommunityPage}/>
+          </Route>
+          <Route path='*' component={ContentHandler}/>
+        </Router>
+      </ApolloProvider>
     </AppContainer>,
     document.getElementById('root'),
   )
