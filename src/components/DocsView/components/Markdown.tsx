@@ -5,7 +5,7 @@ import { PrismCode } from 'react-prism'
 import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import {$p, $v} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 
 interface Props {
   ast: Node
@@ -94,12 +94,12 @@ export default class Markdown extends React.Component<Props, {}> {
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
         return (
-            <pre className={cx($p.overflowScroll)}>
+          <pre className={cx($p.overflowScroll)}>
               <PrismCode className={className}>
                 {props.literal}
               </PrismCode>
             </pre>
-          )
+        )
       },
       HtmlBlock (props) {
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {

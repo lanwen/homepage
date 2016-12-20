@@ -7,11 +7,11 @@ import { withRouter } from 'react-router'
 import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
 import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
-import {$p} from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import RelatedContent from './WasHelpful'
 import * as cx from 'classnames'
-import FAQ from './FAQ'
+import FAQ from './FAQ' import ContentHeader from './ContentHeader'
 
 interface Props {
   location: any,
@@ -64,16 +64,15 @@ class ContentHandler extends React.Component<Props, {}> {
     return (
       <div onClick={this.onClick}>
         <DocsView location={this.props.location}>
-          <div className={cx($p.flex)}>
-            {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
-            <RightSection className={cx($p.flexWrap)}>
-              <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.justifyCenter)} style={{paddingTop: '12rem'}}>
-                <Markdown ast={ast} />
-              </section>
-              <RelatedContent />
-            </RightSection>
-            {item.layout === 'FAQ' && <FAQ/>}
-          </div>
+          {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
+          <RightSection className={cx($p.flexWrap)}>
+            <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.pt96)}>
+              <ContentHeader item={item}/>
+              <Markdown ast={ast}/>
+            </section>
+            <RelatedContent />
+          </RightSection>
+          {item.layout === 'FAQ' && <FAQ/>}
         </DocsView>
       </div>
     )
@@ -98,6 +97,8 @@ const getItemQuery = gql`query getItem($alias: String) {
     path
     layout
     tags
+    lastModified
+    title
   }
 }`
 

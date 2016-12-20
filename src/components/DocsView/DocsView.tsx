@@ -1,10 +1,10 @@
 import * as React from 'react'
 import Footer from '../Footer/Footer'
-import {$p, $v} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import {breakpoints} from '../../utils/constants'
-import Header from './components/Header'
+import { breakpoints } from '../../utils/constants'
+import Header from './components/Header/Header'
 import RelatedContent from './components/WasHelpful'
 import LeftSidebar from './components/LeftSidebar'
 
@@ -24,12 +24,12 @@ export default class DocsView extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div>
-        <div className={cx($p.flex, $p.flexColumn)}>
-          <Header/>
+      <div className={cx($p.flex, $p.flexColumn)}>
+        <Header/>
+        <div className={cx($p.flex)}>
           {this.props.children}
-        <Footer/>
         </div>
+        <Footer/>
       </div>
     )
   }

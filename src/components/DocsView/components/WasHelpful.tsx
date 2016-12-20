@@ -3,7 +3,6 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
-import ReferenceHoover from './ReferenceHoover'
 import CircleIcon from './CircleIcon'
 
 export default class RelatedContent extends React.Component<{}, {}> {
@@ -131,7 +130,6 @@ export default class RelatedContent extends React.Component<{}, {}> {
             </div>
           </Rest>
         </Container>
-        <ReferenceHoover/>
       </div>
     )
   }

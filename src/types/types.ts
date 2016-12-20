@@ -7,6 +7,7 @@ export interface Item {
   title: string
   shorttitle: string
   path: string
+  lastModified: string
   layout: Layout
   tags: string[]
 }

@@ -7,6 +7,7 @@ interface Props {
   background: string
   source: string
 }
+
 const Circle = styled.div`
   border-radius: 50%;
   width: 20px;
