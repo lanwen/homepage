@@ -74,8 +74,8 @@ export default class ListItems extends React.Component<Props, {}> {
                     <Link
                       to={`${itemLvl2.path}-${itemLvl2.alias}`}
                       className={cx(
-                        $p.f14, $p.black30, $p.pointer, $p.noUnderline, 'hl', $p.fw4, $p.db, $p.pv6
-                      )}
+                        $p.f14, $p.black30, $p.pointer, $p.noUnderline, 'hl', $p.fw4, $p.db, $p.pv6,
+                        )}
                       style={{paddingLeft: 20}}
                     >
                       {itemLvl2.shorttitle}
@@ -87,7 +87,7 @@ export default class ListItems extends React.Component<Props, {}> {
                         <Link
                           to={`${itemLvl3.path}-${itemLvl3.alias}`}
                           className={cx(
-                            $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db, $p.pv6
+                            $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db, $p.pv6,
                           )}
                           style={{paddingLeft: 36}}
                         >

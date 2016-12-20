@@ -45,7 +45,8 @@ class ReferenceSidenav extends React.Component<Props, State> {
       return
     }
     const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
-    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias || item.children && !!item.children.find(findRec)
+    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias ||
+    item.children && !!item.children.find(findRec)
     const visibleItemIndex = nestedItems.findIndex(findRec)
 
     this.setState({visibleItemIndex})
