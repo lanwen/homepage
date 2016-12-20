@@ -65,7 +65,7 @@ class ContentHandler extends React.Component<Props, {}> {
       <div onClick={this.onClick}>
         <DocsView location={this.props.location}>
           <div className={cx($p.flex)}>
-            {item.layout === 'REFERENCE' && <ReferenceSidenav/>}
+            {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
             <RightSection className={cx($p.flexWrap)}>
               <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.justifyCenter)} style={{paddingTop: '12rem'}}>
                 <Markdown ast={ast} />
@@ -79,6 +79,7 @@ class ContentHandler extends React.Component<Props, {}> {
     )
   }
 
+  // capture internal links to navigate via react-router
   private onClick = (e: React.MouseEvent<HTMLElement>): void => {
     if (e.target instanceof HTMLAnchorElement) {
       if (e.target.hostname === window.location.hostname) {

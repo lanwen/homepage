@@ -7,7 +7,8 @@ import { ReferenceSidebarElement } from './data'
 import { NestedItem } from '../../../../types/types'
 
 interface Props {
-  item: NestedItem
+  item: NestedItem,
+  expanded: boolean,
 }
 
 interface State {
@@ -60,55 +61,49 @@ export default class ListItems extends React.Component<Props, State> {
         background: rgba(0, 0, 0, 0.03);
       }
 `
-    const stateStyles = this.state.menuOpened || true ? styles.active : styles.inactive
-    const stateTitles = this.state.menuOpened || true ? text.active : text.inactive
-    const stateSubTitles = this.state.subMenuOpened || true ? text.active : text.inactive
-    const stateSubSubTitles = this.state.subSubMenuOpened || true ? text.active : text.inactive
-    const stateSubStyles = this.state.subMenuOpened || true ? styles.active : styles.inactive
-    const stateSubSubStyles = this.state.subSubMenuOpened || true ? styles.active : styles.inactive
     return (
       <ul>
         <div>
-          <div
-            style={stateTitles}
-            className={cx($p.pv16, $p.pl10, $p.f14, $p.fw6, $p.pl38, $p.pointer)}
+          <Link
+            to={`${this.props.item.path}-${this.props.item.alias}`}
+            className={cx($p.pv16, $p.pl10, $p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline)}
             onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
           >
             {this.props.item.shorttitle}
-          </div>
-          <FirstUlStyle style={stateStyles} className={cx($p.pv60, $p.bgWhite90)}>
+          </Link>
+          {this.props.expanded &&
+          <FirstUlStyle className={cx($p.pv60, $p.bgWhite90)}>
             <section className={cx('border')}>
               {this.props.item.children && this.props.item.children.map(itemLvl2 => (
                 <div key={itemLvl2.alias}>
                   <Hline>
-                    <p
-                      className={cx($p.f14, $p.black30, $p.fw4, $p.pl10, $p.pb10, $p.pointer, $p.pl25, 'hl')}
+                    <Link
+                      to={`${itemLvl2.path}-${itemLvl2.alias}`}
+                      className={cx($p.f14, $p.black30, $p.fw4, $p.pl10, $p.pb10, $p.pointer, $p.pl25, $p.noUnderline, 'hl')}
                       onClick={() => this.setState({ subMenuOpened: !this.state.subMenuOpened } as State)}
-                      style={stateSubTitles}
                     >
                       {itemLvl2.shorttitle}
-                    </p>
+                    </Link>
                   </Hline>
                   {itemLvl2.children && itemLvl2.children.map(itemLvl3 => (
                     <div key={itemLvl3.alias}>
                       <Hline>
-                        <ul style={stateSubStyles}>
-                          <li
-                            onClick={() => this.setState({ subSubMenuOpened: !this.state.subSubMenuOpened } as State)}
-                            className={cx($p.pl38, $p.list, $p.black30, $p.f14, $p.pb10, $p.pointer, 'hl')}
-                            style={stateSubSubTitles}
-                          >
-                            {itemLvl3.shorttitle}
-                          </li>
-                        </ul>
+                        <Link
+                          to={`${itemLvl3.path}-${itemLvl3.alias}`}
+                          onClick={() => this.setState({ subSubMenuOpened: !this.state.subSubMenuOpened } as State)}
+                          className={cx($p.pl38, $p.list, $p.black30, $p.f14, $p.pb10, $p.pointer, $p.noUnderline, 'hl')}
+                        >
+                          {itemLvl3.shorttitle}
+                        </Link>
                       </Hline>
                       {itemLvl3.children && itemLvl3.children.map(itemLvl4 => (
                         <Hline key={itemLvl4.alias}>
-                          <ul style={stateSubSubStyles}>
-                            <li className={cx($p.pl60, $p.list, $p.black30, $p.f14, $p.pb10, 'hl')}>
-                              {itemLvl4.shorttitle}
-                            </li>
-                          </ul>
+                          <Link
+                            className={cx($p.pl60, $p.list, $p.black30, $p.f14, $p.pb10, $p.noUnderline, 'hl')}
+                            to={`${itemLvl4.path}-${itemLvl4.alias}`}
+                          >
+                            {itemLvl4.shorttitle}
+                          </Link>
                         </Hline>
                       ))}
                     </div>
@@ -117,6 +112,7 @@ export default class ListItems extends React.Component<Props, State> {
               ))}
             </section>
           </FirstUlStyle>
+          }
         </div>
       </ul>
     )

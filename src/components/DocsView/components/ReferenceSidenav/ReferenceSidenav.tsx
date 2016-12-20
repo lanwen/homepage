@@ -23,13 +23,34 @@ const VerticalContainer = styled.div`
 `
 
 interface Props {
+  currentAlias: string,
   data: {
     loading: boolean,
     allItems: Item[],
   },
 }
 
-class ReferenceSidenav extends React.Component<Props, {}> {
+interface State {
+  visibleItemIndex: number,
+}
+
+class ReferenceSidenav extends React.Component<Props, State> {
+
+  state = {
+    visibleItemIndex: 0,
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (nextProps.data.loading) {
+      return
+    }
+    const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
+    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias || item.children && !!item.children.find(findRec)
+    const visibleItemIndex = nestedItems.findIndex(findRec)
+
+    this.setState({visibleItemIndex})
+  }
+
   render() {
     if (this.props.data.loading) {
       return null
@@ -40,8 +61,12 @@ class ReferenceSidenav extends React.Component<Props, {}> {
     return (
       <VerticalContainer>
         <FixedNavigation>
-          {nestedItems.map(item => (
-            <ListItems key={item.alias} item={item}/>
+          {nestedItems.map((item, index) => (
+            <ListItems
+              key={item.alias}
+              expanded={this.state.visibleItemIndex === index}
+              item={item}
+            />
           ))}
         </FixedNavigation>
       </VerticalContainer>
