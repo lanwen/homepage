@@ -1,5 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import * as cx from 'classnames'
+import { $p } from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
 import { Node, Parser } from 'commonmark'
 import ListItems from './ListItems'
@@ -9,7 +11,7 @@ import { ReferenceSidebarElement, elements } from './data'
 import { Item, NestedItem } from '../../../../types/types'
 
 const FixedNavigation = styled.div`
-  margin-top: 120px;
+  margin-top: 144px;
   height: 100%;
 `
 
@@ -45,7 +47,8 @@ class ReferenceSidenav extends React.Component<Props, State> {
       return
     }
     const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
-    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias || item.children && !!item.children.find(findRec)
+    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias ||
+    item.children && !!item.children.find(findRec)
     const visibleItemIndex = nestedItems.findIndex(findRec)
 
     this.setState({visibleItemIndex})
@@ -60,7 +63,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
 
     return (
       <VerticalContainer>
-        <FixedNavigation>
+        <FixedNavigation className={cx($p.flex, $p.flexColumn)}>
           {nestedItems.map((item, index) => (
             <ListItems
               key={item.alias}
