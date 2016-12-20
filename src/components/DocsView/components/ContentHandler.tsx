@@ -25,9 +25,23 @@ interface Props {
   router: ReactRouter.InjectedRouter,
 }
 
+interface Context {
+  setIsLoading: (isLoading: boolean) => void
+}
+
 class ContentHandler extends React.Component<Props, {}> {
 
+  static contextTypes = {
+    setIsLoading: React.PropTypes.func.isRequired,
+  }
+
+  context: Context
+
   componentWillReceiveProps(nextProps: Props) {
+
+    if (nextProps.data.loading !== this.props.data.loading) {
+      this.context.setIsLoading(nextProps.data.loading)
+    }
 
     if (nextProps.data.loading) {
       return
@@ -70,7 +84,7 @@ class ContentHandler extends React.Component<Props, {}> {
           <RightSection className={cx($p.flexWrap)}>
             <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.pt96)}>
               <ContentHeader item={item}/>
-              <Markdown ast={ast}/>
+              <Markdown ast={ast} layout={item.layout}/>
             </section>
             <Feedback />
             <RelatedContentFooter item={item}/>

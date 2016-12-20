@@ -94,6 +94,7 @@ const query = gql`query items($aliases: [String!]!) {
     title
     shorttitle
     alias
+    path
   }
 }`
 
