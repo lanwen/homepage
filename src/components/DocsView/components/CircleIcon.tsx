@@ -18,7 +18,7 @@ export default class CircleIcon extends React.Component<Props, {}> {
     return (
       <Circle
         style={{background: this.props.background}}
-        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}
+        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mt4)}
       >
         <img
           src={this.props.source}
