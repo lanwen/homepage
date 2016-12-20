@@ -1,5 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import * as cx from 'classnames'
+import { $p } from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
 import { Node, Parser } from 'commonmark'
 import ListItems from './ListItems'
@@ -61,7 +63,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
 
     return (
       <VerticalContainer>
-        <FixedNavigation>
+        <FixedNavigation className={cx($p.flex, $p.flexColumn)}>
           {nestedItems.map((item, index) => (
             <ListItems
               key={item.alias}
