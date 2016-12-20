@@ -31,7 +31,7 @@ export default class ReferenceHoover extends React.Component<{}, {}> {
     return (
       <div>
         <Person>
-          <div className={cx($p.f16, $p.fw6)}>Reference</div>
+          <div className={cx($p.f16)}>Reference</div>
           <section className={cx('asd', $p.flex, $p.flexColumn)}>
             <div className={cx($p.bgLightgreen10, $p.pa16, $p.f16, $p.fw6, $p.green)}>Reference</div>
             <div className={cx($p.pv16, $p.ph25)}>
