@@ -12,6 +12,7 @@ const Circle = styled.div`
   width: 20px;
   height: 20px;
 `
+
 export default class CircleIcon extends React.Component<Props, {}> {
 
   render() {
@@ -29,3 +30,4 @@ export default class CircleIcon extends React.Component<Props, {}> {
     )
   }
 }
+

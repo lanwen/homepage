@@ -18,13 +18,10 @@ export default class RelatedContent extends React.Component<{}, {}> {
     const Square = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.03),
       0 -8px 18px rgba(0, 0, 0, 0.03);
-      
-        @media(min-width: ${breakpoints.p1000}px) {
-        }
         
         @media(max-width: ${breakpoints.p1000}px) {
           margin: 0;
-          }
+        }
 `
     const Circle = styled.div`
       background-color: ${(props) => props.background};
@@ -43,7 +40,9 @@ export default class RelatedContent extends React.Component<{}, {}> {
     return (
       <div>
         <div className={cx($p.bBlack10, $p.mt60, $p.bt, $p.mh96)}/>
-        <div className={cx($p.mb38, $p.mt10, $p.pv16, $p.flex, $p.justifyCenter, $p.flexWrap)}>
+        <div
+          className={cx($p.mb38, $p.mt10, $p.pv16, $p.flex, $p.justifyCenter, $p.flexWrap)}
+        >
           <p className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>Was it helpful?</p>
           <img src={require('../../../assets/graphics/Yes.svg')}
                className={cx($p.bbox, $p.db, $p.pla, $p.pr10)}
@@ -54,8 +53,12 @@ export default class RelatedContent extends React.Component<{}, {}> {
           />
           <p className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>No</p>
         </div>
-        <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb60)}>
-          <Square className={cx($p.flex, $p.flexColumn, $p.pb25, $p.bgWhite, $p.mr25)}>
+        <Container
+          className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb60)}
+        >
+          <Square
+            className={cx($p.flex, $p.flexColumn, $p.pb25, $p.bgWhite, $p.mr25)}
+          >
             <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16)}>
               <p className={cx($p.lightgreen50, $p.pr10, $p.fw6, $p.f16)}>MORE ABOUT</p>
               <p className={cx($p.green, $p.fw6, $p.f16)}>AUTHENTICATION</p>
@@ -66,8 +69,8 @@ export default class RelatedContent extends React.Component<{}, {}> {
             <div className={cx($p.flex, $p.pb10, $p.pt25, $p.ph25)}>
               <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
                 <CircleIcon
-                background='rgba(164, 3, 111, 0.2)'
-                source={require('../../../assets/graphics/Guide.svg')}
+                  background='rgba(164, 3, 111, 0.2)'
+                  source={require('../../../assets/graphics/Guide.svg')}
                 />
               </div>
               <div>

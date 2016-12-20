@@ -34,7 +34,7 @@ export default class ReferenceHoover extends React.Component<{}, {}> {
           <div className={cx($p.f16, $p.fw6)}>Reference</div>
           <section className={cx('asd', $p.flex, $p.flexColumn)}>
             <div className={cx($p.bgLightgreen10, $p.pa16, $p.f16, $p.fw6, $p.green)}>Reference</div>
-            <div className={cx($p.pa25)}>
+            <div className={cx($p.pv16, $p.ph25)}>
               <div className={cx($p.flex, $p.pv10)}>
                 <CircleIcon
                   background='rgba(164, 3, 111, 0.2)'
