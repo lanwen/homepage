@@ -5,7 +5,6 @@ import { $p, $v, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import { NestedItem } from '../../../../types/types'
 
-
 const FirstUlStyle = styled.div`
   margin: -${$v.size38} ${$v.size16} ${$v.size38} ${$v.size16};
   box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
@@ -23,6 +22,24 @@ const Hline = styled.div`
     margin-left: -3px;
     border-left: solid 3px rgba(28, 191, 50, 0.7);
     display: block;
+    position: relative;
+    
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      background: #fff;
+      height: 4px;
+      width: 100%;
+    }
+    
+    &:before {
+      top: -2px;
+    }
+    
+    &:after {
+      bottom: -2px;
+    }
   }
   
   &:focus .hl {
@@ -41,14 +58,12 @@ export default class ListItems extends React.Component<Props, {}> {
     return (
       <ul>
         <div className={cx($p.mv38, 'hl')}>
-          <Hline>
-            <Link
-              to={`${this.props.item.path}-${this.props.item.alias}`}
-              className={cx($p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db)}
-            >
-              {this.props.item.shorttitle}
-            </Link>
-          </Hline>
+          <Link
+            to={`${this.props.item.path}-${this.props.item.alias}`}
+            className={cx($p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db, $p.pv4)}
+          >
+            {this.props.item.shorttitle}
+          </Link>
           {this.props.expanded &&
           <FirstUlStyle className={cx($p.pb60, $p.bgWhite90)}>
             <section className={cx('border')}>
@@ -57,7 +72,7 @@ export default class ListItems extends React.Component<Props, {}> {
                   <Hline>
                     <Link
                       to={`${itemLvl2.path}-${itemLvl2.alias}`}
-                      className={cx($p.f14, $p.black30, $p.pl16, $p.pointer, $p.noUnderline, 'hl', $p.fw4, $p.db)}
+                      className={cx($p.f14, $p.black30, $p.pl16, $p.pointer, $p.noUnderline, 'hl', $p.fw4, $p.db, $p.pv4)}
                     >
                       {itemLvl2.shorttitle}
                     </Link>
@@ -67,7 +82,7 @@ export default class ListItems extends React.Component<Props, {}> {
                       <Hline>
                         <Link
                           to={`${itemLvl3.path}-${itemLvl3.alias}`}
-                          className={cx($p.pl38, $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db)}
+                          className={cx($p.pl38, $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db, $p.pv4)}
                         >
                           {itemLvl3.shorttitle}
                         </Link>
@@ -75,7 +90,7 @@ export default class ListItems extends React.Component<Props, {}> {
                       {itemLvl3.children && itemLvl3.children.map(itemLvl4 => (
                         <Hline key={itemLvl4.alias}>
                           <Link
-                            className={cx($p.pl60, $p.list, $p.black30, $p.f14, $p.noUnderline, 'hl', $p.db)}
+                            className={cx($p.pl60, $p.list, $p.black30, $p.f14, $p.noUnderline, 'hl', $p.db, $p.pv4)}
                             to={`${itemLvl4.path}-${itemLvl4.alias}`}
                           >
                             {itemLvl4.shorttitle}
