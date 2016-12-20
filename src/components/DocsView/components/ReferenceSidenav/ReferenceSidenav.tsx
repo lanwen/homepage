@@ -9,7 +9,7 @@ import { ReferenceSidebarElement, elements } from './data'
 import { Item, NestedItem } from '../../../../types/types'
 
 const FixedNavigation = styled.div`
-  margin-top: 120px;
+  margin-top: 144px;
   height: 100%;
 `
 
