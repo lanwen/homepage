@@ -1,33 +1,45 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
-import styled from 'styled-components'
+import { Layout } from '../../../types/types'
 
 interface Props {
-  background: string
-  source: string
+  type: Layout | 'EXAMPLE'
+  width?: number
+  height?: number
 }
-
-const Circle = styled.div`
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-`
 
 export default class CircleIcon extends React.Component<Props, {}> {
 
   render() {
+    const src = {
+      'TUTORIAL': require('../../../assets/graphics/categories/guide.svg'),
+      'FAQ': require('../../../assets/graphics/categories/faq.svg'),
+      'REFERENCE': require('../../../assets/graphics/categories/reference.svg'),
+      'BLOG': require('../../../assets/graphics/categories/blog.svg'),
+      'EXAMPLE': require('../../../assets/graphics/categories/example.svg'),
+    }[this.props.type]
+
+    const background = {
+      'TUTORIAL': 'rgba(164, 3, 111, 0.2)',
+      'FAQ': 'rgba(49, 177, 180, 0.2)',
+      'REFERENCE': 'rgba(39, 174, 96, 0.2)',
+      'BLOG': 'rgba(42, 126, 211, 0.2)',
+      'EXAMPLE': 'rgba(241, 143, 1, 0.2)',
+    }[this.props.type]
+
+    const imageWidth = this.props.width || 25
+    const width = imageWidth - 5
+    const imageHeight = this.props.height || 25
+    const height = imageHeight - 5
+
     return (
-      <Circle
-        style={{background: this.props.background}}
-        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mt4)}
+      <div
+        style={{background, width, height}}
+        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mt4, $p.br100)}
       >
-        <img
-          src={this.props.source}
-          width={25}
-          height={25}
-        />
-      </Circle>
+        <img src={src} width={imageWidth} height={imageHeight}/>
+      </div>
     )
   }
 }

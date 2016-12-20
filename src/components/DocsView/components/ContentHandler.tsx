@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Node, Parser } from 'commonmark'
-import Markdown from './Markdown'
+import Markdown from './Content/Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
@@ -9,9 +9,11 @@ import { Item } from '../../../types/types'
 import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
-import RelatedContent from './WasHelpful'
 import * as cx from 'classnames'
-import FAQ from './FAQ' import ContentHeader from './ContentHeader'
+import FAQ from './FAQ'
+import ContentHeader from './Content/ContentHeader'
+import RelatedContentFooter from './Content/RelatedContentFooter'
+import Feedback from './Content/Feedback' import EditGithub from './Content/EditGithub'
 
 interface Props {
   location: any,
@@ -70,7 +72,9 @@ class ContentHandler extends React.Component<Props, {}> {
               <ContentHeader item={item}/>
               <Markdown ast={ast}/>
             </section>
-            <RelatedContent />
+            <Feedback />
+            <RelatedContentFooter item={item}/>
+            {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
           </RightSection>
           {item.layout === 'FAQ' && <FAQ/>}
         </DocsView>
@@ -99,6 +103,19 @@ const getItemQuery = gql`query getItem($alias: String) {
     tags
     lastModified
     title
+    sourceFilePath
+    relatedFurther {
+      alias
+      shorttitle
+      path
+      layout
+    }
+    relatedMore {
+      alias
+      shorttitle
+      path
+      layout
+    }
   }
 }`
 

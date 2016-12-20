@@ -1,4 +1,4 @@
-export type Layout = 'BLOG' | 'REFERENCE' | 'GUIDE' | 'FAQ'
+export type Layout = 'BLOG' | 'REFERENCE' | 'TUTORIAL' | 'FAQ'
 
 export interface Item {
   id: string
@@ -8,8 +8,11 @@ export interface Item {
   shorttitle: string
   path: string
   lastModified: string
+  sourceFilePath: string
   layout: Layout
   tags: string[]
+  relatedMore: Item[]
+  relatedFurther: Item[]
 }
 
 export interface NestedItem extends Item {

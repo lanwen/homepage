@@ -1,12 +1,8 @@
 import * as React from 'react'
 import Footer from '../Footer/Footer'
 import { $p, $v } from 'graphcool-styles'
-import styled from 'styled-components'
 import * as cx from 'classnames'
-import { breakpoints } from '../../utils/constants'
 import Header from './components/Header/Header'
-import RelatedContent from './components/WasHelpful'
-import LeftSidebar from './components/LeftSidebar'
 
 interface Props {
   location: any

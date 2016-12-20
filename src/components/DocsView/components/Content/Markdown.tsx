@@ -6,32 +6,38 @@ import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
+import { Layout } from '../../../../types/types'
 
 interface Props {
   ast: Node
+  layout: Layout
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
   p, blockquote, h1, h2, h3, code, pre, div {
-    line-height: 1.7;
-    margin-top: ${$v.size38};
     max-width: 920px;
-    dislay: flex;
-    margin-bottom: 0;
   }
   
   p { 
+    line-height: 1.7;
     color: ${$v.gray60}; 
-    font-size: ${$v.size20}
+    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+  }
+  
+  ul {
+    color: ${$v.gray60}; 
+    list-style-position: inside;
+    margin: ${$v.size25} 0;
+  }
+  
+  ul li {
+    line-height: 1.7;
   }
   
   blockquote {
-    border-left: solid ${$v.size06} ${$v.green50};
-    padding: ${$v.size20};
+    border-left: ${$v.size06} solid ${$v.green50};
+    padding: ${$v.size12} ${$v.size25};
+    margin-left: 0;
   }
   
   blockquote p {
@@ -43,19 +49,19 @@ const Container = styled.div`
   }
   
   h2, h3 {
-    color: ${$v.black};
     font-weight: 600; 
-    margin-top: ${$v.size60};
   }
   
   h2 {
     size: ${$v.size25};
-    opacity: .80;
+    color: ${$v.gray80};
+    margin: ${$v.size38} 0 ${$v.size25};
   }
   
   h3 {
-    opacity: 0.6;
-    font-size: ${$v.size20};
+    color: ${$v.gray60};
+    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    margin: ${$v.size25} 0;
   }
   
   code {
@@ -64,25 +70,9 @@ const Container = styled.div`
     padding: ${$v.size04}
   }
   
-  .GraphqlCodeBlock {
-    // https://codepen.io/elomatreb/pen/hbgxp
-    
-    margin-top: 0;
-    counter-reset: line;
-
-    pre {
-      margin-top: 0;
-      
-      &:before {
-        font-size: ${$v.size12};
-        counter-increment: line;
-        content: counter(line);
-        display: inline-block;
-        margin-right: ${$v.size12};
-        color: black;
-        opacity: 0.2;
-      }
-    }
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `
 
@@ -95,10 +85,10 @@ export default class Markdown extends React.Component<Props, {}> {
         const className = props.language && 'language-' + props.language
         return (
           <pre className={cx($p.overflowScroll)}>
-              <PrismCode className={className}>
-                {props.literal}
-              </PrismCode>
-            </pre>
+            <PrismCode className={className}>
+              {props.literal}
+            </PrismCode>
+          </pre>
         )
       },
       HtmlBlock (props) {
@@ -127,7 +117,7 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container className={cx($p.flexColumn)}>
+      <Container biggerFont={this.props.layout === 'BLOG'}>
         {renderer.render(this.props.ast)}
       </Container>
     )

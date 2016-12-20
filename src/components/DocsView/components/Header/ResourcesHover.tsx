@@ -62,24 +62,15 @@ export default class ResourcesHover extends React.Component<Props, {}> {
           <div className={cx('_headline', $p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu)}>Resources</div>
           <div className={cx($p.pv16, $p.ph25)}>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials'>
-              <CircleIcon
-                background='rgba(164, 3, 111, 0.2)'
-                source={require('../../../../assets/graphics/Guide.svg')}
-              />
+              <CircleIcon type='TUTORIAL'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Tutorials</div>
             </NavigationLink>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/examples'>
-              <CircleIcon
-                background='rgba(164, 3, 111, 0.2)'
-                source={require('../../../../assets/graphics/Example.svg')}
-              />
+              <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
             </NavigationLink>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq'>
-              <CircleIcon
-                background='rgba(49, 177, 180, 0.2)'
-                source={require('../../../../assets/graphics/QuestionMark.svg')}
-              />
+              <CircleIcon type='FAQ'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
             </NavigationLink>
           </div>
