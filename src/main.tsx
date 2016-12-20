@@ -19,6 +19,8 @@ import CommunityPage from './components/DocsView/pages/CommunityPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
 import RootView from './components/RootView'
 
+import './style'
+
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
 })
