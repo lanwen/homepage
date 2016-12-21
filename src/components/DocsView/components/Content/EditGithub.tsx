@@ -11,18 +11,20 @@ export default class EditGithub extends React.Component<Props, {}> {
   render() {
     return (
       <div className={cx($p.pv60, $p.flex, $p.justifyCenter)}>
-        <img
-          src={require('../../../../assets/graphics/GitHub.png')}
-          height={25}
-          width={25}
-          className={cx($p.ph16)}
-        />
         <a
           href={`https://github.com/graphcool/console/blob/dev/${this.props.sourceFilePath}`}
           target='_blank'
-          className={cx($p.noUnderline, $p.black30, $p.fw4, $p.f16)}
+          className={cx($p.noUnderline, $p.black20, $p.fw4, $p.f16)}
         >
-          Edit this page on Github
+          <div className={cx($p.flex)}>
+            <img
+              src={require('../../../../assets/graphics/GitHubGreyLogo.svg')}
+              height={25}
+              width={25}
+              className={cx($p.ph16)}
+            />
+            <div>Edit this page on Github</div>
+          </div>
         </a>
       </div>
     )
