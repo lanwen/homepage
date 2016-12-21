@@ -4,7 +4,7 @@ import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from './CircleIcon'
 
-export default class FAQ extends React.Component<{}, {}> {
+export default class FAQSidebar extends React.Component<{}, {}> {
 
   render() {
     const RightSection = styled.div`

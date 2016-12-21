@@ -10,7 +10,7 @@ import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import FAQ from './FAQ'
+import FAQSidebar from './FAQSidebar'
 import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback' import EditGithub from './Content/EditGithub'
@@ -73,7 +73,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     const item = this.props.data.Item
     const ast = new Parser().parse(atob(this.props.data.Item.body))
-    const RightSection = styled.div`
+    const ContentContainer = styled.div`
        flex: 1 1 100px;
     `
 
@@ -81,16 +81,19 @@ class ContentHandler extends React.Component<Props, {}> {
       <div onClick={this.onClick}>
         <DocsView location={this.props.location}>
           {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
-          <RightSection className={cx($p.flexWrap)}>
-            <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.pt96)}>
+          <ContentContainer>
+            <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
               <ContentHeader item={item}/>
-              <Markdown ast={ast} layout={item.layout}/>
+              <Markdown
+                ast={ast}
+                layout={item.layout}
+              />
             </section>
             <Feedback />
             <RelatedContentFooter item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          </RightSection>
-          {item.layout === 'FAQ' && <FAQ/>}
+          </ContentContainer>
+          {item.layout === 'FAQ' && <FAQSidebar/>}
         </DocsView>
       </div>
     )

@@ -7,7 +7,6 @@ import HomeView from './components/HomeView/HomeView'
 import PricingView from './components/PricingView/PricingView'
 import AboutView from './components/AboutView/AboutView'
 import DocsView from './components/DocsView/DocsView'
-import FAQ from './components/DocsView/components/FAQ'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
@@ -41,7 +40,6 @@ function render() {
             <Route path='/' component={HomeView}/>
             <Route path='/pricing' component={PricingView}/>
             <Route path='/about' component={AboutView}/>
-            <Route path='/faq' component={FAQ}/>
             <Route path='/docs' component={DocsView}>
               <Route path='quickstart' component={QuickstartPage}/>
               <Route path='resources' component={ResourcesPage}/>
