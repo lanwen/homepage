@@ -13,7 +13,8 @@ import * as cx from 'classnames'
 import FAQ from './FAQ'
 import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
-import Feedback from './Content/Feedback' import EditGithub from './Content/EditGithub'
+import Feedback from './Content/Feedback'
+import EditGithub from './Content/EditGithub'
 
 interface Props {
   location: any,

@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import CircleIcon from '../CircleIcon'
 import { Item } from '../../../../types/types'
+import Tooltip from './Tooltip'
 
 const Container = styled.div`
   background: linear-gradient(to top, #fff 3%, rgba(0, 0, 0, 0.02) 3%,rgba(0, 0, 0, 0.02) 97%,#fff 97%);
@@ -51,10 +52,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
               <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu)}>More about</span>
               <span className={cx($p.green, $p.fw6, $p.f16)}>AUTHENTICATION</span>
             </div>
-            <img
-              src={require('../../../../assets/graphics/info.svg')}
-              className={cx($p.bbox, $p.db, $p.ph10)}
-            />
+            <Tooltip/>
           </div>
           {this.props.item.relatedMore.map(item => (
             <Link
@@ -63,7 +61,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
               className={cx($p.flex, $p.pb10, $p.pt25, $p.ph25, $p.noUnderline)}
             >
               <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                <CircleIcon type={item.layout} />
+                <CircleIcon type={item.layout}/>
               </div>
               <div>
                 <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
@@ -77,7 +75,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
           {this.props.item.relatedFurther.map(item => (
             <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
               <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                <CircleIcon type={item.layout} />
+                <CircleIcon type={item.layout}/>
               </div>
               <div>
                 <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
