@@ -57,7 +57,7 @@ export default class ListItems extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div className={cx($p.mt16, $p.mb4)}>
+      <div className={cx($p.mt16, $p.mb10)}>
         <Link
           to={`${this.props.item.path}-${this.props.item.alias}`}
           className={cx($p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db,
@@ -65,7 +65,7 @@ export default class ListItems extends React.Component<Props, {}> {
           {this.props.item.shorttitle}
         </Link>
         {this.props.expanded &&
-        <FirstUlStyle className={cx($p.pb25, $p.bgWhite90)}>
+        <FirstUlStyle className={cx($p.pb16, $p.bgWhite90)}>
           <section className={cx('border')}>
             {this.props.item.children && this.props.item.children.map(itemLvl2 => (
               <div key={itemLvl2.alias}>
