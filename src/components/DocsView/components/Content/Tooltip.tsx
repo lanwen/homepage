@@ -40,7 +40,7 @@ export default class Tooltip extends React.Component<{}, {}> {
         />
         <div className={cx('_nested', $p.bgWhite, $p.absolute)}>
           <div className={cx($p.f16, $p.pv16, $p.pl25, $p.pr16, $p.black40)}>
-            Some text that will probably be inserted with props which I still don't understand!
+            A query enables you to declare data requirements in your app by supplying multiple fields.
           </div>
         </div>
       </Container>
