@@ -1,8 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { Link } from 'react-router'
 import { $p } from 'graphcool-styles'
-import styled from 'styled-components'
 import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
 import { Item } from '../../../../types/types'
@@ -10,7 +8,6 @@ import { Item } from '../../../../types/types'
 interface Props {
   item: Item
 }
-const Container = styled.div``
 
 export default class ContentHeader extends React.Component<Props, {}> {
   render() {
@@ -21,7 +18,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
                  style={{marginLeft: 52}}>
           Tutorials > Usage Guide
         </section>
-        <Container className={cx($p.flex, $p.flexWrap)}>
+        <div className={cx($p.flex, $p.flexWrap)}>
           <div className={cx($p.bbox, $p.db, $p.mr10, $p.mt6)}>
             <CircleIcon width={44} height={44} type={this.props.item.layout}/>
           </div>
@@ -36,7 +33,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
               ))}
             </div>
           </div>
-        </Container>
+        </div>
       </div>
     )
   }
