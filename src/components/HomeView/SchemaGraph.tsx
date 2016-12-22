@@ -2,28 +2,31 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../utils/constants'
+import { breakpoints, maxWidth } from '../../utils/constants'
 import SectionHeader from './SectionHeader'
 
 const Root = styled.div`
   background-color: rgba(0, 0, 0, 0.03);
-  padding: 0 300px ${$v.size60};
-      
-  @media (max-width: ${breakpoints.p1200}px) {
-    padding: 0 200px ${$v.size96};
-  }
-  
-  @media (max-width: ${breakpoints.p1000}px) {
-    padding: 0 ${$v.size96} ${$v.size96};
-  }
-
-  @media (max-width: ${breakpoints.p580}px) {
-    padding: 0 ${$v.size10} ${$v.size96};
-  }
 `
 
 const Graph = styled.div`
-  max-width: 934px; 
+  max-width: ${maxWidth}px; 
+  
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding: 0 ${$v.size60} ${$v.size60};
+  }
+  
+  @media (max-width: ${breakpoints.p1000}px) {
+    padding: 0 ${$v.size38} ${$v.size38};
+  }
+
+  @media (max-width: ${breakpoints.p580}px) {
+    padding: 0 ${$v.size25} ${$v.size25};
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    padding: 0 ${$v.size16} ${$v.size25};
+  }
 `
 
 export default class SchemaGraph extends React.Component<{}, {}> {
@@ -38,7 +41,7 @@ export default class SchemaGraph extends React.Component<{}, {}> {
         <Graph>
             <img
               className={cx($p.w100, $p.hAuto, $p.db)}
-              src={require('../../assets/graphics/Architecture2.png')}
+              src={require('../../assets/graphics/Architecture.svg')}
               alt='Architecture'
             />
         </Graph>
