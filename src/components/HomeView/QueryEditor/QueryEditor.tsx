@@ -6,7 +6,7 @@ import CopyToClipboard = require('react-copy-to-clipboard')
 import SectionHeader from '../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
-import { breakpoints, maxWidth, movingDuration } from '../../../utils/constants'
+import { breakpoints, maxWidth, movingDuration, isTouch } from '../../../utils/constants'
 import QueryBox from './QueryBox'
 import { projects } from './data'
 
@@ -68,8 +68,9 @@ const TabBar = styled.ul`
   
   @media (max-width: ${breakpoints.p400}px) {
     padding-left: ${$v.size25};
-  } 
+  }
 `
+
 // if tabbar is wider than viewport
 // @media (max-width: ${breakpoints.p500}px) {
 //   overflow: auto;
@@ -280,7 +281,10 @@ export default class QueryEditor extends React.Component<Props, State> {
                   </TabBar>
                 </div>
                 <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
-                  <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
+                  <TabBar
+                    touch={isTouch}
+                    className={cx($p.absolute, $p.tlVCenter, $p.ph10)}
+                  >
                     {activeProject.models.map(model => (
                       <SchemaTab
                         key={model.name}
@@ -351,6 +355,6 @@ export default class QueryEditor extends React.Component<Props, State> {
   private onCopy = () => {
     this.setState({ copied: true } as State)
 
-    setTimeout(() => this.setState({ copied: false } as State), 400)
+    setTimeout(() => this.setState({ copied: false } as State), 700)
   }
 }
