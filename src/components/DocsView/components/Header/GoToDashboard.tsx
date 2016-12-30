@@ -1,8 +1,6 @@
 import * as React from 'react'
-import { Link } from 'react-router'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
-import styled from 'styled-components'
+import { $p } from 'graphcool-styles'
 
 export default class GoToDashboard extends React.Component<{}, {}> {
   render() {

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Link } from 'react-router'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
@@ -40,7 +39,7 @@ export default class ExampleBox extends React.Component<{}, {}> {
             </WhiteSquare>
           </a>
         </div>
-        <a href=""
+        <a href=''
            className={cx($p.mt38, $p.tc, $p.black30, $p.f16)}>Show Instructions</a>
       </div>
     )
