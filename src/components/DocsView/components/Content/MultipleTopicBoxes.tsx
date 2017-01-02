@@ -102,13 +102,13 @@ export default class MultipleTopicBoxes extends React.Component<Props, {}> {
           <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
           {this.props.item.relatedFurther.map(item => (
             <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
-          <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-            <CircleIcon type={item.layout}/>
-          </div>
-          <div>
-            <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
-            <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
-          </div>
+              <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
+                <CircleIcon type={item.layout}/>
+              </div>
+              <div>
+                <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
+                <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
+              </div>
             </Link>
           ))}
         </Further>
