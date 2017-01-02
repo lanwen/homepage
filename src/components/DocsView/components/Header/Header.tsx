@@ -162,7 +162,7 @@ export default class Header extends React.Component<{}, State> {
         <Searchbox type='text' name='search' placeholder='Search..'/>
         {links}
         <div className={cx($p.mt4)}>
-          <img className={cx($p.bbox, $p.db)} src={require('../../../../assets/graphics/APIEndpoints.png')}/>
+          <img className={cx($p.bbox, $p.db)} src={require('../../../../assets/graphics/APIendpoints.svg')}/>
         </div>
       </Root>
     )
@@ -197,7 +197,7 @@ export default class Header extends React.Component<{}, State> {
           </NavigationLink>
           {links}
           <NavigationLink className={cx($p.mt16)}>
-            <img className={cx($p.bbox, $p.db)} src={require('../../../../assets/graphics/APIEndpoints.png')}/>
+            <img className={cx($p.bbox, $p.db)} src={require('../../../../assets/graphics/APIendpoints.svg')}/>
           </NavigationLink>
         </FirstUlStyle>
         }
