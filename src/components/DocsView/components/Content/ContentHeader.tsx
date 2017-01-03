@@ -4,6 +4,7 @@ import { $p } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
 import { Item } from '../../../../types/types'
+import GoToConsole from '../Header/GoToConsole'
 
 interface Props {
   item: Item

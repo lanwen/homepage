@@ -11,6 +11,7 @@ const Root = styled.div`
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  width: 1337px;
   
   @media (max-width: ${breakpoints.p1200}px) {
     padding-top: ${$v.size25}
@@ -44,17 +45,27 @@ const NavigationLink = styled(Link)`
 const Searchbox = styled.input`
   width: 300px;
   box-sizing: border-box;
-  box-shadow:0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
   border-radius: 2px;
   font-size: 16px;
   background-color: #fff;
-  background-image: url(${require('../../../../assets/graphics/Lupa.png')});
-  background-position: 10px 15px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  
+  padding: 12px 20px 12px 46px;
+  transition: all .3s;
   @media (max-width: ${breakpoints.p1360}px) {
     width: 250px;
+  }
+  
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    transition: .3s white;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    transition: .3s white;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    transition: .3s white;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    transition: .3s white;
   }
 `
 
@@ -110,6 +121,40 @@ const Close = styled.div`
   }
 `
 
+const SearchIcon = styled(Icon)`
+  
+`
+
+const LogoLink = styled.div`
+  width: 113px;
+  transition: .3s all;
+  &:hover {
+    width: 339px;
+    a > div {
+      color: ${$v.green} !important;
+    }
+  }
+  
+  &:hover + .search {
+    input {
+      width: 40px;
+      padding: 12px 24px;
+      ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: white;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+        color: white;
+      }
+      :-ms-input-placeholder { /* IE 10+ */
+        color: white;
+      }
+      :-moz-placeholder { /* Firefox 18- */
+        color: white;
+      }
+    }
+  }
+`
+
 interface State {
   menuOpened: boolean
 }
@@ -122,9 +167,24 @@ export default class Header extends React.Component<{}, State> {
 
   render() {
     const links = (
-      <div className={cx($p.flex, window.innerWidth < breakpoints.p1200 ? $p.flexColumn : $p.flexRow)}>
+      <div className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p1200 ? $p.flexColumn : $p.flexRow,
+          {
+            [$p.mb10]: window.innerWidth < breakpoints.p1200,
+          },
+        )}>
         <NavigationLink
-          className={cx($p.ph16, $p.mt10, $p.fw6, $p.noUnderline, $p.ttu, $p.black30)}
+          className={cx(
+            $p.mt10,
+            $p.fw6,
+            $p.noUnderline,
+            $p.ttu,
+            $p.black30,
+            {
+              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+            },
+          )}
           to='/docs/quickstart'
           active={location.pathname.startsWith('/docs/quickstart')}
         >
@@ -132,21 +192,48 @@ export default class Header extends React.Component<{}, State> {
         </NavigationLink>
         <ResourcesHover active={false}/>
         <NavigationLink
-          className={cx($p.ph16, $p.mt10, $p.fw6, $p.noUnderline, $p.ttu, $p.black30)}
+          className={cx(
+            $p.mt10,
+            $p.fw6,
+            $p.noUnderline,
+            $p.ttu,
+            $p.black30,
+            {
+              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+            },
+          )}
           to='/docs/reference'
           active={location.pathname.startsWith('/docs/reference')}
         >
           Reference
         </NavigationLink>
         <NavigationLink
-          className={cx($p.ph16, $p.mt10, $p.fw6, $p.noUnderline, $p.ttu, $p.black30)}
+          className={cx(
+            $p.mt10,
+            $p.fw6,
+            $p.noUnderline,
+            $p.ttu,
+            $p.black30,
+            {
+              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+            },
+          )}
           to='/docs/blog'
           active={location.pathname.startsWith('/docs/blog')}
         >
           Blog
         </NavigationLink>
         <NavigationLink
-          className={cx($p.ph16, $p.mt10, $p.fw6, $p.noUnderline, $p.ttu, $p.black30)}
+          className={cx(
+            $p.mt10,
+            $p.fw6,
+            $p.noUnderline,
+            $p.ttu,
+            $p.black30,
+            {
+              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+            },
+          )}
           to='/docs/community'
           active={location.pathname.startsWith('/docs/community')}
         >
@@ -157,10 +244,30 @@ export default class Header extends React.Component<{}, State> {
 
     const WideHeader = () => (
       <Root className={cx($p.flex, $p.pv38)}>
-          <Link to='/'>
-            <img className={cx()} src={require('../../../../assets/graphics/logos/DockLogo.svg')}/>
-          </Link>
-        <Searchbox type='text' name='search' placeholder='Search..'/>
+          <LogoLink className={cx($p.flex, $p.itemsCenter, $p.overflowHidden)}>
+            <Link to='/' className={cx($p.noUnderline, $p.flex, $p.flexRow, $p.itemsCenter)}>
+              <img className={cx()} src={require('../../../../assets/graphics/GraphcoolLogoOnltG.svg')}/>
+              <div className={cx($p.f20, $p.fw4, $p.lightgreen50, $p.ttu, $p.ml16)}>
+                Docs
+              </div>
+            </Link>
+            <div className={cx($p.f20, $p.ttc, $p.fw4, $p.lightgreen50, $p.ml16)}>
+              <a className={cx($p.noUnderline, $p.mr16)} href='https://console.graph.cool' target='_blank'>Console</a>
+              <a className={cx($p.noUnderline, $p.mr25)} href='/' target='_blank'>Homepage</a>
+            </div>
+          </LogoLink>
+        <div className={cx('search', $p.relative)}>
+          <SearchIcon
+            width={16}
+            height={16}
+            src={require('graphcool-styles/icons/stroke/search.svg')}
+            stroke={true}
+            color={$v.black}
+            strokeWidth={2}
+            className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16)}
+          />
+          <Searchbox type='text' name='search' placeholder='Search..'/>
+        </div>
         {links}
         <div className={cx($p.mt4)}>
           <img className={cx($p.bbox, $p.db)} src={require('../../../../assets/graphics/APIendpoints.svg')}/>
@@ -170,9 +277,18 @@ export default class Header extends React.Component<{}, State> {
 
     const NarrowHeader = () => (
       <Root className={cx($p.flex, $p.pv38)}>
-        <Link to='/'>
-          <img className={cx()} src={require('../../../../assets/graphics/logos/DockLogo.svg')}/>
-        </Link>
+        <LogoLink className={cx($p.flex, $p.itemsCenter, $p.overflowHidden)}>
+          <Link to='/' className={cx($p.noUnderline, $p.flex, $p.flexRow, $p.itemsCenter)}>
+            <img className={cx()} src={require('../../../../assets/graphics/GraphcoolLogoOnltG.svg')}/>
+            <div className={cx($p.f20, $p.fw4, $p.lightgreen50, $p.ttu, $p.ml16)}>
+              Docs
+            </div>
+          </Link>
+          <div className={cx($p.f20, $p.ttc, $p.fw4, $p.lightgreen50, $p.ml16)}>
+            <a className={cx($p.noUnderline, $p.mr16)} href='https://console.graph.cool' target='_blank'>Console</a>
+            <a className={cx($p.noUnderline, $p.mr25)} href='/' target='_blank'>Homepage</a>
+          </div>
+        </LogoLink>
         <Hamburger>
           {!this.state.menuOpened &&
           <Icon
@@ -188,7 +304,16 @@ export default class Header extends React.Component<{}, State> {
         <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
           <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
           <NavigationLink>
-            <form className={cx($p.pl38, $p.pb16)}>
+            <form className={cx($p.pb16, $p.relative)}>
+              <SearchIcon
+                width={16}
+                height={16}
+                src={require('graphcool-styles/icons/stroke/search.svg')}
+                stroke={true}
+                color={$v.black}
+                strokeWidth={2}
+                className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16)}
+              />
               <Searchbox
                 type='text'
                 name='search'
@@ -206,7 +331,7 @@ export default class Header extends React.Component<{}, State> {
     )
 
     return (
-      <div className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38)}>
+      <div className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38, $p.flex, $p.flexRow, $p.justifyCenter)}>
         {window.innerWidth > breakpoints.p1200 ? WideHeader() : NarrowHeader()}
       </div>
     )

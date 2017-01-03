@@ -5,6 +5,7 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
+import {breakpoints} from '../../../../utils/constants'
 
 const NavigationLinkActive = `
   &:before {
@@ -57,7 +58,18 @@ export default class ResourcesHover extends React.Component<Props, {}> {
   render() {
     return (
       <Container className={cx($p.relative, $p.overflowVisible)}>
-        <div className={cx($p.ph16, $p.mt10, $p.fw6, $p.pointer, $p.ttu, $p.black30)}>Resources</div>
+        <div
+          className={cx(
+            $p.mt10,
+            $p.fw6,
+            $p.noUnderline,
+            $p.ttu,
+            $p.black30,
+            {
+              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+            },
+          )}
+        >Resources</div>
         <div className={cx('_nested', $p.bgWhite, $p.absolute, $p.flexColumn)}>
           <div className={cx('_headline', $p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu)}>Resources</div>
           <div className={cx($p.pv16, $p.ph25)}>
