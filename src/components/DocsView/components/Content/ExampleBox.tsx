@@ -18,8 +18,8 @@ export default class ExampleBox extends React.Component<{}, {}> {
     return (
       <div className={cx($p.flex, $p.flexColumn)}>
         <div
-          className={cx($p.bgLightgreen10, $p.flex, $p.pa16, $p.flexColumn, $p.justifyCenter, $p.itemsCenter)
-        }>
+          className={cx($p.bgLightgreen10, $p.flex, $p.pa16, $p.flexColumn, $p.justifyCenter, $p.itemsCenter)}
+        >
           <div className={cx($p.flex, $p.itemsStart)}>
             <div className={cx($p.mr60)}>
               <div className={cx($p.ttu,$p.f14, $p.lightgreen50, $p.mb6, $p.fw6)}>Example</div>
@@ -32,10 +32,12 @@ export default class ExampleBox extends React.Component<{}, {}> {
           </div>
           <a
             className={$p.noUnderline}
-            href={`https://github.com/graphcool-examples/react-apollo-todo-example/archive/master.zip`}>
+            href={`https://github.com/graphcool-examples/react-apollo-todo-example/archive/master.zip`}
+          >
             <WhiteSquare
               className={cx($p.green, $p.bgWhite, $p.ttu, $p.ph38, $p.pv16, $p.f14, $p.fw6, $p.tc, $p.mt16)}
-            >Download Example
+            >
+              Download Example
             </WhiteSquare>
           </a>
         </div>

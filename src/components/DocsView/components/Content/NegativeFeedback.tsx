@@ -13,6 +13,7 @@ const TextUnderLines = styled.textarea`
   border: none;
   outline: none;
 `
+
 const SendMessage = styled.a`
   border-radius: 3px;
 `
