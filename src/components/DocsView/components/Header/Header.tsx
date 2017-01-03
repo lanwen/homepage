@@ -5,7 +5,6 @@ import { $p, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
-import GoToConsole from './GoToConsole'
 
 const Root = styled.div`
   justify-content: space-between;
