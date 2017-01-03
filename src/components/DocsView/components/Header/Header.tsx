@@ -5,6 +5,7 @@ import { $p, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
+import GoToConsole from './GoToConsole'
 
 const Root = styled.div`
   justify-content: space-between;
@@ -156,9 +157,9 @@ export default class Header extends React.Component<{}, State> {
 
     const WideHeader = () => (
       <Root className={cx($p.flex, $p.pv38)}>
-        <Link to='/'>
-          <img className={cx()} src={require('../../../../assets/graphics/logos/DockLogo.svg')}/>
-        </Link>
+          <Link to='/'>
+            <img className={cx()} src={require('../../../../assets/graphics/logos/DockLogo.svg')}/>
+          </Link>
         <Searchbox type='text' name='search' placeholder='Search..'/>
         {links}
         <div className={cx($p.mt4)}>
