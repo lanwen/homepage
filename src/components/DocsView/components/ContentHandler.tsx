@@ -10,7 +10,7 @@ import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import FAQ from './FAQ'
+import FAQSidebar from './FAQSidebar'
 import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
@@ -27,9 +27,23 @@ interface Props {
   router: ReactRouter.InjectedRouter,
 }
 
+interface Context {
+  setIsLoading: (isLoading: boolean) => void
+}
+
 class ContentHandler extends React.Component<Props, {}> {
 
+  static contextTypes = {
+    setIsLoading: React.PropTypes.func.isRequired,
+  }
+
+  context: Context
+
   componentWillReceiveProps(nextProps: Props) {
+
+    if (nextProps.data.loading !== this.props.data.loading) {
+      this.context.setIsLoading(nextProps.data.loading)
+    }
 
     if (nextProps.data.loading) {
       return
@@ -61,7 +75,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     const item = this.props.data.Item
     const ast = new Parser().parse(atob(this.props.data.Item.body))
-    const RightSection = styled.div`
+    const ContentContainer = styled.div`
        flex: 1 1 100px;
     `
 
@@ -69,17 +83,20 @@ class ContentHandler extends React.Component<Props, {}> {
       <div onClick={this.onClick}>
         <DocsView location={this.props.location}>
           {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
-          <RightSection className={cx($p.flexWrap)}>
-            <section className={cx($p.flex, $p.flexWrap, $p.ph60, $p.pt96)}>
+          <ContentContainer>
+            <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
               <ContentHeader item={item}/>
-              <Markdown ast={ast}/>
+              <Markdown
+                ast={ast}
+                layout={item.layout}
+              />
             </section>
             <Feedback />
             <RelatedContentFooter item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-           <MultipleTopicBoxes item={item}/>
-          </RightSection>
-          {item.layout === 'FAQ' && <FAQ/>}
+          <MultipleTopicBoxes item={item}/>
+          </ContentContainer>
+          {item.layout === 'FAQ' && <FAQSidebar/>}
         </DocsView>
       </div>
     )

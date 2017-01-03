@@ -14,10 +14,6 @@ interface Props {
 }
 
 const Container = styled.div`
-  p, blockquote, h1, h2, h3, code, pre, div {
-    max-width: 920px;
-  }
-  
   p { 
     line-height: 1.7;
     color: ${$v.gray60}; 

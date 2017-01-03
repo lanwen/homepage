@@ -1,4 +1,4 @@
-// declare module 'react-router'
+declare module 'react-router-scroll'
 declare module 'styled-components'
 declare module 'react-hot-loader'
 declare module 'react-copy-to-clipboard'

@@ -21,3 +21,9 @@ export {
   maxWidth,
   movingDuration,
 }
+
+let isTouch = false
+
+if ('ontouchstart' in document.documentElement) {
+  let isTouch = true
+}

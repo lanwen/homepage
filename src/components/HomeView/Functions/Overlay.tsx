@@ -3,6 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
+import ComingSoonTag from '../ComingSoonTag'
 
 const Root = styled.div`
   position: absolute;
@@ -51,6 +52,7 @@ export default class Overlay extends React.Component<Props, {}> {
           <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32}/>
         </IconContainer>
         <h4 className={cx($g.uppercaseLabel, $p.darkBlue)}>{this.props.title}</h4>
+        <ComingSoonTag/>
         <p className={cx($p.f16, $p.fw4, $p.black50, $p.mt25)}>{this.props.description}</p>
       </Root>
     )
