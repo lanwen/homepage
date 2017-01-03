@@ -6,6 +6,7 @@ export interface Item {
   alias: string
   title: string
   shorttitle: string
+  description: string
   path: string
   lastModified: string
   sourceFilePath: string
