@@ -13,7 +13,9 @@ import * as cx from 'classnames'
 import FAQSidebar from './FAQSidebar'
 import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
-import Feedback from './Content/Feedback' import EditGithub from './Content/EditGithub'
+import Feedback from './Content/Feedback'
+import EditGithub from './Content/EditGithub'
+import MultipleTopicBoxes from './Content/MultipleTopicBoxes'
 
 interface Props {
   location: any,
@@ -92,6 +94,7 @@ class ContentHandler extends React.Component<Props, {}> {
             <Feedback />
             <RelatedContentFooter item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+          <MultipleTopicBoxes item={item}/>
           </ContentContainer>
           {item.layout === 'FAQ' && <FAQSidebar/>}
         </DocsView>
