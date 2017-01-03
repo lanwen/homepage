@@ -11,7 +11,6 @@ export default class EditGithub extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div>
       <div className={cx($p.pv60, $p.flex, $p.justifyCenter)}>
         <a
           href={`https://github.com/graphcool/console/blob/dev/${this.props.sourceFilePath}`}
@@ -28,8 +27,6 @@ export default class EditGithub extends React.Component<Props, {}> {
             <div>Edit this page on Github</div>
           </div>
         </a>
-      </div>
-        <QuestionMarkOnHover/>
       </div>
     )
   }

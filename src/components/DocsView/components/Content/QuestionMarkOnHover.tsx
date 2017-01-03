@@ -41,7 +41,7 @@ export default class QuestionMarkOnHover extends React.Component<{}, {}> {
       <Container className={cx($p.relative)}>
         <Circle className={cx($p.bgLightgreen10, $p.br100, $p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <p className={cx($p.f25, $p.fw6, 'mark')}>?</p>
-          <div className={cx('chat-logo', $p.flex, $p.justifyCenter, $p.itemsCenter)} >
+          <div className={cx('chat-logo', $p.flex, $p.justifyCenter, $p.itemsCenter)}>
             <Icon
               src={require('graphcool-styles/icons/fill/docsChat.svg')}
               width={50}
