@@ -36,8 +36,8 @@ export default class GoToConsole extends React.Component<{}, {}> {
           <p className={cx($p.green, $p.f20, $p.ttc, $p.fw4, $p.mr16)}>Docs</p>
         </Link>
         <div className={cx($p.f20, $p.ttc, $p.fw4, $p.lightgreen50)}>
-          <a className={cx($p.noUnderline, $p.mr16)} href="/">Console</a>
-          <a className={cx($p.noUnderline, $p.mr25)} href="/">Homepage</a>
+          <a className={cx($p.noUnderline, $p.mr16)} href='/'>Console</a>
+          <a className={cx($p.noUnderline, $p.mr25)} href='/'>Homepage</a>
         </div>
         <Searchbox type='text' name='search' />
       </Root>
