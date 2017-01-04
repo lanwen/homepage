@@ -41,7 +41,7 @@ export default class SchemaGraph extends React.Component<{}, {}> {
         <Graph>
             <img
               className={cx($p.w100, $p.hAuto, $p.db)}
-              src={require('../../assets/graphics/Architecture.svg')}
+              src={require('../../assets/graphics/architecture.svg')}
               alt='Architecture'
             />
         </Graph>
