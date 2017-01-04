@@ -15,6 +15,7 @@ import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
+import Go import {getAliasFromUrl} from '../../../utils/alias'
 
 interface Props {
   location: any,
@@ -140,8 +141,7 @@ const getItemQuery = gql`query getItem($alias: String) {
 
 const ContentHandlerWithData = graphql(getItemQuery, {
   options: (ownProps) => {
-    // get last element of a path that looks like this: /some/url/with-some-title-alias15235
-    const alias = ownProps.location.pathname.split('/').reverse()[0].split('-').reverse()[0]
+    const alias = getAliasFromUrl(ownProps.location.pathname)
     return {
       variables: {alias},
     }
