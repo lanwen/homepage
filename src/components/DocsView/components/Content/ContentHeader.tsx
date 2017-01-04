@@ -4,7 +4,12 @@ import { $p } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
 import { Item } from '../../../../types/types'
+<<<<<<< HEAD
 
+=======
+import GoToConsole from '../Header/GoToConsole'
+import BreadCrumb from './BreadCrumb'
+>>>>>>> 3b9d3335d20ac1e0ea5ddaca5ddaa2338b4895f1
 
 interface Props {
   item: Item
@@ -12,20 +17,23 @@ interface Props {
 
 export default class ContentHeader extends React.Component<Props, {}> {
   render() {
-    const date = new Date(this.props.item.lastModified)
+    const {item} = this.props
+    const date = new Date(item.lastModified)
     return (
-      <div className={cx($p.flex, $p.flexWrap, $p.pt96)}>
+      <div className={cx($p.flex, $p.pt96)}>
         <div className={cx($p.bbox, $p.db, $p.mr10, $p.pt96)}>
-          <CircleIcon width={44} height={44} type={this.props.item.layout}/>
+          <CircleIcon width={44} height={44} type={item.layout}/>
         </div>
         <div className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}>
-          <div className={cx($p.pb60, $p.ttu, $p.f14, $p.black20, $p.fw6)}>Tutorials > Usage Guide</div>
-          <p className={cx($p.f38, $p.black80, $p.fw3)}>{this.props.item.title}</p>
+          <div className={cx($p.pb60, $p.ttu, $p.f14, $p.black20, $p.fw6)}>
+            <BreadCrumb item={item} />
+          </div>
+          <p className={cx($p.f38, $p.black80, $p.fw3)}>{item.title}</p>
           <div className={cx($p.inlineFlex, $p.black20, $p.f16, $p.pt6)}>
             <div
               className={cx($p.pr38)}>Last updated {date.getMonth() + 1}/{date.getUTCDate()}/{date.getFullYear()}
             </div>
-            {this.props.item.tags.map(tag => (
+            {item.tags.map(tag => (
               <div key={tag} className={cx($p.pr16)}>#{tag}</div>
             ))}
           </div>

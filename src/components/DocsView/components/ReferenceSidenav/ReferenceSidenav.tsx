@@ -47,9 +47,9 @@ class ReferenceSidenav extends React.Component<Props, State> {
       return
     }
     const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
-    const findRec = (item: NestedItem) => item.alias === nextProps.currentAlias ||
-    item.children && !!item.children.find(findRec)
-    const visibleItemIndex = nestedItems.findIndex(findRec)
+    const findRecursive = (item: NestedItem) => item.alias === nextProps.currentAlias ||
+      item.children && !!item.children.find(findRecursive)
+    const visibleItemIndex = nestedItems.findIndex(findRecursive)
 
     this.setState({visibleItemIndex})
   }
@@ -60,6 +60,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
     }
 
     const nestedItems = mapToNestedItems(elements, this.props.data.allItems)
+    const {currentAlias} = this.props
 
     return (
       <VerticalContainer>
@@ -69,6 +70,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
               key={item.alias}
               expanded={this.state.visibleItemIndex === index}
               item={item}
+              currentAlias={currentAlias}
             />
           ))}
         </FixedNavigation>

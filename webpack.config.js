@@ -56,6 +56,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR.toString()),
       __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
     }),
     new webpack.NamedModulesPlugin(),

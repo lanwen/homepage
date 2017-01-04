@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import Header from './components/Header/Header'
+import * as Helmet from 'react-helmet'
 
 interface Props {
   location: any
@@ -22,6 +23,7 @@ export default class DocsView extends React.Component<Props, {}> {
     return (
       <div className={cx($p.flex, $p.flexColumn)}>
         <Header/>
+        <Helmet titleTemplate='%s | Graphcool Docs' />
         <div className={cx($p.flex)}>
           {this.props.children}
         </div>
