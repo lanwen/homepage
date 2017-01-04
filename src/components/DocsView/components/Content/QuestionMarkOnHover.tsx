@@ -12,7 +12,7 @@ const Circle = styled.div`
   transition: background .5s ease-out;
   
   .mark {
-    color: ${$v.green50}
+    color: ${$v.green50};
   }
   
   &:hover {
