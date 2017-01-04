@@ -8,6 +8,7 @@ export interface Item {
   shorttitle: string
   description: string
   path: string
+  preview: string
   lastModified: string
   sourceFilePath: string
   layout: Layout
