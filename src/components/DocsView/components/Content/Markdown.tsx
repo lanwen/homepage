@@ -7,10 +7,11 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import { Layout, Item } from '../../../../types/types'
-import {childrenToString} from '../../../../utils/index'
+import { childrenToString } from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
+import MarkdownGraphiQL from './MarkdownGraphiQL'
 
 interface Props {
   ast: Node
@@ -100,7 +101,7 @@ export default class Markdown extends React.Component<Props, {}> {
           <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
-              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
           </QuestionWrapper>
         )
@@ -110,12 +111,18 @@ export default class Markdown extends React.Component<Props, {}> {
           <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
             {ReactRenderer.renderers.List(props)}
             <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
-              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
           </QuestionWrapper>
         )
       },
       CodeBlock (props) {
+        if (props.language === 'graphql') {
+          return (
+            <MarkdownGraphiQL literal={props.literal.trim()}/>
+          )
+        }
+
         return (
           <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
             <CodeMirror
@@ -151,7 +158,7 @@ export default class Markdown extends React.Component<Props, {}> {
         if (literal.includes('iframe') && literal.includes('youtube')) {
           const videoId = this.extractYoutubeVideoId(literal)
           if (videoId) {
-            return <YoutubeVideo id={videoId} />
+            return <YoutubeVideo id={videoId}/>
           }
         }
 
@@ -193,15 +200,15 @@ export default class Markdown extends React.Component<Props, {}> {
     return this.extractVideoId(this.extractVideoUrl(literal))
   }
 
-  private openChat (message: string) {
+  private async openChat(message: string) {
     console.log(message)
     if (!Smooch.isOpened()) {
       Smooch.open()
     }
     if (!window.localStorage.getItem('chat_initiated')) {
-      Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
-        .then(() => Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
-        .then(() => window.localStorage.setItem('chat_initiated', 'true'))
+      await Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
+      await Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
+      window.localStorage.setItem('chat_initiated', 'true')
     }
   }
 }
