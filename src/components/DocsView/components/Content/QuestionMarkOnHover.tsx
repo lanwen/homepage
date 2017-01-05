@@ -34,11 +34,18 @@ const Container = styled.div`
   }
 `
 
-export default class QuestionMarkOnHover extends React.Component<{}, {}> {
+interface Props {
+  onClick: (e: any) => void
+}
+
+export default class QuestionMarkOnHover extends React.Component<Props, {}> {
 
   render() {
     return (
-      <Container className={cx($p.relative)}>
+      <Container
+        className={cx($p.pointer)}
+        onClick={this.props.onClick}
+      >
         <Circle className={cx($p.bgLightgreen10, $p.br100, $p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <p className={cx($p.f25, $p.fw6, 'mark')}>?</p>
           <div className={cx('chat-logo', $p.flex, $p.justifyCenter, $p.itemsCenter)}>

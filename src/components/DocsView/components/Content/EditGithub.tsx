@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
-import QuestionMarkOnHover from './QuestionMarkOnHover'
 
 interface Props {
   sourceFilePath: string

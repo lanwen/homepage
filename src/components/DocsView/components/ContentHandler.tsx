@@ -15,7 +15,7 @@ import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
-import {getAliasFromUrl} from '../../../utils/alias'
+import {getAliasFromUrl} from '../../../utils/index'
 import * as Helmet from 'react-helmet'
 
 interface Props {
@@ -118,6 +118,7 @@ class ContentHandler extends React.Component<Props, {}> {
               <Markdown
                 ast={ast}
                 layout={item.layout}
+                item={item}
               />
             </section>
             <Feedback />

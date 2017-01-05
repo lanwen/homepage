@@ -6,11 +6,15 @@ import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
-import { Layout } from '../../../../types/types'
+import { Layout, Item } from '../../../../types/types'
+import {childrenToString} from '../../../../utils/index'
+import QuestionMarkOnHover from './QuestionMarkOnHover'
+import * as Smooch from 'smooch'
 
 interface Props {
   ast: Node
   layout: Layout
+  item: Item
 }
 
 const Container = styled.div`
@@ -72,11 +76,44 @@ const Container = styled.div`
   }
 `
 
+const QuestionWrapper = styled.div`
+  .hover {
+    display: none;
+  }
+  &:hover .hover {
+    display: block;
+  }
+`
+
+const QuestionMarkWrapper = styled.div`
+  right: -40px;
+`
+
 export default class Markdown extends React.Component<Props, {}> {
 
   render() {
     // const self = this
     const renderers = {
+      Paragraph: (props) => {
+        return (
+          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
+            <p>{props.children}</p>
+            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+            </QuestionMarkWrapper>
+          </QuestionWrapper>
+        )
+      },
+      List: (props) => {
+        return (
+          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
+            {ReactRenderer.renderers.List(props)}
+            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+            </QuestionMarkWrapper>
+          </QuestionWrapper>
+        )
+      },
       CodeBlock (props) {
         const className = props.language && 'language-' + props.language
         return (
@@ -104,7 +141,12 @@ export default class Markdown extends React.Component<Props, {}> {
         //   return <Sharing />
         // }
 
-        return ReactRenderer.renderers.HtmlBlock(props)
+        return (
+          <div className={$p.bgrRed}>
+            <h1>Hallo</h1>
+            {ReactRenderer.renderers.HtmlBlock(props)}
+          </div>
+        )
       },
     }
 
@@ -117,5 +159,16 @@ export default class Markdown extends React.Component<Props, {}> {
         {renderer.render(this.props.ast)}
       </Container>
     )
+  }
+
+  private openChat (message: string) {
+    if (!Smooch.isOpened()) {
+      Smooch.open()
+    }
+    if (!window.localStorage.getItem('chat_initiated')) {
+      Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
+        .then(() => Smooch.sendMessage(message.substr(0, 200) + '...'))
+        .then(() => window.localStorage.setItem('chat_initiated', 'true'))
+    }
   }
 }
