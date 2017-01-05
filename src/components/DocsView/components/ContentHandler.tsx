@@ -15,7 +15,8 @@ import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
-import MultipleTopicBoxes from './Content/MultipleTopicBoxes'
+import {getAliasFromUrl} from '../../../utils/index'
+import * as Helmet from 'react-helmet'
 
 interface Props {
   location: any,
@@ -29,6 +30,14 @@ interface Props {
 
 interface Context {
   setIsLoading: (isLoading: boolean) => void
+}
+
+interface Meta {
+  name?: string
+  property?: string
+  content?: string
+  charset?: string
+  httpEquiv?: string
 }
 
 class ContentHandler extends React.Component<Props, {}> {
@@ -73,14 +82,34 @@ class ContentHandler extends React.Component<Props, {}> {
       return null
     }
 
-    const item = this.props.data.Item
+    const item: Item = this.props.data.Item
     const ast = new Parser().parse(atob(this.props.data.Item.body))
     const ContentContainer = styled.div`
        flex: 1 1 100px;
     `
 
+    let imageMeta: Meta[] = []
+
+    if (item.preview && item.preview.length > 0) {
+      imageMeta = imageMeta.concat([
+        { property: 'og:image', content: item.preview },
+        { name: 'twitter:image', content: item.preview },
+      ])
+    }
+
     return (
       <div onClick={this.onClick}>
+        <Helmet
+          title={item.shorttitle}
+          meta={[
+            { property: 'og:type', content: 'article' },
+            { property: 'og:title', content: item.title },
+            { property: 'og:description', content: item.description },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:description', content: item.description },
+            ...imageMeta,
+          ]}
+        />
         <DocsView location={this.props.location}>
           {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
           <ContentContainer>
@@ -89,12 +118,12 @@ class ContentHandler extends React.Component<Props, {}> {
               <Markdown
                 ast={ast}
                 layout={item.layout}
+                item={item}
               />
             </section>
             <Feedback />
             <RelatedContentFooter item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          <MultipleTopicBoxes item={item}/>
           </ContentContainer>
           {item.layout === 'FAQ' && <FAQSidebar/>}
         </DocsView>
@@ -122,8 +151,11 @@ const getItemQuery = gql`query getItem($alias: String) {
     layout
     tags
     lastModified
+    shorttitle
     title
+    description
     sourceFilePath
+    preview
     relatedFurther {
       alias
       shorttitle
@@ -141,8 +173,7 @@ const getItemQuery = gql`query getItem($alias: String) {
 
 const ContentHandlerWithData = graphql(getItemQuery, {
   options: (ownProps) => {
-    // get last element of a path that looks like this: /some/url/with-some-title-alias15235
-    const alias = ownProps.location.pathname.split('/').reverse()[0].split('-').reverse()[0]
+    const alias = getAliasFromUrl(ownProps.location.pathname)
     return {
       variables: {alias},
     }

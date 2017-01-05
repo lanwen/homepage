@@ -42,48 +42,55 @@ interface Props {
 export default class RelatedContentFooter extends React.Component<Props, {}> {
 
   render() {
+
     return (
       <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb60)}>
-        <More
-          className={cx($p.flex, $p.flexColumn, $p.pb25, $p.bgWhite, $p.mr25)}
-        >
-          <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
-            <div>
-              <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu)}>More about</span>
-              <span className={cx($p.green, $p.fw6, $p.f16)}>AUTHENTICATION</span>
-            </div>
-            <Tooltip/>
-          </div>
-          {this.props.item.relatedMore.map(item => (
-            <Link
-              to={`${item.path}-${item.alias}`}
-              key={item.alias}
-              className={cx($p.flex, $p.pb10, $p.pt25, $p.ph25, $p.noUnderline)}
+        <div className={cx($p.flex, $p.flexColumn)}>
+          {this.props.item.relatedMore.length > 0 && (
+            <More
+              className={cx($p.flex, $p.flexColumn, $p.pb25, $p.bgWhite, $p.mr25, $p.mb16)}
             >
-              <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                <CircleIcon type={item.layout}/>
+              <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
+                <div>
+                  <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu)}>More about</span>
+                  <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu)}>{this.props.item.title}</span>
+                </div>
+                <Tooltip text={this.props.item.description} />
               </div>
-              <div>
-                <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
-                <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
-              </div>
-            </Link>
-          ))}
-        </More>
-        <Further className={cx($p.mt96, $p.pl25)}>
-          <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
-          {this.props.item.relatedFurther.map(item => (
-            <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
-              <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                <CircleIcon type={item.layout}/>
-              </div>
-              <div>
-                <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
-                <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
-              </div>
-            </Link>
-          ))}
-        </Further>
+              {this.props.item.relatedMore.map(item => (
+                <Link
+                  to={`${item.path}-${item.alias}`}
+                  key={item.alias}
+                  className={cx($p.flex, $p.pb10, $p.pt25, $p.ph25, $p.noUnderline)}
+                >
+                  <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
+                    <CircleIcon type={item.layout}/>
+                  </div>
+                  <div>
+                    <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
+                    <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
+                  </div>
+                </Link>
+              ))}
+            </More>
+          )}
+        </div>
+        {this.props.item.relatedFurther.length > 0 && (
+          <Further className={cx($p.mt96, $p.pl25)}>
+            <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
+            {this.props.item.relatedFurther.map(item => (
+              <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
+                <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
+                  <CircleIcon type={item.layout}/>
+                </div>
+                <div>
+                  <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
+                  <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
+                </div>
+              </Link>
+            ))}
+          </Further>
+        )}
       </Container>
     )
   }

@@ -6,11 +6,16 @@ import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
-import { Layout } from '../../../../types/types'
+import { Layout, Item } from '../../../../types/types'
+import {childrenToString} from '../../../../utils/index'
+import QuestionMarkOnHover from './QuestionMarkOnHover'
+import YoutubeVideo from './YoutubeVideo'
+import * as Smooch from 'smooch'
 
 interface Props {
   ast: Node
   layout: Layout
+  item: Item
 }
 
 const Container = styled.div`
@@ -72,11 +77,44 @@ const Container = styled.div`
   }
 `
 
+const QuestionWrapper = styled.div`
+  .hover {
+    display: none;
+  }
+  &:hover .hover {
+    display: block;
+  }
+`
+
+const QuestionMarkWrapper = styled.div`
+  right: -40px;
+`
+
 export default class Markdown extends React.Component<Props, {}> {
 
   render() {
     // const self = this
     const renderers = {
+      Paragraph: (props) => {
+        return (
+          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
+            <p>{props.children}</p>
+            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+            </QuestionMarkWrapper>
+          </QuestionWrapper>
+        )
+      },
+      List: (props) => {
+        return (
+          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
+            {ReactRenderer.renderers.List(props)}
+            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))} />
+            </QuestionMarkWrapper>
+          </QuestionWrapper>
+        )
+      },
       CodeBlock (props) {
         return (
           <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
@@ -92,7 +130,8 @@ export default class Markdown extends React.Component<Props, {}> {
           </div>
         )
       },
-      HtmlBlock (props) {
+      HtmlBlock: (props) => {
+        const {literal} = props
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
         //   return <ContentEndpoint location={self.props.location} />
         // }
@@ -109,6 +148,13 @@ export default class Markdown extends React.Component<Props, {}> {
         //   return <Sharing />
         // }
 
+        if (literal.includes('iframe') && literal.includes('youtube')) {
+          const videoId = this.extractYoutubeVideoId(literal)
+          if (videoId) {
+            return <YoutubeVideo id={videoId} />
+          }
+        }
+
         return ReactRenderer.renderers.HtmlBlock(props)
       },
     }
@@ -122,5 +168,40 @@ export default class Markdown extends React.Component<Props, {}> {
         {renderer.render(this.props.ast)}
       </Container>
     )
+  }
+
+  private extractVideoUrl(literal) {
+    let rest = literal
+    const srcIndex = rest.indexOf('src="')
+    rest = rest.slice(srcIndex + 5, rest.length)
+    const quoteIndex = rest.indexOf('"')
+
+    return rest.slice(0, quoteIndex)
+  }
+
+  private extractVideoId(url) {
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i
+    const result = regex.exec(url)
+    if (result !== null) {
+      return result[1]
+    }
+
+    return null
+  }
+
+  private extractYoutubeVideoId(literal) {
+    return this.extractVideoId(this.extractVideoUrl(literal))
+  }
+
+  private openChat (message: string) {
+    console.log(message)
+    if (!Smooch.isOpened()) {
+      Smooch.open()
+    }
+    if (!window.localStorage.getItem('chat_initiated')) {
+      Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
+        .then(() => Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
+        .then(() => window.localStorage.setItem('chat_initiated', 'true'))
+    }
   }
 }

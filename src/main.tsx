@@ -12,11 +12,12 @@ import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
 import QuickstartPage from './components/DocsView/pages/QuickstartPage'
 import ReferencePage from './components/DocsView/pages/ReferencePage'
-import ResourcesPage from './components/DocsView/pages/ResourcesPage'
+import ResourcesPage from './components/DocsView/pages/ResourcesPage/ResourcesPage'
 import BlogPage from './components/DocsView/pages/BlogPage'
 import CommunityPage from './components/DocsView/pages/CommunityPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
 import RootView from './components/RootView'
+import * as Smooch from 'smooch'
 
 import './style'
 

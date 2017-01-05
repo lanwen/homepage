@@ -5,42 +5,52 @@ import styled from 'styled-components'
 import isValidElement = React.isValidElement
 
 const Container = styled.div`
-  ._nested {
-    display: none;
-    width: 300px;
+  .nested {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
-    top: ${$v.size38};
-    left: -210px;
     border-radius: 3px;
   }
   
-  &:hover ._nested {
+  .nested-parent {
+    top: 20px;
+    display: none;
+    width: 300px;
+    left: -210px;
+  }
+  
+  &:hover .nested-parent {
     display: flex;
     flex: 1;
     z-index: 10;
     
-  &:after {
-    content: " ";
-    position: absolute;
-    bottom: 100%;
-    left: 92%;
-    border: solid ${$v.size06};
-    border-color: transparent transparent white transparent;
-  }
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 4px;
+      left: 92%;
+      border: solid ${$v.size06};
+      border-color: transparent transparent white transparent;
+    }
   }
 `
 
-export default class Tooltip extends React.Component<{}, {}> {
+interface Props {
+  text: string
+}
+
+export default class Tooltip extends React.Component<Props, {}> {
   render() {
+    const {text} = this.props
     return (
       <Container className={cx($p.relative, $p.overflowVisible)}>
         <img
           src={require('../../../../assets/graphics/info.svg')}
           className={cx($p.bbox, $p.db, $p.pl60, $p.pointer)}
         />
-        <div className={cx('_nested', $p.bgWhite, $p.absolute)}>
-          <div className={cx($p.f16, $p.pv16, $p.pl25, $p.pr16, $p.black40)}>
-            A query enables you to declare data requirements in your app by supplying multiple fields.
+        <div className={cx('nested-parent', $p.absolute, $p.pt16)}>
+          <div className={cx('nested', $p.bgWhite)}>
+            <div className={cx($p.f16, $p.pv16, $p.pl25, $p.pr16, $p.black40)}>
+              {text}
+            </div>
           </div>
         </div>
       </Container>
