@@ -95,6 +95,20 @@ const ActiveTab = `
   }  
 `
 
+const TabHover = `
+  &:hover {
+    background: ${$v.gray10};
+    color: ${$v.gray50};
+  }
+`
+
+const TabTouch = `
+  &:active {
+    background: ${$v.gray10};
+    color: ${$v.gray50};
+  }
+`
+
 const Tab = styled.li`
   color: ${$v.gray30};
   letter-spacing: 1px;
@@ -118,16 +132,14 @@ const Tab = styled.li`
   }
   
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
-  
-  &:hover {
-    background: ${$v.gray10};
-    color: ${$v.gray50};
-  }
-  
+
   @media (max-width: ${breakpoints.p500}px) {
     font-size: ${$v.size14};
     padding: ${$v.size14};
   }  
+  
+  ${!isTouch && TabHover}
+  ${isTouch && TabTouch}
 `
 
 const ActiveExampleTab = `
@@ -150,18 +162,44 @@ const ActiveViewTab = `
   }
 `
 
+const ViewTabHover = `
+  &:hover {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
+`
+
+const ViewTabTouch = `
+  &:active {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
+`
+
 const ViewTab = styled(Tab)`
   background: ${$v.darkerBlue};
   color: ${$v.white30};
   font-size: ${$v.size12};
   padding: ${$v.size06};
+  
+  ${!isTouch && ViewTabHover}
+  ${isTouch && ViewTabTouch}
+  
+  ${props => props.active && ActiveViewTab};
+`
 
+const SchemaTabHover = `
   &:hover {
     background: ${$v.darkerBlue};
     color: ${$v.white50};
   }
-  
-  ${props => props.active && ActiveViewTab};
+`
+
+const SchemaTabTouch = `
+  &:active {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
 `
 
 const ActiveSchemaTab = `
@@ -176,11 +214,9 @@ const ActiveSchemaTab = `
 const SchemaTab = styled(Tab)`
   background: ${$v.darkerBlue};
   color: ${$v.white30};
-  
-  &:hover {
-    background: ${$v.darkerBlue};
-    color: ${$v.white50};
-  }
+
+  ${!isTouch && SchemaTabHover}
+  ${isTouch && SchemaTabTouch}
   
   ${props => props.active && ActiveSchemaTab};
 `
