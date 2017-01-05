@@ -174,7 +174,7 @@ export default class Header extends React.Component<{}, State> {
           opened={this.state.menuOpened}
         >
           {window.innerWidth < breakpoints.p750 &&
-            <div onClick={() => this.setState({ menuOpened: false } as State)} />
+            <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           <NavLink to='https://graph.cool/docs'>Docs</NavLink>
           <NavLink to='https://graph.cool/docs/guides'>FAQ</NavLink>
