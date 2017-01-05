@@ -91,6 +91,7 @@ const NavLink = styled(SplitLink)`
 const Signin = styled.div`
   @media (max-width: ${breakpoints.p750}px) {
     padding-top: ${$v.size16};
+    display: flex;
   }
 `
 
