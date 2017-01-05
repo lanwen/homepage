@@ -23,7 +23,7 @@ class ResourcesPage extends React.Component<Props, {}> {
 const ResourcesPageWithData = graphql(getItemsByLayout, {
   options: {
     variables: {
-      layout: 'REFERENCE',
+      layout: 'FAQ',
     },
   },
 })(ResourcesPage)

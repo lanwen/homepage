@@ -8,7 +8,6 @@ import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 import HorScrollbox from '../../HorScrollbox'
-require('codemirror/mode/javascript/javascript')
 
 const Root = styled.div`
   

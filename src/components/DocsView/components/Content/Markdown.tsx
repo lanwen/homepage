@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Node, Parser } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
-import { PrismCode } from 'react-prism'
+import * as CodeMirror from 'react-codemirror'
 import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
@@ -78,13 +78,18 @@ export default class Markdown extends React.Component<Props, {}> {
     // const self = this
     const renderers = {
       CodeBlock (props) {
-        const className = props.language && 'language-' + props.language
         return (
-          <pre className={cx($p.overflowScroll)}>
-            <PrismCode className={className}>
-              {props.literal}
-            </PrismCode>
-          </pre>
+          <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+            <CodeMirror
+              value={props.literal.trim()}
+              options={{
+                lineNumbers: true,
+                mode: props.language,
+                readOnly: true,
+                lineWrapping: true,
+              }}
+            />
+          </div>
         )
       },
       HtmlBlock (props) {
@@ -113,7 +118,7 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout === 'BLOG'}>
+      <Container biggerFont={this.props.layout !== 'REFERENCE'}>
         {renderer.render(this.props.ast)}
       </Container>
     )
