@@ -142,10 +142,7 @@ export default class Markdown extends React.Component<Props, {}> {
         // }
 
         return (
-          <div className={$p.bgrRed}>
-            <h1>Hallo</h1>
-            {ReactRenderer.renderers.HtmlBlock(props)}
-          </div>
+            ReactRenderer.renderers.HtmlBlock(props)
         )
       },
     }
