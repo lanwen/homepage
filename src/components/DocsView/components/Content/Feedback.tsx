@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
+import NegativeFeedback from './NegativeFeedback'
 
 export default class Feedback extends React.Component<{}, {}> {
 
@@ -21,6 +22,7 @@ export default class Feedback extends React.Component<{}, {}> {
           />
           <div className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>No</div>
         </div>
+        <NegativeFeedback/>
       </div>
     )
   }

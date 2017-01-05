@@ -13,12 +13,12 @@ interface State {
 
 export default class RootView extends React.Component<Props, State> {
 
-  state = {
-    isLoading: false,
-  }
-
   static childContextTypes = {
     setIsLoading: React.PropTypes.func.isRequired,
+  }
+
+  state = {
+    isLoading: false,
   }
 
   getChildContext() {

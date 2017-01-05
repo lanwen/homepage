@@ -70,6 +70,7 @@ const Separator = styled.div`
 `
 
 const Switch = styled.div`
+  margin-top: -${$v.size16};
   transition: opacity ${$v.duration} linear;
   
   &:hover {
@@ -126,7 +127,7 @@ export default class QueryBox extends React.Component<Props, State> {
             <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
             { window.innerWidth < breakpoints.p500 &&
             <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pr16, $p.pointer)}
+              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
               onClick={() => this.setState({ responseVisible: true } as State)}
             >
               Response
@@ -157,7 +158,7 @@ export default class QueryBox extends React.Component<Props, State> {
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
             { window.innerWidth < breakpoints.p500 &&
             <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pointer)}
+              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
               onClick={() => this.setState({ responseVisible: false } as State)}
             >
               <Icon
@@ -172,7 +173,7 @@ export default class QueryBox extends React.Component<Props, State> {
               Query
             </Switch>
             }
-            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25, $p.pr16)}>Response</div>
+            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
           </div>
           <ResultViewer value={this.state.result}/>
         </CodeSection>
