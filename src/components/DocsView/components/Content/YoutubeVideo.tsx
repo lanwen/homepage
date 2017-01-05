@@ -31,8 +31,8 @@ const VideoWrapper = styled.div`
 `
 
 const Container = styled.div`
-  margin-left: -50px;
-  margin-right: -50px;
+  margin-left: -70px;
+  margin-right: -70px;
 `
 
 export default class YoutubeVideo extends React.Component<Props, {}> {
