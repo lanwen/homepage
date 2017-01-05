@@ -4,12 +4,7 @@ import { $p } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
 import { Item } from '../../../../types/types'
-<<<<<<< HEAD
-
-=======
-import GoToConsole from '../Header/GoToConsole'
 import BreadCrumb from './BreadCrumb'
->>>>>>> 3b9d3335d20ac1e0ea5ddaca5ddaa2338b4895f1
 
 interface Props {
   item: Item
