@@ -5,12 +5,9 @@ import { $p, Icon, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
-<<<<<<< HEAD
-=======
 import GoToConsole from './GoToConsole'
 import EndpointPopup from './EndpointPopup'
 import * as cookiestore from 'cookiestore'
->>>>>>> 3b9d3335d20ac1e0ea5ddaca5ddaa2338b4895f1
 
 const Root = styled.div`
   justify-content: space-between;
