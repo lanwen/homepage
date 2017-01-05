@@ -5,7 +5,6 @@ import { $p, Icon, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
-import GoToConsole from './GoToConsole'
 import EndpointPopup from './EndpointPopup'
 import * as cookiestore from 'cookiestore'
 
