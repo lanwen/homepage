@@ -9,6 +9,7 @@ import { $p, $v } from 'graphcool-styles'
 import { Layout, Item } from '../../../../types/types'
 import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
+import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
 
 interface Props {
@@ -124,7 +125,8 @@ export default class Markdown extends React.Component<Props, {}> {
           </pre>
         )
       },
-      HtmlBlock (props) {
+      HtmlBlock: (props) => {
+        const {literal} = props
         // if (props.literal.indexOf('__INJECT_GRAPHQL_ENDPOINT__') > -1) {
         //   return <ContentEndpoint location={self.props.location} />
         // }
@@ -141,9 +143,14 @@ export default class Markdown extends React.Component<Props, {}> {
         //   return <Sharing />
         // }
 
-        return (
-            ReactRenderer.renderers.HtmlBlock(props)
-        )
+        if (literal.includes('iframe') && literal.includes('youtube')) {
+          const videoId = this.extractYoutubeVideoId(literal)
+          if (videoId) {
+            return <YoutubeVideo id={videoId} />
+          }
+        }
+
+        return ReactRenderer.renderers.HtmlBlock(props)
       },
     }
 
@@ -158,13 +165,37 @@ export default class Markdown extends React.Component<Props, {}> {
     )
   }
 
+  private extractVideoUrl(literal) {
+    let rest = literal
+    const srcIndex = rest.indexOf('src="')
+    rest = rest.slice(srcIndex + 5, rest.length)
+    const quoteIndex = rest.indexOf('"')
+
+    return rest.slice(0, quoteIndex)
+  }
+
+  private extractVideoId(url) {
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i
+    const result = regex.exec(url)
+    if (result !== null) {
+      return result[1]
+    }
+
+    return null
+  }
+
+  private extractYoutubeVideoId(literal) {
+    return this.extractVideoId(this.extractVideoUrl(literal))
+  }
+
   private openChat (message: string) {
+    console.log(message)
     if (!Smooch.isOpened()) {
       Smooch.open()
     }
     if (!window.localStorage.getItem('chat_initiated')) {
       Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
-        .then(() => Smooch.sendMessage(message.substr(0, 200) + '...'))
+        .then(() => Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
         .then(() => window.localStorage.setItem('chat_initiated', 'true'))
     }
   }

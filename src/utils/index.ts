@@ -8,10 +8,16 @@ export function childrenToString(children): string {
     return children
   }
 
+  if (typeof children === 'undefined') {
+    return ''
+  }
+
   return children
     .map((el) => {
       if (typeof el === 'string') {
         return el
+      } else if (el.type === 'img') {
+        return el.props.src
       } else {
         return childrenToString(el.props.children)
       }
