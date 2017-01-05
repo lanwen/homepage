@@ -36,6 +36,7 @@ interface Props {
   icon: string,
   title: string,
   description: string,
+  comingSoon?: boolean,
 }
 
 export default class Overlay extends React.Component<Props, {}> {
@@ -52,8 +53,10 @@ export default class Overlay extends React.Component<Props, {}> {
           <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32}/>
         </IconContainer>
         <h4 className={cx($g.uppercaseLabel, $p.darkBlue)}>{this.props.title}</h4>
-        <ComingSoonTag/>
-        <p className={cx($p.f16, $p.fw4, $p.black50, $p.mt25)}>{this.props.description}</p>
+        {this.props.comingSoon && <ComingSoonTag/>}
+        <p className={cx($p.f16, $p.fw4, $p.black50, $p.mt25)}>
+          {this.props.description}
+        </p>
       </Root>
     )
   }

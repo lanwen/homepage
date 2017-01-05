@@ -80,21 +80,25 @@ export default class Fields extends React.Component<{}, {}> {
             icon='permission'
             title='Permissions'
             description='Integrate with existing authentication system or run arbitrary code to decide who can see and do what' // tslint:disable-line
+            comingSoon
           />
           <Field
             icon='validation'
             title='Validation'
             description='Make sure your data stays consistent by performing custom validation before saving new data'
+            comingSoon
           />
           <Field
             icon='query'
             title='Mutations/Queries'
             description='Extend your GraphQL schema with custom fields and mutations that can integrate with legacy or third party systems' // tslint:disable-line
+            comingSoon
           />
           <Field
             icon='fields'
             title='Computed Fields'
             description='Add data display logic to your schema with Custom Fields. displayName could return userName if available and fall back to firstName and lastName concatenated' // tslint:disable-line
+            comingSoon
           />
         </Container>
         {window.innerWidth <= breakpoints.p650 &&
