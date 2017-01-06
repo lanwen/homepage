@@ -12,6 +12,7 @@ import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
 import MarkdownGraphiQL, {dslValid} from './MarkdownGraphiQL'
+import ExampleBox from './ExampleBox'
 
 interface Props {
   ast: Node
@@ -156,7 +157,11 @@ export default class Markdown extends React.Component<Props, {}> {
         // }
 
         if (literal.includes('GITHUB_EXAMPLE')) {
-          return <h1>Hallooo</h1>
+          return (
+            <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
+              <ExampleBox literal={literal} item={this.props.item} />
+            </div>
+          )
         }
 
         if (literal.includes('iframe') && literal.includes('youtube')) {
