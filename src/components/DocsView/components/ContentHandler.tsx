@@ -121,7 +121,7 @@ class ContentHandler extends React.Component<Props, {}> {
                 item={item}
               />
             </section>
-            <Feedback />
+            <Feedback item={item} />
             <RelatedContentFooter item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
           </ContentContainer>
