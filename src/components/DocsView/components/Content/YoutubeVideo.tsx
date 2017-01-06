@@ -37,7 +37,7 @@ const Container = styled.div`
 
 export default class YoutubeVideo extends React.Component<Props, {}> {
   state = {
-    videoActive: false
+    videoActive: false,
   }
 
   render() {

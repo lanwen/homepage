@@ -175,8 +175,6 @@ const Tab = styled.li`
   cursor: pointer;
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
   
-
-  
   ${!isTouch && TabHover}
   ${isTouch && TabTouch}
   
