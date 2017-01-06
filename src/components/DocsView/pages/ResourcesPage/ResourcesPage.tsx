@@ -3,10 +3,14 @@ import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
 import { getItemsByLayout } from '../../fragments/getItemsByLayout'
 import * as cx from 'classnames'
-import { $p, Icon, $v } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import TutorialsContent from './TutorialsContent'
 import TopicSeeAll from './TopicSeeAll'
+import ChooseTechnology from './ChooseTechnology'
+import FAQContent from './FAQContent'
+import { breakpoints } from '../../../../utils/constants'
+
 
 interface Props {
   data: any
@@ -14,22 +18,37 @@ interface Props {
 
 const Container = styled.div`
   margin-top: 200px;
+  
+  @media (max-width: ${breakpoints.p1360}px) {
+    padding-left: ${$v.size38};
+    padding-right ${$v.size38};
+  }
+  @media (max-width: ${breakpoints.p1250}px) {
+    padding-left: ${$v.size20};
+    padding-right ${$v.size20};
+  }
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding-left: ${$v.size60};
+    padding-right ${$v.size60};
+  }
+   @media (max-width: ${breakpoints.p900}px) {
+    padding-left: ${$v.size25};
+    padding-right ${$v.size25};
+   }
+   @media (max-width: ${breakpoints.p750}px) {
+    padding-left: ${$v.size16};
+    padding-right ${$v.size16};
+   }
 `
 
 const Text = styled.div`
-  flex: 0 0 800px;
-`
-
-const CircleTutorial = styled.div`
-  width: ${$v.size38};
-  height: ${$v.size38};
-  background-color: rgba(164, 3, 111, 0.2);
+  flex: 0 0 60%;
 `
 
 class ResourcesPage extends React.Component<Props, {}> {
   render() {
     return (
-      <Container className={cx($p.ph60, $p.pb96)}>
+      <Container className={cx($p.ph60, $p.pb96, $p.bgBlack04, $p.pt60)}>
         <h1 className={cx($p.tc)}>
           Welcome to our resources
         </h1>
@@ -42,77 +61,62 @@ class ResourcesPage extends React.Component<Props, {}> {
                 questions.
               </Text>
             </div>
-            <div className={cx($p.flex, $p.itemsCenter)}>
-              <CircleTutorial className={cx($p.flex, $p.justifyCenter, $p.itemsCenter, $p.br100)}>
-                <Icon
-                  src={require('graphcool-styles/icons/fill/docsExample.svg')}
-                  width={50}
-                  height={50}
-                  fill={true}
-                  color='#F18F01'
-                />
-              </CircleTutorial>
-              <div className={cx($p.black30, $p.f25, $p.fw4, $p.pa10, $p.mla)}>Examples</div>
-            </div>
-            <div>
-              <div className={cx($p.f25, $p.tc, $p.mt16)}>Choose your favourite technology</div>
-              <div className={cx($p.flex, $p.justifyCenter, $p.pv60)}>
-                <img src={require('../../../../assets/graphics/ResourcesOverview/angular-icon.svg')}
-                     height={90}
-                     width={90}
-                     className={cx($p.mh25)}
-                />
-                <img src={require('../../../../assets/graphics/ResourcesOverview/apollostack.svg')}
-                     height={90}
-                     width={90}
-                     className={cx($p.mh25)}
-                />
-                <img src={require('../../../../assets/graphics/ResourcesOverview/react.svg')}
-                     height={90}
-                     width={90}
-                     className={cx($p.mh25)}
-                />
-                <img src={require('../../../../assets/graphics/ResourcesOverview/vue.svg')}
-                     height={90}
-                     width={90}
-                     className={cx($p.mh25)}
-                />
-                <img src={require('../../../../assets/graphics/ResourcesOverview/relay.svg')}
-                     height={90}
-                     width={90}
-                     className={cx($p.mh25)}
-                />
-              </div>
-              <p className={cx($p.black60, $p.f25, $p.tc)}>or see <a href='/'>all examples</a></p>
-            </div>
+            <ChooseTechnology/>
             <TopicSeeAll
               category='Tutorials'
               src={require('graphcool-styles/icons/fill/docsTutorial.svg')}
-              color='#A4036F'/>
-            <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.pv25)}>
+              color='#A4036F'
+              backgroundColor='rgba(164, 3, 111, 0.2)'
+            />
+            <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.pv38, $p.mb60)}>
               <TutorialsContent
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
                 src={require('../../../../assets/graphics/Tutorial#1.png')}
+                updated='last edited a week ago'
               />
               <TutorialsContent
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
                 src={require('../../../../assets/graphics/Tutorial#1.png')}
+                updated='last edited a week ago'
               />
               <TutorialsContent
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
                 src={require('../../../../assets/graphics/Tutorial#1.png')}
+                updated='last edited a week ago'
               />
             </div>
             <TopicSeeAll
               category='FAQ'
               src={require('graphcool-styles/icons/fill/docsQuestion.svg')}
-              color='#31B1B4'/>
+              color='#31B1B4'
+              backgroundColor='rgba(49, 177, 180, 0.2)'
+            />
+            <div className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.flexRow, $p.mb60, $p.pv38)}>
+              <FAQContent
+                title='Why do I keep recieving null back on my query to your server?'
+                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                tags='#authentication  #Auth0'
+                updated='last edited a week ago'
+              />
+              <FAQContent
+                title='Why do I keep recieving null back on my query to your server?'
+                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                tags='#authentication  #Auth0'
+                updated='last edited a week ago'
+              />
+              <FAQContent
+                title='Why do I keep recieving null back on my query to your server?'
+                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                tags='#authentication  #Auth0'
+                updated='last edited a week ago'
+              />
+            </div>
           </div>
         )}
       </Container>
