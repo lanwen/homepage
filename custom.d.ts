@@ -8,6 +8,7 @@ declare module 'graphiql'
 declare module 'graphiql/*'
 declare module 'react-collapsible'
 declare module 'react-youtube'
+declare module 'front-matter'
 
 declare var Smooch: any
 declare var __SMOOCH_TOKEN__: string

@@ -23,7 +23,7 @@ class BlogPage extends React.Component<Props, {}> {
 const BlogPageWithData = graphql(getItemsByLayout, {
   options: {
     variables: {
-      layout: 'BLOG',
+      layout: 'REFERENCE',
     },
   },
 })(BlogPage)
