@@ -11,7 +11,7 @@ import { childrenToString } from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
-import MarkdownGraphiQL from './MarkdownGraphiQL'
+import MarkdownGraphiQL, {dslValid} from './MarkdownGraphiQL'
 
 interface Props {
   ast: Node
@@ -117,7 +117,7 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       CodeBlock (props) {
-        if (props.language === 'graphql') {
+        if (props.language === 'graphql' && dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
@@ -154,6 +154,10 @@ export default class Markdown extends React.Component<Props, {}> {
         // if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
         //   return <Sharing />
         // }
+
+        if (literal.includes('GITHUB_EXAMPLE')) {
+          return <h1>Hallooo</h1>
+        }
 
         if (literal.includes('iframe') && literal.includes('youtube')) {
           const videoId = this.extractYoutubeVideoId(literal)

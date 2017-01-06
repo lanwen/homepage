@@ -37,6 +37,18 @@ function parseDSL(literal: string): DSL {
   }
 }
 
+export function dslValid(literal: string): boolean {
+  const fm: Frontmatter = frontmatter(literal)
+
+  const [queryPart, dataPart] = fm.body.split('---')
+
+  if (!fm.attributes['endpoint'] || fm.body.split('---').length !== 2) {
+    return false
+  }
+
+  return true
+}
+
 export default class MarkdownGraphiQL extends React.Component<Props, State> {
 
   constructor(props) {
