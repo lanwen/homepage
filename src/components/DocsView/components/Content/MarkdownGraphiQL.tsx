@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as GraphiQL from 'graphiql'
-import {$p, Icon, $v} from 'graphcool-styles'
+import { $p, Icon, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
 
@@ -50,13 +50,18 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
   render() {
     const dsl = parseDSL(this.props.literal)
 
-    const graphQLFetcher = (graphQLParams) => {
-      return fetch(dsl.endpoint, {
+    const graphQLFetcher = async(graphQLParams) => {
+      if (dsl.disabled && !graphQLParams.query.includes('IntrospectionQuery')) {
+        return JSON.parse(dsl.data)
+      }
+
+      const response = await fetch(dsl.endpoint, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(graphQLParams),
       })
-        .then(response => response.json())
+
+      return response.json()
     }
 
     return (
