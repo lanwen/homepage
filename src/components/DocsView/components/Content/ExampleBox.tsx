@@ -63,13 +63,13 @@ export default class ExampleBox extends React.Component<Props, {}> {
           <div className={cx($p.flex, $p.itemsStart)}>
             <div className={cx($p.mr60)}>
               <div className={cx($p.ttu,$p.f14, $p.lightgreen50, $p.mb6, $p.fw6)}>Example</div>
-              <div className={cx($p.green, $p.f20, $p.fw6)}>{item.shorttitle}</div>
+              <div className={cx($p.green, $p.f20, $p.fw6)}>{data.title}</div>
             </div>
             <GitSquare
               className={cx($p.flex, $p.ph10, $p.pv6, $p.ba, $p.bBlack20, $p.itemsCenter, $p.noUnderline)}
               href={data.url}
             >
-              <img src={require('../../../../assets/graphics/logos/githubBlackFill.svg')}/>
+              <img src={require('../../../../assets/graphics/logos/githubBlackFill.svg')} />
               <div className={cx($p.f10, $p.ml6)}>Star</div>
             </GitSquare>
           </div>
@@ -84,8 +84,12 @@ export default class ExampleBox extends React.Component<Props, {}> {
             </WhiteSquare>
           </a>
         </div>
-        <a href={data.url}
-           className={cx($p.mt38, $p.tc, $p.black30, $p.f16)}>Show Instructions</a>
+        <a
+          href={data.url}
+          className={cx($p.mt38, $p.tc, $p.black30, $p.f16)}
+        >
+          Show Instructions
+        </a>
       </Container>
     )
   }
