@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Example from './Example'
-import { maxWidth, breakpoints, movingDuration } from '../../../utils/constants'
+import { maxWidth, breakpoints, movingDuration, isTouch } from '../../../utils/constants'
 import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
@@ -144,9 +144,21 @@ const ActiveTab = `
   color: ${$v.darkerBlue};
   border-radius: 2px;
   cursor: default;
-  
+
   &:hover {
     color: ${$v.darkerBlue};
+  }
+`
+
+const TabHover = `
+  &:hover {
+    color: ${$v.white60};
+  }
+`
+
+const TabTouch = `
+  &:active {
+    color: ${$v.white60};
   }
 `
 
@@ -162,20 +174,23 @@ const Tab = styled.li`
   cursor: pointer;
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
   
-  &:hover {
-    color: ${$v.white60};
-  }
+  ${!isTouch && TabHover}
+  ${isTouch && TabTouch}
   
   ${props => props.active && ActiveTab};
+`
+
+const SwitchHover = `
+  &:hover {
+    opacity: .8;
+  }
 `
 
 const Switch = styled.div`
   margin-top: -${$v.size16};
   transition: opacity ${$v.duration} linear;
   
-  &:hover {
-    opacity: .8;
-  }
+  ${!isTouch && SwitchHover}
 `
 
 const CodeContainer = styled.div`

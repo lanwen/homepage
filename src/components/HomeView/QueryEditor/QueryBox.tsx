@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
-import { breakpoints } from '../../../utils/constants'
+import { breakpoints, isTouch } from '../../../utils/constants'
 import { GraphQLSchema } from 'graphql/type/schema'
 import { getSchema, queryEndpoint } from '../../../utils/graphql'
 import { QueryEditor } from 'graphiql/dist/components/QueryEditor'
@@ -69,13 +69,24 @@ const Separator = styled.div`
   }
 `
 
-const Switch = styled.div`
-  margin-top: -${$v.size16};
-  transition: opacity ${$v.duration} linear;
-  
+const SwitchHover = `
   &:hover {
     opacity: .8;
   }
+`
+
+const SwitchTouch = `
+  &:active {
+    opacity: .8;
+  }
+`
+
+const Switch = styled.div`
+  margin-top: -${$v.size16};
+  transition: opacity ${$v.duration} linear;
+
+  ${!isTouch && SwitchHover}
+  ${isTouch && SwitchTouch}
 `
 
 interface Props {
