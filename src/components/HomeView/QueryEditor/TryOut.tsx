@@ -29,10 +29,8 @@ const Steps = styled.div`
 `
 
 const Step = styled.div`
-  
   display: flex;
   align-items: center;
-  
   margin-top: ${$v.size25};
   
   &:before {
