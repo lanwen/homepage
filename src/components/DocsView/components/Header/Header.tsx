@@ -39,6 +39,10 @@ const NavigationLinkActive = `
     width: 100%;
     height: 0px;
   }
+  
+  @media (max-width: ${breakpoints.p1200}px) {
+    display: none;
+    }
 `
 
 const NavigationLink = styled(Link)`
@@ -376,7 +380,7 @@ export default class Header extends React.Component<{}, State> {
   }
 
   private closeMenu = () => {
-    this.setState({ menuOpened: false } as State)
+    this.setState({menuOpened: false} as State)
   }
 
   private openEndpointPopup = () => {

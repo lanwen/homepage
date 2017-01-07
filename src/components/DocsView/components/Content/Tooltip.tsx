@@ -14,7 +14,7 @@ const Container = styled.div`
     top: 20px;
     display: none;
     width: 300px;
-    left: -210px;
+    left: -208px;
   }
   
   &:hover .nested-parent {
@@ -25,7 +25,7 @@ const Container = styled.div`
     &:after {
       content: " ";
       position: absolute;
-      top: 4px;
+      top: 5px;
       left: 92%;
       border: solid ${$v.size06};
       border-color: transparent transparent white transparent;
