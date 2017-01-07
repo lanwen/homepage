@@ -35,7 +35,8 @@ export default class TutorialsContent extends React.Component<Props, {}> {
   render() {
     return (
       <Basis className={cx(
-        $p.flexColumn, $p.flex, $p.flexWrap, $p.bgWhite, $p.mra, $p.mla, $p.overflowHidden, $p.br2, $p.pb25, $p.db)}>
+        $p.flexColumn, $p.flex, $p.flexWrap, $p.bgWhite, $p.mra, $p.mla, $p.overflowHidden, $p.br2, $p.pb25, $p.db)
+      }>
         <img
           className={cx($p.br2)}
           src={this.props.src}

@@ -39,7 +39,8 @@ export default class FAQContent extends React.Component<Props, {}> {
   render() {
     return (
       <Basis className={cx(
-        $p.flexColumn, $p.flex, $p.flexWrap, $p.bgWhite, $p.mra, $p.mla, $p.overflowHidden, $p.br2, $p.pb25)}>
+        $p.flexColumn, $p.flex, $p.flexWrap, $p.bgWhite, $p.mra, $p.mla, $p.overflowHidden, $p.br2, $p.pb25)
+      }>
         <Content className={$p.ph25}>
           <div className={cx($p.mt38, $p.f25, $p.fw6)}>
             {this.props.title}
