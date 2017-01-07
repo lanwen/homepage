@@ -139,7 +139,9 @@ class Search extends React.Component<Props,{}> {
   }
 
   private hideResults = () => {
-    this.setState({resultsActive: false} as State)
+    setTimeout(() => {
+      this.setState({resultsActive: false} as State)
+    }, 100)
   }
   private showResults = () => {
     this.setState({resultsActive: true} as State)
@@ -150,6 +152,9 @@ class Search extends React.Component<Props,{}> {
   private onChange = (e: any) => {
     this.setState({query: e.target.value})
     this.search(e.target.value)
+    if (e.target.value.length === 0) {
+      this.setState({activeIndex: 0})
+    }
   }
 
   private search = throttle(

@@ -7,11 +7,11 @@ import CircleIcon from '../CircleIcon'
 import isValidElement = React.isValidElement
 import {breakpoints} from '../../../../utils/constants'
 
-const NavigationLinkActive = `
+const NavigationActive = `
   &:before {
     content: "";
     position: absolute;
-    top: calc(-${$v.size38} - ${$v.size10} - 6px);
+    top: calc(-${$v.size38} - 6px);
     left: 0;
     border: 6px solid ${$v.green};
     border-radius: 2px;
@@ -26,8 +26,6 @@ const NavigationLink = styled(Link)`
   &:hover {
     color: ${$v.gray50};
   }
-  
-  ${props => props.active && NavigationLinkActive}
 `
 
 const Container = styled.div`
@@ -48,6 +46,8 @@ const Container = styled.div`
     flex: 1;
     z-index: 10;
   }
+  
+  ${props => props.active && NavigationActive}
 `
 
 interface Props {
@@ -57,7 +57,10 @@ interface Props {
 export default class ResourcesHover extends React.Component<Props, {}> {
   render() {
     return (
-      <Container className={cx($p.relative, $p.overflowVisible)}>
+      <Container
+        className={cx($p.relative, $p.overflowVisible)}
+        active={location.pathname === '/docs/resources'}
+      >
         <div
           className={cx(
             $p.mt10,

@@ -186,7 +186,7 @@ export default class Header extends React.Component<{}, State> {
         >
           Quickstart
         </NavigationLink>
-        <ResourcesHover active={false}/>
+        <ResourcesHover />
         <NavigationLink
           className={cx(
             $p.mt10,
