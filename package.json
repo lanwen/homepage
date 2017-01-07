@@ -39,6 +39,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",
     "react": "^15.4.1",
+    "react-algoliasearch": "^2.0.0",
     "react-apollo": "^0.7.1",
     "react-codemirror": "^0.3.0",
     "react-copy-to-clipboard": "^4.2.3",
