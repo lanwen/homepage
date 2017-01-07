@@ -13,6 +13,7 @@
     "test": "tslint \"src/**/*.ts{,x}\""
   },
   "dependencies": {
+    "@types/algoliasearch": "^3.18.0",
     "@types/chai": "^3.4.34",
     "@types/classnames": "^0.0.32",
     "@types/graphql": "^0.8.2",
@@ -24,6 +25,7 @@
     "@types/react-modal": "^1.6.0",
     "@types/react-router": "^2.0.41",
     "@types/whatwg-fetch": "^0.0.32",
+    "algoliasearch": "^3.20.3",
     "apollo-client": "^0.5.20",
     "calculate-size": "^1.1.1",
     "classnames": "^2.2.5",
@@ -45,6 +47,7 @@
     "react-copy-to-clipboard": "^4.2.3",
     "react-dom": "^15.4.1",
     "react-helmet": "^3.2.3",
+    "react-instantsearch": "^2.1.0",
     "react-modal": "^1.6.5",
     "react-router": "^2.8.0",
     "react-router-scroll": "^0.4.1",

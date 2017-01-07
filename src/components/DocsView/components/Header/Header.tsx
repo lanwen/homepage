@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
 import EndpointPopup from './EndpointPopup'
+import Search from './Search'
 import * as cookiestore from 'cookiestore'
 
 const Root = styled.div`
@@ -54,33 +55,6 @@ const NavigationLink = styled(Link)`
   }
   
   ${props => props.active && NavigationLinkActive}
-`
-
-const Searchbox = styled.input`
-  width: 300px;
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px rgba(0,0,0,.15);
-  border-radius: 2px;
-  font-size: 16px;
-  background-color: #fff;
-  padding: 12px 20px 12px 46px;
-  transition: all .3s;
-  @media (max-width: ${breakpoints.p1360}px) {
-    width: 250px;
-  }
-  
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    transition: .3s white;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    transition: .3s white;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    transition: .3s white;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    transition: .3s white;
-  }
 `
 
 const Hamburger = styled.div`
@@ -279,22 +253,6 @@ export default class Header extends React.Component<{}, State> {
       </LogoLink>
     )
 
-    const searchIcon = (
-      <SearchIcon
-        width={16}
-        height={16}
-        src={require('graphcool-styles/icons/stroke/search.svg')}
-        stroke={true}
-        color={$v.black}
-        strokeWidth={2}
-        className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16)}
-      />
-    )
-
-    const searchBox = (
-      <Searchbox type='text' name='search' placeholder='Search..'/>
-    )
-
     const endpoints = (
       loggedIn ? (
         <NavigationLink className={cx($p.mt6, $p.pointer)}>
@@ -328,10 +286,7 @@ export default class Header extends React.Component<{}, State> {
     const WideHeader = () => (
       <Root className={cx($p.flex, $p.pv38)}>
         {logo}
-        <div className={cx('search', $p.relative)}>
-          {searchIcon}
-          {searchBox}
-        </div>
+        <Search />
         {links}
         {endpoints}
       </Root>
@@ -344,10 +299,7 @@ export default class Header extends React.Component<{}, State> {
           <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
             <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
             <NavigationLink>
-              <form className={cx($p.pb16, $p.relative)}>
-                {searchIcon}
-                {searchBox}
-              </form>
+              <Search className={$p.pb16} />
             </NavigationLink>
             {links}
             {endpoints}
