@@ -3,6 +3,7 @@ import AnnoucementIcon from './AnnoucementIcon'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
+import { breakpoints } from '../../../../utils/constants'
 
 const LeftSide = styled.div`
   flex: 1 0 400px;
@@ -39,16 +40,23 @@ const Close = styled.div`
   }
 `
 
-const Picture = styled.img`
+const Info = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding-left: ${$v.size60};
+    padding-right: ${$v.size60};
+    }
 `
-
+const Picture = styled.img`
+  @media (max-width: ${breakpoints.p1000}px) {
+  }
+`
 export default class AnnoucementBox extends React.Component<{}, {}> {
   render() {
     return (
       <div className={cx($p.flex, $p.flexWrap, $p.mb96)}>
         <LeftSide className={cx($p.flex, $p.flexColumn, $p.bgBlack04, $p.flexWrap)}>
           <AnnoucementIcon/>
-          <div className={cx($p.mt38, $p.ph96)}>
+          <Info className={cx($p.mt38, $p.ph96)}>
             <h1 className={cx($p.f38, $p.fw3, $p.mb16)}>User authentication in GraphQL with Auth0 and Digits</h1>
             <div className={cx($p.flex, $p.black20, $p.itemsCenter, $p.mb38, $p.flexWrap)}>
               <p className={cx($p.f20, $p.pr25, $p.fw4)}>5 Nov 2016</p>
@@ -57,12 +65,10 @@ export default class AnnoucementBox extends React.Component<{}, {}> {
             <p className={cx($p.black60, $p.fw4, $p.f20, $p.mb60)}>
               So far we’ve need to configure multiple models and specify relationships between them. So far we’ve need to configure multiple models and specify relationships between them.
             </p>
-          </div>
+          </Info>
         </LeftSide>
-        <div className={cx($p.relative, $p.flex, $p.itemsStretch, $p.flexWrap)}>
-          <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.overflowHidden, $p.bgBlack04)}>
-            <Picture src={require('../../../../assets/graphics/Tutorial#1.png')}/>
-          </div>
+        <div className={cx($p.relative, $p.flex, $p.flexWrap, $p.itemsCenter, $p.bgBlack04)}>
+          <Picture src={require('../../../../assets/graphics/Tutorial#1.png')}/>
           <Close/>
         </div>
       </div>
