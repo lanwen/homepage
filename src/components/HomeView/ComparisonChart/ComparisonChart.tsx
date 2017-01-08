@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import styled from 'styled-components'
 import Cell from './Cell'
 import { breakpoints, maxWidth } from '../../../utils/constants'

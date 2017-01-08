@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../utils/constants'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
 
 const Root = styled.div`
   background-color: rgba(0, 0, 0, 0.03);

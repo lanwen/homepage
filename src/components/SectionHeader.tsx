@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../utils/constants'
+import { breakpoints } from '../utils/constants'
 
 const Root = styled.header`
   padding: ${$v.size96} ${$v.size38} ${$v.size60};

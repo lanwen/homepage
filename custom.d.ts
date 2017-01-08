@@ -14,6 +14,8 @@ declare module 'react-algoliasearch'
 declare var Smooch: any
 declare var __SMOOCH_TOKEN__: string
 
+declare var __BACKEND_ADDR__: string
+
 interface NodeModule {
   hot: { accept: Function }
 }

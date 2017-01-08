@@ -7,7 +7,7 @@ import { features } from './data'
 
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import Pagination from '../Pagination'
 
 const Root = styled.div`

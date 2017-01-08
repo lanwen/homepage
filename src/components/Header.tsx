@@ -160,7 +160,7 @@ export default class Header extends React.Component<{}, State> {
     const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
-      <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
+      <Root className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
         <Link to='/'>
           <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
         </Link>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import Field from './Field'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 

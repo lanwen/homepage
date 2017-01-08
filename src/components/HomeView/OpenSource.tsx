@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
 
 const Copy = styled.div`
   width: 60%;
