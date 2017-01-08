@@ -9,5 +9,7 @@ master | dev
 
 ```sh
 yarn
+
+set -x BACKEND_ADDR https://api.graph.cool
 yarn start
 ```
