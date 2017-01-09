@@ -26,7 +26,7 @@ export default class Info extends React.Component<{}, {}> {
 
           {/* CONTAINER FOR TWO COLUMNS */}
           <div className={cx($p.flex, $p.justifyBetween, $p.pv38, $p.ph38, $p.mt96)}>
-            
+
             {/* FIRST COLUMN */}
             <div className={cx($p.flex, $p.flexColumn, $p.pr60)}>
               <div className={cx($p.flex, $p.center)}>
@@ -43,10 +43,10 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.white, $p.ml16)}>What is a node?</div>
               </div>
               <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
-                A node is is simply dummy text of the 
-                printing and typesetting industry. 
-                Lorem Ipsum has been the industry’s standard dummy 
-                text ever since it to make a type specimen book              
+                A node is is simply dummy text of the
+                printing and typesetting industry.
+                Lorem Ipsum has been the industry’s standard dummy
+                text ever since it to make a type specimen book
               </div>
               <div className={cx($p.mt60, $p.center)}>
                 <Icon
@@ -74,15 +74,17 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.white, $p.ml16)}>What is an operation?</div>
               </div>
               <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
-                    There are three operation types: requests, 
-                    subscriptions & function calls            
+                    There are three operation types: requests,
+                    subscriptions & function calls
               </div>
 
               {/* Card 1: Requests */}
               <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph60, $p.pv25, $p.mb16)}>
                 <div className={cx($p.flex)}>
-                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Request:</div> 
-                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>A request is either a GraphQL query or mutation.</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Request:</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
+                    A request is either a GraphQL query or mutation.
+                  </div>
                 </div>
                 <div className={cx($p.flex)}>
                   <div className={cx($p.flex, $p.flexColumn, $p.pr16)}>
@@ -93,9 +95,9 @@ export default class Info extends React.Component<{}, {}> {
                         height={11}
                         width={183}
                       />
-                    </div>                    
+                    </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>750,000</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>750,000</div>
                       <a className={cx($p.white80, $p.f12, $p.pl4)} href=''>requests</a>
                     </div>
                   </div>
@@ -109,7 +111,7 @@ export default class Info extends React.Component<{}, {}> {
                       />
                     </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw6)}>2,000</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw6)}>2,000</div>
                       <a className={cx($p.white80, $p.f12, $p.ph4)} href=''>leaf nodes</a>
                       <div className={cx($p.white80, $p.f12)}>per request</div>
                     </div>
@@ -120,8 +122,10 @@ export default class Info extends React.Component<{}, {}> {
               {/* Card 2: Subscriptions */}
               <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph60, $p.pv25, $p.mb16)}>
                 <div className={cx($p.flex)}>
-                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Subscription:</div> 
-                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>A GraphQL subscription is triggered by a mutation.</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Subscription:</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
+                    A GraphQL subscription is triggered by a mutation.
+                  </div>
                 </div>
                 <div className={cx($p.flex)}>
                   <div className={cx($p.flex, $p.flexColumn, $p.pr16)}>
@@ -132,9 +136,9 @@ export default class Info extends React.Component<{}, {}> {
                         height={11}
                         width={183}
                       />
-                    </div>                    
+                    </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>5,000</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>5,000</div>
                       <a className={cx($p.white80, $p.f12, $p.pl4)} href=''>mutations</a>
                     </div>
                   </div>
@@ -148,7 +152,7 @@ export default class Info extends React.Component<{}, {}> {
                       />
                     </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw6)}>10,000</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw6)}>10,000</div>
                       <a className={cx($p.white80, $p.f12, $p.nowrap, $p.ph4)} href=''>concurrent subscriptions</a>
                     </div>
                   </div>
@@ -158,8 +162,10 @@ export default class Info extends React.Component<{}, {}> {
               {/* Card 3: Functions */}
               <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph60, $p.pv25)}>
                 <div className={cx($p.flex)}>
-                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Function calls:</div> 
-                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>Function calls are billed by execution time.</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw6)}>Function calls:</div>
+                  <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
+                    Function calls are billed by execution time.
+                  </div>
                 </div>
                 <div className={cx($p.flex)}>
                   <div className={cx($p.flex, $p.flexColumn, $p.pr16)}>
@@ -170,9 +176,9 @@ export default class Info extends React.Component<{}, {}> {
                         height={11}
                         width={183}
                       />
-                    </div>                    
+                    </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>1,000</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>1,000</div>
                       <a className={cx($p.white80, $p.f12, $p.pl4)} href=''>function calls</a>
                     </div>
                   </div>
@@ -186,7 +192,7 @@ export default class Info extends React.Component<{}, {}> {
                       />
                     </div>
                     <div className={cx($p.flex, $p.mt10)}>
-                      <div className={cx($p.white80, $p.f12, $p.fw6)}>300 ms</div> 
+                      <div className={cx($p.white80, $p.f12, $p.fw6)}>300 ms</div>
                       <div className={cx($p.white80, $p.f12, $p.pl4)}>per function call</div>
                     </div>
                   </div>
@@ -202,7 +208,7 @@ export default class Info extends React.Component<{}, {}> {
 
           {/*  */}
           <div className={cx($p.flex, $p.flexColumn, $p.ph25, $p.mt96)}>
-            
+
             {/* FIRST LINE */}
             <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38)}>
               <div className={cx($p.flex)}>
