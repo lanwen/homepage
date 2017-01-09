@@ -42,7 +42,11 @@ export function dslValid(literal: string): boolean {
 
   const [queryPart, dataPart] = fm.body.split('---')
 
-  if (!fm.attributes['endpoint'] || fm.body.split('---').length !== 2) {
+  if (fm.body.split('---').length !== 2) {
+    return false
+  }
+
+  if (!fm.attributes['disabled'] && !fm.attributes['endpoint']) {
     return false
   }
 

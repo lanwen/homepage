@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Node, Parser } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
+import * as slug from 'slug'
 import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
@@ -30,7 +31,7 @@ const Container = styled.div`
   }
   
   ul {
-    color: ${$v.gray60}; 
+    color: ${$v.gray60};
     list-style-position: inside;
     margin: ${$v.size25} 0;
   }
@@ -98,6 +99,19 @@ const QuestionMarkWrapper = styled.div`
   right: -40px;
 `
 
+const HeadingLink = styled.a`
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+  }
+  h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before {
+    content: "#";
+    position: absolute;
+    left: -1em;
+    padding-right: 1em;
+    color: ${$v.gray60};
+  }
+`
+
 export default class Markdown extends React.Component<Props, {}> {
 
   render() {
@@ -121,6 +135,17 @@ export default class Markdown extends React.Component<Props, {}> {
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
           </QuestionWrapper>
+        )
+      },
+      Heading: (props) => {
+        const id = slug(childrenToString(props.children), {lower: true})
+        const newProps = Object.assign({}, props, {
+          id,
+        })
+        return (
+          <HeadingLink href={`#${id}`} className={$p.noUnderline}>
+            {React.createElement('h' + props.level, getCoreProps(newProps), props.children)}
+          </HeadingLink>
         )
       },
       CodeBlock (props) {
@@ -225,5 +250,13 @@ export default class Markdown extends React.Component<Props, {}> {
       await Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
       window.localStorage.setItem('chat_initiated', 'true')
     }
+  }
+}
+
+function getCoreProps(props) {
+  return {
+    'key': props.nodeKey,
+    'data-sourcepos': props['data-sourcepos'],
+    'id': props.id,
   }
 }
