@@ -122,10 +122,12 @@ class ContentHandler extends React.Component<Props, {}> {
               />
             </section>
             <Feedback item={item} />
-            <RelatedContentFooter item={item}/>
+            {item.layout !== 'FAQ' && (
+              <RelatedContentFooter item={item}/>
+            )}
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
           </ContentContainer>
-          {item.layout === 'FAQ' && <FAQSidebar/>}
+          {item.layout === 'FAQ' && <FAQSidebar item={item} />}
         </DocsView>
       </div>
     )
@@ -149,6 +151,7 @@ const getItemQuery = gql`query getItem($alias: String) {
     alias
     path
     layout
+    beta
     tags
     lastModified
     shorttitle
@@ -158,12 +161,14 @@ const getItemQuery = gql`query getItem($alias: String) {
     preview
     relatedFurther {
       alias
+      title
       shorttitle
       path
       layout
     }
     relatedMore {
       alias
+      title
       shorttitle
       path
       layout

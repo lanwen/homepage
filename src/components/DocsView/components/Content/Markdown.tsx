@@ -21,6 +21,8 @@ interface Props {
 }
 
 const Container = styled.div`
+  margin-left: 50px;
+ 
   p { 
     line-height: 1.7;
     color: ${$v.gray60}; 
@@ -41,6 +43,7 @@ const Container = styled.div`
     border-left: ${$v.size06} solid ${$v.green50};
     padding: ${$v.size12} ${$v.size25};
     margin-left: 0;
+    width: 100%;
   }
   
   blockquote p {
@@ -76,6 +79,9 @@ const Container = styled.div`
   img {
     max-width: 100%;
     height: auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 0;
   }
 `
 
