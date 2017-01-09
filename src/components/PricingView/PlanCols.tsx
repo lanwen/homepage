@@ -25,7 +25,7 @@ export default class PlanCols extends React.Component<{}, {}> {
         <Box className={cx($p.flex, $p.justifyBetween, $p.center)}>
 
           {/* FIRST COLUMN - Startup */}
-          <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
@@ -115,7 +115,7 @@ export default class PlanCols extends React.Component<{}, {}> {
           </div>
 
           {/* SECOND COLUMN - Growth */}
-          <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* MOST POPULAR */}
             <div
@@ -210,7 +210,7 @@ export default class PlanCols extends React.Component<{}, {}> {
           </div>
 
           {/* THIRD COLUMN - Pro */}
-          <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
@@ -315,12 +315,12 @@ export default class PlanCols extends React.Component<{}, {}> {
           </div>
 
           {/* FOURTH COLUMN - Enterprise */}
-          <div className={cx($p.flex, $p.flexColumn, $p.bgGreen, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Enterprise</div>
 
-            <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
+            <div className={cx($p.flex, $p.justifyCenter, $p.mt16)}>
               <Icon
                 src={require('../../assets/icons/pricing/enterprise.svg')}
                 color={$v.green}
@@ -333,7 +333,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/unlimited.svg')}
               width={20}
               height={11}
-              className={cx($p.mv16)}
+              className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Nodes, Operations and Seats</span>&nbsp;
             </PricingDimension>
@@ -342,7 +342,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/protect.svg')}
               width={16}
               height={20}
-              className={cx($p.mv16)}
+              className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Infrastructure Multi-Datacenter</span>&nbsp;
             </PricingDimension>
@@ -351,7 +351,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/star.svg')}
               width={20}
               height={19}
-              className={cx($p.mv16)}
+              className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architects</span>&nbsp;
             </PricingDimension>
@@ -360,7 +360,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/sla.svg')}
               width={21}
               height={14}
-              className={cx($p.mv16)}
+              className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Enterprise-class Service Level Agreement</span>&nbsp;
             </PricingDimension>
