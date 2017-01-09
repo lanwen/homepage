@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Item} from '../../../../types/types'
-import {$p} from 'graphcool-styles'
+import {$p, Icon, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {Link} from 'react-router'
 
@@ -35,9 +35,17 @@ export default class BreadCrumb extends React.Component<Props, {}> {
       <div className={cx($p.flex, $p.flexRow)}>
         {crumbs.map((link, index) => (
           (index < count - 1) ? (
-            <div className={cx($p.flex, $p.flexRow)}>
+            <div className={cx($p.flex, $p.flexRow, $p.itemsCenter)}>
               <div href={link.href}>{link.text}</div>
-              <div className={$p.ph6}>{'>'}</div>
+              <Icon
+                src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                stroke={true}
+                className={$p.ph6}
+                strokeWidth={8}
+                color={$v.gray20}
+                height={12}
+                width={12}
+              />
             </div>
           ) : (
             <div>
