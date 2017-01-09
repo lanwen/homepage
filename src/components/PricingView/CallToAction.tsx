@@ -12,7 +12,6 @@ export default class CallToAction extends React.Component<{}, {}> {
   render() {
     return (
 
-
         <Box className={cx($p.flex, $p.pv60, $p.ph60, $p.justifyBetween, $p.center)}>
           
           {/* FIRST COLUMN */}
