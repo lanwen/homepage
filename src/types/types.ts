@@ -12,6 +12,8 @@ export interface Item {
   preview: string
   lastModified: string
   sourceFilePath: string
+  relatedMoreTitle: string
+  relatedMoreDescription: string
   layout: Layout
   tags: string[]
   relatedMore: Item[]

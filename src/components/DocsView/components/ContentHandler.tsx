@@ -173,6 +173,8 @@ const getItemQuery = gql`query getItem($alias: String) {
       path
       layout
     }
+    relatedMoreTitle
+    relatedMoreDescription
   }
 }`
 
