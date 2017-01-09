@@ -17,7 +17,7 @@ export default class FAQ extends React.Component<{}, {}> {
     return (
 
         <Box
-        className={cx($p.flex, $p.mt96, $p.bb, $p.bBlack10, $p.ph60, $p.pb60)}>
+        className={cx($p.flex, $p.mt96, $p.bb, $p.bBlack10, $p.ph60, $p.pb60, $p.justifyBetween, $p.center)}>
 
           {/* FIRST COLUMN */}
           <div className={cx($p.flex, $p.flexColumn)}>
