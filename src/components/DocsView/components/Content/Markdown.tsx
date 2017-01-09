@@ -21,6 +21,8 @@ interface Props {
 }
 
 const Container = styled.div`
+  margin-left: 50px;
+ 
   p { 
     line-height: 1.7;
     color: ${$v.gray60}; 
