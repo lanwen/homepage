@@ -45,6 +45,8 @@ export default class FreePlan extends React.Component<{}, {}> {
             <div className={cx($p.mr60)}>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/graph.svg')}
+                width={12}
+                height={12}
                 className={cx($p.mb25)}
               >
                 <div className={cx($p.f16, $p.black80, $p.fw6)}>10,000</div>
@@ -52,6 +54,8 @@ export default class FreePlan extends React.Component<{}, {}> {
               </PricingDimension>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/seats.svg')}
+                width={12}
+                height={8}
               >
                 <span className={cx($p.f16, $p.black80)}>2</span>&nbsp;
                 <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
@@ -61,6 +65,8 @@ export default class FreePlan extends React.Component<{}, {}> {
               <PricingDimension
                 icon={require('../../assets/icons/pricing/operation.svg')}
                 className={cx($p.mb25)}
+                width={7}
+                height={10}
               >
                 <div className={cx($p.f16, $p.black80, $p.fw6)}>100,000</div>
                 <div>
@@ -70,6 +76,8 @@ export default class FreePlan extends React.Component<{}, {}> {
               </PricingDimension>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/support.svg')}
+                width={10}
+                height={10}
               >
                 <span className={cx($p.f14, $p.black80)}>Community Support</span>
               </PricingDimension>
