@@ -22,7 +22,7 @@ export default class PlanCols extends React.Component<{}, {}> {
           headline='Flexible, transparent pricing'
           copy='Get started for free and pay as you go. Cheaper than self-hosted solutions.'
         />
-        <Box className={cx($p.flex)}>
+        <Box className={cx($p.flex, $p.justifyBetween, $p.center)}>
 
           {/* FIRST COLUMN - Startup */}
           <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
