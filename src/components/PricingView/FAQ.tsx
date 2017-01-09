@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {$p, $v, Icon} from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 
@@ -15,14 +15,10 @@ const Circle = styled.div`
 export default class FAQ extends React.Component<{}, {}> {
   render() {
     return (
-      <div className={cx($p.flex, $p.bgWhite, $p.justifyAround)}>
 
         <Box
-          className={cx($p.flex, $p.mt96, $p.bb, $p.bBlack10, $p.ph60, $p.pb60)}
-        >
-          {
-            /* better would be pb85, but next bigger option is pb96 */
-          }
+        className={cx($p.flex, $p.mt96, $p.bb, $p.bBlack10, $p.ph60, $p.pb60)}>
+
           {/* FIRST COLUMN */}
           <div className={cx($p.flex, $p.flexColumn)}>
 
@@ -32,10 +28,10 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                      src={require('../../assets/icons/pricing/question_mark.svg')}
-                      color={$v.green}
-                      height={22}
-                      width={9}
+                        src={require('../../assets/icons/pricing/question_mark.svg')}
+                        color={$v.green}
+                        height={22}
+                        width={9}
                     />
                   </Circle>
                 </div>
@@ -44,12 +40,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a
-                      className={cx($p.green, $p.fw6, $p.noUnderline)}
-                      href=''
-                    >
-                      Read more
-                    </a>.
+                     <a className={cx($p.green, $p.fw6, $p.noUnderline)} href=''>Read more</a>.
                   </div>
                 </div>
               </div>
@@ -60,10 +51,10 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                      src={require('../../assets/icons/pricing/question_mark.svg')}
-                      color={$v.green}
-                      height={22}
-                      width={9}
+                        src={require('../../assets/icons/pricing/question_mark.svg')}
+                        color={$v.green}
+                        height={22}
+                        width={9}
                     />
                   </Circle>
                 </div>
@@ -72,16 +63,12 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a
-                      className={cx($p.green, $p.fw6, $p.noUnderline)}
-                      href=''
-                    >
-                      Read more
-                    </a>.
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline)} href=''>Read more</a>.
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
 
           {/* SECOND COLUMN */}
@@ -93,10 +80,10 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                      src={require('../../assets/icons/pricing/question_mark.svg')}
-                      color={$v.green}
-                      height={22}
-                      width={9}
+                        src={require('../../assets/icons/pricing/question_mark.svg')}
+                        color={$v.green}
+                        height={22}
+                        width={9}
                     />
                   </Circle>
                 </div>
@@ -105,19 +92,15 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a
-                      className={cx($p.green, $p.fw6, $p.noUnderline)}
-                      href=''
-                    >
-                      Read more
-                    </a>.
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline)} href=''>Read more</a>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
+
         </Box>
-      </div>
     )
   }
 }
