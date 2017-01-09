@@ -41,6 +41,7 @@ const Container = styled.div`
     border-left: ${$v.size06} solid ${$v.green50};
     padding: ${$v.size12} ${$v.size25};
     margin-left: 0;
+    width: 100%;
   }
   
   blockquote p {
