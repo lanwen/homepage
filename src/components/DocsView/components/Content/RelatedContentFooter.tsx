@@ -44,7 +44,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
   render() {
 
     return (
-      <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb60)}>
+      <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb25, $p.pb38)}>
         <div className={cx($p.flex, $p.flexColumn)}>
           {this.props.item.relatedMore.length > 0 && (
             <More

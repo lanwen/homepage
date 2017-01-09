@@ -19,6 +19,7 @@ const StyledModal = styled(Modal)`
   position: absolute;
   transform: translate(-50%, -50%);
   background: white;
+  z-index: 999;
   &:focus {
     outline: none;
   }
@@ -224,7 +225,15 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
     const url = `${__BACKEND_ADDR__}/${endpoint}/${projectId}`
 
     return (
-      <StyledModal {...this.props} className={$p.buttonShadow}>
+      <StyledModal
+        {...this.props}
+        className={$p.buttonShadow}
+        style={{
+          overlay: {
+            zIndex: 999,
+          },
+        }}
+      >
         <header className={cx($p.relative, $p.pa60)}>
           <h1 className={cx($p.fw3, $p.f38, $p.tc)}>
             API Endpoints
