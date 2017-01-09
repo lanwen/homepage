@@ -7,7 +7,7 @@ import * as cx from 'classnames'
 import {Item} from '../../../../types/types'
 import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
-
+import {connect} from 'react-redux'
 
 const Searchbox = styled.input`
   width: 300px;
@@ -70,18 +70,31 @@ interface State {
 }
 
 class Search extends React.Component<Props,{}> {
+  state = {
+    query: '',
+    activeIndex: 0,
+    results: [],
+    resultsActive: true,
+  }
   private client: algolia.AlgoliaClient
   private index: algolia.AlgoliaIndex
   private ref: HTMLElement
   private search = throttle(
     (q: string) => {
-      this.index.search({
-        query: q,
-        attributesToHighlight: ['title'],
-        hitsPerPage: 10,
-      }, (err, data) => {
-        this.setState({results: data.hits.slice(0, 10)})
-      })
+      this.index.search(
+        {
+          query: q,
+          attributesToHighlight: ['title'],
+          hitsPerPage: 10,
+        },
+        (err, data) => {
+          if (err) {
+            console.error(err)
+          } else {
+            this.setState({results: data.hits.slice(0, 10)})
+          }
+        },
+      )
     },
     500,
     {
@@ -89,12 +102,6 @@ class Search extends React.Component<Props,{}> {
       trailing: true,
     },
   )
-  state = {
-    query: '',
-    activeIndex: 0,
-    results: [],
-    resultsActive: true,
-  }
   constructor(props) {
     super(props)
 
@@ -155,9 +162,12 @@ class Search extends React.Component<Props,{}> {
   }
 
   private hideResults = () => {
-    setTimeout(() => {
-      this.setState({resultsActive: false} as State)
-    }, 100)
+    setTimeout(
+      () => {
+        this.setState({resultsActive: false} as State)
+      },
+      100,
+    )
   }
   private showResults = () => {
     this.setState({resultsActive: true} as State)
@@ -208,4 +218,4 @@ class Search extends React.Component<Props,{}> {
   }
 }
 
-export default withRouter(Search)
+export default connect()(withRouter(Search))

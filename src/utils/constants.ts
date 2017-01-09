@@ -22,8 +22,8 @@ export {
   movingDuration,
 }
 
-let isTouch = false
+export let isTouch = false
 
 if ('ontouchstart' in document.documentElement) {
-  let isTouch = true
+  isTouch = true
 }

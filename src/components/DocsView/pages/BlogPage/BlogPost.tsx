@@ -1,9 +1,9 @@
 import * as React from 'react'
 import AnnoucementIcon from './AnnouncementIcon'
-import { $p, $v } from 'graphcool-styles'
+import {$p, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import { selfStart } from 'graphcool-styles/dist/particles.css';
+import {selfStart} from 'graphcool-styles/dist/particles.css'
 
 const Author = styled.img`
   width: 90px;
@@ -18,7 +18,16 @@ export default class BlogPost extends React.Component<{}, {}> {
       <div>
         <div
           className={cx(
-          $p.flex, $p.flexColumn, $p.bgBlack04, $p.contentCenter, $p.itemsCenter, $p.mt38, $p.ph96, $p.flexWrap, $p.mb60)}
+            $p.flex,
+            $p.flexColumn,
+            $p.bgBlack04,
+            $p.contentCenter,
+            $p.itemsCenter,
+            $p.mt38,
+            $p.ph96,
+            $p.flexWrap,
+            $p.mb60,
+          )}
         >
           <AnnoucementIcon/>
           <div className={cx($p.flex, $p.mt60, $p.flexWrap, $p.contentBetween)}>
@@ -33,14 +42,22 @@ export default class BlogPost extends React.Component<{}, {}> {
                     className={cx($p.selfStart)}/>
           </div>
           <p className={cx($p.black60, $p.fw4, $p.f20, $p.mb60, $p.ph25)}>
-            Authenticating users is an integral part of most applications with the goal to make it as easy as possible for users to sign-in while enforcing security. Implementing this process manually can be very challenging while integrating external authentication services into your own application also takes a lot of time.
+            Authenticating users is an integral part of most applications with the goal to make it as easy as
+            possible for users to sign-in while enforcing security. Implementing this process manually can be very
+            challenging while integrating external authentication services into your own application also takes
+            a lot of time.
           </p>
           <p className={cx($p.f25, $p.fw7, $p.mb38)}>Graphcool now works out-of-the-box with Auth0 and Digits</p>
           <p className={cx($p.black60, $p.fw4, $p.f20, $p.mb60, $p.ph25)}>
-            Authenticating users is an integral part of most applications with the goal to make it as easy as possible for users to sign-in while enforcing security. Implementing this process manually can be very challenging while integrating external authentication services into your own application also takes a lot of time.
+            Authenticating users is an integral part of most applications with the goal to make it as easy as
+            possible for users to sign-in while enforcing security. Implementing this process manually can be very
+            challenging while integrating external authentication services into your own application also takes
+            a lot of time.
           </p>
-          <img src={require('../../../../assets/graphics/BlogPostExampleIMG.png')}
-               className={cx($p.w100)}/>
+          <img
+            src={require('../../../../assets/graphics/BlogPostExampleIMG.png')}
+            className={cx($p.w100)}
+          />
         </div>
         <p className={cx($p.green, $p.f20, $p.fw4, $p.tc, $p.mb60)}>Read more</p>
       </div>

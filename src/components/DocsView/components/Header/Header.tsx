@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { Link } from 'react-router'
-import { $p, Icon, $v, $g } from 'graphcool-styles'
+import {Link} from 'react-router'
+import {$p, Icon, $v, $g} from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../../../utils/constants'
+import {breakpoints} from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
 import EndpointPopup from './EndpointPopup'
 import Search from './Search'
@@ -255,32 +255,32 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-        <NavigationLink className={cx($p.mt6, $p.pointer)}>
-          <img
-            className={cx($p.bbox, $p.db)}
-            src={require('../../../../assets/graphics/APIendpoints.svg')}
-            onClick={() => {
+          <NavigationLink className={cx($p.mt6, $p.pointer)}>
+            <img
+              className={cx($p.bbox, $p.db)}
+              src={require('../../../../assets/graphics/APIendpoints.svg')}
+              onClick={() => {
               this.openEndpointPopup()
               this.closeMenu()
             }}
-          />
-        </NavigationLink>
-      ) : (
-        <div className={cx($p.mt10)}>
-          <Button
-            href='https://console.graph.cool'
-            className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
-          >
-            Log in
-          </Button>
-          <Button
-            href='https://console.graph.cool/signup'
-            className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
-          >
-            Sign up
-          </Button>
-        </div>
-      )
+            />
+          </NavigationLink>
+        ) : (
+          <div className={cx($p.mt10)}>
+            <Button
+              href='https://console.graph.cool'
+              className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+            >
+              Log in
+            </Button>
+            <Button
+              href='https://console.graph.cool/signup'
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+            >
+              Sign up
+            </Button>
+          </div>
+        )
     )
 
     const WideHeader = () => (
@@ -296,25 +296,25 @@ export default class Header extends React.Component<{}, State> {
       <Root className={cx($p.flex, $p.pv38)}>
         {logo}
         {this.state.menuOpened ? (
-          <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
-            <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
-            <NavigationLink>
-              <Search className={$p.pb16} />
-            </NavigationLink>
-            {links}
-            {endpoints}
-          </FirstUlStyle>
-        ) : (
-          <Hamburger>
-            <Icon
-              onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-              src={require('../../../../assets/icons/hamburger.svg')}
-              width={36}
-              height={36}
-              color={$v.gray20}
-            />
-          </Hamburger>
-        )}
+            <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
+              <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
+              <NavigationLink>
+                <Search className={$p.pb16}/>
+              </NavigationLink>
+              {links}
+              {endpoints}
+            </FirstUlStyle>
+          ) : (
+            <Hamburger>
+              <Icon
+                onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                src={require('../../../../assets/icons/hamburger.svg')}
+                width={36}
+                height={36}
+                color={$v.gray20}
+              />
+            </Hamburger>
+          )}
       </Root>
     )
 

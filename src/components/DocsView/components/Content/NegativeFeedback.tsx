@@ -51,7 +51,9 @@ export default class NegativeFeedback extends React.Component<Props, {}> {
           autoFocus
         />
         <SendMessage
-          className={cx($p.ttu, $p.db, $p.selfEnd, $p.mt25, $p.bgLightgreen20, $p.green, $p.pa10, $p.f16, $p.fw6, $p.pointer)}
+          className={
+            cx($p.ttu, $p.db, $p.selfEnd, $p.mt25, $p.bgLightgreen20, $p.green, $p.pa10, $p.f16, $p.fw6, $p.pointer)
+          }
           onClick={onSubmit}
         >
           Send Message

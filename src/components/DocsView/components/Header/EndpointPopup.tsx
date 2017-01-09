@@ -1,6 +1,5 @@
 import * as React from 'react'
 import * as Modal from 'react-modal'
-import Timer = NodeJS.Timer
 import * as CopyToClipboard from 'react-copy-to-clipboard'
 import styled, {keyframes} from 'styled-components'
 import {$v, $p, Icon} from 'graphcool-styles'
@@ -11,18 +10,6 @@ import {find} from 'lodash'
 import * as fetch from 'isomorphic-fetch'
 
 type Endpoint = 'simple/v1' | 'relay/v1' | 'file/v1'
-
-interface State {
-  endpoint: Endpoint
-  copied: boolean
-  project: Project[]
-  selectedProject: Project
-}
-
-interface Project {
-  id: string
-  name: string
-}
 
 const StyledModal = styled(Modal)`
   width: 600px;
@@ -128,6 +115,18 @@ const DropDownIcon = styled(Icon)`
   pointer-events: none;
 `
 
+interface State {
+  endpoint: Endpoint
+  copied: boolean
+  project: Project[]
+  selectedProject: Project | null
+}
+
+interface Project {
+  id: string
+  name: string
+}
+
 export default class EndpointPopup extends React.Component<Modal, {}> {
 
   state = {
@@ -137,7 +136,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
     selectedProject: null,
   }
 
-  copyTimer: Timer
+  copyTimer: number
 
   client: ApolloClient
 
@@ -213,9 +212,14 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
      ${props => props.active && activeEndpointType}
     `
 
-    const {endpoint, copied, projects, selectedProject} = this.state
+    const {endpoint, copied, projects} = this.state
 
-    const projectId = selectedProject ? selectedProject.id : ''
+    const selectedProject: Project | null = this.state.selectedProject
+
+    let projectId
+    if (selectedProject !== null) {
+      projectId = selectedProject.id
+    }
 
     const url = `${__BACKEND_ADDR__}/${endpoint}/${projectId}`
 
@@ -387,7 +391,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
 
   private onCopy = () => {
     this.setState({copied: true} as State)
-    this.copyTimer = setTimeout(
+    this.copyTimer = window.setTimeout(
       () => this.setState({copied: false} as State),
       1000,
     )
@@ -396,6 +400,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
   private selectProject = (e: any) => {
     const projectId = e.target.value
     const {projects} = this.state
-    this.setState({ selectedProject: find(projects, project => project.id === projectId)} as State)
+    const foundProject: Project | null = find(projects, (project: Project) => project.id === projectId) || null
+    this.setState({ selectedProject:  foundProject} as State)
   }
 }

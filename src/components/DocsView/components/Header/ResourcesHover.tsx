@@ -50,11 +50,7 @@ const Container = styled.div`
   ${props => props.active && NavigationActive}
 `
 
-interface Props {
-  active: boolean,
-}
-
-export default class ResourcesHover extends React.Component<Props, {}> {
+export default class ResourcesHover extends React.Component<{}, {}> {
   render() {
     return (
       <Container

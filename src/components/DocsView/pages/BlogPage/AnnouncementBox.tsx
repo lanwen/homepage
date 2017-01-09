@@ -63,7 +63,8 @@ export default class AnnouncementBox extends React.Component<{}, {}> {
               <p className={cx($p.f16, $p.ph16, $p.fw4)}>#platform / api /authentication</p>
             </div>
             <p className={cx($p.black60, $p.fw4, $p.f20, $p.mb60)}>
-              So far we’ve need to configure multiple models and specify relationships between them. So far we’ve need to configure multiple models and specify relationships between them.
+              So far we’ve need to configure multiple models and specify relationships between them.
+              So far we’ve need to configure multiple models and specify relationships between them.
             </p>
           </Info>
         </LeftSide>

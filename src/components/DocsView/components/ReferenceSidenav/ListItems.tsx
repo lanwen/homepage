@@ -55,7 +55,7 @@ interface Props {
   currentAlias: string,
 }
 
-export default class ListItems extends React.Component<Props, State> {
+export default class ListItems extends React.Component<Props, {}> {
   getActiveItemIndex(props: Props) {
     let activeItemIndex = 0
     if (props.item && props.item.children) {

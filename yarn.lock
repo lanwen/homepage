@@ -350,9 +350,9 @@ autoprefixer@^6.3.1:
     postcss "^5.2.8"
     postcss-value-parser "^3.2.3"
 
-awesome-typescript-loader@3.0.0-beta.17:
+"awesome-typescript-loader@git+https://github.com/timsuchanek/awesome-typescript-loader#build":
   version "3.0.0-beta.17"
-  resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-3.0.0-beta.17.tgz#f22cfb9c4365d8131f5cb737025ffcb3e516a8ec"
+  resolved "git+https://github.com/timsuchanek/awesome-typescript-loader#944434ff2183abbdd2117f1c3cc5bae32e6656cb"
   dependencies:
     colors "^1.1.2"
     enhanced-resolve "^2.3.0"
@@ -1821,9 +1821,9 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphcool-styles@^0.0.77:
-  version "0.0.77"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.77.tgz#c81b67ae358247162485f74929d12eee5db6e8cf"
+graphcool-styles@0.0.78:
+  version "0.0.78"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.78.tgz#cbbde06f8c8d4f68454fa0eac127dc9da9884127"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"

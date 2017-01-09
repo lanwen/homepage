@@ -34,7 +34,7 @@
     "cookiestore": "^1.0.3",
     "fastclick": "^1.0.6",
     "front-matter": "^2.1.1",
-    "graphcool-styles": "^0.0.77",
+    "graphcool-styles": "0.0.78",
     "graphiql": "^0.8.0",
     "graphql": "^0.8.2",
     "graphql-tag": "^1.1.2",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/node": "^6.0.48",
-    "awesome-typescript-loader": "3.0.0-beta.17",
+    "awesome-typescript-loader": "git+https://github.com/timsuchanek/awesome-typescript-loader#build",
     "css-loader": "^0.26.0",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.0",
