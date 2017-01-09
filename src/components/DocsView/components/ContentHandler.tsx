@@ -151,6 +151,7 @@ const getItemQuery = gql`query getItem($alias: String) {
     alias
     path
     layout
+    beta
     tags
     lastModified
     shorttitle

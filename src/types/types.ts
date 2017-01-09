@@ -5,6 +5,7 @@ export interface Item {
   body: string
   alias: string
   title: string
+  beta: boolean
   shorttitle: string
   description: string
   path: string
