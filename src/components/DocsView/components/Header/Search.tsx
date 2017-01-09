@@ -73,6 +73,22 @@ class Search extends React.Component<Props,{}> {
   private client: algolia.AlgoliaClient
   private index: algolia.AlgoliaIndex
   private ref: HTMLElement
+  private search = throttle(
+    (q: string) => {
+      this.index.search({
+        query: q,
+        attributesToHighlight: ['title'],
+        hitsPerPage: 10,
+      }, (err, data) => {
+        this.setState({results: data.hits.slice(0, 10)})
+      })
+    },
+    500,
+    {
+      // this is very important as otherwise the last change would be ignored
+      trailing: true,
+    },
+  )
   state = {
     query: '',
     activeIndex: 0,
@@ -156,23 +172,6 @@ class Search extends React.Component<Props,{}> {
       this.setState({activeIndex: 0})
     }
   }
-
-  private search = throttle(
-    (q: string) => {
-      this.index.search({
-        query: q,
-        attributesToHighlight: ['title'],
-        hitsPerPage: 10,
-      }, (err, data) => {
-        this.setState({results: data.hits.slice(0, 10)})
-      })
-    },
-    500,
-    {
-      // this is very important as otherwise the last change would be ignored
-      trailing: true,
-    },
-  )
 
   private moveCursor(by: number) {
     this.setState((state: State) => {

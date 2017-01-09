@@ -1,5 +1,5 @@
 import * as React from 'react'
-import AnnoucementIcon from './AnnoucementIcon'
+import AnnoucementIcon from './AnnouncementIcon'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import AnnoucementIcon from './AnnoucementIcon'
+import AnnoucementIcon from './AnnouncementIcon'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
@@ -50,7 +50,7 @@ const Picture = styled.img`
   @media (max-width: ${breakpoints.p1000}px) {
   }
 `
-export default class AnnoucementBox extends React.Component<{}, {}> {
+export default class AnnouncementBox extends React.Component<{}, {}> {
   render() {
     return (
       <div className={cx($p.flex, $p.flexWrap, $p.mb96)}>

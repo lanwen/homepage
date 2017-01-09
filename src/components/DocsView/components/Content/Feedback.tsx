@@ -122,6 +122,6 @@ const mutation = gql`
 export default graphql(mutation, {
   props: ({ mutate }) => ({
     submitFeedback: (itemAlias: string, text: string | null, wasHelpful: boolean) =>
-      mutate({ variables: { itemAlias, text, wasHelpful }})
+      mutate({ variables: { itemAlias, text, wasHelpful }}),
   })
 })(Feedback)

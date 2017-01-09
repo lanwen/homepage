@@ -11,7 +11,6 @@ import ChooseTechnology from './ChooseTechnology'
 import FAQContent from './FAQContent'
 import { breakpoints } from '../../../../utils/constants'
 
-
 interface Props {
   data: any
 }
@@ -100,19 +99,25 @@ class ResourcesPage extends React.Component<Props, {}> {
             <div className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.flexRow, $p.mb60, $p.pv38)}>
               <FAQContent
                 title='Why do I keep recieving null back on my query to your server?'
-                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                content={'So far we’ve need to configure multiple models and specify relationships between them. Make'
+                + 'sure that you have checked that you are specifying all required contents of your request. If this'
+                + 'does not work, it may also be the case that something in…'}
                 tags='#authentication  #Auth0'
                 updated='last edited a week ago'
               />
               <FAQContent
                 title='Why do I keep recieving null back on my query to your server?'
-                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                content={'So far we’ve need to configure multiple models and specify relationships between them. Make'
+                + 'sure that you have checked that you are specifying all required contents of your request. If this'
+                + 'does not work, it may also be the case that something in…'}
                 tags='#authentication  #Auth0'
                 updated='last edited a week ago'
               />
               <FAQContent
                 title='Why do I keep recieving null back on my query to your server?'
-                content='So far we’ve need to configure multiple models and specify relationships between them. Make sure that you have checked that you are specifying all required contents of your request. If this does not work, it may also be the case that something in…'
+                content={'So far we’ve need to configure multiple models and specify relationships between them. Make'
+                + 'sure that you have checked that you are specifying all required contents of your request. If this'
+                + 'does not work, it may also be the case that something in…'}
                 tags='#authentication  #Auth0'
                 updated='last edited a week ago'
               />

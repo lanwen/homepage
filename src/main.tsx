@@ -58,10 +58,10 @@ function render() {
 }
 
 render()
-
-if (module.hot) {
-  module.hot.accept(render)
-}
+//
+// if (module.hot) {
+//   module.hot.accept(render)
+// }
 
 FastClick.attach(document.body)
 

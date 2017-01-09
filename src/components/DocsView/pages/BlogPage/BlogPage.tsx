@@ -3,11 +3,11 @@ import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
 import TemporaryNavigation from '../../components/TemporaryNavigation'
 import { getItemsByLayout } from '../../fragments/getItemsByLayout'
-import AnnoucementBox from './AnnoucementBox'
+import AnnoucementBox from './AnnouncementBox'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import BlogPost from './BlogPost';
+import BlogPost from './BlogPost'
 
 interface Props {
   data: any
