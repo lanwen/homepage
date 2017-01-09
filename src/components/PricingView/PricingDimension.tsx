@@ -10,6 +10,8 @@ const Circle = styled.div`
 
 interface Props {
   icon: string
+  height: number
+  width: number
   className?: string
   children?: JSX.Element
 }
@@ -20,8 +22,8 @@ export default (props: Props) => (
       <Icon
         src={props.icon}
         color={$v.green}
-        height={12}
-        width={12}
+        height={props.height}
+        width={props.width}
       />
     </Circle>
     <div>
