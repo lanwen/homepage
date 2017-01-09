@@ -80,7 +80,7 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
               )}
             >
               <Icon
-                src={require('graphcool-styles/icons/fill/triangle.svg')}
+                src={require('graphcool-styles/icons/fill/roundedTriangle.svg')}
                 width={26}
                 height={30}
                 color={$v.green}

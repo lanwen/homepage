@@ -79,6 +79,9 @@ const Container = styled.div`
   img {
     max-width: 100%;
     height: auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 0;
   }
 `
 
