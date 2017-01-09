@@ -24,7 +24,7 @@ export default class PlanCols extends React.Component<{}, {}> {
         />
         <Box className={cx($p.flex)}>
 
-          {/* FIRST COLUMN */}
+          {/* FIRST COLUMN - Startup */}
           <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
@@ -42,8 +42,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={12}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -62,8 +62,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={7}
                   />
                 </Circle>
               </div>
@@ -85,8 +85,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={8}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -101,8 +101,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={10}
                   />
                 </Circle>
               </div>
@@ -114,7 +114,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
           </div>
 
-          {/* SECOND COLUMN */}
+          {/* SECOND COLUMN - Growth */}
           <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
@@ -132,8 +132,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={12}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -152,8 +152,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={7}
                   />
                 </Circle>
               </div>
@@ -175,8 +175,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={8}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -191,8 +191,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={10}
                   />
                 </Circle>
               </div>
@@ -204,7 +204,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
           </div>
 
-          {/* THIRD COLUMN */}
+          {/* THIRD COLUMN - Pro */}
           <div className={cx($p.flex, $p.flexColumn, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
@@ -222,8 +222,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={12}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -242,8 +242,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={7}
                   />
                 </Circle>
               </div>
@@ -265,8 +265,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={8}
+                    width={12}
                   />
                 </Circle>
               </div>
@@ -281,8 +281,8 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
-                    height={22}
-                    width={9}
+                    height={10}
+                    width={10}
                   />
                 </Circle>
               </div>
@@ -296,7 +296,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
           </div>
 
-          {/* FOURTH COLUMN */}
+          {/* FOURTH COLUMN - Enterprise */}
           <div className={cx($p.flex, $p.flexColumn, $p.bgGreen, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
@@ -310,7 +310,6 @@ export default class PlanCols extends React.Component<{}, {}> {
                 width={73}
               />
             </div>
-
 
             <PricingDimension
               icon={require('../../assets/icons/pricing/unlimited.svg')}
@@ -347,8 +346,6 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CTA BUTTON */}
             <div className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt60)}>Talk to sales</div>
           </div>
-
-
 
         </Box>
       </div>
