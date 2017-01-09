@@ -25,7 +25,8 @@ export default class PlanCols extends React.Component<{}, {}> {
         <Box className={cx($p.flex, $p.justifyBetween, $p.center)}>
 
           {/* FIRST COLUMN - Startup */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
+                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
@@ -115,7 +116,8 @@ export default class PlanCols extends React.Component<{}, {}> {
           </div>
 
           {/* SECOND COLUMN - Growth */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
+                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* MOST POPULAR */}
             <div
@@ -210,7 +212,8 @@ export default class PlanCols extends React.Component<{}, {}> {
           </div>
 
           {/* THIRD COLUMN - Pro */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
+                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
