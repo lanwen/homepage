@@ -49,7 +49,7 @@ export default class Info extends React.Component<{}, {}> {
             </div>
 
             {/* SECOND LINE */}
-            <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38,  $p.mt38)}>
+            <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38, $p.mt38)}>
               <div className={cx($p.flex)}>
                 <Circle className={cx($p.bgWhite30, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr25)}>
                   <Icon
@@ -76,7 +76,7 @@ export default class Info extends React.Component<{}, {}> {
             </div>
 
             {/* THIRD LINE */}
-            <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38,  $p.mt38)}>
+            <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38, $p.mt38)}>
               <div className={cx($p.flex)}>
                 <Circle className={cx($p.bgWhite30, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr25)}>
                   <Icon
