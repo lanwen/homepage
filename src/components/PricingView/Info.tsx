@@ -232,8 +232,8 @@ export default class Info extends React.Component<{}, {}> {
                   </div>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
               </div>
             </div>
@@ -259,8 +259,8 @@ export default class Info extends React.Component<{}, {}> {
                   </div>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
               </div>
             </div>
@@ -286,8 +286,8 @@ export default class Info extends React.Component<{}, {}> {
                   </div>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
               </div>
             </div>
