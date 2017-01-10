@@ -81,7 +81,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     }
 
     return (
-      <div style={{ height: 400 }} className={cx($p.bgDarkerBlue)}>
+      <div style={{ height: 400 }} className={cx($p.bgDarkerBlue, $p.mv25)}>
         <GraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}

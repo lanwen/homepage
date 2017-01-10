@@ -3,6 +3,7 @@ import {Item} from '../../../../types/types'
 import {$p, Icon, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {Link} from 'react-router'
+import styled from 'styled-components'
 
 interface Props {
   item: Item
@@ -12,6 +13,10 @@ interface Crumb {
   href: string
   text: string
 }
+
+const Container = styled.div`
+  height: 19px;
+`
 
 export default class BreadCrumb extends React.Component<Props, {}> {
   generateCrumbs(path): Crumb[] {
@@ -32,7 +37,7 @@ export default class BreadCrumb extends React.Component<Props, {}> {
     const count = crumbs.length
 
     return (
-      <div className={cx($p.flex, $p.flexRow)}>
+      <Container className={cx($p.flex, $p.flexRow)}>
         {crumbs.map((link, index) => (
           (index < count - 1) ? (
             <div className={cx($p.flex, $p.flexRow, $p.itemsCenter)}>
@@ -56,7 +61,7 @@ export default class BreadCrumb extends React.Component<Props, {}> {
             </div>
           )
         ))}
-      </div>
+      </Container>
     )
   }
 }

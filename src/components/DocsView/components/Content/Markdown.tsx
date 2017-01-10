@@ -96,7 +96,7 @@ const QuestionWrapper = styled.div`
 `
 
 const QuestionMarkWrapper = styled.div`
-  right: -40px;
+  right: -63px;
 `
 
 const HeadingLink = styled.a`
@@ -121,7 +121,7 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
             <p>{props.children}</p>
-            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+            <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
           </QuestionWrapper>
@@ -131,7 +131,7 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
             {ReactRenderer.renderers.List(props)}
-            <QuestionMarkWrapper className={cx($p.ml25, 'hover', $p.absolute)}>
+            <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
           </QuestionWrapper>
