@@ -10,13 +10,24 @@ import Search from './Search'
 import * as cookiestore from 'cookiestore'
 
 const Root = styled.div`
-  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   width: 1337px;
   
   @media (max-width: ${breakpoints.p1200}px) {
     padding-top: ${$v.size25}
+  }
+  
+  .left-gradient::before {
+    content: "";
+    height: 35px;
+    position: absolute;
+    left: -10px;
+    width: 10px;
+    /* Permalink - : http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
+    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
   }
 `
 
@@ -48,7 +59,6 @@ const NavigationLinkActive = `
 
 const NavigationLink = styled(Link)`
   transition: color ${$v.duration} linear;
-  position: relative;
 
   &:hover {
     color: ${$v.gray50};
@@ -177,6 +187,7 @@ export default class Header extends React.Component<{}, State> {
             $p.noUnderline,
             $p.ttu,
             $p.black30,
+            $p.relative,
             {
               [$p.ph16]: window.innerWidth >= breakpoints.p1200,
             },
@@ -194,6 +205,7 @@ export default class Header extends React.Component<{}, State> {
             $p.noUnderline,
             $p.ttu,
             $p.black30,
+            $p.relative,
             {
               [$p.ph16]: window.innerWidth >= breakpoints.p1200,
             },
@@ -210,6 +222,7 @@ export default class Header extends React.Component<{}, State> {
             $p.noUnderline,
             $p.ttu,
             $p.black30,
+            $p.relative,
             {
               [$p.ph16]: window.innerWidth >= breakpoints.p1200,
             },
@@ -255,38 +268,42 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-          <NavigationLink className={cx($p.mt6, $p.pointer)}>
-            <img
-              className={cx($p.bbox, $p.db)}
-              src={require('../../../../assets/graphics/APIendpoints.svg')}
-              onClick={() => {
-              this.openEndpointPopup()
-              this.closeMenu()
-            }}
-            />
+          <NavigationLink className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
+            <div className={cx($p.relative, 'left-gradient')}>
+              <img
+                className={cx($p.bbox, $p.db)}
+                src={require('../../../../assets/graphics/APIendpoints.svg')}
+                onClick={() => {
+                this.openEndpointPopup()
+                this.closeMenu()
+              }}
+              />
+            </div>
           </NavigationLink>
         ) : (
-          <div className={cx($p.mt10)}>
-            <Button
-              href='https://console.graph.cool'
-              className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
-            >
-              Log in
-            </Button>
-            <Button
-              href='https://console.graph.cool/signup'
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
-            >
-              Sign up
-            </Button>
+          <div className={cx($p.mt10, $p.absolute, $p.right25, $p.bgWhite)}>
+            <div className={cx($p.relative, 'left-gradient')}>
+              <Button
+                href='https://console.graph.cool'
+                className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+              >
+                Log in
+              </Button>
+              <Button
+                href='https://console.graph.cool/signup'
+                className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+              >
+                Sign up
+              </Button>
+            </div>
           </div>
         )
     )
 
     const WideHeader = () => (
-      <Root className={cx($p.flex, $p.pv38)}>
+      <Root className={cx($p.flex, $p.pv38, $p.justifyStart)}>
         {logo}
-        <Search />
+        <Search className={$p.mh16} />
         {links}
         {endpoints}
       </Root>
@@ -299,7 +316,7 @@ export default class Header extends React.Component<{}, State> {
             <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
               <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
               <NavigationLink>
-                <Search className={$p.pb16}/>
+                <Search className={cx($p.pb16, $p.mh16)} />
               </NavigationLink>
               {links}
               {endpoints}
