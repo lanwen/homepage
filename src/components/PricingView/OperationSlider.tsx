@@ -1,50 +1,110 @@
 import * as React from 'react'
 import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
+import * as Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+import styled from 'styled-components'
 
-interface State {
-  valueA: number
-  valueB: number
-  operationType: OperationType
+
+interface Props {
+  operationType: string
   description: string
   leftInfo: string
   rightInfo: string
+  moreRightInfo?: string
+  leftSliderMaxValue: number
+  rightSliderMaxValue: number
+  leftLink: string 
+  rightLink?: string 
+  leftValue: number
+  rightValue: number
+  onLeftSliderValueChange: (value: number) => void
+  onRightSliderValueChange: (value: number) => void
 }
 
-enum OperationType {
-  REQUEST,
-  SUBSCRIPTION,
-  FUNCTION_CALL
+interface State {
+
 }
 
-export default class OperationSlider extends React.Component<{}, State> {
+const StyledSlider = styled(Slider)`
+  
+`
+
+export default class OperationSlider extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
     this.state = {
-      valueA: 0,
-      valueB: 0
+      leftValue: 0,
+      rightValue: 0
     }
   }
 
   render() {
-    const {valueA, valueB} = this.state
+    const {operationType, description, leftInfo, rightInfo, 
+           leftSliderMaxValue, rightSliderMaxValue, leftLink} = this.props
+    const {leftValue, rightValue, onLeftSliderValueChange, onRightSliderValueChange} = this.props
+
+    let rightInfoComponent: JSX.Element
+    if (this.props.rightLink) {
+      rightInfoComponent = (
+        <a className={cx($p.white80, $p.f12, $p.ph4)} href={this.props.rightLink}>{rightInfo}</a>
+      )
+    }
+    else {
+      rightInfoComponent = (
+        <div className={cx($p.white80, $p.f12, $p.ph4)}>{rightInfo}</div>
+      )
+    }
 
     return (
-        <div className={cx($p.white)}>
-          <input
-            type='range'
-            value={valueA}
-            onChange={this.changeA}
-           />
-           
+      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
+        <div className={cx($p.flex)}>
+          <div className={cx($p.white80, $p.f14, $p.fw6)}>{operationType}:</div>
+          <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
+            {description}
+          </div>
         </div>
-      )
+        <div className={cx($p.flex)}>
+          <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
+            <Slider
+              onChange={onLeftSliderValueChange} 
+              max={leftSliderMaxValue}
+              tipFormatter={null}
+              step={1000}
+            />
+            <div className={cx($p.flex, $p.mt10)}>
+              <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>{this.numberWithCommas(leftValue)}</div>
+              <a className={cx($p.white80, $p.f12, $p.pl4)} href={leftLink}>{leftInfo}</a>
+            </div>
+          </div>
+          <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
+            <Slider
+              onChange={onRightSliderValueChange} 
+              max={rightSliderMaxValue}
+              tipFormatter={null}
+              step={1000}
+            />
+            <div className={cx($p.flex, $p.mt10)}>
+              <div className={cx($p.white80, $p.f12, $p.fw6)}>{this.numberWithCommas(rightValue)}</div>
+              {rightInfoComponent}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
-  private changeA = (e: any) => {
-    console.log(e.target.value)
-    this.setState({valueA: e.target.any} as State)
+  // private changeLeft = (value: number) => {
+  //   this.setState({leftValue: value} as State)
+  // }
+
+  // private changeRight = (value: number) => {
+  //   this.setState({rightValue: value} as State)
+  // }
+
+  private numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
 
 }
