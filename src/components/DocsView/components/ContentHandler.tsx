@@ -69,7 +69,7 @@ class ContentHandler extends React.Component<Props, {}> {
     const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
     const currentPath = this.props.location.pathname
     if (contentUrl !== currentPath) {
-      this.props.router.replace(contentUrl)
+      this.props.router.push(contentUrl)
     }
   }
 
