@@ -2,6 +2,7 @@ import * as React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import DocsView from '../DocsView'
+import ContentWindow from '../components/ContentWindow'
 
 interface Props {
   data: any
@@ -13,29 +14,31 @@ class DocsOverview extends React.Component<Props, {}> {
     return (
       <div>
         <DocsView location={location}>
-          <h1>Reference Documentation</h1>
-          <h1>Quick Start</h1>
-          <h1>Tutorial &amp; Guides</h1>
-          {data.loading ? (
-              <div>Loading...</div>
-            ) : (
-              <div>
-                {data.tutorials.map(tutorial => (
-                  <div>{tutorial.title}</div>
-                ))}
-              </div>
-            )}
-          <h1>Frequently Asked Questions</h1>
-          {data.loading ? (
-              <div>Loading...</div>
-            ) : (
-              <div>
-                {data.faqs.map(faq => (
-                  <div>{faq.title}</div>
-                ))}
-              </div>
-            )}
-          <h1>Community</h1>
+          <ContentWindow>
+            <h1>Reference Documentation</h1>
+            <h1>Quick Start</h1>
+            <h1>Tutorial &amp; Guides</h1>
+            {data.loading ? (
+                <div>Loading...</div>
+              ) : (
+                <div>
+                  {data.tutorials.map(tutorial => (
+                    <div>{tutorial.title}</div>
+                  ))}
+                </div>
+              )}
+            <h1>Frequently Asked Questions</h1>
+            {data.loading ? (
+                <div>Loading...</div>
+              ) : (
+                <div>
+                  {data.faqs.map(faq => (
+                    <div>{faq.title}</div>
+                  ))}
+                </div>
+              )}
+            <h1>Community</h1>
+          </ContentWindow>
         </DocsView>
       </div>
     )

@@ -43,7 +43,7 @@ function render() {
             <Route path='/pricing' component={PricingView}/>
             <Route path='/about' component={AboutView}/>
             <Route path='/docs' component={DocsView}>
-              <Route path='' component={DocsOverview}/>
+              <Route path='overview' component={DocsOverview}/>
               <Route path='quickstart' component={QuickstartPage}/>
               <Route path='resources' component={ResourcesPage}/>
               <Route path='reference' component={ReferencePage}/>
