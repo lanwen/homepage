@@ -47,15 +47,15 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
 
     return (
       <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.mb25, $p.pb38)}>
-        <div className={cx($p.flex, $p.flexColumn)}>
+        <div className={cx($p.flex, $p.flexColumn, $p.flex1)}>
           {this.props.item.relatedMore.length > 0 && (
             <More
               className={cx($p.flex, $p.flexColumn, $p.pb25, $p.bgWhite, $p.mr25, $p.mb16)}
             >
               <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
-                <div>
-                  <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu)}>More about</span>
-                  <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu)}>{relatedMoreTitle || title}</span>
+                <div className={cx($p.flex)}>
+                  <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu, $p.nowrap)}>More about</span>
+                  <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6)}>{relatedMoreTitle || title}</span>
                 </div>
                 <Tooltip text={relatedMoreDescription || description} />
               </div>
@@ -78,7 +78,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
           )}
         </div>
         {this.props.item.relatedFurther.length > 0 && (
-          <Further className={cx($p.mt96, $p.pl25)}>
+          <Further className={cx($p.mt96, $p.pl25, $p.flex1)}>
             <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
             {this.props.item.relatedFurther.map(item => (
               <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
