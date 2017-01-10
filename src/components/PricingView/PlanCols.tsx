@@ -4,12 +4,13 @@ import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import PricingDimension from './PricingDimension'
+import { CircleSize.MEDIUM, CircleSize.SMALL } from './PricingDimension'
 
 const Box = styled.div`
   max-width: 1202px;
 `
 
-const Circle = styled.div`
+const Circle24 = styled.div`
   width: 24px;
   height: 24px;
 `
@@ -30,23 +31,23 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb38)}>
-              <div className={cx($p.f25, $p.green)}>$</div>
-              <div className={cx($p.f38, $p.green)}>49</div>
-              <div className={cx($p.f25, $p.lightgreen50, $p.pl10)}>/mo</div>
+            <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
+              <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
+              <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
+              <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
             </div>
 
             {/* CARD 1 */}
             <div className={cx($p.flex)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
                     height={12}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
@@ -59,14 +60,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 2 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
                     height={10}
                     width={7}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
@@ -82,14 +83,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 3 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
                     height={8}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>5</div>
               <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
@@ -98,14 +99,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 4 */}
             <div className={cx($p.flex, $p.mt25, $p.mb60)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
                     height={10}
                     width={10}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>Email Support</div>
             </div>
@@ -120,29 +121,34 @@ export default class PlanCols extends React.Component<{}, {}> {
                              $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* MOST POPULAR */}
-            <div
-              className={cx($p.white, $p.f16, $p.fw6, $p.ttu, $p.tc, $p.br2, $p.bgBlue)}
-              style={{marginTop: -36}}>Most popular</div>
+            <div className={cx($p.flex, $p.justifyCenter, $p.relative)}>
+              <div
+                className={cx($p.white, $p.absolute, $p.f16, $p.fw6, $p.ttu, $p.tc, $p.br2, $p.ph10, $p.bgBlue)}
+                style={{top: -38}}
+              >
+                Most popular
+              </div>
+            </div>
 
             {/* TITLE */}
-            <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt38)}>Growth</div>
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb38)}>
-              <div className={cx($p.f25, $p.green)}>$</div>
-              <div className={cx($p.f38, $p.green)}>249</div>
-              <div className={cx($p.f25, $p.lightgreen50, $p.pl10)}>/mo</div>
+            <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Growth</div>
+            <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
+              <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
+              <div className={cx($p.f38, $p.green, $p.ph4)}>249</div>
+              <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
             </div>
 
             {/* CARD 1 */}
             <div className={cx($p.flex)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
                     height={12}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
@@ -155,14 +161,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 2 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
                     height={10}
                     width={7}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>10,000,000</div>
@@ -178,14 +184,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 3 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
                     height={8}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>10</div>
               <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
@@ -194,14 +200,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 4 */}
             <div className={cx($p.flex, $p.mt25, $p.mb60)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
                     height={10}
                     width={10}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>Chat Support</div>
             </div>
@@ -210,30 +216,29 @@ export default class PlanCols extends React.Component<{}, {}> {
             <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60)}>Try it for free
             </div>
           </div>
-
           {/* THIRD COLUMN - Pro */}
           <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
                              $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             {/* TITLE */}
             <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb38)}>
-              <div className={cx($p.f25, $p.green)}>$</div>
-              <div className={cx($p.f38, $p.green)}>849</div>
-              <div className={cx($p.f25, $p.lightgreen50, $p.pl10)}>/mo</div>
+            <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
+              <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
+              <div className={cx($p.f38, $p.green, $p.ph4)}>849</div>
+              <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
             </div>
 
             {/* CARD 1 */}
             <div className={cx($p.flex)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/graph.svg')}
                     color={$v.green}
                     height={12}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>5,000,000</div>
@@ -246,14 +251,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 2 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/operation.svg')}
                     color={$v.green}
                     height={10}
                     width={7}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                 <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>50,000,000</div>
@@ -269,14 +274,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 3 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/seats.svg')}
                     color={$v.green}
                     height={8}
                     width={12}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>Unlimited</div>
               <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
@@ -285,14 +290,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 4 */}
             <div className={cx($p.flex, $p.mt25)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/support.svg')}
                     color={$v.green}
                     height={10}
                     width={10}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>Phone Support</div>
             </div>
@@ -300,14 +305,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             {/* CARD 5 */}
             <div className={cx($p.flex, $p.mt25, $p.mb60)}>
               <div>
-                <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                   <Icon
                     src={require('../../assets/icons/pricing/workshop.svg')}
                     color={$v.green}
                     height={12}
                     width={15}
                   />
-                </Circle>
+                </Circle24>
               </div>
               <div className={cx($p.black60, $p.f16, $p.ml25)}>1:1 Workshops</div>
             </div>
@@ -336,6 +341,8 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/unlimited.svg')}
               width={20}
               height={11}
+              circleSize={CircleSize.MEDIUM}
+              circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Nodes, Operations and Seats</span>&nbsp;
@@ -345,6 +352,8 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/protect.svg')}
               width={16}
               height={20}
+              circleSize={CircleSize.MEDIUM}
+              circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Infrastructure Multi-Datacenter</span>&nbsp;
@@ -354,6 +363,8 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/star.svg')}
               width={20}
               height={19}
+              circleSize={CircleSize.MEDIUM}
+              circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architects</span>&nbsp;
@@ -363,6 +374,8 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/sla.svg')}
               width={21}
               height={14}
+              circleSize={CircleSize.MEDIUM}
+              circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
               <span className={cx($p.white, $p.f16, $p.fw3)}>Enterprise-class Service Level Agreement</span>&nbsp;

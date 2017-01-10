@@ -2,6 +2,7 @@ import * as React from 'react'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
+import OperationSlider from './OperationSlider'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -10,6 +11,7 @@ const Box = styled.div`
 const Circle80 = styled.div`
   width: 80px;
   height: 80px;
+  flex: 0 0 80px;
 `
 
 const Circle36 = styled.div`
@@ -21,7 +23,7 @@ export default class Info extends React.Component<{}, {}> {
   render() {
     return (
       <div className={cx($p.bgDarkBlue, $p.pb60)} style={{marginTop: -49}}>
-
+        <OperationSlider />
         <Box className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.center)}>
 
           {/* CONTAINER FOR TWO COLUMNS */}
@@ -29,11 +31,11 @@ export default class Info extends React.Component<{}, {}> {
 
             {/* FIRST COLUMN */}
             <div className={cx($p.flex, $p.flexColumn, $p.pr60)}>
-              <div className={cx($p.flex, $p.center)}>
+              <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
                 <div>
                   <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                      src={require('../../assets/icons/pricing/graph.svg')}
+                      src={require('../../assets/icons/pricing/graph_white.svg')}
                       color={$v.white}
                       height={17}
                       width={17}
@@ -60,11 +62,11 @@ export default class Info extends React.Component<{}, {}> {
 
             {/* SECOND COLUMN */}
             <div className={cx($p.flex, $p.flexColumn, $p.pl60)}>
-              <div className={cx($p.flex, $p.center)}>
+              <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
                 <div>
                   <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                      src={require('../../assets/icons/pricing/operation.svg')}
+                      src={require('../../assets/icons/pricing/operation_white.svg')}
                       color={$v.white}
                       height={17}
                       width={11}
@@ -229,7 +231,7 @@ export default class Info extends React.Component<{}, {}> {
                       and typesetting industry.
                   </div>
                 </div>
-                <div className={cx($p.flex, $p.flexColumn)}>
+                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
@@ -256,7 +258,7 @@ export default class Info extends React.Component<{}, {}> {
                       and typesetting industry.
                   </div>
                 </div>
-                <div className={cx($p.flex, $p.flexColumn)}>
+                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
@@ -283,15 +285,15 @@ export default class Info extends React.Component<{}, {}> {
                       and typesetting industry.
                   </div>
                 </div>
-                <div className={cx($p.flex, $p.flexColumn)}>
+                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
                   <div className={cx($p.blue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
               </div>
             </div>
 
-            <div className={cx($p.mt38)}>
-              <div className={cx($g.uppercaseButton, $p.bgBlue, $p.white, $p.tc)}>All features</div>
+            <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
+              <div className={cx($g.uppercaseButton, $p.bgBlue, $p.white, $p.tc, $p.ph38, $p.pv16)}>All features</div>
             </div>
 
           </div>
