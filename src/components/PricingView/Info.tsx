@@ -53,8 +53,8 @@ export default class Info extends React.Component<{}, {}> {
                 text ever since it to make a type specimen book
               </div>
               <div className={cx($p.mt60, $p.center)}>
-                <Icon
-                  src={require('../../assets/icons/pricing/nodes.svg')}
+                <img
+                  src={require('../../assets/graphics/nodes.svg')}
                   height={282}
                   width={374}
                 />
@@ -64,7 +64,6 @@ export default class Info extends React.Component<{}, {}> {
             {/* SECOND COLUMN */}
             <OperationsOverview />
           </div>
-
 
           {/* TITLE */}
           <h2 className={cx($p.white, $p.fw3, $p.tc, $p.pt38)}>Included in every plan</h2>

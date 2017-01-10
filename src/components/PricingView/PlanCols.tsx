@@ -215,6 +215,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60)}>Try it for free
             </div>
           </div>
+
           {/* THIRD COLUMN - Pro */}
           <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
                              $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>

@@ -30,7 +30,7 @@ export default class OperationOverview extends React.Component<{}, State> {
         leftValue2: 0,
         rightValue2: 0,
         leftValue3: 0,
-        rightValue3: 0
+        rightValue3: 0,
     }
   }
 
@@ -106,17 +106,18 @@ export default class OperationOverview extends React.Component<{}, State> {
             onRightSliderValueChange={(value) => this.onSliderChanged(5, value)}
            />
 
-          <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}><b>= {this.numberWithCommas(this.state.totalOperations)}</b> operations in total</span>
+          <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
+            <b>= {this.numberWithCommas(this.state.totalOperations)}</b> operations in total
+          </span>
         </div>
     )
   }
 
   private numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
   private onSliderChanged = (sliderIndex: number, value: number) => {
-    console.log('slider changing; index = ' + sliderIndex + ', value = ' + value)
     switch (sliderIndex) {
     case 0:
       this.setState({leftValue1: value} as State)
@@ -143,11 +144,9 @@ export default class OperationOverview extends React.Component<{}, State> {
   }
 
   private updateTotalOperations () {
-    const result = this.state.leftValue1 + this.state.rightValue1 
-                 + this.state.leftValue2 + this.state.rightValue2 
-                 + this.state.leftValue3 + this.state.rightValue3 
+    const result = this.state.leftValue1 + this.state.rightValue1
+                 + this.state.leftValue2 + this.state.rightValue2
+                 + this.state.leftValue3 + this.state.rightValue3
     this.setState({totalOperations: result} as State)
   }
-
-
 }

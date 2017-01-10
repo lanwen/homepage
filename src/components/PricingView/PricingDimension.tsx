@@ -34,7 +34,7 @@ interface Props {
 export default (props: Props) => {
 
   const circleDiameter = props.circleDiameter ? props.circleDiameter : '24'
-  console.log('circleDiameter: ' + circleDiameter)
+  // console.log('circleDiameter: ' + circleDiameter)
   const Circle = styled.div`
     width: ` + circleDiameter + `px;
     height: ` + circleDiameter + `px;
@@ -45,11 +45,10 @@ export default (props: Props) => {
     width: 24px;
     height: 24px;
     flex: 0 0 24px;
-  ` 
+  `
   const circleClassName = props.circleClassName ? props.circleClassName : $p.bgGreen20
-  // const circleSize = props.circleSize ? props.circleSize : CircleSize.SMALL
+  const circleSize = props.circleSize ? props.circleSize : CircleSize.SMALL
 
-  {/*
   if (circleSize == CircleSize.SMALL) {
     return (
       <div className={cx($p.flex, props.className, $p.itemsCenter, $p.justifyCenter)}>
@@ -67,22 +66,21 @@ export default (props: Props) => {
       </div>
     )  
   } 
-  */}
 
   return (
     <div className={cx($p.flex, props.className, $p.itemsCenter, $p.justifyCenter)}>
-      <Circle24 className={cx(circleClassName, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr16)}>
+      <Circle36 className={cx(circleClassName, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr16)}>
         <Icon
           src={props.icon}
           color={$v.green}
           height={props.height}
           width={props.width}
         />
-      </Circle24>
+      </Circle36>
       <div>
         {props.children}
       </div>
     </div>
-  )  
+  )
 
 }

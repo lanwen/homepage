@@ -5,7 +5,6 @@ import * as Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import styled from 'styled-components'
 
-
 interface Props {
   operationType: string
   description: string
@@ -14,8 +13,8 @@ interface Props {
   moreRightInfo?: string
   leftSliderMaxValue: number
   rightSliderMaxValue: number
-  leftLink: string 
-  rightLink?: string 
+  leftLink: string
+  rightLink?: string
   leftValue: number
   rightValue: number
   onLeftSliderValueChange: (value: number) => void
@@ -36,12 +35,12 @@ export default class OperationSlider extends React.Component<Props, State> {
     super(props)
     this.state = {
       leftValue: 0,
-      rightValue: 0
+      rightValue: 0,
     }
   }
 
   render() {
-    const {operationType, description, leftInfo, rightInfo, 
+    const {operationType, description, leftInfo, rightInfo,
            leftSliderMaxValue, rightSliderMaxValue, leftLink} = this.props
     const {leftValue, rightValue, onLeftSliderValueChange, onRightSliderValueChange} = this.props
 
@@ -50,8 +49,7 @@ export default class OperationSlider extends React.Component<Props, State> {
       rightInfoComponent = (
         <a className={cx($p.white80, $p.f12, $p.ph4)} href={this.props.rightLink}>{rightInfo}</a>
       )
-    }
-    else {
+    } else {
       rightInfoComponent = (
         <div className={cx($p.white80, $p.f12, $p.ph4)}>{rightInfo}</div>
       )
@@ -68,7 +66,7 @@ export default class OperationSlider extends React.Component<Props, State> {
         <div className={cx($p.flex)}>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
             <Slider
-              onChange={onLeftSliderValueChange} 
+              onChange={onLeftSliderValueChange}
               max={leftSliderMaxValue}
               tipFormatter={null}
               step={1000}
@@ -80,7 +78,7 @@ export default class OperationSlider extends React.Component<Props, State> {
           </div>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
             <Slider
-              onChange={onRightSliderValueChange} 
+              onChange={onRightSliderValueChange}
               max={rightSliderMaxValue}
               tipFormatter={null}
               step={1000}
@@ -104,7 +102,7 @@ export default class OperationSlider extends React.Component<Props, State> {
   // }
 
   private numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
 }
