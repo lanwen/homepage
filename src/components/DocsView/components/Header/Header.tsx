@@ -219,22 +219,22 @@ export default class Header extends React.Component<{}, State> {
         >
           Blog
         </NavigationLink>
-        <NavigationLink
-          className={cx(
-            $p.mt10,
-            $p.fw6,
-            $p.noUnderline,
-            $p.ttu,
-            $p.black30,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
-          )}
-          to='/docs/community'
-          active={location.pathname.startsWith('/docs/community')}
-        >
-          Community
-        </NavigationLink>
+        {/*<NavigationLink*/}
+          {/*className={cx(*/}
+            {/*$p.mt10,*/}
+            {/*$p.fw6,*/}
+            {/*$p.noUnderline,*/}
+            {/*$p.ttu,*/}
+            {/*$p.black30,*/}
+            {/*{*/}
+              {/*[$p.ph16]: window.innerWidth >= breakpoints.p1200,*/}
+            {/*},*/}
+          {/*)}*/}
+          {/*to='/docs/community'*/}
+          {/*active={location.pathname.startsWith('/docs/community')}*/}
+        {/*>*/}
+          {/*Community*/}
+        {/*</NavigationLink>*/}
       </div>
     )
 
