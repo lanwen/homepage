@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 
+const Container = styled.div`
+  width: 920px;
+`
+
 const TextUnderLines = styled.textarea`
   background-image:
     repeating-linear-gradient(white, white 30px, rgba(0, 0, 0, 0.07) 30px, rgba(0, 0, 0, 0.07) 31px, white 31px);
@@ -41,23 +45,25 @@ export default class NegativeFeedback extends React.Component<Props, {}> {
   render() {
     const {onSubmit, onChange, text} = this.props
     return (
-      <div className={cx($p.flex, $p.justifyCenter, $p.mb60, $p.flexColumn, $p.ph96)}>
-        <TextUnderLines
-          className={cx($p.f20, $p.ph10, $p.o50, $p.blue)}
-          onChange={onChange}
-          onKeyDown={this.keyDown}
-          value={text}
-          placeholder={`We’re sorry about that! How can we improve?`}
-          autoFocus
-        />
-        <SendMessage
-          className={
-            cx($p.ttu, $p.db, $p.selfEnd, $p.mt25, $p.bgLightgreen20, $p.green, $p.pa10, $p.f16, $p.fw6, $p.pointer)
-          }
-          onClick={onSubmit}
-        >
-          Send Message
-        </SendMessage>
+      <div className={cx($p.flex, $p.justifyCenter)}>
+        <Container className={cx($p.flex, $p.justifyCenter, $p.mb60, $p.flexColumn, $p.ph96)}>
+          <TextUnderLines
+            className={cx($p.f20, $p.ph10, $p.o50, $p.blue)}
+            onChange={onChange}
+            onKeyDown={this.keyDown}
+            value={text}
+            placeholder={`We’re sorry about that! How can we improve?`}
+            autoFocus
+          />
+          <SendMessage
+            className={
+              cx($p.ttu, $p.db, $p.selfEnd, $p.mt25, $p.bgLightgreen20, $p.green, $p.pa10, $p.f16, $p.fw6, $p.pointer)
+            }
+            onClick={onSubmit}
+          >
+            Send Message
+          </SendMessage>
+        </Container>
       </div>
     )
   }
