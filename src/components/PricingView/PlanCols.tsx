@@ -4,7 +4,6 @@ import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import PricingDimension from './PricingDimension'
-import { CircleSize.MEDIUM, CircleSize.SMALL } from './PricingDimension'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -341,7 +340,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/unlimited.svg')}
               width={20}
               height={11}
-              circleSize={CircleSize.MEDIUM}
+              circleDiameter={'36'}
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
@@ -352,7 +351,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/protect.svg')}
               width={16}
               height={20}
-              circleSize={CircleSize.MEDIUM}
+              circleDiameter={'36'}
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
@@ -363,7 +362,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/star.svg')}
               width={20}
               height={19}
-              circleSize={CircleSize.MEDIUM}
+              circleDiameter={'36'}
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
@@ -374,7 +373,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               icon={require('../../assets/icons/pricing/sla.svg')}
               width={21}
               height={14}
-              circleSize={CircleSize.MEDIUM}
+              circleDiameter={'36'}
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >

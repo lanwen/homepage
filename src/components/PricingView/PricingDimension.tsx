@@ -3,11 +3,11 @@ import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 
-const Circle24 = styled.div`
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
-`
+// const Circle24 = styled.div`
+//   width: 24px;
+//   height: 24px;
+//   flex: 0 0 24px;
+// `
 
 const Circle36 = styled.div`
   width: 36px;
@@ -24,6 +24,7 @@ interface Props {
   icon: string
   height: number
   width: number
+  circleDiameter?: string
   circleSize?: CircleSize
   circleClassName?: string
   className?: string
@@ -32,9 +33,23 @@ interface Props {
 
 export default (props: Props) => {
 
-  const circleClassName = props.circleClassName ? props.circleClassName : $p.bgGreen20
-  const circleSize = props.circleSize ? props.circleSize : CircleSize.SMALL
+  const circleDiameter = props.circleDiameter ? props.circleDiameter : '24'
+  console.log('circleDiameter: ' + circleDiameter)
+  const Circle = styled.div`
+    width: ` + circleDiameter + `px;
+    height: ` + circleDiameter + `px;
+    flex: 0 0 ` + circleDiameter + `px;
+  `
 
+  const Circle24 = styled.div`
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  ` 
+  const circleClassName = props.circleClassName ? props.circleClassName : $p.bgGreen20
+  // const circleSize = props.circleSize ? props.circleSize : CircleSize.SMALL
+
+  {/*
   if (circleSize == CircleSize.SMALL) {
     return (
       <div className={cx($p.flex, props.className, $p.itemsCenter, $p.justifyCenter)}>
@@ -52,16 +67,18 @@ export default (props: Props) => {
       </div>
     )  
   } 
+  */}
+
   return (
     <div className={cx($p.flex, props.className, $p.itemsCenter, $p.justifyCenter)}>
-      <Circle36 className={cx(circleClassName, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr16)}>
+      <Circle24 className={cx(circleClassName, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr16)}>
         <Icon
           src={props.icon}
           color={$v.green}
           height={props.height}
           width={props.width}
         />
-      </Circle36>
+      </Circle24>
       <div>
         {props.children}
       </div>
