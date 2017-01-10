@@ -18,6 +18,7 @@ import CommunityPage from './components/DocsView/pages/CommunityPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
 import RootView from './components/RootView'
 import * as Smooch from 'smooch'
+import DocsOverview from './components/DocsView/pages/DocsOverview'
 
 import './style'
 
@@ -42,6 +43,7 @@ function render() {
             <Route path='/pricing' component={PricingView}/>
             <Route path='/about' component={AboutView}/>
             <Route path='/docs' component={DocsView}>
+              <Route path='' component={DocsOverview}/>
               <Route path='quickstart' component={QuickstartPage}/>
               <Route path='resources' component={ResourcesPage}/>
               <Route path='reference' component={ReferencePage}/>
