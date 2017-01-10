@@ -3,6 +3,7 @@ import * as GraphiQL from 'graphiql'
 import { $p, Icon, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
+import styled from 'styled-components'
 
 interface Props {
   literal: string
@@ -54,6 +55,17 @@ export function dslValid(literal: string): boolean {
   return true
 }
 
+const DisabledContainer = `
+  .execute-button-wrap, .toolbar-button {
+    display: none !important;
+  }
+`
+
+const Container = styled.div`
+  height: 400px;
+  ${props => props.disabled && DisabledContainer}
+`
+
 export default class MarkdownGraphiQL extends React.Component<Props, State> {
 
   constructor(props) {
@@ -91,14 +103,14 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     }
 
     return (
-      <div style={{ height: 400 }} className={cx($p.bgDarkerBlue, $p.mv25)}>
+      <Container disabled={dsl.disabled} className={cx($p.bgDarkerBlue, $p.mv25)}>
         <GraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
           response={this.state.response}
           onEditQuery={(query) => this.setState({ query } as State)}
         />
-      </div>
+      </Container>
     )
   }
 }
