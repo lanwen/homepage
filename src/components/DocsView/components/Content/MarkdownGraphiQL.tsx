@@ -9,14 +9,15 @@ interface Props {
 }
 
 interface State {
-  query: string,
+  query: string
+  response: string
 }
 
 interface DSL {
-  disabled: boolean,
-  endpoint: string,
-  query: string,
-  data: string,
+  disabled: boolean
+  endpoint: string
+  query: string
+  data: string
 }
 
 interface Frontmatter {
@@ -58,8 +59,10 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
   constructor(props) {
     super(props)
 
+    const dsl = parseDSL(props.literal)
     this.state = {
-      query: parseDSL(this.props.literal).query,
+      query: dsl.query,
+      response: dsl.data,
     }
   }
 
@@ -77,6 +80,13 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
         body: JSON.stringify(graphQLParams),
       })
 
+      if (!graphQLParams.query.includes('IntrospectionQuery')) {
+        this.setState({
+          query: graphQLParams.query,
+          response: graphQLParams.response,
+        } as State)
+      }
+
       return response.json()
     }
 
@@ -85,7 +95,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
         <GraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
-          response={dsl.data}
+          response={this.state.response}
           onEditQuery={(query) => this.setState({ query } as State)}
         />
       </div>
