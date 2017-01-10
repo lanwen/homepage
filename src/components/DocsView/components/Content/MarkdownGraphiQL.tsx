@@ -12,6 +12,7 @@ interface Props {
 interface State {
   query: string
   response: string
+  variables: string
 }
 
 interface DSL {
@@ -19,6 +20,7 @@ interface DSL {
   endpoint: string
   query: string
   data: string
+  variables: string | null
 }
 
 interface Frontmatter {
@@ -29,13 +31,24 @@ interface Frontmatter {
 function parseDSL(literal: string): DSL {
   const fm: Frontmatter = frontmatter(literal)
 
-  const [queryPart, dataPart] = fm.body.split('---')
+  const [queryPart, a, b] = fm.body.split('---')
+
+  let dataPart: string
+  let variablesPart: string
+
+  if (b) {
+    dataPart = b
+    variablesPart = a
+  } else {
+    dataPart = a
+  }
 
   return {
     disabled: fm.attributes['disabled'] || false,
     endpoint: fm.attributes['endpoint'],
     query: queryPart.trim(),
     data: dataPart.trim(),
+    variables: variablesPart ? variablesPart.trim() : null,
   }
 }
 
@@ -44,7 +57,7 @@ export function dslValid(literal: string): boolean {
 
   const [queryPart, dataPart] = fm.body.split('---')
 
-  if (fm.body.split('---').length !== 2) {
+  if (fm.body.split('---').length < 2) {
     return false
   }
 
@@ -75,6 +88,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     this.state = {
       query: dsl.query,
       response: dsl.data,
+      variables: dsl.variables || '',
     }
   }
 
@@ -96,6 +110,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
         this.setState({
           query: graphQLParams.query,
           response: graphQLParams.response,
+          variables: JSON.stringify(graphQLParams.variables),
         } as State)
       }
 
@@ -108,6 +123,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
           fetcher={graphQLFetcher}
           query={this.state.query}
           response={this.state.response}
+          variables={this.state.variables}
           onEditQuery={(query) => this.setState({ query } as State)}
         />
       </Container>
