@@ -30,7 +30,7 @@ export default class Technology extends React.Component<Props, {}> {
       <div className={cx($p.flex, $p.flexColumn, $p.itemsCenter)}>
         <Circle className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)} style={{background: `${backgroundColor}`}}>
           <Icon
-              src={require(`../../../assets/icons/docs/${logoName}.svg`)}
+              src={require(`../../../../assets/icons/docs/${logoName}.svg`)}
               color={logoColor}
               height={logoWidth}
               width={logoHeight}

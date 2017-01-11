@@ -33,10 +33,12 @@ export interface QuickStep {
 }
 
 export interface QuickExample {
-  imageSrc: string
-  link: string
-  layout: Layout
   title: string
+  layout: Layout
+  imageSrc: string
+  imageWidth: number
+  imageHeight: number
+  link: string
 }
 
 export interface Color {

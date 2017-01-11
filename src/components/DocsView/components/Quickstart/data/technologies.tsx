@@ -1,3 +1,5 @@
+import {$v} from 'graphcool-styles'
+
 export interface TechnologyData {
   title: string
   logoName: string

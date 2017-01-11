@@ -1,10 +1,10 @@
 import * as React from 'react'
-import {$p, $v} from 'graphcool-styles'
+import {$p, $v, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import Technology from './Technology'
 import StepIndicator from './StepIndicator'
-import {QuickExample} from '../../../../types/types'
 import {TechnologyData, frontendTechnologies, clientTechnologies} from './data/technologies'
+import {reactApolloExamples} from './data/examples'
 
 interface State {
   currentStep: Step
@@ -58,34 +58,79 @@ export default class Quickstart extends React.Component<Props, State> {
     }
     else if (this.state.currentStep === 'GRAPHQL_CLIENT') {
       return (
-        <div className={cx($p.flex)}>
-          <Technology
-              title={selectedFrontendTechnology.title}
-              logoName={selectedFrontendTechnology.logoName}
-              logoColor={selectedFrontendTechnology.logoColor}
-              logoWidth={selectedFrontendTechnology.logoWidth}
-              logoHeight={selectedFrontendTechnology.logoHeight}
-              backgroundColor={selectedFrontendTechnology.backgroundColor}
-          />
-          <div className={cx($p.black20, $p.f38, $p.fw6)} style={{paddingTop: 20}}>+</div>
-          {clientTechnologies.map((technology) =>
+        <div className={cx($p.flex, $p.flexColumn, className)}>
+          {stepIndicator}
+          <div className={cx($p.flex)}>
             <Technology
-              title={technology.title}
-              logoName={technology.logoName}
-              logoColor={technology.logoColor}
-              logoWidth={technology.logoWidth}
-              logoHeight={technology.logoHeight}
-              backgroundColor={technology.backgroundColor}
+                title={selectedFrontendTechnology.title}
+                logoName={selectedFrontendTechnology.logoName}
+                logoColor={selectedFrontendTechnology.logoColor}
+                logoWidth={selectedFrontendTechnology.logoWidth}
+                logoHeight={selectedFrontendTechnology.logoHeight}
+                backgroundColor={selectedFrontendTechnology.backgroundColor}
             />
-          )}
-
+            <div className={cx($p.black20, $p.f38, $p.fw6)} style={{paddingTop: 20}}>+</div>
+            {clientTechnologies.map((technology) =>
+              <Technology
+                title={technology.title}
+                logoName={technology.logoName}
+                logoColor={technology.logoColor}
+                logoWidth={technology.logoWidth}
+                logoHeight={technology.logoHeight}
+                backgroundColor={technology.backgroundColor}
+              />
+            )}
+          </div>
         </div>
       )
     }
     else if (this.state.currentStep === 'USE_CASE') {
       return (
         <div className={$p.flex}>
-          USE_CASE
+          <div className={cx($p.flex, $p.flexColumn, className)}>
+            {stepIndicator}
+            <div className={cx($p.flex, $p.justifyBetween)}>
+              <Technology
+                  title={selectedFrontendTechnology.title}
+                  logoName={selectedFrontendTechnology.logoName}
+                  logoColor={selectedFrontendTechnology.logoColor}
+                  logoWidth={selectedFrontendTechnology.logoWidth}
+                  logoHeight={selectedFrontendTechnology.logoHeight}
+                  backgroundColor={selectedFrontendTechnology.backgroundColor}
+              />
+              <div style={{paddingTop: 34}}>
+                <Icon
+                  src={require('../../../../assets/icons/docs/plus.svg')}
+                  width={27}
+                  height={27}
+                  color={$v.gray20}
+                />
+              </div>
+              <Technology
+                  title={selectedClientTechnology.title}
+                  logoName={selectedClientTechnology.logoName}
+                  logoColor={selectedClientTechnology.logoColor}
+                  logoWidth={selectedClientTechnology.logoWidth}
+                  logoHeight={selectedClientTechnology.logoHeight}
+                  backgroundColor={selectedClientTechnology.backgroundColor}
+              />
+              <div style={{paddingTop: 37}}>
+                <Icon
+                  src={require('../../../../assets/icons/docs/right_arrow.svg')}
+                  width={31}
+                  height={22}
+                  color={$v.gray20}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={cx($p.flex)}>
+          {reactApolloExamples.map((example) =>
+            
+          )}
+            
+          </div>
+          }
         </div>
       )
     }
