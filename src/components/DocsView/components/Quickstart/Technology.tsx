@@ -14,17 +14,20 @@ const Circle = styled.div`
 interface Props {
   technology: TechnologyData
   onClick?: (technology: TechnologyData) => void
+  className?: string
 }
 
 
 export default (props: Props) => {
 
-  const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor}, onClick} = props
+  const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor}, onClick, className} = props
   const {technology} = props
+
+  console.log('tech: ' + logoColor)
 
   return (
     <div
-      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25)}
+      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
       onClick={() => onClick(technology)}
     >
       <Circle className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)} style={{background: `${backgroundColor}`}}>

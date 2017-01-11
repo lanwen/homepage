@@ -19,7 +19,7 @@ class QuickstartPage extends React.Component<Props, {}> {
       <ContentWindow>
         <Helmet title='Quick Start' />
         <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.w100, $p.h100)}>
-          <Quickstart/>
+          <Quickstart />
         </div>
       </ContentWindow>
     )

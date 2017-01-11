@@ -6,6 +6,7 @@ import {Step} from './Quickstart'
 interface Props {
   currentStep: Step
   pathComponentClicked: (number) => void
+  className?: string
 }
 
 const greenNotSelected = 'rgba(28,191,50,0.5)'
@@ -58,7 +59,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       )
       useCase = (
         <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${grayNotSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
             Use case
           </div>
         </div>
@@ -101,7 +102,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       )
       useCase = (
         <div  className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${grayNotSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
             Use case
           </div>
         </div>
@@ -130,7 +131,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
         <div 
           className={cx($p.flex, $p.itemsCenter, $p.pointer)}
           onClick={() => this.props.pathComponentClicked(1)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
             GraphQL Client
           </div>
           <Icon
@@ -146,7 +147,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       )
       useCase = (
         <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
             Use case
           </div>
         </div>
@@ -157,7 +158,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
     }
 
     return (
-      <div className={cx($p.flex)}>
+      <div className={cx($p.flex, this.props.className)}>
         {technology}
         {graphQLClient}
         {useCase}

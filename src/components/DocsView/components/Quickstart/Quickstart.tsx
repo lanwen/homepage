@@ -25,15 +25,14 @@ export default class Quickstart extends React.Component<Props, State> {
 
   render() {
 
-    console.log(this.state)
     const {className} = this.props
     const {selectedFrontendTechnology, selectedClientTechnology} = this.state
     const currentStep: Step = this.getCurrentStep()
-    console.log(currentStep)
 
     const stepIndicator: JSX.Element = (
       <StepIndicator 
         currentStep={currentStep}
+        className={cx($p.mb25)}
         pathComponentClicked={(index) => {
           if (index == 0) {
             this.setState({
@@ -54,7 +53,7 @@ export default class Quickstart extends React.Component<Props, State> {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
-          <div className={cx($p.flex)}>
+          <div className={cx($p.flex, $p.justifyBetween)}>
             {frontendTechnologies.map((technology) =>
             <Technology
               technology={technology}
@@ -73,13 +72,21 @@ export default class Quickstart extends React.Component<Props, State> {
             <Technology
               technology={selectedFrontendTechnology}
             />
-            <div className={cx($p.black20, $p.f38, $p.fw6)} style={{paddingTop: 20}}>+</div>
-            {clientTechnologies.map((technology) =>
-              <Technology
-                technology={technology}
-                onClick={() => this.selectClientTechnology(technology)}
+            <div style={{paddingTop: 34}}>
+              <Icon
+                src={require('../../../../assets/icons/docs/plus.svg')}
+                width={27}
+                height={27}
+                color={$v.gray20}
               />
-            )}
+            </div>
+            {clientTechnologies.map((technology) =>
+            <Technology
+              className={cx($p.ml25)}
+              technology={technology}
+              onClick={() => this.selectClientTechnology(technology)}
+            />)
+            }
           </div>
         </div>
       )
@@ -102,6 +109,7 @@ export default class Quickstart extends React.Component<Props, State> {
                 />
               </div>
               <Technology
+                className={cx($p.ml25)}
                 technology={selectedClientTechnology}
               />
               <div style={{paddingTop: 37}}>
@@ -126,19 +134,20 @@ export default class Quickstart extends React.Component<Props, State> {
     return (
         <div>UNKNOWN</div>
     )
-    
   }
 
-  private selectClientTechnology = (tech: TechnologyData) => {
+  private selectClientTechnology = (technology: TechnologyData) => {
+    const selectedTechnology = this.setSelected(technology)
     this.setState({
-      selectedClientTechnology: tech,
+      selectedClientTechnology: selectedTechnology,
       currentStep: 'USE_CASE',
     } as State)
   }
 
-  private selectFrontendTechnology = (tech: TechnologyData) => {
+  private selectFrontendTechnology = (technology: TechnologyData) => {
+    const selectedTechnology = this.setSelected(technology)
     this.setState({
-      selectedFrontendTechnology: tech,
+      selectedFrontendTechnology: selectedTechnology,
       currentStep: 'GRAPHQL_CLIENT',
     } as State)
   }
@@ -151,6 +160,15 @@ export default class Quickstart extends React.Component<Props, State> {
       return 'GRAPHQL_CLIENT'
     }
     return 'TECHNOLOGY'
+  }
+
+  private setSelected(technology: TechnologyData): TechnologyData {
+    const selectedTechnologyData = {
+      ...technology,
+      backgroundColor: technology.logoColor,
+      logoColor: 'white'
+    }
+    return selectedTechnologyData
   }
 
 }
