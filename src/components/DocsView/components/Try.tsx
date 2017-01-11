@@ -4,9 +4,6 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import {breakpoints} from '../../../utils/constants'
 
-interface State {
-
-}
 const Button = styled.a`
   font-size: ${$v.size14} !important;
   text-decoration: none;
@@ -16,19 +13,10 @@ const Button = styled.a`
   }
 `
 
-export default class Try extends React.Component<{}, State> {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-
-    }
-  }
-
+export default class Try extends React.Component<{}, {}> {
   render() {
     return (
-      <div className={cx($p.flex, $p.flexColumn, $p.justifyCenter, $p.itemsCenter, $p.pt25, $p.pb96)}>
+      <div className={cx($p.flex, $p.flexColumn, $p.justifyCenter, $p.itemsCenter, $p.pt38, $p.pb96)}>
         <div className={cx($p.f25, $p.fw3)}>Not a customer yet? Try it out for free.</div>
         <Button
           href='https://graph.cool/signup'

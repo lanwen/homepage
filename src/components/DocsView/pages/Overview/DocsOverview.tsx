@@ -2,11 +2,12 @@ import * as React from 'react'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import Quickstart from '../../components/Quickstart'
+import Quickstart from '../../components/Quickstart/Quickstart'
 import Heading from './Heading'
 import References from './References'
 import Items from './Items'
 import MoreItems from './MoreItems'
+import Community from './Community'
 import Try from '../../components/Try'
 
 const Container = styled.div`
@@ -84,6 +85,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             link='https://slack.graph.cool/'
           />
         </Container>
+        <Community />
         <Try />
       </ContentContainer>
     )

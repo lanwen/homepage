@@ -5,7 +5,7 @@ import TemporaryNavigation from '../components/TemporaryNavigation'
 import {getItemsByLayout} from '../fragments/getItemsByLayout'
 import ContentWindow from '../components/ContentWindow'
 import * as Helmet from 'react-helmet'
-import Quickstep from '../components/Quickstart'
+import Quickstart from '../components/Quickstart/Quickstart'
 import * as cx from 'classnames'
 import {$p} from 'graphcool-styles'
 
@@ -19,7 +19,7 @@ class QuickstartPage extends React.Component<Props, {}> {
       <ContentWindow>
         <Helmet title='Quick Start' />
         <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.w100, $p.h100)}>
-          <Quickstep/>
+          <Quickstart/>
         </div>
       </ContentWindow>
     )

@@ -20,7 +20,7 @@ const FeatureBox = ({title, iconSrc, text, link, className}: Props) => (
         height={28}
         color={$v.green50}
       />
-      <div className={cx($p.ttu, $p.green, $p.ml16, $p.f16u)}>{title}</div>
+      <div className={cx($p.ttu, $p.green, $p.ml16, $p.f16)}>{title}</div>
     </div>
     <div className={cx($p.pa16)}>
       {text}
