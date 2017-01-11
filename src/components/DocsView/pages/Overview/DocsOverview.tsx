@@ -10,6 +10,7 @@ import * as cx from 'classnames'
 import FeatureBox from './FeatureBox'
 import Quickstep from '../../components/Quickstep'
 import Heading from './Heading'
+import References from './References'
 
 interface Props {
   data: any
@@ -22,11 +23,6 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
    flex: 1 1 100px;
-`
-
-const FeaturesBackground = styled.div`
-  background: rgba(0,0,0,.02);
-  height: 144px;
 `
 
 class DocsOverview extends React.Component<Props, {}> {
@@ -42,33 +38,7 @@ class DocsOverview extends React.Component<Props, {}> {
             link='/docs/reference'
           />
         </Container>
-        <FeaturesBackground className={cx($p.flex, $p.itemsCenter, $p.mt60)}>
-          <Container>
-            <div className={cx($p.flex)}>
-              <FeatureBox
-                title='Platform'
-                iconSrc={require('../../../../assets/icons/references/graphcool.svg')}
-                text='All features and everything else, explained in simple words'
-                link='/docs/reference/platform/overview-chohbah0eo'
-                className={cx($p.mr25, $p.flex1)}
-              />
-              <FeatureBox
-                title='Simple API'
-                iconSrc={require('../../../../assets/icons/references/simple.svg')}
-                text='A complete reference on how to query, mutate or manage data with our simple API'
-                link='/docs/reference/simple-api/overview-heshoov3ai'
-                className={cx($p.mr25, $p.flex1)}
-              />
-              <FeatureBox
-                title='Relay API'
-                iconSrc={require('../../../../assets/icons/references/relay.svg')}
-                text='For more advanced usage, a complete reference of the Relay API'
-                link='/docs/reference/relay-api/overview-aizoong9ah'
-                className={cx($p.flex1)}
-              />
-            </div>
-          </Container>
-        </FeaturesBackground>
+        <References />
         <Container className={cx($p.pt96)}>
           <Heading
             layout='QUICKSTART'
