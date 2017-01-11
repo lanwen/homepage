@@ -32,6 +32,22 @@ const StyledSlider = styled(Slider)`
   }
 `
 
+function roundedStep(step: number): number {
+  if (step < 10) {
+    return step * 100
+  }
+
+  const zeroIndexedStep = step - 10
+
+  const leadingDigits = {
+    0: 10,
+    1: 25,
+    2: 50,
+  }[zeroIndexedStep % 3]
+
+  return leadingDigits * Math.pow(10, Math.floor(zeroIndexedStep / 3)) * 100
+}
+
 export default class OperationSlider extends React.Component<Props, {}> {
 
   render() {
@@ -64,10 +80,10 @@ export default class OperationSlider extends React.Component<Props, {}> {
               onChange={onLeftSliderValueChange}
               max={leftSliderMaxValue}
               tipFormatter={null}
-              step={1000}
+              step={1}
             />
             <div className={cx($p.flex, $p.mt10)}>
-              <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>{this.numberWithCommas(leftValue)}</div>
+              <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>{this.numberWithCommas(roundedStep(leftValue))}</div>
               <a className={cx($p.white80, $p.f12, $p.pl4)} href={leftLink}>{leftInfo}</a>
             </div>
           </div>
@@ -76,10 +92,10 @@ export default class OperationSlider extends React.Component<Props, {}> {
               onChange={onRightSliderValueChange}
               max={rightSliderMaxValue}
               tipFormatter={null}
-              step={1000}
+              step={1}
             />
             <div className={cx($p.flex, $p.mt10)}>
-              <div className={cx($p.white80, $p.f12, $p.fw6)}>{this.numberWithCommas(rightValue)}</div>
+              <div className={cx($p.white80, $p.f12, $p.fw6)}>{this.numberWithCommas(roundedStep(rightValue))}</div>
               {rightInfoComponent}
             </div>
           </div>
@@ -89,7 +105,7 @@ export default class OperationSlider extends React.Component<Props, {}> {
   }
 
   private numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
 }
