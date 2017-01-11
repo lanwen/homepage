@@ -28,6 +28,7 @@ const StyledSlider = styled(Slider)`
   }
   .rc-slider-rail {
     height: 1px;
+    top: 6px;
   }
 `
 
