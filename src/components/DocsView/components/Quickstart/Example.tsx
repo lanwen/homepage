@@ -12,9 +12,7 @@ interface Props {
 export default class Example extends React.Component<Props, {}> {
 
   render() {
-
     const {imageSrc, imageWidth, imageHeight, link, layout, title} = this.props.quickExample
-
     return (
       <div className={cx($p.flex, $p.flexColumn)}>
         {/* top */}

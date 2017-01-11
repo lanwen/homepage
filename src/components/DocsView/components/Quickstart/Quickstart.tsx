@@ -5,6 +5,7 @@ import Technology from './Technology'
 import StepIndicator from './StepIndicator'
 import {TechnologyData, frontendTechnologies, clientTechnologies} from './data/technologies'
 import {reactApolloExamples} from './data/examples'
+import Example from './Example'
 
 interface State {
   currentStep: Step
@@ -126,11 +127,10 @@ export default class Quickstart extends React.Component<Props, State> {
           </div>
           <div className={cx($p.flex)}>
           {reactApolloExamples.map((example) =>
-            
+            <Example className={cx($p.flex1)} quickExample={example} />
           )}
             
           </div>
-          }
         </div>
       )
     }
