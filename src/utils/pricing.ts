@@ -1,5 +1,5 @@
 export function numberWithCommas(x: number): string {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return Math.floor(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 export function roundedStep(step: number): number {
@@ -7,7 +7,7 @@ export function roundedStep(step: number): number {
     return step * 100
   }
 
-  const zeroIndexedStep = step - 10
+  const zeroIndexedStep = step - 1
 
   const leadingDigits = {
     0: 10,
@@ -15,6 +15,6 @@ export function roundedStep(step: number): number {
     2: 50,
   }[zeroIndexedStep % 3]
 
-  return leadingDigits * Math.pow(10, Math.floor(zeroIndexedStep / 3)) * 100
+  return leadingDigits * Math.pow(10, Math.floor(zeroIndexedStep / 3)) / 10
 }
 

@@ -14,6 +14,7 @@ interface Props {
   moreRightInfo?: string
   leftSliderMaxValue: number
   rightSliderMaxValue: number
+  rightSliderMinValue: number
   leftLink: string
   rightLink?: string
   leftValue: number
@@ -30,6 +31,9 @@ const StyledSlider = styled(Slider)`
   .rc-slider-rail {
     height: 1px;
     top: 6px;
+  }
+  .rc-slider-track {
+    background: ${$v.green};
   }
 `
 
@@ -63,6 +67,7 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
               max={this.props.leftSliderMaxValue}
               tipFormatter={null}
               step={1}
+              value={this.props.leftValue}
             />
             <div className={cx($p.flex, $p.mt10)}>
               <div
@@ -79,6 +84,8 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
               max={this.props.rightSliderMaxValue}
               tipFormatter={null}
               step={1}
+              min={this.props.rightSliderMinValue}
+              value={this.props.rightValue}
             />
             <div className={cx($p.flex, $p.mt10)}>
               <div className={cx($p.white80, $p.f12, $p.fw6)}>{numberWithCommas(roundedStep(this.props.rightValue))}</div>
