@@ -18,7 +18,7 @@ export default class CircleIcon extends React.Component<Props, {}> {
       'REFERENCE': require('../../../assets/graphics/categories/reference.svg'),
       'BLOG': require('../../../assets/graphics/categories/blog.svg'),
       'EXAMPLE': require('../../../assets/graphics/categories/example.svg'),
-      'QUICKSTART': require('../../../assets/graphics/categories/example.svg'),
+      'QUICKSTART': require('../../../assets/graphics/categories/quickstart.svg'),
     }[this.props.type]
 
     const background = {
@@ -27,7 +27,7 @@ export default class CircleIcon extends React.Component<Props, {}> {
       'REFERENCE': 'rgba(39, 174, 96, 0.2)',
       'BLOG': 'rgba(42, 126, 211, 0.2)',
       'EXAMPLE': 'rgba(241, 143, 1, 0.2)',
-      'QUICKSTART': 'rgba(241, 143, 1, 0.2)',
+      'QUICKSTART': 'rgba(242, 92, 84, 0.2)',
     }[this.props.type]
 
     const imageWidth = this.props.width || 25
