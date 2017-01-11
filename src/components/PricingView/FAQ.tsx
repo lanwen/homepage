@@ -40,7 +40,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                     <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more</a>.
+                     <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
                   </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more</a>.
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more</a>
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
                   </div>
                 </div>
               </div>
