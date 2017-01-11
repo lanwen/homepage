@@ -8,7 +8,6 @@ import {reactApolloExamples} from './data/examples'
 import Example from './Example'
 
 interface State {
-  currentStep: Step
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
 }
@@ -19,26 +18,18 @@ interface Props {
 
 export default class Quickstart extends React.Component<Props, State> {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      currentStep: 'TECHNOLOGY',
-      selectedFrontendTechnology: frontendTechnologies[0],
-      selectedClientTechnology: clientTechnologies[0]
-    }
-  }
-
   render() {
 
     const {className} = this.props
-    const {currentStep, selectedFrontendTechnology, selectedClientTechnology} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology} = this.state
+    const currentStep: Step = this.getCurrentStep()
+    console.log(currentStep)
 
     const stepIndicator: JSX.Element = (
       <StepIndicator currentStep={currentStep} />
     )
 
-    if (this.state.currentStep === 'TECHNOLOGY') {
+    if (currentStep === 'TECHNOLOGY') {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
@@ -53,7 +44,7 @@ export default class Quickstart extends React.Component<Props, State> {
         </div>
       )
     }
-    else if (this.state.currentStep === 'GRAPHQL_CLIENT') {
+    else if (currentStep === 'GRAPHQL_CLIENT') {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
@@ -72,7 +63,7 @@ export default class Quickstart extends React.Component<Props, State> {
         </div>
       )
     }
-    else if (this.state.currentStep === 'USE_CASE') {
+    else if (currentStep === 'USE_CASE') {
       return (
         <div className={$p.flex}>
           <div className={cx($p.flex, $p.flexColumn, className)}>
@@ -130,6 +121,17 @@ export default class Quickstart extends React.Component<Props, State> {
       currentStep: 'GRAPHQL_CLIENT',
     } as State)
   }
+
+  private getCurrentStep(): Step {
+    if (this.state.selectedClientTechnology) {
+      return 'USE_CASE'
+    }
+    else if (this.state.selectedFrontendTechnology) {
+      return 'GRAPHQL_CLIENT'
+    }
+    return 'TECHNOLOGY'
+  }
+
 }
 
 export type Step = 'TECHNOLOGY' | 'GRAPHQL_CLIENT' | 'USE_CASE'
