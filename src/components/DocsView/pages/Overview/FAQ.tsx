@@ -17,9 +17,11 @@ class FAQ extends React.Component<Props, {}> {
     }
 
     return (
-      <div>
+      <div className={cx($p.flex, $p.flexWrap)}>
         {data.allItems.map(item => (
-          <div key={item.alias}>{item.title}</div>
+          <div key={item.alias}>
+
+          </div>
         ))}
       </div>
     )

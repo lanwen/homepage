@@ -2,8 +2,8 @@ import * as React from 'react'
 import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import Tutorials from './Overview/Tutorials'
-import MoreTutorials from './Overview/MoreTutorials'
+import Tutorials from './Overview/Items'
+import MoreTutorials from './Overview/MoreItems'
 import Heading from './Overview/Heading'
 
 const Container = styled.div`
