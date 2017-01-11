@@ -12,13 +12,16 @@ interface Props {
 }
 
 const StyledLink = styled.div`
-  flex: 1;
-  width: 30%;
+  flex: 0 0 281px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
 `
 
 const ImgWrapper = styled.div`
   height: 150px;
+  img {
+    max-width: 120%;
+    max-height: 120%;
+  }
 `
 
 class Tutorials extends React.Component<Props, {}> {
@@ -34,7 +37,7 @@ class Tutorials extends React.Component<Props, {}> {
         {data.allItems.map(item => (
           <StyledLink
             key={item.alias}
-            className={cx($p.mr25, $p.noUnderline, $p.bgWhite)}
+            className={cx($p.mr25, $p.noUnderline, $p.bgWhite, $p.mb25)}
             to={item.path + '-' + item.alias}
           >
             <ImgWrapper

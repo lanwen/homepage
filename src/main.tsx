@@ -21,6 +21,7 @@ import * as Smooch from 'smooch'
 import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
 
 import './style'
+import TutorialsPage from './components/DocsView/pages/TutorialsPage'
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
@@ -48,6 +49,7 @@ function render() {
               <Route path='resources' component={ResourcesPage}/>
               <Route path='reference' component={ReferencePage}/>
               <Route path='blog' component={BlogPage}/>
+              <Route path='tutorials' component={TutorialsPage} />
               <Route path='community' component={CommunityPage}/>
             </Route>
             <Route path='*' component={ContentHandler}/>
