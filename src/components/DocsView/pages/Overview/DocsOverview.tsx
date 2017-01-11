@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import CircleIcon from '../../components/CircleIcon'
 import * as cx from 'classnames'
 import FeatureBox from './FeatureBox'
-import Quickstep from '../../components/Quickstart'
+import Quickstart from '../../components/Quickstart'
 import Heading from './Heading'
 import References from './References'
 
@@ -46,7 +46,7 @@ class DocsOverview extends React.Component<Props, {}> {
             text='Put together your favourite technologies to form an example you can get easily started with.'
             link='/docs/quickstart'
           />
-          <Quickstep />
+          <Quickstart className={$p.mt38} />
         </Container>
         <Container className={cx($p.pt96)}>
           <Heading

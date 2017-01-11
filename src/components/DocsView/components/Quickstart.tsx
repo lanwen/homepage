@@ -7,7 +7,12 @@ import StepIndicator from './StepIndicator'
 interface State {
   currentStep: Step
 }
-export default class Quickstep extends React.Component<{}, State> {
+
+interface Props {
+  className?: string
+}
+
+export default class Quickstart extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
@@ -19,6 +24,7 @@ export default class Quickstep extends React.Component<{}, State> {
 
   render() {
 
+    const {className} = this.props
     const {currentStep} = this.state
 
     const stepIndicator: JSX.Element = (
@@ -27,7 +33,7 @@ export default class Quickstep extends React.Component<{}, State> {
 
     if (this.state.currentStep === 'TECHNOLOGY') {
       return (
-        <div className={cx($p.flex, $p.flexColumn)}>
+        <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
           <div className={cx($p.flex)}>
             {technologies.map((technology) =>
