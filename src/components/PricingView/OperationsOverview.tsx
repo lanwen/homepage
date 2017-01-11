@@ -63,13 +63,13 @@ export default class OperationOverview extends React.Component<{}, State> {
           <OperationSlider
             operationType='Request'
             description='A request is either a GraphQL query or mutation.'
-            leftInfo='requests'
+            leftInfo='requests/month'
             rightInfo='leaf nodes'
-            leftSliderMaxValue={1000000}
-            rightSliderMaxValue={1000000}
+            leftSliderMaxValue={19}
+            rightSliderMaxValue={16}
             leftLink=''
             rightLink='a'
-            leftValue={this.state.leftValue1}
+            leftValue={this.state.leftValue1 === 0 ? 0 : this.state.leftValue1 + 9}
             rightValue={this.state.rightValue1}
             onLeftSliderValueChange={(value) => this.onSliderChanged(0, value)}
             onRightSliderValueChange={(value) => this.onSliderChanged(1, value)}
@@ -79,13 +79,13 @@ export default class OperationOverview extends React.Component<{}, State> {
           <OperationSlider
             operationType='Subscription'
             description='A GraphQL subscription is triggered by a mutation.'
-            leftInfo='mutations'
+            leftInfo='mutations/month'
             rightInfo='concurrent subscriptions'
-            leftSliderMaxValue={1000000}
-            rightSliderMaxValue={1000000}
+            leftSliderMaxValue={19}
+            rightSliderMaxValue={19}
             leftLink=''
             rightLink='a'
-            leftValue={this.state.leftValue2}
+            leftValue={this.state.leftValue2 === 0 ? 0 : this.state.leftValue2 + 9}
             rightValue={this.state.rightValue2}
             onLeftSliderValueChange={(value) => this.onSliderChanged(2, value)}
             onRightSliderValueChange={(value) => this.onSliderChanged(3, value)}
@@ -95,19 +95,19 @@ export default class OperationOverview extends React.Component<{}, State> {
           <OperationSlider
             operationType='Function calls'
             description='Function calls are billed by execution time.'
-            leftInfo='function calls'
+            leftInfo='function calls/month'
             rightInfo='ms per function call'
-            leftSliderMaxValue={1000000}
-            rightSliderMaxValue={1000000}
+            leftSliderMaxValue={19}
+            rightSliderMaxValue={16}
             leftLink=''
-            leftValue={this.state.leftValue3}
+            leftValue={this.state.leftValue3 === 0 ? 0 : this.state.leftValue3 + 9}
             rightValue={this.state.rightValue3}
             onLeftSliderValueChange={(value) => this.onSliderChanged(4, value)}
             onRightSliderValueChange={(value) => this.onSliderChanged(5, value)}
            />
 
           <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
-            <b>= {this.numberWithCommas(this.state.totalOperations)}</b> operations in total
+            <b>= {this.numberWithCommas(this.state.totalOperations)}</b> operations/month
           </span>
         </div>
     )
