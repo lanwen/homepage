@@ -21,23 +21,17 @@ interface Props {
   onRightSliderValueChange: (value: number) => void
 }
 
-interface State {
-
-}
-
 const StyledSlider = styled(Slider)`
-  
+  .rc-slider-handle {
+    background: white;
+    border: none;
+  }
+  .rc-slider-rail {
+    height: 1px;
+  }
 `
 
-export default class OperationSlider extends React.Component<Props, State> {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      leftValue: 0,
-      rightValue: 0,
-    }
-  }
+export default class OperationSlider extends React.Component<Props, {}> {
 
   render() {
     const {operationType, description, leftInfo, rightInfo,
@@ -65,7 +59,7 @@ export default class OperationSlider extends React.Component<Props, State> {
         </div>
         <div className={cx($p.flex)}>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
-            <Slider
+            <StyledSlider
               onChange={onLeftSliderValueChange}
               max={leftSliderMaxValue}
               tipFormatter={null}
@@ -77,7 +71,7 @@ export default class OperationSlider extends React.Component<Props, State> {
             </div>
           </div>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
-            <Slider
+            <StyledSlider
               onChange={onRightSliderValueChange}
               max={rightSliderMaxValue}
               tipFormatter={null}
@@ -92,14 +86,6 @@ export default class OperationSlider extends React.Component<Props, State> {
       </div>
     )
   }
-
-  // private changeLeft = (value: number) => {
-  //   this.setState({leftValue: value} as State)
-  // }
-
-  // private changeRight = (value: number) => {
-  //   this.setState({rightValue: value} as State)
-  // }
 
   private numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
