@@ -28,7 +28,7 @@ export default class Try extends React.Component<{}, State> {
 
   render() {
     return (
-      <div className={cx($p.flex, $p.flexColumn, $p.justifyCenter, $p.itemsCenter, $p.pv25)}>
+      <div className={cx($p.flex, $p.flexColumn, $p.justifyCenter, $p.itemsCenter, $p.pt25, $p.pb96)}>
         <div className={cx($p.f25, $p.fw3)}>Not a customer yet? Try it out for free.</div>
         <Button
           href='https://graph.cool/signup'
