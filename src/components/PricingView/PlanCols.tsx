@@ -374,7 +374,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architects</span>&nbsp;
+              <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architect</span>&nbsp;
             </PricingDimension>
 
             <PricingDimension

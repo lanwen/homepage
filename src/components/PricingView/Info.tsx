@@ -46,10 +46,8 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.white, $p.ml16)}>What is a node?</div>
               </div>
               <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
-                A node is is simply dummy text of the
-                printing and typesetting industry.
-                Lorem Ipsum has been the industry’s standard dummy
-                text ever since it to make a type specimen book
+                You store data in Graphcool as nodes. 
+                For example, if five users write two posts each, you have 15 nodes.
               </div>
               <div className={cx($p.mt60, $p.center)}>
                 <img
@@ -82,17 +80,17 @@ export default class Info extends React.Component<{}, {}> {
                   />
                 </Circle80>
                 <div className={cx($p.flex, $p.flexColumn, $p.mh25)}>
-                  <div className={cx($p.white, $p.f16, $p.fw6)}>Fair usage rates</div>
+                  <div className={cx($p.white, $p.f16, $p.fw6)}>File storage</div>
                   <div className={cx($p.white80, $p.f14, $p.mt10)}>
-                      A node is is simply dummy text of the printing and typesetting industry.
-                      Lorem Ipsum has been the industry’s standard dummy text ever since it to
-                      make a type specimen book. A node is is simply dummy text of the printing
-                      and typesetting industry.
+                      Graphcool has an integrated file management system. Easily store and display your users profile pictures, attachments and much more.
+                      <br />
+                      Basic usage is free and for more demanding projects you are billed in increments of 50¢ / GB for additional storage and file transfer. 
+
                   </div>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB File Storage included</div>
+                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB File Traffic included</div>
                 </div>
               </div>
             </div>
@@ -109,44 +107,10 @@ export default class Info extends React.Component<{}, {}> {
                   />
                 </Circle80>
                 <div className={cx($p.flex, $p.flexColumn, $p.mh25)}>
-                  <div className={cx($p.white, $p.f16, $p.fw6)}>Fair usage rates</div>
+                  <div className={cx($p.white, $p.f16, $p.fw6)}>Integrations</div>
                   <div className={cx($p.white80, $p.f14, $p.mt10)}>
-                      A node is is simply dummy text of the printing and typesetting industry.
-                      Lorem Ipsum has been the industry’s standard dummy text ever since it to
-                      make a type specimen book. A node is is simply dummy text of the printing
-                      and typesetting industry.
+                      Integrations is a powerful way to add functionality to your project. Use Auth0 to add social login or set up a sophisticated search engine with Algolia.
                   </div>
-                </div>
-                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
-                </div>
-              </div>
-            </div>
-
-            {/* THIRD LINE */}
-            <div className={cx($p.bb, $p.bWhite30, $p.pb38, $p.ph38, $p.mt38)}>
-              <div className={cx($p.flex)}>
-                <Circle80 className={cx($p.bgWhite30, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.mr25)}>
-                  <Icon
-                      src={require('../../assets/icons/pricing/download.svg')}
-                      color={$v.darkBlue}
-                      height={34}
-                      width={28}
-                  />
-                </Circle80>
-                <div className={cx($p.flex, $p.flexColumn, $p.mh25)}>
-                  <div className={cx($p.white, $p.f16, $p.fw6)}>Fair usage rates</div>
-                  <div className={cx($p.white80, $p.f14, $p.mt10)}>
-                      A node is is simply dummy text of the printing and typesetting industry.
-                      Lorem Ipsum has been the industry’s standard dummy text ever since it to
-                      make a type specimen book. A node is is simply dummy text of the printing
-                      and typesetting industry.
-                  </div>
-                </div>
-                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>1 GB File Storage included</div>
-                  <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>5 GB File Traffic included</div>
                 </div>
               </div>
             </div>

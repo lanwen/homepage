@@ -77,7 +77,7 @@ export default (props: Props) => (
         </ImgWrapper>
         <div className={cx($p.mt16)}>Browse for #graphcool to get answers to common questions</div>
         <StyledB
-          href='https://github.com/graphcool'
+          href='http://stackoverflow.com/search?q=%23graphcool'
           className={cx(
             $p.ttu,
             $p.f14,
