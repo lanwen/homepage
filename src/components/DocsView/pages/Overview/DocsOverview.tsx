@@ -7,6 +7,7 @@ import Heading from './Heading'
 import References from './References'
 import Items from './Items'
 import MoreItems from './MoreItems'
+import Try from '../../components/Try'
 
 const Container = styled.div`
   max-width: 920px;
@@ -75,6 +76,15 @@ export default class DocsOverview extends React.Component<{}, {}> {
             <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq' />
           </Container>
         </ItemsBackground>
+        <Container className={cx($p.pt96, $p.pb96)}>
+          <Heading
+            layout='COMMUNITY'
+            title='Community'
+            text='Get in contact, collaborate and take part in making graph.cool the best GraphQL backend.'
+            link='/docs/faq'
+          />
+        </Container>
+        <Try />
       </ContentContainer>
     )
   }
