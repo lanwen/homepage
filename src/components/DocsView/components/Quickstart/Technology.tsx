@@ -2,7 +2,7 @@ import * as React from 'react'
 import {$p, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import {renderColor} from '../../../utils/index'
+import {renderColor} from '../../../../utils/index'
 
 const Circle = styled.div`
   width: 96px;
