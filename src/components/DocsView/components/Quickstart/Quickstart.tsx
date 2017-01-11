@@ -18,15 +18,36 @@ interface Props {
 
 export default class Quickstart extends React.Component<Props, State> {
 
+  state = {
+    selectedFrontendTechnology: null,
+    selectedClientTechnology: null,
+  }
+
   render() {
 
+    console.log(this.state)
     const {className} = this.props
     const {selectedFrontendTechnology, selectedClientTechnology} = this.state
     const currentStep: Step = this.getCurrentStep()
     console.log(currentStep)
 
     const stepIndicator: JSX.Element = (
-      <StepIndicator currentStep={currentStep} />
+      <StepIndicator 
+        currentStep={currentStep}
+        pathComponentClicked={(index) => {
+          if (index == 0) {
+            this.setState({
+              selectedFrontendTechnology: null,
+              selectedClientTechnology: null,
+            } as State)
+          }
+          else if (index == 1) {
+            this.setState({
+              ...this.state,
+              selectedClientTechnology: null,
+            } as State)
+          }
+        }} />
     )
 
     if (currentStep === 'TECHNOLOGY') {

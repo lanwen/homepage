@@ -5,6 +5,7 @@ import {Step} from './Quickstart'
 
 interface Props {
   currentStep: Step
+  pathComponentClicked: (number) => void
 }
 
 const greenNotSelected = 'rgba(28,191,50,0.5)'
@@ -65,7 +66,9 @@ export default class StepIndicator extends React.Component<Props, {}> {
       break
     case 'GRAPHQL_CLIENT': 
       technology = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
+        <div 
+          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+          onClick={() => this.props.pathComponentClicked(0)}>
           <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
             Technology
           </div>
@@ -97,7 +100,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
         </div>
       )
       useCase = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
+        <div  className={cx($p.flex, $p.itemsCenter)}>
           <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${grayNotSelected}`}}>
             Use case
           </div>
@@ -106,7 +109,9 @@ export default class StepIndicator extends React.Component<Props, {}> {
       break
     case 'USE_CASE': 
       technology = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
+        <div 
+          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+          onClick={() => this.props.pathComponentClicked(0)}>
           <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
             Technology
           </div>
@@ -122,7 +127,9 @@ export default class StepIndicator extends React.Component<Props, {}> {
         </div>
       )
       graphQLClient = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
+        <div 
+          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+          onClick={() => this.props.pathComponentClicked(1)}>
           <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
             GraphQL Client
           </div>
@@ -156,7 +163,6 @@ export default class StepIndicator extends React.Component<Props, {}> {
         {useCase}
       </div>
     )
-
   }
 }
 
