@@ -39,6 +39,12 @@ const Overflow = styled.div`
   background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
 `
 
+const Container = styled.div`
+  @media (max-width: 920px) {
+    justify-content: center;
+  }
+`
+
 class Tutorials extends React.Component<Props, {}> {
   render() {
     const {data, className, showPreview} = this.props
@@ -48,7 +54,7 @@ class Tutorials extends React.Component<Props, {}> {
     }
 
   return (
-      <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, className)}>
+      <Container className={cx($p.flex, $p.flexWrap, className)}>
         {data.allItems.map(item => (
           <StyledLink
             key={item.alias}
@@ -78,7 +84,7 @@ class Tutorials extends React.Component<Props, {}> {
             </div>
           </StyledLink>
         ))}
-      </div>
+      </Container>
     )
   }
 }
