@@ -36,16 +36,14 @@ export default class FAQ extends React.Component<{}, {}> {
                   </Circle>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn)}>
-                  <div className={cx($p.fw6, $p.pl25)}>How does X work?</div>
+                  <div className={cx($p.fw6, $p.pl25)}>What happens when I go over my limit?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry’s standard dummy text ever since.
-                     <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
+                    Each plan has a over-quota price for additional nodes and operations. When your usage starts exceeding your plan we will notify you so you can decide if it would be better for you to change your plan.
                   </div>
                 </div>
               </div>
             </div>
-            {/* Card BOTTOM-LEFT */}
+            {/* Card MIDDLE-LEFT */}
             <div className={cx($p.mt38)}>
               <div className={cx($p.flex)}>
                 <div>
@@ -59,11 +57,31 @@ export default class FAQ extends React.Component<{}, {}> {
                   </Circle>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn)}>
-                  <div className={cx($p.fw6, $p.pl25)}>How does X work?</div>
+                  <div className={cx($p.fw6, $p.pl25)}>Can I change plans at any time?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
+                    Absolutely! Your plan is billed from the first of each month. If you change or cancel your plan in the middle of the month we will refund you pro rata.
+                  </div>
+                </div>
+              </div>
+            </div>
+          {/* Card BOTTOM-LEFT */}
+            <div className={cx($p.mt38)}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                        src={require('../../assets/icons/pricing/question_mark.svg')}
+                        color={$v.green}
+                        height={22}
+                        width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>Are there any limits to the size of a node?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    A node can have up to 100 fields. You can see all limits for data stored in fields in the  
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href='https://www.graph.cool/docs/reference/platform/fields'>documentation</a>
                   </div>
                 </div>
               </div>
@@ -88,11 +106,30 @@ export default class FAQ extends React.Component<{}, {}> {
                   </Circle>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn)}>
-                  <div className={cx($p.fw6, $p.pl25)}>How does X work?</div>
+                  <div className={cx($p.fw6, $p.pl25)}>Who owns my data?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    X works great. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry’s standard dummy text ever since.
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href=''>Read more.</a>
+                    You own all data stored in Graphcool. We do not share your data with third parties.
+                  </div>
+                </div>
+              </div>
+            </div>
+          {/* Card MIDDLE-RIGHT */}
+            <div className={cx($p.mt38)}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                        src={require('../../assets/icons/pricing/question_mark.svg')}
+                        color={$v.green}
+                        height={22}
+                        width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>How long does the trial last?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    The trial lasts 30 days. If you decide not to upgrade to a paid plan after the trial period you will be changed to the developer plan.
                   </div>
                 </div>
               </div>
