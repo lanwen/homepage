@@ -10,7 +10,7 @@ interface Props {
   text: string
 }
 
-export default ({layout, title, text}: Props) => (
+const Heading = ({layout, title, text}: Props) => (
   <div className={cx($p.flex)}>
     <CircleIcon width={44} height={44} type={layout} />
     <div className={$p.ml16}>
@@ -19,3 +19,5 @@ export default ({layout, title, text}: Props) => (
     </div>
   </div>
 )
+
+export default Heading

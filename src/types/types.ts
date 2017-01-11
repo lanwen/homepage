@@ -1,4 +1,4 @@
-export type Layout = 'BLOG' | 'REFERENCE' | 'TUTORIAL' | 'FAQ' | 'EXAMPLE'
+export type Layout = 'BLOG' | 'REFERENCE' | 'TUTORIAL' | 'FAQ' | 'EXAMPLE' | 'QUICKSTART'
 
 export interface Item {
   id: string
