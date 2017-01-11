@@ -41,7 +41,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       )
       graphQLClient = (
         <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${grayNotSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
             GraphQL Client
           </div>
           <Icon
@@ -66,7 +66,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
     case 'GRAPHQL_CLIENT': 
       technology = (
         <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
             Technology
           </div>
           <Icon
@@ -82,7 +82,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       )
       graphQLClient = (
         <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenSelected}`}}>
+          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
             GraphQL Client
           </div>
           <Icon

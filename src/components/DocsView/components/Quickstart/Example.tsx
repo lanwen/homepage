@@ -7,6 +7,7 @@ import {reactApolloExamples} from './data/examples'
 
 interface Props {
   quickExample: QuickExample
+  className?: string
 }
 
 export default class Example extends React.Component<Props, {}> {

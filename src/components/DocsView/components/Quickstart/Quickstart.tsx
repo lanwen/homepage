@@ -23,7 +23,7 @@ export default class Quickstart extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      currentStep: 'USE_CASE',
+      currentStep: 'TECHNOLOGY',
       selectedFrontendTechnology: frontendTechnologies[0],
       selectedClientTechnology: clientTechnologies[0]
     }
@@ -45,12 +45,8 @@ export default class Quickstart extends React.Component<Props, State> {
           <div className={cx($p.flex)}>
             {frontendTechnologies.map((technology) =>
             <Technology
-              title={technology.title}
-              logoName={technology.logoName}
-              logoColor={technology.logoColor}
-              logoWidth={technology.logoWidth}
-              logoHeight={technology.logoHeight}
-              backgroundColor={technology.backgroundColor}
+              technology={technology}
+              onClick={() => this.selectFrontendTechnology(technology)}
             />
           )}
           </div>
@@ -63,22 +59,13 @@ export default class Quickstart extends React.Component<Props, State> {
           {stepIndicator}
           <div className={cx($p.flex)}>
             <Technology
-                title={selectedFrontendTechnology.title}
-                logoName={selectedFrontendTechnology.logoName}
-                logoColor={selectedFrontendTechnology.logoColor}
-                logoWidth={selectedFrontendTechnology.logoWidth}
-                logoHeight={selectedFrontendTechnology.logoHeight}
-                backgroundColor={selectedFrontendTechnology.backgroundColor}
+              technology={selectedFrontendTechnology}
             />
             <div className={cx($p.black20, $p.f38, $p.fw6)} style={{paddingTop: 20}}>+</div>
             {clientTechnologies.map((technology) =>
               <Technology
-                title={technology.title}
-                logoName={technology.logoName}
-                logoColor={technology.logoColor}
-                logoWidth={technology.logoWidth}
-                logoHeight={technology.logoHeight}
-                backgroundColor={technology.backgroundColor}
+                technology={technology}
+                onClick={() => this.selectClientTechnology(technology)}
               />
             )}
           </div>
@@ -92,12 +79,7 @@ export default class Quickstart extends React.Component<Props, State> {
             {stepIndicator}
             <div className={cx($p.flex, $p.justifyBetween)}>
               <Technology
-                  title={selectedFrontendTechnology.title}
-                  logoName={selectedFrontendTechnology.logoName}
-                  logoColor={selectedFrontendTechnology.logoColor}
-                  logoWidth={selectedFrontendTechnology.logoWidth}
-                  logoHeight={selectedFrontendTechnology.logoHeight}
-                  backgroundColor={selectedFrontendTechnology.backgroundColor}
+                technology={selectedFrontendTechnology}
               />
               <div style={{paddingTop: 34}}>
                 <Icon
@@ -108,12 +90,7 @@ export default class Quickstart extends React.Component<Props, State> {
                 />
               </div>
               <Technology
-                  title={selectedClientTechnology.title}
-                  logoName={selectedClientTechnology.logoName}
-                  logoColor={selectedClientTechnology.logoColor}
-                  logoWidth={selectedClientTechnology.logoWidth}
-                  logoHeight={selectedClientTechnology.logoHeight}
-                  backgroundColor={selectedClientTechnology.backgroundColor}
+                technology={selectedClientTechnology}
               />
               <div style={{paddingTop: 37}}>
                 <Icon
@@ -138,6 +115,20 @@ export default class Quickstart extends React.Component<Props, State> {
         <div>UNKNOWN</div>
     )
     
+  }
+
+  private selectClientTechnology = (tech: TechnologyData) => {
+    this.setState({
+      selectedClientTechnology: tech,
+      currentStep: 'USE_CASE',
+    } as State)
+  }
+
+  private selectFrontendTechnology = (tech: TechnologyData) => {
+    this.setState({
+      selectedFrontendTechnology: tech,
+      currentStep: 'GRAPHQL_CLIENT',
+    } as State)
   }
 }
 
