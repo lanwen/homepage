@@ -13,8 +13,8 @@ interface Props {
   rightInfo: string
   moreRightInfo?: string
   leftSliderMaxValue: number
-  rightSliderMaxValue: number
-  rightSliderMinValue: number
+  rightSliderMaxValue?: number
+  rightSliderMinValue?: number
   leftLink: string
   rightLink?: string
   leftValue: number
