@@ -39,7 +39,7 @@ class Tutorials extends React.Component<Props, {}> {
       return <div>Loading...</div>
     }
 
-    return (
+  return (
       <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, className)}>
         {data.allItems.map(item => (
           <StyledLink

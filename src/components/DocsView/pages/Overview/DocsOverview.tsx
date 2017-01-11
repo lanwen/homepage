@@ -6,7 +6,6 @@ import Quickstart from '../../components/Quickstart'
 import Heading from './Heading'
 import References from './References'
 import Items from './Items'
-import FAQ from './FAQ'
 import MoreItems from './MoreItems'
 
 const Container = styled.div`

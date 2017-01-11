@@ -79,10 +79,13 @@ export default class ResourcesHover extends React.Component<{}, {}> {
               <CircleIcon type='TUTORIAL'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Tutorials</div>
             </NavigationLink>
-            <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/examples'>
+            <a
+              className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)}
+              href='https://github.com/graphcool-examples'
+            >
               <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
-            </NavigationLink>
+            </a>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq'>
               <CircleIcon type='FAQ'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
