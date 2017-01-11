@@ -5,15 +5,22 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import {Link} from 'react-router'
 import styled from 'styled-components'
+import {Layout} from '../../../../types/types'
 
 interface Props {
   data: any
   className?: string
+  layout: Layout
+  showPreview?: boolean
 }
 
-const StyledLink = styled.div`
+const StyledLink = styled(Link)`
   flex: 0 0 281px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
+`
+
+const Text = styled.div`
+  max-height: 200px;
 `
 
 const ImgWrapper = styled.div`
@@ -26,25 +33,27 @@ const ImgWrapper = styled.div`
 
 class Tutorials extends React.Component<Props, {}> {
   render() {
-    const {data, className} = this.props
+    const {data, className, showPreview} = this.props
 
     if (data.loading) {
       return <div>Loading...</div>
     }
 
-    return (
-      <div className={cx($p.flex, $p.flexWrap, className)}>
+  return (
+      <div className={cx($p.flex, $p.flexWrap, $p.justifyCenter, className)}>
         {data.allItems.map(item => (
           <StyledLink
             key={item.alias}
             className={cx($p.mr25, $p.noUnderline, $p.bgWhite, $p.mb25)}
             to={item.path + '-' + item.alias}
           >
-            <ImgWrapper
-              className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.overflowHidden, $p.bb, $p.bBlack05)}
-            >
-              <img src={item.preview} />
-            </ImgWrapper>
+            {showPreview && (
+              <ImgWrapper
+                className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.overflowHidden, $p.bb, $p.bBlack05)}
+              >
+                <img src={item.preview} />
+              </ImgWrapper>
+            )}
             <div className={cx($p.pa25)}>
               <h2 className={cx($p.f25)}>{item.title}</h2>
               <div className={cx($p.black20, $p.f14, $p.flex, $p.flexWrap, $p.nowrap, $p.mt10)}>
@@ -52,9 +61,9 @@ class Tutorials extends React.Component<Props, {}> {
                   <span key={tag} className={cx($p.mr6)}>#{tag}</span>
                 ))}
               </div>
-              <div className={cx($p.mt25, $p.f16)}>
+              <Text className={cx($p.mt25, $p.f16, $p.toe, $p.overflowHidden)}>
                 {item.description}
-              </div>
+              </Text>
             </div>
           </StyledLink>
         ))}
@@ -64,10 +73,10 @@ class Tutorials extends React.Component<Props, {}> {
 }
 
 const getItemsQuery = gql`
-  query ($first: Int){
+  query ($first: Int, $layout: ITEM_LAYOUT){
     allItems(
       filter: {
-        layout: TUTORIAL
+        layout: $layout
       }
       first: $first
     ) {
@@ -82,5 +91,5 @@ const getItemsQuery = gql`
 `
 
 export default graphql(getItemsQuery, {
-  options: ({count}) => ({ variables: {first: count || 3} }),
+  options: ({count, layout}) => ({ variables: { first: count || 3, layout } }),
 })(Tutorials)

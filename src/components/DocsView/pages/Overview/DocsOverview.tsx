@@ -5,9 +5,9 @@ import * as cx from 'classnames'
 import Quickstart from '../../components/Quickstart/Quickstart'
 import Heading from './Heading'
 import References from './References'
-import Tutorials from './Tutorials'
-import FAQ from './FAQ'
-import MoreTutorials from './MoreTutorials'
+import Items from './Items'
+import MoreItems from './MoreItems'
+import Try from '../../components/Try'
 
 const Container = styled.div`
   max-width: 920px;
@@ -18,11 +18,11 @@ const ContentContainer = styled.div`
    flex: 1 1 100px;
 `
 
-const TutorialsBackground = styled.div`
+const ItemsBackground = styled.div`
   background: rgb(250,250,250);
 `
 
-const StyledTutorials = styled(Tutorials)`
+const StyledItems = styled(Items)`
   top: -10px;
 `
 
@@ -56,12 +56,12 @@ export default class DocsOverview extends React.Component<{}, {}> {
             link='/docs/tutorials'
           />
         </Container>
-        <TutorialsBackground className={$p.mt60}>
+        <ItemsBackground className={$p.mt60}>
           <Container>
-            <StyledTutorials count={3} className={cx($p.relative)}/>
-            <MoreTutorials />
+            <StyledItems count={3} layout='TUTORIAL' className={cx($p.relative)} showPreview={true} />
+            <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials' />
           </Container>
-        </TutorialsBackground>
+        </ItemsBackground>
         <Container className={cx($p.pt96, $p.pb96)}>
           <Heading
             layout='FAQ'
@@ -69,8 +69,22 @@ export default class DocsOverview extends React.Component<{}, {}> {
             text='Find answers to the most common questions about graph.cool and the API'
             link='/docs/faq'
           />
-          <FAQ />
         </Container>
+        <ItemsBackground>
+          <Container>
+            <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false} />
+            <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq' />
+          </Container>
+        </ItemsBackground>
+        <Container className={cx($p.pt96, $p.pb96)}>
+          <Heading
+            layout='COMMUNITY'
+            title='Community'
+            text='Get in contact, collaborate and take part in making graph.cool the best GraphQL backend.'
+            link='https://slack.graph.cool/'
+          />
+        </Container>
+        <Try />
       </ContentContainer>
     )
   }

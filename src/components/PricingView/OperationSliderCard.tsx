@@ -4,6 +4,7 @@ import * as cx from 'classnames'
 import * as Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import styled from 'styled-components'
+import { numberWithCommas, roundedStep } from '../../utils/pricing'
 
 interface Props {
   operationType: string
@@ -32,64 +33,61 @@ const StyledSlider = styled(Slider)`
   }
 `
 
-export default class OperationSlider extends React.Component<Props, {}> {
+export default class OperationSliderCard extends React.Component<Props, {}> {
 
   render() {
-    const {operationType, description, leftInfo, rightInfo,
-           leftSliderMaxValue, rightSliderMaxValue, leftLink} = this.props
-    const {leftValue, rightValue, onLeftSliderValueChange, onRightSliderValueChange} = this.props
 
     let rightInfoComponent: JSX.Element
     if (this.props.rightLink) {
       rightInfoComponent = (
-        <a className={cx($p.white80, $p.f12, $p.ph4)} href={this.props.rightLink}>{rightInfo}</a>
+        <a className={cx($p.white80, $p.f12, $p.ph4)} href={this.props.rightLink}>{this.props.rightInfo}</a>
       )
     } else {
       rightInfoComponent = (
-        <div className={cx($p.white80, $p.f12, $p.ph4)}>{rightInfo}</div>
+        <div className={cx($p.white80, $p.f12, $p.ph4)}>{this.props.rightInfo}</div>
       )
     }
 
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
         <div className={cx($p.flex)}>
-          <div className={cx($p.white80, $p.f14, $p.fw6)}>{operationType}:</div>
+          <div className={cx($p.white80, $p.f14, $p.fw6)}>{this.props.operationType}:</div>
           <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
-            {description}
+            {this.props.description}
           </div>
         </div>
         <div className={cx($p.flex)}>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
             <StyledSlider
-              onChange={onLeftSliderValueChange}
-              max={leftSliderMaxValue}
+              onChange={this.props.onLeftSliderValueChange}
+              max={this.props.leftSliderMaxValue}
               tipFormatter={null}
-              step={1000}
+              step={1}
             />
             <div className={cx($p.flex, $p.mt10)}>
-              <div className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}>{this.numberWithCommas(leftValue)}</div>
-              <a className={cx($p.white80, $p.f12, $p.pl4)} href={leftLink}>{leftInfo}</a>
+              <div
+                className={cx($p.white80, $p.f12, $p.fw3, $p.fw6)}
+              >
+                {numberWithCommas(roundedStep(this.props.leftValue))}
+              </div>
+              <a className={cx($p.white80, $p.f12, $p.pl4)} href={this.props.leftLink}>{this.props.leftInfo}</a>
             </div>
           </div>
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
             <StyledSlider
-              onChange={onRightSliderValueChange}
-              max={rightSliderMaxValue}
+              onChange={this.props.onRightSliderValueChange}
+              max={this.props.rightSliderMaxValue}
               tipFormatter={null}
-              step={1000}
+              step={1}
             />
             <div className={cx($p.flex, $p.mt10)}>
-              <div className={cx($p.white80, $p.f12, $p.fw6)}>{this.numberWithCommas(rightValue)}</div>
+              <div className={cx($p.white80, $p.f12, $p.fw6)}>{numberWithCommas(roundedStep(this.props.rightValue))}</div>
               {rightInfoComponent}
             </div>
           </div>
         </div>
       </div>
     )
-  }
-
-  private numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
 }

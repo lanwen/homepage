@@ -2,8 +2,7 @@ import * as React from 'react'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import OperationSlider from './OperationSlider'
-import * as Slider from 'rc-slider'
+import OperationSlider from './OperationSliderCard'
 import 'rc-slider/assets/index.css'
 import OperationsOverview from './OperationsOverview'
 
@@ -54,7 +53,7 @@ export default class Info extends React.Component<{}, {}> {
               </div>
               <div className={cx($p.mt60, $p.center)}>
                 <img
-                  src={require('../../assets/graphics/nodes.svg')}
+                  src={require('../../assets/graphics/nodes.png')}
                   height={282}
                   width={374}
                 />
