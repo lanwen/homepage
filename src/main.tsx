@@ -1,6 +1,6 @@
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
-import { Router, Route, browserHistory, applyRouterMiddleware } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router'
 import { useScroll } from 'react-router-scroll'
 import { AppContainer } from 'react-hot-loader'
 import HomeView from './components/HomeView/HomeView'
@@ -21,6 +21,7 @@ import * as Smooch from 'smooch'
 import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
 
 import './style'
+import TutorialsPage from './components/DocsView/pages/TutorialsPage'
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
@@ -43,11 +44,12 @@ function render() {
             <Route path='/pricing' component={PricingView}/>
             <Route path='/about' component={AboutView}/>
             <Route path='/docs' component={DocsView}>
-              <Route path='overview' component={DocsOverview}/>
+              <IndexRoute component={DocsOverview}/>
               <Route path='quickstart' component={QuickstartPage}/>
               <Route path='resources' component={ResourcesPage}/>
               <Route path='reference' component={ReferencePage}/>
               <Route path='blog' component={BlogPage}/>
+              <Route path='tutorials' component={TutorialsPage} />
               <Route path='community' component={CommunityPage}/>
             </Route>
             <Route path='*' component={ContentHandler}/>
