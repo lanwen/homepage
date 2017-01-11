@@ -1,6 +1,6 @@
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, browserHistory, applyRouterMiddleware } from 'react-router'
 import { useScroll } from 'react-router-scroll'
 import { AppContainer } from 'react-hot-loader'
 import HomeView from './components/HomeView/HomeView'
@@ -46,9 +46,9 @@ function render() {
             <Route path='/about' component={AboutView}/>
             <Route path='/docs' component={DocsView}>
               <IndexRoute component={DocsOverview}/>
+              <Redirect from='reference' to='reference/platform/overview-chohbah0eo' />
               <Route path='quickstart' component={QuickstartPage}/>
               <Route path='resources' component={ResourcesPage}/>
-              <Route path='reference' component={ReferencePage}/>
               <Route path='blog' component={BlogPage}/>
               <Route path='tutorials' component={TutorialsPage} />
               <Route path='faq' component={FAQPage} />
