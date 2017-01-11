@@ -40,6 +40,10 @@ interface Meta {
   httpEquiv?: string
 }
 
+const ContentContainer = styled.div`
+   flex: 1 1 100px;
+`
+
 class ContentHandler extends React.Component<Props, {}> {
 
   static contextTypes = {
@@ -84,9 +88,6 @@ class ContentHandler extends React.Component<Props, {}> {
 
     const item: Item = this.props.data.Item
     const ast = new Parser().parse(atob(this.props.data.Item.body))
-    const ContentContainer = styled.div`
-       flex: 1 1 100px;
-    `
 
     let imageMeta: Meta[] = []
 

@@ -1,4 +1,4 @@
-export type Layout = 'BLOG' | 'REFERENCE' | 'TUTORIAL' | 'FAQ'
+export type Layout = 'BLOG' | 'REFERENCE' | 'TUTORIAL' | 'FAQ' | 'EXAMPLE'
 
 export interface Item {
   id: string
@@ -22,4 +22,25 @@ export interface Item {
 
 export interface NestedItem extends Item {
   children?: NestedItem[]
+}
+
+export interface QuickStep {
+  primaryColor: Color
+  title: string
+  logoSrc: string
+  isPopuplar?: boolean
+  nextSteps: QuickStep[] | QuickExample[]
+}
+
+export interface QuickExample {
+  imageSrc: string
+  link: string
+  layout: Layout
+  title: string
+}
+
+export interface Color {
+  r: number
+  g: number
+  b: number
 }

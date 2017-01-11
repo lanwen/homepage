@@ -1,4 +1,5 @@
 // get last element of a path that looks like this: /some/url/with-some-title-alias15235
+import {Color} from '../types/types'
 export function getAliasFromUrl(pathname) {
   return pathname.split('/').reverse()[0].split('-').reverse()[0]
 }
@@ -23,4 +24,8 @@ export function childrenToString(children): string {
       }
     })
     .join('')
+}
+
+export function renderColor({r, g, b}: Color, opacity: number) {
+  return `rgba(${r},${g},${b},${opacity})`
 }

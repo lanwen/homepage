@@ -18,7 +18,7 @@ import CommunityPage from './components/DocsView/pages/CommunityPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
 import RootView from './components/RootView'
 import * as Smooch from 'smooch'
-import DocsOverview from './components/DocsView/pages/DocsOverview'
+import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
 
 import './style'
 
