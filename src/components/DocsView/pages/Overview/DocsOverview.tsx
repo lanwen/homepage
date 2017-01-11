@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import CircleIcon from '../../components/CircleIcon'
 import * as cx from 'classnames'
 import FeatureBox from './FeatureBox'
-import Quickstep from '../../components/Quickstep'
+import Quickstep from '../../components/Quickstart'
 import Heading from './Heading'
 import References from './References'
 

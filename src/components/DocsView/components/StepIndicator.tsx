@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {$p, $v, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
-import {Step} from './Quickstep'
+import {Step} from './Quickstart'
 
 interface Props {
   currentStep: Step
