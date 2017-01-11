@@ -63,7 +63,6 @@ class Tutorials extends React.Component<Props, {}> {
   }
 }
 
-
 const getItemsQuery = gql`
   query ($first: Int){
     allItems(
@@ -83,5 +82,5 @@ const getItemsQuery = gql`
 `
 
 export default graphql(getItemsQuery, {
-  options: ({count}) => ({ variables: {first: count || 3} })
+  options: ({count}) => ({ variables: {first: count || 3} }),
 })(Tutorials)

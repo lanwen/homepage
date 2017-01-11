@@ -46,5 +46,4 @@ export default (props: Props) => (
       </div>
     </Container>
   </FeaturesBackground>
-
 )
