@@ -5,6 +5,7 @@ import TemporaryNavigation from '../components/TemporaryNavigation'
 import {getItemsByLayout} from '../fragments/getItemsByLayout'
 import ContentWindow from '../components/ContentWindow'
 import * as Helmet from 'react-helmet'
+import Quickstep from '../components/Quickstep'
 
 interface Props {
   data: any
@@ -15,8 +16,7 @@ class QuickstartPage extends React.Component<Props, {}> {
     return (
       <ContentWindow>
         <Helmet title='Quick Start' />
-        <h1>Landing page for the quick start page</h1>
-        {this.props.data.loading ? 'loading...' : <TemporaryNavigation links={this.props.data.allItems} />}
+        <Quickstep/>
       </ContentWindow>
     )
   }

@@ -253,7 +253,7 @@ export default class Header extends React.Component<{}, State> {
 
     const logo = (
       <LogoLink className={cx($p.flex, $p.itemsCenter, $p.overflowHidden)}>
-        <Link to='/' className={cx($p.noUnderline, $p.flex, $p.flexRow, $p.itemsCenter)}>
+        <Link to='/docs' className={cx($p.noUnderline, $p.flex, $p.flexRow, $p.itemsCenter)}>
           <img className={cx()} src={require('../../../../assets/graphics/GraphcoolLogoOnltG.svg')}/>
           <div className={cx($p.f20, $p.fw4, $p.lightgreen50, $p.ttu, $p.ml16)}>
             Docs
