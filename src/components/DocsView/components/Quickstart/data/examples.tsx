@@ -1,5 +1,18 @@
 import {QuickExample} from '../../../../../types/types'
 
+{/*
+
+Frontend Framework Keys: 'react', 'angular', 'react_native', 'ios', 'android', 'vue'
+Client Framework Keys: 'apollo', 'relay'
+
+Info:
+Add new data to `examples` dictionary and use combination of key for 
+frontend and client frameworks separated by a hyphen, e.g. `react_native-realy`
+
+*/}
+
+{/* REACT-APOLLO */}
+
 const reactApolloInstagram: QuickExample = {
   imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
   imageWidth: 176,
@@ -27,8 +40,10 @@ const reactApolloStarter: QuickExample = {
   title: 'React Apollo Instagram',
 }
 
-export const reactApolloExamples: [QuickExample] = [
-  reactApolloInstagram,
-  reactApolloTodo,
-  reactApolloStarter,
-]
+export const examples = {
+  'react-apollo': [
+    reactApolloInstagram,
+    reactApolloTodo,
+    reactApolloStarter
+  ]
+}

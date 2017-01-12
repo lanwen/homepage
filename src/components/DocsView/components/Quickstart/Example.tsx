@@ -3,7 +3,6 @@ import {$p, $v, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {Layout, QuickExample} from '../../../../types/types'
 import CircleIcon from '../CircleIcon'
-import {reactApolloExamples} from './data/examples'
 
 interface Props {
   quickExample: QuickExample
