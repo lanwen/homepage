@@ -44,6 +44,6 @@ export const examples = {
   'react-apollo': [
     reactApolloInstagram,
     reactApolloTodo,
-    reactApolloStarter
-  ]
+    reactApolloStarter,
+  ],
 }
