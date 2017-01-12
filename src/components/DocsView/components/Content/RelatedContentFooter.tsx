@@ -22,6 +22,7 @@ const ContainerContainer = styled.div`
 
 const More = styled.div`
   box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
+  min-width: 400px;
     
   @media(max-width: ${breakpoints.p1000}px) {
     margin: 0;
@@ -29,6 +30,7 @@ const More = styled.div`
 `
 
 const Further = styled.div`
+  min-width: 400px;
   @media(max-width: ${breakpoints.p1000}px) {
     margin-bottom: ${$v.size25};
     margin-top: ${$v.size25};
