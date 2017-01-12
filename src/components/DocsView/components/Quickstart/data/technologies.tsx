@@ -57,11 +57,11 @@ const android: TechnologyData = {
 
 const vue: TechnologyData = {
   title: 'Vue.js',
-  logoName: 'react',
-  logoColor: 'rgba(0,216,255,1)',
-  logoWidth: 47,
-  logoHeight: 44,
-  backgroundColor: 'rgba(0,216,255,0.1)',
+  logoName: 'vue',
+  logoColor: 'rgba(65,184,131,1)',
+  logoWidth: 52,
+  logoHeight: 45,
+  backgroundColor: 'rgba(65,184,131,0.1)',
 }
 
 export const frontendTechnologies: [TechnologyData] = [
