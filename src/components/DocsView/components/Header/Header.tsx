@@ -267,8 +267,20 @@ export default class Header extends React.Component<{}, State> {
           </div>
         </Link>
         <div className={cx($p.f20, $p.ttc, $p.fw4, $p.lightgreen50, $p.ml16)}>
-          <HoverGreen className={cx($p.noUnderline, $p.mr16)} href='https://console.graph.cool' target='_blank'>Console</HoverGreen>
-          <HoverGreen className={cx($p.noUnderline, $p.mr25)} href='/' target='_blank'>Homepage</HoverGreen>
+          <HoverGreen
+            className={cx($p.noUnderline, $p.mr16)}
+            href='https://console.graph.cool'
+            target='_blank'
+          >
+            Console
+          </HoverGreen>
+          <HoverGreen
+            className={cx($p.noUnderline, $p.mr25)}
+            href='/'
+            target='_blank'
+          >
+            Homepage
+          </HoverGreen>
         </div>
       </LogoLink>
     )

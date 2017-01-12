@@ -136,7 +136,7 @@ export default class FAQ extends React.Component<{}, {}> {
               $p.ph38,
               $p.pv16,
               $p.ml16,
-              $p.pointer
+              $p.pointer,
             )}
             onClick={this.openChat}
           >

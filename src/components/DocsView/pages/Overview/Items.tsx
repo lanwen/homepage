@@ -137,6 +137,6 @@ export default graphql(getItemsQuery, {
       layout: layout || 'REFERENCE',
       aliases: aliases || [],
       includeAliases: !!aliases && aliases.length > 0,
-    }
+    },
   }),
 })(Items)
