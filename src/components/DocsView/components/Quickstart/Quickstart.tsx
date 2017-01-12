@@ -52,7 +52,7 @@ export default class Quickstart extends React.Component<Props, State> {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
-          <div className={cx($p.flex, $p.justifyBetween)}>
+          <div className={cx($p.flex)}>
             {frontendTechnologies.map((technology) =>
               <Technology
                 technology={technology}
@@ -90,10 +90,10 @@ export default class Quickstart extends React.Component<Props, State> {
       )
     } else if (currentStep === 'USE_CASE') {
       return (
-        <div className={$p.flex}>
-          <div className={cx($p.flex, $p.flexColumn, className)}>
+        <div className={cx($p.flex, className)}>
+          <div className={cx($p.flex, $p.flexColumn)}>
             {stepIndicator}
-            <div className={cx($p.flex, $p.justifyBetween)}>
+            <div className={cx($p.flex)}>
               <Technology
                 technology={selectedFrontendTechnology}
               />

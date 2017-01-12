@@ -31,7 +31,7 @@ export default class TutorialsPage extends React.Component<{}, {}> {
           <Heading
             layout='FAQ'
             title='Frequently Asked Questions'
-            text='Find answers to the most common questions about graph.cool and the API'
+            text='Find answers to the most common questions about Graphcool'
             link='/docs/faq'
           />
         </Container>

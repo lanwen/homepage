@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { $p, $v, Icon } from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
+import { Link } from 'react-router'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -16,22 +17,22 @@ export default class FAQ extends React.Component<{}, {}> {
   render() {
     return (
 
-        <Box
-        className={cx($p.flex, $p.mt96, $p.bb, $p.bBlack10, $p.ph60, $p.pb60, $p.justifyBetween, $p.center)}>
+      <div className={cx($p.bb, $p.bBlack10, $p.pb60)}>
+
+        <Box className={cx($p.flex, $p.pt96, $p.ph60, $p.justifyBetween, $p.center)}>
 
           {/* FIRST COLUMN */}
-          <div className={cx($p.flex, $p.flexColumn)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.w50)}>
 
-            {/* Card TOP-LEFT */}
             <div>
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                        src={require('../../assets/icons/pricing/question_mark.svg')}
-                        color={$v.green}
-                        height={22}
-                        width={9}
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
                     />
                   </Circle>
                 </div>
@@ -45,16 +46,15 @@ export default class FAQ extends React.Component<{}, {}> {
                 </div>
               </div>
             </div>
-            {/* Card MIDDLE-LEFT */}
             <div className={cx($p.mt38)}>
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                        src={require('../../assets/icons/pricing/question_mark.svg')}
-                        color={$v.green}
-                        height={22}
-                        width={9}
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
                     />
                   </Circle>
                 </div>
@@ -67,16 +67,40 @@ export default class FAQ extends React.Component<{}, {}> {
                 </div>
               </div>
             </div>
-          {/* Card BOTTOM-LEFT */}
+          </div>
+
+          {/* SECOND COLUMN */}
+          <div className={cx($p.flex, $p.flexColumn, $p.ml38, $p.w50)}>
+
+            <div>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>Who owns my data?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    You still own all of your data. We do not share your data with any third parties.
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className={cx($p.mt38)}>
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
-                        src={require('../../assets/icons/pricing/question_mark.svg')}
-                        color={$v.green}
-                        height={22}
-                        width={9}
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
                     />
                   </Circle>
                 </div>
@@ -84,67 +108,26 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.fw6, $p.pl25)}>Are there any limits to the size of a node?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
                     A node can have up to 100 fields. You can see all limits for data stored in fields in the
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)}
-                       href='https://www.graph.cool/docs/reference/platform/fields'>
-                        documentation
-                    </a>
+                    <Link className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)}
+                          to='/docs/reference/platform/fields-teizeit5se'>documentation</Link>.
                   </div>
                 </div>
               </div>
+
             </div>
-
-          </div>
-
-          {/* SECOND COLUMN */}
-          <div className={cx($p.flex, $p.flexColumn, $p.ml38)}>
-
-            {/* Card TOP-RIGHT */}
-            <div>
-              <div className={cx($p.flex)}>
-                <div>
-                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                        src={require('../../assets/icons/pricing/question_mark.svg')}
-                        color={$v.green}
-                        height={22}
-                        width={9}
-                    />
-                  </Circle>
-                </div>
-                <div className={cx($p.flex, $p.flexColumn)}>
-                  <div className={cx($p.fw6, $p.pl25)}>Who owns my data?</div>
-                  <div className={cx($p.pl25, $p.mt10)}>
-                    You own all data stored in Graphcool. We do not share your data with third parties.
-                  </div>
-                </div>
-              </div>
-            </div>
-          {/* Card MIDDLE-RIGHT */}
-            <div className={cx($p.mt38)}>
-              <div className={cx($p.flex)}>
-                <div>
-                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                        src={require('../../assets/icons/pricing/question_mark.svg')}
-                        color={$v.green}
-                        height={22}
-                        width={9}
-                    />
-                  </Circle>
-                </div>
-                <div className={cx($p.flex, $p.flexColumn)}>
-                  <div className={cx($p.fw6, $p.pl25)}>How long does the trial last?</div>
-                  <div className={cx($p.pl25, $p.mt10)}>
-                    The trial lasts 30 days. If you decide not to upgrade to a paid plan after the trial
-                    period you will be changed to the developer plan.
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
 
         </Box>
+
+        <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
+          <Link to='/docs/faq' className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}>Other Questions</Link>
+          <div
+            className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.tc, $p.ba, $p.bGreen, $p.ph38, $p.pv16, $p.ml16)}
+          >
+            Open Chat
+          </div>
+        </div>
+      </div>
     )
   }
 
