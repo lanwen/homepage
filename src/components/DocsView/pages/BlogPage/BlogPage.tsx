@@ -22,7 +22,7 @@ const StyledItems = styled(Items)`
   top: -10px;
 `
 
-export default class TutorialsPage extends React.Component<{}, {}> {
+export default class BlogPage extends React.Component<{}, {}> {
 
   render() {
     return (
@@ -44,4 +44,3 @@ export default class TutorialsPage extends React.Component<{}, {}> {
     )
   }
 }
-

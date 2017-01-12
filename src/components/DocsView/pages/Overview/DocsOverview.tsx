@@ -59,7 +59,16 @@ export default class DocsOverview extends React.Component<{}, {}> {
         </Container>
         <ItemsBackground className={$p.mt60}>
           <Container>
-            <StyledItems count={3} layout='TUTORIAL' className={cx($p.relative)} showPreview={true} />
+            <StyledItems
+              count={3}
+              aliases={[
+                'dah6aifoce',
+                'daisheeb9x',
+                'thaeghi8ro',
+              ]}
+              className={cx($p.relative)}
+              showPreview={true}
+            />
             <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials' />
           </Container>
         </ItemsBackground>
