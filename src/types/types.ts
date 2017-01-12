@@ -24,14 +24,6 @@ export interface NestedItem extends Item {
   children?: NestedItem[]
 }
 
-export interface QuickStep {
-  primaryColor: Color
-  title: string
-  logoSrc: string
-  isPopuplar?: boolean
-  nextSteps: QuickStep[] | QuickExample[]
-}
-
 export interface QuickExample {
   title: string
   layout: Layout

@@ -1,4 +1,4 @@
-import {$v} from 'graphcool-styles'
+import { $v } from 'graphcool-styles'
 
 export interface TechnologyData {
   title: string
@@ -66,11 +66,11 @@ const vue: TechnologyData = {
 
 export const frontendTechnologies: [TechnologyData] = [
   react,
-  angular,
   reactNative,
+  vue,
+  angular,
   iOS,
   android,
-  vue,
 ]
 
 const apollo: TechnologyData = {

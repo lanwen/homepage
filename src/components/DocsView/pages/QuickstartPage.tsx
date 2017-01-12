@@ -2,18 +2,14 @@ import * as React from 'react'
 import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
 import TemporaryNavigation from '../components/TemporaryNavigation'
-import {getItemsByLayout} from '../fragments/getItemsByLayout'
+import { getItemsByLayout } from '../fragments/getItemsByLayout'
 import ContentWindow from '../components/ContentWindow'
 import * as Helmet from 'react-helmet'
 import Quickstart from '../components/Quickstart/Quickstart'
 import * as cx from 'classnames'
-import {$p} from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import Heading from './Overview/Heading'
-
-interface Props {
-  data: any
-}
 
 const Container = styled.div`
   max-width: 1200px;
@@ -24,11 +20,11 @@ const ContentContainer = styled.div`
    flex: 1 1 100px;
 `
 
-class QuickstartPage extends React.Component<Props, {}> {
+class QuickstartPage extends React.Component<{}, {}> {
   render() {
     return (
       <ContentContainer className={cx($p.pt96, $p.mt96)}>
-        <Helmet title='Quick Start' />
+        <Helmet title='Quick Start'/>
         <Container>
           <Heading
             layout='QUICKSTART'
