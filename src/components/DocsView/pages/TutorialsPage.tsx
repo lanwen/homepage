@@ -6,7 +6,7 @@ import Items from './Overview/Items'
 import Heading from './Overview/Heading'
 
 const Container = styled.div`
-  max-width: 920px;
+  max-width: 1050px;
   margin: 0 auto;
 `
 

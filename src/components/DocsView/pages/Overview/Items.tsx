@@ -98,6 +98,7 @@ const getItemsQuery = gql`
       first: $first
     ) {
       id
+      path
       alias
       title
       preview
