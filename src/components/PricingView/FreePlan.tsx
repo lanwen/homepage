@@ -48,7 +48,7 @@ export default class FreePlan extends React.Component<{}, {}> {
           </div>
           <div className={cx($p.flex, $p.flexNone, $p.pv25, $p.ph38)}>
             {/* FIRST COLUMN (nodes + seats)*/}
-            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart, $p.mr60)}>
+            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart, $p.justifyBetween, $p.mr60)}>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/graph.svg')}
                 width={12}
