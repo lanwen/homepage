@@ -3,6 +3,7 @@ import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import { Link } from 'react-router'
+import * as Smooch from 'smooch'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -125,13 +126,36 @@ export default class FAQ extends React.Component<{}, {}> {
             Other Questions
           </Link>
           <div
-            className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.tc, $p.ba, $p.bGreen, $p.ph38, $p.pv16, $p.ml16)}
+            className={cx(
+              $g.uppercaseButton,
+              $p.bgWhite,
+              $p.green,
+              $p.tc,
+              $p.ba,
+              $p.bGreen,
+              $p.ph38,
+              $p.pv16,
+              $p.ml16,
+              $p.pointer
+            )}
+            onClick={this.openChat}
           >
             Open Chat
           </div>
         </div>
       </div>
     )
+  }
+
+  private openChat = () => {
+    const message = 'Hey! I have further questions to the FAQ:'
+    if (!Smooch.isOpened()) {
+      Smooch.open()
+    }
+    if (!window.localStorage.getItem('chat_initiated_faq')) {
+      Smooch.sendMessage(message)
+      window.localStorage.setItem('chat_initiated_faq', 'true')
+    }
   }
 
 }
