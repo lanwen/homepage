@@ -1,3 +1,1 @@
-/docs     __RESOURCE_DOCS__/   200!
-/docs/*   __RESOURCE_DOCS__/:splat   200!
 /*        /index.html   200

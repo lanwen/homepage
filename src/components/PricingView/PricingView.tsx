@@ -2,7 +2,6 @@ import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
 import { $p, $v } from 'graphcool-styles'
-import styled from 'styled-components'
 import * as cx from 'classnames'
 import FreePlan from './FreePlan'
 import PlanCols from './PlanCols'
@@ -19,8 +18,10 @@ export default class PricingView extends React.Component<{}, {}> {
           <FreePlan/>
           <PlanCols/>
           <Info/>
-          <FAQ/>
-          <CallToAction/>
+          <div className={cx($p.bgWhite)}>
+            <FAQ/>
+            <CallToAction/>
+          </div>
         </div>
         <Footer/>
       </div>

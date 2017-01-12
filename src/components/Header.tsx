@@ -177,7 +177,7 @@ export default class Header extends React.Component<{}, State> {
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           <NavLink to='/docs'>Docs</NavLink>
-          <NavLink to='/docs/guides'>FAQ</NavLink>
+          <NavLink to='/docs/faq'>FAQ</NavLink>
           <NavLink to='/pricing'>Pricing</NavLink>
           <NavLink to='/about'>About</NavLink>
           {loggedIn ? (

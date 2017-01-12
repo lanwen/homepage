@@ -27,7 +27,7 @@ export default class OperationOverview extends React.Component<{}, State> {
     leftValue2: 0,
     rightValue2: 1,
     leftValue3: 0,
-    rightValue3: 5,
+    rightValue3: 3,
   }
 
   render() {
@@ -45,6 +45,7 @@ export default class OperationOverview extends React.Component<{}, State> {
           <div>
             <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
               <Icon
+                className={cx($p.ml4)}
                 src={require('../../assets/icons/pricing/operation_white.svg')}
                 color={$v.white}
                 height={17}
@@ -85,6 +86,7 @@ export default class OperationOverview extends React.Component<{}, State> {
           rightInfo='concurrent subscriptions'
           leftSliderMaxValue={28}
           rightSliderMaxValue={19}
+          rightSliderMinValue={0}
           leftLink=''
           rightLink='a'
           leftValue={leftValue2}
@@ -115,7 +117,7 @@ export default class OperationOverview extends React.Component<{}, State> {
           }
           {totalOperations <= 50000000 &&
           <div>
-            <b>= {numberWithCommas(totalOperations)}</b> operations/month
+            <b>= {numberWithCommas(totalOperations)}</b> operations / month
           </div>
           }
         </span>
