@@ -25,12 +25,13 @@ export default class Example extends React.Component<Props, {}> {
           />
         </div>
         {/* bottom */}
-        <div className={cx($p.flex, $p.flex1, $p.ml25, $p.justifyCenter, $p.itemsCenter)}>
+        <div className={cx($p.flex, $p.flex1, $p.ml25, $p.mt10)}>
           <div className={cx($p.flex)}>
             <CircleIcon
               width={20}
               height={20}
               type={layout}
+              className={cx($p.mt10)}
             />
             <div className={cx($p.flex, $p.flexColumn, $p.ml10)}>
               <div className={cx($p.black50, $p.f20)}>{title}</div>

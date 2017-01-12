@@ -7,6 +7,7 @@ interface Props {
   type: Layout
   width?: number
   height?: number
+  className?: string
 }
 
 export default class CircleIcon extends React.Component<Props, {}> {
@@ -40,7 +41,7 @@ export default class CircleIcon extends React.Component<Props, {}> {
     return (
       <div
         style={{background, width, height}}
-        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mt4, $p.br100)}
+        className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mt4, $p.br100, this.props.className)}
       >
         <img src={src} width={imageWidth} height={imageHeight}/>
       </div>
