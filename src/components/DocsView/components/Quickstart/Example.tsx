@@ -14,7 +14,11 @@ export default class Example extends React.Component<Props, {}> {
   render() {
     const {imageSrc, imageWidth, imageHeight, link, layout, title} = this.props.quickExample
     return (
-      <a href={link} className={cx($p.flex, $p.flexColumn, $p.flex1, $p.noUnderline, $p.buttonShadow, $p.mh10)} style={{width: 226}}>
+      <a
+        href={link}
+        className={cx($p.flex, $p.flexColumn, $p.flex1, $p.noUnderline, $p.buttonShadow, $p.mh10)}
+        style={{width: 226}}
+      >
         {/* top */}
         <div className={cx($p.flex, $p.flex1, $p.justifyCenter, $p.itemsCenter, $p.bgBlack04)}>
           <Icon
