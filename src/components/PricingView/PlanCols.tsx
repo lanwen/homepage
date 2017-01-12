@@ -1,9 +1,11 @@
 import * as React from 'react'
-import {$p, $v, $g, Icon} from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import PricingDimension from './PricingDimension'
+import Tooltip from './Tooltip'
+import { tooltips } from './text'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -51,7 +53,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
-                  <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Nodes</a>
+                  <Tooltip text={tooltips.NODE}>
+                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                  </Tooltip>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -72,7 +76,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
                   <div className={cx($p.flex)}>
-                    <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Operations </a>
+                    <Tooltip text={tooltips.OPERATION}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>6¢ / 1,000</div>
@@ -93,7 +99,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>5</div>
-                <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
+                <Tooltip text={tooltips.SEAT}>
+                  <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
+                </Tooltip>
               </div>
 
               {/* CARD 4 */}
@@ -154,7 +162,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
-                  <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Nodes</a>
+                  <Tooltip text={tooltips.NODE}>
+                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                  </Tooltip>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>45¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -175,7 +185,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>10,000,000</div>
                   <div className={cx($p.flex)}>
-                    <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Operations </a>
+                    <Tooltip text={tooltips.OPERATION}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>3¢ / 1,000</div>
@@ -196,7 +208,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>10</div>
-                <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
+                <Tooltip text={tooltips.SEAT}>
+                  <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
+                </Tooltip>
               </div>
 
               {/* CARD 4 */}
@@ -247,7 +261,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>5,000,000</div>
-                  <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Nodes</a>
+                  <Tooltip text={tooltips.NODE}>
+                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                  </Tooltip>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>30¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -268,7 +284,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>50,000,000</div>
                   <div className={cx($p.flex)}>
-                    <a href='' className={cx($p.green, $p.f14, $p.fw3)}>Operations </a>
+                    <Tooltip text={tooltips.OPERATION}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>2¢ / 1,000</div>
@@ -289,7 +307,9 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>Unlimited</div>
-                <a href='' className={cx($p.green, $p.f16, $p.fw3, $p.pl4)}>Seats</a>
+                <Tooltip text={tooltips.SEAT}>
+                  <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
+                </Tooltip>
               </div>
 
               {/* CARD 4 */}

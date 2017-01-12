@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import SectionHeader from '../SectionHeader'
 import PricingDimension from './PricingDimension'
 import { breakpoints } from '../../utils/constants'
+import Tooltip from './Tooltip'
+import { tooltips } from './text'
 
 const Box = styled.div`
   max-width: 685px;
@@ -50,7 +52,9 @@ export default class FreePlan extends React.Component<{}, {}> {
                 className={cx($p.mb25)}
               >
                 <div className={cx($p.f16, $p.black80, $p.fw6)}>10,000</div>
-                <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+                <Tooltip text={tooltips.NODE}>
+                  <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+                </Tooltip>
               </PricingDimension>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/seats.svg')}
@@ -58,7 +62,9 @@ export default class FreePlan extends React.Component<{}, {}> {
                 height={8}
               >
                 <span className={cx($p.f16, $p.black80)}>2</span>&nbsp;
-                <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
+                <Tooltip text={tooltips.SEAT}>
+                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
+                </Tooltip>
               </PricingDimension>
             </div>
             <div className={cx()}>
@@ -70,7 +76,9 @@ export default class FreePlan extends React.Component<{}, {}> {
               >
                 <div className={cx($p.f16, $p.black80, $p.fw6)}>100,000</div>
                 <div>
-                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+                  <Tooltip text={tooltips.OPERATION}>
+                    <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+                  </Tooltip>
                   <span className={cx($p.f14, $p.fw3, $p.black80)}> / Month</span>
                 </div>
               </PricingDimension>
