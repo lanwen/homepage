@@ -44,14 +44,15 @@ export default class FreePlan extends React.Component<{}, {}> {
             <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16)}>Sign up</div>
           </div>
           <div className={cx($p.flex, $p.flexNone, $p.pv25, $p.ph38)}>
-            <div className={cx($p.mr60)}>
+            {/* FIRST COLUMN (nodes + seats)*/}
+            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart, $p.mr60)}>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/graph.svg')}
                 width={12}
                 height={12}
                 className={cx($p.mb25)}
               >
-                <div className={cx($p.f16, $p.black80, $p.fw6)}>10,000</div>
+                <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
                 <Tooltip text={tooltips.NODE}>
                   <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
                 </Tooltip>
@@ -61,25 +62,29 @@ export default class FreePlan extends React.Component<{}, {}> {
                 width={12}
                 height={8}
               >
-                <span className={cx($p.f16, $p.black80)}>2</span>&nbsp;
-                <Tooltip text={tooltips.SEAT}>
-                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
-                </Tooltip>
+                <div className={cx($p.flex)}>
+                  <span className={cx($p.f16, $p.black60)}>2</span>&nbsp;
+                  <Tooltip text={tooltips.SEAT}>
+                    <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
+                  </Tooltip>
+                </div>
               </PricingDimension>
             </div>
-            <div className={cx()}>
+
+            {/* SECOND COLUMN (operations + support)*/}
+            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart)}>
               <PricingDimension
                 icon={require('../../assets/icons/pricing/operation.svg')}
                 className={cx($p.mb25)}
                 width={7}
                 height={10}
               >
-                <div className={cx($p.f16, $p.black80, $p.fw6)}>100,000</div>
-                <div>
+                <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
+                <div className={cx($p.flex, $p.itemsEnd)}>
                   <Tooltip text={tooltips.OPERATION}>
                     <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
                   </Tooltip>
-                  <span className={cx($p.f14, $p.fw3, $p.black80)}> / Month</span>
+                  <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
                 </div>
               </PricingDimension>
               <PricingDimension
