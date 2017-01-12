@@ -11,7 +11,7 @@ interface Props {
   data: any
 }
 
-class ResourcesPage extends React.Component<Props, {}> {
+class SearchPage extends React.Component<Props, {}> {
   render() {
     return (
       <ContentWindow>
@@ -44,7 +44,7 @@ const ResourcesPageWithData = graphql(getItemsByLayout, {
       layout: 'FAQ',
     },
   },
-})(ResourcesPage)
+})(SearchPage)
 
 export default withRouter(ResourcesPageWithData)
 

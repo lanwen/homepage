@@ -69,7 +69,7 @@ export default class AnnouncementBox extends React.Component<{}, {}> {
           </Info>
         </LeftSide>
         <div className={cx($p.relative, $p.flex, $p.flexWrap, $p.itemsCenter, $p.bgBlack04)}>
-          <Picture src={require('../../../../assets/graphics/homepage/Tutorial#1.png')}/>
+          <Picture src={require('../../../../assets/graphics/homepage/tutorialExample.png')}/>
           <Close/>
         </div>
       </div>
