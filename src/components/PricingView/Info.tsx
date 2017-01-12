@@ -108,7 +108,8 @@ export default class Info extends React.Component<{}, {}> {
                   <div className={cx($p.white, $p.f16, $p.fw6)}>Powerful GraphQL API</div>
                   <div className={cx($p.white80, $p.f14, $p.mt10)}>
                     Every plan comes with a powerful and developer-friendly GraphQL API.<br />
-                    Included features: Subscriptions, data filtering & ordering, pagination, CRUD mutations, nested mutations.
+                    Included features: Subscriptions, data filtering & ordering, pagination,
+                    CRUD mutations, nested mutations.
                   </div>
                 </div>
               </div>

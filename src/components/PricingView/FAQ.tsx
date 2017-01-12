@@ -120,7 +120,10 @@ export default class FAQ extends React.Component<{}, {}> {
         </Box>
 
         <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
-          <Link to='/docs/faq' className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}>Other Questions</Link>
+          <Link to='/docs/faq'
+            className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}>
+            Other Questions
+          </Link>
           <div
             className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.tc, $p.ba, $p.bGreen, $p.ph38, $p.pv16, $p.ml16)}
           >
