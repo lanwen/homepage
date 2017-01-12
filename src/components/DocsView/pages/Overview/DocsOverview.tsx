@@ -9,6 +9,7 @@ import Items from './Items'
 import MoreItems from './MoreItems'
 import Community from './Community'
 import Try from '../../components/Try'
+import * as cookiestore from 'cookiestore'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -29,6 +30,8 @@ const StyledItems = styled(Items)`
 
 export default class DocsOverview extends React.Component<{}, {}> {
   render() {
+    const loggedIn = cookiestore.has('graphcool_auth_token')
+
     return (
       <ContentContainer className={cx($p.pt96, $p.mt96)}>
         <Container>
@@ -59,7 +62,16 @@ export default class DocsOverview extends React.Component<{}, {}> {
         </Container>
         <ItemsBackground className={$p.mt60}>
           <Container>
-            <StyledItems count={3} layout='TUTORIAL' className={cx($p.relative)} showPreview={true} />
+            <StyledItems
+              count={3}
+              aliases={[
+                'dah6aifoce',
+                'daisheeb9x',
+                'thaeghi8ro',
+              ]}
+              className={cx($p.relative)}
+              showPreview={true}
+            />
             <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials' />
           </Container>
         </ItemsBackground>
@@ -86,7 +98,9 @@ export default class DocsOverview extends React.Component<{}, {}> {
           />
         </Container>
         <Community />
-        <Try />
+        {!loggedIn && (
+          <Try />
+        )}
       </ContentContainer>
     )
   }

@@ -10,7 +10,8 @@ import {Layout} from '../../../../types/types'
 interface Props {
   data: any
   className?: string
-  layout: Layout
+  layout?: Layout
+  aliases?: string[]
   showPreview?: boolean
 }
 
@@ -45,17 +46,24 @@ const Container = styled.div`
   }
 `
 
-class Tutorials extends React.Component<Props, {}> {
+class Items extends React.Component<Props, {}> {
   render() {
-    const {data, className, showPreview} = this.props
+    const {data, className, showPreview, layout, aliases} = this.props
 
     if (data.loading) {
       return <div>Loading...</div>
     }
 
-  return (
+    let pointer = []
+    if (aliases && aliases.length > 0) {
+      pointer = data.aliases
+    } else {
+      pointer = data.layout
+    }
+
+    return (
       <Container className={cx($p.flex, $p.flexWrap, className)}>
-        {data.allItems.map(item => (
+        {pointer.map(item => (
           <StyledLink
             key={item.alias}
             className={cx($p.mr25, $p.noUnderline, $p.bgWhite, $p.mb25)}
@@ -90,8 +98,8 @@ class Tutorials extends React.Component<Props, {}> {
 }
 
 const getItemsQuery = gql`
-  query ($first: Int, $layout: ITEM_LAYOUT){
-    allItems(
+  query ($first: Int, $layout: ITEM_LAYOUT, $aliases: [String!], $includeAliases: Boolean!) {
+    layout: allItems(
       filter: {
         layout: $layout
       }
@@ -105,9 +113,30 @@ const getItemsQuery = gql`
       description
       tags
     }
+    aliases: allItems(
+      filter: {
+        alias_in: $aliases
+      }
+      first: $first
+    ) @include(if: $includeAliases) {
+      id
+      path
+      alias
+      title
+      preview
+      description
+      tags
+    }
   }
 `
 
 export default graphql(getItemsQuery, {
-  options: ({count, layout}) => ({ variables: { first: count || 3, layout } }),
-})(Tutorials)
+  options: ({count, layout, aliases}) => ({
+    variables: {
+      first: count || 3,
+      layout: layout || 'REFERENCE',
+      aliases: aliases || [],
+      includeAliases: !!aliases && aliases.length > 0,
+    },
+  }),
+})(Items)

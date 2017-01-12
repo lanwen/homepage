@@ -50,6 +50,7 @@ export default (props: Props) => (
         <div className={cx($p.mt16)}>Contribute on github to whatever you like within our repositories.</div>
         <StyledA
           href='https://github.com/graphcool'
+          target='_blank'
           className={cx(
             $p.ttu,
             $p.f14,
@@ -78,6 +79,7 @@ export default (props: Props) => (
         <div className={cx($p.mt16)}>Browse for #graphcool to get answers to common questions</div>
         <StyledB
           href='http://stackoverflow.com/search?q=%23graphcool'
+          target='_blank'
           className={cx(
             $p.ttu,
             $p.f14,
