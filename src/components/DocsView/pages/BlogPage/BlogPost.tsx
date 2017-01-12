@@ -57,7 +57,7 @@ export default class BlogPost extends React.Component<{}, {}> {
             a lot of time.
           </p>
           <img
-            src={require('../../../../assets/graphics/BlogPostExampleIMG.png')}
+            src={require('../../../../assets/graphics/docs/BlogPostExampleIMG.png')}
             className={cx($p.w100)}
           />
         </div>

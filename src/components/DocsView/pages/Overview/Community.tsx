@@ -45,7 +45,7 @@ export default (props: Props) => (
       <SlackBox />
       <div className={cx($p.flex1, $p.ph38, $p.ml60, $p.pv38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
-          <img src={require('../../../../assets/graphics/community/githubTextBig.svg')} />
+          <img src={require('../../../../assets/graphics/docs/community/githubTextBig.svg')} />
         </ImgWrapper>
         <div className={cx($p.mt16)}>Contribute on github to whatever you like within our repositories.</div>
         <StyledA
@@ -65,7 +65,7 @@ export default (props: Props) => (
             $p.pl16,
           )}
         >
-          <img src={require('../../../../assets/graphics/community/githubIconSmall.svg')} />
+          <img src={require('../../../../assets/graphics/docs/community/githubIconSmall.svg')} />
           <div className={cx($p.ml6)}>
             Go to our repositories
           </div>
@@ -73,7 +73,7 @@ export default (props: Props) => (
       </div>
       <div className={cx($p.flex1, $p.ph60, $p.pv38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
-          <img src={require('../../../../assets/graphics/community/stackoverflow.svg')} />
+          <img src={require('../../../../assets/graphics/docs/community/stackoverflow.svg')} />
         </ImgWrapper>
         <div className={cx($p.mt16)}>Browse for #graphcool to get answers to common questions</div>
         <StyledB

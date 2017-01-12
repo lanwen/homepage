@@ -64,13 +64,13 @@ export default class OpenSource extends React.Component<{}, {}> {
           <a className={cx($p.mh25, $p.mv10)} href='https://learnrelay.org' target='_blank'>
             <img
               className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
-              src={require('../../assets/graphics/homepage/LearnRelay.png')}
+              src={require('../../assets/graphics/homepage/learnRelay.png')}
               alt='Learn Relay'/>
           </a>
           <a className={cx($p.mh25, $p.mv10)} href='https://learnapollo.com' target='_blank'>
             <img
               className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
-              src={require('../../assets/graphics/homepage/LearnApollo.png')}
+              src={require('../../assets/graphics/homepage/learnApollo.png')}
               alt='Learn Apollo'
             />
           </a>

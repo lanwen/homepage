@@ -272,7 +272,7 @@ export default class Header extends React.Component<{}, State> {
             <div className={cx($p.relative, 'left-gradient')}>
               <img
                 className={cx($p.bbox, $p.db)}
-                src={require('../../../../assets/graphics/APIEndpoints.svg')}
+                src={require('../../../../assets/graphics/docs/APIEndpoints.svg')}
                 onClick={() => {
                 this.openEndpointPopup()
                 this.closeMenu()

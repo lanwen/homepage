@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
@@ -170,24 +170,30 @@ export default class AboutView extends React.Component<{}, {}> {
                           <div className={cx('line')}></div>
                         </div>
                         <a href={person.links.linkedin} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/homepage/LinkedInLogo.png')}
-                            alt='LinkedIn Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/linkedin.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <a href={person.links.twitter} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/TwitterLogo.png')}
-                            alt='Twitter Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/twitter.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <a href={person.links.github} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/GitHubLogo.png')}
-                            alt='GitHub Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/github.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <div className={cx('hr')}>
@@ -216,24 +222,30 @@ export default class AboutView extends React.Component<{}, {}> {
                           <div className={cx('line')}></div>
                         </div>
                         <a href={person.links.linkedin} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/homepage/LinkedInLogo.png')}
-                            alt='LinkedIn Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/linkedin.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <a href={person.links.twitter} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/TwitterLogo.png')}
-                            alt='Twitter Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/twitter.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <a href={person.links.github} target='_blank'>
-                          <img
-                            className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/GitHubLogo.png')}
-                            alt='GitHub Logo'
+                          <Icon
+                            src={require('../../assets/icons/logos/github.svg')}
+                            color={$v.lightGreen30}
+                            height={26}
+                            width={26}
+                            className={$p.pa6}
                           />
                         </a>
                         <div className={cx('hr')}>

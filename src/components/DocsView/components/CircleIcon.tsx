@@ -13,13 +13,13 @@ export default class CircleIcon extends React.Component<Props, {}> {
 
   render() {
     const src = {
-      'TUTORIAL': require('../../../assets/graphics/categories/guide.svg'),
-      'FAQ': require('../../../assets/graphics/categories/faq.svg'),
-      'REFERENCE': require('../../../assets/graphics/categories/reference.svg'),
-      'BLOG': require('../../../assets/graphics/categories/blog.svg'),
-      'EXAMPLE': require('../../../assets/graphics/categories/example.svg'),
-      'QUICKSTART': require('../../../assets/graphics/categories/quickstart.svg'),
-      'COMMUNITY': require('../../../assets/graphics/categories/community.svg'),
+      'TUTORIAL': require('../../../assets/graphics/docs/categories/guide.svg'),
+      'FAQ': require('../../../assets/graphics/docs/categories/faq.svg'),
+      'REFERENCE': require('../../../assets/graphics/docs/categories/reference.svg'),
+      'BLOG': require('../../../assets/graphics/docs/categories/blog.svg'),
+      'EXAMPLE': require('../../../assets/graphics/docs/categories/example.svg'),
+      'QUICKSTART': require('../../../assets/graphics/docs/categories/quickstart.svg'),
+      'COMMUNITY': require('../../../assets/graphics/docs/categories/community.svg'),
     }[this.props.type]
 
     const background = {

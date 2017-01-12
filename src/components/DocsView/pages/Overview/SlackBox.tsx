@@ -45,7 +45,7 @@ export default class SlackBox extends React.Component<{}, State> {
     return (
       <div className={cx($p.pt25, $p.buttonShadow, $p.flex1, $p.bgWhite, $p.overflowHidden)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
-          <img src={require('../../../../assets/graphics/community/slack.svg')} />
+          <img src={require('../../../../assets/graphics/docs/community/slack.svg')} />
         </ImgWrapper>
         <div className={cx($p.mt16, $p.ph25)}>
           To join our slack channel, just type your email-address. You’ll get invited.
