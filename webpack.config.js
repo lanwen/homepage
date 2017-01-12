@@ -20,8 +20,10 @@ module.exports = {
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
       './src/styles/graphiql.css',
-      // 'codemirror/lib/codemirror.css',
+      'codemirror/mode/javascript/javascript',
+      'codemirror/mode/shell/shell',
       'codemirror/theme/dracula.css',
+      'codemirror-graphql/mode',
       './src/main.tsx',
     ],
     vendor,
@@ -49,10 +51,14 @@ module.exports = {
     }, {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
       loader: 'file-loader',
+    }, {
+      test: /\.json$/,
+      loader: "json-loader"
     }],
   },
   plugins: [
     new webpack.DefinePlugin({
+      __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR.toString()),
       __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
     }),
     new webpack.NamedModulesPlugin(),

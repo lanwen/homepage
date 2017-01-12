@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
-import { breakpoints } from '../../../utils/constants'
+import { breakpoints, isTouch } from '../../../utils/constants'
 import { GraphQLSchema } from 'graphql/type/schema'
 import { getSchema, queryEndpoint } from '../../../utils/graphql'
 import { QueryEditor } from 'graphiql/dist/components/QueryEditor'
@@ -69,12 +69,24 @@ const Separator = styled.div`
   }
 `
 
-const Switch = styled.div`
-  transition: opacity ${$v.duration} linear;
-  
+const SwitchHover = `
   &:hover {
     opacity: .8;
   }
+`
+
+const SwitchTouch = `
+  &:active {
+    opacity: .8;
+  }
+`
+
+const Switch = styled.div`
+  margin-top: -${$v.size16};
+  transition: opacity ${$v.duration} linear;
+
+  ${!isTouch && SwitchHover}
+  ${isTouch && SwitchTouch}
 `
 
 interface Props {
@@ -126,7 +138,7 @@ export default class QueryBox extends React.Component<Props, State> {
             <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
             { window.innerWidth < breakpoints.p500 &&
             <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pr16, $p.pointer)}
+              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
               onClick={() => this.setState({ responseVisible: true } as State)}
             >
               Response
@@ -157,7 +169,7 @@ export default class QueryBox extends React.Component<Props, State> {
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
             { window.innerWidth < breakpoints.p500 &&
             <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pb25, $p.flex, $p.pointer)}
+              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
               onClick={() => this.setState({ responseVisible: false } as State)}
             >
               <Icon
@@ -172,7 +184,7 @@ export default class QueryBox extends React.Component<Props, State> {
               Query
             </Switch>
             }
-            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25, $p.pr16)}>Response</div>
+            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
           </div>
           <ResultViewer value={this.state.result}/>
         </CodeSection>

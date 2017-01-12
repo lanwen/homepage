@@ -2,7 +2,7 @@
   "compilerOptions": {
     "removeComments": true,
     "preserveConstEnums": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "jsx": "react",
     "pretty": true,
     "sourceMap": true,
@@ -17,5 +17,8 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./custom.d.ts"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "muteNodeModules": true
+  }
 }

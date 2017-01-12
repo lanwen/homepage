@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/constants'
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../SectionHeader'
 
 const Copy = styled.div`
   width: 60%;
@@ -49,7 +49,7 @@ export default class OpenSource extends React.Component<{}, {}> {
     const headline = (
       <div className={cx($p.mb0, $p.pb0)}>
         <span>We </span>
-        <img className={cx($p.ph10)} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
+        <img className={cx($p.ph10)} src={require('../../assets/graphics/homepage/Heart.svg')} alt='Heart'/>
         <span> Open Source</span>
       </div>
     )
@@ -64,13 +64,13 @@ export default class OpenSource extends React.Component<{}, {}> {
           <a className={cx($p.mh25, $p.mv10)} href='https://learnrelay.org' target='_blank'>
             <img
               className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
-              src={require('../../assets/graphics/LearnRelay.png')}
+              src={require('../../assets/graphics/homepage/learnRelay.png')}
               alt='Learn Relay'/>
           </a>
           <a className={cx($p.mh25, $p.mv10)} href='https://learnapollo.com' target='_blank'>
             <img
               className={cx($p.w100, $p.hAuto, $p.bbox, $p.db)}
-              src={require('../../assets/graphics/LearnApollo.png')}
+              src={require('../../assets/graphics/homepage/learnApollo.png')}
               alt='Learn Apollo'
             />
           </a>

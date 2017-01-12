@@ -88,6 +88,7 @@ interface Props {
   icon: string,
   title: string,
   description: string,
+  label?: string,
 }
 
 export default class Field extends React.Component<Props, State> {
@@ -106,7 +107,7 @@ export default class Field extends React.Component<Props, State> {
           onMouseLeave={() => this.setState({showOverlay: false} as State)}
         >
           <div className='iconContainer'>
-            <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32} />
+            <Icon src={require(`../../../assets/icons/${this.props.icon}.svg`)} width={32} height={32}/>
           </div>
           <h4 className={cx($g.uppercaseLabel, $p.white50)}>{this.props.title}</h4>
           {this.state.showOverlay &&
@@ -114,6 +115,7 @@ export default class Field extends React.Component<Props, State> {
             icon={this.props.icon}
             title={this.props.title}
             description={this.props.description}
+            label={this.props.label}
           />
           }
         </Container>
@@ -123,6 +125,7 @@ export default class Field extends React.Component<Props, State> {
           icon={this.props.icon}
           title={this.props.title}
           description={this.props.description}
+          label={this.props.label}
         />
         }
       </Root>

@@ -7,7 +7,7 @@ import { features } from './data'
 
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import Pagination from '../Pagination'
 
 const Root = styled.div`
@@ -129,7 +129,10 @@ export default class Product extends React.Component<{}, State> {
           {window.innerWidth >= breakpoints.p1000 &&
           <Container className={cx($p.center, $p.relative, $p.flex)}>
             <Browser className={cx($p.w100, $p.relative)}>
-              <img className={cx($p.db, $p.w100, $p.hAuto)} src={require('../../../assets/graphics/browser.svg')}/>
+              <img
+                className={cx($p.db, $p.w100, $p.hAuto)}
+                src={require('../../../assets/graphics/homepage/browser.svg')}
+              />
               <BrowserContainer className={cx($p.absolute, $p.top0, $p.right0, $p.h100)}>
                 <ConsoleContent className={cx($p.db, $p.absolute)}>
                   <video

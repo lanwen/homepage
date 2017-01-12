@@ -3,10 +3,10 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
 import CopyToClipboard = require('react-copy-to-clipboard')
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
-import { breakpoints, maxWidth, movingDuration } from '../../../utils/constants'
+import { breakpoints, maxWidth, movingDuration, isTouch } from '../../../utils/constants'
 import QueryBox from './QueryBox'
 import { projects } from './data'
 
@@ -68,8 +68,9 @@ const TabBar = styled.ul`
   
   @media (max-width: ${breakpoints.p400}px) {
     padding-left: ${$v.size25};
-  } 
+  }
 `
+
 // if tabbar is wider than viewport
 // @media (max-width: ${breakpoints.p500}px) {
 //   overflow: auto;
@@ -92,6 +93,20 @@ const ActiveTab = `
   @media (max-width: ${breakpoints.p500}px) {
     padding: ${$v.size16};
   }  
+`
+
+const TabHover = `
+  &:hover {
+    background: ${$v.gray10};
+    color: ${$v.gray50};
+  }
+`
+
+const TabTouch = `
+  &:active {
+    background: ${$v.gray10};
+    color: ${$v.gray50};
+  }
 `
 
 const Tab = styled.li`
@@ -117,16 +132,14 @@ const Tab = styled.li`
   }
   
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
-  
-  &:hover {
-    background: ${$v.gray10};
-    color: ${$v.gray50};
-  }
-  
+
   @media (max-width: ${breakpoints.p500}px) {
     font-size: ${$v.size14};
     padding: ${$v.size14};
   }  
+  
+  ${!isTouch && TabHover}
+  ${isTouch && TabTouch}
 `
 
 const ActiveExampleTab = `
@@ -149,18 +162,44 @@ const ActiveViewTab = `
   }
 `
 
+const ViewTabHover = `
+  &:hover {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
+`
+
+const ViewTabTouch = `
+  &:active {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
+`
+
 const ViewTab = styled(Tab)`
   background: ${$v.darkerBlue};
   color: ${$v.white30};
   font-size: ${$v.size12};
   padding: ${$v.size06};
+  
+  ${!isTouch && ViewTabHover}
+  ${isTouch && ViewTabTouch}
+  
+  ${props => props.active && ActiveViewTab};
+`
 
+const SchemaTabHover = `
   &:hover {
     background: ${$v.darkerBlue};
     color: ${$v.white50};
   }
-  
-  ${props => props.active && ActiveViewTab};
+`
+
+const SchemaTabTouch = `
+  &:active {
+    background: ${$v.darkerBlue};
+    color: ${$v.white50};
+  }
 `
 
 const ActiveSchemaTab = `
@@ -175,11 +214,9 @@ const ActiveSchemaTab = `
 const SchemaTab = styled(Tab)`
   background: ${$v.darkerBlue};
   color: ${$v.white30};
-  
-  &:hover {
-    background: ${$v.darkerBlue};
-    color: ${$v.white50};
-  }
+
+  ${!isTouch && SchemaTabHover}
+  ${isTouch && SchemaTabTouch}
   
   ${props => props.active && ActiveSchemaTab};
 `
@@ -280,7 +317,10 @@ export default class QueryEditor extends React.Component<Props, State> {
                   </TabBar>
                 </div>
                 <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
-                  <TabBar className={cx($p.absolute, $p.tlVCenter, $p.ph10)}>
+                  <TabBar
+                    touch={isTouch}
+                    className={cx($p.absolute, $p.tlVCenter, $p.ph10)}
+                  >
                     {activeProject.models.map(model => (
                       <SchemaTab
                         key={model.name}
@@ -351,6 +391,6 @@ export default class QueryEditor extends React.Component<Props, State> {
   private onCopy = () => {
     this.setState({ copied: true } as State)
 
-    setTimeout(() => this.setState({ copied: false } as State), 400)
+    setTimeout(() => this.setState({ copied: false } as State), 700)
   }
 }

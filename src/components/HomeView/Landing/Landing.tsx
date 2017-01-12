@@ -246,7 +246,10 @@ export default class Landing extends React.Component<{}, {}> {
                 markers={[0, 22, 43, 61]}
               />
             </VideoContainer>
-            <img className={cx($p.w100, $p.hAuto, $p.db)} src={require('../../../assets/graphics/browser.svg')} />
+            <img
+              className={cx($p.w100, $p.hAuto, $p.db)}
+              src={require('../../../assets/graphics/homepage/browser.svg')}
+            />
             <Steps>
               <Step
                 active={this.state.activeStep === 0}

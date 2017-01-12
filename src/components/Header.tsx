@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import {breakpoints, maxWidth} from '../utils/constants'
+import * as cookiestore from 'cookiestore'
 
 const Root = styled.div`
   padding: ${$v.size38};
@@ -90,6 +91,7 @@ const NavLink = styled(SplitLink)`
 const Signin = styled.div`
   @media (max-width: ${breakpoints.p750}px) {
     padding-top: ${$v.size16};
+    display: flex;
   }
 `
 
@@ -155,8 +157,10 @@ export default class Header extends React.Component<{}, State> {
   }
 
   render() {
+    const loggedIn = cookiestore.has('graphcool_auth_token')
+
     return (
-      <Root className={cx($p.bgWhite, $p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
+      <Root className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
         <Link to='/'>
           <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
         </Link>
@@ -172,24 +176,35 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
-          <NavLink to='https://graph.cool/docs'>Docs</NavLink>
-          <NavLink to='https://graph.cool/docs/guides'>FAQ</NavLink>
+          <NavLink to='/docs'>Docs</NavLink>
+          <NavLink to='/docs/faq'>FAQ</NavLink>
           <NavLink to='/pricing'>Pricing</NavLink>
           <NavLink to='/about'>About</NavLink>
-          <Signin>
-            <Button
-              href='https://console.graph.cool'
-              className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
-            >
-              Log in
-            </Button>
-            <Button
-              href='https://console.graph.cool/signup'
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
-            >
-              Sign up
-            </Button>
-          </Signin>
+          {loggedIn ? (
+            <Signin>
+              <Button
+                href='https://console.graph.cool'
+                className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+              >
+                Go to Console
+              </Button>
+            </Signin>
+          ) : (
+            <Signin>
+              <Button
+                href='https://console.graph.cool/login'
+                className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+              >
+                Log in
+              </Button>
+              <Button
+                href='https://console.graph.cool/signup'
+                className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+              >
+                Sign up
+              </Button>
+            </Signin>
+          )}
         </Nav>
       </Root>
     )

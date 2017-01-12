@@ -2,14 +2,24 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import { maxWidth } from '../../utils/constants'
+import { maxWidth, breakpoints } from '../../utils/constants'
 
 const Root = styled.div`
-  max-width: ${maxWidth};
+  max-width: ${maxWidth}px;
 `
 
 const Logo = styled.img`
   margin: ${$v.size16};
+
+  @media (max-width: ${breakpoints.p750}px) {
+    height: 40px;
+    width: auto;
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    margin: ${$v.size10};
+    height: 30px;
+  }
 `
 
 interface Props {

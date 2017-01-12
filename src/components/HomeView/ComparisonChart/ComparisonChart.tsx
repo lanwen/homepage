@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 import styled from 'styled-components'
 import Cell from './Cell'
 import { breakpoints, maxWidth } from '../../../utils/constants'
@@ -61,6 +61,7 @@ const RowBase = styled.div`
 const Row = styled(RowBase)`
   flex: 1;
   font-size: ${$v.size16};
+  height: 61px;
   
   /* Needed for prerendering */
   min-height: ${parseFloat($v.size20) * 2 + parseFloat($v.size14) * 1.5}px;

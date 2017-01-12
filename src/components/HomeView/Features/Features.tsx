@@ -4,7 +4,7 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import FeaturesContent from './FeaturesContent'
-import SectionHeader from '../SectionHeader'
+import SectionHeader from '../../SectionHeader'
 
 const Container = styled.div`
   margin: 0 auto ${$v.size38};
@@ -51,7 +51,7 @@ export default class Features extends React.Component<{}, {}> {
         <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-1.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-1.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Instant Setup'
@@ -60,7 +60,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-2.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-2.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Flexible Data Model'
@@ -69,7 +69,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-3.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-3.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Works with everything'
@@ -78,7 +78,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-4.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-4.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Auto-Scaling'
@@ -87,7 +87,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-5.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-5.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Powerful Integrations'
@@ -96,7 +96,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-6.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-6.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Unlimited Flexibility'
@@ -105,7 +105,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-7.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-7.svg')}/>
             </Icon>
             <FeaturesContent
               headline='No Vendor Lock-In'
@@ -114,7 +114,7 @@ export default class Features extends React.Component<{}, {}> {
           </SmallContainer>
           <SmallContainer>
             <Icon>
-              <img src={require('../../../assets/graphics/feature-8.svg')}/>
+              <img src={require('../../../assets/graphics/homepage/feature-8.svg')}/>
             </Icon>
             <FeaturesContent
               headline='Interactive Docs'

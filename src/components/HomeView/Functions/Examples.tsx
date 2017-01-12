@@ -3,12 +3,11 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import Example from './Example'
-import { maxWidth, breakpoints, movingDuration } from '../../../utils/constants'
+import { maxWidth, breakpoints, movingDuration, isTouch } from '../../../utils/constants'
 import Pagination from '../Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 import HorScrollbox from '../../HorScrollbox'
-require('codemirror/mode/javascript/javascript')
 
 const Root = styled.div`
   
@@ -55,6 +54,8 @@ const Container = styled.div`
 `
 
 const Overlay = styled.div`
+  // HACK! Please calculate individually based on payload section height
+  
   height: 500px;
   transition: height ${movingDuration} ease;
 
@@ -143,9 +144,21 @@ const ActiveTab = `
   color: ${$v.darkerBlue};
   border-radius: 2px;
   cursor: default;
-  
+
   &:hover {
     color: ${$v.darkerBlue};
+  }
+`
+
+const TabHover = `
+  &:hover {
+    color: ${$v.white60};
+  }
+`
+
+const TabTouch = `
+  &:active {
+    color: ${$v.white60};
   }
 `
 
@@ -161,19 +174,38 @@ const Tab = styled.li`
   cursor: pointer;
   transition: background ${$v.duration} linear, color ${$v.duration} linear;
   
-  &:hover {
-    color: ${$v.white60};
-  }
+  ${!isTouch && TabHover}
+  ${isTouch && TabTouch}
   
   ${props => props.active && ActiveTab};
 `
 
-const Switch = styled.div`
-  transition: opacity ${$v.duration} linear;
-  
+const SwitchHover = `
   &:hover {
     opacity: .8;
   }
+`
+
+const Switch = styled.div`
+  margin-top: -${$v.size16};
+  transition: opacity ${$v.duration} linear;
+  
+  ${!isTouch && SwitchHover}
+`
+
+const CodeContainer = styled.div`
+  top: 49px;
+  padding-top: ${$v.size25};
+  
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   height: ${$v.size25}
+  //   background: linear-gradient(to bottom, ${$v.darkerBlue} 0%, ${$v.darkerBlue0} 70%);
+  // }
 `
 
 interface Props {
@@ -261,12 +293,12 @@ export default class Examples extends React.Component<Props, State> {
             }
             <div className={cx($p.bgDarkerBlue, $p.w100, $p.overflowAuto)}>
               <CodeBlock
-                className={cx($p.relative, $p.flex, $p.flexColumn)}
+                className={cx($p.relative, $p.flex, $p.flexColumn, $p.bbox, $p.h100)}
               >
                 <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
                   { window.innerWidth < breakpoints.p500 && !this.state.showTrigger &&
                   <Switch
-                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pointer)}
+                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pv16, $p.pr16, $p.pointer)}
                     onClick={() => this.setState({ showTrigger: true } as State)}
                   >
                     <Icon
@@ -296,7 +328,7 @@ export default class Examples extends React.Component<Props, State> {
                   }
                   { window.innerWidth < breakpoints.p500 && this.state.showTrigger &&
                   <Switch
-                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.mr16, $p.pointer)}
+                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pa16, $p.pointer)}
                     onClick={() => this.setState({ showTrigger: false } as State)}
                   >
                     <Icon
@@ -310,15 +342,15 @@ export default class Examples extends React.Component<Props, State> {
                   </Switch>
                   }
                 </div>
-                <div className={cx($p.overflowAuto, $p.w100)}>
+                <CodeContainer className={cx($p.overflowAuto, $p.absolute, $p.left0, $p.right0, $p.bottom0)}>
                   <CodeMirror
                     value={selectedSnippet.code}
                     options={{
-                    lineNumbers: true,
-                    mode: 'javascript',
-                  }}
+                      lineNumbers: true,
+                      mode: 'javascript',
+                    }}
                   />
-                </div>
+                </CodeContainer>
               </CodeBlock>
             </div>
           </Overlay>
