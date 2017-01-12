@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import SlackBox from './SlackBox'
 
 const Container = styled.div`
-  max-width: 920px;
+  max-width: 1050px;
   margin: 0 auto;
   position: relative;
   top: -20px;
@@ -43,7 +43,7 @@ export default (props: Props) => (
   <FeaturesBackground>
     <Container className={cx($p.flex)}>
       <SlackBox />
-      <div className={cx($p.flex1, $p.ph25, $p.pv38)}>
+      <div className={cx($p.flex1, $p.ph38, $p.ml60, $p.pv38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/community/githubTextBig.svg')} />
         </ImgWrapper>
@@ -71,7 +71,7 @@ export default (props: Props) => (
           </div>
         </StyledA>
       </div>
-      <div className={cx($p.flex1, $p.ph25, $p.pv38)}>
+      <div className={cx($p.flex1, $p.ph60, $p.pv38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/community/stackoverflow.svg')} />
         </ImgWrapper>

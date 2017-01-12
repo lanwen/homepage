@@ -15,7 +15,7 @@ interface Props {
 }
 
 const StyledLink = styled(Link)`
-  flex: 0 0 281px;
+  flex: 0 0 325px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
 `
 
