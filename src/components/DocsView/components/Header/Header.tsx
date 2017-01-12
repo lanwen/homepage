@@ -238,8 +238,8 @@ export default class Header extends React.Component<{}, State> {
               [$p.ph16]: window.innerWidth >= breakpoints.p1200,
             },
           )}
-          to='/docs/blog'
-          active={location.pathname.startsWith('/docs/blog')}
+          to='/blog'
+          active={location.pathname.startsWith('/blog')}
         >
           Blog
         </NavigationLink>
