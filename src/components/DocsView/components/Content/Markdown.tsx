@@ -23,6 +23,7 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
+  max-width: 920px;
  
   p { 
     line-height: 1.7;
@@ -96,7 +97,7 @@ const QuestionWrapper = styled.div`
 `
 
 const QuestionMarkWrapper = styled.div`
-  right: -63px;
+  right: -0px;
 `
 
 const HeadingLink = styled.a`
