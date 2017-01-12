@@ -45,14 +45,16 @@ function render() {
             <Route path='/' component={HomeView}/>
             <Route path='/pricing' component={PricingView}/>
             <Route path='/about' component={AboutView}/>
-            <Route path='/docs' component={DocsView}>
-              <IndexRoute component={DocsOverview}/>
-              <Redirect from='reference' to='reference/platform/overview-chohbah0eo' />
-              <Route path='quickstart' component={QuickstartPage}/>
-              <Route path='blog' component={BlogPage}/>
-              <Route path='tutorials' component={TutorialsPage} />
-              <Route path='faq' component={FAQPage} />
-              <Route path='community' component={CommunityPage}/>
+            <Route component={DocsView}>
+              <Route path='/docs'>
+                <IndexRoute component={DocsOverview}/>
+                <Redirect from='reference' to='reference/platform/overview-chohbah0eo' />
+                <Route path='quickstart' component={QuickstartPage}/>
+                <Route path='tutorials' component={TutorialsPage} />
+                <Route path='faq' component={FAQPage} />
+                <Route path='community' component={CommunityPage}/>
+              </Route>
+              <Route path='/blog' component={BlogPage}/>
             </Route>
             <Route path='*' component={ContentHandler}/>
           </Route>
