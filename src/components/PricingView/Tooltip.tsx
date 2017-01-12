@@ -50,7 +50,7 @@ export default class Hint extends React.Component<Props, State> {
 
     return (
       <div
-        className={cx($p.relative, $p.tc, $p.dib)}
+        className={cx($p.relative)}
         onMouseEnter={() => this.setState({showOverlay: true} as State)}
         onMouseLeave={() => this.setState({showOverlay: false} as State)}
         onClick={() => this.setState({showOverlay: !this.state.showOverlay} as State)}
