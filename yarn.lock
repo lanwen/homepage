@@ -2513,7 +2513,7 @@ loader-runner@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.2.0.tgz#824c1b699c4e7a2b6501b85902d5b862bf45b3fa"
 
-loader-utils@0.2.x, loader-utils@^0.2.16, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5:
+loader-utils@0.2.x, loader-utils@^0.2.16, loader-utils@^0.2.7, loader-utils@~0.2.12, loader-utils@~0.2.2, loader-utils@~0.2.5:
   version "0.2.16"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
   dependencies:
@@ -3723,6 +3723,12 @@ react-redux@4.4.5:
     invariant "^2.0.0"
     lodash "^4.2.0"
     loose-envify "^1.1.0"
+
+react-router-loader@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/react-router-loader/-/react-router-loader-0.5.4.tgz#15c17d7b2a937078f2c32e84b0dd8e51eaf9827a"
+  dependencies:
+    loader-utils "~0.2.12"
 
 react-router-scroll@^0.4.1:
   version "0.4.1"

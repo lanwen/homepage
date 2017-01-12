@@ -3,6 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 
+const routes = [
+  // 'HomeView.tsx',
+  // 'PricingView.tsx',
+  // 'AboutView.tsx',
+  // 'DocsView.tsx',
+  // 'QuickstartPage.tsx',
+  // 'BlogPage.tsx',
+  // 'TutorialsPage.tsx',
+  // 'FAQPage.tsx',
+  // 'CommunityPage.tsx',
+  'ContentHandler.tsx',
+  'DocsOverview.tsx',
+]
+
+const includeRegex = new RegExp(`(${routes.join('|')})`)
+const excludeRegex = new RegExp(`(node_modules|${routes.join('|')})`)
+
 module.exports = {
   entry: {
     app: [
@@ -30,8 +47,13 @@ module.exports = {
       loader: 'style-loader!css-loader',
     }, {
       test: /\.ts(x?)$/,
-      exclude: /node_modules/,
+      exclude: excludeRegex,
       loader: 'awesome-typescript-loader',
+    }, {
+      test: /\.ts(x?)$/,
+      exclude: /(node_modules)/,
+      include: includeRegex,
+      loaders: ['react-router-loader?name=[name]', 'awesome-typescript-loader'],
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
