@@ -4,6 +4,8 @@ import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import Header from './components/Header/Header'
 import * as Helmet from 'react-helmet'
+import styled from 'styled-components'
+import {breakpoints, maxWidth} from '../utils/constants'
 
 interface Props {
   location: any
