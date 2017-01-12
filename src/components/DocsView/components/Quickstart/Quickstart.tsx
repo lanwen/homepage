@@ -122,11 +122,10 @@ export default class Quickstart extends React.Component<Props, State> {
               </div>
             </div>
           </div>
-          <div className={cx($p.flex)}>
+          <div className={cx($p.flex, $p.ml38)}>
           {reactApolloExamples.map((example) =>
             <Example className={cx($p.flex1)} quickExample={example} />
           )}
-            
           </div>
         </div>
       )
