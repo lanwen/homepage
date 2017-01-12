@@ -47,4 +47,3 @@ const ResourcesPageWithData = graphql(getItemsByLayout, {
 })(SearchPage)
 
 export default withRouter(ResourcesPageWithData)
-
