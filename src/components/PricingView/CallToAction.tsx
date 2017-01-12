@@ -22,10 +22,16 @@ export default class CallToAction extends React.Component<{}, {}> {
 
         {/* SECOND COLUMN */}
         <div className={cx($p.flex, $p.pv6, $p.itemsCenter)}>
-          <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc)}>Sign up</div>
-          <div className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.tc, $p.ba, $p.bGreen, $p.ml10)}>
+          <a
+            className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.noUnderline)}
+            href='https://console.graph.cool/signup'
+          >Sign up</a>
+          <a
+            className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.tc, $p.ba, $p.bGreen, $p.ml10, $p.noUnderline)}
+            href='mailto:sales@graph.cool'
+          >
             Talk to sales
-          </div>
+          </a>
         </div>
 
       </Box>

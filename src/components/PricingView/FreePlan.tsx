@@ -41,7 +41,10 @@ export default class FreePlan extends React.Component<{}, {}> {
           <div className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pa25)}>
             <div className={cx($p.green, $p.ttu, $p.f14)}>Developer</div>
             <div className={cx($p.green, $p.ttu, $p.f14, $p.fw6, $p.mb16)}>Free</div>
-            <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16)}>Sign up</div>
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.noUnderline)}
+              href='https://console.graph.cool/signup'
+            >Sign up</a>
           </div>
           <div className={cx($p.flex, $p.flexNone, $p.pv25, $p.ph38)}>
             {/* FIRST COLUMN (nodes + seats)*/}

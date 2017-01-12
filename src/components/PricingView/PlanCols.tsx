@@ -121,8 +121,12 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60)}>Try it for free
-            </div>
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              href='https://console.graph.cool/signup'
+            >
+              Try it for free
+            </a>
           </div>
 
           {/* SECOND COLUMN - Growth */}
@@ -230,8 +234,12 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60)}>Try it for free
-            </div>
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              href='https://console.graph.cool/signup'
+            >
+              Try it for free
+            </a>
           </div>
 
           {/* THIRD COLUMN - Pro */}
@@ -344,8 +352,12 @@ export default class PlanCols extends React.Component<{}, {}> {
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60)}>Try it for free
-            </div>
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              href='https://console.graph.cool/signup'
+            >
+              Try it for free
+            </a>
           </div>
 
           {/* FOURTH COLUMN - Enterprise */}
@@ -409,7 +421,12 @@ export default class PlanCols extends React.Component<{}, {}> {
             </PricingDimension>
 
             {/* CTA BUTTON */}
-            <div className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt60)}>Talk to sales</div>
+            <a
+              className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              href='mailto:sales@graph.cool'
+            >
+              Talk to sales
+            </a>
           </div>
 
         </Box>

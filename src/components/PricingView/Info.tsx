@@ -138,7 +138,10 @@ export default class Info extends React.Component<{}, {}> {
             </div>
 
             <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
-              <div className={cx($g.uppercaseButton, $p.bgBlue, $p.white, $p.tc, $p.ph38, $p.pv16)}>All features</div>
+              <a
+                className={cx($g.uppercaseButton, $p.bgBlue, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}
+                href='/'
+              >All features</a>
             </div>
 
           </div>

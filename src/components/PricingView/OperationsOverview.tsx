@@ -113,7 +113,7 @@ export default class OperationOverview extends React.Component<{}, State> {
 
         <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
           {totalOperations > 50000000 &&
-          <div>🚀 Talk To Sales</div>
+            <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
           }
           {totalOperations <= 50000000 &&
           <div>
