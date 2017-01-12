@@ -30,7 +30,7 @@ export default class Quickstart extends React.Component<Props, State> {
     const currentStep: Step = this.getCurrentStep()
 
     const stepIndicator: JSX.Element = (
-      <StepIndicator 
+      <StepIndicator
         currentStep={currentStep}
         className={cx($p.mb25)}
         pathComponentClicked={(index) => {
@@ -46,7 +46,7 @@ export default class Quickstart extends React.Component<Props, State> {
               selectedClientTechnology: null,
             } as State)
           }
-        }} />
+        }}/>
     )
 
     if (currentStep === 'TECHNOLOGY') {
@@ -55,11 +55,11 @@ export default class Quickstart extends React.Component<Props, State> {
           {stepIndicator}
           <div className={cx($p.flex, $p.justifyBetween)}>
             {frontendTechnologies.map((technology) =>
-            <Technology
-              technology={technology}
-              onClick={() => this.selectFrontendTechnology(technology)}
-            />
-          )}
+              <Technology
+                technology={technology}
+                onClick={() => this.selectFrontendTechnology(technology)}
+              />
+            )}
           </div>
         </div>
       )
@@ -81,11 +81,11 @@ export default class Quickstart extends React.Component<Props, State> {
               />
             </div>
             {clientTechnologies.map((technology) =>
-            <Technology
-              className={cx($p.ml25)}
-              technology={technology}
-              onClick={() => this.selectClientTechnology(technology)}
-            />)
+              <Technology
+                className={cx($p.ml25)}
+                technology={technology}
+                onClick={() => this.selectClientTechnology(technology)}
+              />)
             }
           </div>
         </div>
@@ -123,15 +123,15 @@ export default class Quickstart extends React.Component<Props, State> {
             </div>
           </div>
           <div className={cx($p.flex, $p.ml38)}>
-          {reactApolloExamples.map((example) =>
-            <Example className={cx($p.flex1)} quickExample={example} />
-          )}
+            {reactApolloExamples.map((example) =>
+              <Example className={cx($p.flex1)} quickExample={example}/>
+            )}
           </div>
         </div>
       )
     }
     return (
-        <div>UNKNOWN</div>
+      <div>UNKNOWN</div>
     )
   }
 

@@ -42,5 +42,4 @@ export default class Example extends React.Component<Props, {}> {
       </div>
     )
   }
-
 }

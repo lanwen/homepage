@@ -17,13 +17,10 @@ interface Props {
   className?: string
 }
 
-
 export default (props: Props) => {
 
   const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor}, onClick, className} = props
   const {technology} = props
-
-  console.log('tech: ' + logoColor)
 
   return (
     <div
@@ -44,5 +41,3 @@ export default (props: Props) => {
     </div>
   )
 }
-
-

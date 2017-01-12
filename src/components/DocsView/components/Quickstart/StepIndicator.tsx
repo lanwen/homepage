@@ -24,137 +24,137 @@ export default class StepIndicator extends React.Component<Props, {}> {
     let useCase: JSX.Element
 
     switch (currentStep) {
-    case 'TECHNOLOGY': 
-      technology = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenSelected}`}}>
-            Technology
+      case 'TECHNOLOGY':
+        technology = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenSelected}`}}>
+              Technology
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={grayNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={grayNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      graphQLClient = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
-            GraphQL Client
+        )
+        graphQLClient = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
+              GraphQL Client
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={grayNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={grayNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      useCase = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
-            Use case
+        )
+        useCase = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
+              Use case
+            </div>
           </div>
-        </div>
-      )
-      break
-    case 'GRAPHQL_CLIENT': 
-      technology = (
-        <div 
-          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
-          onClick={() => this.props.pathComponentClicked(0)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
-            Technology
+        )
+        break
+      case 'GRAPHQL_CLIENT':
+        technology = (
+          <div
+            className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+            onClick={() => this.props.pathComponentClicked(0)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
+              Technology
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={greenNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={greenNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      graphQLClient = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
-            GraphQL Client
+        )
+        graphQLClient = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
+              GraphQL Client
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={grayNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={grayNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      useCase = (
-        <div  className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
-            Use case
+        )
+        useCase = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
+              Use case
+            </div>
           </div>
-        </div>
-      )
-      break
-    case 'USE_CASE': 
-      technology = (
-        <div 
-          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
-          onClick={() => this.props.pathComponentClicked(0)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
-            Technology
+        )
+        break
+      case 'USE_CASE':
+        technology = (
+          <div
+            className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+            onClick={() => this.props.pathComponentClicked(0)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenNotSelected}`}}>
+              Technology
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={greenNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={greenNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      graphQLClient = (
-        <div 
-          className={cx($p.flex, $p.itemsCenter, $p.pointer)}
-          onClick={() => this.props.pathComponentClicked(1)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
-            GraphQL Client
+        )
+        graphQLClient = (
+          <div
+            className={cx($p.flex, $p.itemsCenter, $p.pointer)}
+            onClick={() => this.props.pathComponentClicked(1)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenNotSelected}`}}>
+              GraphQL Client
+            </div>
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+              stroke={true}
+              className={$p.ph6}
+              strokeWidth={8}
+              color={greenNotSelected}
+              height={12}
+              width={12}
+            />
           </div>
-          <Icon
-            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-            stroke={true}
-            className={$p.ph6}
-            strokeWidth={8}
-            color={greenNotSelected}
-            height={12}
-            width={12}
-          />
-        </div>
-      )
-      useCase = (
-        <div className={cx($p.flex, $p.itemsCenter)}>
-          <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
-            Use case
+        )
+        useCase = (
+          <div className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${greenSelected}`}}>
+              Use case
+            </div>
           </div>
-        </div>
-      )
-      break
-    default: 
-      break
+        )
+        break
+      default:
+        break
     }
 
     return (

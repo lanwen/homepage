@@ -65,7 +65,7 @@ const vue: TechnologyData = {
 }
 
 export const frontendTechnologies: [TechnologyData] = [
-  react, 
+  react,
   angular,
   reactNative,
   iOS,
