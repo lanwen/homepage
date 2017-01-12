@@ -42,6 +42,7 @@ interface Meta {
 
 const ContentContainer = styled.div`
    flex: 1 1 100px;
+   max-width: 1050px;
 `
 
 class ContentHandler extends React.Component<Props, {}> {

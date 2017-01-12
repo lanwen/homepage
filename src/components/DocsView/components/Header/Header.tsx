@@ -160,6 +160,10 @@ const LogoLink = styled.div`
   }
 `
 
+const Container = styled.div`
+  max-width: 1350px;
+`
+
 interface State {
   menuOpened: boolean
   endpointPopupOpened: boolean
@@ -355,7 +359,7 @@ export default class Header extends React.Component<{}, State> {
     )
 
     return (
-      <div className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38, $p.flex, $p.flexRow, $p.justifyCenter)}>
+      <Container className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38, $p.flex, $p.flexRow)}>
         {window.innerWidth > breakpoints.p1200 ? WideHeader() : NarrowHeader()}
         {loggedIn && (
           <EndpointPopup
@@ -363,7 +367,7 @@ export default class Header extends React.Component<{}, State> {
             onRequestClose={this.closeEndpointPopup}
           />
         )}
-      </div>
+      </Container>
     )
   }
 
