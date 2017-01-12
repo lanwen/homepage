@@ -48,7 +48,6 @@ function render() {
               <IndexRoute component={DocsOverview}/>
               <Redirect from='reference' to='reference/platform/overview-chohbah0eo' />
               <Route path='quickstart' component={QuickstartPage}/>
-              <Route path='resources' component={ResourcesPage}/>
               <Route path='blog' component={BlogPage}/>
               <Route path='tutorials' component={TutorialsPage} />
               <Route path='faq' component={FAQPage} />
