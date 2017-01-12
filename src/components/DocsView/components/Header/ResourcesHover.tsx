@@ -70,10 +70,9 @@ export default class ResourcesHover extends React.Component<{}, {}> {
           )}
         >Resources</div>
         <div className={cx('_nested', $p.bgWhite, $p.absolute, $p.flexColumn)}>
-          <NavigationLink
-            to='/docs/resources'
+          <div
             className={cx('_headline', $p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
-          >Resources</NavigationLink>
+          >Resources</div>
           <div className={cx($p.pv16, $p.ph25)}>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials'>
               <CircleIcon type='TUTORIAL'/>

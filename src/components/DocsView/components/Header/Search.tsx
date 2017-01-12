@@ -114,6 +114,7 @@ class Search extends React.Component<Props,{}> {
   render() {
     const {className} = this.props
     const {query, results, activeIndex, resultsActive} = this.state
+    const autoFocus = location.pathname === '/docs'
     return (
       <div className={cx($p.relative, className)}>
         <Icon
@@ -134,7 +135,7 @@ class Search extends React.Component<Props,{}> {
           onKeyDown={this.onKeyDown}
           onBlur={this.hideResults}
           onFocus={this.showResults}
-          autoFocus
+          autoFocus={autoFocus}
         />
         {results.length > 0 && query.length > 0 && resultsActive && (
           <Results
