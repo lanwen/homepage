@@ -7,13 +7,17 @@ const Root = styled.div`
   margin-bottom: -${parseFloat($v.size10)}px;
 `
 
-export default class ComingSoonTag extends React.Component<{}, {}> {
+interface Props {
+  text: string
+}
+
+export default class ComingSoonTag extends React.Component<Props, {}> {
 
   render() {
 
     return (
       <Root className={cx($g.uppercaseLabel, $p.pa6, $p.lhSolid, $p.bgGreen, $p.white, $p.f12, $p.br2, $p.mt16)}>
-        Coming Soon
+        {this.props.text}
       </Root>
     )
   }

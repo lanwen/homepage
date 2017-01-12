@@ -41,11 +41,13 @@ export default class Quickstart extends React.Component<Props, State> {
             this.setState({
               selectedFrontendTechnology: null,
               selectedClientTechnology: null,
+              quickExamples: null,
             } as State)
           } else if (index === 1) {
             this.setState({
               ...this.state,
               selectedClientTechnology: null,
+              quickExamples: null,
             } as State)
           }
         }}/>
