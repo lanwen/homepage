@@ -46,7 +46,7 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.white, $p.ml16)}>What is a node?</div>
               </div>
               <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
-                You store data in Graphcool as nodes. 
+                You store data in Graphcool as nodes.
                 For example, if five users write two posts each, you have 15 nodes.
               </div>
               <div className={cx($p.mt60, $p.center)}>
@@ -82,9 +82,11 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.mh25)}>
                   <div className={cx($p.white, $p.f16, $p.fw6)}>File storage</div>
                   <div className={cx($p.white80, $p.f14, $p.mt10)}>
-                      Graphcool has an integrated file management system. Easily store and display your users profile pictures, attachments and much more.
+                      Graphcool has an integrated file management system. Easily store and
+                      display your users profile pictures, attachments and much more.
                       <br />
-                      Basic usage is free and for more demanding projects you are billed in increments of 50¢ / GB for additional storage and file transfer. 
+                      Basic usage is free and for more demanding projects you are billed in
+                      increments of 50¢ / GB for additional storage and file transfer.
 
                   </div>
                 </div>
@@ -109,7 +111,8 @@ export default class Info extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.mh25)}>
                   <div className={cx($p.white, $p.f16, $p.fw6)}>Integrations</div>
                   <div className={cx($p.white80, $p.f14, $p.mt10)}>
-                      Integrations is a powerful way to add functionality to your project. Use Auth0 to add social login or set up a sophisticated search engine with Algolia.
+                      Integrations is a powerful way to add functionality to your project. Use Auth0
+                      to add social login or set up a sophisticated search engine with Algolia.
                   </div>
                 </div>
               </div>

@@ -34,13 +34,12 @@ export default class Quickstart extends React.Component<Props, State> {
         currentStep={currentStep}
         className={cx($p.mb25)}
         pathComponentClicked={(index) => {
-          if (index == 0) {
+          if (index === 0) {
             this.setState({
               selectedFrontendTechnology: null,
               selectedClientTechnology: null,
             } as State)
-          }
-          else if (index == 1) {
+          } else if (index === 1) {
             this.setState({
               ...this.state,
               selectedClientTechnology: null,
@@ -58,13 +57,12 @@ export default class Quickstart extends React.Component<Props, State> {
               <Technology
                 technology={technology}
                 onClick={() => this.selectFrontendTechnology(technology)}
-              />
+              />,
             )}
           </div>
         </div>
       )
-    }
-    else if (currentStep === 'GRAPHQL_CLIENT') {
+    } else if (currentStep === 'GRAPHQL_CLIENT') {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
@@ -90,8 +88,7 @@ export default class Quickstart extends React.Component<Props, State> {
           </div>
         </div>
       )
-    }
-    else if (currentStep === 'USE_CASE') {
+    } else if (currentStep === 'USE_CASE') {
       return (
         <div className={$p.flex}>
           <div className={cx($p.flex, $p.flexColumn, className)}>
@@ -124,7 +121,7 @@ export default class Quickstart extends React.Component<Props, State> {
           </div>
           <div className={cx($p.flex, $p.ml38)}>
             {reactApolloExamples.map((example) =>
-              <Example className={cx($p.flex1)} quickExample={example}/>
+              <Example className={cx($p.flex1)} quickExample={example}/>,
             )}
           </div>
         </div>
@@ -154,8 +151,7 @@ export default class Quickstart extends React.Component<Props, State> {
   private getCurrentStep(): Step {
     if (this.state.selectedClientTechnology) {
       return 'USE_CASE'
-    }
-    else if (this.state.selectedFrontendTechnology) {
+    } else if (this.state.selectedFrontendTechnology) {
       return 'GRAPHQL_CLIENT'
     }
     return 'TECHNOLOGY'
@@ -165,7 +161,7 @@ export default class Quickstart extends React.Component<Props, State> {
     const selectedTechnologyData = {
       ...technology,
       backgroundColor: technology.logoColor,
-      logoColor: 'white'
+      logoColor: 'white',
     }
     return selectedTechnologyData
   }

@@ -27,7 +27,9 @@ export default (props: Props) => {
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
       onClick={() => onClick(technology)}
     >
-      <Circle className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)} style={{background: `${backgroundColor}`}}>
+      <Circle
+        className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}
+        style={{background: `${backgroundColor}`}}>
         <Icon
             src={require(`../../../../assets/icons/docs/${logoName}.svg`)}
             color={logoColor}

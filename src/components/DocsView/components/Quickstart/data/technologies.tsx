@@ -16,7 +16,7 @@ const react: TechnologyData = {
   logoColor: 'rgba(0,216,255,1)',
   logoWidth: 47,
   logoHeight: 44,
-  backgroundColor: 'rgba(0,216,255,0.1)'
+  backgroundColor: 'rgba(0,216,255,0.1)',
 }
 
 const angular: TechnologyData = {
@@ -25,7 +25,7 @@ const angular: TechnologyData = {
   logoColor: 'rgba(221,0,49,1)',
   logoWidth: 42,
   logoHeight: 46,
-  backgroundColor: 'rgba(221,0,49,0.1)'
+  backgroundColor: 'rgba(221,0,49,0.1)',
 }
 
 const reactNative: TechnologyData = {
@@ -34,7 +34,7 @@ const reactNative: TechnologyData = {
   logoColor: 'rgba(26,127,145,1)',
   logoWidth: 47,
   logoHeight: 44,
-  backgroundColor: 'rgba(26,127,145,0.1)'
+  backgroundColor: 'rgba(26,127,145,0.1)',
 }
 
 const iOS: TechnologyData = {
@@ -43,7 +43,7 @@ const iOS: TechnologyData = {
   logoColor: $v.black,
   logoWidth: 47,
   logoHeight: 44,
-  backgroundColor: $v.gray10
+  backgroundColor: $v.gray10,
 }
 
 const android: TechnologyData = {
@@ -52,7 +52,7 @@ const android: TechnologyData = {
   logoColor: 'rgba(164,196,157,1)',
   logoWidth: 47,
   logoHeight: 44,
-  backgroundColor: 'rgba(164,196,157,0.1)'
+  backgroundColor: 'rgba(164,196,157,0.1)',
 }
 
 const vue: TechnologyData = {
@@ -61,7 +61,7 @@ const vue: TechnologyData = {
   logoColor: 'rgba(0,216,255,1)',
   logoWidth: 47,
   logoHeight: 44,
-  backgroundColor: 'rgba(0,216,255,0.1)'
+  backgroundColor: 'rgba(0,216,255,0.1)',
 }
 
 export const frontendTechnologies: [TechnologyData] = [
@@ -70,7 +70,7 @@ export const frontendTechnologies: [TechnologyData] = [
   reactNative,
   iOS,
   android,
-  vue
+  vue,
 ]
 
 const apollo: TechnologyData = {
@@ -80,6 +80,7 @@ const apollo: TechnologyData = {
   logoWidth: 40,
   logoHeight: 44,
   backgroundColor: 'rgba(10,44,73,0.1)',
+
   // isPopular: true
 }
 
@@ -89,10 +90,10 @@ const relay: TechnologyData = {
   logoColor: 'rgba(242,107,0,1)',
   logoWidth: 55,
   logoHeight: 31,
-  backgroundColor: 'rgba(242,107,0,0.1)'
+  backgroundColor: 'rgba(242,107,0,0.1)',
 }
 
 export const clientTechnologies: [TechnologyData] = [
   relay,
-  apollo
+  apollo,
 ]

@@ -5,7 +5,7 @@ import {Step} from './Quickstart'
 
 interface Props {
   currentStep: Step
-  pathComponentClicked: (number) => void
+  pathComponentClicked: (index: number) => void
   className?: string
 }
 
@@ -166,5 +166,3 @@ export default class StepIndicator extends React.Component<Props, {}> {
     )
   }
 }
-
-

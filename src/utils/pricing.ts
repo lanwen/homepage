@@ -17,4 +17,3 @@ export function roundedStep(step: number): number {
 
   return leadingDigits * Math.pow(10, Math.floor(zeroIndexedStep / 3)) / 10
 }
-

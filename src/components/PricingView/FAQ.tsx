@@ -38,7 +38,9 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>What happens when I go over my limit?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    Each plan has a over-quota price for additional nodes and operations. When your usage starts exceeding your plan we will notify you so you can decide if it would be better for you to change your plan.
+                    Each plan has a over-quota price for additional nodes and operations. When your usage
+                    starts exceeding your plan we will notify you so you can decide if it would be better
+                    for you to change your plan.
                   </div>
                 </div>
               </div>
@@ -59,7 +61,8 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>Can I change plans at any time?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    Absolutely! Your plan is billed from the first of each month. If you change or cancel your plan in the middle of the month we will refund you pro rata.
+                    Absolutely! Your plan is billed from the first of each month. If you change or
+                    cancel your plan in the middle of the month we will refund you pro rata.
                   </div>
                 </div>
               </div>
@@ -80,8 +83,11 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>Are there any limits to the size of a node?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    A node can have up to 100 fields. You can see all limits for data stored in fields in the  
-                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)} href='https://www.graph.cool/docs/reference/platform/fields'>documentation</a>
+                    A node can have up to 100 fields. You can see all limits for data stored in fields in the
+                    <a className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)}
+                       href='https://www.graph.cool/docs/reference/platform/fields'>
+                        documentation
+                    </a>
                   </div>
                 </div>
               </div>
@@ -129,7 +135,8 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>How long does the trial last?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    The trial lasts 30 days. If you decide not to upgrade to a paid plan after the trial period you will be changed to the developer plan.
+                    The trial lasts 30 days. If you decide not to upgrade to a paid plan after the trial
+                    period you will be changed to the developer plan.
                   </div>
                 </div>
               </div>

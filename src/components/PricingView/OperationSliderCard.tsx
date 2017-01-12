@@ -88,7 +88,10 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
               value={this.props.rightValue}
             />
             <div className={cx($p.flex, $p.mt10)}>
-              <div className={cx($p.white80, $p.f12, $p.fw6)}>{numberWithCommas(roundedStep(this.props.rightValue))}</div>
+              <div
+                className={cx($p.white80, $p.f12, $p.fw6)}>
+                  {numberWithCommas(roundedStep(this.props.rightValue))}
+              </div>
               {rightInfoComponent}
             </div>
           </div>
