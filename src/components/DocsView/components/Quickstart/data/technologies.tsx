@@ -80,7 +80,6 @@ const apollo: TechnologyData = {
   logoWidth: 40,
   logoHeight: 44,
   backgroundColor: 'rgba(10,44,73,0.1)',
-
   // isPopular: true
 }
 

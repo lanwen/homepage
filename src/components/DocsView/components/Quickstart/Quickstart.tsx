@@ -4,12 +4,14 @@ import * as cx from 'classnames'
 import Technology from './Technology'
 import StepIndicator from './StepIndicator'
 import {TechnologyData, frontendTechnologies, clientTechnologies} from './data/technologies'
-import {reactApolloExamples} from './data/examples'
+import {examples} from './data/examples'
 import Example from './Example'
+import {QuickExample} from '../../../../types/types'
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
+  quickExamples?: [QuickExample]
 }
 
 interface Props {
@@ -21,12 +23,13 @@ export default class Quickstart extends React.Component<Props, State> {
   state = {
     selectedFrontendTechnology: null,
     selectedClientTechnology: null,
+    quickExamples: null,
   }
 
   render() {
 
     const {className} = this.props
-    const {selectedFrontendTechnology, selectedClientTechnology} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology, quickExamples} = this.state
     const currentStep: Step = this.getCurrentStep()
 
     const stepIndicator: JSX.Element = (
@@ -120,7 +123,7 @@ export default class Quickstart extends React.Component<Props, State> {
             </div>
           </div>
           <div className={cx($p.flex, $p.ml38)}>
-            {reactApolloExamples.map((example) =>
+            {this.state.quickExamples.map((example) =>
               <Example className={cx($p.flex1)} quickExample={example}/>,
             )}
           </div>
@@ -133,18 +136,21 @@ export default class Quickstart extends React.Component<Props, State> {
   }
 
   private selectClientTechnology = (technology: TechnologyData) => {
-    const selectedTechnology = this.setSelected(technology)
+    const selectedClientTechnology = this.setSelected(technology)
+
+    const key = this.state.selectedFrontendTechnology.logoName + '-' + selectedClientTechnology.logoName
+    const displayExamples = examples[key]
+
     this.setState({
-      selectedClientTechnology: selectedTechnology,
-      currentStep: 'USE_CASE',
+      selectedClientTechnology: selectedClientTechnology,
+      quickExamples: displayExamples,
     } as State)
   }
 
   private selectFrontendTechnology = (technology: TechnologyData) => {
-    const selectedTechnology = this.setSelected(technology)
+    const selectedFrontendTechnology = this.setSelected(technology)
     this.setState({
-      selectedFrontendTechnology: selectedTechnology,
-      currentStep: 'GRAPHQL_CLIENT',
+      selectedFrontendTechnology: selectedFrontendTechnology,
     } as State)
   }
 
