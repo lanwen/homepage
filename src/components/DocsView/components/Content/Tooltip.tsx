@@ -43,7 +43,7 @@ export default class Tooltip extends React.Component<Props, {}> {
     return (
       <Container className={cx($p.relative, $p.overflowVisible)}>
         <img
-          src={require('../../../../assets/graphics/info.svg')}
+          src={require('../../../../assets/graphics/homepage/info.svg')}
           className={cx($p.bbox, $p.db, $p.pl60, $p.pointer)}
         />
         <div className={cx('nested-parent', $p.absolute, $p.pt16)}>

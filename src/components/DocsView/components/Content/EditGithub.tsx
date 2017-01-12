@@ -18,7 +18,7 @@ export default class EditGithub extends React.Component<Props, {}> {
         >
           <div className={cx($p.flex)}>
             <img
-              src={require('../../../../assets/graphics/GitHubGreyLogo.svg')}
+              src={require('../../../../assets/graphics/homepage/GitHubGreyLogo.svg')}
               height={25}
               width={25}
               className={cx($p.ph16)}

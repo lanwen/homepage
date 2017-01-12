@@ -57,7 +57,7 @@ class Feedback extends React.Component<Props, State> {
                 className={cx($p.flex, $p.pointer)}
               >
                 <img
-                  src={require('../../../../assets/graphics/Yes.svg')}
+                  src={require('../../../../assets/graphics/docs/Yes.svg')}
                   className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
                 />
                 <div className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>Yes</div>
@@ -67,7 +67,7 @@ class Feedback extends React.Component<Props, State> {
                 className={cx($p.flex, $p.pointer)}
               >
                 <img
-                  src={require('../../../../assets/graphics/No.svg')}
+                  src={require('../../../../assets/graphics/docs/No.svg')}
                   className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
                 />
                 <div

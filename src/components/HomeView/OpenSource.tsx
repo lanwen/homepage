@@ -49,7 +49,7 @@ export default class OpenSource extends React.Component<{}, {}> {
     const headline = (
       <div className={cx($p.mb0, $p.pb0)}>
         <span>We </span>
-        <img className={cx($p.ph10)} src={require('../../assets/graphics/Heart.svg')} alt='Heart'/>
+        <img className={cx($p.ph10)} src={require('../../assets/graphics/homepage/Heart.svg')} alt='Heart'/>
         <span> Open Source</span>
       </div>
     )
