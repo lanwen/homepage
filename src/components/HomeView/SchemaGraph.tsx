@@ -42,21 +42,21 @@ export default class SchemaGraph extends React.Component<{}, {}> {
           {window.innerWidth >= breakpoints.p750 &&
           <img
             className={cx($p.w100, $p.hAuto, $p.db)}
-            src={require('../../assets/graphics/architecture.svg')}
+            src={require('../../assets/graphics/homepage/architecture.svg')}
             alt='Architecture'
           />
           }
           {window.innerWidth < breakpoints.p750 && window.innerWidth >= breakpoints.p500 &&
           <img
             className={cx($p.w100, $p.hAuto, $p.db)}
-            src={require('../../assets/graphics/architectureMobile.svg')}
+            src={require('../../assets/graphics/homepage/architectureMobile.svg')}
             alt='Architecture'
           />
           }
           {window.innerWidth < breakpoints.p500 &&
           <img
             className={cx($p.w100, $p.hAuto, $p.db)}
-            src={require('../../assets/graphics/architectureSmallMobile.svg')}
+            src={require('../../assets/graphics/homepage/architectureSmallMobile.svg')}
             alt='Architecture'
           />
           }

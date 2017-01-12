@@ -254,7 +254,7 @@ export default class Header extends React.Component<{}, State> {
     const logo = (
       <LogoLink className={cx($p.flex, $p.itemsCenter, $p.overflowHidden)}>
         <Link to='/docs' className={cx($p.noUnderline, $p.flex, $p.flexRow, $p.itemsCenter)}>
-          <img className={cx()} src={require('../../../../assets/graphics/GraphcoolLogoOnltG.svg')}/>
+          <img className={cx()} src={require('../../../../assets/graphics/logos/graphcool.svg')}/>
           <div className={cx($p.f20, $p.fw4, $p.lightgreen50, $p.ttu, $p.ml16)}>
             Docs
           </div>
@@ -272,7 +272,7 @@ export default class Header extends React.Component<{}, State> {
             <div className={cx($p.relative, 'left-gradient')}>
               <img
                 className={cx($p.bbox, $p.db)}
-                src={require('../../../../assets/graphics/APIendpoints.svg')}
+                src={require('../../../../assets/graphics/APIEndpoints.svg')}
                 onClick={() => {
                 this.openEndpointPopup()
                 this.closeMenu()

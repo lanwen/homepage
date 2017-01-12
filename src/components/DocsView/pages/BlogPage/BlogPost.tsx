@@ -38,8 +38,10 @@ export default class BlogPost extends React.Component<{}, {}> {
                 <p className={cx($p.f16, $p.ph16, $p.fw4)}>#platform / api /authentication</p>
               </div>
             </Article>
-            <Author src={require('../../../../assets/graphics/team/nilan.png')}
-                    className={cx($p.selfStart)}/>
+            <Author
+              src={require('../../../../assets/graphics/team/nilan.png')}
+              className={cx($p.selfStart)}
+            />
           </div>
           <p className={cx($p.black60, $p.fw4, $p.f20, $p.mb60, $p.ph25)}>
             Authenticating users is an integral part of most applications with the goal to make it as easy as

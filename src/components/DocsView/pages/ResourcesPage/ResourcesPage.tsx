@@ -72,21 +72,21 @@ class ResourcesPage extends React.Component<Props, {}> {
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
-                src={require('../../../../assets/graphics/Tutorial#1.png')}
+                src={require('../../../../assets/graphics/homepage/Tutorial#1.png')}
                 updated='last edited a week ago'
               />
               <TutorialsContent
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
-                src={require('../../../../assets/graphics/Tutorial#1.png')}
+                src={require('../../../../assets/graphics/homepage/Tutorial#1.png')}
                 updated='last edited a week ago'
               />
               <TutorialsContent
                 headline='Setting up authentication'
                 content='So far we’ve need to configure multiple models and specify relationships between them.'
                 tags='#authentication  #Auth0'
-                src={require('../../../../assets/graphics/Tutorial#1.png')}
+                src={require('../../../../assets/graphics/homepage/Tutorial#1.png')}
                 updated='last edited a week ago'
               />
             </div>

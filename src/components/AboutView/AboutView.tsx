@@ -172,7 +172,7 @@ export default class AboutView extends React.Component<{}, {}> {
                         <a href={person.links.linkedin} target='_blank'>
                           <img
                             className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/LinkedInLogo.png')}
+                            src={require('../../assets/graphics/homepage/LinkedInLogo.png')}
                             alt='LinkedIn Logo'
                           />
                         </a>
@@ -218,7 +218,7 @@ export default class AboutView extends React.Component<{}, {}> {
                         <a href={person.links.linkedin} target='_blank'>
                           <img
                             className={cx($p.pa10, $p.bbox, $p.db)}
-                            src={require('../../assets/graphics/LinkedInLogo.png')}
+                            src={require('../../assets/graphics/homepage/LinkedInLogo.png')}
                             alt='LinkedIn Logo'
                           />
                         </a>

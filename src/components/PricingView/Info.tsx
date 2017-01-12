@@ -51,7 +51,7 @@ export default class Info extends React.Component<{}, {}> {
               </div>
               <div className={cx($p.mt60, $p.center)}>
                 <img
-                  src={require('../../assets/graphics/nodes.png')}
+                  src={require('../../assets/graphics/homepage/nodes.png')}
                   height={282}
                   width={374}
                 />
