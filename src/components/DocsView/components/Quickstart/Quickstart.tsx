@@ -12,6 +12,7 @@ interface State {
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
   quickExamples?: [QuickExample]
+  highlightedComponentIndex?: number
 }
 
 interface Props {
@@ -24,12 +25,13 @@ export default class Quickstart extends React.Component<Props, State> {
     selectedFrontendTechnology: null,
     selectedClientTechnology: null,
     quickExamples: null,
+    highlightedComponentIndex: null,
   }
 
   render() {
 
     const {className} = this.props
-    const {selectedFrontendTechnology, selectedClientTechnology, quickExamples} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology, quickExamples, highlightedComponentIndex} = this.state
     const currentStep: Step = this.getCurrentStep()
 
     const stepIndicator: JSX.Element = (
@@ -58,12 +60,18 @@ export default class Quickstart extends React.Component<Props, State> {
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
           <div className={cx($p.flex)}>
-            {frontendTechnologies.map((technology) =>
+            {frontendTechnologies.map((technology, index) =>
               <Technology
-                technology={technology}
-                onClick={() => this.selectFrontendTechnology(technology)}
-              />,
-            )}
+                  technology={technology}
+                  onClick={() => this.selectFrontendTechnology(technology)}
+                  onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
+                  onMouseLeave={() => this.setState({
+                    ...this.state,
+                    highlightedComponentIndex: null,
+                  })}
+                  decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
+                />)
+            }
           </div>
         </div>
       )
@@ -74,6 +82,7 @@ export default class Quickstart extends React.Component<Props, State> {
           <div className={cx($p.flex)}>
             <Technology
               technology={selectedFrontendTechnology}
+              decreaseOpacity={false}
             />
             <div style={{paddingTop: 34}}>
               <Icon
@@ -83,11 +92,17 @@ export default class Quickstart extends React.Component<Props, State> {
                 color={$v.gray20}
               />
             </div>
-            {clientTechnologies.map((technology) =>
+            {clientTechnologies.map((technology, index) =>
               <Technology
                 className={cx($p.ml25)}
                 technology={technology}
                 onClick={() => this.selectClientTechnology(technology)}
+                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
+                onMouseLeave={() => this.setState({
+                  ...this.state,
+                  highlightedComponentIndex: null,
+                })}
+                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
               />)
             }
           </div>
@@ -100,6 +115,7 @@ export default class Quickstart extends React.Component<Props, State> {
             {stepIndicator}
             <div className={cx($p.flex)}>
               <Technology
+                decreaseOpacity={false}
                 technology={selectedFrontendTechnology}
               />
               <div style={{paddingTop: 34}}>
@@ -112,6 +128,7 @@ export default class Quickstart extends React.Component<Props, State> {
               </div>
               <Technology
                 className={cx($p.ml25)}
+                decreaseOpacity={false}
                 technology={selectedClientTechnology}
               />
               <div style={{paddingTop: 37}}>
@@ -154,6 +171,13 @@ export default class Quickstart extends React.Component<Props, State> {
     this.setState({
       selectedFrontendTechnology: selectedFrontendTechnology,
     } as State)
+  }
+
+  private decreasedOpacityOfComponents = (index: number) => {
+    this.setState({
+      ...this.state,
+      highlightedComponentIndex: index,
+    })
   }
 
   private getCurrentStep(): Step {
