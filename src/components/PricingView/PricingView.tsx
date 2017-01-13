@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import FreePlan from './FreePlan'
 import PlanCols from './PlanCols'

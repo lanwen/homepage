@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import OperationSliderCard from './OperationSliderCard'
 import styled from 'styled-components'

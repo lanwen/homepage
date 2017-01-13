@@ -9,6 +9,7 @@
         "multiline": "always",
         "singleline": "never"
       }
-    ]
+    ],
+    "no-unused-variable": [true, "react"]
   }
 }

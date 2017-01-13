@@ -2,7 +2,6 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
-import isValidElement = React.isValidElement
 import { Item } from '../../../../types/types'
 import BreadCrumb from './BreadCrumb'
 import styled from 'styled-components'

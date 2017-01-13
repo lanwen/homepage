@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $g, $v, Icon } from 'graphcool-styles'
+import { $p, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import SectionHeader from '../SectionHeader'

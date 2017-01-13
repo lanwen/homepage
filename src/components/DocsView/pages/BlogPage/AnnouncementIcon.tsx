@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 
 export default class AnnouncementIcon extends React.Component<{}, {}> {

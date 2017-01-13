@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $g, Icon, $v } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from './CircleIcon'
 import {Item} from '../../../types/types'
@@ -18,24 +18,6 @@ export default class FAQSidebar extends React.Component<Props, {}> {
       flex: 0 0 400px;
       background-color: rgba(0, 0, 0, 0.02);
       padding-top: 196px;
-    `
-    const LeftSection = styled.div`
-      flex: 1 1 100px;
-    `
-    const NavigationLinks = styled.div`
-      color: ${$v.gray30};
-      cursor: pointer;
-      transition: color ${$v.duration} linear;
-
-      &:hover {
-        color: ${$v.gray50};
-      }
-      `
-    const Circle = styled.div`
-      background-color: ${props => props.background};
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
     `
     const Square = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.03),

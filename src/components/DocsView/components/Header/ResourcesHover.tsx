@@ -4,7 +4,6 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from '../CircleIcon'
-import isValidElement = React.isValidElement
 import {breakpoints} from '../../../../utils/constants'
 
 const NavigationActive = `

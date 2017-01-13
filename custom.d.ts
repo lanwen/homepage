@@ -12,6 +12,7 @@ declare module 'front-matter'
 declare module 'react-algoliasearch'
 declare module 'slug'
 
+declare var System: any
 declare var Smooch: any
 declare var __SMOOCH_TOKEN__: string
 

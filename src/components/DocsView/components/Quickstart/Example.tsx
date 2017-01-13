@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {$p, $v, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
-import {Layout, QuickExample} from '../../../../types/types'
+import {QuickExample} from '../../../../types/types'
 import CircleIcon from '../CircleIcon'
 
 interface Props {
