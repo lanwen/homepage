@@ -48,7 +48,7 @@ const Container = styled.div`
 
 class Items extends React.Component<Props, {}> {
   render() {
-    const {data, className, showPreview, layout, aliases} = this.props
+    const {data, className, showPreview, aliases} = this.props
 
     if (data.loading) {
       return <div>Loading...</div>

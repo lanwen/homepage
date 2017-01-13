@@ -5,7 +5,6 @@ import TemporaryNavigation from '../components/TemporaryNavigation'
 import {getItemsByLayout} from '../fragments/getItemsByLayout'
 import ContentWindow from '../components/ContentWindow'
 import * as Helmet from 'react-helmet'
-import gql from 'graphql-tag'
 
 interface Props {
   data: any
@@ -22,21 +21,6 @@ class SearchPage extends React.Component<Props, {}> {
     )
   }
 }
-
-const query = gql`
-  query getItemsByLayout($ids: ) {
-    allItems(filter: {layout: $layout}) {
-      id
-      body
-      alias
-      path
-      title
-      layout
-      tags
-      description
-    }
-  }
-`
 
 const ResourcesPageWithData = graphql(getItemsByLayout, {
   options: {

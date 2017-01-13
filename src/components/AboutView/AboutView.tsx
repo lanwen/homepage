@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import { breakpoints } from '../../utils/constants'
 import { persons } from './data'
-import DiffView = CodeMirror.MergeView.DiffView
 import HorScrollbox from '../HorScrollbox'
 import Pagination from '../HomeView/Pagination'
 

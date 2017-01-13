@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 
 export default class LoadingBar extends React.Component<{}, {}> {
 
