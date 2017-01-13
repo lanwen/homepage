@@ -82,7 +82,8 @@ const Container = styled.div`
     height: auto;
     margin-left: 50%;
     transform: translateX(-50%);
-    padding: 10px 0;
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
 `
 
