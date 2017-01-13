@@ -48,7 +48,6 @@ store.subscribe(() => {
   updateApolloState(state)
 })
 
-
 function render() {
   ReactDOM.render(
     <AppContainer>
