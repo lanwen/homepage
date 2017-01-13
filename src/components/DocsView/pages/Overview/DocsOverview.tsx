@@ -66,9 +66,9 @@ export default class DocsOverview extends React.Component<{}, {}> {
             <StyledItems
               count={3}
               aliases={[
+                'thaeghi8ro',
                 'dah6aifoce',
                 'daisheeb9x',
-                'thaeghi8ro',
               ]}
               className={cx($p.relative)}
               showPreview={true}
