@@ -60,7 +60,7 @@ const Container = styled.div`
   }
   
   h2 {
-    size: ${$v.size25};
+    font-size: ${$v.size25};
     color: ${$v.gray80};
     margin: ${$v.size38} 0 ${$v.size25};
   }
