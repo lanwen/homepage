@@ -1,35 +1,18 @@
 import * as React from 'react'
 import {$p, $v, $g, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
-import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
-import PricingDimension from './PricingDimension'
+import TabBar from './TabBar'
 import Tooltip from './Tooltip'
 import {tooltips} from './text'
-import {breakpoints} from '../../utils/constants'
-import TabbedPlanCols from './TabbedPlanCols'
+import PricingDimension from './PricingDimension'
 
-const Box = styled.div`
-  max-width: 1202px;
-  margin-right: auto; 
-  margin-left: auto;
+const Container = styled.div`
+  
 `
 
 const Column = styled.div`
-  width: 268px;
-  padding: 25px;
-  margin: 0px 10px;
-  box-sizing: border-box;
-  &:last-child { 
-    width: 350px 
-  }
   
-  @media (max-width: ${breakpoints.p1200}px) {
-    width: 230px;
-    &:last-child { 
-      width: 250px 
-    }
-  }
 `
 
 const Circle24 = styled.div`
@@ -37,29 +20,50 @@ const Circle24 = styled.div`
   height: 24px;
 `
 
-export default class PlanCols extends React.Component<{}, {}> {
+interface State {
+  selectedTabIndex: number
+}
+
+export default class TabbedPlanCols extends React.Component<{}, State> {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selectedTabIndex: 0,
+    }
+  }
+
   render() {
+    return (
+      <Container className={cx($p.flex, $p.flexColumn)}>
+        <TabBar
+          onClick={(index) => this.setState({ selectedTabIndex: index })}
+          selectedTabIndex={this.state.selectedTabIndex} />
+        {this.columnForIndex(this.state.selectedTabIndex)}
+      </Container>
+    )
+  }
 
-    let columns: JSX.Element
-    if (window.innerWidth < breakpoints.p1000) {
-      columns = (<TabbedPlanCols />)
-    } else {
-      columns = (
-        <Box className={cx($p.flex, $p.justifyBetween)}>
+  private columnForIndex(index: number): JSX.Element {
 
-          {/* FIRST COLUMN - Startup */}
+    let column: JSX.Element
+
+    switch (index) {
+      case 0:
+        column = (
+          // {/* FIRST COLUMN - Startup */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
-              {/* TITLE */}
+              {/*TITLE */}
               <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
                 <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
                 <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
                 <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
               </div>
-
-              {/* CARD 1 */}
+              {/*CARD 1 */}
               <div className={cx($p.flex)}>
                 <div>
                   <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -82,7 +86,6 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
               </div>
-
               {/* CARD 2 */}
               <div className={cx($p.flex, $p.mt25)}>
                 <div>
@@ -107,7 +110,6 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
                 </div>
               </div>
-
               {/* CARD 3 */}
               <div className={cx($p.flex, $p.mt25)}>
                 <div>
@@ -125,7 +127,6 @@ export default class PlanCols extends React.Component<{}, {}> {
                   <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
                 </Tooltip>
               </div>
-
               {/* CARD 4 */}
               <div className={cx($p.flex, $p.mt25, $p.mb60)}>
                 <div>
@@ -141,7 +142,6 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>Email Support</div>
               </div>
             </div>
-
             {/* CTA BUTTON */}
             <a
               className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
@@ -151,19 +151,24 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-          {/* SECOND COLUMN - Growth */}
+        )
+        break
+      case 1:
+        column = (
+
+          // {/* SECOND COLUMN - Growth */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* MOST POPULAR */}
-              <div className={cx($p.flex, $p.justifyCenter, $p.relative)}>
-                <div
-                  className={cx($p.white, $p.absolute, $p.f16, $p.fw6, $p.ttu, $p.tc, $p.br2, $p.ph10, $p.bgBlue)}
-                  style={{top: -38}}
-                >
-                  Most popular
-                </div>
-              </div>
+              {/*<div className={cx($p.flex, $p.justifyCenter, $p.relative)}>*/}
+              {/*<div*/}
+              {/*className={cx($p.white, $p.absolute, $p.f16, $p.fw6, $p.ttu, $p.tc, $p.br2, $p.ph10, $p.bgBlue)}*/}
+              {/*style={{top: -38}}*/}
+              {/*>*/}
+              {/*Most popular*/}
+              {/*</div>*/}
+              {/*</div>*/}
 
               {/* TITLE */}
               <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Growth</div>
@@ -265,9 +270,14 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-          {/* THIRD COLUMN - Pro */}
+        )
+        break
+      case 2:
+        column = (
+
+          // {/* THIRD COLUMN - Pro */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+        $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
@@ -385,7 +395,12 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-          {/* FOURTH COLUMN - Enterprise */}
+        )
+        break
+      case 3:
+        column = (
+
+          // {/* FOURTH COLUMN - Enterprise */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.br2)}>
 
             {/* TITLE */}
@@ -454,18 +469,16 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-        </Box>
-      )
+        )
+        break
+      default:
+        column = (
+          <div>Not available</div>
+        )
+        break
     }
-
-    return (
-      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite)}>
-        <SectionHeader
-          headline='Flexible, transparent pricing'
-          copy='Get started for free and pay as you go. Cheaper than self-hosted solutions.'
-        />
-        {columns}
-      </div>
-    )
+    return column
   }
+
 }
+
