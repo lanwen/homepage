@@ -67,11 +67,13 @@ export default class ListItems extends React.Component<Props, {}> {
   }
 
   render() {
-    const {currentAlias} = this.props
+    const {currentAlias, expanded} = this.props
     const activeItemIndex = this.getActiveItemIndex(this.props)
 
     return (
-      <div className={cx($p.mt16, $p.mb10)}>
+      <div className={cx(
+        expanded ? [$p.pt6, $p.mt25] : $p.mt16,
+      )}>
         <Link
           to={`${this.props.item.path}-${this.props.item.alias}`}
           className={cx(

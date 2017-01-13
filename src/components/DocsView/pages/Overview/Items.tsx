@@ -56,7 +56,7 @@ class Items extends React.Component<Props, {}> {
 
     let pointer = []
     if (aliases && aliases.length > 0) {
-      pointer = data.aliases
+      pointer = aliases.map(alias => data.aliases.find(item => item.alias == alias))
     } else {
       pointer = data.layout
     }
