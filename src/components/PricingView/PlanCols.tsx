@@ -72,9 +72,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -184,9 +186,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>45¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -287,9 +291,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>5,000,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>30¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
