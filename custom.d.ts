@@ -15,8 +15,12 @@ declare module 'slug'
 declare var System: any
 declare var Smooch: any
 declare var __SMOOCH_TOKEN__: string
-
 declare var __BACKEND_ADDR__: string
+
+declare interface Window {
+  analytics: any
+  __APOLLO_STATE__: any
+}
 
 interface NodeModule {
   hot: { accept: Function }

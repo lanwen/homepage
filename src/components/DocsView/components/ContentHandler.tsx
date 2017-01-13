@@ -15,7 +15,7 @@ import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
-import {getAliasFromUrl} from '../../../utils/index'
+import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
 
 interface Props {
@@ -41,8 +41,8 @@ interface Meta {
 }
 
 const ContentContainer = styled.div`
-   flex: 1 1 100px;
-   max-width: 1050px;
+  flex: 1 1 100px;
+  max-width: 1050px;
 `
 
 class ContentHandler extends React.Component<Props, {}> {
@@ -94,8 +94,8 @@ class ContentHandler extends React.Component<Props, {}> {
 
     if (item.preview && item.preview.length > 0) {
       imageMeta = imageMeta.concat([
-        { property: 'og:image', content: item.preview },
-        { name: 'twitter:image', content: item.preview },
+        {property: 'og:image', content: item.preview},
+        {name: 'twitter:image', content: item.preview},
       ])
     }
 
@@ -123,13 +123,13 @@ class ContentHandler extends React.Component<Props, {}> {
                 item={item}
               />
             </section>
-            <Feedback item={item} />
+            <Feedback item={item}/>
             {item.layout !== 'FAQ' && (
               <RelatedContentFooter item={item}/>
             )}
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
           </ContentContainer>
-          {item.layout === 'FAQ' && <FAQSidebar item={item} />}
+          {item.layout === 'FAQ' && <FAQSidebar item={item}/>}
         </DocsView>
       </div>
     )

@@ -142,9 +142,17 @@ export default class Quickstart extends React.Component<Props, State> {
               </div>
             </div>
             <div className={cx($p.flex, $p.ml38)}>
-              {this.state.quickExamples.map((example) =>
-              <Example className={cx()} quickExample={example}/>,
-                  )}
+              {this.state.quickExamples.map((example, index) =>
+              <Example
+                quickExample={example}
+                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
+                onMouseLeave={() => this.setState({
+                  ...this.state,
+                  highlightedComponentIndex: null,
+                })}
+                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
+                />,
+             )}
             </div>
           </div>
       )
@@ -158,6 +166,7 @@ export default class Quickstart extends React.Component<Props, State> {
     const selectedFrontendTechnology = this.setSelected(technology)
     this.setState({
       selectedFrontendTechnology: selectedFrontendTechnology,
+      highlightedComponentIndex: null,
     } as State)
   }
 
@@ -170,6 +179,7 @@ export default class Quickstart extends React.Component<Props, State> {
     this.setState({
       selectedClientTechnology: selectedClientTechnology,
       quickExamples: displayExamples,
+      highlightedComponentIndex: null,
     } as State)
   }
 
