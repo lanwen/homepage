@@ -21,7 +21,7 @@ const ContentContainer = styled.div`
 class QuickstartPage extends React.Component<{}, {}> {
   render() {
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
+      <ContentContainer className={cx($p.pv96, $p.mt96)}>
         <Helmet title='Quick Start'/>
         <Container>
           <Heading
