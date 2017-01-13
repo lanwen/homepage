@@ -25,4 +25,3 @@ export function childrenToString(children): string {
     })
     .join('')
 }
-
