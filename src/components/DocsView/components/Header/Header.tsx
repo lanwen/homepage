@@ -270,6 +270,7 @@ export default class Header extends React.Component<{}, State> {
           <HoverGreen
             className={cx($p.noUnderline, $p.mr16)}
             href='https://console.graph.cool'
+            target='_blank'
           >
             Console
           </HoverGreen>
