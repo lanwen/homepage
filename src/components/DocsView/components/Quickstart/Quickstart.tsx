@@ -92,7 +92,7 @@ export default class Quickstart extends React.Component<Props, State> {
                 color={$v.gray20}
               />
             </div>
-            {clientTechnologies.map((technology, index) =>
+            {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
               <Technology
                 className={cx($p.ml25)}
                 technology={technology}
@@ -154,6 +154,13 @@ export default class Quickstart extends React.Component<Props, State> {
     )
   }
 
+  private selectFrontendTechnology = (technology: TechnologyData) => {
+    const selectedFrontendTechnology = this.setSelected(technology)
+    this.setState({
+      selectedFrontendTechnology: selectedFrontendTechnology,
+    } as State)
+  }
+
   private selectClientTechnology = (technology: TechnologyData) => {
     const selectedClientTechnology = this.setSelected(technology)
 
@@ -163,13 +170,6 @@ export default class Quickstart extends React.Component<Props, State> {
     this.setState({
       selectedClientTechnology: selectedClientTechnology,
       quickExamples: displayExamples,
-    } as State)
-  }
-
-  private selectFrontendTechnology = (technology: TechnologyData) => {
-    const selectedFrontendTechnology = this.setSelected(technology)
-    this.setState({
-      selectedFrontendTechnology: selectedFrontendTechnology,
     } as State)
   }
 
@@ -196,6 +196,28 @@ export default class Quickstart extends React.Component<Props, State> {
       logoColor: 'white',
     }
     return selectedTechnologyData
+  }
+
+  private clientTechnologiesFor(frontendTechnology: TechnologyData) {
+    const keys = Object.keys(examples)
+    const relevantExamples = keys.filter((key) => {
+      return key.startsWith(frontendTechnology.logoName + '-')
+    })
+    const availableClientTechnologies = relevantExamples.map((key) => {
+      const keyComponents = key.split('-')
+      return keyComponents[1]
+    })
+    const result: TechnologyData[] = []
+    const allClientTechnologyNames = clientTechnologies.map((clientTechnology) => clientTechnology.logoName)
+    availableClientTechnologies.forEach( (client) => {
+      if (allClientTechnologyNames.indexOf(client) > -1) {
+        const tech = clientTechnologies.find((technology) => {
+          return client === technology.logoName
+        })
+        result.push(tech)
+      }
+    })
+    return result
   }
 
 }
