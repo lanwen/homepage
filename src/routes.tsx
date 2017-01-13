@@ -88,14 +88,14 @@ export default {
             },
           ],
         },
+        {
+          path: '*',
+          getComponent(_, cb) {
+            System.import('./components/DocsView/components/ContentHandler').then(loadRoute(cb))
+              .catch(errorLoading)
+          },
+        },
       ],
-    },
-    {
-      path: '*',
-      getComponent(_, cb) {
-        System.import('./components/DocsView/components/ContentHandler').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
     },
   ],
 }

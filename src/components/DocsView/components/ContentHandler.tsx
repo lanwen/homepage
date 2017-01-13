@@ -4,7 +4,6 @@ import Markdown from './Content/Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
-import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
 import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
@@ -100,38 +99,36 @@ class ContentHandler extends React.Component<Props, {}> {
     }
 
     return (
-      <div onClick={this.onClick}>
+      <div onClick={this.onClick} className={cx($p.flex)}>
         <Helmet
           title={item.shorttitle}
           meta={[
-            { name: 'description', content: item.description },
-            { property: 'og:type', content: 'article' },
-            { property: 'og:title', content: item.title },
-            { property: 'og:description', content: item.description },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:description', content: item.description },
-            ...imageMeta,
-          ]}
+        { name: 'description', content: item.description },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:title', content: item.title },
+        { property: 'og:description', content: item.description },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:description', content: item.description },
+        ...imageMeta,
+      ]}
         />
-        <DocsView location={this.props.location}>
-          {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
-          <ContentContainer>
-            <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
-              <ContentHeader item={item}/>
-              <Markdown
-                ast={ast}
-                layout={item.layout}
-                item={item}
-              />
-            </section>
-            <Feedback item={item}/>
-            {item.layout !== 'FAQ' && (
-              <RelatedContentFooter item={item}/>
-            )}
-            {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          </ContentContainer>
-          {item.layout === 'FAQ' && <FAQSidebar item={item}/>}
-        </DocsView>
+        {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
+        <ContentContainer>
+          <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
+            <ContentHeader item={item}/>
+            <Markdown
+              ast={ast}
+              layout={item.layout}
+              item={item}
+            />
+          </section>
+          <Feedback item={item}/>
+          {item.layout !== 'FAQ' && (
+            <RelatedContentFooter item={item}/>
+          )}
+          {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+        </ContentContainer>
+        {item.layout === 'FAQ' && <FAQSidebar item={item}/>}
       </div>
     )
   }

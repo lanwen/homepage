@@ -242,7 +242,6 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
-    console.log(message)
     if (!Smooch.isOpened()) {
       Smooch.open()
     }

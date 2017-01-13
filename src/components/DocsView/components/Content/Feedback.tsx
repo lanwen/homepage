@@ -103,8 +103,7 @@ class Feedback extends React.Component<Props, State> {
 
     this.showSending()
     submitFeedback(item.alias, text, helpful)
-    .then(res => {
-      console.log(res)
+    .then(() => {
       this.showThanks()
     })
     .catch(err => console.error(err))

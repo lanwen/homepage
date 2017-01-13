@@ -1,8 +1,8 @@
-import * as React from "react"
-import {$p, Icon} from "graphcool-styles"
-import * as cx from "classnames"
-import styled from "styled-components"
-import {TechnologyData} from "./data/technologies"
+import * as React from 'react'
+import {$p, Icon} from 'graphcool-styles'
+import * as cx from 'classnames'
+import styled from 'styled-components'
+import {TechnologyData} from './data/technologies'
 
 const Hover = `
    opacity: 0.5;

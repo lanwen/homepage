@@ -23,8 +23,6 @@ const StyledLink = styled.div`
 
 export default class BreadCrumb extends React.Component<Props, {}> {
   generateCrumbs(path): Crumb[] {
-
-    console.log(path)
     if (path.includes('/docs/reference/')) {
       const bread = path.slice(16, path.length)
       // TODO: generate links for the parent components

@@ -4,11 +4,16 @@ import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import Header from './components/Header/Header'
 import * as Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 interface Props {
   location: any
   children?: JSX.Element
 }
+
+const Content = styled.div`
+  min-height: 50vh;
+`
 
 export default class DocsView extends React.Component<Props, {}> {
   componentDidMount() {
@@ -27,12 +32,12 @@ export default class DocsView extends React.Component<Props, {}> {
       <div className={cx($p.flex, $p.flexColumn)}>
         <Header/>
         <Helmet titleTemplate='%s | Graphcool Docs' />
-        <div className={cx(
+        <Content className={cx(
           $p.flex,
           !isReference && $p.justifyCenter,
         )}>
           {this.props.children}
-        </div>
+        </Content>
         <Footer/>
       </div>
     )
