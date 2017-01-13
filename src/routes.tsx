@@ -40,6 +40,13 @@ export default {
       },
     },
     {
+      path: '/404',
+      getComponent(_, cb) {
+        System.import('./components/404/404').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       getComponent(_, cb) {
         System.import('./components/DocsView/DocsView').then(loadRoute(cb))
           .catch(errorLoading)

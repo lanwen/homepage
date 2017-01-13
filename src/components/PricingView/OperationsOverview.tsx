@@ -41,6 +41,12 @@ export default class OperationOverview extends React.Component<{}, State> {
       + roundedStep(leftValue2) * roundedStep(this.state.rightValue2) / 100
       + roundedStep(leftValue3) * roundedStep(this.state.rightValue3) / 100
 
+    const plan = totalOperations < 100000 ? 'Developer'
+      : totalOperations < 1000000 ? 'Startup'
+        : totalOperations < 10000000 ? 'Growth'
+          : totalOperations < 50000000 ? 'Pro'
+            : 'Enterprise'
+
     return (
       <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.pl60)}>
         <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -144,16 +150,21 @@ export default class OperationOverview extends React.Component<{}, State> {
           onRightSliderValueChange={(rightValue3) => this.setState({ rightValue3 } as State)}
         />
 
-        <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
-          {totalOperations > 50000000 &&
-          <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
+        <div className={cx($p.white, $p.flex, $p.justifyBetween, $p.itemsEnd, $p.mt4)}>
+          <div className={cx($p.f16)}>
+            {totalOperations > 50000000 &&
+            <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
             }
-          {totalOperations <= 50000000 &&
-          <div>
-            <b>= {numberWithCommas(totalOperations)}</b> operations / month
+            {totalOperations <= 50000000 &&
+            <div>
+              <b>= {numberWithCommas(totalOperations)}</b> operations / month
+            </div>
+            }
           </div>
-            }
-        </span>
+          {totalOperations <= 50000000 &&
+          <div className={cx($p.f12, $p.tr)}>Recommended Plan: <b>{plan}</b></div>
+          }
+        </div>
       </div>
     )
   }

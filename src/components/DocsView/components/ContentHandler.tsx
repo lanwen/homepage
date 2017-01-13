@@ -64,8 +64,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // resource not found
     if (nextProps.data.Item === null) {
-      alert('Resource not found, redirecting')
-      this.props.router.push('/docs')
+      this.props.router.push('/404')
       return
     }
 
