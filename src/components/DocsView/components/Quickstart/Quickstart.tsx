@@ -207,10 +207,10 @@ export default class Quickstart extends React.Component<Props, State> {
       const keyComponents = key.split('-')
       return keyComponents[1]
     })
-    const result: [TechnologyData] = []
+    const result: TechnologyData[] = []
     const allClientTechnologyNames = clientTechnologies.map((clientTechnology) => clientTechnology.logoName)
     availableClientTechnologies.forEach( (client) => {
-      if (allClientTechnologyNames.includes(client)) {
+      if (allClientTechnologyNames.indexOf(client) > -1) {
         const tech = clientTechnologies.find((technology) => {
           return client === technology.logoName
         })
