@@ -15,15 +15,19 @@ const Beta = styled.div`
   padding-bottom: 3px;
 `
 
+const IconWrapper = styled.div`
+  left: -8px;
+`
+
 export default class ContentHeader extends React.Component<Props, {}> {
   render() {
     const {item} = this.props
     const date = new Date(item.lastModified)
     return (
       <div className={cx($p.flex, $p.pt96)}>
-        <div className={cx($p.bbox, $p.db, $p.mr10, $p.pt96)}>
+        <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
           <CircleIcon width={44} height={44} type={item.layout}/>
-        </div>
+        </IconWrapper>
         <div className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}>
           <div className={cx($p.pb60, $p.ttu, $p.f14, $p.black20, $p.fw6)}>
             <BreadCrumb item={item} />

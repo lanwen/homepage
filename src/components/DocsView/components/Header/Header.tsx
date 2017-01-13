@@ -57,6 +57,14 @@ const NavigationLinkActive = `
   }
 `
 
+const NavigationLinkQuickstartActive = `
+  &:before {
+    left: -20px;
+    width: calc(100% + 30px);
+    right: -5px;
+  }
+`
+
 const NavigationLink = styled(Link)`
   transition: color ${$v.duration} linear;
 
@@ -65,6 +73,7 @@ const NavigationLink = styled(Link)`
   }
   
   ${props => props.active && NavigationLinkActive}
+  ${props => props.quickstart && NavigationLinkQuickstartActive}
 `
 
 const Hamburger = styled.div`
@@ -206,6 +215,7 @@ export default class Header extends React.Component<{}, State> {
         onClick={this.closeMenu}
       >
         <NavigationLink
+          quickstart={true}
           className={cx(
             $p.mt10,
             $p.fw6,
@@ -214,7 +224,7 @@ export default class Header extends React.Component<{}, State> {
             $p.black30,
             $p.relative,
             {
-              [$p.pr16]: window.innerWidth >= breakpoints.p1000,
+              [$p.mr16]: window.innerWidth >= breakpoints.p1000,
             },
           )}
           to='/docs/quickstart'
@@ -249,7 +259,7 @@ export default class Header extends React.Component<{}, State> {
             $p.black30,
             $p.relative,
             {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1000,
+              [$p.mr16]: window.innerWidth >= breakpoints.p1000,
             },
           )}
           to='/blog'

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import {$p, Icon, $v} from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
@@ -79,6 +80,7 @@ class Search extends React.Component<Props,{}> {
   private client: algolia.AlgoliaClient
   private index: algolia.AlgoliaIndex
   private ref: HTMLElement
+  private inputRef: HTMLElement
   private search = throttle(
     (q: string) => {
       this.index.search(
@@ -125,6 +127,7 @@ class Search extends React.Component<Props,{}> {
           color={$v.black}
           strokeWidth={2}
           className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16, $p.pointer)}
+          onClick={this.focusInput}
         />
         <Searchbox
           type='text'
@@ -136,6 +139,7 @@ class Search extends React.Component<Props,{}> {
           onBlur={this.hideResults}
           onFocus={this.showResults}
           autoFocus={autoFocus}
+          ref={this.setInputRef}
         />
         {results.length > 0 && query.length > 0 && resultsActive && (
           <Results
@@ -173,8 +177,16 @@ class Search extends React.Component<Props,{}> {
   private showResults = () => {
     this.setState({resultsActive: true} as State)
   }
+  private focusInput = () => {
+    if (this.inputRef) {
+      (ReactDOM.findDOMNode(this.inputRef) as HTMLElement).focus()
+    }
+  }
   private setRef = (ref: HTMLElement) => {
     this.ref = ref
+  }
+  private setInputRef = (ref: HTMLElement) => {
+    this.inputRef = ref
   }
   private onChange = (e: any) => {
     this.setState({query: e.target.value})

@@ -104,6 +104,7 @@ class ContentHandler extends React.Component<Props, {}> {
         <Helmet
           title={item.shorttitle}
           meta={[
+            { name: 'description', content: item.description },
             { property: 'og:type', content: 'article' },
             { property: 'og:title', content: item.title },
             { property: 'og:description', content: item.description },
