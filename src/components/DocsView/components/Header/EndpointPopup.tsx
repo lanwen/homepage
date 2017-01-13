@@ -380,12 +380,12 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
           <a
             className={$p.green}
             target='_blank'
-            href='https://graph.cool/docs/reference/simple-api#differences-to-the-relay-api'
+            href='/docs/reference/simple-api-heshoov3ai#differences-to-the-relay-api'
           >
             read about the differences between the Simple and Relay API here
           </a>
           {' or '}
-          <a className={$p.green} target='_blank' href='https://graph.cool/docs/examples'>
+          <a className={$p.green} target='_blank' href='https://github.com/graphcool-examples/'>
             check out some code examples
           </a>
           {'.'}
