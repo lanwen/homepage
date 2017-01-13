@@ -18,7 +18,7 @@ const AnimatingOpacityView = styled.div`
 interface Props {
   quickExample: QuickExample
   className?: string
-  decreaseOpacity?: boolean
+  decreaseOpacity: boolean
   onMouseEnter?: () => void
   onMouseLeave?: () => void
 }
@@ -29,6 +29,7 @@ export default class Example extends React.Component<Props, {}> {
     const {imageSrc, imageWidth, imageHeight, link, layout, title} = this.props.quickExample
     return (
       <AnimatingOpacityView
+        decreaseOpacity={this.props.decreaseOpacity}
         className={cx($p.flex, $p.flexColumn, $p.flex1, $p.noUnderline, $p.buttonShadow, $p.mh10)}
         style={{width: 226}}
         onMouseEnter={() => this.props.onMouseEnter()}

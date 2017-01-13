@@ -32,15 +32,15 @@ interface Props {
 export default (props: Props) => {
 
   const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor}} = props
-  const {technology, onClick, onMouseEnter, onMouseLeave, className} = props
+  const {technology, onClick, className} = props
 
   return (
     <AnimatingOpacityView
       decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
       onClick={() => onClick(technology)}
-      onMouseEnter={() => onMouseEnter()}
-      onMouseLeave={() => onMouseLeave()}
+      onMouseEnter={() => props.onMouseEnter()}
+      onMouseLeave={() => props.onMouseLeave()}
     >
       <Circle
         className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}
