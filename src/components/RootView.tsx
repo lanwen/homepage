@@ -34,6 +34,7 @@ export default class RootView extends React.Component<Props, State> {
         <Helmet
           title='Graphcool - GraphQL Backend as a Service.'
           meta={[
+            {name: 'description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},
             {property: 'og:type', content: 'website'},
             {property: 'og:title', content: 'GraphQL Backend as a Service'},
             {property: 'og:description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},
