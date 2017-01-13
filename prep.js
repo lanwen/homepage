@@ -29,7 +29,10 @@ exports.default = () => {
       https: true,
       hostname: 'https://www.graph.cool',
       useragent: 'SSR',
-      minify: true,
+      minify: {
+        minifyCSS: true,
+        minifyJS: true,
+      },
     }
   })
 
