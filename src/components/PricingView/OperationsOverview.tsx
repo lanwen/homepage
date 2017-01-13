@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $v, Icon } from 'graphcool-styles'
+import { $p, $g, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import OperationSliderCard from './OperationSliderCard'
 import styled from 'styled-components'
@@ -153,7 +153,12 @@ export default class OperationOverview extends React.Component<{}, State> {
         <div className={cx($p.white, $p.flex, $p.justifyBetween, $p.itemsEnd, $p.mt4)}>
           <div className={cx($p.f16)}>
             {totalOperations > 50000000 &&
-            <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ba, $p.bGreen, $p.noUnderline, $p.mt10)}
+              href='mailto:sales@graph.cool'
+            >
+              Talk to sales
+            </a>
             }
             {totalOperations <= 50000000 &&
             <div>
