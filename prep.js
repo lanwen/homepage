@@ -1,5 +1,5 @@
-const Lokka = require('lokka').Lokka
-const Transport = require('lokka-transport-http').Transport
+const {Lokka} = require('lokka')
+const {Transport} = require('lokka-transport-http')
 
 exports.default = () => {
   const client = new Lokka({
@@ -15,16 +15,17 @@ exports.default = () => {
     const docsItemRoutes = result.allItems.map(({alias, path}) => `${path}-${alias}`)
     const routes = [
       '/',
+      '/about',
+      '/pricing',
+      '/blog',
       '/docs',
       '/docs/faq',
       '/docs/tutorials',
       '/docs/quickstart',
-      '/about',
-      '/pricing',
     ]
 
     return {
-      routes: routes.concat(docsItemRoutes)
+      routes: routes.concat(docsItemRoutes),
       https: true,
       hostname: 'https://www.graph.cool',
     }
