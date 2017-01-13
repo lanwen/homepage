@@ -32,7 +32,7 @@ const Container = styled.div`
   
   ul {
     color: ${$v.gray60};
-    list-style-position: inside;
+    list-style-position: outside;
     margin: ${$v.size25} 0;
   }
   
@@ -97,7 +97,7 @@ const QuestionWrapper = styled.div`
 `
 
 const QuestionMarkWrapper = styled.div`
-  right: -0px;
+  right: -50px;
 `
 
 const HeadingLink = styled.a`
@@ -120,7 +120,7 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
+          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100, $p.relative)}>
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
@@ -130,7 +130,7 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
+          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100, $p.relative)}>
             {ReactRenderer.renderers.List(props)}
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>

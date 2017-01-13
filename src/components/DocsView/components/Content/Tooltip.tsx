@@ -10,10 +10,10 @@ const Container = styled.div`
   }
   
   .nested-parent {
-    top: 20px;
+    top: 22px;
+    right: 22px;
     display: none;
     width: 300px;
-    left: -208px;
   }
   
   &:hover .nested-parent {
@@ -34,16 +34,17 @@ const Container = styled.div`
 
 interface Props {
   text: string
+  className?: string
 }
 
 export default class Tooltip extends React.Component<Props, {}> {
   render() {
-    const {text} = this.props
+    const {text, className} = this.props
     return (
-      <Container className={cx($p.relative, $p.overflowVisible)}>
+      <Container className={cx($p.relative, $p.overflowVisible, className)}>
         <img
           src={require('../../../../assets/graphics/homepage/info.svg')}
-          className={cx($p.bbox, $p.db, $p.pl60, $p.pointer)}
+          className={cx($p.bbox, $p.db, $p.pointer)}
         />
         <div className={cx('nested-parent', $p.absolute, $p.pt16)}>
           <div className={cx('nested', $p.bgWhite)}>

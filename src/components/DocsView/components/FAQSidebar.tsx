@@ -32,10 +32,10 @@ export default class FAQSidebar extends React.Component<Props, {}> {
         <div>
           {item.relatedMore.length > 0 && (
             <Square className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mv38)}>
-              <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pv25)}>
+              <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pv25, $p.justifyBetween)}>
                 <p className={cx($p.lightgreen50, $p.fw6, $p.f16, $p.pl25)}>MORE ABOUT</p>
                 <p className={cx($p.green, $p.fw6, $p.f16, $p.pl6)}>{item.shorttitle}</p>
-                <Tooltip text={this.props.item.description} />
+                <Tooltip text={this.props.item.description} className={cx($p.pr25, $p.pl16)} />
               </div>
               <div className={cx($p.pl25, $p.pb25)}>
                 {item.relatedMore.map(moreItem => (
