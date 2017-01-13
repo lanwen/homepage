@@ -18,11 +18,23 @@ const Container = styled.div`
   height: 19px;
 `
 
+const StyledLink = styled.div`
+  top: -1px;
+`
+
 export default class BreadCrumb extends React.Component<Props, {}> {
   generateCrumbs(path): Crumb[] {
 
+    console.log(path)
     if (path.includes('/docs/reference/')) {
       const bread = path.slice(16, path.length)
+      // TODO: generate links for the parent components
+      return bread.replace(/-/g, ' ').split('/').map(text => ({
+        text,
+        href: null,
+      }))
+    } else if (path.includes('/blog')) {
+      const bread = path.slice(1, path.length)
       // TODO: generate links for the parent components
       return bread.replace(/-/g, ' ').split('/').map(text => ({
         text,
@@ -53,12 +65,10 @@ export default class BreadCrumb extends React.Component<Props, {}> {
               />
             </div>
           ) : (
-            <div>
-              <Link
-                to={`${item.path}-${item.alias}`}
-                className={cx($p.noUnderline, $p.black50)}
-              >{link.text}</Link>
-            </div>
+            <StyledLink
+              to={`${item.path}-${item.alias}`}
+              className={cx($p.noUnderline, $p.black50, $p.relative)}
+            >{link.text}</StyledLink>
           )
         ))}
       </Container>
