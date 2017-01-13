@@ -35,7 +35,7 @@ export default class BlogPage extends React.Component<{}, {}> {
             link='/docs/blog'
           />
         </Container>
-        <ItemsBackground className={$p.mt60}>
+        <ItemsBackground className={cx($p.mt60, $p.pb60)}>
           <Container>
             <StyledItems count={50} layout='BLOG' className={cx($p.relative)} showPreview={false} />
           </Container>

@@ -277,7 +277,6 @@ export default class Header extends React.Component<{}, State> {
           <HoverGreen
             className={cx($p.noUnderline, $p.mr25)}
             href='/'
-            target='_blank'
           >
             Homepage
           </HoverGreen>

@@ -10,6 +10,7 @@ import MoreItems from './MoreItems'
 import Community from './Community'
 import Try from '../../components/Try'
 import * as cookiestore from 'cookiestore'
+import OpenConsole from '../../components/OpenConsole'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -98,8 +99,10 @@ export default class DocsOverview extends React.Component<{}, {}> {
           />
         </Container>
         <Community />
-        {!loggedIn && (
+        {!loggedIn ? (
           <Try />
+        ) : (
+          <OpenConsole />
         )}
       </ContentContainer>
     )
