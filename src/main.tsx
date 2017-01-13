@@ -43,10 +43,12 @@ const store = createStore(
   ),
 )
 
-store.subscribe(() => {
-  const state = store.getState()
-  updateApolloState(state)
-})
+if (navigator.userAgent === 'SSR') {
+  store.subscribe(() => {
+    const state = store.getState()
+    updateApolloState(state)
+  })
+}
 
 function render() {
   ReactDOM.render(
@@ -65,15 +67,17 @@ function render() {
 }
 
 render()
-//
+
 // if (module.hot) {
 //   module.hot.accept(render)
 // }
 
-FastClick.attach(document.body)
+if (navigator.userAgent !== 'SSR') {
+  FastClick.attach(document.body)
 
-if (Smooch) {
-  Smooch.init({
-    appToken: __SMOOCH_TOKEN__,
-  })
+  if (Smooch) {
+    Smooch.init({
+      appToken: __SMOOCH_TOKEN__,
+    })
+  }
 }

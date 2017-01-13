@@ -28,6 +28,8 @@ exports.default = () => {
       routes: routes.concat(docsItemRoutes),
       https: true,
       hostname: 'https://www.graph.cool',
+      useragent: 'SSR',
+      minify: true,
     }
   })
 
