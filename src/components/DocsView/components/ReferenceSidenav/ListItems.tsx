@@ -11,6 +11,11 @@ const FirstUlStyle = styled.div`
   0 -8px 18px rgba(0, 0, 0, 0.1);
   padding-top: 45px;
   border-radius: 3px;
+  
+  // this is needed for consistent spacing
+  .non-border {
+    border-left: solid 3px white;
+  }
 
   .border {
     border-left: solid 3px rgba(28, 191, 50, 0.2);
@@ -88,7 +93,7 @@ export default class ListItems extends React.Component<Props, {}> {
         <FirstUlStyle className={cx($p.pb16, $p.bgWhite90)}>
           <section>
             {this.props.item.children && this.props.item.children.map((itemLvl2, index) => (
-              <div key={itemLvl2.alias} className={cx({['border']: index === activeItemIndex })}>
+              <div key={itemLvl2.alias} className={cx(index === activeItemIndex ? 'border' : 'non-border')}>
                 <Hline>
                   <Link
                     to={`${itemLvl2.path}-${itemLvl2.alias}`}
