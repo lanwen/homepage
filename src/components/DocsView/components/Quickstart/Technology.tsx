@@ -1,8 +1,8 @@
-import * as React from 'react'
-import {$p, Icon} from 'graphcool-styles'
-import * as cx from 'classnames'
-import styled from 'styled-components'
-import {TechnologyData} from './data/technologies'
+import * as React from "react"
+import {$p, Icon} from "graphcool-styles"
+import * as cx from "classnames"
+import styled from "styled-components"
+import {TechnologyData} from "./data/technologies"
 
 const Hover = `
    opacity: 0.5;
@@ -37,7 +37,7 @@ export default (props: Props) => {
   return (
     <AnimatingOpacityView
       decreaseOpacity={props.decreaseOpacity}
-      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
+      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}
       onClick={() => onClick(technology)}
       onMouseEnter={() => {
         if (props.onMouseEnter) {
@@ -60,7 +60,7 @@ export default (props: Props) => {
         width={logoHeight}
       />
     </Circle>
-    <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25)}>
+    <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25, $p.nowrap)}>
       {title}
     </div>
     </AnimatingOpacityView>
