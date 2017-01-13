@@ -39,22 +39,30 @@ export default (props: Props) => {
       decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
       onClick={() => onClick(technology)}
-      onMouseEnter={() => props.onMouseEnter()}
-      onMouseLeave={() => props.onMouseLeave()}
+      onMouseEnter={() => {
+        if (props.onMouseEnter) {
+          props.onMouseEnter()
+        }
+      }}
+      onMouseLeave={() => {
+        if (props.onMouseLeave) {
+          props.onMouseLeave()
+        }
+      }}
     >
-      <Circle
-        className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}
-        style={{background: `${backgroundColor}`}}>
-        <Icon
-            src={require(`../../../../assets/icons/docs/${logoName}.svg`)}
-            color={logoColor}
-            height={logoWidth}
-            width={logoHeight}
-        />
-      </Circle>
-      <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25)}>
-        {title}
-      </div>
+    <Circle
+      className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}
+      style={{background: `${backgroundColor}`}}>
+      <Icon
+        src={require(`../../../../assets/icons/docs/${logoName}.svg`)}
+        color={logoColor}
+        height={logoWidth}
+        width={logoHeight}
+      />
+    </Circle>
+    <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25)}>
+      {title}
+    </div>
     </AnimatingOpacityView>
   )
 }
