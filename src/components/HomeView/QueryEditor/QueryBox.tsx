@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { breakpoints, isTouch } from '../../../utils/constants'
 import { GraphQLSchema } from 'graphql/type/schema'
 import { getSchema, queryEndpoint } from '../../../utils/graphql'

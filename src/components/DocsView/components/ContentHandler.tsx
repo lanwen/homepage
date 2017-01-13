@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Node, Parser } from 'commonmark'
+import { Parser } from 'commonmark'
 import Markdown from './Content/Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'

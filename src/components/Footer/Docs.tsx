@@ -7,10 +7,10 @@ export default () => (
   <div className={cx(window.innerWidth < breakpoints.p1000 ? $p.mt38 : '')}>
     <h4 className='headline'>Docs</h4>
     <ul className='list'>
-      <li><a href='https://graph.cool/docs/guides'>Guides</a></li>
-      <li><a href='https://graph.cool/docs/reference/platform/overview'>Platform</a></li>
-      <li><a href='https://graph.cool/docs/reference/simple-api/overview'>Simple API</a></li>
-      <li><a href='https://graph.cool/docs/reference/relay-api/overview'>Relay API</a></li>
+      <li><a href='/docs/tutorials'>Tutorials</a></li>
+      <li><a href='/docs/reference/platform/overview-chohbah0eo'>Platform</a></li>
+      <li><a href='/docs/reference/simple-api/overview-heshoov3ai'>Simple API</a></li>
+      <li><a href='/docs/reference/relay-api/overview-aizoong9ah'>Relay API</a></li>
     </ul>
   </div>
 )

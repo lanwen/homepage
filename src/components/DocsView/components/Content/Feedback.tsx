@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import NegativeFeedback from './NegativeFeedback'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'

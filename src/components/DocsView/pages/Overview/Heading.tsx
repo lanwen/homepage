@@ -13,7 +13,6 @@ interface Props {
 }
 
 const Heading = ({layout, title, text, link}: Props) => {
-  const LinkComponent = link.includes('http') ? 'a' : Link
   return (
     <div>
       {link.includes('http') ? (

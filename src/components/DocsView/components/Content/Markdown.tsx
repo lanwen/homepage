@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { Node, Parser } from 'commonmark'
+import { Node } from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
 import * as slug from 'slug'
-import MouseEventHandler = React.MouseEventHandler
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'

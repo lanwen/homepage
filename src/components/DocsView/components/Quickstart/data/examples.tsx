@@ -12,6 +12,15 @@ import { QuickExample } from '../../../../../types/types'
  */
 }
 
+export const availableClients: {[key: string]: String[]} = {
+  'react': ['apollo, relay'],
+  'react_native': ['apollo, relay'],
+  'angular': ['apollo, relay'],
+  'vue': ['apollo'],
+  'ios': [],
+  'android': [],
+}
+
 export const examples: {[key: string]: QuickExample[]} = {
   'react-apollo': [
     {

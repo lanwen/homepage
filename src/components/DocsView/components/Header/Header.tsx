@@ -119,10 +119,6 @@ const Close = styled.div`
   }
 `
 
-const SearchIcon = styled(Icon)`
-  
-`
-
 const HoverGreen = styled.a`
   transition: .3s all;
   &:hover {

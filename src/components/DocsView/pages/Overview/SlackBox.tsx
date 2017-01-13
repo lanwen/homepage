@@ -128,7 +128,7 @@ export default class SlackBox extends React.Component<{}, State> {
       },
       body: JSON.stringify({ email })
     })
-    .then(res => {
+    .then(() => {
       this.setState({emailSent: true} as State)
     })
   }

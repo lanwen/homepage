@@ -2,7 +2,6 @@ import * as React from 'react'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import OperationSlider from './OperationSliderCard'
 import 'rc-slider/assets/index.css'
 import OperationsOverview from './OperationsOverview'
 

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
-import { Node, Parser } from 'commonmark'
 import ListItems from './ListItems'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -104,7 +103,7 @@ const query = gql`query items($aliases: [String!]!) {
 }`
 
 const ReferenceSidenavWithData = graphql(query, {
-  options: (ownProps) => {
+  options: () => {
     const aliases = extractAliases(elements)
     return {
       variables: {aliases},

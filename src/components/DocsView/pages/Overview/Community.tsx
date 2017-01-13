@@ -35,11 +35,7 @@ const ImgWrapper = styled.div`
   height: 36px;
 `
 
-interface Props {
-
-}
-
-export default (props: Props) => (
+export default () => (
   <FeaturesBackground>
     <Container className={cx($p.flex)}>
       <SlackBox />

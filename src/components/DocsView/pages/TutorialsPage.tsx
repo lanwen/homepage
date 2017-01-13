@@ -35,7 +35,7 @@ export default class TutorialsPage extends React.Component<{}, {}> {
             link='/docs/tutorials'
           />
         </Container>
-        <TutorialsBackground className={$p.mt60}>
+        <TutorialsBackground className={cx($p.mt60, $p.pb60)}>
           <Container>
             <StyledItems count={50} layout='TUTORIAL' className={cx($p.relative)} showPreview={true} />
           </Container>

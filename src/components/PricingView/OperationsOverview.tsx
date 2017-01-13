@@ -1,9 +1,11 @@
 import * as React from 'react'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import OperationSliderCard from './OperationSliderCard'
 import styled from 'styled-components'
 import { numberWithCommas, roundedStep } from '../../utils/pricing'
+import Tooltip from './Tooltip'
+import { tooltips } from './text'
 
 const Circle36 = styled.div`
   width: 36px;
@@ -61,17 +63,28 @@ export default class OperationOverview extends React.Component<{}, State> {
         </div>
 
         {/* Card 1: Requests */}
-        {/* should be X leaf nodes _per request_ */}
         <OperationSliderCard
           operationType='Request'
           description='A request is either a GraphQL query or mutation.'
-          leftInfo='requests/month'
-          rightInfo='leaf nodes per request'
+          leftInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.REQUEST}>
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>requests</span>
+                </Tooltip>
+                <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+              </div>
+          )}
+          rightInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.LEAF_NODE}>
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>leaf nodes</span>
+                </Tooltip>
+                 <span className={cx($p.white80, $p.f12, $p.pl4)}>per request</span>
+              </div>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={16}
           rightSliderMinValue={1}
-          leftLink=''
-          rightLink='a'
           leftValue={leftValue1}
           rightValue={this.state.rightValue1}
           onLeftSliderValueChange={(leftValue1) => this.setState({ leftValue1 } as State)}
@@ -82,13 +95,25 @@ export default class OperationOverview extends React.Component<{}, State> {
         <OperationSliderCard
           operationType='Subscription'
           description='A GraphQL subscription is triggered by a mutation.'
-          leftInfo='mutations/month'
-          rightInfo='concurrent subscriptions'
+          leftInfoElement={(
+            <div className={cx($p.flex)}>
+              <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.MUTATION}>
+                <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>mutations</span>
+              </Tooltip>
+             <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+            </div>
+          )}
+          rightInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.SUBSCRIPTION}>
+
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>concurrent subscriptions</span>
+                </Tooltip>
+              </div>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={19}
           rightSliderMinValue={0}
-          leftLink=''
-          rightLink='a'
           leftValue={leftValue2}
           rightValue={this.state.rightValue2}
           onLeftSliderValueChange={(leftValue2) => this.setState({ leftValue2 } as State)}
@@ -99,12 +124,20 @@ export default class OperationOverview extends React.Component<{}, State> {
         <OperationSliderCard
           operationType='Function calls'
           description='Function calls are billed by execution time.'
-          leftInfo='function calls/month'
-          rightInfo='ms per function call'
+          leftInfoElement={(
+            <div className={cx($p.flex)}>
+              <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.FUNCTION_CALL}>
+                <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>function calls</span>
+              </Tooltip>
+             <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+            </div>
+          )}
+          rightInfoElement={(
+             <span className={cx($p.white80, $p.f12)}><b>ms</b> per function call</span>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={16}
           rightSliderMinValue={1}
-          leftLink=''
           leftValue={leftValue3}
           rightValue={this.state.rightValue3}
           onLeftSliderValueChange={(leftValue3) => this.setState({ leftValue3 } as State)}
@@ -113,13 +146,13 @@ export default class OperationOverview extends React.Component<{}, State> {
 
         <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
           {totalOperations > 50000000 &&
-            <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
-          }
+          <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
+            }
           {totalOperations <= 50000000 &&
           <div>
             <b>= {numberWithCommas(totalOperations)}</b> operations / month
           </div>
-          }
+            }
         </span>
       </div>
     )

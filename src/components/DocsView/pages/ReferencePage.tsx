@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import TemporaryNavigation from '../components/TemporaryNavigation'
 import {getItemsByLayout} from '../fragments/getItemsByLayout'

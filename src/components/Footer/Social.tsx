@@ -43,14 +43,6 @@ const SocialLink = styled.a`
 
 `
 
-const NewsletterInput = styled.input`
-  font-size: ${$v.size14};
-    
-  @media (min-width: ${breakpoints.p1000}px) {
-    font-size: ${$v.size16}
-  }
-`
-
 export default () => (
   <div className={cx(window.innerWidth < breakpoints.p750 ? $p.mt38 : '')}>
     <h4 className='headline'>Stay in touch</h4>

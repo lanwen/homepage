@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as GraphiQL from 'graphiql'
-import { $p, Icon, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
 import styled from 'styled-components'
@@ -54,8 +54,6 @@ function parseDSL(literal: string): DSL {
 
 export function dslValid(literal: string): boolean {
   const fm: Frontmatter = frontmatter(literal)
-
-  const [queryPart, dataPart] = fm.body.split('---')
 
   if (fm.body.split('---').length < 2) {
     return false
