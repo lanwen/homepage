@@ -30,7 +30,7 @@ class QuickstartPage extends React.Component<{}, {}> {
             text='Put together your favourite technologies to form an example you can get easily started with.'
             link='/docs/quickstart'
           />
-          <Quickstart className={cx($p.pv96)}/>
+          <Quickstart className={cx($p.mt38, $p.ml60)}/>
         </Container>
       </ContentContainer>
     )

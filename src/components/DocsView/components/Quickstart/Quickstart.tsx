@@ -37,7 +37,7 @@ export default class Quickstart extends React.Component<Props, State> {
     const stepIndicator: JSX.Element = (
       <StepIndicator
         currentStep={currentStep}
-        className={cx($p.mb25)}
+        className={cx($p.mb10)}
         pathComponentClicked={(index) => {
           if (index === 0) {
             this.setState({
@@ -59,9 +59,10 @@ export default class Quickstart extends React.Component<Props, State> {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
-          <div className={cx($p.flex)}>
+          <div className={cx($p.flex, $p.mt25)}>
             {frontendTechnologies.map((technology, index) =>
               <Technology
+                className={cx($p.mr60)}
                 technology={technology}
                 onClick={() => this.selectFrontendTechnology(technology)}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
@@ -81,10 +82,11 @@ export default class Quickstart extends React.Component<Props, State> {
           {stepIndicator}
           <div className={cx($p.flex)}>
             <Technology
+              className={cx($p.mr60)}
               technology={selectedFrontendTechnology}
               decreaseOpacity={false}
             />
-            <div style={{paddingTop: 34}}>
+            <div className={cx($p.mr60)} style={{paddingTop: 34}}>
               <Icon
                 src={require('../../../../assets/icons/docs/plus.svg')}
                 width={27}
@@ -94,7 +96,7 @@ export default class Quickstart extends React.Component<Props, State> {
             </div>
             {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
               <Technology
-                className={cx($p.ml25)}
+                className={cx($p.mr60)}
                 technology={technology}
                 onClick={() => this.selectClientTechnology(technology)}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
@@ -115,6 +117,7 @@ export default class Quickstart extends React.Component<Props, State> {
             {stepIndicator}
             <div className={cx($p.flex)}>
               <Technology
+                className={cx($p.mr25)}
                 decreaseOpacity={false}
                 technology={selectedFrontendTechnology}
               />
