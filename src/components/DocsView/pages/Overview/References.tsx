@@ -3,7 +3,6 @@ import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import FeatureBox from './FeatureBox'
-import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
 
