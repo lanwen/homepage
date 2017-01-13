@@ -3,11 +3,6 @@ import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import FeatureBox from './FeatureBox'
-import {breakpoints} from '../../../../utils/constants'
-
-interface Props {
-
-}
 
 const Root = styled.div`
   max-width: 1050px;
@@ -28,7 +23,7 @@ const FeaturesBackground = styled.div`
   height: 144px;
 `
 
-export default (props: Props) => (
+export default () => (
   <FeaturesBackground className={cx($p.flex, $p.itemsCenter, $p.mt60)}>
     <Root>
       <div className={cx($p.flex)}>
