@@ -145,8 +145,9 @@ const LogoLink = styled.div`
     }
   }
   
-  &:hover + .search {
-    input {
+  &:hover + div {
+    margin-left: 0;
+    &>.search-input {
       width: 40px;
       padding: 12px 24px;
       ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

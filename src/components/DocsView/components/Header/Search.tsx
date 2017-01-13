@@ -134,6 +134,7 @@ class Search extends React.Component<Props,{}> {
           name='search'
           placeholder='Search..'
           value={query}
+          className='search-input'
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
           onBlur={this.hideResults}
