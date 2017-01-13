@@ -12,7 +12,6 @@ export default () => (
       <li><Link to='/'>Jobs</Link></li>
       <li><a href='/blog' target='_blank'>Blog</a></li>
       <li><a href='https://github.com/graphcool' target='_blank'>Open Source</a></li>
-      <li><Link to='/'>Imprint</Link></li>
     </ul>
   </div>
 )
