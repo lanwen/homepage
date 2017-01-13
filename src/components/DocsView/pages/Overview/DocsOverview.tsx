@@ -17,7 +17,7 @@ const Container = styled.div`
 `
 
 const ContentContainer = styled.div`
-   flex: 1 1 100px;
+   flex: 1 1 auto;
 `
 
 const ItemsBackground = styled.div`

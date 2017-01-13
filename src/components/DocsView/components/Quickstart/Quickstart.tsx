@@ -35,10 +35,10 @@ export default class Quickstart extends React.Component<Props, State> {
     const currentStep: Step = this.getCurrentStep()
 
     const stepIndicator: JSX.Element = (
-      <StepIndicator
-        currentStep={currentStep}
-        className={cx($p.mb25)}
-        pathComponentClicked={(index) => {
+        <StepIndicator
+            currentStep={currentStep}
+            className={cx($p.mb25)}
+            pathComponentClicked={(index) => {
           if (index === 0) {
             this.setState({
               selectedFrontendTechnology: null,
@@ -57,10 +57,10 @@ export default class Quickstart extends React.Component<Props, State> {
 
     if (currentStep === 'TECHNOLOGY') {
       return (
-        <div className={cx($p.flex, $p.flexColumn, className)}>
-          {stepIndicator}
-          <div className={cx($p.flex)}>
-            {frontendTechnologies.map((technology, index) =>
+          <div className={cx($p.flex, $p.flexColumn, className)}>
+            {stepIndicator}
+            <div className={cx($p.flex)}>
+              {frontendTechnologies.map((technology, index) =>
               <Technology
                   technology={technology}
                   onClick={() => this.selectFrontendTechnology(technology)}
@@ -70,90 +70,89 @@ export default class Quickstart extends React.Component<Props, State> {
                     highlightedComponentIndex: null,
                   })}
                   decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
-                />)
-            }
+              />)
+                  }
+            </div>
           </div>
-        </div>
       )
     } else if (currentStep === 'GRAPHQL_CLIENT') {
       return (
-        <div className={cx($p.flex, $p.flexColumn, className)}>
-          {stepIndicator}
-          <div className={cx($p.flex)}>
-            <Technology
-              technology={selectedFrontendTechnology}
-              decreaseOpacity={false}
-            />
-            <div style={{paddingTop: 34}}>
-              <Icon
-                src={require('../../../../assets/icons/docs/plus.svg')}
-                width={27}
-                height={27}
-                color={$v.gray20}
-              />
-            </div>
-            {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
-              <Technology
-                className={cx($p.ml25)}
-                technology={technology}
-                onClick={() => this.selectClientTechnology(technology)}
-                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                onMouseLeave={() => this.setState({
-                  ...this.state,
-                  highlightedComponentIndex: null,
-                })}
-                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
-              />)
-            }
-          </div>
-        </div>
-      )
-    } else if (currentStep === 'USE_CASE') {
-      return (
-        <div className={cx($p.flex, className)}>
-          <div className={cx($p.flex, $p.flexColumn)}>
+          <div className={cx($p.flex, $p.flexColumn, className)}>
             {stepIndicator}
             <div className={cx($p.flex)}>
               <Technology
-                decreaseOpacity={false}
-                technology={selectedFrontendTechnology}
+                  technology={selectedFrontendTechnology}
+                  decreaseOpacity={false}
               />
               <div style={{paddingTop: 34}}>
                 <Icon
-                  src={require('../../../../assets/icons/docs/plus.svg')}
-                  width={27}
-                  height={27}
-                  color={$v.gray20}
+                    src={require('../../../../assets/icons/docs/plus.svg')}
+                    width={27}
+                    height={27}
+                    color={$v.gray20}
                 />
               </div>
+              {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
               <Technology
-                className={cx($p.ml25)}
-                decreaseOpacity={false}
-                technology={selectedClientTechnology}
-              />
-              <div style={{paddingTop: 37}}>
-                <Icon
-                  src={require('../../../../assets/icons/docs/right_arrow.svg')}
-                  width={31}
-                  height={22}
-                  color={$v.gray20}
-                />
-              </div>
+                  className={cx($p.ml25)}
+                  technology={technology}
+                  onClick={() => this.selectClientTechnology(technology)}
+                  onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
+                  onMouseLeave={() => this.setState({
+                  ...this.state,
+                  highlightedComponentIndex: null,
+                })}
+                  decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
+              />)
+                  }
             </div>
           </div>
-          <div className={cx($p.flex, $p.ml38)}>
-            {this.state.quickExamples.map((example) =>
+      )
+    } else if (currentStep === 'USE_CASE') {
+      return (
+          <div className={cx($p.flex, className)}>
+            <div className={cx($p.flex, $p.flexColumn)}>
+              {stepIndicator}
+              <div className={cx($p.flex)}>
+                <Technology
+                    decreaseOpacity={false}
+                    technology={selectedFrontendTechnology}
+                />
+                <div style={{paddingTop: 34}}>
+                  <Icon
+                      src={require('../../../../assets/icons/docs/plus.svg')}
+                      width={27}
+                      height={27}
+                      color={$v.gray20}
+                  />
+                </div>
+                <Technology
+                    className={cx($p.ml25)}
+                    decreaseOpacity={false}
+                    technology={selectedClientTechnology}
+                />
+                <div style={{paddingTop: 37}}>
+                  <Icon
+                      src={require('../../../../assets/icons/docs/right_arrow.svg')}
+                      width={31}
+                      height={22}
+                      color={$v.gray20}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={cx($p.flex, $p.ml38)}>
+              {this.state.quickExamples.map((example) =>
               <Example className={cx()} quickExample={example}/>,
-            )}
+                  )}
+            </div>
           </div>
-        </div>
       )
     }
     return (
-      <div>UNKNOWN</div>
+        <div>UNKNOWN</div>
     )
   }
-
 
   private selectFrontendTechnology = (technology: TechnologyData) => {
     const selectedFrontendTechnology = this.setSelected(technology)
