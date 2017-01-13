@@ -186,7 +186,6 @@ class Search extends React.Component<Props,{}> {
     this.ref = ref
   }
   private setInputRef = (ref: HTMLElement) => {
-    console.log('SETTING inputRef', ref)
     this.inputRef = ref
   }
   private onChange = (e: any) => {
