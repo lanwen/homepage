@@ -59,8 +59,8 @@ const vue: TechnologyData = {
   title: 'Vue.js',
   logoName: 'vue',
   logoColor: 'rgba(65,184,131,1)',
-  logoWidth: 70,
-  logoHeight: 70,
+  logoWidth: 64,
+  logoHeight: 64,
   backgroundColor: 'rgba(65,184,131,0.1)',
 }
 
