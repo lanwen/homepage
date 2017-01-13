@@ -9,14 +9,11 @@ import { numberWithCommas, roundedStep } from '../../utils/pricing'
 interface Props {
   operationType: string
   description: string
-  leftInfo: string
-  rightInfo: string
-  moreRightInfo?: string
+  leftInfoElement?: JSX.Element
+  rightInfoElement?: JSX.Element
   leftSliderMaxValue: number
   rightSliderMaxValue?: number
   rightSliderMinValue?: number
-  leftLink: string
-  rightLink?: string
   leftValue: number
   rightValue: number
   onLeftSliderValueChange: (value: number) => void
@@ -40,18 +37,6 @@ const StyledSlider = styled(Slider)`
 export default class OperationSliderCard extends React.Component<Props, {}> {
 
   render() {
-
-    let rightInfoComponent: JSX.Element
-    if (this.props.rightLink) {
-      rightInfoComponent = (
-        <a className={cx($p.white80, $p.f12, $p.ph4)} href={this.props.rightLink}>{this.props.rightInfo}</a>
-      )
-    } else {
-      rightInfoComponent = (
-        <div className={cx($p.white80, $p.f12, $p.ph4)}>{this.props.rightInfo}</div>
-      )
-    }
-
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
         <div className={cx($p.flex)}>
@@ -61,6 +46,8 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
           </div>
         </div>
         <div className={cx($p.flex)}>
+
+          {/* left column */}
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
             <StyledSlider
               onChange={this.props.onLeftSliderValueChange}
@@ -75,9 +62,11 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
               >
                 {numberWithCommas(roundedStep(this.props.leftValue))}
               </div>
-              <a className={cx($p.white80, $p.f12, $p.pl4)} href={this.props.leftLink}>{this.props.leftInfo}</a>
+              {this.props.leftInfoElement}
             </div>
           </div>
+
+          {/* right column */}
           <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
             <StyledSlider
               onChange={this.props.onRightSliderValueChange}
@@ -92,7 +81,7 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
                 className={cx($p.white80, $p.f12, $p.fw6)}>
                   {numberWithCommas(roundedStep(this.props.rightValue))}
               </div>
-              {rightInfoComponent}
+              {this.props.rightInfoElement}
             </div>
           </div>
         </div>
