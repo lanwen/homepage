@@ -300,14 +300,18 @@ export default class Header extends React.Component<{}, State> {
       loggedIn ? (
           <RightNav className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
-              <img
-                className={cx($p.bbox, $p.db)}
-                src={require('../../../../assets/graphics/docs/APIEndpoints.svg')}
+              <div
+                className={cx($p.flex, $p.bgLightgreen20, $p.green, $p.f16, $p.fw6, $p.ttu, $p.br2, $p.pv6, $p.ph10)}
                 onClick={() => {
-                this.openEndpointPopup()
-                this.closeMenu()
-              }}
-              />
+                  this.openEndpointPopup()
+                  this.closeMenu()
+                }}
+              >
+                <img
+                  src={require('../../../../assets/graphics/docs/share.svg')}
+                />
+                <div className={cx($p.ml10)}>Api Endpoints</div>
+              </div>
             </div>
           </RightNav>
         ) : (
