@@ -8,7 +8,6 @@ injectGlobal`
   #sk-holder #sk-messenger-button svg path {
     filter: url("#dropShadow") !important;
   }
-
   
   body {
     color: ${$v.gray80};
