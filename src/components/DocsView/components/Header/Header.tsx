@@ -12,9 +12,9 @@ import * as cookiestore from 'cookiestore'
 const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 1337px;
+  max-width: 1440px;
   
-  @media (max-width: ${breakpoints.p1200}px) {
+  @media (max-width: ${breakpoints.p1000}px) {
     padding-top: ${$v.size25}
   }
   
@@ -52,9 +52,9 @@ const NavigationLinkActive = `
     height: 0px;
   }
   
-  @media (max-width: ${breakpoints.p1200}px) {
+  @media (max-width: ${breakpoints.p1000}px) {
     display: none;
-    }
+  }
 `
 
 const NavigationLink = styled(Link)`
@@ -156,8 +156,24 @@ const LogoLink = styled.div`
   }
 `
 
+const Links = styled.div`
+  margin-right: 220px;
+  
+  @media (max-width: ${breakpoints.p1200}px) {
+    margin-right: 170px;
+  }
+`
+
 const Container = styled.div`
-  max-width: 1350px;
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding: 0 25px;
+  }
+`
+
+const RightNav = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    right: 0;
+  }
 `
 
 interface State {
@@ -175,14 +191,16 @@ export default class Header extends React.Component<{}, State> {
   render() {
 
     const loggedIn = cookiestore.has('graphcool_auth_token')
+    const isReference = location.pathname.includes('reference')
 
     const links = (
-      <div
+      <Links
         className={cx(
           $p.flex,
-          window.innerWidth < breakpoints.p1200 ? $p.flexColumn : $p.flexRow,
+          window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow,
+          $p.mlAuto,
           {
-            [$p.mb10]: window.innerWidth < breakpoints.p1200,
+            [$p.mb10]: window.innerWidth < breakpoints.p1000,
           },
         )}
         onClick={this.closeMenu}
@@ -196,7 +214,7 @@ export default class Header extends React.Component<{}, State> {
             $p.black30,
             $p.relative,
             {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+              [$p.pr16]: window.innerWidth >= breakpoints.p1000,
             },
           )}
           to='/docs/quickstart'
@@ -214,7 +232,7 @@ export default class Header extends React.Component<{}, State> {
             $p.black30,
             $p.relative,
             {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+              [$p.ph16]: window.innerWidth >= breakpoints.p1000,
             },
           )}
           to='/docs/reference'
@@ -231,7 +249,7 @@ export default class Header extends React.Component<{}, State> {
             $p.black30,
             $p.relative,
             {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
+              [$p.ph16]: window.innerWidth >= breakpoints.p1000,
             },
           )}
           to='/blog'
@@ -239,23 +257,7 @@ export default class Header extends React.Component<{}, State> {
         >
           Blog
         </NavigationLink>
-        {/*<NavigationLink*/}
-          {/*className={cx(*/}
-            {/*$p.mt10,*/}
-            {/*$p.fw6,*/}
-            {/*$p.noUnderline,*/}
-            {/*$p.ttu,*/}
-            {/*$p.black30,*/}
-            {/*{*/}
-              {/*[$p.ph16]: window.innerWidth >= breakpoints.p1200,*/}
-            {/*},*/}
-          {/*)}*/}
-          {/*to='/docs/community'*/}
-          {/*active={location.pathname.startsWith('/docs/community')}*/}
-        {/*>*/}
-          {/*Community*/}
-        {/*</NavigationLink>*/}
-      </div>
+      </Links>
     )
 
     const logo = (
@@ -286,7 +288,7 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-          <NavigationLink className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
+          <RightNav className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
               <img
                 className={cx($p.bbox, $p.db)}
@@ -297,9 +299,9 @@ export default class Header extends React.Component<{}, State> {
               }}
               />
             </div>
-          </NavigationLink>
+          </RightNav>
         ) : (
-          <div className={cx($p.mt10, $p.absolute, $p.right25, $p.bgWhite)}>
+          <RightNav className={cx($p.mt10, $p.absolute, $p.right25, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
               <Button
                 href='https://console.graph.cool'
@@ -314,14 +316,19 @@ export default class Header extends React.Component<{}, State> {
                 Sign up
               </Button>
             </div>
-          </div>
+          </RightNav>
         )
     )
 
     const WideHeader = () => (
-      <Root className={cx($p.flex, $p.pv38, $p.justifyStart)}>
+      <Root className={cx(
+        $p.flex, $p.pv38, $p.justifyStart, $p.relative,
+        {
+          [`${$p.mlAuto} ${$p.mrAuto}`]: !isReference,
+        },
+      )}>
         {logo}
-        <Search className={$p.mh16} />
+        <Search className={$p.ml16} />
         {links}
         {endpoints}
       </Root>
@@ -354,8 +361,12 @@ export default class Header extends React.Component<{}, State> {
     )
 
     return (
-      <Container className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38, $p.flex, $p.flexRow)}>
-        {window.innerWidth > breakpoints.p1200 ? WideHeader() : NarrowHeader()}
+      <Container
+        className={cx(
+          $p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38,
+        )}
+      >
+        {window.innerWidth > breakpoints.p1000 ? WideHeader() : NarrowHeader()}
         {loggedIn && (
           <EndpointPopup
             isOpen={this.state.endpointPopupOpened}

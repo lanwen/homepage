@@ -20,11 +20,17 @@ export default class DocsView extends React.Component<Props, {}> {
   }
 
   render() {
+
+    const isReference = location.pathname.includes('reference')
+
     return (
       <div className={cx($p.flex, $p.flexColumn)}>
         <Header/>
         <Helmet titleTemplate='%s | Graphcool Docs' />
-        <div className={cx($p.flex)}>
+        <div className={cx(
+          $p.flex,
+          !isReference && $p.justifyCenter,
+        )}>
           {this.props.children}
         </div>
         <Footer/>

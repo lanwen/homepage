@@ -48,7 +48,7 @@ export default {
         {
           path: '/blog',
           getComponent(_, cb) {
-            System.import('./components/AboutView/AboutView').then(loadRoute(cb))
+            System.import('./components/DocsView/pages/BlogPage/BlogPage').then(loadRoute(cb))
               .catch(errorLoading)
           },
         },
