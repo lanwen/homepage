@@ -91,7 +91,7 @@ export default class Pagination extends React.Component<Props, {}> {
   render() {
     return (
       <div className={cx($p.flex, $p.relative)}>
-        {Array.from(Array(this.props.bullets)).map((b, i) => (
+        {Array.from(Array(this.props.bullets)).map((_, i) => (
           <Bullet
             key={i}
             grayscale={this.props.grayscale}

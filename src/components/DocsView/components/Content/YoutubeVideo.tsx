@@ -8,10 +8,6 @@ interface Props {
   id: string
 }
 
-interface State {
-  videoActive: boolean
-}
-
 const IconWrapper = styled.div`
   width: 70px;
   height: 70px;

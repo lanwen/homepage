@@ -103,7 +103,7 @@ const query = gql`query items($aliases: [String!]!) {
 }`
 
 const ReferenceSidenavWithData = graphql(query, {
-  options: (ownProps) => {
+  options: () => {
     const aliases = extractAliases(elements)
     return {
       variables: {aliases},

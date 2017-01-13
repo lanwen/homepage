@@ -31,7 +31,7 @@ export default class Quickstart extends React.Component<Props, State> {
   render() {
 
     const {className} = this.props
-    const {selectedFrontendTechnology, selectedClientTechnology, quickExamples, highlightedComponentIndex} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology, highlightedComponentIndex} = this.state
     const currentStep: Step = this.getCurrentStep()
 
     const stepIndicator: JSX.Element = (
