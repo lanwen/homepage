@@ -2,7 +2,6 @@ import * as React from 'react'
 import {Item} from '../../../../types/types'
 import {$p, Icon, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
-import {Link} from 'react-router'
 import styled from 'styled-components'
 
 interface Props {
