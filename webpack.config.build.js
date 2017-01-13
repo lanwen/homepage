@@ -13,8 +13,8 @@ const routes = [
   // 'TutorialsPage.tsx',
   // 'FAQPage.tsx',
   // 'CommunityPage.tsx',
-  'ContentHandler.tsx',
-  'DocsOverview.tsx',
+  // 'ContentHandler.tsx',
+  // 'DocsOverview.tsx',
 ]
 
 const includeRegex = new RegExp(`(${routes.join('|')})`)
