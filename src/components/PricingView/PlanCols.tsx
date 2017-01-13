@@ -266,8 +266,19 @@ export default class PlanCols extends React.Component<{}, {}> {
           </Column>
 
           {/* THIRD COLUMN - Pro */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <Column
+            className={cx(
+              $p.flex,
+              $p.flexColumn,
+              $p.justifyBetween,
+              $p.bgWhite,
+              $p.ba,
+              $p.bBlack10,
+              $p.br2,
+              $p.pa25,
+              $p.mh10,
+            )}
+          >
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}

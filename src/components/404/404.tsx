@@ -7,7 +7,7 @@ import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import { Link } from 'react-router'
 
-export default class _404View extends React.Component<{}, {}> {
+export default class NotFoundView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
