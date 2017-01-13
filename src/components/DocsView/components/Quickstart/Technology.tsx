@@ -35,7 +35,8 @@ export default (props: Props) => {
   const {technology, onClick, onMouseEnter, onMouseLeave, className} = props
 
   return (
-    <AnimatingOpacityView decreaseOpacity={props.decreaseOpacity}
+    <AnimatingOpacityView
+      decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, $p.mr25, className)}
       onClick={() => onClick(technology)}
       onMouseEnter={() => onMouseEnter()}

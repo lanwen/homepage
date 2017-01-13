@@ -142,9 +142,14 @@ export default class Quickstart extends React.Component<Props, State> {
               </div>
             </div>
             <div className={cx($p.flex, $p.ml38)}>
-              {this.state.quickExamples.map((example) =>
-              <Example className={cx()} quickExample={example}/>,
-                  )}
+              {this.state.quickExamples.map((example, index) =>
+              <Example
+                className={cx()}
+                quickExample={example}/>
+                onMouseEnter={() => console.log('ENTER')}
+                onMouseLeave={() => console.log('LEAVE')}
+                decreaseOpacity={true}
+         )}
             </div>
           </div>
       )
