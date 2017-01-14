@@ -284,7 +284,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               $p.flexColumn,
               $p.justifyBetween,
               $p.bgWhite,
-              $p.buttonShadow
+              $p.buttonShadow,
               $p.pa25,
               $p.mh10,
             )}
