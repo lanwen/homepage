@@ -12,9 +12,9 @@ interface Props {
 }
 
 const Container = styled.div`
-    width: 525px;
+    width: 465px;
 
-    @media (max-width: ${breakpoints.p580}px) {
+    @media (max-width: ${breakpoints.p650}px) {
       width: 360px;    
     }
     

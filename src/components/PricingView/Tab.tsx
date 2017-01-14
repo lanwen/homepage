@@ -21,7 +21,7 @@ export default class Tab extends React.Component<Props, {}> {
     } else if (window.innerWidth < breakpoints.p580) {
       horizontalPadding = $p.ph16
     } else {
-      horizontalPadding = $p.ph38
+      horizontalPadding = $p.ph25
     }
 
     if (this.props.selected) {
