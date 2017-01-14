@@ -278,10 +278,18 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
         column = (
 
           // {/* THIRD COLUMN - Pro */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-        $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
-            <div className={cx($p.flex, $p.justifyCenter)}>
-              <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
+          <Column className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.justifyBetween,
+            $p.bgWhite,
+            $p.ba,
+            $p.bBlack10,
+            $p.br2,
+            $p.pa25,
+            $p.mh10,
+          )}>
+            <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
               <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
@@ -481,6 +489,4 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
     }
     return column
   }
-
 }
-

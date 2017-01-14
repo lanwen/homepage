@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
-import styled from 'styled-components'
 
 interface Props {
   selected: boolean
@@ -25,7 +24,8 @@ export default class Tab extends React.Component<Props, {}> {
             $p.ttu,
             $p.ph38,
             $p.pv16,
-            $p.pointer}>
+            $p.pointer,
+          )}>
           {this.props.title}
         </div>
       )
@@ -42,10 +42,10 @@ export default class Tab extends React.Component<Props, {}> {
           $p.ttu,
           $p.ph38,
           $p.pv16,
-          $p.pointer}>
+          $p.pointer,
+        )}>
         {this.props.title}
       </div>
     )
   }
-
 }

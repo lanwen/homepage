@@ -22,7 +22,7 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  max-width: 920px;
+  width: 920px;
  
   p { 
     line-height: 1.7;

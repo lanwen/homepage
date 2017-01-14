@@ -8,8 +8,6 @@ export const elements: ReferenceSidebarElement[] = [{
   children: [{
     alias: 'uh8shohxie', // console
     children: [{
-      alias: 'he6jaicha8',
-    }, {
       alias: 'ahlohd8ohn',
     }, {
       alias: 'iegoo0heez',
