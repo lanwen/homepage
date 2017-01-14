@@ -3,6 +3,7 @@ import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
 import * as Helmet from 'react-helmet'
+import {throttle} from 'lodash'
 
 interface Props {
   children?: JSX.Element
@@ -18,8 +19,23 @@ export default class RootView extends React.Component<Props, State> {
     setIsLoading: React.PropTypes.func.isRequired,
   }
 
+  rerender = throttle(
+    () => {
+      this.forceUpdate()
+    },
+    100,
+  )
+
   state = {
     isLoading: false,
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.rerender)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.rerender)
   }
 
   getChildContext() {

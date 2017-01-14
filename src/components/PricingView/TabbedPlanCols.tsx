@@ -52,94 +52,96 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
     switch (index) {
       case 0:
         column = (
+
           // {/* FIRST COLUMN - Startup */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
-
-            <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
-              {/*TITLE */}
-              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
-              <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
-                <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
-                <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
-                <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
-              </div>
-              {/*CARD 1 */}
-              <div className={cx($p.flex)}>
-                <div>
-                  <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                      src={require('../../assets/icons/pricing/graph.svg')}
-                      color={$v.green}
-                      height={12}
-                      width={12}
-                    />
-                  </Circle24>
+            <div className={cx($p.flex, $p.justifyCenter)}>
+              <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
+                {/*TITLE */}
+                <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
+                <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
+                  <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
+                  <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
+                  <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
                 </div>
-                <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
+                {/*CARD 1 */}
+                <div className={cx($p.flex)}>
                   <div>
-                    <Tooltip text={tooltips.NODE}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                    </Tooltip>
+                    <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                      <Icon
+                        src={require('../../assets/icons/pricing/graph.svg')}
+                        color={$v.green}
+                        height={12}
+                        width={12}
+                      />
+                    </Circle24>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
-                </div>
-              </div>
-              {/* CARD 2 */}
-              <div className={cx($p.flex, $p.mt25)}>
-                <div>
-                  <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                      src={require('../../assets/icons/pricing/operation.svg')}
-                      color={$v.green}
-                      height={10}
-                      width={7}
-                    />
-                  </Circle24>
-                </div>
-                <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
-                  <div className={cx($p.flex)}>
-                    <Tooltip text={tooltips.OPERATION}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
-                    </Tooltip>
-                    <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
+                  <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
+                    <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
+                    <div>
+                      <Tooltip text={tooltips.NODE}>
+                        <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                      </Tooltip>
+                    </div>
+                    <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
+                    <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>6¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
                 </div>
-              </div>
-              {/* CARD 3 */}
-              <div className={cx($p.flex, $p.mt25)}>
-                <div>
-                  <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                      src={require('../../assets/icons/pricing/seats.svg')}
-                      color={$v.green}
-                      height={8}
-                      width={12}
-                    />
-                  </Circle24>
+                {/* CARD 2 */}
+                <div className={cx($p.flex, $p.mt25)}>
+                  <div>
+                    <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                      <Icon
+                        src={require('../../assets/icons/pricing/operation.svg')}
+                        color={$v.green}
+                        height={10}
+                        width={7}
+                      />
+                    </Circle24>
+                  </div>
+                  <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
+                    <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
+                    <div className={cx($p.flex)}>
+                      <Tooltip text={tooltips.OPERATION}>
+                        <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                      </Tooltip>
+                      <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
+                    </div>
+                    <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>6¢ / 1,000</div>
+                    <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
+                  </div>
                 </div>
-                <div className={cx($p.black60, $p.f16, $p.ml25)}>5</div>
-                <Tooltip text={tooltips.SEAT}>
-                  <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
-                </Tooltip>
-              </div>
-              {/* CARD 4 */}
-              <div className={cx($p.flex, $p.mt25, $p.mb60)}>
-                <div>
-                  <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                      src={require('../../assets/icons/pricing/support.svg')}
-                      color={$v.green}
-                      height={10}
-                      width={10}
-                    />
-                  </Circle24>
+                {/* CARD 3 */}
+                <div className={cx($p.flex, $p.mt25)}>
+                  <div>
+                    <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                      <Icon
+                        src={require('../../assets/icons/pricing/seats.svg')}
+                        color={$v.green}
+                        height={8}
+                        width={12}
+                      />
+                    </Circle24>
+                  </div>
+                  <div className={cx($p.black60, $p.f16, $p.ml25)}>5</div>
+                  <Tooltip text={tooltips.SEAT}>
+                    <div className={cx($p.green, $p.f16, $p.fw3, $p.pl4, $p.underline)}>Seats</div>
+                  </Tooltip>
                 </div>
-                <div className={cx($p.black60, $p.f16, $p.ml25)}>Email Support</div>
+                {/* CARD 4 */}
+                <div className={cx($p.flex, $p.mt25, $p.mb60)}>
+                  <div>
+                    <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                      <Icon
+                        src={require('../../assets/icons/pricing/support.svg')}
+                        color={$v.green}
+                        height={10}
+                        width={10}
+                      />
+                    </Circle24>
+                  </div>
+                  <div className={cx($p.black60, $p.f16, $p.ml25)}>Email Support</div>
+                </div>
               </div>
             </div>
             {/* CTA BUTTON */}
@@ -158,8 +160,8 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
 
           // {/* SECOND COLUMN - Growth */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
-
-            <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
+            <div className={cx($p.flex, $p.justifyCenter)}>
+              <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* MOST POPULAR */}
               {/*<div className={cx($p.flex, $p.justifyCenter, $p.relative)}>*/}
               {/*<div*/}
@@ -260,7 +262,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>Chat Support</div>
               </div>
             </div>
-
+            </div>
             {/* CTA BUTTON */}
             <a
               className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
@@ -278,8 +280,8 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
           // {/* THIRD COLUMN - Pro */}
           <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
         $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
-
-            <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
+            <div className={cx($p.flex, $p.justifyCenter)}>
+              <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
               <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
@@ -384,8 +386,8 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 </div>
                 <div className={cx($p.black60, $p.f16, $p.ml25)}>1:1 Workshops</div>
               </div>
+                </div>
             </div>
-
             {/* CTA BUTTON */}
             <a
               className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
