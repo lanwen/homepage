@@ -65,7 +65,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
         const containerHeight = container.clientHeight
         const containerTop = container.getBoundingClientRect().top + bodyTop
 
-        const overThreshold = containerTop + containerHeight > (threshold - 20)
+        const overThreshold = containerTop + containerHeight > (threshold - 45)
 
         let greaterThanLastIntersection = true
 
@@ -80,7 +80,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           this.setState({
             absolute: true,
             fixed: false,
-            containerOffset: threshold - containerHeight - 144 - 20,
+            containerOffset: threshold - containerHeight - 144 - 45,
           } as State)
         }
 
@@ -113,9 +113,10 @@ class ReferenceSidenav extends React.Component<Props, State> {
     item.children && !!item.children.find(findRecursive)
     const activeItemIndex = nestedItems.findIndex(findRecursive)
 
-    if (this.state.activeItemIndex !== activeItemIndex) {
+    if (this.props.currentAlias !== nextProps.currentAlias) {
       this.offsets = []
       this.bodyTopAtIntersection = -1
+      this.setState({absolute: false, fixed: false, containerOffset: 0} as State)
     }
 
     this.setState({activeItemIndex} as State)
