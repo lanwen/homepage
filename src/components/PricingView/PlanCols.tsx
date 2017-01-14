@@ -150,7 +150,17 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='https://console.graph.cool/signup'
             >
               Try it for free
@@ -163,7 +173,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             $p.flexColumn,
             $p.justifyBetween,
             $p.bgWhite,
-            $p.buttonShadow
+            $p.buttonShadow,
           )}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
@@ -270,7 +280,17 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='https://console.graph.cool/signup'
             >
               Try it for free
@@ -399,7 +419,16 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline)}
               href='https://console.graph.cool/signup'
             >
               Try it for free
@@ -468,7 +497,17 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgWhite,
+                $p.green,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='mailto:sales@graph.cool'
             >
               Talk to sales

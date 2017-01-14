@@ -4,6 +4,7 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import 'rc-slider/assets/index.css'
 import OperationsOverview from './OperationsOverview'
+import PricingInfo from './PricingInfo'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -22,44 +23,12 @@ const Circle36 = styled.div`
 
 export default class Info extends React.Component<{}, {}> {
   render() {
+
     return (
       <div className={cx($p.bgDarkBlue, $p.pb60)} style={{marginTop: -49}}>
         <Box className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.center)}>
 
-          {/* CONTAINER FOR TWO COLUMNS */}
-          <div className={cx($p.flex, $p.justifyBetween, $p.pv38, $p.ph38, $p.mt96)}>
-
-            {/* FIRST COLUMN */}
-            <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.pr60)}>
-              <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                <div>
-                  <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
-                    <Icon
-                      src={require('../../assets/icons/pricing/graph_white.svg')}
-                      color={$v.white}
-                      height={17}
-                      width={17}
-                    />
-                  </Circle36>
-                </div>
-                <div className={cx($p.white, $p.ml16)}>What is a node?</div>
-              </div>
-              <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
-                You store data in Graphcool as nodes.
-                For example, if five users write two posts each, you have 15 nodes.
-              </div>
-              <div className={cx($p.mt60, $p.center)}>
-                <img
-                  src={require('../../assets/graphics/homepage/nodes.png')}
-                  height={282}
-                  width={374}
-                />
-              </div>
-            </div>
-
-            {/* SECOND COLUMN */}
-            <OperationsOverview />
-          </div>
+          <PricingInfo/>
 
           {/* TITLE */}
           <h2 className={cx($p.white, $p.fw3, $p.tc, $p.pt38)}>Included in every plan</h2>
