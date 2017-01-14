@@ -54,7 +54,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
         column = (
 
           // {/* FIRST COLUMN - Startup */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
+          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.buttonShadow)}>
             <div className={cx($p.flex, $p.justifyCenter)}>
               <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
                 {/*TITLE */}
@@ -146,7 +146,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             </div>
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx($p.justifyCenter, $g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
               href='https://console.graph.cool/signup'
             >
               Try it for free
@@ -159,7 +159,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
         column = (
 
           // {/* SECOND COLUMN - Growth */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
+          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.buttonShadow)}>
             <div className={cx($p.flex, $p.justifyCenter)}>
               <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
                 {/* MOST POPULAR */}
@@ -283,9 +283,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             $p.flexColumn,
             $p.justifyBetween,
             $p.bgWhite,
-            $p.ba,
-            $p.bBlack10,
-            $p.br2,
+            $p.buttonShadow
             $p.pa25,
             $p.mh10,
           )}>
@@ -410,7 +408,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
         column = (
 
           // {/* FOURTH COLUMN - Enterprise */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.br2)}>
+          <Column className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.bgGreen, $p.buttonShadow)}>
 
             {/* TITLE */}
             <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Enterprise</div>
@@ -424,50 +422,53 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
               />
             </div>
 
-            <PricingDimension
-              icon={require('../../assets/icons/pricing/unlimited.svg')}
-              width={20}
-              height={11}
-              circleDiameter={'36'}
-              circleClassName={$p.bgWhite20}
-              className={cx($p.mv4)}
-            >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Nodes, Operations and Seats</span>&nbsp;
+            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart)}>
+              <PricingDimension
+                icon={require('../../assets/icons/pricing/unlimited.svg')}
+                width={20}
+                height={11}
+                circleDiameter={'36'}
+                circleClassName={$p.bgWhite20}
+                className={cx($p.mv4)}
+              >
+                <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Nodes, Operations and Seats</span>&nbsp;
 
-            </PricingDimension>
+              </PricingDimension>
 
-            <PricingDimension
-              icon={require('../../assets/icons/pricing/protect.svg')}
-              width={16}
-              height={20}
-              circleDiameter={'36'}
-              circleClassName={$p.bgWhite20}
-              className={cx($p.mv4)}
-            >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Infrastructure Multi-Datacenter</span>&nbsp;
-            </PricingDimension>
+              <PricingDimension
+                icon={require('../../assets/icons/pricing/protect.svg')}
+                width={16}
+                height={20}
+                circleDiameter={'36'}
+                circleClassName={$p.bgWhite20}
+                className={cx($p.mv4)}
+              >
+                <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Infrastructure Multi-Datacenter</span>&nbsp;
+              </PricingDimension>
 
-            <PricingDimension
-              icon={require('../../assets/icons/pricing/star.svg')}
-              width={20}
-              height={19}
-              circleDiameter={'36'}
-              circleClassName={$p.bgWhite20}
-              className={cx($p.mv4)}
-            >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architect</span>&nbsp;
-            </PricingDimension>
+              <PricingDimension
+                icon={require('../../assets/icons/pricing/star.svg')}
+                width={20}
+                height={19}
+                circleDiameter={'36'}
+                circleClassName={$p.bgWhite20}
+                className={cx($p.mv4)}
+              >
+                <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architect</span>&nbsp;
+              </PricingDimension>
 
-            <PricingDimension
-              icon={require('../../assets/icons/pricing/sla.svg')}
-              width={21}
-              height={14}
-              circleDiameter={'36'}
-              circleClassName={$p.bgWhite20}
-              className={cx($p.mv4)}
-            >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Enterprise-class Service Level Agreement</span>&nbsp;
-            </PricingDimension>
+              <PricingDimension
+                icon={require('../../assets/icons/pricing/sla.svg')}
+                width={21}
+                height={14}
+                circleDiameter={'36'}
+                circleClassName={$p.bgWhite20}
+                className={cx($p.mv4)}
+              >
+                <span className={cx($p.white, $p.f16, $p.fw3)}>Enterprise-class Service Level Agreement</span>&nbsp;
+              </PricingDimension>
+            </div>
+
 
             {/* CTA BUTTON */}
             <a

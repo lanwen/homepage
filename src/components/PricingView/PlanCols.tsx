@@ -48,7 +48,13 @@ export default class PlanCols extends React.Component<{}, {}> {
         <Box className={cx($p.flex, $p.justifyBetween)}>
 
           {/* FIRST COLUMN - Startup */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
+          <Column className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.justifyBetween,
+            $p.bgWhite,
+            $p.buttonShadow,
+          )}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
@@ -152,7 +158,13 @@ export default class PlanCols extends React.Component<{}, {}> {
           </Column>
 
           {/* SECOND COLUMN - Growth */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgWhite, $p.ba, $p.bBlack10, $p.br2)}>
+          <Column className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.justifyBetween,
+            $p.bgWhite,
+            $p.buttonShadow
+          )}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* MOST POPULAR */}
@@ -272,9 +284,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               $p.flexColumn,
               $p.justifyBetween,
               $p.bgWhite,
-              $p.ba,
-              $p.bBlack10,
-              $p.br2,
+              $p.buttonShadow
               $p.pa25,
               $p.mh10,
             )}
@@ -397,7 +407,7 @@ export default class PlanCols extends React.Component<{}, {}> {
           </Column>
 
           {/* FOURTH COLUMN - Enterprise */}
-          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.br2)}>
+          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.buttonShadow)}>
 
             {/* TITLE */}
             <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Enterprise</div>
