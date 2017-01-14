@@ -163,8 +163,10 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
               </div>
             </div>
             {/* CTA BUTTON */}
-            <a
-              className={cx(
+            <div className={cx($p.pv6, $p.ph25)}>
+              <a
+                className={cx(
+                $p.flex,
                 $p.justifyCenter,
                 $g.uppercaseButton,
                 $p.bgGreen,
@@ -174,10 +176,12 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 $p.mt10,
                 $p.noUnderline,
               )}
-              href='https://console.graph.cool/signup'
-            >
-              Try it for free
-            </a>
+                href='https://console.graph.cool/signup'
+              >
+                Try it for free
+              </a>
+            </div>
+
           </Column>
 
         )
@@ -286,13 +290,27 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 </div>
               </div>
             </div>
+
             {/* CTA BUTTON */}
-            <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt10, $p.noUnderline)}
-              href='https://console.graph.cool/signup'
-            >
-              Try it for free
-            </a>
+            <div className={cx($p.pv6, $p.ph25)}>
+              <a
+                className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt10,
+                $p.noUnderline,
+              )}
+                href='https://console.graph.cool/signup'
+              >
+                Try it for free
+              </a>
+            </div>
+
           </Column>
 
         )
@@ -421,12 +439,25 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             </div>
 
             {/* CTA BUTTON */}
-            <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt10, $p.noUnderline)}
-              href='https://console.graph.cool/signup'
-            >
-              Try it for free
-            </a>
+            <div className={cx($p.pv6, $p.ph25)}>
+              <a
+                className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt10,
+                $p.noUnderline,
+              )}
+                href='https://console.graph.cool/signup'
+              >
+                Try it for free
+              </a>
+            </div>
+
           </Column>
 
         )
@@ -503,12 +534,25 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             </div>
 
             {/* CTA BUTTON */}
-            <a
-              className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt10, $p.noUnderline)}
-              href='mailto:sales@graph.cool'
-            >
-              Talk to sales
-            </a>
+            <div className={cx($p.pv6, $p.ph25)}>
+              <a
+                className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgWhite,
+                $p.green,
+                $p.ph60,
+                $p.pv16,
+                $p.mt10,
+                $p.noUnderline,
+              )}
+                href='mailto:sales@graph.cool'
+              >
+                Talk to sales
+              </a>
+            </div>
+
           </Column>
 
         )
