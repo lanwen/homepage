@@ -4,6 +4,7 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import { Link } from 'react-router'
 import * as Smooch from 'smooch'
+import {breakpoints} from '../../utils/constants'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -18,14 +19,27 @@ export default class FAQ extends React.Component<{}, {}> {
   render() {
     return (
 
-      <div className={cx($p.bb, $p.bBlack10, $p.pb60)}>
+      <div className={cx(
+        $p.bb,
+        $p.bBlack10,
+        window.innerWidth < breakpoints.p650 ? $p.pb16 : $p.pb60,
+      )}>
 
-        <Box className={cx($p.flex, $p.pt96, $p.ph60, $p.justifyBetween, $p.center)}>
+        <Box className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p650 ? $p.flexColumn : $p.flexRow,
+          window.innerWidth < breakpoints.p650 ? $p.pt38 : $p.pt96,
+          window.innerWidth < breakpoints.p650 ? $p.ph25 : $p.ph60,
+          $p.justifyBetween,
+          $p.center,
+        )}>
 
-          {/* FIRST COLUMN */}
-          <div className={cx($p.flex, $p.flexColumn, $p.w50)}>
+          {/* FIRST ITEM */}
+          <div className={cx($p.flex, $p.flexColumn, $p.flex1)}>
 
-            <div>
+            <div className={cx($p.flex, $p.flexColumn)}>
+
+              {/* FIRST QUESTION */}
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -47,7 +61,11 @@ export default class FAQ extends React.Component<{}, {}> {
                 </div>
               </div>
             </div>
-            <div className={cx($p.mt38)}>
+
+            {/* SECOND QUESTION */}
+            <div className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -68,12 +86,20 @@ export default class FAQ extends React.Component<{}, {}> {
                 </div>
               </div>
             </div>
+
           </div>
 
-          {/* SECOND COLUMN */}
-          <div className={cx($p.flex, $p.flexColumn, $p.ml38, $p.w50)}>
+          {/* SECOND ITEM */}
+          <div className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.flex1,
+            window.innerWidth < breakpoints.p650 ? $p.mt25 : $p.ml38,
+          )}>
 
-            <div>
+            <div className={cx($p.flex, $p.flexColumn)}>
+
+              {/* THIRD QUESTION */}
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -93,7 +119,11 @@ export default class FAQ extends React.Component<{}, {}> {
                 </div>
               </div>
             </div>
-            <div className={cx($p.mt38)}>
+
+            {/* FOURTH QUESTION */}
+            <div className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
               <div className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -120,9 +150,22 @@ export default class FAQ extends React.Component<{}, {}> {
 
         </Box>
 
-        <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
+        <div className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p650 ? $p.flexColumn : $p.flexRow,
+          window.innerWidth < breakpoints.p650 ? $p.itemsCenter : $p.justifyCenter,
+          $p.mt38,
+        )}>
           <Link to='/docs/faq'
-            className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}>
+            className={cx(
+              $g.uppercaseButton,
+              $p.bgGreen,
+              $p.white,
+              $p.tc,
+              $p.ph38,
+              $p.pv16,
+              $p.noUnderline,
+            )}>
             Other Questions
           </Link>
           <div
@@ -135,7 +178,7 @@ export default class FAQ extends React.Component<{}, {}> {
               $p.bGreen,
               $p.ph38,
               $p.pv16,
-              $p.ml16,
+              window.innerWidth < breakpoints.p650 ? $p.mt10 : $p.ml16,
               $p.pointer,
             )}
             onClick={this.openChat}
