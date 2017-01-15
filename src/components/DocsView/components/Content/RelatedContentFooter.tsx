@@ -71,7 +71,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
                   <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu, $p.nowrap)}>More about</span>
                   <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6)}>{relatedMoreTitle || title}</span>
                 </div>
-                <Tooltip text={relatedMoreDescription || description} />
+                <Tooltip text={relatedMoreDescription || description}/>
               </div>
               {this.props.item.relatedMore.map(item => (
                 <Link
@@ -94,7 +94,11 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
             <Further className={cx($p.pl25, $p.flex1)}>
               <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
               {this.props.item.relatedFurther.map(item => (
-                <Link to={`${item.path}-${item.alias}`} className={cx($p.flex, $p.pv10, $p.noUnderline)}>
+                <Link
+                  to={`${item.path}-${item.alias}`}
+                  key={item.alias}
+                  className={cx($p.flex, $p.pv10, $p.noUnderline)}
+                >
                   <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
                     <CircleIcon type={item.layout}/>
                   </div>

@@ -102,14 +102,15 @@ class ContentHandler extends React.Component<Props, {}> {
         <Helmet
           title={item.shorttitle}
           meta={[
-        { name: 'description', content: item.description },
-        { property: 'og:type', content: 'article' },
-        { property: 'og:title', content: item.title },
-        { property: 'og:description', content: item.description },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:description', content: item.description },
-        ...imageMeta,
-      ]}
+            { name: 'description', content: item.description },
+            { property: 'og:type', content: 'article' },
+            { property: 'og:title', content: item.title },
+            { property: 'og:description', content: item.description },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: item.title },
+            { name: 'twitter:description', content: item.description },
+            ...imageMeta,
+          ]}
         />
         {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
         <ContentContainer>
@@ -135,7 +136,7 @@ class ContentHandler extends React.Component<Props, {}> {
   // capture internal links to navigate via react-router
   private onClick = (e: React.MouseEvent<HTMLElement>): void => {
     if (e.target instanceof HTMLAnchorElement) {
-      if (e.target.hostname === window.location.hostname) {
+      if (e.target.hostname === window.location.hostname && !e.ctrlKey && !e.metaKey) {
         e.preventDefault()
         this.props.router.push(e.target.pathname)
       }
