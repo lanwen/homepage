@@ -51,7 +51,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             text='The fastest way to get started. Select your technology of choice, download an example project and start building.'
             link='/docs/quickstart'
           />
-          <Quickstart className={cx($p.mt38, $p.ml60)} />
+          <Quickstart className={cx($p.mt38, $p.ml60)}/>
         </Container>
         <Container className={cx($p.pt96)}>
           <Heading
@@ -73,7 +73,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
               className={cx($p.relative)}
               showPreview={true}
             />
-            <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials' />
+            <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials'/>
           </Container>
         </ItemsBackground>
         <Container className={cx($p.pt96, $p.pb96)}>
@@ -86,8 +86,8 @@ export default class DocsOverview extends React.Component<{}, {}> {
         </Container>
         <ItemsBackground>
           <Container>
-            <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false} />
-            <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq' />
+            <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false}/>
+            <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq'/>
           </Container>
         </ItemsBackground>
         <Container className={cx($p.pt96, $p.pb96)}>
@@ -100,10 +100,10 @@ export default class DocsOverview extends React.Component<{}, {}> {
         </Container>
         <Community />
         {!loggedIn ? (
-          <Try />
-        ) : (
-          <OpenConsole />
-        )}
+            <Try />
+          ) : (
+            <OpenConsole />
+          )}
       </ContentContainer>
     )
   }

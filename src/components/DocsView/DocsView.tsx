@@ -34,6 +34,7 @@ export default class DocsView extends React.Component<Props, {}> {
         <Helmet titleTemplate='%s | Graphcool Docs' />
         <Content className={cx(
           $p.flex,
+          $p.overflowXHidden,
           !isReference && $p.justifyCenter,
         )}>
           {this.props.children}

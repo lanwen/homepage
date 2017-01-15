@@ -159,6 +159,7 @@ const getItemQuery = gql`query getItem($alias: String) {
     description
     sourceFilePath
     preview
+    simpleRelayTwin
     relatedFurther {
       alias
       title

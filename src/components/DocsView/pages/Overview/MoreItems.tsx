@@ -10,7 +10,7 @@ interface Props {
   link: string
 }
 
-const arr = [0,1,2]
+const arr = [0, 1, 2]
 
 const Container = styled.div`
   &::after {
