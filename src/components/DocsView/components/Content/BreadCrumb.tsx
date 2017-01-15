@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {Item} from '../../../../types/types'
-import {$p, Icon, $v} from 'graphcool-styles'
+import { Item } from '../../../../types/types'
+import { $p, Icon, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 
@@ -40,6 +40,7 @@ export default class BreadCrumb extends React.Component<Props, {}> {
     }
     return []
   }
+
   render() {
     const {item} = this.props
     const crumbs = this.generateCrumbs(item.path)
@@ -49,24 +50,25 @@ export default class BreadCrumb extends React.Component<Props, {}> {
       <Container className={cx($p.flex, $p.flexRow)}>
         {crumbs.map((link, index) => (
           (index < count - 1) ? (
-            <div className={cx($p.flex, $p.flexRow, $p.itemsCenter)}>
-              <div href={link.href}>{link.text}</div>
-              <Icon
-                src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-                stroke={true}
-                className={$p.ph6}
-                strokeWidth={8}
-                color={$v.gray20}
-                height={12}
-                width={12}
-              />
-            </div>
-          ) : (
-            <StyledLink
-              to={`${item.path}-${item.alias}`}
-              className={cx($p.noUnderline, $p.black50, $p.relative)}
-            >{link.text}</StyledLink>
-          )
+              <div key={link.text} className={cx($p.flex, $p.flexRow, $p.itemsCenter)}>
+                <div href={link.href}>{link.text}</div>
+                <Icon
+                  src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                  stroke={true}
+                  className={$p.ph6}
+                  strokeWidth={8}
+                  color={$v.gray20}
+                  height={12}
+                  width={12}
+                />
+              </div>
+            ) : (
+              <StyledLink
+                key={link.text}
+                to={`${item.path}-${item.alias}`}
+                className={cx($p.noUnderline, $p.black50, $p.relative)}
+              >{link.text}</StyledLink>
+            )
         ))}
       </Container>
     )

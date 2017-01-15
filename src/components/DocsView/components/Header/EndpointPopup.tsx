@@ -154,6 +154,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
         viewer {
           user {
             projects(first: 100) {
+              id
               edges {
                 node {
                   id
@@ -210,7 +211,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
         color: ${$v.gray50};
       }
 
-     ${props => props.active && activeEndpointType}
+      ${props => props.active && activeEndpointType}
     `
 
     const {endpoint, copied, projects} = this.state
@@ -227,6 +228,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
     return (
       <StyledModal
         {...this.props}
+        contentLabel=''
         className={$p.buttonShadow}
         style={{
           overlay: {
