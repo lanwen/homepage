@@ -208,10 +208,11 @@ export default class Header extends React.Component<{}, State> {
         className={cx(
           $p.flex,
           window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow,
-          $p.mlAuto,
           {
             [$p.mb10]: window.innerWidth < breakpoints.p1000,
           },
+          $p.mr25,
+          $p.mlAuto,
         )}
         onClick={this.closeMenu}
       >
