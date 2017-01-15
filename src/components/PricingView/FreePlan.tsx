@@ -46,61 +46,145 @@ export default class FreePlan extends React.Component<{}, {}> {
               href='https://console.graph.cool/signup'
             >Sign up</a>
           </div>
-          <div className={cx($p.flex, $p.flexNone, $p.pv25, $p.ph38)}>
-            {/* FIRST COLUMN (nodes + seats)*/}
-            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart, $p.justifyBetween, $p.mr60)}>
-              <PricingDimension
-                icon={require('../../assets/icons/pricing/graph.svg')}
-                width={12}
-                height={12}
-                className={cx($p.mb25)}
-              >
-                <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
-                <Tooltip text={tooltips.NODE}>
-                  <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
-                </Tooltip>
-              </PricingDimension>
-              <PricingDimension
-                icon={require('../../assets/icons/pricing/seats.svg')}
-                width={12}
-                height={8}
-              >
-                <div className={cx($p.flex)}>
-                  <span className={cx($p.f16, $p.black60)}>2</span>&nbsp;
-                  <Tooltip text={tooltips.SEAT}>
-                    <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
-                  </Tooltip>
-                </div>
-              </PricingDimension>
-            </div>
-
-            {/* SECOND COLUMN (operations + support)*/}
-            <div className={cx($p.flex, $p.flexColumn, $p.itemsStart)}>
-              <PricingDimension
-                icon={require('../../assets/icons/pricing/operation.svg')}
-                className={cx($p.mb25)}
-                width={7}
-                height={10}
-              >
-                <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
-                <div className={cx($p.flex, $p.itemsEnd)}>
-                  <Tooltip text={tooltips.OPERATION}>
-                    <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
-                  </Tooltip>
-                  <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
-                </div>
-              </PricingDimension>
-              <PricingDimension
-                icon={require('../../assets/icons/pricing/support.svg')}
-                width={10}
-                height={10}
-              >
-                <span className={cx($p.f14, $p.black80)}>Community Support</span>
-              </PricingDimension>
-            </div>
+          <div className={cx(
+            $p.flex,
+            window.innerWidth < breakpoints.p500 ? $p.flexColumn : $p.flexRow,
+            $p.pv25,
+            $p.ph38,
+          )}>
+            {this.planInfo()}
           </div>
         </Box>
       </div>
     )
   }
+
+  planInfo(): JSX.Element {
+    if (window.innerWidth < breakpoints.p500) {
+      return (
+        <div className={cx($p.flex, $p.justifyCenter)}>
+          <div className={cx($p.flex, $p.flexColumn, $p.itemsStart)}>
+            <PricingDimension
+              icon={require('../../assets/icons/pricing/graph.svg')}
+              width={12}
+              height={12}
+              className={cx($p.mb25)}
+            >
+              <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
+              <Tooltip text={tooltips.NODE}>
+                <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+              </Tooltip>
+            </PricingDimension>
+
+            <PricingDimension
+              icon={require('../../assets/icons/pricing/seats.svg')}
+              width={12}
+              height={8}
+              className={cx($p.mb25)}
+            >
+              <div className={cx($p.flex)}>
+                <span className={cx($p.f16, $p.black60)}>2</span>&nbsp;
+                <Tooltip text={tooltips.SEAT}>
+                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
+                </Tooltip>
+              </div>
+            </PricingDimension>
+
+            <PricingDimension
+              icon={require('../../assets/icons/pricing/operation.svg')}
+              className={cx($p.mb25)}
+              width={7}
+              height={10}
+            >
+              <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
+              <div className={cx($p.flex, $p.itemsEnd)}>
+                <Tooltip text={tooltips.OPERATION}>
+                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+                </Tooltip>
+                <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
+              </div>
+            </PricingDimension>
+            <PricingDimension
+              icon={require('../../assets/icons/pricing/support.svg')}
+              width={10}
+              height={10}
+            >
+              <span className={cx($p.f14, $p.black80)}>Community Support</span>
+            </PricingDimension>
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div className={cx($p.flex)}>
+        {this.firstColumn()}
+        {this.secondColumn()}
+      </div>
+    )
+  }
+
+  firstColumn(): JSX.Element {
+    return (
+      <div className={cx($p.flex, $p.flexColumn, $p.itemsStart, $p.justifyBetween, $p.mr60)}>
+        <PricingDimension
+          icon={require('../../assets/icons/pricing/graph.svg')}
+          width={12}
+          height={12}
+          className={cx($p.mb25)}
+        >
+          <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
+          <Tooltip text={tooltips.NODE}>
+            <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+          </Tooltip>
+        </PricingDimension>
+        <PricingDimension
+          icon={require('../../assets/icons/pricing/seats.svg')}
+          width={12}
+          height={8}
+        >
+          <div className={cx($p.flex)}>
+            <span className={cx($p.f16, $p.black60)}>2</span>&nbsp;
+            <Tooltip text={tooltips.SEAT}>
+              <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>seats</span>
+            </Tooltip>
+          </div>
+        </PricingDimension>
+      </div>
+    )
+  }
+
+  secondColumn(): JSX.Element {
+    return (
+      <div className={cx(
+              $p.flex,
+              $p.flexColumn,
+              $p.itemsStart,
+              window.innerWidth < breakpoints.p500 && $p.mt25,
+            )}>
+        <PricingDimension
+          icon={require('../../assets/icons/pricing/operation.svg')}
+          className={cx($p.mb25)}
+          width={7}
+          height={10}
+        >
+          <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
+          <div className={cx($p.flex, $p.itemsEnd)}>
+            <Tooltip text={tooltips.OPERATION}>
+              <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+            </Tooltip>
+            <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
+          </div>
+        </PricingDimension>
+        <PricingDimension
+          icon={require('../../assets/icons/pricing/support.svg')}
+          width={10}
+          height={10}
+        >
+          <span className={cx($p.f14, $p.black80)}>Community Support</span>
+        </PricingDimension>
+      </div>
+    )
+  }
+
 }
