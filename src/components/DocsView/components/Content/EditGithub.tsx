@@ -12,7 +12,7 @@ export default class EditGithub extends React.Component<Props, {}> {
     return (
       <div className={cx($p.pv60, $p.flex, $p.justifyCenter)}>
         <a
-          href={`https://github.com/graphcool/docs-content/blob/master/content/${this.props.sourceFilePath}`}
+          href={`https://github.com/graphcool/content/blob/master/content/${this.props.sourceFilePath}`}
           target='_blank'
           className={cx($p.noUnderline, $p.black20, $p.fw4, $p.f16)}
         >

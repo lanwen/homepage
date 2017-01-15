@@ -39,7 +39,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='REFERENCE'
             title='Reference Documentation'
-            text='Find out everything about our Platform, API usage and features:'
+            text='Get familiar with the Graphcool platform & API and explore all features:'
             link='/docs/reference'
           />
         </Container>
@@ -48,7 +48,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='QUICKSTART'
             title='Quickstart'
-            text='Put together your favourite technologies to form an example you can get easily started with.'
+            text='The fastest way to get started. Select your technology of choice, download an example project and start building.'
             link='/docs/quickstart'
           />
           <Quickstart className={cx($p.mt38, $p.ml60)} />
@@ -57,7 +57,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='TUTORIAL'
             title='Tutorials & Guides'
-            text='Get a practical step-by-step understanding of our features and how to use the APIs'
+            text='Helpful step-by-step tutorials & guides to understand how to build apps with Graphcool.'
             link='/docs/tutorials'
           />
         </Container>
@@ -80,7 +80,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='FAQ'
             title='Frequently Asked Questions'
-            text='Find answers to the most common questions about graph.cool and the API'
+            text='Find answers to the most common questions about GraphQL and the Graphcool platform.'
             link='/docs/faq'
           />
         </Container>
@@ -94,7 +94,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='COMMUNITY'
             title='Community'
-            text='Get in contact, collaborate and take part in making graph.cool the best GraphQL backend.'
+            text='Come and join thousands of other developers in the Graphcool community. 👋'
             link='https://slack.graph.cool/'
           />
         </Container>
