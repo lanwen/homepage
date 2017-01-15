@@ -27,7 +27,7 @@ class QuickstartPage extends React.Component<{}, {}> {
           <Heading
             layout='QUICKSTART'
             title='Quickstart'
-            text='Put together your favourite technologies to form an example you can get easily started with.'
+            text='The fastest way to get started. Select your technology of choice, download an example project and start building.'
             link='/docs/quickstart'
           />
           <Quickstart className={cx($p.mt38, $p.mb60, $p.ml60)}/>

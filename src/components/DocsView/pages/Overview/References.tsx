@@ -30,7 +30,7 @@ export default () => (
         <FeatureBox
           title='Platform'
           iconSrc={require('../../../../assets/icons/references/graphcool.svg')}
-          text='All features and everything else, explained in simple words'
+          text='Explains all features and concepts of the Graphcool platform.'
           link='/docs/reference/platform/overview-chohbah0eo'
           className={cx($p.mr25, $p.flex1)}
         />

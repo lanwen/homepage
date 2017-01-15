@@ -16,12 +16,11 @@ export default class PricingInfo extends React.Component<{}, {}> {
 
     const flexDirection = window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow
 
-    // UI spacing
-    const containerPaddingVertical = window.innerWidth < breakpoints.p1000 ? $p.pv25 : $p.pv38
+    const containerPaddingVertical = $p.pv38
     const containerMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt60 : $p.mt96
     const firstItemPaddingRight = window.innerWidth < breakpoints.p1000 ? $p.pr0 : $p.pr60
-    const whatIsANodeMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt16 : $p.mt25
-    const whatIsANodeMarginBottom = window.innerWidth < breakpoints.p1000 ? $p.mb0 : $p.mb38
+    const whatIsANodeDescriptionMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt16 : $p.mt25
+    const whatIsANodeDescriptionMarginBottom = window.innerWidth < breakpoints.p1000 ? $p.mb25 : $p.mb38
     const graphImageMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt25 : $p.mt60
 
     const imageWidth = window.innerWidth < breakpoints.p1000 ? 260 : 374
@@ -59,8 +58,8 @@ export default class PricingInfo extends React.Component<{}, {}> {
              $p.fw3,
              $p.tc,
              $p.pt4,
-             whatIsANodeMarginTop,
-             whatIsANodeMarginBottom,
+             whatIsANodeDescriptionMarginTop,
+             whatIsANodeDescriptionMarginBottom,
            )}>
              You store data in Graphcool as nodes.
              For example, if five users write two posts each, you have 15 nodes.

@@ -81,7 +81,7 @@ export default class Quickstart extends React.Component<Props, State> {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
-          <div className={cx($p.flex)}>
+          <div className={cx($p.flex, $p.mt25)}>
             <Technology
               className={cx($p.mr60)}
               technology={selectedFrontendTechnology}
@@ -117,7 +117,7 @@ export default class Quickstart extends React.Component<Props, State> {
         <div className={cx($p.flex, className)}>
           <div className={cx($p.flex, $p.flexColumn)}>
             {stepIndicator}
-            <div className={cx($p.flex)}>
+            <div className={cx($p.flex, $p.mt25)}>
               <Technology
                 className={cx($p.mr25)}
                 decreaseOpacity={false}
@@ -136,7 +136,7 @@ export default class Quickstart extends React.Component<Props, State> {
                 decreaseOpacity={false}
                 technology={selectedClientTechnology}
               />
-              <div style={{paddingTop: 37}}>
+              <div className={cx($p.ml25)} style={{paddingTop: 37}}>
                 <Icon
                   src={require('../../../../assets/icons/docs/right_arrow.svg')}
                   width={31}

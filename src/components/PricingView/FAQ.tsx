@@ -22,13 +22,13 @@ export default class FAQ extends React.Component<{}, {}> {
       <div className={cx(
         $p.bb,
         $p.bBlack10,
-        window.innerWidth < breakpoints.p650 ? $p.pb16 : $p.pb60,
+        $p.pb60,
       )}>
 
         <Box className={cx(
           $p.flex,
           window.innerWidth < breakpoints.p650 ? $p.flexColumn : $p.flexRow,
-          window.innerWidth < breakpoints.p650 ? $p.pt38 : $p.pt96,
+          window.innerWidth < breakpoints.p650 ? $p.pt60 : $p.pt96,
           window.innerWidth < breakpoints.p650 ? $p.ph25 : $p.ph60,
           $p.justifyBetween,
           $p.center,
