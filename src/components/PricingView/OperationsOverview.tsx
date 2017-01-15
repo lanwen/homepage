@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { numberWithCommas, roundedStep } from '../../utils/pricing'
 import Tooltip from './Tooltip'
 import { tooltips } from './text'
+import {breakpoints} from '../../utils/constants'
 
 const Circle36 = styled.div`
   width: 36px;
@@ -33,6 +34,13 @@ export default class OperationOverview extends React.Component<{}, State> {
   }
 
   render() {
+
+    // UI spacing values
+    const containerPaddingLeft = window.innerWidth < breakpoints.p1000 ? $p.pl0 : $p.pl60
+    const containerMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt25 : $p.mt0
+    const whatIsAnOperationDescriptionMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt16 : $p.mt25
+    const whatIsAnOperationDescriptionMarginBottom = window.innerWidth < breakpoints.p1000 ? $p.mb16 : $p.mb38
+
     const leftValue1 = this.state.leftValue1 === 0 ? 0 : this.state.leftValue1
     const leftValue2 = this.state.leftValue2 === 0 ? 0 : this.state.leftValue2
     const leftValue3 = this.state.leftValue3 === 0 ? 0 : this.state.leftValue3
@@ -48,7 +56,7 @@ export default class OperationOverview extends React.Component<{}, State> {
             : 'Enterprise'
 
     return (
-      <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.pl60)}>
+      <div className={cx($p.flex, $p.flex1, $p.flexColumn, containerPaddingLeft, containerMarginTop)}>
         <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
           <div>
             <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -63,7 +71,15 @@ export default class OperationOverview extends React.Component<{}, State> {
           </div>
           <div className={cx($p.white, $p.ml16)}>What is an operation?</div>
         </div>
-        <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
+        <div className={cx(
+          $p.white80,
+          $p.f14,
+          $p.fw3,
+          $p.tc,
+          $p.pt4,
+          whatIsAnOperationDescriptionMarginTop,
+          whatIsAnOperationDescriptionMarginBottom,
+        )}>
           There are three operation types: requests,
           subscriptions & function calls
         </div>
