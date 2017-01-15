@@ -48,7 +48,10 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='QUICKSTART'
             title='Quickstart'
-            text='The fastest way to get started. Select your technology of choice, download an example project and start building.'
+            text={
+              'The fastest way to get started. Select your technology of choice,'
+            + 'download an example project and start building.'
+            }
             link='/docs/quickstart'
           />
           <Quickstart className={cx($p.mt38, $p.ml60)}/>

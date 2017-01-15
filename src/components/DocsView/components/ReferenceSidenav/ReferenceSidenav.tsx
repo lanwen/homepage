@@ -54,6 +54,57 @@ class ReferenceSidenav extends React.Component<Props, State> {
   private containerRef: HTMLElement
   private bodyTopAtIntersection: number = -1
 
+  private handleScroll = throttle(
+    () => {
+      const top = window.scrollY
+
+      const {activeItemIndex, fixed} = this.state
+      const activeOffset = this.offsets[activeItemIndex] - 32
+      const container = ReactDOM.findDOMNode(this.containerRef)
+      if (container) {
+        const footerHeight = document.getElementById('footer').clientHeight
+        const bodyHeight = document.documentElement.clientHeight // document.body.clientHeight doesn't work for prep :(
+        const bodyTop = document.body.scrollTop
+        const threshold = bodyHeight - footerHeight
+        const containerHeight = container.clientHeight
+        const containerTop = container.getBoundingClientRect().top + bodyTop
+
+        const overThreshold = containerTop + containerHeight > (threshold - 45)
+
+        let greaterThanLastIntersection = true
+
+        if (this.bodyTopAtIntersection > -1) {
+          greaterThanLastIntersection = bodyTop > this.bodyTopAtIntersection
+        }
+
+        if (overThreshold && fixed && greaterThanLastIntersection) {
+          if (this.bodyTopAtIntersection === -1) {
+            this.bodyTopAtIntersection = bodyTop
+          }
+          const containerOffset = threshold - containerHeight - 144 - 45
+          this.setState({
+            absolute: true,
+            fixed: false,
+            containerOffset,
+          } as State)
+        }
+
+        let lowerThanLastIntersection = true
+
+        if (this.bodyTopAtIntersection > -1) {
+          lowerThanLastIntersection = bodyTop <= this.bodyTopAtIntersection
+        }
+
+        if (lowerThanLastIntersection && (!this.state.fixed && ((top > activeOffset && !overThreshold)))) {
+          this.setState({fixed: true, containerOffset: 0, absolute: false} as State)
+        } else if (top <= activeOffset && this.state.fixed) {
+          this.setState({fixed: false, containerOffset: 0, absolute: false} as State)
+        }
+      }
+    },
+    50,
+  )
+
   componentWillReceiveProps(nextProps: Props) {
     if (nextProps.data.loading) {
       return
@@ -131,57 +182,6 @@ class ReferenceSidenav extends React.Component<Props, State> {
       </VerticalContainer>
     )
   }
-
-  private handleScroll = throttle(
-    () => {
-      const top = window.scrollY
-
-      const {activeItemIndex, fixed} = this.state
-      const activeOffset = this.offsets[activeItemIndex] - 32
-      const container = ReactDOM.findDOMNode(this.containerRef)
-      if (container) {
-        const footerHeight = document.getElementById('footer').clientHeight
-        const bodyHeight = document.documentElement.clientHeight // document.body.clientHeight doesn't work for prep :(
-        const bodyTop = document.body.scrollTop
-        const threshold = bodyHeight - footerHeight
-        const containerHeight = container.clientHeight
-        const containerTop = container.getBoundingClientRect().top + bodyTop
-
-        const overThreshold = containerTop + containerHeight > (threshold - 45)
-
-        let greaterThanLastIntersection = true
-
-        if (this.bodyTopAtIntersection > -1) {
-          greaterThanLastIntersection = bodyTop > this.bodyTopAtIntersection
-        }
-
-        if (overThreshold && fixed && greaterThanLastIntersection) {
-          if (this.bodyTopAtIntersection === -1) {
-            this.bodyTopAtIntersection = bodyTop
-          }
-          const containerOffset = threshold - containerHeight - 144 - 45
-          this.setState({
-            absolute: true,
-            fixed: false,
-            containerOffset,
-          } as State)
-        }
-
-        let lowerThanLastIntersection = true
-
-        if (this.bodyTopAtIntersection > -1) {
-          lowerThanLastIntersection = bodyTop <= this.bodyTopAtIntersection
-        }
-
-        if (lowerThanLastIntersection && (!this.state.fixed && ((top > activeOffset && !overThreshold)))) {
-          this.setState({fixed: true, containerOffset: 0, absolute: false} as State)
-        } else if (top <= activeOffset && this.state.fixed) {
-          this.setState({fixed: false, containerOffset: 0, absolute: false} as State)
-        }
-      }
-    },
-    50,
-  )
 
   private registerContainerRef = (ref: any) => {
     console.log('reg', ref)

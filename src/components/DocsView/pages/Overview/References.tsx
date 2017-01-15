@@ -37,7 +37,10 @@ export default () => (
         <FeatureBox
           title='Simple API'
           iconSrc={require('../../../../assets/icons/references/simple.svg')}
-          text='Reference for how to query, mutate or manage data. The Simple API is meant for GraphQL clients like Apollo.'
+          text={
+            'Reference for how to query, mutate or manage data. The Simple API'
+          + 'is meant for GraphQL clients like Apollo.'
+          }
           link='/docs/reference/simple-api/overview-heshoov3ai'
           className={cx($p.mr25, $p.flex1)}
         />
