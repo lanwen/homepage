@@ -13,7 +13,7 @@ export default class NotFoundView extends React.Component<{}, {}> {
       <div>
         <Header/>
         <SectionHeader
-          copy='We’re really sorry about this but now that you’re hear you can…'
+          copy='We’re really sorry about this but now that you’re here you can…'
           headline='Uh oh. Looks like this page got lost. 😢'
         />
         <div className={cx($p.pt25, $p.pb96, $p.flex, $p.justifyCenter, $p.itemsCenter)}>

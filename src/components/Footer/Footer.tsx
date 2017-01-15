@@ -97,7 +97,7 @@ const SocialColumn = styled(Column)`
 `
 
 export default () => (
-  <Root className={cx($p.bgDarkBlue, $p.white70)}>
+  <Root className={cx($p.bgDarkBlue, $p.white70)} id='footer'>
     <Container className={cx($p.relative, $p.center, $p.flex, $p.justifyBetween)}>
       <LogoFlag
         className={cx($p.absolute, $p.left0, $p.bgGreen, $p.br2, $p.flex, $p.itemsCenter, $p.justifyCenter)}
