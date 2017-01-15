@@ -13,12 +13,12 @@ const Container = styled.div`
 
 const FeaturesBackground = styled.div`
   background: rgba(0,0,0,.02);
-  height: 254px;
+  height: 235px;
   margin: 25px 0;
 `
 
 const A = `
-  margin-top: 45px;
+  margin-top: 24px;
   letter-spacing: 0.52px;
 `
 
@@ -37,9 +37,9 @@ const ImgWrapper = styled.div`
 
 export default () => (
   <FeaturesBackground>
-    <Container className={cx($p.flex)}>
-      <SlackBox />
-      <div className={cx($p.flex1, $p.ph38, $p.ml60, $p.pv38)}>
+    <Container className={cx($p.flex, $p.itemsCenter)}>
+      <SlackBox className={cx($p.pt25, $p.mr38, $p.mt10)}/>
+      <div className={cx($p.ph38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/githubTextBig.svg')} />
         </ImgWrapper>
@@ -68,7 +68,7 @@ export default () => (
           </div>
         </StyledA>
       </div>
-      <div className={cx($p.flex1, $p.ph60, $p.pv38)}>
+      <div className={cx($p.ph38)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/stackoverflow.svg')} />
         </ImgWrapper>

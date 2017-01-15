@@ -16,12 +16,12 @@ const Heading = ({layout, title, text, link}: Props) => {
   return (
     <div>
       {link.includes('http') ? (
-        <a href={link} className={cx($p.flex, $p.itemsCenter, $p.noUnderline)}>
+        <a href={link} className={cx($p.flex, $p.itemsCenter, $p.noUnderline, $p.ml4)}>
           <CircleIcon width={44} height={44} type={layout} />
           <h1 className={cx($p.ml16)}>{title}</h1>
         </a>
       ) : (
-        <Link to={link} className={cx($p.flex, $p.itemsCenter, $p.noUnderline)}>
+        <Link to={link} className={cx($p.flex, $p.itemsCenter, $p.noUnderline, $p.ml4)}>
           <CircleIcon width={44} height={44} type={layout} />
           <h1 className={cx($p.ml16)}>{title}</h1>
         </Link>
