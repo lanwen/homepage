@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import 'rc-slider/assets/index.css'
 import PricingInfo from './PricingInfo'
 import IncludedInEveryPlanSection from './IncludedInEveryPlanSection'
+import {breakpoints} from '../../utils/constants'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -34,7 +35,13 @@ export default class Info extends React.Component<{}, {}> {
               iconWidth={28}
               iconHeight={34}
               children={(
-                <div className={cx($p.flex, $p.flexColumn, $p.justifyEnd, $p.ml60)}>
+                <div className={cx(
+                  $p.flex,
+                  $p.flexColumn,
+                  window.innerWidth < breakpoints.p650 ? $p.itemsStart : $p.justifyEnd,
+                  window.innerWidth < breakpoints.p650 ? $p.ml4 : $p.ml60,
+                  window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt0,
+                )}>
                   <div className={cx($p.lightBlue, $p.tr, $p.fw6, $p.nowrap)}>Included for free:</div>
                   <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB Volume</div>
                   <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB / mo Traffic</div>
