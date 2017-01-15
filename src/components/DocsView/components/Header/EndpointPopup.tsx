@@ -154,7 +154,6 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
         viewer {
           user {
             projects(first: 100) {
-              id
               edges {
                 node {
                   id
