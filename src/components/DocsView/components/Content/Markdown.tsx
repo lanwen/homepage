@@ -218,7 +218,7 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout !== 'REFERENCE'}>
+      <Container biggerFont={this.props.layout !== 'REFERENCE'} className={cx($p.relative)}>
         {renderer.render(this.props.ast)}
       </Container>
     )
