@@ -37,14 +37,14 @@ export default () => (
         <FeatureBox
           title='Simple API'
           iconSrc={require('../../../../assets/icons/references/simple.svg')}
-          text='A complete reference on how to query, mutate or manage data with our simple API'
+          text='Reference for how to query, mutate or manage data. The Simple API is meant for GraphQL clients like Apollo.'
           link='/docs/reference/simple-api/overview-heshoov3ai'
           className={cx($p.mr25, $p.flex1)}
         />
         <FeatureBox
           title='Relay API'
           iconSrc={require('../../../../assets/icons/references/relay.svg')}
-          text='For more advanced usage, a complete reference of the Relay API'
+          text='Reference for how to query, mutate or manage data. The Relay API is meant for the Relay GraphQL client.'
           link='/docs/reference/relay-api/overview-aizoong9ah'
           className={cx($p.flex1)}
         />

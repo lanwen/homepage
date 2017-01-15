@@ -56,7 +56,7 @@ export default class ResourcesHover extends React.Component<{}, State> {
     return (
       <Container
         className={cx($p.relative, $p.overflowVisible)}
-        active={location.pathname === '/docs/resources'}
+        active={location.pathname.startsWith('/docs/tutorials') || location.pathname.startsWith('/docs/faq') }
         onMouseEnter={() => this.setState({showOverlay: true} as State)}
         onMouseLeave={() => this.setState({showOverlay: false} as State)}
         onClick={() => this.setState({showOverlay: !this.state.showOverlay} as State)}

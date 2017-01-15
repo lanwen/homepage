@@ -1,14 +1,14 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import {Link} from 'react-router'
-import {$p, Icon, $v, $g} from 'graphcool-styles'
+import { Link } from 'react-router'
+import { $p, Icon, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
 import EndpointPopup from './EndpointPopup'
 import Search from './Search'
 import * as cookiestore from 'cookiestore'
-import {excludeProps} from '../../../../utils/components'
+import { excludeProps } from '../../../../utils/components'
 
 const Root = styled.div`
   display: flex;
@@ -344,7 +344,7 @@ export default class Header extends React.Component<{}, State> {
         },
       )}>
         {logo}
-        <Search className={$p.ml16} />
+        <Search className={$p.ml16}/>
         {links}
         {endpoints}
       </Root>
@@ -357,7 +357,7 @@ export default class Header extends React.Component<{}, State> {
             <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
               <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
               <NavigationLink>
-                <Search className={cx($p.pb16, $p.mh16)} />
+                <Search className={cx($p.pb16, $p.mh16)}/>
               </NavigationLink>
               {links}
               {endpoints}
