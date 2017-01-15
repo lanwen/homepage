@@ -68,9 +68,7 @@ export default class ResourcesHover extends React.Component<{}, State> {
             $p.noUnderline,
             $p.ttu,
             $p.black30,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph10,
           )}
         >
           Resources
