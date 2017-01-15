@@ -15,7 +15,8 @@ import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
-import * as Helmet from 'react-helmet' import {breakpoints} from '../../../utils/constants'
+import * as Helmet from 'react-helmet'
+import {breakpoints} from '../../../utils/constants'
 
 interface Props {
   location: any,

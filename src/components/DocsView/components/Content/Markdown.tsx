@@ -122,7 +122,6 @@ export default class Markdown extends React.Component<Props, {}> {
     // const self = this
     const renderers = {
       Paragraph: (props) => {
-        console.log(props)
         return (
           <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
             <p>{props.children}</p>
