@@ -11,7 +11,7 @@ import {QuickExample} from '../../../../types/types'
 interface State {
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
-  quickExamples?: [QuickExample]
+  quickExamples?: QuickExample[]
   highlightedComponentIndex?: number
 }
 
@@ -62,6 +62,7 @@ export default class Quickstart extends React.Component<Props, State> {
           <div className={cx($p.flex, $p.mt25)}>
             {frontendTechnologies.map((technology, index) =>
               <Technology
+                key={technology.title}
                 className={cx($p.mr60)}
                 technology={technology}
                 onClick={() => this.selectFrontendTechnology(technology)}
@@ -96,6 +97,7 @@ export default class Quickstart extends React.Component<Props, State> {
             </div>
             {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
               <Technology
+                key={technology.title}
                 className={cx($p.mr60)}
                 technology={technology}
                 onClick={() => this.selectClientTechnology(technology)}
@@ -145,8 +147,9 @@ export default class Quickstart extends React.Component<Props, State> {
             </div>
           </div>
           <div className={cx($p.flex, $p.ml38)}>
-            {this.state.quickExamples.map((example, index) =>
+            {this.state.quickExamples.map((example: QuickExample, index) =>
               <Example
+                key={example.title}
                 quickExample={example}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
                 onMouseLeave={() => this.setState({

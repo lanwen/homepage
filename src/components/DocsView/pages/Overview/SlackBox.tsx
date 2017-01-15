@@ -9,6 +9,10 @@ interface State {
   emailSent: boolean
 }
 
+interface Props {
+  className?: string
+}
+
 const StyledInput = styled.input`
   padding: 15px 20px 18px;
 
@@ -27,7 +31,7 @@ const Arrow = styled.div`
   flex: 0 0 34px;
 `
 
-export default class SlackBox extends React.Component<{}, State> {
+export default class SlackBox extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
@@ -43,7 +47,7 @@ export default class SlackBox extends React.Component<{}, State> {
     const emailValid = this.emailValid(email)
 
     return (
-      <div className={cx($p.pt25, $p.buttonShadow, $p.flex1, $p.bgWhite, $p.overflowHidden)}>
+      <div className={cx($p.buttonShadow, $p.bgWhite, $p.overflowHidden, this.props.className)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/slack.svg')} />
         </ImgWrapper>

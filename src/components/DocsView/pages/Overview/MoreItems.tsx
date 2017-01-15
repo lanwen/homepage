@@ -25,7 +25,7 @@ const Container = styled.div`
   }
 `
 
-export default ({text, color, link}: Props) => {
+const MoreItems = ({text, color, link}: Props) => {
 
   const Tutorial = styled.div`
     color: ${color};
@@ -36,8 +36,8 @@ export default ({text, color, link}: Props) => {
   return (
     <div className={cx($p.relative)}>
       <Container className={cx($p.flex, $p.mt25, $p.relative, $p.w100)}>
-        {arr.map(() => (
-          <div className={cx($p.mr25, $p.flex1, $p.ba, $p.bw2, $p.bBlack05, $p.pa60)}>
+        {arr.map(n => (
+          <div key={n} className={cx($p.mr25, $p.flex1, $p.ba, $p.bw2, $p.bBlack05, $p.pa60)}>
           </div>
         ))}
       </Container>
@@ -52,3 +52,5 @@ export default ({text, color, link}: Props) => {
     </div>
   )
 }
+
+export default MoreItems

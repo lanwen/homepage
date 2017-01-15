@@ -8,6 +8,7 @@ import ResourcesHover from './ResourcesHover'
 import EndpointPopup from './EndpointPopup'
 import Search from './Search'
 import * as cookiestore from 'cookiestore'
+import {excludeProps} from '../../../../utils/components'
 
 const Root = styled.div`
   display: flex;
@@ -65,7 +66,7 @@ const NavigationLinkQuickstartActive = `
   }
 `
 
-const NavigationLink = styled(Link)`
+const NavigationLink = styled(excludeProps(Link, ['active', 'quickstart']))`
   transition: color ${$v.duration} linear;
 
   &:hover {
