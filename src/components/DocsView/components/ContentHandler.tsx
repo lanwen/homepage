@@ -114,7 +114,7 @@ class ContentHandler extends React.Component<Props, {}> {
         />
         {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
         <ContentContainer>
-          <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
+          <section className={cx($p.ph60, $p.pt96, $p.relative)} style={{ maxWidth: 920, margin: '0 auto' }}>
             <ContentHeader item={item}/>
             <Markdown
               ast={ast}
