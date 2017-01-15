@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import {$p, $v} from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../../../utils/constants'
+import {breakpoints} from '../../../../utils/constants'
 import CircleIcon from '../CircleIcon'
-import { Item } from '../../../../types/types'
+import {Item} from '../../../../types/types'
 import Tooltip from './Tooltip'
 
 const ContainerContainer = styled.div`
@@ -27,6 +27,7 @@ const Container = styled.div`
 const More = styled.div`
   box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
   min-width: 400px;
+  max-width: 470px;
   min-height: 350px;
     
   @media(max-width: ${breakpoints.p1000}px) {
