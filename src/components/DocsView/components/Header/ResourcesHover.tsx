@@ -4,9 +4,9 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from '../CircleIcon'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints } from '../../../../utils/constants'
 
-const NavigationActive = `
+const ContainerActive = `
   &:before {
     content: "";
     position: absolute;
@@ -19,6 +19,10 @@ const NavigationActive = `
   }
 `
 
+const Container = styled.div`
+  ${props => props.active && ContainerActive}
+`
+
 const NavigationLink = styled(Link)`
   transition: color ${$v.duration} linear;
 
@@ -27,34 +31,35 @@ const NavigationLink = styled(Link)`
   }
 `
 
-const Container = styled.div`
-  ._headline {
-    padding: calc(${$v.size16} + 10px) calc(${$v.size16} * 2);
-  }
-
-  ._nested {
-    display: none;
-    min-width: ${$v.size96};
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
-    top: -${$v.size16};
-    left: -${$v.size16};
-  }
-  
-  &:hover ._nested {
-    display: flex;
-    flex: 1;
-    z-index: 10;
-  }
-  
-  ${props => props.active && NavigationActive}
+const Headline = styled.div`
+  padding: calc(${$v.size16} + 10px) calc(${$v.size16} * 2);
 `
 
-export default class ResourcesHover extends React.Component<{}, {}> {
+const Overlay = styled.div`
+  min-width: ${$v.size96};
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
+  top: -${$v.size16};
+  left: -${$v.size16};
+`
+
+interface State {
+  showOverlay: boolean,
+}
+
+export default class ResourcesHover extends React.Component<{}, State> {
+
+  state = {
+    showOverlay: false,
+  }
+
   render() {
     return (
       <Container
         className={cx($p.relative, $p.overflowVisible)}
         active={location.pathname === '/docs/resources'}
+        onMouseEnter={() => this.setState({showOverlay: true} as State)}
+        onMouseLeave={() => this.setState({showOverlay: false} as State)}
+        onClick={() => this.setState({showOverlay: !this.state.showOverlay} as State)}
       >
         <div
           className={cx(
@@ -67,11 +72,16 @@ export default class ResourcesHover extends React.Component<{}, {}> {
               [$p.ph16]: window.innerWidth >= breakpoints.p1200,
             },
           )}
-        >Resources</div>
-        <div className={cx('_nested', $p.bgWhite, $p.absolute, $p.flexColumn)}>
-          <div
-            className={cx('_headline', $p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
-          >Resources</div>
+        >
+          Resources
+        </div>
+        {this.state.showOverlay &&
+        <Overlay className={cx($p.bgWhite, $p.absolute, $p.flexColumn, $p.flex, $p.flex1, $p.z5)}>
+          <Headline
+            className={cx($p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
+          >
+            Resources
+          </Headline>
           <div className={cx($p.pv16, $p.ph25)}>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials'>
               <CircleIcon type='TUTORIAL'/>
@@ -80,6 +90,7 @@ export default class ResourcesHover extends React.Component<{}, {}> {
             <a
               className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)}
               href='https://github.com/graphcool-examples'
+              target='_blank'
             >
               <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
@@ -89,7 +100,8 @@ export default class ResourcesHover extends React.Component<{}, {}> {
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
             </NavigationLink>
           </div>
-        </div>
+        </Overlay>
+        }
       </Container>
     )
   }
