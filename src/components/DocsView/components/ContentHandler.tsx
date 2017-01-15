@@ -15,7 +15,7 @@ import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
-import * as Helmet from 'react-helmet'
+import * as Helmet from 'react-helmet' import {breakpoints} from '../../../utils/constants'
 
 interface Props {
   location: any,
@@ -112,7 +112,9 @@ class ContentHandler extends React.Component<Props, {}> {
             ...imageMeta,
           ]}
         />
-        {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
+        {item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750 && (
+          <ReferenceSidenav currentAlias={item.alias}/>
+        )}
         <ContentContainer>
           <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
             <ContentHeader item={item}/>
