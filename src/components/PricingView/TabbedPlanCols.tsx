@@ -71,12 +71,11 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             $p.buttonShadow,
           )}>
             <div className={cx($p.flex, $p.justifyCenter)}>
-
               <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
 
                 {/*TITLE */}
-                <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt6)}>Startup</div>
-                <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb10)}>
+                <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
+                <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pt16, $p.pb25)}>
                   <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
                   <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
                   <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
@@ -106,7 +105,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
                 </div>
                 {/* CARD 2 */}
-                <div className={cx($p.flex, $p.mt10)}>
+                <div className={cx($p.flex, $p.mt16)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -130,7 +129,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
                 </div>
                 {/* CARD 3 */}
-                <div className={cx($p.flex, $p.mt10)}>
+                <div className={cx($p.flex, $p.mt16)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -147,7 +146,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </Tooltip>
                 </div>
                 {/* CARD 4 */}
-                <div className={cx($p.flex, $p.mt10, $p.mb25)}>
+                <div className={cx($p.flex, $p.mt16, $p.mb25)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -163,7 +162,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
               </div>
             </div>
             {/* CTA BUTTON */}
-            <div className={cx($p.pv6, $p.ph25)}>
+            <div className={cx($p.pv6, $p.ph25, $p.mb16)}>
               <a
                 className={cx(
                 $p.flex,
@@ -200,8 +199,8 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
               <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
 
                 {/* TITLE */}
-                <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt6)}>Growth</div>
-                <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb10)}>
+                <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Growth</div>
+                <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pt16, $p.pb25)}>
                   <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
                   <div className={cx($p.f38, $p.green, $p.ph4)}>249</div>
                   <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
@@ -232,7 +231,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 </div>
 
                 {/* CARD 2 */}
-                <div className={cx($p.flex, $p.mt10)}>
+                <div className={cx($p.flex, $p.mt16)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -257,7 +256,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 </div>
 
                 {/* CARD 3 */}
-                <div className={cx($p.flex, $p.mt10)}>
+                <div className={cx($p.flex, $p.mt16)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -275,7 +274,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 </div>
 
                 {/* CARD 4 */}
-                <div className={cx($p.flex, $p.mt10, $p.mb25)}>
+                <div className={cx($p.flex, $p.mt16, $p.mb25)}>
                   <div>
                     <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                       <Icon
@@ -292,7 +291,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($p.pv6, $p.ph25)}>
+            <div className={cx($p.pv6, $p.ph25, $p.mb16)}>
               <a
                 className={cx(
                 $p.flex,
@@ -330,8 +329,8 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
               <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
                 <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
                   {/* TITLE */}
-                  <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt6)}>Pro</div>
-                  <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb10)}>
+                  <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
+                  <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pt16, $p.pb25)}>
                     <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
                     <div className={cx($p.f38, $p.green, $p.ph4)}>849</div>
                     <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
@@ -362,7 +361,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
 
                   {/* CARD 2 */}
-                  <div className={cx($p.flex, $p.mt10)}>
+                  <div className={cx($p.flex, $p.mt16)}>
                     <div>
                       <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                         <Icon
@@ -387,7 +386,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
 
                   {/* CARD 3 */}
-                  <div className={cx($p.flex, $p.mt10)}>
+                  <div className={cx($p.flex, $p.mt16)}>
                     <div>
                       <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                         <Icon
@@ -405,7 +404,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
 
                   {/* CARD 4 */}
-                  <div className={cx($p.flex, $p.mt10)}>
+                  <div className={cx($p.flex, $p.mt16)}>
                     <div>
                       <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                         <Icon
@@ -420,7 +419,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                   </div>
 
                   {/* CARD 5 */}
-                  <div className={cx($p.flex, $p.mt10, $p.mb25)}>
+                  <div className={cx($p.flex, $p.mt16, $p.mb25)}>
                     <div>
                       <Circle24 className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                         <Icon
@@ -439,7 +438,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($p.pv6, $p.ph25)}>
+            <div className={cx($p.pv6, $p.ph25, $p.mb16)}>
               <a
                 className={cx(
                 $p.flex,
@@ -475,9 +474,9 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
           )}>
 
             {/* TITLE */}
-            <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt10)}>Enterprise</div>
+            <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Enterprise</div>
 
-            <div className={cx($p.flex, $p.justifyCenter, $p.mt16)}>
+            <div className={cx($p.flex, $p.justifyCenter, $p.mv25)}>
               <Icon
                 src={require('../../assets/icons/pricing/enterprise.svg')}
                 color={$v.green}
@@ -505,7 +504,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 height={20}
                 circleDiameter={'36'}
                 circleClassName={$p.bgWhite20}
-                className={cx($p.mv4, $p.ph25)}
+                className={cx($p.mv4, $p.ph25, $p.mt25)}
               >
                 <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Infrastructure Multi-Datacenter</span>&nbsp;
               </PricingDimension>
@@ -516,7 +515,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 height={19}
                 circleDiameter={'36'}
                 circleClassName={$p.bgWhite20}
-                className={cx($p.mv4, $p.ph25)}
+                className={cx($p.mv4, $p.ph25, $p.mt25)}
               >
                 <span className={cx($p.white, $p.f16, $p.fw3)}>Dedicated Customer Solution Architect</span>&nbsp;
               </PricingDimension>
@@ -527,14 +526,14 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 height={14}
                 circleDiameter={'36'}
                 circleClassName={$p.bgWhite20}
-                className={cx($p.mv4, $p.ph25)}
+                className={cx($p.mv4, $p.ph25, $p.mt25)}
               >
                 <span className={cx($p.white, $p.f16, $p.fw3)}>Enterprise-class Service Level Agreement</span>&nbsp;
               </PricingDimension>
             </div>
 
             {/* CTA BUTTON */}
-            <div className={cx($p.pv6, $p.ph25)}>
+            <div className={cx($p.pv6, $p.ph25,$p.mb16)}>
               <a
                 className={cx(
                 $p.flex,
@@ -544,7 +543,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                 $p.green,
                 $p.ph60,
                 $p.pv16,
-                $p.mt10,
+                $p.mt38,
                 $p.noUnderline,
               )}
                 href='mailto:sales@graph.cool'

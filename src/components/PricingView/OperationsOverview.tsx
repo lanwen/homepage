@@ -37,9 +37,9 @@ export default class OperationOverview extends React.Component<{}, State> {
 
     // UI spacing values
     const containerPaddingLeft = window.innerWidth < breakpoints.p1000 ? $p.pl0 : $p.pl60
-    const containerMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt25 : $p.mt0
-    const whatIsAnOperationDescriptionMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt16 : $p.mt25
-    const whatIsAnOperationDescriptionMarginBottom = window.innerWidth < breakpoints.p1000 ? $p.mb16 : $p.mb38
+    const containerMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt60 : $p.mt0
+    const whatIsAnOperationDescriptionMarginTop = $p.mt25
+    const whatIsAnOperationDescriptionMarginBottom = $p.mb38
 
     const leftValue1 = this.state.leftValue1 === 0 ? 0 : this.state.leftValue1
     const leftValue2 = this.state.leftValue2 === 0 ? 0 : this.state.leftValue2

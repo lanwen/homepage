@@ -21,9 +21,19 @@ export default class Info extends React.Component<{}, {}> {
           <PricingInfo/>
 
           {/* TITLE */}
-          <h2 className={cx($p.white, $p.fw3, $p.tc, $p.pt38)}>Included in every plan</h2>
+          <h2 className={cx(
+            $p.white,
+            $p.fw3,
+            $p.tc,
+            window.innerWidth < breakpoints.p650 ? $p.pt25 : $p.pt38,
+          )}>Included in every plan</h2>
 
-          <div className={cx($p.flex, $p.flexColumn, $p.ph25, $p.mt96)}>
+          <div className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.ph25,
+            window.innerWidth < breakpoints.p650 ? $p.mt38 : $p.mt96,
+          )}>
 
             <IncludedInEveryPlanSection
               title='File Storage'

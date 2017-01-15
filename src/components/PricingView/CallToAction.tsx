@@ -15,7 +15,7 @@ export default class CallToAction extends React.Component<{}, {}> {
       <Box className={cx(
         $p.flex,
         window.innerWidth < breakpoints.p750 ? $p.flexColumn : $p.flexRow,
-        window.innerWidth < breakpoints.p750 ? $p.pv25 : $p.pv60,
+        window.innerWidth < breakpoints.p750 ? $p.pv38 : $p.pv60,
         $p.ph60,
         $p.justifyBetween,
         $p.center,
