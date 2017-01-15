@@ -70,9 +70,10 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
               <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
                 <div className={cx($p.flex)}>
                   <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu, $p.nowrap)}>More about</span>
-                  <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6)}>{relatedMoreTitle || title}</span>
+                  <span
+                    className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6, $p.mr16)}>{relatedMoreTitle || title}</span>
                 </div>
-                <Tooltip text={relatedMoreDescription || description}/>
+                <Tooltip text={relatedMoreDescription || description} right={-3}/>
               </div>
               {this.props.item.relatedMore.map(item => (
                 <Link
