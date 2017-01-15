@@ -5,6 +5,7 @@ import * as Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import styled from 'styled-components'
 import { numberWithCommas, roundedStep } from '../../utils/pricing'
+import {breakpoints} from '../../utils/constants'
 
 interface Props {
   operationType: string
@@ -37,18 +38,40 @@ const StyledSlider = styled(Slider)`
 export default class OperationSliderCard extends React.Component<Props, {}> {
 
   render() {
-    return (
-      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
+
+    const descriptionElement: JSX.Element = window.innerWidth < breakpoints.p650 ? (
+        <span className={cx(
+          $p.white80,
+          $p.f14,
+          $p.fw3,
+          $p.mb25,
+        )}>
+          <b>{this.props.operationType}:</b> {this.props.description}
+        </span>
+      ) : (
         <div className={cx($p.flex)}>
           <div className={cx($p.white80, $p.f14, $p.fw6)}>{this.props.operationType}:</div>
           <div className={cx($p.white80, $p.f14, $p.fw3, $p.pl4, $p.mb25)}>
             {this.props.description}
           </div>
         </div>
-        <div className={cx($p.flex)}>
+      )
+
+    return (
+      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
+        {descriptionElement}
+        <div className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p650 && $p.flexColumn,
+        )}>
 
           {/* left column */}
-          <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pr16)}>
+          <div className={cx(
+            $p.flex1,
+            $p.flex,
+            $p.flexColumn,
+            window.innerWidth < breakpoints.p650 ? $p.pr0 : $p.pr16,
+          )}>
             <StyledSlider
               onChange={this.props.onLeftSliderValueChange}
               max={this.props.leftSliderMaxValue}
@@ -67,7 +90,12 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
           </div>
 
           {/* right column */}
-          <div className={cx($p.flex1, $p.flex, $p.flexColumn, $p.pl16)}>
+          <div className={cx(
+            $p.flex1,
+            $p.flex,
+            $p.flexColumn,
+            window.innerWidth < breakpoints.p650 ? $p.pt16 : $p.pl16,
+            )}>
             <StyledSlider
               onChange={this.props.onRightSliderValueChange}
               max={this.props.rightSliderMaxValue}
