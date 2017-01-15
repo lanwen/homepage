@@ -94,7 +94,7 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
             $p.flex1,
             $p.flex,
             $p.flexColumn,
-            window.innerWidth < breakpoints.p650 ? $p.pt16 : $p.pl16,
+            window.innerWidth < breakpoints.p650 ? $p.pt25 : $p.pl16,
             )}>
             <StyledSlider
               onChange={this.props.onRightSliderValueChange}

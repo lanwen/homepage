@@ -166,7 +166,14 @@ export default class OperationOverview extends React.Component<{}, State> {
           onRightSliderValueChange={(rightValue3) => this.setState({ rightValue3 } as State)}
         />
 
-        <div className={cx($p.white, $p.flex, $p.justifyBetween, $p.itemsEnd, $p.mt4)}>
+        <div className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p400 && $p.flexColumn,
+          window.innerWidth < breakpoints.p400 ? $p.itemsStart : $p.itemsEnd,
+          $p.justifyBetween,
+          $p.white,
+          $p.mt4,
+        )}>
           <div className={cx($p.f16)}>
             {totalOperations > 50000000 &&
             <a
@@ -183,7 +190,13 @@ export default class OperationOverview extends React.Component<{}, State> {
             }
           </div>
           {totalOperations <= 50000000 &&
-          <div className={cx($p.f12, $p.tr)}>Recommended Plan: <b>{plan}</b></div>
+          <div className={cx(
+            $p.f12,
+            $p.tr,
+            window.innerWidth < breakpoints.p400 && $p.mt6,
+          )}>
+            Recommended Plan: <b>{plan}</b>
+          </div>
           }
         </div>
       </div>
