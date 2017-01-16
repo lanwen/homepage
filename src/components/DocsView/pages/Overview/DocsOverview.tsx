@@ -5,6 +5,8 @@ import * as cx from 'classnames'
 import Heading from './Heading'
 import References from './References'
 import Items from './Items'
+import Try from '../../components/Try'
+import OpenConsole from '../../components/OpenConsole'
 import MoreItems from './MoreItems'
 import * as cookiestore from 'cookiestore'
 import {breakpoints} from '../../../../utils/constants'
@@ -49,7 +51,7 @@ const StyledItems = styled(Items)`
 
 export default class DocsOverview extends React.Component<{}, {}> {
   render() {
-    // const loggedIn = cookiestore.has('graphcool_auth_token')
+    const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
       <ContentContainer className={cx($p.pt96, $p.mt96)}>
@@ -134,11 +136,11 @@ export default class DocsOverview extends React.Component<{}, {}> {
           {/*/>*/}
         {/*</Container>*/}
         {/*<Community />*/}
-        {/*{!loggedIn ? (*/}
-            {/*<Try />*/}
-          {/*) : (*/}
-            {/*<OpenConsole />*/}
-          {/*)}*/}
+        {!loggedIn ? (
+            <Try />
+          ) : (
+            <OpenConsole />
+          )}
       </ContentContainer>
     )
   }
