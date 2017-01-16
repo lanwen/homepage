@@ -3,6 +3,7 @@ import {$p, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import Icon from 'graphcool-styles/dist/components/Icon/Icon'
+import {breakpoints} from '../../../../utils/constants'
 
 interface State {
   email: string
@@ -71,8 +72,13 @@ export default class SlackBox extends React.Component<Props, State> {
                   onKeyDown={this.onKeyDown}
                   value={email}
                   placeholder='Your email address...'
-                  className={cx($p.f20, $p.black50, $p.bgBlack04, $p.black, $p.flex1)}
-                />
+                  className={cx(
+                    $p.flex1,
+                    window.innerWidth < breakpoints.p1000 ? $p.f14 : $p.f20,
+                    $p.black50,
+                    $p.bgBlack04,
+                    $p.black,
+                  )}/>
                 {emailValid && (
                   <Arrow
                     className={cx(
