@@ -147,7 +147,6 @@ const LogoLink = styled.div`
   }
   
   &:hover + div {
-    margin-left: 0;
     &>.search-input {
       width: 40px;
       padding: 12px 24px;
