@@ -16,6 +16,7 @@ const Container = styled.div`
     content: "";
     position: absolute;
     height: 80px;
+    width: 100%;
     bottom: 0;
     background: -moz-linear-gradient(top, rgba(250,250,250,0) 0%, rgba(250,250,250,1) 50%, rgba(250,250,250,1) 100%);
     background: -webkit-linear-gradient(top, rgba(250,250,250,0) 0%,rgba(250,250,250,1) 50%,rgba(250,250,250,1) 100%);
