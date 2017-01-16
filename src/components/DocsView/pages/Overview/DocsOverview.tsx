@@ -2,15 +2,16 @@ import * as React from 'react'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import Quickstart from '../../components/Quickstart/Quickstart'
 import Heading from './Heading'
 import References from './References'
-import Items from './Items'
-import MoreItems from './MoreItems'
 import Community from './Community'
+import Items from './Items'
 import Try from '../../components/Try'
-import * as cookiestore from 'cookiestore'
 import OpenConsole from '../../components/OpenConsole'
+import MoreItems from './MoreItems'
+import Quickstart from '../../components/Quickstart/Quickstart'
+import * as cookiestore from 'cookiestore'
+import {breakpoints} from '../../../../utils/constants'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -19,6 +20,27 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
    flex: 1 1 auto;
+   
+   @media (max-width: ${breakpoints.p1000}px){
+     max-width: 850px;
+   }
+
+   @media (max-width: ${breakpoints.p750}px){
+     max-width: 600px;
+   }
+   
+  @media (max-width: ${breakpoints.p650}px){
+     max-width: 475px;
+   }
+
+   @media (max-width: ${breakpoints.p500}px){
+     max-width: 350px;
+   }
+   
+   @media (max-width: ${breakpoints.p400}px){
+     max-width: 300px;
+   }
+
 `
 
 const ItemsBackground = styled.div`
@@ -43,19 +65,23 @@ export default class DocsOverview extends React.Component<{}, {}> {
             link='/docs/reference'
           />
         </Container>
+
+        {/* References */}
         <References />
+
+        {/* Quickstart */}
         <Container className={cx($p.pt96)}>
           <Heading
             layout='QUICKSTART'
             title='Quickstart'
-            text={
-              'The fastest way to get started. Select your technology of choice,'
-            + 'download an example project and start building.'
-            }
+            text={`The fastest way to get started. Select your technology of choice,
+              download an example project and start building.`}
             link='/docs/quickstart'
           />
-          <Quickstart className={cx($p.mt38, $p.ml60)}/>
+          <Quickstart className={cx($p.mt38, $p.ml60)} />
         </Container>
+
+        {/* Tutorials & Guides - Heading */}
         <Container className={cx($p.pt96)}>
           <Heading
             layout='TUTORIAL'
@@ -64,6 +90,8 @@ export default class DocsOverview extends React.Component<{}, {}> {
             link='/docs/tutorials'
           />
         </Container>
+
+        {/* Tutorials & Guides - Content */}
         <ItemsBackground className={$p.mt60}>
           <Container>
             <StyledItems
@@ -72,13 +100,18 @@ export default class DocsOverview extends React.Component<{}, {}> {
                 'thaeghi8ro',
                 'dah6aifoce',
                 'daisheeb9x',
-              ]}
+                ]}
               className={cx($p.relative)}
               showPreview={true}
             />
-            <MoreItems color={'rgb(164, 3, 111)'} text='See all Tutorials' link='/docs/tutorials'/>
+            <MoreItems
+              color={'rgb(164, 3, 111)'}
+              text='See all Tutorials'
+              link='/docs/tutorials' />
           </Container>
         </ItemsBackground>
+
+        {/* FAQ - Heading */}
         <Container className={cx($p.pt96, $p.pb96)}>
           <Heading
             layout='FAQ'
@@ -87,12 +120,15 @@ export default class DocsOverview extends React.Component<{}, {}> {
             link='/docs/faq'
           />
         </Container>
+
+        {/* FAQ - Content */}
         <ItemsBackground>
           <Container>
             <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false}/>
             <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq'/>
           </Container>
         </ItemsBackground>
+        {/*/!* Community *!/*/}
         <Container className={cx($p.pt96, $p.pb96)}>
           <Heading
             layout='COMMUNITY'

@@ -46,11 +46,11 @@ const NavigationLinkActive = `
     content: "";
     position: absolute;
     top: calc(-${$v.size38} - ${$v.size10} - 6px);
-    left: 0;
     border: 6px solid ${$v.green};
     border-radius: 2px;
-    width: 100%;
     height: 0px;
+    left: -5px;
+    right: -6px;
   }
   
   @media (max-width: ${breakpoints.p1000}px) {
@@ -60,9 +60,9 @@ const NavigationLinkActive = `
 
 const NavigationLinkQuickstartActive = `
   &:before {
-    left: -20px;
-    width: calc(100% + 30px);
-    right: -5px;
+    left: -5px;
+    width: calc(100%);
+    right: -7px;
   }
 `
 
@@ -147,7 +147,6 @@ const LogoLink = styled.div`
   }
   
   &:hover + div {
-    margin-left: 0;
     &>.search-input {
       width: 40px;
       padding: 12px 24px;
@@ -167,11 +166,8 @@ const LogoLink = styled.div`
   }
 `
 
-const Links = styled.div`
-  margin-right: 220px;
-  
+const Links = styled.div`  
   @media (max-width: ${breakpoints.p1200}px) {
-    margin-right: 170px;
   }
 `
 
@@ -209,10 +205,8 @@ export default class Header extends React.Component<{}, State> {
         className={cx(
           $p.flex,
           window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow,
-          {
-            [$p.mb10]: window.innerWidth < breakpoints.p1000,
-          },
-          $p.mr25,
+          window.innerWidth < breakpoints.p1000 && $p.mb10,
+          window.innerWidth > breakpoints.p1000 && $p.mr16,
           $p.mlAuto,
         )}
         onClick={this.closeMenu}
@@ -226,9 +220,7 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.mr16]: window.innerWidth >= breakpoints.p1000,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/docs/quickstart'
           active={location.pathname.startsWith('/docs/quickstart')}
@@ -244,9 +236,7 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1000,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/docs/reference'
           active={location.pathname.startsWith('/docs/reference')}
@@ -261,9 +251,7 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.mr16]: window.innerWidth >= breakpoints.p1000,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/blog'
           active={location.pathname.startsWith('/blog')}
@@ -301,10 +289,20 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-          <RightNav className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
+          <RightNav className={cx($p.mt6, $p.pointer, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
               <div
-                className={cx($p.flex, $p.bgLightgreen20, $p.green, $p.f16, $p.fw6, $p.ttu, $p.br2, $p.pv6, $p.ph10)}
+                className={cx(
+                  $p.flex,
+                  $p.bgLightgreen20,
+                  $p.green,
+                  $p.f16,
+                  $p.fw6,
+                  $p.ttu,
+                  $p.br2,
+                  $p.pv6,
+                  $p.ph10,
+                )}
                 onClick={() => {
                   this.openEndpointPopup()
                   this.closeMenu()
@@ -318,7 +316,7 @@ export default class Header extends React.Component<{}, State> {
             </div>
           </RightNav>
         ) : (
-          <RightNav className={cx($p.mt10, $p.absolute, $p.right25, $p.bgWhite)}>
+          <RightNav className={cx($p.mt10, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
               <Button
                 href='https://console.graph.cool'

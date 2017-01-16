@@ -14,6 +14,7 @@ export interface Item {
   sourceFilePath: string
   relatedMoreTitle: string
   relatedMoreDescription: string
+  simpleRelayTwin: string
   layout: Layout
   tags: string[]
   relatedMore: Item[]

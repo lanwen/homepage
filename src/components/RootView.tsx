@@ -61,7 +61,7 @@ export default class RootView extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className={cx($p.flex, $p.flexColumn)}>
+      <div className={cx($p.flex, $p.flexColumn)} id='react-root'>
         <Helmet
           title='Graphcool - GraphQL Backend as a Service.'
           meta={[

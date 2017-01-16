@@ -13,6 +13,7 @@ import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
 import MarkdownGraphiQL, {dslValid} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
+import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   ast: Node
@@ -27,7 +28,7 @@ const Container = styled.div`
   p { 
     line-height: 1.7;
     color: ${$v.gray60}; 
-    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
   }
   
   ul {
@@ -84,6 +85,37 @@ const Container = styled.div`
     transform: translateX(-50%);
     margin-top: 60px;
     margin-bottom: 60px;
+  }
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-left: 6px;
+  }
+    
+  @media (max-width: ${breakpoints.p500}px) {
+  
+    p {
+      line-height: 1.5;
+      color: ${$v.gray60}; 
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
+    }
+    
+    ul li {
+      line-height: 1.5;
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
+    }
+    
+    h2 {
+      font-size: ${$v.size20};
+      color: ${$v.gray80};
+      margin: ${$v.size25} 0 ${$v.size20};
+    }
+  
+    h3 {
+      color: ${$v.gray60};
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
+      margin: ${$v.size20} 0;
+    }
+    
   }
 `
 
