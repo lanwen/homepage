@@ -63,7 +63,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
       const container = ReactDOM.findDOMNode(this.containerRef)
       if (container) {
         const footerHeight = document.getElementById('footer').clientHeight
-        const bodyHeight = document.documentElement.clientHeight // document.body.clientHeight doesn't work for prep :(
+        const bodyHeight = document.getElementById('react-root').clientHeight
         const bodyTop = document.body.scrollTop
         const threshold = bodyHeight - footerHeight
         const containerHeight = container.clientHeight
