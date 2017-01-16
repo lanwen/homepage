@@ -90,13 +90,17 @@ const Container = styled.div`
   @media (max-width: ${breakpoints.p900}px) {
     margin-left: 6px;
   }
-  
     
   @media (max-width: ${breakpoints.p500}px) {
   
     p {
       line-height: 1.5;
       color: ${$v.gray60}; 
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
+    }
+    
+    ul li {
+      line-height: 1.5;
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
     }
     
