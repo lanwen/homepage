@@ -100,48 +100,50 @@ class ContentHandler extends React.Component<Props, {}> {
 
     return (
       <div onClick={this.onClick} className={cx(
-        $p.flex,
+        $p.w100,
       )}>
-        <Helmet
-          title={item.shorttitle}
-          meta={[
-            { name: 'description', content: item.description },
-            { property: 'og:type', content: 'article' },
-            { property: 'og:title', content: item.title },
-            { property: 'og:description', content: item.description },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:title', content: item.title },
-            { name: 'twitter:description', content: item.description },
-            ...imageMeta,
-          ]}
-        />
-        {item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750 && (
-          <ReferenceSidenav currentAlias={item.alias}/>
-        )}
-        <ContentContainer>
-          <section
-            className={cx(
-              window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph25,
-              $p.pt96,
-            )}
-            style={{ width: 920, margin: '0 auto' }}>
-            <ContentHeader item={item}/>
-            <Markdown
-              ast={ast}
-              layout={item.layout}
-              item={item}
-            />
-          </section>
-          <Feedback item={item}/>
-          {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          {item.layout !== 'FAQ' &&
-            <RelatedContentFooter item={item}/>
-          }
-          {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) &&
-            <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
-          }
-        </ContentContainer>
-        {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && <FAQSidebar item={item}/>}
+        <div className={cx($p.flex)}>
+          <Helmet
+            title={item.shorttitle}
+            meta={[
+              { name: 'description', content: item.description },
+              { property: 'og:type', content: 'article' },
+              { property: 'og:title', content: item.title },
+              { property: 'og:description', content: item.description },
+              { name: 'twitter:card', content: 'summary_large_image' },
+              { name: 'twitter:title', content: item.title },
+              { name: 'twitter:description', content: item.description },
+              ...imageMeta,
+            ]}
+          />
+          {item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750 && (
+            <ReferenceSidenav currentAlias={item.alias}/>
+          )}
+          <ContentContainer>
+            <section
+              className={cx(
+                window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph25,
+                $p.pt96,
+              )}
+              style={{ maxWidth: 920, margin: '0 auto' }}>
+              <ContentHeader item={item}/>
+              <Markdown
+                ast={ast}
+                layout={item.layout}
+                item={item}
+              />
+            </section>
+            <Feedback item={item}/>
+            {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+          </ContentContainer>
+          {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && <FAQSidebar item={item}/>}
+        </div>
+        {item.layout !== 'FAQ' &&
+          <RelatedContentFooter item={item}/>
+        }
+        {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) &&
+          <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
+        }
       </div>
     )
   }

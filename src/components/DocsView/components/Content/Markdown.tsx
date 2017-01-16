@@ -23,11 +23,11 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  width: 920px;
+  max-width: 920px;
  
   p { 
     line-height: 1.7;
-    color: ${$v.gray60}; 
+    color: ${$v.gray60};
     font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
   }
   

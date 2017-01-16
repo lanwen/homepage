@@ -13,8 +13,8 @@ const ContainerContainer = styled.div`
     content: "";
     position: absolute;
     height: calc(100% - 20px);
-    width: 200vw;
     background: rgb(250,250,250);
+    width: 100%;
   }
 `
 
@@ -22,6 +22,7 @@ const Container = styled.div`
   top: -10px;
   bottom: -10px;
   max-width: 920px;
+  flex: 1;
 `
 
 const More = styled.div`
@@ -48,6 +49,10 @@ const Further = styled.div`
   }
 `
 
+const FakeSidebar = styled.div`
+  flex: 0 0 250px;
+`
+
 interface Props {
   item: Item
   displayAsColumns?: boolean
@@ -60,14 +65,16 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
     const {relatedMoreTitle, title, relatedMoreDescription, description} = this.props.item
 
     return (
-      <ContainerContainer className={cx($p.flex, $p.justifyCenter, $p.relative, $p.mb60)}>
+      <ContainerContainer className={cx($p.flex, $p.justifyCenter, $p.relative, $p.mb60, $p.w100)}>
+        <FakeSidebar></FakeSidebar>
         <Container
           className={cx(
             $p.flex,
             this.props.displayAsColumns && $p.flexColumn,
             $p.ph10,
             $p.relative,
-        )}>
+          )}
+        >
           {this.props.item.relatedMore.length > 0 && (
             <More
               className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mr25)}

@@ -29,9 +29,11 @@ export default class ContentHeader extends React.Component<Props, {}> {
     const {simpleRelayTwin, path, layout} = item
     return (
       <div className={cx($p.flex, $p.pt96)}>
-        {displayIcon && <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
-          <CircleIcon width={44} height={44} type={item.layout}/>
-        </IconWrapper>}
+        {displayIcon && (
+          <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
+            <CircleIcon width={44} height={44} type={item.layout}/>
+          </IconWrapper>
+        )}
         <div
           className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}
           style={{
