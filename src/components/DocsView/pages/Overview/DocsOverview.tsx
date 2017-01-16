@@ -2,15 +2,11 @@ import * as React from 'react'
 import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import Quickstart from '../../components/Quickstart/Quickstart'
 import Heading from './Heading'
 import References from './References'
 import Items from './Items'
 import MoreItems from './MoreItems'
-import Community from './Community'
-import Try from '../../components/Try'
 import * as cookiestore from 'cookiestore'
-import OpenConsole from '../../components/OpenConsole'
 import {breakpoints} from '../../../../utils/constants'
 
 const Container = styled.div`
@@ -53,7 +49,7 @@ const StyledItems = styled(Items)`
 
 export default class DocsOverview extends React.Component<{}, {}> {
   render() {
-    const loggedIn = cookiestore.has('graphcool_auth_token')
+    // const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
       <ContentContainer className={cx($p.pt96, $p.mt96)}>
