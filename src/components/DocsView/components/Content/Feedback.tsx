@@ -5,6 +5,7 @@ import NegativeFeedback from './NegativeFeedback'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Item } from '../../../../types/types'
+import {breakpoints} from '../../../../utils/constants'
 
 interface State {
   showInput: boolean
@@ -47,32 +48,59 @@ class Feedback extends React.Component<Props, State> {
     return (
       <div>
         <div className={cx($p.bt, $p.bBlack10, $p.mt60, $p.mh96)}/>
-          {!showInput ? (
+        {!showInput ? (
             <div
-              className={cx($p.mb38, $p.pv38, $p.flex, $p.justifyCenter, $p.flexWrap)}
-            >
-              <div className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>Was this helpful?</div>
-              <div
-                onClick={() => this.sendFeedback(true)}
-                className={cx($p.flex, $p.pointer)}
-              >
-                <img
-                  src={require('../../../../assets/graphics/docs/Yes.svg')}
-                  className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
-                />
-                <div className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}>Yes</div>
-              </div>
-              <div
-                onClick={this.showInput}
-                className={cx($p.flex, $p.pointer)}
-              >
-                <img
-                  src={require('../../../../assets/graphics/docs/No.svg')}
-                  className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
-                />
+              className={cx(
+                $p.flex,
+                window.innerWidth < breakpoints.p500 && $p.flexColumn,
+                window.innerWidth < breakpoints.p500 && $p.itemsCenter,
+                window.innerWidth > breakpoints.p500 && $p.justifyCenter,
+                $p.mb38,
+                $p.pv38,
+            )}>
+              <div className={cx(
+                $p.flex,
+                $p.o40,
+                $p.f20,
+                $p.fw4,
+                $p.pt4,
+              )}>Was this helpful?</div>
+              <div className={cx(
+                $p.flex,
+                window.innerWidth < breakpoints.p500 && $p.mt25,
+              )}>
                 <div
-                  className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}
-                >No</div>
+                  onClick={() => this.sendFeedback(true)}
+                  className={cx($p.flex, $p.pointer)}
+                >
+                  <img
+                    src={require('../../../../assets/graphics/docs/Yes.svg')}
+                    className={cx(
+                      $p.bbox,
+                      $p.db,
+                      window.innerWidth > breakpoints.p500 && $p.pl38,
+                      window.innerWidth > breakpoints.p500 && $p.pr10,
+                    )}/>
+                  <div
+                    className={cx(
+                      $p.o40,
+                      $p.f20,
+                      $p.fw4,
+                      $p.pt4,
+                  )}>Yes</div>
+                </div>
+                <div
+                  onClick={this.showInput}
+                  className={cx($p.flex, $p.pointer)}
+                >
+                  <img
+                    src={require('../../../../assets/graphics/docs/No.svg')}
+                    className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
+                  />
+                  <div
+                    className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}
+                  >No</div>
+                </div>
               </div>
             </div>
           ) : (
@@ -103,19 +131,19 @@ class Feedback extends React.Component<Props, State> {
 
     this.showSending()
     submitFeedback(item.alias, text, helpful)
-    .then(() => {
-      this.showThanks()
-    })
-    .catch(err => console.error(err))
+      .then(() => {
+        this.showThanks()
+      })
+      .catch(err => console.error(err))
   }
 }
 
 const mutation = gql`
-  mutation createItemFeedback($itemAlias: String!, $text: String, $wasHelpful: Boolean!) {
-    createItemFeedback(itemAlias: $itemAlias, text: $text, wasHelpful: $wasHelpful) {
-      id
+    mutation createItemFeedback($itemAlias: String!, $text: String, $wasHelpful: Boolean!) {
+        createItemFeedback(itemAlias: $itemAlias, text: $text, wasHelpful: $wasHelpful) {
+            id
+        }
     }
-  }
 `
 
 export default graphql(mutation, {

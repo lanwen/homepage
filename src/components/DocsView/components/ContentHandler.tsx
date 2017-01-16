@@ -139,7 +139,7 @@ class ContentHandler extends React.Component<Props, {}> {
           {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && <FAQSidebar item={item}/>}
         </div>
         {item.layout !== 'FAQ' &&
-          <RelatedContentFooter item={item}/>
+          <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
         }
         {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) &&
           <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>

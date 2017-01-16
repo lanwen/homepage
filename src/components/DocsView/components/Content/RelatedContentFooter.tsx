@@ -65,12 +65,19 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
     const {relatedMoreTitle, title, relatedMoreDescription, description} = this.props.item
 
     return (
-      <ContainerContainer className={cx($p.flex, $p.justifyCenter, $p.relative, $p.mb60, $p.w100)}>
+      <ContainerContainer className={cx(
+        $p.flex,
+        $p.justifyCenter,
+        $p.relative,
+        $p.mb60,
+        $p.w100,
+      )}>
         <FakeSidebar></FakeSidebar>
         <Container
           className={cx(
             $p.flex,
             this.props.displayAsColumns && $p.flexColumn,
+            this.props.displayAsColumns && $p.itemsCenter,
             $p.ph10,
             $p.relative,
           )}
