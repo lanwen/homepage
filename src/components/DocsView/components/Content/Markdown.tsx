@@ -28,7 +28,7 @@ const Container = styled.div`
   p { 
     line-height: 1.7;
     color: ${$v.gray60}; 
-    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
   }
   
   ul {
