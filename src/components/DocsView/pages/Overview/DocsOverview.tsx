@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import * as cx from 'classnames'
 import Heading from './Heading'
 import References from './References'
+import Community from './Community'
 import Items from './Items'
 import Try from '../../components/Try'
 import OpenConsole from '../../components/OpenConsole'
@@ -127,20 +128,20 @@ export default class DocsOverview extends React.Component<{}, {}> {
           </Container>
         </ItemsBackground>
         {/*/!* Community *!/*/}
-        {/*<Container className={cx($p.pt96, $p.pb96)}>*/}
-          {/*<Heading*/}
-            {/*layout='COMMUNITY'*/}
-            {/*title='Community'*/}
-            {/*text='Come and join thousands of other developers in the Graphcool community. 👋'*/}
-            {/*link='https://slack.graph.cool/'*/}
-          {/*/>*/}
-        {/*</Container>*/}
-        {/*<Community />*/}
-        {!loggedIn ? (
-            <Try />
-          ) : (
-            <OpenConsole />
-          )}
+        <Container className={cx($p.pt96, $p.pb96)}>
+          <Heading
+            layout='COMMUNITY'
+            title='Community'
+            text='Come and join thousands of other developers in the Graphcool community. 👋'
+            link='https://slack.graph.cool/'
+          />
+        </Container>
+        <Community />
+        {/*{!loggedIn ? (*/}
+            {/*<Try />*/}
+          {/*) : (*/}
+            {/*<OpenConsole />*/}
+          {/*)}*/}
       </ContentContainer>
     )
   }

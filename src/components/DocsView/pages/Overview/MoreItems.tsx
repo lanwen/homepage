@@ -60,7 +60,6 @@ const MoreItems = ({text, color, link}: Props) => {
               arr.length === 2 && $p.mh60,
             )}
             style={ arr.length > 1 ? {maxWidth: '325px'} : {maxWidth: '325px', minWidth: '325px'}}>
-            {/*style={{maxWidth: '325px', minWidth: '325px'}}>*/}
           </div>
         ))}
       </Container>
