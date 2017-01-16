@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {$p, $v, Icon} from 'graphcool-styles'
+import {$p, $v, $g, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import Technology from './Technology'
 import StepIndicator from './StepIndicator'
@@ -8,6 +8,7 @@ import {examples} from './data/examples'
 import Example from './Example'
 import {QuickExample} from '../../../../types/types'
 import {breakpoints} from '../../../../utils/constants'
+import LogoBar from '../../../HomeView/LogoBar'
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
@@ -32,7 +33,31 @@ export default class Quickstart extends React.Component<Props, State> {
   render() {
 
     if (window.innerWidth < breakpoints.p1000) {
-      return (<div></div>)
+      return (
+        <div className={cx($p.flex, $p.flexColumn)}>
+          <LogoBar
+            className={cx(
+              $p.mt25,
+          )}/>
+          <a
+            href='https://github.com/graphcool/examples'
+            className={cx(
+              $g.uppercaseButton,
+              $p.flex,
+              $p.justifyCenter,
+              $p.bgGreen,
+              $p.white,
+              $p.noUnderline,
+              $p.mt25,
+              $p.center,
+              $p.ph25,
+              $p.pv16,
+            )}>
+              See Examples on GitHub
+          </a>
+        </div>
+
+      )
     }
 
     const {className} = this.props

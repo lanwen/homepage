@@ -9,6 +9,7 @@ import Items from './Items'
 import Try from '../../components/Try'
 import OpenConsole from '../../components/OpenConsole'
 import MoreItems from './MoreItems'
+import Quickstart from '../../components/Quickstart/Quickstart'
 import * as cookiestore from 'cookiestore'
 import {breakpoints} from '../../../../utils/constants'
 
@@ -77,7 +78,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
               download an example project and start building.`}
             link='/docs/quickstart'
           />
-          {/*<Quickstart className={cx($p.mt38, $p.ml60)} />*/}
+          <Quickstart className={cx($p.mt38, $p.ml60)} />
         </Container>
 
         {/* Tutorials & Guides - Heading */}

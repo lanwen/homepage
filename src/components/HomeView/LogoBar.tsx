@@ -24,6 +24,7 @@ const Logo = styled.img`
 
 interface Props {
   white?: boolean
+  className?: string
 }
 
 export default class LogoBar extends React.Component<Props, {}> {
@@ -31,7 +32,14 @@ export default class LogoBar extends React.Component<Props, {}> {
   render() {
     const whiteExtension = this.props.white ? 'White' : ''
     return (
-      <Root className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.center, this.props.white ? $p.o10 : $p.o100)}>
+      <Root className={cx(
+        $p.flex,
+        $p.justifyCenter,
+        $p.flexWrap,
+        $p.center,
+        this.props.white ? $p.o10 : $p.o100,
+        this.props.className,
+      )}>
         <Logo src={require(`../../assets/graphics/logos/react${whiteExtension}.svg`)} />
         <Logo src={require(`../../assets/graphics/logos/angular${whiteExtension}.svg`)} />
         <Logo src={require(`../../assets/graphics/logos/relay${whiteExtension}.svg`)} />
