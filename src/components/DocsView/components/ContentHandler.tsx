@@ -117,7 +117,12 @@ class ContentHandler extends React.Component<Props, {}> {
           <ReferenceSidenav currentAlias={item.alias}/>
         )}
         <ContentContainer>
-          <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
+          <section
+            className={cx(
+              window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph25,
+              $p.pt96,
+            )}
+            style={{ maxWidth: 920, margin: '0 auto' }}>
             <ContentHeader item={item}/>
             <Markdown
               ast={ast}
@@ -148,38 +153,38 @@ class ContentHandler extends React.Component<Props, {}> {
 }
 
 const getItemQuery = gql`query getItem($alias: String) {
-  Item(alias: $alias) {
-    id
-    body
-    alias
-    path
-    layout
-    beta
-    tags
-    lastModified
-    shorttitle
-    title
-    description
-    sourceFilePath
-    preview
-    simpleRelayTwin
-    relatedFurther {
-      alias
-      title
-      shorttitle
-      path
-      layout
+    Item(alias: $alias) {
+        id
+        body
+        alias
+        path
+        layout
+        beta
+        tags
+        lastModified
+        shorttitle
+        title
+        description
+        sourceFilePath
+        preview
+        simpleRelayTwin
+        relatedFurther {
+            alias
+            title
+            shorttitle
+            path
+            layout
+        }
+        relatedMore {
+            alias
+            title
+            shorttitle
+            path
+            layout
+        }
+        relatedMoreTitle
+        relatedMoreDescription
     }
-    relatedMore {
-      alias
-      title
-      shorttitle
-      path
-      layout
-    }
-    relatedMoreTitle
-    relatedMoreDescription
-  }
 }`
 
 const ContentHandlerWithData = graphql(getItemQuery, {

@@ -6,6 +6,7 @@ import { Item } from '../../../../types/types'
 import BreadCrumb from './BreadCrumb'
 import styled from 'styled-components'
 import SimpleRelayTwin from './SimpleRelayTwin'
+import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   item: Item
@@ -22,14 +23,15 @@ const IconWrapper = styled.div`
 
 export default class ContentHeader extends React.Component<Props, {}> {
   render() {
+    const displayIcon = window.innerWidth > breakpoints.p900
     const {item} = this.props
     const date = new Date(item.lastModified)
     const {simpleRelayTwin, path, layout} = item
     return (
       <div className={cx($p.flex, $p.pt96)}>
-        <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
+        {displayIcon && <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
           <CircleIcon width={44} height={44} type={item.layout}/>
-        </IconWrapper>
+        </IconWrapper>}
         <div
           className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}
           style={{
