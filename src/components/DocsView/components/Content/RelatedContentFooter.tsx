@@ -49,7 +49,8 @@ const Further = styled.div`
 `
 
 interface Props {
-  item: Item,
+  item: Item
+  displayAsColumns?: boolean
 }
 
 export default class RelatedContentFooter extends React.Component<Props, {}> {
@@ -61,8 +62,12 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
     return (
       <ContainerContainer className={cx($p.flex, $p.justifyCenter, $p.relative, $p.mb60)}>
         <Container
-          className={cx($p.flex, $p.justifyCenter, $p.flexWrap, $p.ph10, $p.relative)}
-        >
+          className={cx(
+            $p.flex,
+            this.props.displayAsColumns && $p.flexColumn,
+            $p.ph10,
+            $p.relative,
+        )}>
           {this.props.item.relatedMore.length > 0 && (
             <More
               className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mr25)}
@@ -94,7 +99,15 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
           )}
           {this.props.item.relatedFurther.length > 0 && (
             <Further className={cx($p.pl25, $p.flex1)}>
-              <p className={cx($p.fw6, $p.f16, $p.black30, $p.pb25, $p.ttu)}>Further reading</p>
+              <p className={cx(
+                $p.fw6,
+                $p.f16,
+                $p.black30,
+                $p.pb25,
+                $p.ttu,
+              )}>
+                Further reading
+              </p>
               {this.props.item.relatedFurther.map(item => (
                 <Link
                   to={`${item.path}-${item.alias}`}

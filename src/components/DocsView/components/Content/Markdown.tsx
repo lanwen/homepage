@@ -23,7 +23,7 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  max-width: 920px;
+  width: 920px;
  
   p { 
     line-height: 1.7;
@@ -270,7 +270,6 @@ export default class Markdown extends React.Component<Props, {}> {
     if (result !== null) {
       return result[1]
     }
-
     return null
   }
 
