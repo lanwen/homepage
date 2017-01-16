@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import {$p, $v} from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../../../utils/constants'
+import {breakpoints} from '../../../../utils/constants'
 import CircleIcon from '../CircleIcon'
-import { Item } from '../../../../types/types'
+import {Item} from '../../../../types/types'
 import Tooltip from './Tooltip'
 
 const ContainerContainer = styled.div`
@@ -27,6 +27,7 @@ const Container = styled.div`
 const More = styled.div`
   box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
   min-width: 400px;
+  max-width: 470px;
   min-height: 350px;
     
   @media(max-width: ${breakpoints.p1000}px) {
@@ -69,9 +70,10 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
               <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
                 <div className={cx($p.flex)}>
                   <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu, $p.nowrap)}>More about</span>
-                  <span className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6)}>{relatedMoreTitle || title}</span>
+                  <span
+                    className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6, $p.mr16)}>{relatedMoreTitle || title}</span>
                 </div>
-                <Tooltip text={relatedMoreDescription || description}/>
+                <Tooltip text={relatedMoreDescription || description} right={-3}/>
               </div>
               {this.props.item.relatedMore.map(item => (
                 <Link

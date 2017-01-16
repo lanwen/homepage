@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { Node } from 'commonmark'
+import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
 import * as slug from 'slug'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
-import { Layout, Item } from '../../../../types/types'
-import { childrenToString } from '../../../../utils/index'
+import {$p, $v} from 'graphcool-styles'
+import {Layout, Item} from '../../../../types/types'
+import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
@@ -22,7 +22,7 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  width: 920px;
+  max-width: 920px;
  
   p { 
     line-height: 1.7;
@@ -94,6 +94,9 @@ const QuestionWrapper = styled.div`
   &:hover .hover {
     display: block;
   }
+  &:hover .no-hover .hover {
+    display: none;
+  }
 `
 
 const QuestionMarkWrapper = styled.div`
@@ -120,7 +123,7 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100, $p.relative)}>
+          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
@@ -130,8 +133,10 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100, $p.relative)}>
-            {ReactRenderer.renderers.List(props)}
+          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+            <div className={cx('no-hover')}>
+              {ReactRenderer.renderers.List(props)}
+            </div>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
@@ -191,7 +196,7 @@ export default class Markdown extends React.Component<Props, {}> {
         if (literal.includes('GITHUB_EXAMPLE')) {
           return (
             <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
-              <ExampleBox literal={literal} item={this.props.item} />
+              <ExampleBox literal={literal} item={this.props.item}/>
             </div>
           )
         }
@@ -212,7 +217,7 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout !== 'REFERENCE'}>
+      <Container biggerFont={this.props.layout !== 'REFERENCE'} className={cx($p.relative)}>
         {renderer.render(this.props.ast)}
       </Container>
     )

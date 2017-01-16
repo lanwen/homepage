@@ -1,9 +1,10 @@
 import * as React from 'react'
+import ApolloClient from 'apollo-client'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
 import * as Helmet from 'react-helmet'
-import {throttle} from 'lodash'
+import { throttle } from 'lodash'
 
 interface Props {
   children?: JSX.Element
@@ -13,11 +14,21 @@ interface State {
   isLoading: boolean
 }
 
+interface Context {
+  client: ApolloClient
+}
+
 export default class RootView extends React.Component<Props, State> {
 
   static childContextTypes = {
     setIsLoading: React.PropTypes.func.isRequired,
   }
+
+  static contextTypes = {
+    client: React.PropTypes.object.isRequired,
+  }
+
+  context: Context
 
   rerender = throttle(
     () => {
@@ -32,6 +43,10 @@ export default class RootView extends React.Component<Props, State> {
 
   componentDidMount() {
     window.addEventListener('resize', this.rerender)
+
+    if (navigator.userAgent !== 'SSR' && window.__APOLLO_STATE__) {
+      this.context.client.resetStore()
+    }
   }
 
   componentWillUnmount() {
@@ -66,7 +81,7 @@ export default class RootView extends React.Component<Props, State> {
           ]}
         />
         {this.state.isLoading &&
-          <LoadingBar/>
+        <LoadingBar/>
         }
         {this.props.children}
       </div>

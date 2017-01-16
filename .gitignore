@@ -5,3 +5,4 @@ dist
 coverage
 .netlify
 .idea
+.prep-tmp

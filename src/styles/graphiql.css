@@ -351,6 +351,7 @@
 .graphiql-container .CodeMirror-scroll {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-scrolling: touch;
+  max-height: 352px;
 }
 
 .graphiql-container .CodeMirror {

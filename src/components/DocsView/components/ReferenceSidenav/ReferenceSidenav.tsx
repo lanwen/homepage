@@ -9,7 +9,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { ReferenceSidebarElement, elements } from './data'
 import { Item, NestedItem } from '../../../../types/types'
-import {throttle} from 'lodash'
+import { throttle } from 'lodash'
 
 const VerticalContainer = styled.div`
   flex: 0 0 300px;
@@ -50,7 +50,11 @@ class ReferenceSidenav extends React.Component<Props, State> {
     containerOffset: 0,
   }
 
-  handleScroll = throttle(
+  private offsets: number[] = []
+  private containerRef: HTMLElement
+  private bodyTopAtIntersection: number = -1
+
+  private handleScroll = throttle(
     () => {
       const top = window.scrollY
 
@@ -59,7 +63,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
       const container = ReactDOM.findDOMNode(this.containerRef)
       if (container) {
         const footerHeight = document.getElementById('footer').clientHeight
-        const bodyHeight = document.body.clientHeight
+        const bodyHeight = document.documentElement.clientHeight // document.body.clientHeight doesn't work for prep :(
         const bodyTop = document.body.scrollTop
         const threshold = bodyHeight - footerHeight
         const containerHeight = container.clientHeight
@@ -77,10 +81,11 @@ class ReferenceSidenav extends React.Component<Props, State> {
           if (this.bodyTopAtIntersection === -1) {
             this.bodyTopAtIntersection = bodyTop
           }
+          const containerOffset = threshold - containerHeight - 144 - 45
           this.setState({
             absolute: true,
             fixed: false,
-            containerOffset: threshold - containerHeight - 144 - 45,
+            containerOffset,
           } as State)
         }
 
@@ -99,10 +104,6 @@ class ReferenceSidenav extends React.Component<Props, State> {
     },
     50,
   )
-
-  private offsets: number[] = []
-  private containerRef: HTMLElement
-  private bodyTopAtIntersection: number = -1
 
   componentWillReceiveProps(nextProps: Props) {
     if (nextProps.data.loading) {
@@ -183,9 +184,8 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   private registerContainerRef = (ref: any) => {
-    const element = ReactDOM.findDOMNode(ref)
-
-    this.containerRef = element as HTMLElement
+    console.log('reg', ref)
+    this.containerRef = ReactDOM.findDOMNode(ref) as HTMLElement
   }
 
   private getTop(element: HTMLElement) {
@@ -195,7 +195,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   private registerRef = (index: number, ref: React.Component<any,any>) => {
-    const element: HTMLElement = ReactDOM.findDOMNode(ref) as HTMLElement
+    const element = ReactDOM.findDOMNode(ref) as HTMLElement
 
     if (element === null) {
       return

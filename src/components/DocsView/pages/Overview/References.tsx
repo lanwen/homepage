@@ -17,7 +17,8 @@ const Root = styled.div`
  justify-content: flex-start;
  }
  `
- */}
+ */
+}
 
 const FeaturesBackground = styled.div`
   background: rgba(0,0,0,.02);

@@ -124,8 +124,8 @@ export default class DocsOverview extends React.Component<{}, {}> {
         {/* FAQ - Content */}
         <ItemsBackground>
           <Container>
-            <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false} />
-            <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq' />
+            <StyledItems count={3} layout='FAQ' className={cx($p.relative)} showPreview={false}/>
+            <MoreItems color={'rgb(60, 181, 184)'} text='See all Questions' link='/docs/faq'/>
           </Container>
         </ItemsBackground>
         {/*/!* Community *!/*/}
