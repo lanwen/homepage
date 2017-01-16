@@ -184,7 +184,11 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   private registerContainerRef = (ref: any) => {
-    console.log('reg', ref)
+    // TODO investigate why this doesn't work with prep
+    if (navigator.userAgent === 'SSR') {
+      return
+    }
+
     this.containerRef = ReactDOM.findDOMNode(ref) as HTMLElement
   }
 
@@ -195,6 +199,11 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   private registerRef = (index: number, ref: React.Component<any,any>) => {
+    // TODO investigate why this doesn't work with prep
+    if (navigator.userAgent === 'SSR') {
+      return
+    }
+
     const element = ReactDOM.findDOMNode(ref) as HTMLElement
 
     if (element === null) {
