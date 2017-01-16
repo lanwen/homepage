@@ -7,6 +7,7 @@ import {TechnologyData, frontendTechnologies, clientTechnologies} from './data/t
 import {examples} from './data/examples'
 import Example from './Example'
 import {QuickExample} from '../../../../types/types'
+import {breakpoints} from '../../../../utils/constants'
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
@@ -29,6 +30,10 @@ export default class Quickstart extends React.Component<Props, State> {
   }
 
   render() {
+
+    if (window.innerWidth < breakpoints.p1000) {
+      return (<div></div>)
+    }
 
     const {className} = this.props
     const {selectedFrontendTechnology, selectedClientTechnology, highlightedComponentIndex} = this.state
