@@ -15,8 +15,8 @@ interface Props {
 const Beta = styled.div`
   padding-top: 2px;
   padding-bottom: 3px;
-  top: -20x;
-  right: -30x;
+  top: -20px;
+  right: -30px;
 `
 
 const IconWrapper = styled.div`
