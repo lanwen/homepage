@@ -3,6 +3,13 @@ import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {Link} from 'react-router'
 import {breakpoints} from '../../../../utils/constants'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  @media (max-width: ${breakpoints.p750}px) {
+    display: none;
+  }
+`
 
 interface Props {
   twinAlias: string
@@ -15,7 +22,7 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
 
   const twin = targetSimple ? 'Simple' : 'Relay'
   return (
-    <div
+    <Container
       className={cx(
         $p.bgLightgreen20,
         $p.pa16,
@@ -29,10 +36,12 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
         width: 194,
         flex: '0 0 194px',
         top: -66,
-        right: right,
+        right: -10,
       }}
     >
-      <div>There's a corresponding Article for the {twin} API</div>
+      <div>
+        There's a corresponding Article for the {twin} API
+      </div>
       <Link
         className={cx(
           $p.buttonShadow, $p.bgWhite, $p.pv10, $p.ph16, $p.ttu, $p.relative, $p.mt16, $p.noUnderline, $p.fw6,
@@ -45,7 +54,7 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
       >
         Go to {twin} API
       </Link>
-    </div>
+    </Container>
   )
 }
 
