@@ -136,14 +136,16 @@ class ContentHandler extends React.Component<Props, {}> {
             <Feedback item={item}/>
             {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
           </ContentContainer>
-          {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && <FAQSidebar item={item}/>}
+          {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
+            <FAQSidebar item={item}/>
+          )}
         </div>
-        {item.layout !== 'FAQ' &&
+        {item.layout !== 'FAQ' && (
           <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
-        }
-        {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) &&
+        )}
+        {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) && (
           <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
-        }
+        )}
       </div>
     )
   }
