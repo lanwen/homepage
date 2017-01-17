@@ -116,7 +116,7 @@ class ContentHandler extends React.Component<Props, {}> {
               ...imageMeta,
             ]}
           />
-          {item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750 && (
+          {item.layout === 'REFERENCE' && (
             <ReferenceSidenav currentAlias={item.alias}/>
           )}
           <ContentContainer>

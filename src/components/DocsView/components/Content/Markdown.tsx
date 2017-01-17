@@ -156,24 +156,28 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
-            <p>{props.children}</p>
-            <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
-              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
-            </QuestionMarkWrapper>
-          </QuestionWrapper>
+          window.innerWidth > breakpoints.p500 && (
+            <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+              <p>{props.children}</p>
+              <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
+                <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
+              </QuestionMarkWrapper>
+            </QuestionWrapper>
+          )
         )
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
-            <div className={cx('no-hover')}>
-              {ReactRenderer.renderers.List(props)}
-            </div>
-            <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
-              <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
-            </QuestionMarkWrapper>
-          </QuestionWrapper>
+          window.innerWidth > breakpoints.p500 && (
+            <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+              <div className={cx('no-hover')}>
+                {ReactRenderer.renderers.List(props)}
+              </div>
+              <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
+                <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
+              </QuestionMarkWrapper>
+            </QuestionWrapper>
+          )
         )
       },
       Heading: (props) => {

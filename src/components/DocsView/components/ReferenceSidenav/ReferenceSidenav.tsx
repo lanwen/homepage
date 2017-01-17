@@ -18,6 +18,10 @@ const VerticalContainer = styled.div`
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
   }
+  
+  @media (max-width: ${breakpoints.p750}px) {
+    display: none;
+  }
 `
 
 const FixedWrapper = styled.div`
