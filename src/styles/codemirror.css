@@ -199,8 +199,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     /* See overflow: hidden in .CodeMirror */
     margin-bottom: -30px; margin-right: -30px;
     padding-bottom: 30px;
-    height: auto; /* DO NOT CHANGE THIS to 100%, as it will then go up to display size */
-    /* the 100% is only needed for the playground */
+    height: 100%;
     outline: none; /* Prevent dragging from highlighting the element */
     position: relative;
 }
