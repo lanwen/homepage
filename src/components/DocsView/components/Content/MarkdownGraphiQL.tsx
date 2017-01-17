@@ -66,6 +66,18 @@ export function dslValid(literal: string): boolean {
   return true
 }
 
+export function getVariables(literal: string): string {
+  const fm: Frontmatter = frontmatter(literal)
+  const components = fm.body.split('---')
+  return components[1]
+}
+
+export function getGraphQLCode(literal: string): string {
+  const fm: Frontmatter = frontmatter(literal)
+  const components = fm.body.split('---')
+  return components[0]
+}
+
 const DisabledContainer = `
   .execute-button-wrap, .toolbar-button {
     display: none !important;

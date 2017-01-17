@@ -18,8 +18,6 @@ interface Props {
 
 const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
 
-  const right = window.innerWidth < breakpoints.p500 ? -20 : -33
-
   const twin = targetSimple ? 'Simple' : 'Relay'
   return (
     <Container

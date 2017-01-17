@@ -11,7 +11,7 @@ import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
 import * as Smooch from 'smooch'
-import MarkdownGraphiQL, {dslValid} from './MarkdownGraphiQL'
+import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
 
@@ -188,9 +188,27 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       CodeBlock (props) {
-        if (props.language === 'graphql' && dslValid(props.literal.trim())) {
+        if (window.innerWidth > breakpoints.p650 &&
+            props.language === 'graphql' &&
+            dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
+          )
+        } else if (window.innerWidth < breakpoints.p650 &&
+          props.language === 'graphql' &&
+          dslValid(props.literal.trim())) {
+          return (
+            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+              <CodeMirror
+                value={getGraphQLCode(props.literal.trim())}
+                options={{
+                lineNumbers: true,
+                mode: props.language,
+                readOnly: true,
+                lineWrapping: true,
+              }}
+              />
+            </div>
           )
         }
 

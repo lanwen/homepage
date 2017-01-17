@@ -63,8 +63,6 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
 
   render() {
 
-    console.log(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750)
-
     const {relatedMoreTitle, title, relatedMoreDescription, description} = this.props.item
 
     return (
