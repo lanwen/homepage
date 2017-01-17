@@ -39,6 +39,7 @@ const Container = styled.div`
   
   ul li {
     line-height: 1.7;
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
   }
   
   blockquote {

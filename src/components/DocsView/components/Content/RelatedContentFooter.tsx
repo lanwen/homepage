@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Link} from 'react-router'
 import * as cx from 'classnames'
-import {$p, $v} from 'graphcool-styles'
+import {$p} from 'graphcool-styles'
 import styled from 'styled-components'
 import {breakpoints} from '../../../../utils/constants'
 import CircleIcon from '../CircleIcon'
@@ -9,13 +9,13 @@ import {Item} from '../../../../types/types'
 import Tooltip from './Tooltip'
 
 const ContainerContainer = styled.div`
-  &:before {
-    content: "";
-    position: absolute;
-    height: calc(100% - 20px);
-    background: rgb(250,250,250);
-    width: 100%;
-  }
+    &:before {
+      content: "";
+      position: absolute;
+      height: calc(100% - 20px);
+      background: rgb(250,250,250);
+      width: 100%;
+    }
 `
 
 const Container = styled.div`
@@ -27,26 +27,27 @@ const Container = styled.div`
 
 const More = styled.div`
   box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
-  min-width: 400px;
   max-width: 470px;
   min-height: 350px;
     
   @media(max-width: ${breakpoints.p1000}px) {
-    margin: 0;
+    margin: 25px;
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
   }
 `
 
 const Further = styled.div`
   margin-top: 50px;
-  min-width: 400px;
+  
   @media(max-width: ${breakpoints.p1000}px) {
-    margin-bottom: ${$v.size25};
-    margin-top: ${$v.size25};
+    margin: 25px;
   }
 
-  @media(max-width: ${breakpoints.p900}px) {
-    padding-left: 0;
+  @media(max-width: ${breakpoints.p500}px) {
   }
+  
 `
 
 const FakeSidebar = styled.div`
@@ -62,6 +63,8 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
 
   render() {
 
+    console.log(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750)
+
     const {relatedMoreTitle, title, relatedMoreDescription, description} = this.props.item
 
     return (
@@ -72,7 +75,12 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         $p.mb60,
         $p.w100,
       )}>
-        <FakeSidebar></FakeSidebar>
+        {(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750) && (
+          <FakeSidebar></FakeSidebar>
+        )}
+        {(this.props.item.layout !== 'REFERENCE' && window.innerWidth > breakpoints.p1000) && (
+          <FakeSidebar></FakeSidebar>
+        )}
         <Container
           className={cx(
             $p.flex,
@@ -112,7 +120,10 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
             </More>
           )}
           {this.props.item.relatedFurther.length > 0 && (
-            <Further className={cx($p.pl25, $p.flex1)}>
+            <Further className={cx(
+              $p.flex1,
+              window.innerWidth > breakpoints.p1000 && $p.pl25,
+            )}>
               <p className={cx(
                 $p.fw6,
                 $p.f16,
