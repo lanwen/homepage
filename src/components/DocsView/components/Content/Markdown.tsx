@@ -82,7 +82,7 @@ const Container = styled.div`
   
   img {
     height: auto;
-    width: 100vw;
+    max-width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 60px;
