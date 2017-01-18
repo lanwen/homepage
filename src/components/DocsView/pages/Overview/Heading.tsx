@@ -51,12 +51,14 @@ const Heading = ({layout, title, text, link}: Props) => {
           <h1
             className={cx(
               displayIcon && $p.ml16,
+              !displayIcon && $p.mh10,
             )}>{title}</h1>
         </Link>
       )}
       <div
         className={cx(
           displayIcon && $p.ml60,
+          !displayIcon && $p.mh10,
         )}>
         <p className={cx($p.mt25)}>{text}</p>
       </div>
