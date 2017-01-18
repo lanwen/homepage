@@ -2,7 +2,7 @@ import * as React from 'react'
 import Footer from '../Footer/Footer'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
-import Header from './components/Header/Header'
+import Header from './components/Header/DocsHeader'
 import * as Helmet from 'react-helmet'
 import styled from 'styled-components'
 

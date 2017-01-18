@@ -9,7 +9,6 @@ const ImageContainer = styled.div`
   width: 300px;
 `
 
-
 const Circle36 = styled.div`
   width: 36px;
   height: 36px;
