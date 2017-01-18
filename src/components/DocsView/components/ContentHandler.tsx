@@ -122,7 +122,7 @@ class ContentHandler extends React.Component<Props, {}> {
           <ContentContainer>
             <section
               className={cx(
-                window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph25,
+                window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph10,
                 $p.pt96,
               )}
               style={{ maxWidth: 920, margin: '0 auto' }}>

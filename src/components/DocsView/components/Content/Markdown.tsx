@@ -118,6 +118,13 @@ const Container = styled.div`
       margin: ${$v.size20} 0;
     }
     
+  blockquote {
+    border-left: ${$v.size06} solid ${$v.green50};
+    padding: ${$v.size12} ${$v.size06};
+    margin-left: 0;
+    width: 100%;
+  }
+    
   }
 `
 
