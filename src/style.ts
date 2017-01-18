@@ -9,6 +9,10 @@ injectGlobal`
     #sk-holder {
       display: none;
     }
+    
+    #sk-holder #sk-messenger-button svg path {
+      display: none;
+    }
   }
   
   #sk-holder #sk-messenger-button svg path {

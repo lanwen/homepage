@@ -32,6 +32,8 @@ const Container = styled.div`
     width: 40px;
     display: none;
   }
+  
+  
 `
 
 interface Props {

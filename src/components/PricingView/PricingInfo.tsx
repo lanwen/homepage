@@ -5,6 +5,11 @@ import OperationsOverview from './OperationsOverview'
 import styled from 'styled-components'
 import {breakpoints} from '../../utils/constants'
 
+const ImageContainer = styled.div`
+  width: 300px;
+`
+
+
 const Circle36 = styled.div`
   width: 36px;
   height: 36px;
@@ -30,15 +35,15 @@ export default class PricingInfo extends React.Component<{}, {}> {
 
       // {/* CONTAINER FOR TWO COLUMNS */}
       <div className={cx(
-        $p.flex, flexDirection,
+        $p.flex,
+        flexDirection,
         $p.justifyBetween,
         containerPaddingVertical,
         $p.ph38,
         containerMarginTop,
       )}>
-
          {/* FIRST ITEM */}
-         <div className={cx($p.flex, $p.flex1, $p.flexColumn, firstItemPaddingRight)}>
+         <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.flexFixed, firstItemPaddingRight)}>
            <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
              <div>
                <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -64,13 +69,13 @@ export default class PricingInfo extends React.Component<{}, {}> {
              You store data in Graphcool as nodes.
              For example, if five users write two posts each, you have 15 nodes.
            </div>
-           <div className={cx(graphImageMarginTop, $p.center)}>
+           <ImageContainer className={cx(graphImageMarginTop, $p.center)}>
              <img
                src={require('../../assets/graphics/homepage/nodes.png')}
                width={imageWidth}
                height={imageHeight}
              />
-           </div>
+           </ImageContainer>
          </div>
 
          {/* SECOND ITEM */}

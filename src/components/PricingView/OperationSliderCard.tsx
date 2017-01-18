@@ -58,7 +58,16 @@ export default class OperationSliderCard extends React.Component<Props, {}> {
       )
 
     return (
-      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite10, $p.br2, $p.ph38, $p.pv25, $p.mb16)}>
+      <div className={cx(
+        $p.flex,
+        $p.flexColumn,
+        $p.bgWhite10,
+        $p.br2,
+        $p.ph38,
+        $p.pv25,
+        $p.mb16,
+        $p.flexFixed,
+      )}>
         {descriptionElement}
         <div className={cx(
           $p.flex,

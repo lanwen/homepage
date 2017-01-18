@@ -56,7 +56,13 @@ export default class OperationOverview extends React.Component<{}, State> {
             : 'Enterprise'
 
     return (
-      <div className={cx($p.flex, $p.flex1, $p.flexColumn, containerPaddingLeft, containerMarginTop)}>
+      <div className={cx(
+        $p.flex,
+        $p.flex1,
+        $p.flexColumn,
+        containerPaddingLeft,
+        containerMarginTop,
+      )}>
         <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
           <div>
             <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -71,14 +77,15 @@ export default class OperationOverview extends React.Component<{}, State> {
           </div>
           <div className={cx($p.white, $p.ml16)}>What is an operation?</div>
         </div>
-        <div className={cx(
-          $p.white80,
-          $p.f14,
-          $p.fw3,
-          $p.tc,
-          $p.pt4,
-          whatIsAnOperationDescriptionMarginTop,
-          whatIsAnOperationDescriptionMarginBottom,
+        <div
+          className={cx(
+            $p.white80,
+            $p.f14,
+            $p.fw3,
+            $p.tc,
+            $p.pt4,
+            whatIsAnOperationDescriptionMarginTop,
+            whatIsAnOperationDescriptionMarginBottom,
         )}>
           There are three operation types: requests,
           subscriptions & function calls

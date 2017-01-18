@@ -28,7 +28,8 @@ const Container = styled.div`
   p { 
     line-height: 1.7;
     color: ${$v.gray60};
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    overflow: hidden;
   }
   
   ul {
@@ -97,12 +98,12 @@ const Container = styled.div`
     p {
       line-height: 1.5;
       color: ${$v.gray60}; 
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
     }
     
     ul li {
       line-height: 1.5;
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}    
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
     
     h2 {
@@ -113,7 +114,7 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
     }
     
