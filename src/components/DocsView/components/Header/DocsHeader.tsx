@@ -349,31 +349,46 @@ export default class Header extends React.Component<{}, State> {
       </Root>
     )
 
-    const NarrowHeader = () => (
-      <Root className={cx($p.flex, $p.pv38)}>
-        {logo}
-        {this.state.menuOpened ? (
-            <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
-              <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
-              <NavigationLink>
-                <Search className={cx($p.pb16, $p.mh16)}/>
-              </NavigationLink>
-              {links}
-              {endpoints}
-            </FirstUlStyle>
-          ) : (
-            <Hamburger>
-              <Icon
-                onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-                src={require('../../../../assets/icons/hamburger.svg')}
-                width={36}
-                height={36}
-                color={$v.gray20}
-              />
-            </Hamburger>
-          )}
-      </Root>
-    )
+    const NarrowHeader = () => {
+
+      return (
+        <Root className={cx($p.flex, $p.pv38)}>
+          {logo}
+          {this.state.menuOpened ? (
+              <FirstUlStyle className={cx(
+                window.innerWidth > breakpoints.p500 && $p.pa60,
+                window.innerWidth < breakpoints.p500 && $p.pv38,
+                window.innerWidth < breakpoints.p500 && $p.pl16,
+                window.innerWidth < breakpoints.p500 && $p.pr60,
+                $p.bgWhite90,
+                $p.z1,
+              )}>
+                <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
+                <NavigationLink>
+                  <Search
+                    className={cx(
+                      $p.pb16,
+                      window.innerWidth < breakpoints.p500 && $p.mr6,
+                      window.innerWidth < breakpoints.p500 && $p.ml16,
+                      window.innerWidth > breakpoints.p500 && $p.mh16,
+                    )}/>
+                </NavigationLink>
+                {links}
+                {endpoints}
+              </FirstUlStyle>
+            ) : (
+              <Hamburger>
+                <Icon
+                  onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                  src={require('../../../../assets/icons/hamburger.svg')}
+                  width={36}
+                  height={36}
+                  color={$v.gray20}
+                />
+              </Hamburger>
+            )}
+        </Root>)
+    }
 
     return (
       <Container

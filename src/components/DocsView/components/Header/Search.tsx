@@ -23,6 +23,10 @@ const Searchbox = styled.input`
     width: 250px;
   }
   
+  @media (max-width: ${breakpoints.p500}px) {
+    width: 180px;
+  }
+  
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     transition: .3s white;
   }
