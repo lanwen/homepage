@@ -81,8 +81,8 @@ const Container = styled.div`
   }
   
   img {
-    max-width: 100%;
     height: auto;
+    width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 60px;
