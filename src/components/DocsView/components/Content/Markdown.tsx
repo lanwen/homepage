@@ -48,6 +48,8 @@ const Container = styled.div`
     padding: ${$v.size12} ${$v.size25};
     margin-left: 0;
     width: 100%;
+    box-sizing: border-box;
+    
   }
   
   blockquote p {
@@ -132,9 +134,15 @@ const QuestionWrapper = styled.div`
   .hover {
     display: none;
   }
+  
   &:hover .hover {
     display: block;
+
+    @media (max-width: ${breakpoints.p750}px) {
+      display: none;
+    }   
   }
+
   &:hover .no-hover .hover {
     display: none;
   }
