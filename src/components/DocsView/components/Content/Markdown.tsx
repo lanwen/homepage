@@ -93,10 +93,9 @@ const Container = styled.div`
   img {
     height: auto;
     max-width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
     margin-top: 60px;
     margin-bottom: 60px;
+    width: 100%;
   }
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -135,6 +134,10 @@ const Container = styled.div`
     width: 100%;
   }
     
+  }
+  
+  .docs-codemirror .CodeMirror-scroll {
+    height: auto;
   }
 `
 
@@ -222,7 +225,7 @@ export default class Markdown extends React.Component<Props, {}> {
           props.language === 'graphql' &&
           dslValid(props.literal.trim())) {
           return (
-            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -238,7 +241,7 @@ export default class Markdown extends React.Component<Props, {}> {
 
         return (
           <div
-            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox)}
+            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
           >
             <CodeMirror
               value={props.literal.trim()}

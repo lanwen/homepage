@@ -29,7 +29,7 @@ export default class DocsView extends React.Component<Props, {}> {
     const isReference = location.pathname.includes('reference')
 
     return (
-      <div className={cx($p.flex, $p.flexColumn)}>
+      <div className={cx($p.flex, $p.flexColumn, $p.overflowHidden)}>
         <Header/>
         <Helmet titleTemplate='%s | Graphcool Docs' />
         <Content className={cx(

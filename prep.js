@@ -12,7 +12,7 @@ exports.default = () => {
       path
     }
   }`).then(result => {
-    const docsItemRoutes = result.allItems.map(({alias, path}) => `${path}-${alias}`).filter(x => x.includes('reference'))
+    const docsItemRoutes = result.allItems.map(({alias, path}) => `${path}-${alias}`)
     const routes = [
       '/',
       '/about',
@@ -25,7 +25,8 @@ exports.default = () => {
     ]
 
     return {
-      routes: routes.concat(docsItemRoutes),
+      // routes: routes.concat(docsItemRoutes),
+      routes: ['/docs/tutorials/react-apollo-auth0-pheiph4ooj'],
       https: true,
       timeout: 2000,
       hostname: 'https://www.graph.cool',
