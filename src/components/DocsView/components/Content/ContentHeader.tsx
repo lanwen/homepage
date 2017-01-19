@@ -81,11 +81,13 @@ export default class ContentHeader extends React.Component<Props, {}> {
           </div>
           <div className={cx($p.inlineFlex, $p.black20, $p.f16, $p.pt6)}>
             <div
-              className={cx($p.pr38)}>Last updated {date.getMonth() + 1}/{date.getUTCDate()}/{date.getFullYear()}
+              className={cx($p.pr38, $p.nowrap)}>Last updated {date.getMonth() + 1}/{date.getUTCDate()}/{date.getFullYear()}
             </div>
+            <div className={cx($p.flex, $p.flexWrap)}>
             {item.tags.map(tag => (
-              <div key={tag} className={cx($p.pr16)}>#{tag}</div>
+              <div key={tag} className={cx($p.pr16, $p.nowrap)}>#{tag}</div>
             ))}
+            </div>
           </div>
         </div>
       </div>

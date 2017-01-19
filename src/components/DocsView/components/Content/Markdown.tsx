@@ -34,13 +34,19 @@ const Container = styled.div`
   
   ul {
     color: ${$v.gray60};
-    list-style-position: outside;
+    list-style-position: inside;
     margin: ${$v.size25} 0;
   }
   
   ul li {
-    line-height: 1.7;
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
+    line-height: 2;
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    list-style-type: none;
+    margin-left: ${$v.size12};
+  }
+
+  ul li:before {
+    content: '\\2022 \\00a0 \\00a0 \\00a0';
   }
   
   blockquote {
@@ -94,17 +100,17 @@ const Container = styled.div`
   @media (max-width: ${breakpoints.p900}px) {
     margin-left: 6px;
   }
-    
+
   @media (max-width: ${breakpoints.p500}px) {
-  
+
     p {
       line-height: 1.5;
       color: ${$v.gray60}; 
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
     }
-    
+
     ul li {
-      line-height: 1.5;
+      line-height: 1.7;
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
     
