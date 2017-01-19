@@ -16,7 +16,6 @@ module.exports = {
       'codemirror-graphql/mode',
       './src/main.tsx',
     ],
-    vendor: config.entry.vendor,
   },
   output: {
     path: './dist',
