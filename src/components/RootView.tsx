@@ -45,7 +45,8 @@ export default class RootView extends React.Component<Props, State> {
     window.addEventListener('resize', this.rerender)
 
     if (navigator.userAgent !== 'SSR' && window.__APOLLO_STATE__) {
-      this.context.client.resetStore()
+      // TODO https://github.com/apollostack/apollo-client/issues/1186
+      // this.context.client.resetStore()
     }
   }
 

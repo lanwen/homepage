@@ -49,7 +49,8 @@ class ContentHandler extends React.Component<Props, {}> {
 
   componentWillReceiveProps(nextProps: Props) {
 
-    if (nextProps.data.loading !== this.props.data.loading) {
+    const isLoading = nextProps.data.loading !== this.props.data.loading
+    if (isLoading) {
       this.context.setIsLoading(nextProps.data.loading)
     }
 
