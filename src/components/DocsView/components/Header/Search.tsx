@@ -2,7 +2,6 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import {$p, Icon, $v} from 'graphcool-styles'
-import { breakpoints } from '../../../../utils/constants'
 import * as algolia from 'algoliasearch'
 import * as cx from 'classnames'
 import {Item} from '../../../../types/types'
@@ -11,7 +10,7 @@ import {throttle} from 'lodash'
 import {connect} from 'react-redux'
 
 const Searchbox = styled.input`
-  width: 300px;
+  width: 100%;
   box-sizing: border-box;
   box-shadow: 0 1px 3px rgba(0,0,0,.15);
   border-radius: 2px;
@@ -19,13 +18,6 @@ const Searchbox = styled.input`
   background-color: #fff;
   padding: 12px 20px 12px 46px;
   transition: all .3s;
-  @media (max-width: ${breakpoints.p1360}px) {
-    width: 250px;
-  }
-  
-  @media (max-width: ${breakpoints.p500}px) {
-    width: 180px;
-  }
   
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     transition: .3s white;
@@ -122,7 +114,13 @@ class Search extends React.Component<Props,{}> {
     const {query, results, activeIndex, resultsActive} = this.state
     const autoFocus = location.pathname === '/docs'
     return (
-      <div className={cx($p.relative, className)}>
+      <div
+        className={cx($p.relative, className)}
+        style={{
+          flex: 1,
+          marginRight: 32,
+        }}
+      >
         <Icon
           width={16}
           height={16}

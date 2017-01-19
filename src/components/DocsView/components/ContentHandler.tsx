@@ -7,7 +7,6 @@ import { withRouter } from 'react-router'
 import { Item } from '../../../types/types'
 import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
-import styled from 'styled-components'
 import * as cx from 'classnames'
 import FAQSidebar from './FAQSidebar'
 import ContentHeader from './Content/ContentHeader'
@@ -39,11 +38,6 @@ interface Meta {
   charset?: string
   httpEquiv?: string
 }
-
-const ContentContainer = styled.div`
-  flex: 1 1 100px;
-  max-width: 1050px;
-`
 
 class ContentHandler extends React.Component<Props, {}> {
 
@@ -116,29 +110,58 @@ class ContentHandler extends React.Component<Props, {}> {
               ...imageMeta,
             ]}
           />
-          {item.layout === 'REFERENCE' && (
-            <ReferenceSidenav currentAlias={item.alias}/>
-          )}
-          <ContentContainer>
+          <div className={cx($p.flexAuto, $p.flex)}>
+            <div
+              className={cx($p.flex1)}
+              style={{
+                backgroundColor: item.layout === 'REFERENCE' ? 'rgba(0,0,0,.02)' : 'transparent',
+              }}
+            >
+            </div>
             <section
               className={cx(
-                window.innerWidth > breakpoints.p1000 ? $p.ph60 : $p.ph10,
                 $p.pt96,
+                $p.flex,
+                {
+                  [$p.justifyCenter]: item.layout === 'TUTORIAL' || item.layout === 'BLOG',
+                },
               )}
-              style={{ maxWidth: 920, margin: '0 auto' }}>
-              <ContentHeader item={item}/>
-              <Markdown
-                ast={ast}
-                layout={item.layout}
-                item={item}
-              />
+              style={{
+                flex: '1 1 1384px',
+              }}
+            >
+              {item.layout === 'REFERENCE' && (
+                <ReferenceSidenav currentAlias={item.alias}/>
+              )}
+              <div
+                className={cx($p.bbox)}
+                style={{
+                  marginLeft: window.innerWidth < breakpoints.p1000 ? 0
+                    : item.layout === 'FAQ' ? 121 : item.layout === 'REFERENCE' ? 61 : 0,
+                  padding: window.innerWidth < breakpoints.p1000 ? '10px' : 0,
+                }}
+              >
+                <ContentHeader item={item}/>
+                <Markdown
+                  ast={ast}
+                  layout={item.layout}
+                  item={item}
+                />
+                <Feedback item={item}/>
+                {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+              </div>
+              {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
+                <FAQSidebar item={item}/>
+              )}
             </section>
-            <Feedback item={item}/>
-            {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          </ContentContainer>
-          {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
-            <FAQSidebar item={item}/>
-          )}
+            <div
+              className={cx($p.flex1)}
+              style={{
+                backgroundColor: item.layout === 'FAQ' ? 'rgba(0,0,0,.02)' : 'transparent',
+              }}
+            >
+            </div>
+          </div>
         </div>
         {item.layout !== 'FAQ' && (
           <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>

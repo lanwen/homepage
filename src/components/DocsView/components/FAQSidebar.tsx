@@ -18,6 +18,10 @@ export default class FAQSidebar extends React.Component<Props, {}> {
       flex: 0 0 380px;
       background-color: rgba(0, 0, 0, 0.02);
       padding-top: 196px;
+      padding-right: 117px;
+      top: -96px;
+      position: relative;
+      height: calc(100% + 96px);
     `
     const Square = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.03),

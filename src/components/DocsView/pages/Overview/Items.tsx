@@ -23,8 +23,8 @@ const StyledLink = styled(Link)`
 const ImgWrapper = styled.div`
   height: 150px;
   img {
-    max-width: 120%;
-    max-height: 120%;
+    max-width: 147%;
+    max-height: 147%;
   }
 `
 

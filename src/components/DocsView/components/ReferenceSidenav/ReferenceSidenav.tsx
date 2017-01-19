@@ -12,8 +12,11 @@ import { Item, NestedItem } from '../../../../types/types'
 import { throttle } from 'lodash'
 
 const VerticalContainer = styled.div`
-  flex: 0 0 300px;
+  flex: 0 0 250px;
+  position: relative;
+  top: -144px;
   background-color: rgba(0, 0, 0, 0.02);
+  height: calc(100% + 144px);
   
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
@@ -157,7 +160,9 @@ class ReferenceSidenav extends React.Component<Props, State> {
     }
 
     return (
-      <VerticalContainer>
+      <VerticalContainer
+        className={cx($p.pl60)}
+      >
         <FixedWrapper
           className={cx(
             $p.z3,

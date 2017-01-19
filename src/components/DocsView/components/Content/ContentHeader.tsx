@@ -51,6 +51,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
                 className={cx($p.f38, $p.black80, $p.fw3)}
                 style={{
                   flex: 1,
+                  marginRight: 10,
                 }}
               >{item.title}</h1>
               {item.beta && (

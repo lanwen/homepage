@@ -23,7 +23,8 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  max-width: 920px;
+  max-width: ${props => props.faq ? 880 : 920}px;
+  margin-right: ${props => props.faq ? 40 : 0}px;
  
   p { 
     line-height: 1.7;
@@ -43,6 +44,7 @@ const Container = styled.div`
     font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     list-style-type: none;
     margin-left: ${$v.size12};
+    width: calc(100% - 12px);
   }
 
   ul li:before {
@@ -235,7 +237,9 @@ export default class Markdown extends React.Component<Props, {}> {
         }
 
         return (
-          <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+          <div
+            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox)}
+          >
             <CodeMirror
               value={props.literal.trim()}
               options={{
@@ -290,7 +294,11 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout !== 'REFERENCE'} className={cx($p.relative)}>
+      <Container
+        biggerFont={this.props.layout !== 'REFERENCE'}
+        className={cx($p.relative)}
+        faq={this.props.item.layout === 'FAQ'}
+      >
         {renderer.render(this.props.ast)}
       </Container>
     )

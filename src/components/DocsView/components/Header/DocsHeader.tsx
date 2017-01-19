@@ -13,22 +13,11 @@ import { excludeProps } from '../../../../utils/components'
 const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 1440px;
+  max-width: 1332px;
+  z-index: 10;
   
   @media (max-width: ${breakpoints.p1000}px) {
     padding-top: ${$v.size25}
-  }
-  
-  .left-gradient::before {
-    content: "";
-    height: 35px;
-    position: absolute;
-    left: -10px;
-    width: 10px;
-    /* Permalink - : http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
-    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
   }
 `
 
@@ -68,6 +57,7 @@ const NavigationLinkQuickstartActive = `
 
 const NavigationLink = styled(excludeProps(Link, ['active', 'quickstart']))`
   transition: color ${$v.duration} linear;
+  margin-right: 23px;
 
   &:hover {
     color: ${$v.gray50};
@@ -188,7 +178,7 @@ interface State {
   endpointPopupOpened: boolean
 }
 
-export default class Header extends React.Component<{}, State> {
+export default class DocsHeader extends React.Component<{}, State> {
 
   state: State = {
     menuOpened: false,
@@ -198,7 +188,6 @@ export default class Header extends React.Component<{}, State> {
   render() {
 
     const loggedIn = cookiestore.has('graphcool_auth_token')
-    const isReference = location.pathname.includes('reference')
 
     const links = (
       <Links
@@ -289,8 +278,8 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-          <RightNav className={cx($p.mt6, $p.pointer, $p.bgWhite)}>
-            <div className={cx($p.relative, 'left-gradient')}>
+          <RightNav className={cx($p.mt6, $p.pointer)}>
+            <div className={cx($p.relative)}>
               <div
                 className={cx(
                   $p.flex,
@@ -336,12 +325,11 @@ export default class Header extends React.Component<{}, State> {
     )
 
     const WideHeader = () => (
-      <Root className={cx(
-        $p.flex, $p.pv38, $p.justifyStart, $p.relative,
-        {
-          [`${$p.mlAuto} ${$p.mrAuto}`]: !isReference,
-        },
-      )}>
+      <Root
+        className={cx(
+          $p.flex, $p.pv38, $p.justifyStart, $p.relative, $p.mlAuto, $p.mrAuto,
+        )}
+      >
         {logo}
         <Search className={$p.ml16}/>
         {links}
