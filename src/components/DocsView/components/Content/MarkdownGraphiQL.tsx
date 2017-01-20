@@ -1,11 +1,11 @@
 import * as React from 'react'
 // import * as GraphiQL from 'graphiql'
-import {CustomGraphiQL} from 'graphcool-graphiql'
+import {CustomGraphiQL} from '../../../GraphiQL/CustomGraphiQL'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
 import styled from 'styled-components'
-import 'graphcool-graphiql/graphiql_light.css'
+import './graphiql_light.css'
 
 interface Props {
   literal: string

@@ -33,7 +33,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'react-hot-loader/webpack!awesome-typescript-loader',
+      loader: 'babel-loader!awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
