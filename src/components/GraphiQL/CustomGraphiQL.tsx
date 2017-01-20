@@ -102,6 +102,11 @@ interface ToolbarButtonProps extends SimpleProps {
 
 export class CustomGraphiQL extends React.Component<Props, State> {
 
+  static Logo: (props: SimpleProps) => JSX.Element
+  static Toolbar: (props: SimpleProps) => JSX.Element
+  static Footer: (props: SimpleProps) => JSX.Element
+  static ToolbarButton: (props: ToolbarButtonProps) => JSX.Element
+
   public _storage: any
   public _editorQueryID: number
   public codeMirrorSizer
@@ -111,11 +116,28 @@ export class CustomGraphiQL extends React.Component<Props, State> {
   public editorBarComponent
   public docExplorerComponent: any // later React.Component<...>
 
-  static Logo: (props: SimpleProps) => JSX.Element
-  static Toolbar: (props: SimpleProps) => JSX.Element
-  static Footer: (props: SimpleProps) => JSX.Element
-  static ToolbarButton: (props: ToolbarButtonProps) => JSX.Element
+  _updateQueryFacts = debounce(150, query => {
+    const queryFacts = getQueryFacts(this.state.schema, query)
+    if (queryFacts) {
+      // Update operation name should any query names change.
+      const operationName = getSelectedOperationName(
+        this.state.operations,
+        this.state.operationName,
+        queryFacts.operations,
+      )
 
+      // Report changing of operationName if it changed.
+      const onEditOperationName = this.props.onEditOperationName
+      if (onEditOperationName && operationName !== this.state.operationName) {
+        onEditOperationName(operationName)
+      }
+
+      this.setState({
+        operationName,
+        ...queryFacts,
+      })
+    }
+  })
 
   constructor(props) {
     super(props)
@@ -352,7 +374,7 @@ export class CustomGraphiQL extends React.Component<Props, State> {
               />
               <div className='variable-editor' style={variableStyle}>
                 {this.props.showCodeGeneration && (
-                  <div className="graphiql-button">Generate Code</div>
+                  <div className='graphiql-button'>Generate Code</div>
                 )}
                 <div
                   className='variable-editor-title'
@@ -394,12 +416,12 @@ export class CustomGraphiQL extends React.Component<Props, State> {
               />
               {footer}
               {!this.state.response && (
-                <div className="intro">
+                <div className='intro'>
                   Hit the Play Button to get a response here
                 </div>
               )}
               {this.state.response && this.props.showDownloadJsonButton && (
-                <div className="download-button" onClick={this.handleDownloadJSON}>Download JSON</div>
+                <div className='download-button' onClick={this.handleDownloadJSON}>Download JSON</div>
               )}
             </div>
           </div>
@@ -447,9 +469,9 @@ export class CustomGraphiQL extends React.Component<Props, State> {
         const cursorIndex = editor.indexFromPos(cursor)
         editor.setValue(result)
         let added = 0
-        const markers = insertions.map(({index, string}) => editor.markText(
+        const markers = insertions.map(({index, str}) => editor.markText(
           editor.posFromIndex(index + added),
-          editor.posFromIndex(index + (added += string.length)),
+          editor.posFromIndex(index + (added += str.length)),
           {
             className: 'autoInsertedLeaf',
             clearOnEnter: true,
@@ -458,9 +480,9 @@ export class CustomGraphiQL extends React.Component<Props, State> {
         ))
         setTimeout(() => markers.forEach(marker => marker.clear()), 7000)
         let newCursorIndex = cursorIndex
-        insertions.forEach(({index, string}) => {
+        insertions.forEach(({index, str}) => {
           if (index < cursorIndex) {
-            newCursorIndex += string.length
+            newCursorIndex += str.length
           }
         })
         editor.setCursor(editor.posFromIndex(newCursorIndex))
@@ -719,29 +741,6 @@ export class CustomGraphiQL extends React.Component<Props, State> {
     }
     return null
   }
-
-  _updateQueryFacts = debounce(150, query => {
-    const queryFacts = getQueryFacts(this.state.schema, query)
-    if (queryFacts) {
-      // Update operation name should any query names change.
-      const operationName = getSelectedOperationName(
-        this.state.operations,
-        this.state.operationName,
-        queryFacts.operations,
-      )
-
-      // Report changing of operationName if it changed.
-      const onEditOperationName = this.props.onEditOperationName
-      if (onEditOperationName && operationName !== this.state.operationName) {
-        onEditOperationName(operationName)
-      }
-
-      this.setState({
-        operationName,
-        ...queryFacts,
-      })
-    }
-  })
 
   handleEditVariables = value => {
     this.setState({variables: value} as State)

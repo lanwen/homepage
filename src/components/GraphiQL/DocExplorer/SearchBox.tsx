@@ -32,7 +32,6 @@ export default class SearchBox extends React.Component<Props, State> {
     })
   }
 
-
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.isShown !== this.props.isShown ||
       nextState.value !== this.state.value
@@ -57,14 +56,14 @@ export default class SearchBox extends React.Component<Props, State> {
         `}</style>
         {
           this.props.isShown &&
-            <label className="label">
+            <label className='label'>
               <Icon src={require('graphcool-styles/icons/stroke/search.svg')} stroke={true} strokeWidth={3} />
               <input
-                className="input"
+                className='input'
                 onChange={this.handleChange}
-                type="text"
+                type='text'
                 value={this.state.value}
-                placeholder="Search the schemaa ..."
+                placeholder='Search the schemaa ...'
               />
             </label>
         }

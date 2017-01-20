@@ -24,7 +24,7 @@ const QueryHeader = ({selectedEndpoint, onChangeEndpoint, onPrettify, showEndpoi
       }
     `}</style>
     {showQueryTitle && (
-      <div className="editor-title">
+      <div className='editor-title'>
         Query
       </div>
     )}
@@ -34,7 +34,7 @@ const QueryHeader = ({selectedEndpoint, onChangeEndpoint, onPrettify, showEndpoi
         onChangeEndpoint={onChangeEndpoint}
       />
     )}
-    <div className="graphiql-button" onClick={onPrettify}>Prettify</div>
+    <div className='graphiql-button' onClick={onPrettify}>Prettify</div>
   </div>
 )
 

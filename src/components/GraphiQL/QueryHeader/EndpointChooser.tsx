@@ -33,7 +33,7 @@ const EndpointChooser = ({selectedEndpoint, onChangeEndpoint}: Props) => (
     `}</style>
 
     <div>API</div>
-    <div className="chooser">
+    <div className='chooser'>
       <div
         className={cx('endpoint', {
           'active': selectedEndpoint === 'RELAY',

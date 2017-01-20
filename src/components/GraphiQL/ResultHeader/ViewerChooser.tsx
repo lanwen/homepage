@@ -39,7 +39,7 @@ const ViewAs = ({selectedViewer, onChangeViewer}: Props) => (
     `}</style>
 
     <div>View As</div>
-    <div className="chooser">
+    <div className='chooser'>
       <div
         className={cx('viewer', {
           'active': selectedViewer === 'ADMIN',

@@ -18,7 +18,7 @@ const ResultHeader = ({selectedViewer, onChangeViewer, showViewAs, showResponseT
     `}</style>
     <div>
       {showResponseTitle && (
-        <div className="editor-title">Response</div>
+        <div className='editor-title'>Response</div>
       )}
     </div>
     {showViewAs && selectedViewer && onChangeViewer && (
