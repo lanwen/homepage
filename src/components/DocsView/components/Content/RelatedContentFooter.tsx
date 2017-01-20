@@ -75,10 +75,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         $p.w100,
       )}>
         {(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750) && (
-          <FakeSidebar></FakeSidebar>
-        )}
-        {(this.props.item.layout !== 'REFERENCE' && window.innerWidth > breakpoints.p1000) && (
-          <FakeSidebar></FakeSidebar>
+          <FakeSidebar />
         )}
         <Container
           className={cx(
