@@ -127,12 +127,13 @@ const Container = styled.div`
       margin: ${$v.size20} 0;
     }
     
-  blockquote {
-    border-left: ${$v.size06} solid ${$v.green50};
-    padding: ${$v.size12} ${$v.size06};
-    margin-left: 0;
-    width: 100%;
-  }
+    blockquote {
+      border-left: ${$v.size06} solid ${$v.green50};
+      padding: ${$v.size12} ${$v.size06};
+      margin-left: 0;
+      width: 100%;
+      padding-bottom: 0;
+    }
     
   }
   
@@ -183,7 +184,12 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+          <QuestionWrapper
+            className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
+            style={{
+              marginBottom: 20,
+            }}
+          >
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
