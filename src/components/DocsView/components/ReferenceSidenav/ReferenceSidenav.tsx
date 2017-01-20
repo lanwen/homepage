@@ -163,7 +163,9 @@ class ReferenceSidenav extends React.Component<Props, State> {
 
     return (
       <VerticalContainer
-        className={cx($p.pl60)}
+        className={cx(
+          window.innerWidth > breakpoints.p1360 ? $p.pl60 : 0,
+        )}
       >
         <FixedWrapper
           className={cx(

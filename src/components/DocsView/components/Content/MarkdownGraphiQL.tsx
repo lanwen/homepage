@@ -1,5 +1,6 @@
 import * as React from 'react'
-import * as GraphiQL from 'graphiql'
+// import * as GraphiQL from 'graphiql'
+import {CustomGraphiQL} from 'custom-graphiql'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
@@ -129,7 +130,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
 
     return (
       <Container disabled={dsl.disabled} className={cx($p.bgDarkerBlue, $p.mv25)}>
-        <GraphiQL
+        <CustomGraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
           response={this.state.response}

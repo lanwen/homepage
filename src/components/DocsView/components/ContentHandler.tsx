@@ -137,9 +137,10 @@ class ContentHandler extends React.Component<Props, {}> {
               <div
                 className={cx($p.bbox)}
                 style={{
-                  marginLeft: window.innerWidth < breakpoints.p1000 ? 0
+                  marginLeft: window.innerWidth < breakpoints.p1360 ? 25
                     : item.layout === 'FAQ' ? 121 : item.layout === 'REFERENCE' ? 61 : 0,
                   padding: window.innerWidth < breakpoints.p1000 ? '10px' : 0,
+                  marginRight: window.innerWidth < breakpoints.p1360 ? 25 : 0,
                 }}
               >
                 <ContentHeader item={item}/>

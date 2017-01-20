@@ -6,6 +6,7 @@ import CircleIcon from './CircleIcon'
 import {Item} from '../../../types/types'
 import Tooltip from './Content/Tooltip'
 import {Link} from 'react-router'
+import {breakpoints} from '../../../utils/constants'
 
 interface Props {
   item: Item
@@ -18,10 +19,13 @@ export default class FAQSidebar extends React.Component<Props, {}> {
       flex: 0 0 380px;
       background-color: rgba(0, 0, 0, 0.02);
       padding-top: 196px;
-      padding-right: 117px;
       top: -96px;
+      padding-right: 25px;
       position: relative;
       height: calc(100% + 96px);
+      @media (min-width: ${breakpoints.p1360}) {
+        padding-right: 117px;
+      }
     `
     const Square = styled.div`
       box-shadow:0 8px 18px rgba(0, 0, 0, 0.03),
@@ -32,7 +36,7 @@ export default class FAQSidebar extends React.Component<Props, {}> {
     const {item} = this.props
 
     return (
-      <RightSection className={cx($p.pl25, $p.pr10, $p.pv38)}>
+      <RightSection className={cx($p.pl25, $p.pv38, $p.pt96)}>
         <div>
           {item.relatedMore.length > 0 && (
             <Square className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mv38)}>
