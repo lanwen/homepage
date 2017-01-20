@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "removeComments": false,
+    "removeComments": true,
     "preserveConstEnums": true,
     "strictNullChecks": false,
     "jsx": "preserve",
