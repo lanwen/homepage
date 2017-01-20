@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Session} from '../Playground'
+import {Session} from '../types'
 import {Icon, $v} from 'graphcool-styles'
 
 interface Props {

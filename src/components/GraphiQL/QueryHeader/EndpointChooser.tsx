@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Endpoint} from '../../Playground'
+import {Endpoint} from '../../types'
 import * as cx from 'classnames'
 
 interface Props {

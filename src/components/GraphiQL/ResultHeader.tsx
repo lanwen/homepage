@@ -1,6 +1,6 @@
 import * as React from 'react'
 import ViewerChooser from './ResultHeader/ViewerChooser'
-import {Viewer} from '../Playground'
+import {Viewer} from '../types'
 
 interface Props {
   selectedViewer?: Viewer

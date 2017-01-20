@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import {Viewer} from '../../Playground'
+import {Viewer} from '../../types'
 import {Icon, $v} from 'graphcool-styles'
 
 interface Props {
