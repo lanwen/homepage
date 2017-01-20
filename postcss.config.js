@@ -4,7 +4,7 @@ module.exports = () => ({
       variables: () => require('graphcool-styles/dist/variables/variables.js'),
     },
     'postcss-inject': {
-      cssFilePath: 'graphcool-styles/dist/style.css'
+      cssFilePath: 'node_modules/graphcool-styles/dist/styles.css'
     },
     'postcss-cssnext': {},
     'postcss-inherit': {},

@@ -2479,22 +2479,9 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphcool-graphiql@0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/graphcool-graphiql/-/graphcool-graphiql-0.2.3.tgz#13456f8a7251a27e58c91cf8bfbfd01db3326a4e"
-  dependencies:
-    classnames "^2.2.5"
-    graphcool-styles "0.0.90"
-    graphiql "^0.8.1"
-    graphql "^0.8.2"
-    isomorphic-fetch "^2.2.1"
-    react "^15.4.2"
-    react-codemirror "^0.3.0"
-    react-dom "^15.4.2"
-
-graphcool-styles@0.0.80:
-  version "0.0.80"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.80.tgz#12fd714c887d13b40c91f0e1ea055fd00125f358"
+graphcool-styles@0.0.91:
+  version "0.0.91"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.91.tgz#e19519254792badd83fd593526604fcaf2ac9599"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"
@@ -2502,17 +2489,7 @@ graphcool-styles@0.0.80:
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
 
-graphcool-styles@0.0.90:
-  version "0.0.90"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.90.tgz#ea7a005f4cad68c8399d0d8405c8c9be19541f37"
-  dependencies:
-    html-webpack-plugin "^2.24.1"
-    interactive "^0.1.9"
-    object-assign "^4.1.0"
-    react-dom "^15.3.2"
-    webpack-dev-server "^1.16.2"
-
-graphiql@^0.8.0, graphiql@^0.8.1:
+graphiql@^0.8.0:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-0.8.1.tgz#3bb65ea5dc44e251650af61a9e478e00707e6ee2"
   dependencies:
@@ -3014,7 +2991,7 @@ isomorphic-fetch@2.2.0:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -4669,7 +4646,7 @@ react-document-title@2.0.1:
   dependencies:
     react-side-effect "^1.0.2"
 
-react-dom@^15.3.2, react-dom@^15.4.1, react-dom@^15.4.2:
+react-dom@^15.3.2, react-dom@^15.4.1:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
@@ -4796,7 +4773,7 @@ react-youtube@^7.3.0:
     lodash.isequal "^4.4.0"
     youtube-player "^4.0.1"
 
-react@^15.4.1, react@^15.4.2:
+react@^15.4.1:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -5518,7 +5495,7 @@ styled-jsx-postcss@^0.1.5:
     deasync "^0.1.9"
     postcss "^5.2.8"
     postcss-load-plugins "^2.2.0"
-    styled-jsx "git+https://github.com/timsuchanek/styled-jsx#build"
+    styled-jsx "^0.4.0"
 
 "styled-jsx@git+https://github.com/timsuchanek/styled-jsx#build":
   version "0.4.4"
