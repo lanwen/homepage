@@ -42,7 +42,13 @@ export default class PricingInfo extends React.Component<{}, {}> {
         containerMarginTop,
       )}>
          {/* FIRST ITEM */}
-         <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.flexFixed, firstItemPaddingRight)}>
+         <div className={cx(
+           $p.flex,
+           window.innerWidth > breakpoints.p1000 && $p.flex1,
+           $p.flexColumn,
+           window.innerWidth < breakpoints.p1000 && $p.flexFixed,
+           firstItemPaddingRight,
+         )}>
            <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
              <div>
                <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>

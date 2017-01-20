@@ -58,7 +58,7 @@ export default class OperationOverview extends React.Component<{}, State> {
     return (
       <div className={cx(
         $p.flex,
-        $p.flex1,
+        window.innerWidth > breakpoints.p1000 && $p.flex1,
         $p.flexColumn,
         containerPaddingLeft,
         containerMarginTop,
