@@ -36,7 +36,7 @@ const Container = styled.div`
   ul {
     color: ${$v.gray60};
     list-style-position: inside;
-    margin: ${$v.size25} 0;
+    margin: 0;
   }
   
   ul li {
@@ -57,7 +57,12 @@ const Container = styled.div`
     margin-left: 0;
     width: 100%;
     box-sizing: border-box;
-    
+    p {
+      margin-bottom: 0;
+    }
+    >div {
+      margin-bottom: 0 !important;
+    }
   }
   
   blockquote p {
