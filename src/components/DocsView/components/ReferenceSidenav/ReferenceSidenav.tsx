@@ -12,8 +12,11 @@ import { Item, NestedItem } from '../../../../types/types'
 import { throttle } from 'lodash'
 
 const VerticalContainer = styled.div`
-  flex: 0 0 300px;
+  flex: 0 0 250px;
+  position: relative;
+  top: -144px;
   background-color: rgba(0, 0, 0, 0.02);
+  height: calc(100% + 144px);
   
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
@@ -44,6 +47,8 @@ interface State {
   absolute: boolean,
   containerOffset: number,
 }
+
+const TOP = 97
 
 class ReferenceSidenav extends React.Component<Props, State> {
 
@@ -85,7 +90,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           if (this.bodyTopAtIntersection === -1) {
             this.bodyTopAtIntersection = bodyTop
           }
-          const containerOffset = threshold - containerHeight - 144 - 45
+          const containerOffset = threshold - containerHeight - TOP - 45
           this.setState({
             absolute: true,
             fixed: false,
@@ -149,7 +154,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
 
     let style = {}
     if (fixed) {
-      style['transform'] = `translateY(-${activeOffset - 25}px)`
+      style['transform'] = `translateY(-${activeOffset + TOP + 25}px)`
     }
 
     if (containerOffset) {
@@ -157,7 +162,9 @@ class ReferenceSidenav extends React.Component<Props, State> {
     }
 
     return (
-      <VerticalContainer>
+      <VerticalContainer
+        className={cx($p.pl60)}
+      >
         <FixedWrapper
           className={cx(
             $p.z3,
@@ -221,7 +228,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
     let containerTop = 0
 
     if (this.containerRef) {
-      containerTop = this.getTop(this.containerRef) - 144 // 144 is the margin of the sidebar to the top of the document
+      containerTop = this.getTop(this.containerRef) - TOP // TOP is the margin of the sidebar to the top of the document
     }
 
     const top = this.getTop(element)

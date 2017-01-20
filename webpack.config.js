@@ -2,16 +2,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-const vendor = [
-  'classnames',
-  'graphcool-styles',
-  'styled-components',
-  'react',
-  'react-dom',
-  'react-helmet',
-  'react-router',
-]
-
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
@@ -26,7 +16,6 @@ module.exports = {
       'codemirror-graphql/mode',
       './src/main.tsx',
     ],
-    vendor,
   },
   output: {
     filename: '[name].[hash].js',

@@ -23,7 +23,8 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  max-width: 920px;
+  max-width: ${props => props.faq ? 880 : 920}px;
+  margin-right: ${props => props.faq ? 40 : 0}px;
  
   p { 
     line-height: 1.7;
@@ -34,13 +35,20 @@ const Container = styled.div`
   
   ul {
     color: ${$v.gray60};
-    list-style-position: outside;
+    list-style-position: inside;
     margin: ${$v.size25} 0;
   }
   
   ul li {
-    line-height: 1.7;
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}
+    line-height: 2;
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    list-style-type: none;
+    margin-left: ${$v.size12};
+    width: calc(100% - 12px);
+  }
+
+  ul li:before {
+    content: '\\2022 \\00a0 \\00a0 \\00a0';
   }
   
   blockquote {
@@ -85,26 +93,25 @@ const Container = styled.div`
   img {
     height: auto;
     max-width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
     margin-top: 60px;
     margin-bottom: 60px;
+    width: 100%;
   }
   
   @media (max-width: ${breakpoints.p900}px) {
     margin-left: 6px;
   }
-    
+
   @media (max-width: ${breakpoints.p500}px) {
-  
+
     p {
       line-height: 1.5;
       color: ${$v.gray60}; 
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
     }
-    
+
     ul li {
-      line-height: 1.5;
+      line-height: 1.7;
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
     
@@ -127,6 +134,10 @@ const Container = styled.div`
     width: 100%;
   }
     
+  }
+  
+  .docs-codemirror .CodeMirror-scroll {
+    height: auto;
   }
 `
 
@@ -214,7 +225,7 @@ export default class Markdown extends React.Component<Props, {}> {
           props.language === 'graphql' &&
           dslValid(props.literal.trim())) {
           return (
-            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -229,7 +240,9 @@ export default class Markdown extends React.Component<Props, {}> {
         }
 
         return (
-          <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+          <div
+            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
+          >
             <CodeMirror
               value={props.literal.trim()}
               options={{
@@ -284,7 +297,11 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout !== 'REFERENCE'} className={cx($p.relative)}>
+      <Container
+        biggerFont={this.props.layout !== 'REFERENCE'}
+        className={cx($p.relative)}
+        faq={this.props.item.layout === 'FAQ'}
+      >
         {renderer.render(this.props.ast)}
       </Container>
     )

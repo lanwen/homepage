@@ -20,7 +20,15 @@ const ContainerActive = `
 `
 
 const Container = styled.div`
+  margin-right: 23px;
   ${props => props.active && ContainerActive}
+  .overlay {
+    display: none;
+  }
+  
+  &:hover .overlay {
+    display: flex;
+  }
 `
 
 const NavigationLink = styled(Link)`
@@ -38,28 +46,17 @@ const Headline = styled.div`
 const Overlay = styled.div`
   min-width: ${$v.size96};
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
-  top: -${$v.size16};
-  left: -${$v.size16};
+  top: -16px;
+  left: -22px;
 `
 
-interface State {
-  showOverlay: boolean,
-}
-
-export default class ResourcesHover extends React.Component<{}, State> {
-
-  state = {
-    showOverlay: false,
-  }
+export default class ResourcesHover extends React.Component<{}, {}> {
 
   render() {
     return (
       <Container
         className={cx($p.relative, $p.overflowVisible)}
         active={location.pathname.startsWith('/docs/tutorials') || location.pathname.startsWith('/docs/faq') }
-        onMouseEnter={() => this.setState({showOverlay: true} as State)}
-        onMouseLeave={() => this.setState({showOverlay: false} as State)}
-        onClick={() => this.setState({showOverlay: !this.state.showOverlay} as State)}
       >
         <div
           className={cx(
@@ -73,8 +70,7 @@ export default class ResourcesHover extends React.Component<{}, State> {
         >
           Resources
         </div>
-        {this.state.showOverlay &&
-        <Overlay className={cx($p.bgWhite, $p.absolute, $p.flexColumn, $p.flex, $p.flex1, $p.z5)}>
+        <Overlay className={cx($p.bgWhite, $p.absolute, $p.flexColumn, $p.flex, $p.flex1, $p.z5, 'overlay')}>
           <Headline
             className={cx($p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
           >
@@ -99,7 +95,6 @@ export default class ResourcesHover extends React.Component<{}, State> {
             </NavigationLink>
           </div>
         </Overlay>
-        }
       </Container>
     )
   }

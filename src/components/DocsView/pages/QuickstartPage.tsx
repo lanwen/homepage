@@ -29,7 +29,7 @@ class QuickstartPage extends React.Component<{}, {}> {
             title='Quickstart'
             text={
               'The fastest way to get started. Select your technology of choice, download an example project and'
-            + 'start building.'
+            + ' start building.'
             }
             link='/docs/quickstart'
           />
