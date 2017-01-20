@@ -15,7 +15,6 @@
     "test": "tslint \"src/**/*.ts{,x}\""
   },
   "pre-push": [
-    "test"
   ],
   "resolutions": {
     "styled-jsx": "git+https://github.com/timsuchanek/styled-jsx#build"

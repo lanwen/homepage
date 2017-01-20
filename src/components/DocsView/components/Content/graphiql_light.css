@@ -746,7 +746,7 @@
 /* CURSOR */
 
 .docs-graphiql .CodeMirror div.CodeMirror-cursor {
-    border-left: 1px solid rgba(255,255,255,.4);
+    border-left: 1px solid rgba(0,0,0,.4);
 }
 /* Shown when moving in bi-directional text */
 .docs-graphiql .CodeMirror div.CodeMirror-secondarycursor {
@@ -828,7 +828,7 @@
 
 /* Default styles for common addons */
 
-.docs-graphiql div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
+.docs-graphiql div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0 !important;}
 .docs-graphiql div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .docs-graphiql .CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
 .docs-graphiql .CodeMirror-activeline-background {background: #e8f2ff;}
