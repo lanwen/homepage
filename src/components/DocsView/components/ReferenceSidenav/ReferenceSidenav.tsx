@@ -166,6 +166,9 @@ class ReferenceSidenav extends React.Component<Props, State> {
         className={cx(
           window.innerWidth > breakpoints.p1360 ? $p.pl60 : 0,
         )}
+        style={{
+          top: fixed ? 0 : -144,
+        }}
       >
         <FixedWrapper
           className={cx(
