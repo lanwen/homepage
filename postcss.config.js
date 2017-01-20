@@ -1,10 +1,10 @@
 module.exports = () => ({
   plugins: {
     'postcss-simple-vars': {
-      variables: () => require('./variables'),
+      variables: () => require('graphcool-styles/dist/variables/variables.js'),
     },
     'postcss-inject': {
-      cssFilePath: './style.css'
+      cssFilePath: 'graphcool-styles/dist/style.css'
     },
     'postcss-cssnext': {},
     'postcss-inherit': {},
