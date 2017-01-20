@@ -25,8 +25,7 @@ exports.default = () => {
     ]
 
     return {
-      // routes: routes.concat(docsItemRoutes),
-      routes: ['/docs/tutorials/react-apollo-auth0-pheiph4ooj'],
+      routes: routes.concat(docsItemRoutes),
       https: true,
       timeout: 2000,
       hostname: 'https://www.graph.cool',
