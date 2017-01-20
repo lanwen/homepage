@@ -1,10 +1,11 @@
 import * as React from 'react'
 // import * as GraphiQL from 'graphiql'
-import {CustomGraphiQL} from 'custom-graphiql'
+import {CustomGraphiQL} from 'graphcool-graphiql'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
 import styled from 'styled-components'
+import 'graphcool-graphiql/graphiql_light.css'
 
 interface Props {
   literal: string
@@ -129,13 +130,16 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     }
 
     return (
-      <Container disabled={dsl.disabled} className={cx($p.bgDarkerBlue, $p.mv25)}>
+      <Container disabled={dsl.disabled} className={cx($p.mv25, 'docs-graphiql')}>
         <CustomGraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
           response={this.state.response}
           variables={this.state.variables}
           onEditQuery={(query) => this.setState({ query } as State)}
+          showViewAs={false}
+          showQueryTitle={true}
+          showResponseTitle={true}
         />
       </Container>
     )
