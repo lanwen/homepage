@@ -13,10 +13,9 @@ interface Props {
 }
 
 const Beta = styled.div`
-  padding-top: 2px;
-  padding-bottom: 3px;
-  top: -20px;
-  right: -30px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  vertical-align: super;
 `
 
 const IconWrapper = styled.div`
@@ -24,11 +23,16 @@ const IconWrapper = styled.div`
 `
 
 export default class ContentHeader extends React.Component<Props, {}> {
+
+
   render() {
     const displayIcon = window.innerWidth > breakpoints.p900
     const {item} = this.props
     const date = new Date(item.lastModified)
     const {simpleRelayTwin, path, layout} = item
+
+    const rightPaddingTitle = item.beta ? '50px' : 0
+
     return (
       <div className={cx($p.flex, $p.pt96)}>
         {displayIcon && (
@@ -48,30 +52,34 @@ export default class ContentHeader extends React.Component<Props, {}> {
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsStart)}>
             <div className={$p.relative}>
               <h1
-                className={cx($p.f38, $p.black80, $p.fw3)}
+                className={cx(
+                  $p.f38,
+                  $p.black80,
+                  $p.fw3,
+                )}
                 style={{
                   flex: 1,
-                  marginRight: 10,
+                  paddingRight: rightPaddingTitle,
                 }}
-              >{item.title}</h1>
-              {item.beta && (
-                <Beta
-                  className={cx(
+              >
+                {item.title} {item.beta && (
+                  <Beta
+                    className={cx(
+                    $p.dib,
                     $p.f14,
                     $p.ttu,
                     $p.ph6,
                     $p.br2,
                     $p.bgGreen,
-                    $p.absolute,
-                    $p.top0,
-                    $p.right0,
                     $p.fw6,
                     $p.white,
                   )}
-                >
-                  beta
-                </Beta>
-              )}
+                  >
+                    beta
+                  </Beta>
+                )}
+              </h1>
+
             </div>
             {layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0 && (
               <SimpleRelayTwin
