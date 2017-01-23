@@ -21,8 +21,8 @@ const StyledLink = styled(Link)`
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
   
   @media (max-width: ${breakpoints.p400}px) {
-    margin-right: 16px;
-    margin-left: 16px;
+    margin-right: 8px;
+    margin-left: 8px;
   }
 `
 
