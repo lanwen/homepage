@@ -138,12 +138,11 @@ export default class DocsOverview extends React.Component<{}, {}> {
           />
         </Container>
         <Community />
-        <Try />
-        {/*{!loggedIn ? (*/}
-            {/*<Try />*/}
-          {/*) : (*/}
-            {/*<OpenConsole />*/}
-          {/*)}*/}
+        {!loggedIn ? (
+            <Try />
+          ) : (
+            <OpenConsole />
+          )}
       </ContentContainer>
     )
   }
