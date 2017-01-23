@@ -13,10 +13,23 @@ const Button = styled.a`
   }
 `
 
+const Container = styled.div`
+  @media (max-width: ${breakpoints.p400}px) {
+    margin-top: 120px;
+  }
+`
+
 export default class Try extends React.Component<{}, {}> {
   render() {
     return (
-      <div className={cx($p.flex, $p.flexColumn, $p.justifyCenter, $p.itemsCenter, $p.pt38, $p.pb96)}>
+      <Container className={cx(
+        $p.flex,
+        $p.flexColumn,
+        $p.justifyCenter,
+        $p.itemsCenter,
+        $p.pt38,
+        $p.pb96,
+      )}>
         <div className={cx($p.f25, $p.fw3)}>Not a customer yet? Try it out for free.</div>
         <Button
           href='https://graph.cool/signup'
@@ -24,7 +37,7 @@ export default class Try extends React.Component<{}, {}> {
         >
           SIGN UP
         </Button>
-      </div>
+      </Container>
     )
   }
 }
