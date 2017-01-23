@@ -5,7 +5,8 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import {Link} from 'react-router'
 import styled from 'styled-components'
-import {Layout} from '../../../../types/types' import {breakpoints} from '../../../../utils/constants'
+import {Layout} from '../../../../types/types'
+import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   data: any
