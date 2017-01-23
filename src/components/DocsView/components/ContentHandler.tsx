@@ -93,6 +93,22 @@ class ContentHandler extends React.Component<Props, {}> {
       ])
     }
 
+    let contentBoxMarginLeft = 0
+    if (window.innerWidth < breakpoints.p1360) {
+      contentBoxMarginLeft = 25
+    } else if (item.layout === 'FAQ') {
+      contentBoxMarginLeft = 121
+    } else if (item.layout === 'REFERENCE') {
+      contentBoxMarginLeft = 61
+    }
+
+    let contentBoxMarginRight = 0
+    if (item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200) {
+      contentBoxMarginRight = 50
+    } else if (window.innerWidth < breakpoints.p1360) {
+      contentBoxMarginRight = 25
+    }
+
     return (
       <div onClick={this.onClick} className={cx(
         $p.w100,
@@ -135,13 +151,13 @@ class ContentHandler extends React.Component<Props, {}> {
                 <ReferenceSidenav currentAlias={item.alias}/>
               )}
               <div
-                className={cx($p.bbox)}
+                className={cx(
+                  $p.bbox,
+                  window.innerWidth < breakpoints.p1000 && $p.pa10,
+                )}
                 style={{
-                  marginLeft: window.innerWidth < breakpoints.p1360 ? 25
-                    : item.layout === 'FAQ' ? 121 : item.layout === 'REFERENCE' ? 61 : 0,
-                  padding: window.innerWidth < breakpoints.p1000 ? '10px' : 0,
-                  marginRight: item.layout === 'FAQ' &&
-                   window.innerWidth > breakpoints.p1200 ? 50 : window.innerWidth < breakpoints.p1360 ? 25 : 0,
+                  marginLeft: {contentBoxMarginLeft},
+                  marginRight: {contentBoxMarginRight},
                 }}
               >
                 <ContentHeader item={item}/>

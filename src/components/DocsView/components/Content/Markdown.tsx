@@ -23,7 +23,7 @@ interface Props {
 const Container = styled.div`
   margin-left: 50px;
   max-width: ${props => props.faq ? 880 : 920}px;
-  margin-right: ${props => props.faq ? 40 : 0}px;
+  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 0}px;
  
   p { 
     line-height: 1.7;
@@ -114,7 +114,7 @@ const Container = styled.div`
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
     }
 
-    ul li {
+    ul li { 
       line-height: 1.7;
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
@@ -139,6 +139,12 @@ const Container = styled.div`
       padding-bottom: 0;
     }
     
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    code {
+      word-break: break-word;
+    }
   }
   
   .docs-codemirror .CodeMirror-scroll {
