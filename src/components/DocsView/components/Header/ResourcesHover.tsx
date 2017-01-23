@@ -39,6 +39,14 @@ const NavigationLink = styled(Link)`
   }
 `
 
+const HoveredA = styled.a`
+  transition: color ${$v.duration} linear;
+
+  &:hover {
+    color: ${$v.gray50};
+  }
+`
+
 const Headline = styled.div`
   padding: calc(${$v.size16} + 10px) calc(${$v.size16} * 2);
 `
@@ -81,14 +89,14 @@ export default class ResourcesHover extends React.Component<{}, {}> {
               <CircleIcon type='TUTORIAL'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Tutorials</div>
             </NavigationLink>
-            <a
+            <HoveredA
               className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)}
               href='https://github.com/graphcool-examples'
               target='_blank'
             >
               <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
-            </a>
+            </HoveredA>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq'>
               <CircleIcon type='FAQ'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
