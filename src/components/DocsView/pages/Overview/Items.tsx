@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import {Link} from 'react-router'
 import styled from 'styled-components'
-import {Layout} from '../../../../types/types'
+import {Layout} from '../../../../types/types' import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   data: any
@@ -17,8 +17,13 @@ interface Props {
 }
 
 const StyledLink = styled(Link)`
-  flex: 0 0 325px;
+  max-width: 325px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
 `
 
 const ImgWrapper = styled.div`
