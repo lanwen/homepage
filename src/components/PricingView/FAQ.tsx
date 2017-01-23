@@ -3,7 +3,6 @@ import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import { Link } from 'react-router'
-import * as Smooch from 'smooch'
 import {breakpoints} from '../../utils/constants'
 
 const Box = styled.div`
@@ -191,6 +190,9 @@ export default class FAQ extends React.Component<{}, {}> {
   }
 
   private openChat = () => {
+    if (typeof Smooch === 'undefined') {
+      return
+    }
     const message = 'Hey! I have further questions to the FAQ:'
     if (!Smooch.isOpened()) {
       Smooch.open()

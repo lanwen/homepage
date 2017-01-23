@@ -162,6 +162,8 @@ const Links = styled.div`
 `
 
 const Container = styled.div`
+  padding-left: 51px;
+  padding-right: 58px;
   @media (max-width: ${breakpoints.p1200}px) {
     padding: 0 25px;
   }
@@ -195,7 +197,7 @@ export default class DocsHeader extends React.Component<{}, State> {
           $p.flex,
           window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow,
           window.innerWidth < breakpoints.p1000 && $p.mb10,
-          window.innerWidth > breakpoints.p1000 && $p.mr16,
+          window.innerWidth > breakpoints.p1000 && $p.mr10,
           $p.mlAuto,
         )}
         onClick={this.closeMenu}
@@ -381,7 +383,7 @@ export default class DocsHeader extends React.Component<{}, State> {
     return (
       <Container
         className={cx(
-          $p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38,
+          $p.absolute, $p.top0, $p.right0, $p.left0,
         )}
       >
         {window.innerWidth > breakpoints.p1000 ? WideHeader() : NarrowHeader()}

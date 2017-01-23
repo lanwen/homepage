@@ -40,6 +40,7 @@ const More = styled.div`
 
 const Further = styled.div`
   margin-top: 50px;
+  max-width: 300px;
   
   @media(max-width: ${breakpoints.p1000}px) {
     margin: 25px;
@@ -74,10 +75,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         $p.w100,
       )}>
         {(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750) && (
-          <FakeSidebar></FakeSidebar>
-        )}
-        {(this.props.item.layout !== 'REFERENCE' && window.innerWidth > breakpoints.p1000) && (
-          <FakeSidebar></FakeSidebar>
+          <FakeSidebar />
         )}
         <Container
           className={cx(
@@ -86,6 +84,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
             this.props.displayAsColumns && $p.itemsCenter,
             $p.ph10,
             $p.relative,
+            $p.justifyCenter,
           )}
         >
           {this.props.item.relatedMore.length > 0 && (

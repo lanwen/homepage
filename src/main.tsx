@@ -8,7 +8,6 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
 import routes from './routes'
-import * as Smooch from 'smooch'
 
 import './style'
 
@@ -72,12 +71,17 @@ render()
 //   module.hot.accept(render)
 // }
 
-if (navigator.userAgent !== 'SSR') {
-  FastClick.attach(document.body)
+let interval = setInterval(initSmooch, 1000)
 
-  if (Smooch) {
-    Smooch.init({
-      appToken: __SMOOCH_TOKEN__,
-    })
+function initSmooch() {
+  if (navigator.userAgent !== 'SSR') {
+    FastClick.attach(document.body)
+
+    if (typeof Smooch !== 'undefined') {
+      Smooch.init({
+        appToken: __SMOOCH_TOKEN__,
+      })
+      clearInterval(interval)
+    }
   }
 }

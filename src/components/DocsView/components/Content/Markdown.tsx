@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
-import * as slug from 'slug'
+import * as slug from 'slugify'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import {$p, $v} from 'graphcool-styles'
@@ -10,7 +10,6 @@ import {Layout, Item} from '../../../../types/types'
 import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
-import * as Smooch from 'smooch'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
@@ -36,7 +35,7 @@ const Container = styled.div`
   ul {
     color: ${$v.gray60};
     list-style-position: inside;
-    margin: ${$v.size25} 0;
+    margin: 0;
   }
   
   ul li {
@@ -57,7 +56,12 @@ const Container = styled.div`
     margin-left: 0;
     width: 100%;
     box-sizing: border-box;
-    
+    p {
+      margin-bottom: 0;
+    }
+    >div {
+      margin-bottom: 0 !important;
+    }
   }
   
   blockquote p {
@@ -127,12 +131,13 @@ const Container = styled.div`
       margin: ${$v.size20} 0;
     }
     
-  blockquote {
-    border-left: ${$v.size06} solid ${$v.green50};
-    padding: ${$v.size12} ${$v.size06};
-    margin-left: 0;
-    width: 100%;
-  }
+    blockquote {
+      border-left: ${$v.size06} solid ${$v.green50};
+      padding: ${$v.size12} ${$v.size06};
+      margin-left: 0;
+      width: 100%;
+      padding-bottom: 0;
+    }
     
   }
   
@@ -183,7 +188,12 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+          <QuestionWrapper
+            className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
+            style={{
+              marginBottom: 20,
+            }}
+          >
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
@@ -204,7 +214,7 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       Heading: (props) => {
-        const id = slug(childrenToString(props.children), {lower: true})
+        const id = slug(childrenToString(props.children).toLowerCase())
         const newProps = Object.assign({}, props, {
           id,
         })
@@ -330,6 +340,9 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
+    if (typeof Smooch === 'undefined') {
+      return
+    }
     if (!Smooch.isOpened()) {
       Smooch.open()
     }

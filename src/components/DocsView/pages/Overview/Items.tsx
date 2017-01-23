@@ -13,6 +13,7 @@ interface Props {
   layout?: Layout
   aliases?: string[]
   showPreview?: boolean
+  revert?: boolean
 }
 
 const StyledLink = styled(Link)`
@@ -48,7 +49,7 @@ const Container = styled.div`
 
 class Items extends React.Component<Props, {}> {
   render() {
-    const {data, className, showPreview, aliases} = this.props
+    const {data, className, showPreview, aliases, revert} = this.props
 
     if (data.loading) {
       return <div>Loading...</div>
@@ -59,6 +60,10 @@ class Items extends React.Component<Props, {}> {
       pointer = aliases.map(alias => data.aliases.find(item => item.alias === alias))
     } else {
       pointer = data.layout
+    }
+
+    if (revert) {
+      pointer = pointer.reverse()
     }
 
     return (

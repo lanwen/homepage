@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 
+
 module.exports = {
   entry: {
     app: [
@@ -34,7 +35,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'awesome-typescript-loader',
+      loader: 'babel-loader!awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
