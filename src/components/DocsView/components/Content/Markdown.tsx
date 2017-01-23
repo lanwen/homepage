@@ -69,7 +69,11 @@ const Container = styled.div`
   }
   
   a {
-    color: ${$v.gray80};
+    color: ${$v.gray60};
+
+    &:hover {
+      color: ${$v.gray80};
+    }
   }
   
   h2, h3 {
@@ -100,6 +104,10 @@ const Container = styled.div`
     margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
+  }
+  
+  .CodeMirror-gutters {
+    height: auto !important;
   }
   
   @media (max-width: ${breakpoints.p900}px) {
