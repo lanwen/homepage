@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 
+
 module.exports = {
   entry: {
     app: [

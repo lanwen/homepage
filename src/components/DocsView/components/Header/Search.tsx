@@ -163,6 +163,16 @@ class Search extends React.Component<Props,{}> {
               >
               </Link>
             ))}
+            <div className={cx($p.flex, $p.pa6, $p.ma6, $p.itemsCenter)}>
+              <div className={cx($p.black50, $p.f14)}>Powered by</div>
+              <img
+                className={cx($p.ml6)}
+                style={{
+                  width: 50,
+                }}
+                src={require('../../../../assets/graphics/docs/algolia.svg')}
+              />
+            </div>
           </Results>
         )}
       </div>

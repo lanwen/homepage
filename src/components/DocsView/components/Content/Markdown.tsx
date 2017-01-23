@@ -2,7 +2,7 @@ import * as React from 'react'
 import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
-import * as slug from 'slug'
+import * as slug from 'slugify'
 import styled from 'styled-components'
 import * as cx from 'classnames'
 import {$p, $v} from 'graphcool-styles'
@@ -10,7 +10,6 @@ import {Layout, Item} from '../../../../types/types'
 import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
-import * as Smooch from 'smooch'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
@@ -215,7 +214,7 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       Heading: (props) => {
-        const id = slug(childrenToString(props.children), {lower: true})
+        const id = slug(childrenToString(props.children).toLowerCase())
         const newProps = Object.assign({}, props, {
           id,
         })
@@ -341,6 +340,9 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
+    if (typeof Smooch === 'undefined') {
+      return
+    }
     if (!Smooch.isOpened()) {
       Smooch.open()
     }

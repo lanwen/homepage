@@ -2,7 +2,6 @@ import * as React from 'react'
 import Header from '../Header'
 import Footer from '../Footer/Footer'
 import { $p, $g } from 'graphcool-styles'
-import * as Smooch from 'smooch'
 import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import { Link } from 'react-router'
@@ -65,6 +64,9 @@ export default class NotFoundView extends React.Component<{}, {}> {
   }
 
   private openChat = () => {
+    if (typeof Smooch === 'undefined') {
+      return
+    }
     if (!Smooch.isOpened()) {
       Smooch.open()
     }
