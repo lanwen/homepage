@@ -239,30 +239,38 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       CodeBlock (props) {
+        const language = {
+          'js': 'javascript',
+          'json': { name: 'application/javascript', json: true },
+          'sh': 'shell',
+          'graphql': 'graphql',
+        }[props.language]
+
         if (window.innerWidth > breakpoints.p650 &&
-            props.language === 'graphql' &&
+            language === 'graphql' &&
             dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
-        } else if (window.innerWidth < breakpoints.p650 &&
-          props.language === 'graphql' &&
-          dslValid(props.literal.trim())) {
+        } else if (
+          window.innerWidth < breakpoints.p650 &&
+          language === 'graphql' &&
+          dslValid(props.literal.trim())
+        ) {
           return (
             <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
-                lineNumbers: true,
-                mode: props.language,
-                readOnly: true,
-                lineWrapping: true,
-              }}
+                  lineNumbers: true,
+                  mode: language,
+                  readOnly: true,
+                  lineWrapping: true,
+                }}
               />
             </div>
           )
         }
-
         return (
           <div
             className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
@@ -271,7 +279,7 @@ export default class Markdown extends React.Component<Props, {}> {
               value={props.literal.trim()}
               options={{
                 lineNumbers: true,
-                mode: props.language,
+                mode: language,
                 readOnly: true,
                 lineWrapping: true,
               }}
