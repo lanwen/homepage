@@ -190,6 +190,7 @@ export default class DocsHeader extends React.Component<{}, State> {
   render() {
 
     const loggedIn = cookiestore.has('graphcool_auth_token')
+        && cookiestore.has('graphcool_last_used_project_id')
 
     const links = (
       <Links

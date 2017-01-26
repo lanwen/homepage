@@ -146,8 +146,14 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
   }
 
   componentWillMount() {
-    const authToken = cookiestore.get('graphcool_auth_token')
-    const lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    let authToken = ''
+    let lastUsedProjectId = ''
+    try {
+      authToken = cookiestore.get('graphcool_auth_token')
+      lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    } catch (e) {
+      //
+    }
 
     const query = `
       {
