@@ -24,7 +24,6 @@ const IconWrapper = styled.div`
 
 export default class ContentHeader extends React.Component<Props, {}> {
 
-
   render() {
     const displayIcon = window.innerWidth > breakpoints.p900
     const {item} = this.props
