@@ -67,21 +67,17 @@ function render() {
 
 render()
 
-// if (module.hot) {
-//   module.hot.accept(render)
-// }
+const interval = setInterval(initIntercom, 1000)
 
-let interval = setInterval(initSmooch, 1000)
-
-function initSmooch() {
-  if (navigator.userAgent !== 'SSR') {
-    FastClick.attach(document.body)
-
-    if (typeof Smooch !== 'undefined') {
-      Smooch.init({
-        appToken: __SMOOCH_TOKEN__,
-      })
-      clearInterval(interval)
-    }
+function initIntercom() {
+  if (typeof Intercom !== 'undefined' && navigator.userAgent !== 'SSR') {
+    Intercom('boot', {
+      app_id: __INTERCOM_ID__
+    });
+    clearInterval(interval)
   }
+}
+
+if (navigator.userAgent !== 'SSR') {
+  FastClick.attach(document.body)
 }
