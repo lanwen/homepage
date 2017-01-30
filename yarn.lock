@@ -2033,6 +2033,13 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
+drumstick@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/drumstick/-/drumstick-1.0.8.tgz#3cc7c4252cc1d6e61dd2638aa001ac4d5977f6aa"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+    node-interval "^0.1.1"
+
 duplexer2@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -3062,7 +3069,7 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -3568,6 +3575,10 @@ node-fetch@^1.0.1, node-fetch@^1.5.2:
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+node-interval@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/node-interval/-/node-interval-0.1.1.tgz#c45137bb266bb740a50d0db335cb008b7c5b14d0"
 
 node-libs-browser@^2.0.0:
   version "2.0.0"

@@ -7,6 +7,7 @@ import { AppContainer } from 'react-hot-loader'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
+import * as cookiestore from 'cookiestore'
 import routes from './routes'
 
 import './style'
@@ -70,10 +71,11 @@ render()
 const interval = setInterval(initIntercom, 1000)
 
 function initIntercom() {
-  if (typeof Intercom !== 'undefined' && navigator.userAgent !== 'SSR') {
+  if (window.Intercom && navigator.userAgent !== 'SSR') {
     Intercom('boot', {
-      app_id: __INTERCOM_ID__
-    });
+      app_id: __INTERCOM_ID__,
+      user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
+    })
     clearInterval(interval)
   }
 }
