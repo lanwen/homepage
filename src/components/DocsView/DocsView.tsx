@@ -21,7 +21,11 @@ export default class DocsView extends React.Component<Props, {}> {
   componentDidMount() {
     window.addEventListener('resize', this.rerender)
 
-    if (__HEARTBEAT_ADDR__ && cookiestore.has('graphcool_auth_token') && cookiestore.has('graphcool_last_used_project_id')) {
+    if (
+      __HEARTBEAT_ADDR__ &&
+      cookiestore.has('graphcool_auth_token') &&
+      cookiestore.has('graphcool_last_used_project_id')
+    ) {
       drumstick.start({
         endpoint: __HEARTBEAT_ADDR__,
         payload: () => ({
