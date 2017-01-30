@@ -95,7 +95,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     let contentBoxMarginLeft = 0
     if (window.innerWidth < breakpoints.p1360) {
-      contentBoxMarginLeft = 25
+      contentBoxMarginLeft = 40
     } else if (item.layout === 'FAQ') {
       contentBoxMarginLeft = 121
     } else if (item.layout === 'REFERENCE') {
@@ -156,8 +156,8 @@ class ContentHandler extends React.Component<Props, {}> {
                   window.innerWidth < breakpoints.p1000 && $p.pa10,
                 )}
                 style={{
-                  marginLeft: {contentBoxMarginLeft},
-                  marginRight: {contentBoxMarginRight},
+                  marginLeft: contentBoxMarginLeft,
+                  marginRight: contentBoxMarginRight,
                 }}
               >
                 <ContentHeader item={item}/>
