@@ -3,7 +3,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "strictNullChecks": false,
-    "jsx": "preserve",
+    "jsx": "react",
     "pretty": true,
     "sourceMap": true,
     "target": "es5",

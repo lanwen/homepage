@@ -35,7 +35,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader!awesome-typescript-loader',
+      loader: 'awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',

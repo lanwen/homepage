@@ -160,6 +160,7 @@
     -ms-flex: 1;
     flex: 1;
     position: relative;
+    border-left: 4px solid rgb(233,233,233);
 }
 
 .docs-graphiql .graphiql-container .docExplorerWrap {
@@ -278,6 +279,15 @@
     position: relative;
     overflow: hidden;
     border-bottom-right-radius: 2px;
+    background: none !important;
+}
+
+.docs-graphiql .resultWrap .intro {
+    display: none;
+}
+
+.result-header.subscription:after {
+    display: none !important;
 }
 
 .docs-graphiql .graphiql-container .footer {
@@ -304,7 +314,6 @@
 
 .docs-graphiql .graphiql-container .result-window .CodeMirror-gutters {
     background-color: transparent;
-    border-left: 4px solid rgb(233,233,233);
     border-right: none;
     cursor: col-resize;
     top: 4px;
@@ -313,7 +322,7 @@
 .docs-graphiql .resultWrap .execute-button-wrap {
     background: #fafafa;
     height: 45px;
-    left: -47px;
+    left: -50px;
     top: 0px;
     padding-top: 4px;
 }
@@ -347,7 +356,7 @@
 
 .docs-graphiql .result-header {
     padding: 0 !important;
-    margin-left: 16px;
+    padding-left: 16px !important;
     background-color: rgba(0,0,0,.02) !important;
     border-top-right-radius: 2px;
 }
