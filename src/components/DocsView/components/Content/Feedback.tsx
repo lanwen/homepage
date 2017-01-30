@@ -32,7 +32,9 @@ class Feedback extends React.Component<Props, State> {
     if (showThanks) {
       return (
         <div className={cx($p.mv38, $p.flex, $p.justifyCenter)}>
-          <h2>Thanks for your feedback 💖</h2>
+          <h2 className={cx($p.fw3, $p.f25, $p.green, $p.br2, $p.bgGreen10, $p.pv25, $p.ph38)}>
+            Thanks for your feedback. It won't be forgotten.
+          </h2>
         </div>
       )
     }
