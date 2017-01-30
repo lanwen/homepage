@@ -362,16 +362,16 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
-    if (typeof Smooch === 'undefined') {
+    if (typeof Intercom === 'undefined') {
       return
     }
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
     if (!window.localStorage.getItem('chat_initiated')) {
-      await Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
-      await Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
+      const preview = message.substr(0, 200) + (message.length > 200 ? '...' : '')
+      const msg = `Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?\n${preview}`
+      Intercom('showNewMessage', msg)
       window.localStorage.setItem('chat_initiated', 'true')
+    } else {
+      Intercom('show')
     }
   }
 }

@@ -190,16 +190,15 @@ export default class FAQ extends React.Component<{}, {}> {
   }
 
   private openChat = () => {
-    if (typeof Smooch === 'undefined') {
+    if (typeof Intercom === 'undefined') {
       return
     }
-    const message = 'Hey! I have further questions to the FAQ:'
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
     if (!window.localStorage.getItem('chat_initiated_faq')) {
-      Smooch.sendMessage(message)
+      const message = 'Hey! I have further questions to the FAQ:'
+      Intercom('showNewMessage', message)
       window.localStorage.setItem('chat_initiated_faq', 'true')
+    } else {
+      Intercom('show')
     }
   }
 

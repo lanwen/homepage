@@ -7,6 +7,7 @@ import { AppContainer } from 'react-hot-loader'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
+import * as cookiestore from 'cookiestore'
 import routes from './routes'
 
 import './style'
@@ -67,21 +68,18 @@ function render() {
 
 render()
 
-// if (module.hot) {
-//   module.hot.accept(render)
-// }
+const interval = setInterval(initIntercom, 1000)
 
-let interval = setInterval(initSmooch, 1000)
-
-function initSmooch() {
-  if (navigator.userAgent !== 'SSR') {
-    FastClick.attach(document.body)
-
-    if (typeof Smooch !== 'undefined') {
-      Smooch.init({
-        appToken: __SMOOCH_TOKEN__,
-      })
-      clearInterval(interval)
-    }
+function initIntercom() {
+  if (window.Intercom && navigator.userAgent !== 'SSR') {
+    Intercom('boot', {
+      app_id: __INTERCOM_ID__,
+      user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
+    })
+    clearInterval(interval)
   }
+}
+
+if (navigator.userAgent !== 'SSR') {
+  FastClick.attach(document.body)
 }
