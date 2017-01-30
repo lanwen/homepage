@@ -1,7 +1,7 @@
 import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import {$p, Icon, $v} from 'graphcool-styles'
-import { breakpoints } from '../../../../utils/constants'
 import * as algolia from 'algoliasearch'
 import * as cx from 'classnames'
 import {Item} from '../../../../types/types'
@@ -10,7 +10,7 @@ import {throttle} from 'lodash'
 import {connect} from 'react-redux'
 
 const Searchbox = styled.input`
-  width: 300px;
+  width: 100%;
   box-sizing: border-box;
   box-shadow: 0 1px 3px rgba(0,0,0,.15);
   border-radius: 2px;
@@ -18,9 +18,6 @@ const Searchbox = styled.input`
   background-color: #fff;
   padding: 12px 20px 12px 46px;
   transition: all .3s;
-  @media (max-width: ${breakpoints.p1360}px) {
-    width: 250px;
-  }
   
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     transition: .3s white;
@@ -79,6 +76,7 @@ class Search extends React.Component<Props,{}> {
   private client: algolia.AlgoliaClient
   private index: algolia.AlgoliaIndex
   private ref: HTMLElement
+  private inputRef: HTMLElement
   private search = throttle(
     (q: string) => {
       this.index.search(
@@ -116,7 +114,13 @@ class Search extends React.Component<Props,{}> {
     const {query, results, activeIndex, resultsActive} = this.state
     const autoFocus = location.pathname === '/docs'
     return (
-      <div className={cx($p.relative, className)}>
+      <div
+        className={cx($p.relative, className)}
+        style={{
+          flex: 1,
+          marginRight: 32,
+        }}
+      >
         <Icon
           width={16}
           height={16}
@@ -125,17 +129,20 @@ class Search extends React.Component<Props,{}> {
           color={$v.black}
           strokeWidth={2}
           className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16, $p.pointer)}
+          onClick={this.focusInput}
         />
         <Searchbox
           type='text'
           name='search'
           placeholder='Search..'
           value={query}
+          className='search-input'
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
           onBlur={this.hideResults}
           onFocus={this.showResults}
           autoFocus={autoFocus}
+          ref={this.setInputRef}
         />
         {results.length > 0 && query.length > 0 && resultsActive && (
           <Results
@@ -156,6 +163,16 @@ class Search extends React.Component<Props,{}> {
               >
               </Link>
             ))}
+            <div className={cx($p.flex, $p.pa6, $p.ma6, $p.itemsCenter)}>
+              <div className={cx($p.black50, $p.f14)}>Powered by</div>
+              <img
+                className={cx($p.ml6)}
+                style={{
+                  width: 50,
+                }}
+                src={require('../../../../assets/graphics/docs/algolia.svg')}
+              />
+            </div>
           </Results>
         )}
       </div>
@@ -173,8 +190,16 @@ class Search extends React.Component<Props,{}> {
   private showResults = () => {
     this.setState({resultsActive: true} as State)
   }
+  private focusInput = () => {
+    if (this.inputRef) {
+      (ReactDOM.findDOMNode(this.inputRef) as HTMLElement).focus()
+    }
+  }
   private setRef = (ref: HTMLElement) => {
     this.ref = ref
+  }
+  private setInputRef = (ref: HTMLElement) => {
+    this.inputRef = ref
   }
   private onChange = (e: any) => {
     this.setState({query: e.target.value})

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { Link } from 'react-router'
-import { $p, $g, Icon, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints, maxWidth } from '../../../utils/constants'
 
 const ContentWrapper = styled.div`
   margin-top: 200px;

@@ -1,9 +1,12 @@
 import * as React from 'react'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import { $p, $g, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import OperationSliderCard from './OperationSliderCard'
 import styled from 'styled-components'
 import { numberWithCommas, roundedStep } from '../../utils/pricing'
+import Tooltip from './Tooltip'
+import { tooltips } from './text'
+import {breakpoints} from '../../utils/constants'
 
 const Circle36 = styled.div`
   width: 36px;
@@ -31,6 +34,13 @@ export default class OperationOverview extends React.Component<{}, State> {
   }
 
   render() {
+
+    // UI spacing values
+    const containerPaddingLeft = window.innerWidth < breakpoints.p1000 ? $p.pl0 : $p.pl60
+    const containerMarginTop = window.innerWidth < breakpoints.p1000 ? $p.mt60 : $p.mt0
+    const whatIsAnOperationDescriptionMarginTop = $p.mt25
+    const whatIsAnOperationDescriptionMarginBottom = $p.mb38
+
     const leftValue1 = this.state.leftValue1 === 0 ? 0 : this.state.leftValue1
     const leftValue2 = this.state.leftValue2 === 0 ? 0 : this.state.leftValue2
     const leftValue3 = this.state.leftValue3 === 0 ? 0 : this.state.leftValue3
@@ -39,8 +49,20 @@ export default class OperationOverview extends React.Component<{}, State> {
       + roundedStep(leftValue2) * roundedStep(this.state.rightValue2) / 100
       + roundedStep(leftValue3) * roundedStep(this.state.rightValue3) / 100
 
+    const plan = totalOperations < 100000 ? 'Developer'
+      : totalOperations < 1000000 ? 'Startup'
+        : totalOperations < 10000000 ? 'Growth'
+          : totalOperations < 50000000 ? 'Pro'
+            : 'Enterprise'
+
     return (
-      <div className={cx($p.flex, $p.flex1, $p.flexColumn, $p.pl60)}>
+      <div className={cx(
+        $p.flex,
+        window.innerWidth > breakpoints.p1000 && $p.flex1,
+        $p.flexColumn,
+        containerPaddingLeft,
+        containerMarginTop,
+      )}>
         <div className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
           <div>
             <Circle36 className={cx($p.bgWhite20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
@@ -55,23 +77,43 @@ export default class OperationOverview extends React.Component<{}, State> {
           </div>
           <div className={cx($p.white, $p.ml16)}>What is an operation?</div>
         </div>
-        <div className={cx($p.white80, $p.f14, $p.fw3, $p.tc, $p.pt4, $p.mt25, $p.mb38)}>
+        <div
+          className={cx(
+            $p.white80,
+            $p.f14,
+            $p.fw3,
+            $p.tc,
+            $p.pt4,
+            whatIsAnOperationDescriptionMarginTop,
+            whatIsAnOperationDescriptionMarginBottom,
+        )}>
           There are three operation types: requests,
           subscriptions & function calls
         </div>
 
         {/* Card 1: Requests */}
-        {/* should be X leaf nodes _per request_ */}
         <OperationSliderCard
           operationType='Request'
           description='A request is either a GraphQL query or mutation.'
-          leftInfo='requests/month'
-          rightInfo='leaf nodes per request'
+          leftInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.REQUEST}>
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>requests</span>
+                </Tooltip>
+                <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+              </div>
+          )}
+          rightInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.LEAF_NODE}>
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>leaf nodes</span>
+                </Tooltip>
+                 <span className={cx($p.white80, $p.f12, $p.pl4)}>per request</span>
+              </div>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={16}
           rightSliderMinValue={1}
-          leftLink=''
-          rightLink='a'
           leftValue={leftValue1}
           rightValue={this.state.rightValue1}
           onLeftSliderValueChange={(leftValue1) => this.setState({ leftValue1 } as State)}
@@ -82,13 +124,25 @@ export default class OperationOverview extends React.Component<{}, State> {
         <OperationSliderCard
           operationType='Subscription'
           description='A GraphQL subscription is triggered by a mutation.'
-          leftInfo='mutations/month'
-          rightInfo='concurrent subscriptions'
+          leftInfoElement={(
+            <div className={cx($p.flex)}>
+              <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.MUTATION}>
+                <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>mutations</span>
+              </Tooltip>
+             <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+            </div>
+          )}
+          rightInfoElement={(
+              <div className={cx($p.flex)}>
+                <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.SUBSCRIPTION}>
+
+                  <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>concurrent subscriptions</span>
+                </Tooltip>
+              </div>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={19}
           rightSliderMinValue={0}
-          leftLink=''
-          rightLink='a'
           leftValue={leftValue2}
           rightValue={this.state.rightValue2}
           onLeftSliderValueChange={(leftValue2) => this.setState({ leftValue2 } as State)}
@@ -99,28 +153,59 @@ export default class OperationOverview extends React.Component<{}, State> {
         <OperationSliderCard
           operationType='Function calls'
           description='Function calls are billed by execution time.'
-          leftInfo='function calls/month'
-          rightInfo='ms per function call'
+          leftInfoElement={(
+            <div className={cx($p.flex)}>
+              <Tooltip className={cx($p.flex, $p.flexColumn, $p.justifyStart)} text={tooltips.FUNCTION_CALL}>
+                <span className={cx($p.white80, $p.f12, $p.pl4, $p.underline)}>function calls</span>
+              </Tooltip>
+             <span className={cx($p.white80, $p.f12, $p.pl4)}>/ month</span>
+            </div>
+          )}
+          rightInfoElement={(
+             <span className={cx($p.white80, $p.f12)}><b>ms</b> per function call</span>
+          )}
           leftSliderMaxValue={28}
           rightSliderMaxValue={16}
           rightSliderMinValue={1}
-          leftLink=''
           leftValue={leftValue3}
           rightValue={this.state.rightValue3}
           onLeftSliderValueChange={(leftValue3) => this.setState({ leftValue3 } as State)}
           onRightSliderValueChange={(rightValue3) => this.setState({ rightValue3 } as State)}
         />
 
-        <span className={cx($p.white, $p.f16, $p.tr, $p.mt4)}>
-          {totalOperations > 50000000 &&
-            <a href='mailto:sales@graph.cool' className={cx($p.noUnderline)}>Talk To Sales</a>
-          }
+        <div className={cx(
+          $p.flex,
+          window.innerWidth < breakpoints.p400 && $p.flexColumn,
+          window.innerWidth < breakpoints.p400 ? $p.itemsStart : $p.itemsEnd,
+          $p.justifyBetween,
+          $p.white,
+          $p.mt4,
+        )}>
+          <div className={cx($p.f16)}>
+            {totalOperations > 50000000 &&
+            <a
+              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.tc, $p.ba, $p.bGreen, $p.noUnderline, $p.mt10)}
+              href='mailto:sales@graph.cool'
+            >
+              Talk to sales
+            </a>
+            }
+            {totalOperations <= 50000000 &&
+            <div>
+              <b>= {numberWithCommas(totalOperations)}</b> operations / month
+            </div>
+            }
+          </div>
           {totalOperations <= 50000000 &&
-          <div>
-            <b>= {numberWithCommas(totalOperations)}</b> operations / month
+          <div className={cx(
+            $p.f12,
+            $p.tr,
+            window.innerWidth < breakpoints.p400 && $p.mt6,
+          )}>
+            Recommended Plan: <b>{plan}</b>
           </div>
           }
-        </span>
+        </div>
       </div>
     )
   }

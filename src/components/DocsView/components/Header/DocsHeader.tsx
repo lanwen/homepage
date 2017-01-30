@@ -1,33 +1,23 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import {Link} from 'react-router'
-import {$p, Icon, $v, $g} from 'graphcool-styles'
+import { Link } from 'react-router'
+import { $p, Icon, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints } from '../../../../utils/constants'
 import ResourcesHover from './ResourcesHover'
 import EndpointPopup from './EndpointPopup'
 import Search from './Search'
 import * as cookiestore from 'cookiestore'
+import { excludeProps } from '../../../../utils/components'
 
 const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 1337px;
+  max-width: 1332px;
+  z-index: 10;
   
-  @media (max-width: ${breakpoints.p1200}px) {
+  @media (max-width: ${breakpoints.p1000}px) {
     padding-top: ${$v.size25}
-  }
-  
-  .left-gradient::before {
-    content: "";
-    height: 35px;
-    position: absolute;
-    left: -10px;
-    width: 10px;
-    /* Permalink - : http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+100 */
-    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
   }
 `
 
@@ -45,26 +35,36 @@ const NavigationLinkActive = `
     content: "";
     position: absolute;
     top: calc(-${$v.size38} - ${$v.size10} - 6px);
-    left: 0;
     border: 6px solid ${$v.green};
     border-radius: 2px;
-    width: 100%;
     height: 0px;
+    left: -5px;
+    right: -6px;
   }
   
-  @media (max-width: ${breakpoints.p1200}px) {
+  @media (max-width: ${breakpoints.p1000}px) {
     display: none;
-    }
+  }
 `
 
-const NavigationLink = styled(Link)`
+const NavigationLinkQuickstartActive = `
+  &:before {
+    left: -5px;
+    width: calc(100%);
+    right: -7px;
+  }
+`
+
+const NavigationLink = styled(excludeProps(Link, ['active', 'quickstart']))`
   transition: color ${$v.duration} linear;
+  margin-right: 23px;
 
   &:hover {
     color: ${$v.gray50};
   }
   
   ${props => props.active && NavigationLinkActive}
+  ${props => props.quickstart && NavigationLinkQuickstartActive}
 `
 
 const Hamburger = styled.div`
@@ -119,10 +119,6 @@ const Close = styled.div`
   }
 `
 
-const SearchIcon = styled(Icon)`
-  
-`
-
 const HoverGreen = styled.a`
   transition: .3s all;
   &:hover {
@@ -140,8 +136,8 @@ const LogoLink = styled.div`
     }
   }
   
-  &:hover + .search {
-    input {
+  &:hover + div {
+    &>.search-input {
       width: 40px;
       padding: 12px 24px;
       ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -160,8 +156,23 @@ const LogoLink = styled.div`
   }
 `
 
+const Links = styled.div`  
+  @media (max-width: ${breakpoints.p1200}px) {
+  }
+`
+
 const Container = styled.div`
-  max-width: 1350px;
+  padding-left: 51px;
+  padding-right: 58px;
+  @media (max-width: ${breakpoints.p1200}px) {
+    padding: 0 25px;
+  }
+`
+
+const RightNav = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    right: 0;
+  }
 `
 
 interface State {
@@ -169,7 +180,7 @@ interface State {
   endpointPopupOpened: boolean
 }
 
-export default class Header extends React.Component<{}, State> {
+export default class DocsHeader extends React.Component<{}, State> {
 
   state: State = {
     menuOpened: false,
@@ -179,19 +190,21 @@ export default class Header extends React.Component<{}, State> {
   render() {
 
     const loggedIn = cookiestore.has('graphcool_auth_token')
+        && cookiestore.has('graphcool_last_used_project_id')
 
     const links = (
-      <div
+      <Links
         className={cx(
           $p.flex,
-          window.innerWidth < breakpoints.p1200 ? $p.flexColumn : $p.flexRow,
-          {
-            [$p.mb10]: window.innerWidth < breakpoints.p1200,
-          },
+          window.innerWidth < breakpoints.p1000 ? $p.flexColumn : $p.flexRow,
+          window.innerWidth < breakpoints.p1000 && $p.mb10,
+          window.innerWidth > breakpoints.p1000 && $p.mr10,
+          $p.mlAuto,
         )}
         onClick={this.closeMenu}
       >
         <NavigationLink
+          quickstart={true}
           className={cx(
             $p.mt10,
             $p.fw6,
@@ -199,9 +212,7 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/docs/quickstart'
           active={location.pathname.startsWith('/docs/quickstart')}
@@ -217,9 +228,7 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/docs/reference'
           active={location.pathname.startsWith('/docs/reference')}
@@ -234,32 +243,14 @@ export default class Header extends React.Component<{}, State> {
             $p.ttu,
             $p.black30,
             $p.relative,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph6,
           )}
           to='/blog'
           active={location.pathname.startsWith('/blog')}
         >
           Blog
         </NavigationLink>
-        {/*<NavigationLink*/}
-          {/*className={cx(*/}
-            {/*$p.mt10,*/}
-            {/*$p.fw6,*/}
-            {/*$p.noUnderline,*/}
-            {/*$p.ttu,*/}
-            {/*$p.black30,*/}
-            {/*{*/}
-              {/*[$p.ph16]: window.innerWidth >= breakpoints.p1200,*/}
-            {/*},*/}
-          {/*)}*/}
-          {/*to='/docs/community'*/}
-          {/*active={location.pathname.startsWith('/docs/community')}*/}
-        {/*>*/}
-          {/*Community*/}
-        {/*</NavigationLink>*/}
-      </div>
+      </Links>
     )
 
     const logo = (
@@ -281,7 +272,6 @@ export default class Header extends React.Component<{}, State> {
           <HoverGreen
             className={cx($p.noUnderline, $p.mr25)}
             href='/'
-            target='_blank'
           >
             Homepage
           </HoverGreen>
@@ -291,20 +281,34 @@ export default class Header extends React.Component<{}, State> {
 
     const endpoints = (
       loggedIn ? (
-          <NavigationLink className={cx($p.mt6, $p.pointer, $p.absolute, $p.right25, $p.bgWhite)}>
-            <div className={cx($p.relative, 'left-gradient')}>
-              <img
-                className={cx($p.bbox, $p.db)}
-                src={require('../../../../assets/graphics/docs/APIEndpoints.svg')}
+          <RightNav className={cx($p.mt6, $p.pointer)}>
+            <div className={cx($p.relative)}>
+              <div
+                className={cx(
+                  $p.flex,
+                  $p.bgLightgreen20,
+                  $p.green,
+                  $p.f16,
+                  $p.fw6,
+                  $p.ttu,
+                  $p.br2,
+                  $p.pv6,
+                  $p.ph10,
+                )}
                 onClick={() => {
-                this.openEndpointPopup()
-                this.closeMenu()
-              }}
-              />
+                  this.openEndpointPopup()
+                  this.closeMenu()
+                }}
+              >
+                <img
+                  src={require('../../../../assets/graphics/docs/share.svg')}
+                />
+                <div className={cx($p.ml10)}>Api Endpoints</div>
+              </div>
             </div>
-          </NavigationLink>
+          </RightNav>
         ) : (
-          <div className={cx($p.mt10, $p.absolute, $p.right25, $p.bgWhite)}>
+          <RightNav className={cx($p.mt10, $p.bgWhite)}>
             <div className={cx($p.relative, 'left-gradient')}>
               <Button
                 href='https://console.graph.cool'
@@ -319,48 +323,71 @@ export default class Header extends React.Component<{}, State> {
                 Sign up
               </Button>
             </div>
-          </div>
+          </RightNav>
         )
     )
 
     const WideHeader = () => (
-      <Root className={cx($p.flex, $p.pv38, $p.justifyStart)}>
+      <Root
+        className={cx(
+          $p.flex, $p.pv38, $p.justifyStart, $p.relative, $p.mlAuto, $p.mrAuto,
+        )}
+      >
         {logo}
-        <Search className={$p.mh16} />
+        <Search className={$p.ml16}/>
         {links}
         {endpoints}
       </Root>
     )
 
-    const NarrowHeader = () => (
-      <Root className={cx($p.flex, $p.pv38)}>
-        {logo}
-        {this.state.menuOpened ? (
-            <FirstUlStyle className={cx($p.pa60, $p.bgWhite90, $p.z1)}>
-              <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
-              <NavigationLink>
-                <Search className={cx($p.pb16, $p.mh16)} />
-              </NavigationLink>
-              {links}
-              {endpoints}
-            </FirstUlStyle>
-          ) : (
-            <Hamburger>
-              <Icon
-                onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
-                src={require('../../../../assets/icons/hamburger.svg')}
-                width={36}
-                height={36}
-                color={$v.gray20}
-              />
-            </Hamburger>
-          )}
-      </Root>
-    )
+    const NarrowHeader = () => {
+
+      return (
+        <Root className={cx($p.flex, $p.pv38)}>
+          {logo}
+          {this.state.menuOpened ? (
+              <FirstUlStyle className={cx(
+                window.innerWidth > breakpoints.p500 && $p.pa60,
+                window.innerWidth < breakpoints.p500 && $p.pv38,
+                window.innerWidth < breakpoints.p500 && $p.pl16,
+                window.innerWidth < breakpoints.p500 && $p.pr60,
+                $p.bgWhite90,
+                $p.z1,
+              )}>
+                <Close onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}/>
+                <NavigationLink>
+                  <Search
+                    className={cx(
+                      $p.pb16,
+                      window.innerWidth < breakpoints.p500 && $p.mr6,
+                      window.innerWidth < breakpoints.p500 && $p.ml16,
+                      window.innerWidth > breakpoints.p500 && $p.mh16,
+                    )}/>
+                </NavigationLink>
+                {links}
+                {endpoints}
+              </FirstUlStyle>
+            ) : (
+              <Hamburger>
+                <Icon
+                  onClick={() => this.setState({ menuOpened: !this.state.menuOpened } as State)}
+                  src={require('../../../../assets/icons/hamburger.svg')}
+                  width={36}
+                  height={36}
+                  color={$v.gray20}
+                />
+              </Hamburger>
+            )}
+        </Root>)
+    }
 
     return (
-      <Container className={cx($p.absolute, $p.top0, $p.right0, $p.left0, $p.ph38, $p.flex, $p.flexRow)}>
-        {window.innerWidth > breakpoints.p1200 ? WideHeader() : NarrowHeader()}
+      <Container
+        className={cx(
+          $p.absolute, $p.top0, $p.right0, $p.left0,
+        )}
+      >
+        {window.innerWidth > breakpoints.p1000 ? WideHeader() : NarrowHeader()}
         {loggedIn && (
           <EndpointPopup
             isOpen={this.state.endpointPopupOpened}

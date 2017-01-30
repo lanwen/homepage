@@ -10,9 +10,9 @@ export default () => (
     <ul className='list'>
       <li><Link to='/about'>About</Link></li>
       <li><Link to='/'>Jobs</Link></li>
-      <li><a href='https://blog.graph.cool' target='_blank'>Blog</a></li>
+      <li><Link to='/blog'>Blog</Link></li>
       <li><a href='https://github.com/graphcool' target='_blank'>Open Source</a></li>
-      <li><Link to='/'>Imprint</Link></li>
+      <li><a href='https://slack.graph.cool' target='_blank'>Slack</a></li>
     </ul>
   </div>
 )

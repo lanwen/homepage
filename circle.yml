@@ -1,6 +1,8 @@
 machine:
   node:
     version: 6
+  services:
+    - docker
 
 dependencies:
   override:
@@ -14,11 +16,9 @@ deployment:
       - npm run deploy:
           environment:
             NETLIFY_ID: graph-cool
-            RESOURCE_DOCS: 'https://dev.docs.graph.cool'
   dev:
     branch: dev
     commands:
       - npm run deploy:
           environment:
             NETLIFY_ID: dev-graph-cool
-            RESOURCE_DOCS: 'https://dev.docs.graph.cool'

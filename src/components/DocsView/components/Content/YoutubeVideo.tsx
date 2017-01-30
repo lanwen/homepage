@@ -8,10 +8,6 @@ interface Props {
   id: string
 }
 
-interface State {
-  videoActive: boolean
-}
-
 const IconWrapper = styled.div`
   width: 70px;
   height: 70px;
@@ -30,9 +26,20 @@ const VideoWrapper = styled.div`
   }
 `
 
+const ImageWrapper = styled.div`
+  img {
+    transition: opacity 0.2s;
+  }
+  
+  &:hover img {
+    opacity: 0.6;
+  }
+`
+
 const Container = styled.div`
   margin-left: -70px;
   margin-right: -70px;
+  
 `
 
 export default class YoutubeVideo extends React.Component<Props, {}> {
@@ -45,7 +52,7 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
     const {videoActive} = this.state
 
     return (
-      <Container className={$p.mv25}>
+      <Container className={cx($p.mv25, $p.bgBlack)}>
         {videoActive ? (
           <VideoWrapper className={cx($p.pt25, $p.relative)}>
             <Youtube
@@ -58,13 +65,13 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
             />
           </VideoWrapper>
         ) : (
-          <div
-            className={cx($p.relative, $p.bgBlack, $p.pointer)}
+          <ImageWrapper
+            className={cx($p.relative, $p.pointer)}
             onClick={this.startVideo}
           >
             <img
               src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-              className={cx($p.o50)}
+              className={cx($p.o50, $p.ma0, $p.db)}
             />
             <IconWrapper
               className={cx(
@@ -87,7 +94,7 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
                 className={$p.pl6}
               />
             </IconWrapper>
-          </div>
+          </ImageWrapper>
         )}
       </Container>
     )

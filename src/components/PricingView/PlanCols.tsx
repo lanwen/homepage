@@ -1,14 +1,35 @@
 import * as React from 'react'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import {$p, $v, $g, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import SectionHeader from '../SectionHeader'
 import styled from 'styled-components'
 import PricingDimension from './PricingDimension'
 import Tooltip from './Tooltip'
-import { tooltips } from './text'
+import {tooltips} from './text'
+import {breakpoints} from '../../utils/constants'
+import TabbedPlanCols from './TabbedPlanCols'
 
 const Box = styled.div`
   max-width: 1202px;
+  margin-right: auto; 
+  margin-left: auto;
+`
+
+const Column = styled.div`
+  width: 268px;
+  padding: 25px;
+  margin: 0px 10px;
+  box-sizing: border-box;
+  &:last-child { 
+    width: 350px 
+  }
+  
+  @media (max-width: ${breakpoints.p1200}px) {
+    width: 230px;
+    &:last-child { 
+      width: 250px 
+    }
+  }
 `
 
 const Circle24 = styled.div`
@@ -18,17 +39,22 @@ const Circle24 = styled.div`
 
 export default class PlanCols extends React.Component<{}, {}> {
   render() {
-    return (
-      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite)}>
-        <SectionHeader
-          headline='Flexible, transparent pricing'
-          copy='Get started for free and pay as you go. Cheaper than self-hosted solutions.'
-        />
-        <Box className={cx($p.flex, $p.justifyBetween, $p.center)}>
+
+    let columns: JSX.Element
+    if (window.innerWidth < breakpoints.p1000) {
+      columns = (<TabbedPlanCols />)
+    } else {
+      columns = (
+        <Box className={cx($p.flex, $p.justifyBetween)}>
 
           {/* FIRST COLUMN - Startup */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <Column className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.justifyBetween,
+            $p.bgWhite,
+            $p.buttonShadow,
+          )}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
@@ -53,9 +79,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -122,16 +150,31 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='https://console.graph.cool/signup'
             >
               Try it for free
             </a>
-          </div>
+          </Column>
 
           {/* SECOND COLUMN - Growth */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <Column className={cx(
+            $p.flex,
+            $p.flexColumn,
+            $p.justifyBetween,
+            $p.bgWhite,
+            $p.buttonShadow,
+          )}>
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* MOST POPULAR */}
@@ -166,9 +209,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>45¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -235,16 +280,35 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='https://console.graph.cool/signup'
             >
               Try it for free
             </a>
-          </div>
+          </Column>
 
           {/* THIRD COLUMN - Pro */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween,
-                             $p.bgWhite, $p.ba, $p.bBlack10, $p.br2, $p.pa25, $p.mh10)}>
+          <Column
+            className={cx(
+              $p.flex,
+              $p.flexColumn,
+              $p.justifyBetween,
+              $p.bgWhite,
+              $p.buttonShadow,
+              $p.pa25,
+              $p.mh10,
+            )}
+          >
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
@@ -269,9 +333,11 @@ export default class PlanCols extends React.Component<{}, {}> {
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>5,000,000</div>
-                  <Tooltip text={tooltips.NODE}>
-                    <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
-                  </Tooltip>
+                  <div>
+                    <Tooltip text={tooltips.NODE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    </Tooltip>
+                  </div>
                   <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>30¢ / 1,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
                 </div>
@@ -353,15 +419,24 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgGreen,
+                $p.white,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline)}
               href='https://console.graph.cool/signup'
             >
               Try it for free
             </a>
-          </div>
+          </Column>
 
           {/* FOURTH COLUMN - Enterprise */}
-          <div className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.br2, $p.pa25, $p.mh10)}>
+          <Column className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.bgGreen, $p.buttonShadow)}>
 
             {/* TITLE */}
             <div className={cx($p.white, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Enterprise</div>
@@ -422,14 +497,34 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             {/* CTA BUTTON */}
             <a
-              className={cx($g.uppercaseButton, $p.bgWhite, $p.green, $p.ph60, $p.pv16, $p.mt60, $p.noUnderline)}
+              className={cx(
+                $p.flex,
+                $p.justifyCenter,
+                $g.uppercaseButton,
+                $p.bgWhite,
+                $p.green,
+                $p.ph60,
+                $p.pv16,
+                $p.mt60,
+                $p.noUnderline,
+              )}
               href='mailto:sales@graph.cool'
             >
               Talk to sales
             </a>
-          </div>
+          </Column>
 
         </Box>
+      )
+    }
+
+    return (
+      <div className={cx($p.flex, $p.flexColumn, $p.bgWhite)}>
+        <SectionHeader
+          headline='Flexible, transparent pricing'
+          copy='Get started for free and pay as you go. Cheaper than self-hosted solutions.'
+        />
+        {columns}
       </div>
     )
   }

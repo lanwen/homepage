@@ -84,7 +84,7 @@ export default class FeaturePreview extends React.Component<Props, {}> {
       <Root className={cx($p.flex, $p.ph96)}>
         <PreviewImage className={cx('nestedImage')}>
           <img
-            src={require(`../../../assets/graphics/${this.props.image}`)}
+            src={this.props.image}
             className={cx($p.bgBlack07, $p.w100, $p.h100, $p.brPill)}
           />
         </PreviewImage>

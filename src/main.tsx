@@ -1,63 +1,64 @@
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, Redirect, browserHistory, applyRouterMiddleware } from 'react-router'
+import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
+import { createStore, combineReducers, applyMiddleware, compose, Reducer } from 'redux'
 import { useScroll } from 'react-router-scroll'
 import { AppContainer } from 'react-hot-loader'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
-import RootView from './components/RootView'
-
-// routes
-import HomeView from './components/HomeView/HomeView'
-import PricingView from './components/PricingView/PricingView'
-import AboutView from './components/AboutView/AboutView'
-import DocsView from './components/DocsView/DocsView'
-import QuickstartPage from './components/DocsView/pages/QuickstartPage'
-import BlogPage from './components/DocsView/pages/BlogPage/BlogPage'
-import TutorialsPage from './components/DocsView/pages/TutorialsPage'
-import FAQPage from './components/DocsView/pages/FAQPage'
-import CommunityPage from './components/DocsView/pages/CommunityPage'
-import ContentHandler from './components/DocsView/components/ContentHandler'
-import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
-
-import * as Smooch from 'smooch'
+import * as cookiestore from 'cookiestore'
+import routes from './routes'
 
 import './style'
-
-const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
-})
 
 function shouldScrollUp(previousProps, {location}) {
   return location.hash === '' && (previousProps === null || previousProps.location.pathname !== location.pathname)
 }
 
+export function updateApolloState(state: any): void {
+  const el = document.getElementById('__APOLLO_STATE__') as HTMLScriptElement
+  const text = `window.__APOLLO_STATE__ = ${JSON.stringify(state)}`
+  if (el) {
+    el.text = text
+  } else {
+    const newEl = document.createElement('script') as HTMLScriptElement
+    newEl.text = text
+    newEl.id = '__APOLLO_STATE__'
+    document.head.appendChild(newEl)
+  }
+}
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
+})
+
+const store = createStore(
+  combineReducers({
+    apollo: client.reducer() as Reducer<any>,
+  }),
+  window.__APOLLO_STATE__ || {}, // initial state
+  compose(
+    applyMiddleware(client.middleware()),
+  ),
+)
+
+if (navigator.userAgent === 'SSR') {
+  store.subscribe(() => {
+    const state = store.getState()
+    updateApolloState(state)
+  })
+}
+
 function render() {
   ReactDOM.render(
     <AppContainer>
-      <ApolloProvider client={client}>
+      <ApolloProvider store={store} client={client}>
         <Router
           history={browserHistory}
           render={applyRouterMiddleware(useScroll(shouldScrollUp))}
+          routes={routes}
         >
-          <Route component={RootView}>
-            <Route path='/' component={HomeView}/>
-            <Route path='/pricing' component={PricingView}/>
-            <Route path='/about' component={AboutView}/>
-            <Route component={DocsView}>
-              <Route path='/docs'>
-                <IndexRoute component={DocsOverview}/>
-                <Redirect from='reference' to='reference/platform/overview-chohbah0eo' />
-                <Route path='quickstart' component={QuickstartPage}/>
-                <Route path='tutorials' component={TutorialsPage} />
-                <Route path='faq' component={FAQPage} />
-                <Route path='community' component={CommunityPage}/>
-              </Route>
-              <Route path='/blog' component={BlogPage}/>
-            </Route>
-            <Route path='*' component={ContentHandler}/>
-          </Route>
         </Router>
       </ApolloProvider>
     </AppContainer>,
@@ -66,15 +67,19 @@ function render() {
 }
 
 render()
-//
-// if (module.hot) {
-//   module.hot.accept(render)
-// }
 
-FastClick.attach(document.body)
+const interval = setInterval(initIntercom, 1000)
 
-if (Smooch) {
-  Smooch.init({
-    appToken: __SMOOCH_TOKEN__,
-  })
+function initIntercom() {
+  if (window.Intercom && navigator.userAgent !== 'SSR') {
+    Intercom('boot', {
+      app_id: __INTERCOM_ID__,
+      user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
+    })
+    clearInterval(interval)
+  }
+}
+
+if (navigator.userAgent !== 'SSR') {
+  FastClick.attach(document.body)
 }

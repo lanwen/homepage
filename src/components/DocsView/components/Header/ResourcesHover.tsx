@@ -4,10 +4,9 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import CircleIcon from '../CircleIcon'
-import isValidElement = React.isValidElement
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints } from '../../../../utils/constants'
 
-const NavigationActive = `
+const ContainerActive = `
   &:before {
     content: "";
     position: absolute;
@@ -20,6 +19,18 @@ const NavigationActive = `
   }
 `
 
+const Container = styled.div`
+  margin-right: 23px;
+  ${props => props.active && ContainerActive}
+  .overlay {
+    display: none;
+  }
+  
+  &:hover .overlay {
+    display: flex;
+  }
+`
+
 const NavigationLink = styled(Link)`
   transition: color ${$v.duration} linear;
 
@@ -28,34 +39,32 @@ const NavigationLink = styled(Link)`
   }
 `
 
-const Container = styled.div`
-  ._headline {
-    padding: calc(${$v.size16} + 10px) calc(${$v.size16} * 2);
-  }
+const HoveredA = styled.a`
+  transition: color ${$v.duration} linear;
 
-  ._nested {
-    display: none;
-    min-width: ${$v.size96};
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
-    top: -${$v.size16};
-    left: -${$v.size16};
+  &:hover {
+    color: ${$v.gray50};
   }
-  
-  &:hover ._nested {
-    display: flex;
-    flex: 1;
-    z-index: 10;
-  }
-  
-  ${props => props.active && NavigationActive}
+`
+
+const Headline = styled.div`
+  padding: calc(${$v.size16} + 10px) calc(${$v.size16} * 2);
+`
+
+const Overlay = styled.div`
+  min-width: ${$v.size96};
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
+  top: -16px;
+  left: -22px;
 `
 
 export default class ResourcesHover extends React.Component<{}, {}> {
+
   render() {
     return (
       <Container
         className={cx($p.relative, $p.overflowVisible)}
-        active={location.pathname === '/docs/resources'}
+        active={location.pathname.startsWith('/docs/tutorials') || location.pathname.startsWith('/docs/faq') }
       >
         <div
           className={cx(
@@ -64,33 +73,36 @@ export default class ResourcesHover extends React.Component<{}, {}> {
             $p.noUnderline,
             $p.ttu,
             $p.black30,
-            {
-              [$p.ph16]: window.innerWidth >= breakpoints.p1200,
-            },
+            window.innerWidth >= breakpoints.p1000 && $p.ph10,
           )}
-        >Resources</div>
-        <div className={cx('_nested', $p.bgWhite, $p.absolute, $p.flexColumn)}>
-          <div
-            className={cx('_headline', $p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
-          >Resources</div>
+        >
+          Resources
+        </div>
+        <Overlay className={cx($p.bgWhite, $p.absolute, $p.flexColumn, $p.flex, $p.flex1, $p.z5, 'overlay')}>
+          <Headline
+            className={cx($p.bgLightgreen10, $p.f16, $p.fw6, $p.green, $p.ttu, $p.noUnderline)}
+          >
+            Resources
+          </Headline>
           <div className={cx($p.pv16, $p.ph25)}>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials'>
               <CircleIcon type='TUTORIAL'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Tutorials</div>
             </NavigationLink>
-            <a
+            <HoveredA
               className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)}
               href='https://github.com/graphcool-examples'
+              target='_blank'
             >
               <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
-            </a>
+            </HoveredA>
             <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq'>
               <CircleIcon type='FAQ'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
             </NavigationLink>
           </div>
-        </div>
+        </Overlay>
       </Container>
     )
   }

@@ -3,10 +3,15 @@ import {$p, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import Icon from 'graphcool-styles/dist/components/Icon/Icon'
+import {breakpoints} from '../../../../utils/constants'
 
 interface State {
   email: string
   emailSent: boolean
+}
+
+interface Props {
+  className?: string
 }
 
 const StyledInput = styled.input`
@@ -27,7 +32,7 @@ const Arrow = styled.div`
   flex: 0 0 34px;
 `
 
-export default class SlackBox extends React.Component<{}, State> {
+export default class SlackBox extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
@@ -43,7 +48,7 @@ export default class SlackBox extends React.Component<{}, State> {
     const emailValid = this.emailValid(email)
 
     return (
-      <div className={cx($p.pt25, $p.buttonShadow, $p.flex1, $p.bgWhite, $p.overflowHidden)}>
+      <div className={cx($p.buttonShadow, $p.bgWhite, $p.overflowHidden, this.props.className)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/slack.svg')} />
         </ImgWrapper>
@@ -67,8 +72,13 @@ export default class SlackBox extends React.Component<{}, State> {
                   onKeyDown={this.onKeyDown}
                   value={email}
                   placeholder='Your email address...'
-                  className={cx($p.f20, $p.black50, $p.bgBlack04, $p.black, $p.flex1)}
-                />
+                  className={cx(
+                    $p.flex1,
+                    window.innerWidth < breakpoints.p1000 ? $p.f14 : $p.f20,
+                    $p.black50,
+                    $p.bgBlack04,
+                    $p.black,
+                  )}/>
                 {emailValid && (
                   <Arrow
                     className={cx(
@@ -128,7 +138,7 @@ export default class SlackBox extends React.Component<{}, State> {
       },
       body: JSON.stringify({ email })
     })
-    .then(res => {
+    .then(() => {
       this.setState({emailSent: true} as State)
     })
   }

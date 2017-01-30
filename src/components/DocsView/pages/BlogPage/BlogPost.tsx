@@ -1,9 +1,8 @@
 import * as React from 'react'
 import AnnoucementIcon from './AnnouncementIcon'
-import {$p, $v} from 'graphcool-styles'
+import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
-import {selfStart} from 'graphcool-styles/dist/particles.css'
 
 const Author = styled.img`
   width: 90px;

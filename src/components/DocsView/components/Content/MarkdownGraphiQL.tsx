@@ -1,9 +1,11 @@
 import * as React from 'react'
-import * as GraphiQL from 'graphiql'
-import { $p, Icon, $v } from 'graphcool-styles'
+// import * as GraphiQL from 'graphiql'
+import {CustomGraphiQL} from 'graphcool-graphiql'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
 import styled from 'styled-components'
+import './graphiql_light.css'
 
 interface Props {
   literal: string
@@ -55,8 +57,6 @@ function parseDSL(literal: string): DSL {
 export function dslValid(literal: string): boolean {
   const fm: Frontmatter = frontmatter(literal)
 
-  const [queryPart, dataPart] = fm.body.split('---')
-
   if (fm.body.split('---').length < 2) {
     return false
   }
@@ -66,6 +66,18 @@ export function dslValid(literal: string): boolean {
   }
 
   return true
+}
+
+export function getVariables(literal: string): string {
+  const fm: Frontmatter = frontmatter(literal)
+  const components = fm.body.split('---')
+  return components[1]
+}
+
+export function getGraphQLCode(literal: string): string {
+  const fm: Frontmatter = frontmatter(literal)
+  const components = fm.body.split('---')
+  return components[0]
 }
 
 const DisabledContainer = `
@@ -118,13 +130,16 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     }
 
     return (
-      <Container disabled={dsl.disabled} className={cx($p.bgDarkerBlue, $p.mv25)}>
-        <GraphiQL
+      <Container disabled={dsl.disabled} className={cx($p.mv25, 'docs-graphiql')}>
+        <CustomGraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
-          response={this.state.response}
+          responses={[{date: this.state.response}]}
           variables={this.state.variables}
           onEditQuery={(query) => this.setState({ query } as State)}
+          showViewAs={false}
+          showQueryTitle={true}
+          showResponseTitle={true}
         />
       </Container>
     )

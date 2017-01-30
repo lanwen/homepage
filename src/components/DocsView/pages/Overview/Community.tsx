@@ -3,6 +3,7 @@ import {$p} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import SlackBox from './SlackBox'
+import {breakpoints} from '../../../../utils/constants'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -13,12 +14,16 @@ const Container = styled.div`
 
 const FeaturesBackground = styled.div`
   background: rgba(0,0,0,.02);
-  height: 254px;
+  height: 235px;
   margin: 25px 0;
+  
+  @media (max-width: ${breakpoints.p750}px) {
+    height: 700px;    
+  }
 `
 
 const A = `
-  margin-top: 45px;
+  margin-top: 24px;
   letter-spacing: 0.52px;
 `
 
@@ -35,15 +40,22 @@ const ImgWrapper = styled.div`
   height: 36px;
 `
 
-interface Props {
-
-}
-
-export default (props: Props) => (
+export default () => (
   <FeaturesBackground>
-    <Container className={cx($p.flex)}>
-      <SlackBox />
-      <div className={cx($p.flex1, $p.ph38, $p.ml60, $p.pv38)}>
+    <Container className={cx(
+      $p.flex,
+      window.innerWidth < breakpoints.p750 && $p.flexColumn,
+      $p.itemsCenter,
+    )}>
+      <SlackBox className={cx(
+        $p.pt25,
+        window.innerWidth > breakpoints.p750 ? $p.mt10 : $p.mt38,
+        window.innerWidth > breakpoints.p750 && $p.mr38,
+      )}/>
+      <div className={cx(
+        $p.ph38,
+        window.innerWidth < breakpoints.p750 && $p.mt60,
+      )}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/githubTextBig.svg')} />
         </ImgWrapper>
@@ -52,27 +64,33 @@ export default (props: Props) => (
           href='https://github.com/graphcool'
           target='_blank'
           className={cx(
-            $p.ttu,
-            $p.f14,
-            $p.black50,
-            $p.noUnderline,
-            $p.bgWhite,
-            $p.buttonShadow,
             $p.flex,
             $p.itemsCenter,
+            window.innerWidth < breakpoints.p750 && $p.justifyCenter,
+            $p.black50,
+            $p.bgWhite,
+            $p.buttonShadow,
+            $p.f14,
+            $p.fw6,
+            $p.ttu,
+            $p.noUnderline,
             $p.dib,
             $p.pa10,
-            $p.fw6,
             $p.pl16,
           )}
         >
           <img src={require('../../../../assets/graphics/docs/community/githubIconSmall.svg')} />
-          <div className={cx($p.ml6)}>
+          <div className={cx(
+            $p.ml6,
+          )}>
             Go to our repositories
           </div>
         </StyledA>
       </div>
-      <div className={cx($p.flex1, $p.ph60, $p.pv38)}>
+      <div className={cx(
+        $p.ph38,
+        window.innerWidth < breakpoints.p750 && $p.mt60,
+      )}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/stackoverflow.svg')} />
         </ImgWrapper>
@@ -81,21 +99,24 @@ export default (props: Props) => (
           href='http://stackoverflow.com/search?q=%23graphcool'
           target='_blank'
           className={cx(
-            $p.ttu,
-            $p.f14,
-            $p.black50,
-            $p.noUnderline,
-            $p.bgWhite,
-            $p.buttonShadow,
             $p.flex,
             $p.itemsCenter,
+            window.innerWidth < breakpoints.p750 && $p.justifyCenter,
+            $p.black50,
+            $p.bgWhite,
+            $p.buttonShadow,
+            $p.f14,
+            $p.fw6,
+            $p.ttu,
+            $p.noUnderline,
             $p.dib,
             $p.pa10,
-            $p.fw6,
             $p.pl16,
           )}
         >
-          <div className={cx($p.ml6)}>
+          <div className={cx(
+            $p.ml6,
+          )}>
             Get help with #graphcool
           </div>
         </StyledB>

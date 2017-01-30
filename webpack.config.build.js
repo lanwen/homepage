@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 
+
 module.exports = {
   entry: {
     app: [
@@ -10,9 +11,12 @@ module.exports = {
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
       './src/styles/graphiql.css',
+      'codemirror/mode/javascript/javascript',
+      'codemirror/mode/shell/shell',
+      'codemirror/theme/dracula.css',
+      'codemirror-graphql/mode',
       './src/main.tsx',
     ],
-    vendor: config.entry.vendor,
   },
   output: {
     path: './dist',
@@ -43,7 +47,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR.toString()),
-      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
+      __HEARTBEAT_ADDR__: process.env.HEARTBEAT_ADDR ? JSON.stringify(process.env.HEARTBEAT_ADDR.toString()) : false,
+      __INTERCOM_ID__: '"mamayuvj"',
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       },

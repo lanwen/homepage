@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { $p, $v } from 'graphcool-styles'
+import ApolloClient from 'apollo-client'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
 import * as Helmet from 'react-helmet'
+import { throttle } from 'lodash'
 
 interface Props {
   children?: JSX.Element
@@ -12,14 +14,44 @@ interface State {
   isLoading: boolean
 }
 
+interface Context {
+  client: ApolloClient
+}
+
 export default class RootView extends React.Component<Props, State> {
 
   static childContextTypes = {
     setIsLoading: React.PropTypes.func.isRequired,
   }
 
+  static contextTypes = {
+    client: React.PropTypes.object.isRequired,
+  }
+
+  context: Context
+
+  rerender = throttle(
+    () => {
+      this.forceUpdate()
+    },
+    100,
+  )
+
   state = {
     isLoading: false,
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.rerender)
+
+    if (navigator.userAgent !== 'SSR' && window.__APOLLO_STATE__) {
+      // TODO https://github.com/apollostack/apollo-client/issues/1186
+      // this.context.client.resetStore()
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.rerender)
   }
 
   getChildContext() {
@@ -30,10 +62,11 @@ export default class RootView extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className={cx($p.flex, $p.flexColumn)}>
+      <div className={cx($p.flex, $p.flexColumn)} id='react-root'>
         <Helmet
           title='Graphcool - GraphQL Backend as a Service.'
           meta={[
+            {name: 'description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},
             {property: 'og:type', content: 'website'},
             {property: 'og:title', content: 'GraphQL Backend as a Service'},
             {property: 'og:description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},
@@ -49,7 +82,7 @@ export default class RootView extends React.Component<Props, State> {
           ]}
         />
         {this.state.isLoading &&
-          <LoadingBar/>
+        <LoadingBar/>
         }
         {this.props.children}
       </div>

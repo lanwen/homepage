@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {$p} from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import Items from './Overview/Items'
@@ -11,7 +11,7 @@ const Container = styled.div`
 `
 
 const ContentContainer = styled.div`
-   flex: 1 1 100px;
+  flex: 1 1 100px;
 `
 
 const TutorialsBackground = styled.div`
@@ -31,13 +31,13 @@ export default class TutorialsPage extends React.Component<{}, {}> {
           <Heading
             layout='TUTORIAL'
             title='Tutorials & Guides'
-            text='Get a practical step-by-step understanding of our features and how to use the APIs'
+            text='Helpful step-by-step tutorials & guides to understand how to build apps with Graphcool.'
             link='/docs/tutorials'
           />
         </Container>
-        <TutorialsBackground className={$p.mt60}>
+        <TutorialsBackground className={cx($p.mt60, $p.pb60)}>
           <Container>
-            <StyledItems count={50} layout='TUTORIAL' className={cx($p.relative)} showPreview={true} />
+            <StyledItems count={50} layout='TUTORIAL' className={cx($p.relative)} showPreview={true}/>
           </Container>
         </TutorialsBackground>
       </ContentContainer>

@@ -2,16 +2,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-const vendor = [
-  'classnames',
-  'graphcool-styles',
-  'styled-components',
-  'react',
-  'react-dom',
-  'react-helmet',
-  'react-router',
-]
-
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
@@ -26,7 +16,6 @@ module.exports = {
       'codemirror-graphql/mode',
       './src/main.tsx',
     ],
-    vendor,
   },
   output: {
     filename: '[name].[hash].js',
@@ -44,7 +33,7 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'react-hot-loader/webpack!awesome-typescript-loader',
+      loader: 'awesome-typescript-loader',
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
@@ -59,7 +48,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR.toString()),
-      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
+      __HEARTBEAT_ADDR__: process.env.HEARTBEAT_ADDR ? JSON.stringify(process.env.HEARTBEAT_ADDR.toString()) : false,
+      __INTERCOM_ID__: '"rqszgt2h"',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),

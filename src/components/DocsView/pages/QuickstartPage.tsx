@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'react-apollo'
 import { withRouter } from 'react-router'
-import TemporaryNavigation from '../components/TemporaryNavigation'
 import { getItemsByLayout } from '../fragments/getItemsByLayout'
-import ContentWindow from '../components/ContentWindow'
 import * as Helmet from 'react-helmet'
 import Quickstart from '../components/Quickstart/Quickstart'
 import * as cx from 'classnames'
@@ -23,16 +21,19 @@ const ContentContainer = styled.div`
 class QuickstartPage extends React.Component<{}, {}> {
   render() {
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
+      <ContentContainer className={cx($p.pv96, $p.mt96)}>
         <Helmet title='Quick Start'/>
         <Container>
           <Heading
             layout='QUICKSTART'
             title='Quickstart'
-            text='Put together your favourite technologies to form an example you can get easily started with.'
+            text={
+              'The fastest way to get started. Select your technology of choice, download an example project and'
+            + ' start building.'
+            }
             link='/docs/quickstart'
           />
-          <Quickstart className={cx($p.pv96)}/>
+          <Quickstart className={cx($p.mt38, $p.mb60, $p.ml60)}/>
         </Container>
       </ContentContainer>
     )

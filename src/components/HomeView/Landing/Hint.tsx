@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints, maxWidth } from '../../../utils/constants'
+import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.span`
    &:before {

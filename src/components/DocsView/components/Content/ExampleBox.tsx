@@ -47,7 +47,7 @@ export default class ExampleBox extends React.Component<Props, {}> {
     return data
   }
   render() {
-    const {literal, item} = this.props
+    const {literal} = this.props
 
     const data = this.extractData(literal)
 

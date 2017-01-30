@@ -6,6 +6,7 @@ import { graphql } from 'react-apollo'
 import {Link} from 'react-router'
 import styled from 'styled-components'
 import {Layout} from '../../../../types/types'
+import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   data: any
@@ -13,18 +14,24 @@ interface Props {
   layout?: Layout
   aliases?: string[]
   showPreview?: boolean
+  revert?: boolean
 }
 
 const StyledLink = styled(Link)`
-  flex: 0 0 325px;
+  max-width: 325px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
 `
 
 const ImgWrapper = styled.div`
   height: 150px;
   img {
-    max-width: 120%;
-    max-height: 120%;
+    max-width: 147%;
+    max-height: 147%;
   }
 `
 
@@ -48,7 +55,7 @@ const Container = styled.div`
 
 class Items extends React.Component<Props, {}> {
   render() {
-    const {data, className, showPreview, layout, aliases} = this.props
+    const {data, className, showPreview, aliases, revert} = this.props
 
     if (data.loading) {
       return <div>Loading...</div>
@@ -56,9 +63,13 @@ class Items extends React.Component<Props, {}> {
 
     let pointer = []
     if (aliases && aliases.length > 0) {
-      pointer = data.aliases
+      pointer = aliases.map(alias => data.aliases.find(item => item.alias === alias))
     } else {
       pointer = data.layout
+    }
+
+    if (revert) {
+      pointer = pointer.reverse()
     }
 
     return (

@@ -22,7 +22,7 @@ const StyledItems = styled(Items)`
   top: -10px;
 `
 
-export default class TutorialsPage extends React.Component<{}, {}> {
+export default class FAQPage extends React.Component<{}, {}> {
 
   render() {
     return (
@@ -31,11 +31,11 @@ export default class TutorialsPage extends React.Component<{}, {}> {
           <Heading
             layout='FAQ'
             title='Frequently Asked Questions'
-            text='Find answers to the most common questions about Graphcool'
+            text='Find answers to the most common questions about GraphQL and the Graphcool platform.'
             link='/docs/faq'
           />
         </Container>
-        <ItemsBackground className={$p.mt60}>
+        <ItemsBackground className={cx($p.mt60, $p.pb60)}>
           <Container>
             <StyledItems count={50} layout='FAQ' className={cx($p.relative)} showPreview={false} />
           </Container>

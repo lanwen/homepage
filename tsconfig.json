@@ -7,8 +7,12 @@
     "pretty": true,
     "sourceMap": true,
     "target": "es5",
+    "module": "commonjs",
+    "allowJs": true,
     "outDir": "lib",
-    "lib": ["dom", "es5", "es2015"]
+    "lib": ["es6", "dom"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "exclude": [
     "node_modules"

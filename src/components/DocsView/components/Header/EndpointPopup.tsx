@@ -4,7 +4,7 @@ import * as CopyToClipboard from 'react-copy-to-clipboard'
 import styled, {keyframes} from 'styled-components'
 import {$v, $p, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
-import ApolloClient, {createNetworkInterface} from 'apollo-client'
+import ApolloClient from 'apollo-client'
 import * as cookiestore from 'cookiestore'
 import {find} from 'lodash'
 import * as fetch from 'isomorphic-fetch'
@@ -146,8 +146,14 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
   }
 
   componentWillMount() {
-    const authToken = cookiestore.get('graphcool_auth_token')
-    const lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    let authToken = ''
+    let lastUsedProjectId = ''
+    try {
+      authToken = cookiestore.get('graphcool_auth_token')
+      lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    } catch (e) {
+      //
+    }
 
     const query = `
       {
@@ -210,7 +216,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
         color: ${$v.gray50};
       }
 
-     ${props => props.active && activeEndpointType}
+      ${props => props.active && activeEndpointType}
     `
 
     const {endpoint, copied, projects} = this.state
@@ -227,6 +233,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
     return (
       <StyledModal
         {...this.props}
+        contentLabel=''
         className={$p.buttonShadow}
         style={{
           overlay: {
@@ -380,12 +387,12 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
           <a
             className={$p.green}
             target='_blank'
-            href='https://graph.cool/docs/reference/simple-api#differences-to-the-relay-api'
+            href='/docs/reference/simple-api-heshoov3ai#differences-to-the-relay-api'
           >
             read about the differences between the Simple and Relay API here
           </a>
           {' or '}
-          <a className={$p.green} target='_blank' href='https://graph.cool/docs/examples'>
+          <a className={$p.green} target='_blank' href='https://github.com/graphcool-examples/'>
             check out some code examples
           </a>
           {'.'}

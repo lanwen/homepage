@@ -1,19 +1,18 @@
 import * as React from 'react'
-import { Node, Parser } from 'commonmark'
+import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
-import * as slug from 'slug'
-import MouseEventHandler = React.MouseEventHandler
+import * as slug from 'slugify'
 import styled from 'styled-components'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
-import { Layout, Item } from '../../../../types/types'
-import { childrenToString } from '../../../../utils/index'
+import {$p, $v} from 'graphcool-styles'
+import {Layout, Item} from '../../../../types/types'
+import {childrenToString} from '../../../../utils/index'
 import QuestionMarkOnHover from './QuestionMarkOnHover'
 import YoutubeVideo from './YoutubeVideo'
-import * as Smooch from 'smooch'
-import MarkdownGraphiQL, {dslValid} from './MarkdownGraphiQL'
+import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
+import {breakpoints} from '../../../../utils/constants'
 
 interface Props {
   ast: Node
@@ -23,22 +22,32 @@ interface Props {
 
 const Container = styled.div`
   margin-left: 50px;
-  max-width: 920px;
+  max-width: ${props => props.faq ? 880 : 920}px;
+  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 0}px;
  
   p { 
     line-height: 1.7;
-    color: ${$v.gray60}; 
-    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    color: ${$v.gray60};
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    overflow: hidden;
   }
   
   ul {
     color: ${$v.gray60};
     list-style-position: inside;
-    margin: ${$v.size25} 0;
+    margin: 0;
   }
   
   ul li {
-    line-height: 1.7;
+    line-height: 2;
+    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    list-style-type: none;
+    margin-left: ${$v.size12};
+    width: calc(100% - 12px);
+  }
+
+  ul li:before {
+    content: '\\2022 \\00a0 \\00a0 \\00a0';
   }
   
   blockquote {
@@ -46,6 +55,13 @@ const Container = styled.div`
     padding: ${$v.size12} ${$v.size25};
     margin-left: 0;
     width: 100%;
+    box-sizing: border-box;
+    p {
+      margin-bottom: 0;
+    }
+    >div {
+      margin-bottom: 0 !important;
+    }
   }
   
   blockquote p {
@@ -53,7 +69,11 @@ const Container = styled.div`
   }
   
   a {
-    color: ${$v.gray80};
+    color: ${$v.gray60};
+
+    &:hover {
+      color: ${$v.gray80};
+    }
   }
   
   h2, h3 {
@@ -61,7 +81,7 @@ const Container = styled.div`
   }
   
   h2 {
-    size: ${$v.size25};
+    font-size: ${$v.size25};
     color: ${$v.gray80};
     margin: ${$v.size38} 0 ${$v.size25};
   }
@@ -79,11 +99,64 @@ const Container = styled.div`
   }
   
   img {
-    max-width: 100%;
     height: auto;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 0;
+    max-width: 100vw;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+  }
+  
+  .CodeMirror-gutters {
+    height: auto !important;
+  }
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-left: 6px;
+  }
+
+  @media (max-width: ${breakpoints.p500}px) {
+
+    p {
+      line-height: 1.5;
+      color: ${$v.gray60}; 
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+    }
+
+    ul li { 
+      line-height: 1.7;
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    }
+    
+    h2 {
+      font-size: ${$v.size20};
+      color: ${$v.gray80};
+      margin: ${$v.size25} 0 ${$v.size20};
+    }
+  
+    h3 {
+      color: ${$v.gray60};
+      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      margin: ${$v.size20} 0;
+    }
+    
+    blockquote {
+      border-left: ${$v.size06} solid ${$v.green50};
+      padding: ${$v.size12} ${$v.size06};
+      margin-left: 0;
+      width: 100%;
+      padding-bottom: 0;
+    }
+    
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    code {
+      word-break: break-word;
+    }
+  }
+  
+  .docs-codemirror .CodeMirror-scroll {
+    height: auto;
   }
 `
 
@@ -91,13 +164,22 @@ const QuestionWrapper = styled.div`
   .hover {
     display: none;
   }
+  
   &:hover .hover {
     display: block;
+
+    @media (max-width: ${breakpoints.p750}px) {
+      display: none;
+    }   
+  }
+
+  &:hover .no-hover .hover {
+    display: none;
   }
 `
 
 const QuestionMarkWrapper = styled.div`
-  right: -0px;
+  right: -50px;
 `
 
 const HeadingLink = styled.a`
@@ -120,7 +202,12 @@ export default class Markdown extends React.Component<Props, {}> {
     const renderers = {
       Paragraph: (props) => {
         return (
-          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100, $p.relative)}>
+          <QuestionWrapper
+            className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
+            style={{
+              marginBottom: 20,
+            }}
+          >
             <p>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
@@ -130,8 +217,10 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.flex, $p.itemsCenter, $p.w100)}>
-            {ReactRenderer.renderers.List(props)}
+          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+            <div className={cx('no-hover')}>
+              {ReactRenderer.renderers.List(props)}
+            </div>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
@@ -139,7 +228,7 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       Heading: (props) => {
-        const id = slug(childrenToString(props.children), {lower: true})
+        const id = slug(childrenToString(props.children).toLowerCase())
         const newProps = Object.assign({}, props, {
           id,
         })
@@ -150,19 +239,47 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       CodeBlock (props) {
-        if (props.language === 'graphql' && dslValid(props.literal.trim())) {
+        const language = {
+          'js': 'javascript',
+          'json': { name: 'application/javascript', json: true },
+          'sh': 'shell',
+          'graphql': 'graphql',
+        }[props.language]
+
+        if (window.innerWidth > breakpoints.p650 &&
+            language === 'graphql' &&
+            dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
+        } else if (
+          window.innerWidth < breakpoints.p650 &&
+          language === 'graphql' &&
+          dslValid(props.literal.trim())
+        ) {
+          return (
+            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
+              <CodeMirror
+                value={getGraphQLCode(props.literal.trim())}
+                options={{
+                  lineNumbers: true,
+                  mode: language,
+                  readOnly: true,
+                  lineWrapping: true,
+                }}
+              />
+            </div>
+          )
         }
-
         return (
-          <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10)}>
+          <div
+            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
+          >
             <CodeMirror
               value={props.literal.trim()}
               options={{
                 lineNumbers: true,
-                mode: props.language,
+                mode: language,
                 readOnly: true,
                 lineWrapping: true,
               }}
@@ -191,7 +308,7 @@ export default class Markdown extends React.Component<Props, {}> {
         if (literal.includes('GITHUB_EXAMPLE')) {
           return (
             <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
-              <ExampleBox literal={literal} item={this.props.item} />
+              <ExampleBox literal={literal} item={this.props.item}/>
             </div>
           )
         }
@@ -212,7 +329,11 @@ export default class Markdown extends React.Component<Props, {}> {
     })
 
     return (
-      <Container biggerFont={this.props.layout !== 'REFERENCE'}>
+      <Container
+        biggerFont={this.props.layout !== 'REFERENCE'}
+        className={cx($p.relative)}
+        faq={this.props.item.layout === 'FAQ'}
+      >
         {renderer.render(this.props.ast)}
       </Container>
     )
@@ -233,7 +354,6 @@ export default class Markdown extends React.Component<Props, {}> {
     if (result !== null) {
       return result[1]
     }
-
     return null
   }
 
@@ -242,14 +362,16 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
-    console.log(message)
-    if (!Smooch.isOpened()) {
-      Smooch.open()
+    if (typeof Intercom === 'undefined') {
+      return
     }
     if (!window.localStorage.getItem('chat_initiated')) {
-      await Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
-      await Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
+      const preview = message.substr(0, 200) + (message.length > 200 ? '...' : '')
+      const msg = `Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?\n${preview}`
+      Intercom('showNewMessage', msg)
       window.localStorage.setItem('chat_initiated', 'true')
+    } else {
+      Intercom('show')
     }
   }
 }

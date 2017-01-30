@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 
 const Root = styled.div`

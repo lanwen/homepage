@@ -5,6 +5,20 @@ import { breakpoints } from './utils/constants'
 // tslint:disable-next-line
 injectGlobal`
   
+  @media (max-width: ${breakpoints.p500}px) {
+    #sk-holder {
+      display: none;
+    }
+    
+    #sk-holder #sk-messenger-button svg path {
+      display: none;
+    }
+  }
+  
+  #sk-holder #sk-messenger-button svg path {
+    filter: url("#dropShadow") !important;    
+  }
+  
   body {
     color: ${$v.gray80};
   }

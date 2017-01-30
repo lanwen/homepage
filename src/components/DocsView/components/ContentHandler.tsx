@@ -1,22 +1,21 @@
 import * as React from 'react'
-import { Node, Parser } from 'commonmark'
+import { Parser } from 'commonmark'
 import Markdown from './Content/Markdown'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
-import DocsView from '../DocsView'
 import { Item } from '../../../types/types'
 import ReferenceSidenav from './ReferenceSidenav/ReferenceSidenav'
 import { $p } from 'graphcool-styles'
-import styled from 'styled-components'
 import * as cx from 'classnames'
 import FAQSidebar from './FAQSidebar'
 import ContentHeader from './Content/ContentHeader'
 import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
-import {getAliasFromUrl} from '../../../utils/index'
+import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
+import {breakpoints} from '../../../utils/constants'
 
 interface Props {
   location: any,
@@ -40,11 +39,6 @@ interface Meta {
   httpEquiv?: string
 }
 
-const ContentContainer = styled.div`
-   flex: 1 1 100px;
-   max-width: 1050px;
-`
-
 class ContentHandler extends React.Component<Props, {}> {
 
   static contextTypes = {
@@ -55,7 +49,8 @@ class ContentHandler extends React.Component<Props, {}> {
 
   componentWillReceiveProps(nextProps: Props) {
 
-    if (nextProps.data.loading !== this.props.data.loading) {
+    const isLoading = nextProps.data.loading !== this.props.data.loading
+    if (isLoading) {
       this.context.setIsLoading(nextProps.data.loading)
     }
 
@@ -65,8 +60,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // resource not found
     if (nextProps.data.Item === null) {
-      alert('Resource not found, redirecting')
-      this.props.router.push('/docs')
+      this.props.router.push('/404')
       return
     }
 
@@ -94,43 +88,106 @@ class ContentHandler extends React.Component<Props, {}> {
 
     if (item.preview && item.preview.length > 0) {
       imageMeta = imageMeta.concat([
-        { property: 'og:image', content: item.preview },
-        { name: 'twitter:image', content: item.preview },
+        {property: 'og:image', content: item.preview},
+        {name: 'twitter:image', content: item.preview},
       ])
     }
 
+    let contentBoxMarginLeft = 0
+    if (window.innerWidth < breakpoints.p1360) {
+      contentBoxMarginLeft = 40
+    } else if (item.layout === 'FAQ') {
+      contentBoxMarginLeft = 121
+    } else if (item.layout === 'REFERENCE') {
+      contentBoxMarginLeft = 61
+    }
+
+    let contentBoxMarginRight = 0
+    if (item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200) {
+      contentBoxMarginRight = 50
+    } else if (window.innerWidth < breakpoints.p1360) {
+      contentBoxMarginRight = 25
+    }
+
     return (
-      <div onClick={this.onClick}>
-        <Helmet
-          title={item.shorttitle}
-          meta={[
-            { property: 'og:type', content: 'article' },
-            { property: 'og:title', content: item.title },
-            { property: 'og:description', content: item.description },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:description', content: item.description },
-            ...imageMeta,
-          ]}
-        />
-        <DocsView location={this.props.location}>
-          {item.layout === 'REFERENCE' && <ReferenceSidenav currentAlias={item.alias}/>}
-          <ContentContainer>
-            <section className={cx($p.ph60, $p.pt96)} style={{ maxWidth: 920, margin: '0 auto' }}>
-              <ContentHeader item={item}/>
-              <Markdown
-                ast={ast}
-                layout={item.layout}
-                item={item}
-              />
+      <div onClick={this.onClick} className={cx(
+        $p.w100,
+      )}>
+        <div className={cx($p.flex)}>
+          <Helmet
+            title={item.shorttitle}
+            meta={[
+              { name: 'description', content: item.description },
+              { property: 'og:type', content: 'article' },
+              { property: 'og:title', content: item.title },
+              { property: 'og:description', content: item.description },
+              { name: 'twitter:card', content: 'summary_large_image' },
+              { name: 'twitter:title', content: item.title },
+              { name: 'twitter:description', content: item.description },
+              ...imageMeta,
+            ]}
+          />
+          <div className={cx($p.flexAuto, $p.flex)}>
+            <div
+              className={cx($p.flex1)}
+              style={{
+                backgroundColor: item.layout === 'REFERENCE' ? 'rgba(0,0,0,.02)' : 'transparent',
+              }}
+            >
+            </div>
+            <section
+              className={cx(
+                $p.pt96,
+                $p.flex,
+                {
+                  [$p.justifyCenter]: item.layout === 'TUTORIAL' || item.layout === 'BLOG',
+                },
+              )}
+              style={{
+                flex: '1 1 1384px',
+              }}
+            >
+              {item.layout === 'REFERENCE' && (
+                <ReferenceSidenav currentAlias={item.alias}/>
+              )}
+              <div
+                className={cx(
+                  $p.bbox,
+                  window.innerWidth < breakpoints.p1000 && $p.pa10,
+                )}
+                style={{
+                  marginLeft: contentBoxMarginLeft,
+                  marginRight: contentBoxMarginRight,
+                }}
+              >
+                <ContentHeader item={item}/>
+                <Markdown
+                  ast={ast}
+                  layout={item.layout}
+                  item={item}
+                />
+                <Feedback item={item}/>
+                {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+              </div>
+              {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
+                <FAQSidebar item={item}/>
+              )}
             </section>
-            <Feedback item={item} />
-            {item.layout !== 'FAQ' && (
-              <RelatedContentFooter item={item}/>
-            )}
-            {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
-          </ContentContainer>
-          {item.layout === 'FAQ' && <FAQSidebar item={item} />}
-        </DocsView>
+            <div
+              className={cx($p.flex1)}
+              style={{
+                backgroundColor: item.layout === 'FAQ' ? 'rgba(0,0,0,.02)' : 'transparent',
+              }}
+            >
+            </div>
+          </div>
+        </div>
+        {item.layout !== 'FAQ' && (
+          <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
+        )}
+        {(item.layout === 'FAQ' && window.innerWidth < breakpoints.p1200) && (
+          <RelatedContentFooter displayAsColumns={window.innerWidth < breakpoints.p1000} item={item}/>
+        )}
       </div>
     )
   }
@@ -138,7 +195,7 @@ class ContentHandler extends React.Component<Props, {}> {
   // capture internal links to navigate via react-router
   private onClick = (e: React.MouseEvent<HTMLElement>): void => {
     if (e.target instanceof HTMLAnchorElement) {
-      if (e.target.hostname === window.location.hostname) {
+      if (e.target.hostname === window.location.hostname && !e.ctrlKey && !e.metaKey) {
         e.preventDefault()
         this.props.router.push(e.target.pathname)
       }
@@ -147,37 +204,38 @@ class ContentHandler extends React.Component<Props, {}> {
 }
 
 const getItemQuery = gql`query getItem($alias: String) {
-  Item(alias: $alias) {
-    id
-    body
-    alias
-    path
-    layout
-    beta
-    tags
-    lastModified
-    shorttitle
-    title
-    description
-    sourceFilePath
-    preview
-    relatedFurther {
-      alias
-      title
-      shorttitle
-      path
-      layout
+    Item(alias: $alias) {
+        id
+        body
+        alias
+        path
+        layout
+        beta
+        tags
+        lastModified
+        shorttitle
+        title
+        description
+        sourceFilePath
+        preview
+        simpleRelayTwin
+        relatedFurther {
+            alias
+            title
+            shorttitle
+            path
+            layout
+        }
+        relatedMore {
+            alias
+            title
+            shorttitle
+            path
+            layout
+        }
+        relatedMoreTitle
+        relatedMoreDescription
     }
-    relatedMore {
-      alias
-      title
-      shorttitle
-      path
-      layout
-    }
-    relatedMoreTitle
-    relatedMoreDescription
-  }
 }`
 
 const ContentHandlerWithData = graphql(getItemQuery, {
