@@ -8,7 +8,11 @@ export default () => (
       <li><Link to='/docs/quickstart'>Quickstart</Link></li>
       <li><a href='https://github.com/graphcool-examples' target='_blank'>Examples</a></li>
       <li><Link to='/pricing'>Pricing</Link></li>
-      <li><a href='https://github.com/graphcool/content/blob/master/static/legal/terms.md' target='_blank'>Terms & Privacy</a></li>
+      <li>
+        <a href='https://github.com/graphcool/content/blob/master/static/legal/terms.md' target='_blank'>
+          Terms & Privacy
+        </a>
+      </li>
       <li><Link to='/docs/faq'>FAQ</Link></li>
     </ul>
   </div>
