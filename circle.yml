@@ -16,9 +16,11 @@ deployment:
       - npm run deploy:
           environment:
             NETLIFY_ID: graph-cool
+            DOCS_API_ADDR: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'
   dev:
     branch: dev
     commands:
       - npm run deploy:
           environment:
             NETLIFY_ID: dev-graph-cool
+            DOCS_API_ADDR: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'

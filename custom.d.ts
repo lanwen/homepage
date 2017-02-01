@@ -17,6 +17,7 @@ declare var System: any
 declare var Intercom: any
 declare var __INTERCOM_ID__: string
 declare var __BACKEND_ADDR__: string
+declare var __DOCS_API_ADDR__: string
 declare var __HEARTBEAT_ADDR__: string | boolean
 
 declare interface Window {

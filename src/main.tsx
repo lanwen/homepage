@@ -30,7 +30,7 @@ export function updateApolloState(state: any): void {
 }
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
+  networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
 })
 
 const store = createStore(
