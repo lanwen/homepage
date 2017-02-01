@@ -23,4 +23,4 @@ deployment:
       - npm run deploy:
           environment:
             NETLIFY_ID: dev-graph-cool
-            DOCS_API_ADDR: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'
+            DOCS_API_ADDR: 'https://api.graph.cool/simple/v1/ciyn862op3bgx01208bxt03x6'
