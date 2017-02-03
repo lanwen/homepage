@@ -94,6 +94,10 @@
   version "1.16.34"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-1.16.34.tgz#a9761fff33d0f7b3fe61875b577778a2576a9a03"
 
+"@types/webfontloader@^1.6.28":
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/@types/webfontloader/-/webfontloader-1.6.28.tgz#48471eafa6ba3da26aeaf79be61c272058a13d27"
+
 "@types/whatwg-fetch@^0.0.32":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/whatwg-fetch/-/whatwg-fetch-0.0.32.tgz#ded91dbae1e6ffb826f14b171a67e7f7e508d0c5"
@@ -6102,6 +6106,10 @@ wbuf@^1.1.0, wbuf@^1.4.0:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.2.tgz#d697b99f1f59512df2751be42769c1580b5801fe"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webfontloader@^1.6.27:
+  version "1.6.27"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.27.tgz#c3899649b0653aa57d0a23388f82409e0df224ba"
 
 webpack-dev-middleware@^1.4.0:
   version "1.9.0"
