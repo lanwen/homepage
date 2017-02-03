@@ -8,6 +8,7 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
 import * as cookiestore from 'cookiestore'
+import * as WebFont from 'webfontloader'
 import routes from './routes'
 
 import './style'
@@ -49,6 +50,12 @@ if (navigator.userAgent === 'SSR') {
     updateApolloState(state)
   })
 }
+
+WebFont.load({
+  google: {
+    families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
+  },
+})
 
 function render() {
   ReactDOM.render(

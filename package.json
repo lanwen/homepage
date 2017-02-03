@@ -31,6 +31,7 @@
     "@types/react-modal": "^1.6.0",
     "@types/react-router": "^2.0.41",
     "@types/redux": "^3.6.0",
+    "@types/webfontloader": "^1.6.28",
     "@types/whatwg-fetch": "^0.0.32",
     "algoliasearch": "^3.20.3",
     "apollo-client": "^0.5.20",
@@ -82,6 +83,7 @@
     "styled-jsx": "git+https://github.com/timsuchanek/styled-jsx#build",
     "styled-jsx-postcss": "^0.1.5",
     "typed-graphql": "^1.0.2",
+    "webfontloader": "^1.6.27",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
