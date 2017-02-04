@@ -41,7 +41,10 @@ module.exports = {
       loader: 'raw-loader!svgo-loader',
     }, {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
-      loader: 'file-loader',
+      loaders: [
+        'file-loader',
+        'image-webpack-loader',
+      ],
     }],
   },
   plugins: [
