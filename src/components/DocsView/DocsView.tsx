@@ -41,7 +41,11 @@ export default class DocsView extends React.Component<Props, {}> {
   componentWillUnmount() {
     window.removeEventListener('resize', this.rerender)
 
-    if (__HEARTBEAT_ADDR__) {
+    if (
+      __HEARTBEAT_ADDR__ &&
+      cookiestore.has('graphcool_auth_token') &&
+      cookiestore.has('graphcool_last_used_project_id')
+    ) {
       drumstick.pause()
     }
   }
