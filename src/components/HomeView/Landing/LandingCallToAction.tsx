@@ -40,7 +40,7 @@ export default class LandingCallToAction extends React.Component<{}, {}> {
     return (
       <Root className={cx($p.flex)}>
         <Button
-          href='https://www.graph.cool/docs/tutorials/quickstart-1-thaeghi8ro'
+          href='https://www.graph.cool/docs/quickstart'
           className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black40, $p.mr25, $p.noUnderline)}
         >
           Quickstart

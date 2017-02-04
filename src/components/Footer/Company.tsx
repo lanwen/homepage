@@ -12,7 +12,7 @@ export default () => (
       <li><Link to='/'>Jobs</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
       <li><a href='https://github.com/graphcool' target='_blank'>Open Source</a></li>
-      <li><a href='https://slack.graph.cool' target='_blank'>Slack</a></li>
+      <li><a href='https://slack.graph.cool' target='_blank'>Join OurSlack</a></li>
     </ul>
   </div>
 )
