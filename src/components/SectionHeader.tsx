@@ -39,7 +39,7 @@ const Root = styled.header`
 
 interface Props {
   headline: string | JSX.Element,
-  copy: string,
+  copy?: string,
 }
 
 export default class SectionHeader extends React.Component<Props, {}> {
@@ -48,7 +48,9 @@ export default class SectionHeader extends React.Component<Props, {}> {
     return (
       <Root>
         <h2>{this.props.headline}</h2>
+        {this.props.copy &&
         <p className={cx($p.mt25, $p.black50)}>{this.props.copy}</p>
+        }
       </Root>
     )
   }

@@ -41,6 +41,7 @@ interface Props {
   new: string[],
   oldSegments: number[],
   newSegments: number[],
+  noTime?: boolean,
 }
 
 export default class Overlay extends React.Component<Props, {}> {
@@ -60,7 +61,7 @@ export default class Overlay extends React.Component<Props, {}> {
           <Bar active segments={this.props.oldSegments}/>
         </div>
         <div className={cx($p.bgLightgreen10, $p.ph25, $p.pb25, $p.relative)}>
-          <Bar graphcool active segments={this.props.newSegments}/>
+          <Bar graphcool active noTime={this.props.noTime} segments={this.props.newSegments}/>
           {window.innerWidth < breakpoints.p1000 &&
           <div className={cx($p.absolute, $p.right25, $p.top25)}>
             <Icon

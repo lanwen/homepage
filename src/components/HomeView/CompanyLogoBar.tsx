@@ -36,7 +36,7 @@ export default class CompanyLogoBar extends React.Component<Props, {}> {
         $p.justifyCenter,
         $p.flexWrap,
         $p.center,
-        $p.o100,
+        $p.o10,
         this.props.className,
       )}>
         <Logo src={require(`../../assets/graphics/logos/companies/twitter.svg`)} />
