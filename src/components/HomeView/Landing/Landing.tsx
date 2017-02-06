@@ -4,10 +4,10 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
-import LogoBar from '../LogoBar'
 import Hint from './Hint'
 import Video from './Video'
 import Caret from './Caret'
+import CompanyLogoBar from '../CompanyLogoBar'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -313,7 +313,7 @@ export default class Landing extends React.Component<{}, {}> {
         {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
           <LandingCallToAction/>
         }
-        <LogoBar/>
+        <CompanyLogoBar/>
       </section>
     )
   }
