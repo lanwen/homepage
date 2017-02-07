@@ -17,11 +17,11 @@ const Root = styled.div`
     left: -15px;
     top: 0;
     right: -15px;
-    transform: translate(0, -115px);
+    transform: translate(0, -94px);
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
-    transform: translate(0, -127px);
+    transform: translate(0, -103px);
   }
 `
 
