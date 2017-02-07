@@ -11,6 +11,19 @@ const Root = styled.div`
 
 `
 
+const RootContainer = styled.div`
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: ${$v.size10};
+    bottom: ${$v.size10};
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.02);
+  }
+`
+
 const PostsContainer = styled.div`
   position: relative;
   &:before, &:after {
@@ -42,12 +55,12 @@ export default class TwitterFeed extends React.Component<{}, {}> {
       author: 'Collin Schneider',
       date: '25. Jan',
       profilePicture: 'https://pbs.twimg.com/profile_images/637342545685647360/IQkCLjKQ_400x400.png'
-    },{
+    }, {
       content: 'Learning & writing @GraphQL for a new project built on @graphcool.',
       author: 'Collin Schneider',
       date: '25. Jan',
       profilePicture: 'https://pbs.twimg.com/profile_images/637342545685647360/IQkCLjKQ_400x400.png'
-    },{
+    }, {
       content: 'Learning & writing @GraphQL for a new project built on @graphcool. So much cleaner and easier to experiment with than a typical REST #API.',
       author: 'Collin Schneider',
       date: '25. Jan',
@@ -55,24 +68,29 @@ export default class TwitterFeed extends React.Component<{}, {}> {
     }]
 
     return (
-      <Root className={cx($p.mb96, $p.overflowHidden, $p.flex, $p.flexColumn)}>
+      <Root className={cx($p.pb96, $p.overflowHidden, $p.flex, $p.flexColumn)}>
         <Separator />
         <SectionHeader
           headline='We have the best Customers'
         />
-        <SecondaryCallToAction className={cx($p.mb60)} text='See all our twitter' link='https://twitter.com/graphcool' />
-        <PostsContainer className={cx($p.flex, $p.itemsStretch)}>
-          {data.map(node => {
-            return (
-              <Post
-                content={node.content}
-                author={node.author}
-                date={node.date}
-                profilePicture={node.profilePicture}
-              />
-            )
-          })}
-        </PostsContainer>
+        <SecondaryCallToAction
+          className={cx($p.mb60)} text='See all our twitter'
+          link='https://twitter.com/graphcool'
+        />
+        <RootContainer>
+          <PostsContainer className={cx($p.flex, $p.itemsStretch)}>
+            {data.map(node => {
+              return (
+                <Post
+                  content={node.content}
+                  author={node.author}
+                  date={node.date}
+                  profilePicture={node.profilePicture}
+                />
+              )
+            })}
+          </PostsContainer>
+        </RootContainer>
       </Root>
     )
   }
