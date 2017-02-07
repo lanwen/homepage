@@ -48,20 +48,20 @@ export default class Quickstart extends React.Component<Props, {}> {
           $p.relative,
           $p.overflowHidden,
           $p.flex,
-          $p.justifyCenter,
-          $p.itemsCenter,
-          $p.ml25,
-        )}
-        opacity={this.props.opacity}
-        color={this.props.color}
-      >
-        <Icon
-          src={require(`graphcool-styles/icons/fill/${this.props.technology}LogoCentered.svg`)}
-          width={50}
-          height={50}
-          color={this.props.color}
-        />
-      </Root>
-    )
+    $p.justifyCenter,
+      $p.itemsCenter,
+      $p.ml25,
+  )}
+opacity={this.props.opacity}
+color={this.props.color}
+>
+<Icon
+  src={require(`graphcool-styles/icons/fill/${this.props.technology}LogoCentered.svg`)}
+  width={50}
+  height={50}
+  color={this.props.color}
+/>
+</Root>
+)
   }
 }

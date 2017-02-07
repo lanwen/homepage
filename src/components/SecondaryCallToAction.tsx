@@ -7,6 +7,7 @@ interface Props {
   text: string,
   link: string,
   className?: string,
+  newWindow?: boolean,
 }
 
 const Root = styled.a`
@@ -29,6 +30,7 @@ export default class SecondaryCallToAction extends React.Component<Props, {}> {
           $p.center,
           this.props.className,
         )}
+        target={this.props.newWindow ? '_blank' : '_self'}
       >
         {this.props.text}
         <div className={cx($p.ml10)}>

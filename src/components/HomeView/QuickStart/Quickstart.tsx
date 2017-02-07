@@ -1,12 +1,37 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { $v, $p, $g, Icon } from 'graphcool-styles'
+import styled from 'styled-components'
 import Separator from '../../Separator'
 import SectionHeader from '../../SectionHeader'
+import SecondaryCallToAction from '../../SecondaryCallToAction'
 import QuickstartTechnology from './QuickstartTechnology'
 
+const QuickstartContainer = styled.div`
+  
+  > div {
+    transition: filter .4s ease;
+  }
+  
+  &:hover {
+    > div {
+      filter: blur(10px)
+    }
+    
+    button {
+      opacity: 1;
+    }
+  }
+`
 
+const TechContainer = styled.div`
 
+`
+
+const CallToAction = styled.button`
+  opacity: 0;
+  transition: opacity .4s ease;
+`
 
 export default class Quickstart extends React.Component<{}, {}> {
   render() {
@@ -48,49 +73,67 @@ export default class Quickstart extends React.Component<{}, {}> {
     }]
 
     return (
-      <section>
+      <section className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.overflowHidden)}>
         <Separator />
         <SectionHeader
           headline='Have a Quick Start'
           copy='This really is the fastest way we can offer to get a fully functional backend'
         />
-        <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.center)}>
-          <div className={cx($p.flex)}>
-            {frontendTech.map((node, count) => {
-              return (
-                <QuickstartTechnology
-                  key={count}
-                  technology={node.technology}
-                  color={node.color}
-                  opacity={node.opacity}
-                />
-              )
-            })}
-          </div>
-          <div className={cx($p.mh25)}>
-            <Icon
-              src={require('graphcool-styles/icons/stroke/addFull.svg')}
-              width={25}
-              height={25}
-              color={$v.gray20}
-              stroke
-              strokeWidth={5}
-            />
-          </div>
-          <div className={cx($p.flex)}>
-            {clientTech.map((node, count) => {
-              return (
-                <QuickstartTechnology
-                  key={count}
-                  technology={node.technology}
-                  color={node.color}
-                  opacity={node.opacity}
-                />
-              )
-            })}
-          </div>
-          <CallToAction className={cx($g.uppercaseButton)}>Select your Quickstart</CallToAction>
-        </div>
+        <QuickstartContainer className={cx($p.relative, $p.flex, $p.itemsCenter, $p.justifyCenter, $p.center)}>
+          <TechContainer className={cx($p.flex, $p.itemsCenter)}>
+            <div className={cx($p.flex)}>
+              {frontendTech.map((node, count) => {
+                return (
+                  <QuickstartTechnology
+                    key={count}
+                    technology={node.technology}
+                    color={node.color}
+                    opacity={node.opacity}
+                  />
+                )
+              })}
+            </div>
+            <div className={cx($p.mh25)}>
+              <Icon
+                src={require('graphcool-styles/icons/stroke/addFull.svg')}
+                width={25}
+                height={25}
+                color={$v.gray20}
+                stroke
+                strokeWidth={5}
+              />
+            </div>
+            <div className={cx($p.flex)}>
+              {clientTech.map((node, count) => {
+                return (
+                  <QuickstartTechnology
+                    key={count}
+                    technology={node.technology}
+                    color={node.color}
+                    opacity={node.opacity}
+                  />
+                )
+              })}
+            </div>
+          </TechContainer>
+          <CallToAction
+            className={cx(
+              $g.uppercaseButton,
+              $p.bgGreen,
+              $p.white,
+              $p.buttonShadow,
+              $p.absolute,
+              $p.top50,
+              $p.left50,
+              $p.tlCenter,
+            )}
+          >Select your Quickstart</CallToAction>
+        </QuickstartContainer>
+        <SecondaryCallToAction
+          text='See all of our docs'
+          link='https://graph.cool/docs'
+          className={cx($p.mv60, $p.center)}
+        />
       </section>
     )
   }
