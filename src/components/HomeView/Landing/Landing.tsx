@@ -35,7 +35,7 @@ const HeroImage = styled.div`
   position: relative;
   
   img {
-    transition: filter .6s ease;
+    transition: filter .4s ease;
   }
   
   @media (max-width: ${breakpoints.p900}px) {

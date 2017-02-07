@@ -9,7 +9,7 @@ interface Props {
   className?: string,
 }
 
-const Root = styled.div`
+const Root = styled.a`
 
 `
 
@@ -21,7 +21,8 @@ export default class SecondaryCallToAction extends React.Component<Props, {}> {
         href={this.props.link}
         className={cx(
           $g.uppercaseLabel,
-          $p.f14, $p.blue,
+          $p.f14,
+          $p.blue,
           $p.flex,
           $p.itemsCenter,
           $p.noUnderline,

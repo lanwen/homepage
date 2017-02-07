@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $g, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 
-const Root = styled.div`
+const Root = styled.a`
   z-index: 1;
   min-width: 300px;
   max-width: 400px;
@@ -24,13 +24,19 @@ interface Props {
   author: string,
   date: string,
   profilePicture: string,
+  url: string,
 }
 
 export default class Post extends React.Component<Props, {}> {
 
   render() {
     return (
-      <Root className={cx($g.overlay, $p.mr25)}>
+      <Root
+        href={this.props.url}
+        target='_blank'
+        rel='noreferrer noopener'
+        className={cx($g.overlay, $p.mr25, $p.noUnderline)}
+      >
         <header className={cx($p.flex, $p.itemsCenter, $p.pa16, $p.pb0)}>
           <ProfilePicture
             src={this.props.profilePicture}

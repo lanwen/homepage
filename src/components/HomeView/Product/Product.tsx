@@ -7,6 +7,7 @@ import { features } from './data'
 
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
+import Separator from '../../Separator'
 import SectionHeader from '../../SectionHeader'
 import Pagination from '../Pagination'
 
@@ -120,6 +121,7 @@ export default class Product extends React.Component<{}, State> {
 
     return (
       <section>
+        <Separator />
         <SectionHeader
           headline='It’s easy to control every aspect of your backend'
           copy='With the Graphcool Console you can discover and manage every aspect of your backend.'

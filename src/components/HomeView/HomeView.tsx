@@ -4,6 +4,7 @@ import Header from '../Header'
 import Footer from '../Footer/Footer'
 import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
+import Quickstart from './QuickStart/Quickstart'
 import Product from './Product/Product'
 import Features from './Features/Features'
 import References from './References/References'
@@ -56,6 +57,7 @@ export default class HomeView extends React.Component<{}, State> {
         <Header/>
         <Landing/>
         <Timeline/>
+        <Quickstart/>
         <Product/>
         <Features/>
         <References ref='references' inViewPort={this.state.referencesInViewport}/>
