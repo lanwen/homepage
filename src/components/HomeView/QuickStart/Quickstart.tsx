@@ -37,7 +37,7 @@ const QuickstartContainer = styled.div`
   
   @media (max-width: ${breakpoints.p500}px) {
     flex-direction: column;
-    align-items: flex-start;
+    // align-items: flex-start;
     margin-bottom: ${$v.size38};
   }
 `
@@ -47,9 +47,9 @@ const TechContainer = styled.div`
     flex-direction: column;
   }
   
-  @media (max-width: ${breakpoints.p500}px) {
-    align-items: flex-start
-  }
+  // @media (max-width: ${breakpoints.p500}px) {
+  //   align-items: flex-start
+  // }
 `
 
 const TechInnerContainer = styled.div`
@@ -58,9 +58,9 @@ const TechInnerContainer = styled.div`
     justify-content: center;
   }
   
-  @media (max-width: ${breakpoints.p500}px) {
-    justify-content: flex-start;
-  }
+  // @media (max-width: ${breakpoints.p500}px) {
+  //   justify-content: flex-start;
+  // }
 `
 
 const Plus = styled.div`
@@ -81,7 +81,7 @@ const CallToAction = styled.button`
     position: static;
     opacity: 1;
     transform: translate(0,0);
-    margin: ${$v.size25} 0 0 ${$v.size38};
+    margin: ${$v.size25} auto 0;
   }
 `
 

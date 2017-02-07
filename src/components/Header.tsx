@@ -105,6 +105,7 @@ const MultiNavLink = styled.button`
   font-size: inherit;
   font-weight: inherit;
   padding: ${$v.size10} 0;
+  cursor: default;
 `
 
 const NavTooltip = styled.span`
@@ -246,13 +247,15 @@ const FunctionsIconContainer = styled(FeatureIconContainer)`
 `
 
 interface State {
-  menuOpened: boolean
+  menuOpened: boolean,
+  tooltipActive: boolean,
 }
 
 export default class Header extends React.Component<{}, State> {
 
   state: State = {
     menuOpened: false,
+    tooltipActive: false,
   }
 
   render() {
@@ -276,8 +279,12 @@ export default class Header extends React.Component<{}, State> {
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           {window.innerWidth >= breakpoints.p750 &&
-            <MultiNavLink>
+            <MultiNavLink
+              onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
+              onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
+            >
               Features
+              {this.state.tooltipActive &&
               <NavTooltip className={cx($g.overlay, $p.absolute)}>
                 <FeatureLink to='/graphql'>
                   <GraphQLBackendIconContainer>
@@ -302,6 +309,7 @@ export default class Header extends React.Component<{}, State> {
                   <span className={cx($p.flexFixed)}>Serverless Functions</span>
                 </FeatureLink>
               </NavTooltip>
+              }
             </MultiNavLink>
           }
           {window.innerWidth < breakpoints.p750 &&

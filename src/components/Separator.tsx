@@ -15,10 +15,6 @@ const Root = styled.div`
   @media (min-width: ${breakpoints.p1200}px) {
     margin-top: ${$v.size96};
   }
-    
-  @media (max-width: ${breakpoints.p500}px) {
-    margin-left: ${$v.size38};
-  }
   
   @media (max-width: ${breakpoints.p400}px) {
     margin-top: ${$v.size60};

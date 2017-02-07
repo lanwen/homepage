@@ -12,9 +12,9 @@ interface Props {
 }
 
 const Root = styled.a`
-  @media (max-width: ${breakpoints.p500}px) {
-    margin-left: ${$v.size38};
-  }
+  // @media (max-width: ${breakpoints.p500}px) {
+  //   margin-left: ${$v.size38};
+  // }
 `
 
 export default class SecondaryCallToAction extends React.Component<Props, {}> {

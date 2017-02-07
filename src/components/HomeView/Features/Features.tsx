@@ -17,7 +17,9 @@ const Container = styled.div`
   
   @media (min-width: ${breakpoints.p400}px) {
     padding-left: ${$v.size38};
+    align-items: flex-start;
   }
+    
   
   @media (min-width: ${breakpoints.p650}px) {
     flex-direction: row;
