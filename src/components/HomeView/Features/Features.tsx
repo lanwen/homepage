@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import Feature from './Feature'
 import SectionHeader from '../../SectionHeader'
+import Separator from '../../Separator'
 
 const Container = styled.div`
   margin: 0 auto ${$v.size60};
@@ -19,7 +20,6 @@ const Container = styled.div`
     padding-left: ${$v.size38};
     align-items: flex-start;
   }
-    
   
   @media (min-width: ${breakpoints.p650}px) {
     flex-direction: row;
@@ -47,6 +47,9 @@ export default class Features extends React.Component<{}, {}> {
 
     return (
       <div>
+        {window.innerWidth < 1000 &&
+          <Separator />
+        }
         <SectionHeader
           headline='Features optimized for developer experience'
           copy=''

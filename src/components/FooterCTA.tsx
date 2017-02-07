@@ -2,23 +2,38 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../utils/constants'
+import { breakpoints, maxWidth } from '../utils/constants'
+import LandingCallToAction from './HomeView/Landing/LandingCallToAction'
 
-const Copy = styled.div`
-  width: 60%;
+const Root = styled.div`
+  max-width: ${maxWidth}px;
+  padding: 0 ${$v.size38} ${$v.size60};
   
-  @media(max-width: ${breakpoints.p750}px) {
-    width: 80%;
+  @media (min-width: ${breakpoints.p750}px) {
+    padding: 0 ${$v.size60} ${$v.size60}
   }
-  @media(max-width: ${breakpoints.p500}px) {
-    padding-left: ${$v.size38};
-    padding-right: ${$v.size38};
-    text-align: left;
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding: 0 ${$v.size60} ${$v.size60}
   }
- 
- @media(max-width: ${breakpoints.p400}px) {
-    padding-left: ${$v.size25};
-    padding-right: ${$v.size25};
+  
+  @media (max-width: 680px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding: 0 ${$v.size25} ${$v.size38}
+  }
+`
+
+const ButtonContainer = styled.div`
+  margin-left: ${$v.size60};
+  
+  @media (max-width: 680px) {
+    margin-left: 0;
+    margin-top: ${$v.size38};
   }
 `
 
@@ -30,7 +45,7 @@ const Button = styled.a`
   }
   
   @media (min-width: ${breakpoints.p1360}px) {
-    font-size: ${$v.size25};
+    font-size: ${$v.size20};
   }
 `
 
@@ -39,17 +54,26 @@ export default class FooterCTA extends React.Component<{}, {}> {
   render() {
 
     return (
-      <div className={cx($p.justifyCenter, $p.flex, $p.flexColumn, $p.pb96)}>
-        <Copy className={cx($p.f25, $p.tc, $p.pb16, $p.selfCenter, $p.fw3)}>
-          {'Try it out for free - and setup your own backend in less than 5 minutes.'}
-        </Copy>
-        <Button
-          className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.selfCenter, $p.pa16, $p.noUnderline)}
-          href='https://console.graph.cool/signup'
-        >
-          Sign up
-        </Button>
-      </div>
+      <Root className={cx($p.flex, $p.justifyBetween, $p.itemsCenter, $p.pb96)}>
+        <h2 className={cx($p.black50)}>
+          Ready to Get Started?
+          <span className={cx($p.green, $p.db)}>Explore our Docs or set up a GraphQL Backend.</span>
+        </h2>
+        <ButtonContainer className={cx($p.flex)}>
+          <Button
+            href='https://console.graph.cool/signup'
+            className={cx($g.uppercaseButton, $p.pa16, $p.bgGreen, $p.white, $p.mr25, $p.noUnderline)}
+          >
+            Sign Up
+          </Button>
+          <Button
+            href='https://www.graph.cool/docs/quickstart'
+            className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black50, $p.noUnderline)}
+          >
+            Quickstart
+          </Button>
+        </ButtonContainer>
+      </Root>
     )
   }
 }

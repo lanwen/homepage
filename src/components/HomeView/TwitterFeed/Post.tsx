@@ -2,12 +2,17 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $g, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
+import { breakpoints } from '../../../utils/constants';
 
 const Root = styled.a`
   z-index: 1;
   min-width: 300px;
   max-width: 400px;
   flex: 0 0 auto;
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    max-width: 80%;
+  }
 `
 
 const ProfilePicture = styled.img`

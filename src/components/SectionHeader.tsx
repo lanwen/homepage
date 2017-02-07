@@ -20,9 +20,9 @@ const Root = styled.header`
     padding: ${$v.size96} ${$v.size60} ${$v.size60}
   }
   
-  @media (max-width: ${breakpoints.p500}px) {
-    text-align: left;
-  }
+  // @media (max-width: ${breakpoints.p500}px) {
+  //   text-align: left;
+  // }
   
   @media (max-width: ${breakpoints.p400}px) {
     padding: ${$v.size60} ${$v.size25} ${$v.size38}
