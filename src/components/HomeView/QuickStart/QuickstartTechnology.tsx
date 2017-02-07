@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $v, $p, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
+import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.div`
 
@@ -29,6 +30,19 @@ const Root = styled.div`
     width: 100% !important;
     height: 100% !important;
   }
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    margin: ${$v.size12};
+    
+    &:first-child {
+      margin: ${$v.size12};
+    }
+  }
+  
+  @media (max-width: 800px) {
+    width: 70px;
+    height: 70px;
+  }
 `
 
 interface Props {
@@ -48,20 +62,20 @@ export default class Quickstart extends React.Component<Props, {}> {
           $p.relative,
           $p.overflowHidden,
           $p.flex,
-    $p.justifyCenter,
-      $p.itemsCenter,
-      $p.ml25,
-  )}
-opacity={this.props.opacity}
-color={this.props.color}
->
-<Icon
-  src={require(`graphcool-styles/icons/fill/${this.props.technology}LogoCentered.svg`)}
-  width={50}
-  height={50}
-  color={this.props.color}
-/>
-</Root>
-)
+          $p.justifyCenter,
+          $p.itemsCenter,
+          $p.ml25,
+        )}
+        opacity={this.props.opacity}
+        color={this.props.color}
+      >
+        <Icon
+          src={require(`graphcool-styles/icons/fill/${this.props.technology}LogoCentered.svg`)}
+          width={50}
+          height={50}
+          color={this.props.color}
+        />
+      </Root>
+    )
   }
 }

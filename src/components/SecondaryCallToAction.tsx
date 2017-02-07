@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $g, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
+import { breakpoints } from '../utils/constants'
 
 interface Props {
   text: string,
@@ -11,7 +12,9 @@ interface Props {
 }
 
 const Root = styled.a`
-
+  @media (max-width: ${breakpoints.p500}px) {
+    margin-left: ${$v.size38};
+  }
 `
 
 export default class SecondaryCallToAction extends React.Component<Props, {}> {

@@ -9,6 +9,34 @@ import SectionHeader from '../../SectionHeader'
 const Container = styled.div`
   margin: 0 auto ${$v.size60};
   max-width: ${breakpoints.p1250 + 100}px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: ${$v.size25};
+  
+  @media (min-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size38};
+  }
+  
+  @media (min-width: ${breakpoints.p650}px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+    
+  @media (min-width: ${breakpoints.p750}px) {
+    padding-left: ${$v.size60};
+  }
+  
+  @media (min-width: ${breakpoints.p900}px) {
+    justify-content: space-around;
+    padding-left: 0;
+  }
+
+  @media (min-width: ${breakpoints.p1250 + 300}px) {
+    justify-content: space-between;
+  }
+  
 `
 
 export default class Features extends React.Component<{}, {}> {
@@ -21,7 +49,7 @@ export default class Features extends React.Component<{}, {}> {
           headline='Features optimized for developer experience'
           copy=''
         />
-        <Container className={cx($p.flex, $p.justifyBetween, $p.flexWrap)}>
+        <Container>
           <Feature
             icon='resize'
             color={$v.blue}

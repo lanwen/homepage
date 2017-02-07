@@ -7,8 +7,10 @@ import { breakpoints } from '../utils/constants'
 const Root = styled.header`
   padding: ${$v.size96} ${$v.size38} ${$v.size60};
   text-align: center;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  box-sizing: border-box;
   
   @media (min-width: ${breakpoints.p750}px) {
     padding: ${$v.size96} ${$v.size60} ${$v.size60}

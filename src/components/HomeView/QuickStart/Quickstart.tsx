@@ -6,31 +6,83 @@ import Separator from '../../Separator'
 import SectionHeader from '../../SectionHeader'
 import SecondaryCallToAction from '../../SecondaryCallToAction'
 import QuickstartTechnology from './QuickstartTechnology'
+import { breakpoints } from '../../../utils/constants'
+
+const Root = styled.section`
+  @media (max-width: ${breakpoints.p500}px) {
+    align-items: flex-start;
+  }
+`
 
 const QuickstartContainer = styled.div`
+
+  margin-bottom: ${$v.size60};
   
-  > div {
-    transition: filter .4s ease;
-  }
-  
-  &:hover {
+  @media (min-width: ${breakpoints.p500 + 1}px) {
     > div {
-      filter: blur(10px)
+      filter: blur(0px)
+      transition: filter .4s ease;
     }
     
-    button {
-      opacity: 1;
+    &:hover {
+      > div {
+        filter: blur(10px)
+      }
+      
+      button {
+        opacity: 1;
+      }
     }
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: ${$v.size38};
   }
 `
 
 const TechContainer = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    flex-direction: column;
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    align-items: flex-start
+  }
+`
 
+const TechInnerContainer = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    justify-content: flex-start;
+  }
+`
+
+const Plus = styled.div`
+  @media (max-width: ${breakpoints.p1200}px) {
+    margin: ${$v.size16} 0;
+  }
+  
+  @media (max-width: 800px) {
+    margin: ${$v.size06} 0;
+  }
 `
 
 const CallToAction = styled.button`
   opacity: 0;
   transition: opacity .4s ease;
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    position: static;
+    opacity: 1;
+    transform: translate(0,0);
+    margin: ${$v.size25} 0 0 ${$v.size38};
+  }
 `
 
 export default class Quickstart extends React.Component<{}, {}> {
@@ -73,15 +125,15 @@ export default class Quickstart extends React.Component<{}, {}> {
     }]
 
     return (
-      <section className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.overflowHidden)}>
+      <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.overflowHidden)}>
         <Separator />
         <SectionHeader
           headline='Have a Quick Start'
           copy='This really is the fastest way we can offer to get a fully functional backend'
         />
         <QuickstartContainer className={cx($p.relative, $p.flex, $p.itemsCenter, $p.justifyCenter, $p.center)}>
-          <TechContainer className={cx($p.flex, $p.itemsCenter)}>
-            <div className={cx($p.flex)}>
+          <TechContainer className={cx($p.flex, $p.itemsCenter, $p.ph25)}>
+            <TechInnerContainer className={cx($p.flex)}>
               {frontendTech.map((node, count) => {
                 return (
                   <QuickstartTechnology
@@ -92,8 +144,19 @@ export default class Quickstart extends React.Component<{}, {}> {
                   />
                 )
               })}
-            </div>
-            <div className={cx($p.mh25)}>
+              {window.innerWidth <= 500 && clientTech.map((node, count) => {
+                return (
+                  <QuickstartTechnology
+                    key={count}
+                    technology={node.technology}
+                    color={node.color}
+                    opacity={node.opacity}
+                  />
+                )
+              })}
+            </TechInnerContainer>
+            {window.innerWidth > 500 &&
+            <Plus className={cx($p.mh25)}>
               <Icon
                 src={require('graphcool-styles/icons/stroke/addFull.svg')}
                 width={25}
@@ -102,8 +165,10 @@ export default class Quickstart extends React.Component<{}, {}> {
                 stroke
                 strokeWidth={5}
               />
-            </div>
-            <div className={cx($p.flex)}>
+            </Plus>
+            }
+            {window.innerWidth > 500 &&
+            <TechInnerContainer className={cx($p.flex)}>
               {clientTech.map((node, count) => {
                 return (
                   <QuickstartTechnology
@@ -114,7 +179,8 @@ export default class Quickstart extends React.Component<{}, {}> {
                   />
                 )
               })}
-            </div>
+            </TechInnerContainer>
+            }
           </TechContainer>
           <CallToAction
             className={cx(
@@ -132,9 +198,9 @@ export default class Quickstart extends React.Component<{}, {}> {
         <SecondaryCallToAction
           text='See all of our docs'
           link='https://graph.cool/docs'
-          className={cx($p.mv60, $p.center)}
+          className={cx($p.center)}
         />
-      </section>
+      </Root>
     )
   }
 }

@@ -46,7 +46,7 @@ const Nav = styled.nav`
     align-items: flex-start;
     padding: ${$v.size16};
     border-radius: 2px;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15)
   }
   
   @media (max-width: ${breakpoints.p400}px) {
@@ -67,7 +67,7 @@ const SplitLink = ({ to, children, className }: {to: string, children: JSX.Eleme
     : <Link to={to} className={className}>{children}</Link>
 )
 
-const NavLink = styled(SplitLink)`
+const NavLinkBase = `
   color: ${$v.gray30};
   margin-right: ${$v.size25};
   cursor: pointer;
@@ -85,6 +85,53 @@ const NavLink = styled(SplitLink)`
   
   @media (max-width: ${breakpoints.p750}px) {
     padding: ${$v.size10};
+  }
+`
+
+const NavLink = styled(SplitLink)`
+  ${NavLinkBase}
+`
+
+const TwoRowLink = styled(NavLink)`
+  line-height: 1.3;
+`
+
+const MultiNavLink = styled.button`
+  ${NavLinkBase}
+  position: relative;
+  background: none;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: ${$v.size10} 0;
+`
+
+const NavTooltip = styled.span`
+  top: 35px;
+  left: 50%;
+  white-space: initial;
+  overflow: visible;
+  width: 225px;
+  transform: translate(-50%, 0);
+  font-size: ${$v.size16};
+  
+  @media (min-width: ${breakpoints.p900}px) {
+    font-size: ${$v.size20};
+    width: 270px;
+  }
+  
+  &:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 6px 6px 6px;
+    border-color: transparent transparent ${$v.white} transparent;
   }
 `
 
@@ -146,6 +193,58 @@ const Close = styled.div`
   }
 `
 
+const FeatureLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: ${$v.gray50};
+  padding: ${$v.size16} ${$v.size16} ${$v.size06};
+  
+  &:last-child {
+    padding: ${$v.size06} ${$v.size16} ${$v.size16};
+  }
+  
+  @media (min-width: ${breakpoints.p900}px) {
+    padding: ${$v.size20} ${$v.size20} ${$v.size10};
+
+    &:last-child {
+      padding: ${$v.size10} ${$v.size20} ${$v.size20};
+    }
+  }
+  
+`
+
+const FeatureIconContainer = styled.div`
+  position: relative;
+  margin-right: ${$v.size10};
+  
+  &:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: ${$v.size20};
+    height: ${$v.size20};
+    border-radius: 500px;    
+  }
+`
+
+const GraphQLBackendIconContainer = styled(FeatureIconContainer)`
+  &:before {
+    background: ${$v.purple20};
+  }
+`
+
+const FunctionsIconContainer = styled(FeatureIconContainer)`
+  &:before {
+    background: ${$v.lightOrange20};
+  }
+`
+
 interface State {
   menuOpened: boolean
 }
@@ -176,10 +275,43 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
           }
-          <NavLink to='/docs'>Docs</NavLink>
-          <NavLink to='/graphql'>GraphQL</NavLink>
-          <NavLink to='/functions'>Functions</NavLink>
+          {window.innerWidth >= breakpoints.p750 &&
+            <MultiNavLink>
+              Features
+              <NavTooltip className={cx($g.overlay, $p.absolute)}>
+                <FeatureLink to='/graphql'>
+                  <GraphQLBackendIconContainer>
+                    <Icon
+                      src={require('../assets/icons/graphqlBackendLogo.svg')}
+                      height={25}
+                      width={25}
+                      color={$v.purple}
+                    />
+                  </GraphQLBackendIconContainer>
+                  <span className={cx($p.flexFixed)}>GraphQL Backend</span>
+                </FeatureLink>
+                <FeatureLink to='/functions'>
+                  <FunctionsIconContainer>
+                    <Icon
+                      src={require('../assets/icons/functionsLogo.svg')}
+                      height={25}
+                      width={25}
+                      color={$v.lightOrange}
+                    />
+                  </FunctionsIconContainer>
+                  <span className={cx($p.flexFixed)}>Serverless Functions</span>
+                </FeatureLink>
+              </NavTooltip>
+            </MultiNavLink>
+          }
+          {window.innerWidth < breakpoints.p750 &&
+            <TwoRowLink to='/graphql'>GraphQL<br/>Backend</TwoRowLink>
+          }
+          {window.innerWidth < breakpoints.p750 &&
+            <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
+          }
           <NavLink to='/pricing'>Pricing</NavLink>
+          <NavLink to='/docs'>Docs</NavLink>
           {loggedIn ? (
             <Signin>
               <Button

@@ -34,8 +34,12 @@ const HeroImage = styled.div`
   width: 55%;
   position: relative;
   
-  img {
-    transition: filter .4s ease;
+  .play {
+    transform: translate3D(0,-6px,0);
+    
+    p {
+      opacity: 1;
+    }
   }
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -48,18 +52,33 @@ const HeroImage = styled.div`
     width: 50%;
   }
   
-  &:hover {
-    img {
-      filter: blur(10px);
-    }
+  @media (min-width: ${breakpoints.p900 + 1}px) {
     
     .play {
-      transform: translate3D(0,-6px,0);
+      transform: translate3D(0,0,0);
       
       p {
-        opacity: 1;
+        opacity: 0;
       }
     }
+  
+    img {
+      transition: filter .4s ease;
+    }
+    
+    &:hover {
+      img {
+        filter: blur(10px);
+      }
+      
+      .play {
+        transform: translate3D(0,-6px,0);
+        
+        p {
+          opacity: 1;
+        }
+      }
+    }  
   }
 `
 
@@ -106,7 +125,7 @@ const PlayCopy = styled.p`
 `
 
 const HeroText = styled.div`
-  justify-content: center;
+  justify-content: space-between;
   margin-left: ${$v.size38};
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -122,7 +141,7 @@ const HeroText = styled.div`
   }
 
   @media (min-width: ${breakpoints.p1200}px) {
-    justify-content: space-between;
+    
     margin-left: ${$v.size60};
   }
 `
@@ -164,6 +183,14 @@ const Copy = styled.p`
   // @media (min-width: ${breakpoints.p1440}px) {
   //   padding: ${$v.size60} 0;
   // }
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-top: ${$v.size38};
+  }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    margin-top: ${$v.size25};
+  }
 `
 
 interface State {

@@ -12,16 +12,54 @@ interface Props {
 }
 
 const Root = styled.div`
-  width: 27%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 450px;
   box-sizing: border-box;
   padding: 3% 0;
   display: flex;
+  padding: 0 ${$v.size38} ${$v.size38} 0;
   
   p {
     font-size: ${$v.size16};
     font-weight: 400;
     color: ${$v.gray50};
+  }
+  
+  h3 {
+    padding-top: 8px;
+  }
+
+  @media (min-width: ${breakpoints.p400}px) {
+    padding: 0 ${$v.size60} ${$v.size60} 0
+  }
+  
+  @media (min-width: ${breakpoints.p500}px) {
+    h3 {
+      padding-top: 0px;
+    }
+  }
+  
+  @media (max-width: ${breakpoints.p650 - 1}px) {
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }  
+    
+  @media (min-width: ${breakpoints.p650}px) {
+    width: 50%;
+  }
+  
+  @media (min-width: ${breakpoints.p750}px) {
+    padding: 0 ${$v.size96} ${$v.size96} 0
+  }
+  
+  @media (min-width: ${breakpoints.p900}px) {
+    padding: 3% 0;
+    width: 44%;
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    width: 27%;
   }
 `
 

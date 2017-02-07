@@ -7,6 +7,7 @@ import SectionHeader from '../../SectionHeader'
 import SecondaryCallToAction from '../../SecondaryCallToAction'
 import HorScrollbox from '../../HorScrollbox'
 import Post from './Post'
+import { breakpoints } from '../../../utils/constants'
 
 const Root = styled.section`
 
@@ -46,12 +47,22 @@ const PostsContainer = styled.div`
     background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
     right: 0;
   }
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    &:before, &:after {
+      width: ${$v.size25};
+    }
+  }
 `
 
 const PostsInnerContainer = styled(HorScrollbox)`
   display: flex;
   padding: ${$v.size10} 0;
   margin: -${parseFloat($v.size10)}px 0;
+  
+  @media (max-width: ${breakpoints.p500}px) {
+    padding: ${$v.size10} ${$v.size25};
+  }
 `
 
 export default class TwitterFeed extends React.Component<{}, {}> {
