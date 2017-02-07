@@ -23,6 +23,18 @@ const Logo = styled.img`
   }
 `
 
+const WebflowLogo = styled(Logo)`
+  height: 40px;
+  @media (max-width: ${breakpoints.p750}px) {
+    height: 30px;
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    margin: ${$v.size10};
+    height: 20px;
+  }
+`
+
 interface Props {
   className?: string
 }
@@ -44,7 +56,7 @@ export default class CompanyLogoBar extends React.Component<Props, {}> {
         <Logo src={require(`../../assets/graphics/logos/companies/airbnb.svg`)} />
         <Logo src={require(`../../assets/graphics/logos/companies/netlify.svg`)} />
         <Logo src={require(`../../assets/graphics/logos/companies/auth0.svg`)} />
-        <Logo src={require(`../../assets/graphics/logos/companies/webflow.svg`)} />
+        <WebflowLogo src={require(`../../assets/graphics/logos/companies/webflow.svg`)} />
       </Root>
     )
   }

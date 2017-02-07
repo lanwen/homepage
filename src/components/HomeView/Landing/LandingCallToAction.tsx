@@ -41,13 +41,13 @@ export default class LandingCallToAction extends React.Component<{}, {}> {
       <Root className={cx($p.flex)}>
         <Button
           href='https://console.graph.cool/signup'
-          className={cx($g.uppercaseButton, $p.pa16, $p.bgGreen, $p.white, $p.noUnderline)}
+          className={cx($g.uppercaseButton, $p.pa16, $p.bgGreen, $p.white, $p.mr25, $p.noUnderline)}
         >
           Sign Up
         </Button>
         <Button
           href='https://www.graph.cool/docs/quickstart'
-          className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black50, $p.mr25, $p.noUnderline)}
+          className={cx($g.uppercaseButton, $p.pa16, $p.bgBlack04, $p.black50, $p.noUnderline)}
         >
           Quickstart
         </Button>

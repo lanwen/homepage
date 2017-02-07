@@ -6,6 +6,10 @@ interface Reference {
 
 // tslint:disable
 export const references: Reference[] = [{
+  quote: 'Graphcool makes working with various 3rd party APIs so much easier for us.',
+  who: 'Eric, Founter Authory',
+  url: 'https://github.com/matthewmueller',
+}, {
   quote: 'Graphcool helped me to put together a reactive backend in record time so I could focus on building features and the user experience. They were also easy to contact whenever I got stuck and even offered suggestions on how I can better organize my data. I highly recommend Graphcool for your next project!',
   who: 'Matthew Mueller, Developer',
   url: 'https://github.com/matthewmueller',
