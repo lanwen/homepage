@@ -3106,9 +3106,9 @@ graphcool-graphiql@1.3.14:
     svg-loader "^0.0.2"
     svgo-loader "^1.1.2"
 
-graphcool-styles@0.0.91:
-  version "0.0.91"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.91.tgz#e19519254792badd83fd593526604fcaf2ac9599"
+graphcool-styles@0.0.98:
+  version "0.0.98"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.98.tgz#4054c5f958cd0d716783f9c63b950e4fbf169c25"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"
@@ -3116,9 +3116,9 @@ graphcool-styles@0.0.91:
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
 
-graphcool-styles@0.0.98:
-  version "0.0.98"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.98.tgz#4054c5f958cd0d716783f9c63b950e4fbf169c25"
+graphcool-styles@^0.0.101:
+  version "0.0.101"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.101.tgz#254b96e1db9f3e04a1efb99b0894c1d7ac61529f"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"
