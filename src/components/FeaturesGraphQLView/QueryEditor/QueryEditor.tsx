@@ -29,6 +29,23 @@ const Container = styled.div`
   margin: 0 auto;
 `
 
+const PageHeader = styled(SectionHeader)`
+
+  padding-bottom: ${$v.size96} !important;
+  
+  @media (min-width: ${breakpoints.p750}px) {
+    padding-bottom: ${$v.size96};
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding-bottom: ${$v.size96};
+  }
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding-bottom: ${$v.size60};
+  }
+`
+
 const Editor = styled.div`
   
   height: 700px;
@@ -69,6 +86,7 @@ const TabBar = styled.ul`
   @media (max-width: ${breakpoints.p400}px) {
     padding-left: ${$v.size25};
   }
+  
 `
 
 // if tabbar is wider than viewport
@@ -289,7 +307,7 @@ export default class QueryEditor extends React.Component<Props, State> {
 
     return (
       <section>
-        <SectionHeader
+        <PageHeader
           headline='Your data schema generates a developer-friendly GraphQL API'
           copy='By defining your data model we create your own flexible GraphQL API. Included features: Custom endpoint for Apollo/Relay, powerful filter queries & nested mutations. Learn more about our API.' // tslint:disable-line
         />

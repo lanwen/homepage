@@ -41,28 +41,37 @@ const Button = styled.a`
   }
 `
 
-export default class FooterCTA extends React.Component<{}, {}> {
+interface Props {
+  headline1: string,
+  headline2: string,
+  button1Text: string,
+  button1Link: string,
+  button2Text: string,
+  button2Link: string,
+}
+
+export default class FooterCTA extends React.Component<Props, {}> {
 
   render() {
 
     return (
-      <Root className={cx($p.flex, $p.justifyBetween, $p.itemsCenter, $p.pb96)}>
+      <Root className={cx($p.flex, $p.justifyBetween, $p.itemsCenter, $p.pb96, $p.center)}>
         <h3 className={cx($p.black50)}>
-          Ready to get started?
-          <span className={cx($p.green, $p.db, $p.fw4)}>Set up a GraphQL backend or read the docs.</span>
+          {this.props.headline1}
+          <span className={cx($p.green, $p.db, $p.fw4)}>{this.props.headline2}</span>
         </h3>
         <ButtonContainer className={cx($p.flex)}>
           <Button
-            href='https://console.graph.cool/signup'
+            href={this.props.button1Link}
             className={cx($g.uppercaseButton, $p.pa16, $p.dim, $p.bgGreen, $p.white, $p.mr25, $p.noUnderline)}
           >
-            Create GraphQL Backend
+            {this.props.button1Text}
           </Button>
           <Button
-            href='https://www.graph.cool/docs/quickstart'
+            href={this.props.button2Link}
             className={cx($g.uppercaseButton, $p.pa16, $p.bgLightgreen20, $p.dim, $p.green, $p.noUnderline)}
           >
-            Open Docs
+            {this.props.button2Text}
           </Button>
         </ButtonContainer>
       </Root>

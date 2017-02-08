@@ -83,6 +83,28 @@ const IconContainer = styled.div`
   }
 `
 
+const CallToAction = styled(SecondaryCallToAction)`
+  color: ${$v.gray30};
+  opacity: 1;
+  transition: color ${$v.duration} ease;
+  
+  svg {
+    fill: ${$v.gray30};
+    transition: transform ${$v.duration} ease, fill .4s ease;
+  }
+  
+  &:hover {
+    opacity: 1;
+    color: ${$v.blue};
+    transition: color ${$v.duration} ease;
+    
+    svg {
+      transition: transform ${$v.duration} ease, fill .4s ease;
+      fill: ${$v.blue};
+    }
+  }
+`
+
 export default class Feature extends React.Component<Props, {}> {
   render() {
 
@@ -99,7 +121,7 @@ export default class Feature extends React.Component<Props, {}> {
         <div>
           <h3 className={cx($p.pb16)}>{this.props.headline}</h3>
           <p>{this.props.copy}</p>
-          <SecondaryCallToAction
+          <CallToAction
             text='Learn more'
             link=''
             className={cx($p.mt16)}

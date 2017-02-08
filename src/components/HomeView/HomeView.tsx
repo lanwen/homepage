@@ -62,7 +62,14 @@ export default class HomeView extends React.Component<{}, State> {
         <References ref='references' inViewPort={this.state.referencesInViewport}/>
         <ComparisonChart/>
         <TwitterFeed />
-        <FooterCTA/>
+        <FooterCTA
+          headline1='Ready to get started?'
+          headline2='Set up a GraphQL backend or read the docs'
+          button1Text='Create GraphQL Backend'
+          button1Link='https://graph.cool/docs'
+          button2Text='Open Docs'
+          button2Link='https://graph.cool/quickstart'
+        />
         <Footer/>
       </div>
     )
