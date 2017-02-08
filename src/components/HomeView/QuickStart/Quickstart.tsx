@@ -130,8 +130,8 @@ export default class Quickstart extends React.Component<{}, {}> {
       <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.overflowHidden)}>
         <Separator />
         <SectionHeader
-          headline='Have a Quick Start'
-          copy='This really is the fastest way we can offer to get a fully functional backend'
+          headline='Getting started is easy'
+          copy='Graphcool works with your favorite framework and technology. No SDKs required.'
         />
         <QuickstartContainer className={cx($p.relative, $p.flex, $p.itemsCenter, $p.justifyCenter, $p.center)}>
           <TechContainer className={cx($p.flex, $p.itemsCenter, $p.ph25)}>
@@ -195,10 +195,10 @@ export default class Quickstart extends React.Component<{}, {}> {
               $p.left50,
               $p.tlCenter,
             )}
-          >Select your Quickstart</CallToAction>
+          >Open Quickstart</CallToAction>
         </QuickstartContainer>
         <SecondaryCallToAction
-          text='See all of our docs'
+          text='Explore our docs'
           link='https://graph.cool/docs'
           className={cx($p.center)}
         />

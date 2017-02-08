@@ -163,7 +163,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                   veryGood
                 />
                 <Cell
-                  title='Open Standard'
+                  title='Limited API'
                   description='API based on GraphQL. Incoherent and difficult to use'
                   bad
                 />
@@ -234,7 +234,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               <Cell
                 title='Disjointed'
                 description={`Integrations mirror external APIs and don't integrate seamlessly`}
-                good
+                bad
               />
             </Row>
             <Row>
@@ -261,7 +261,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               />
             </Row>
             <Row>
-              <MetricsCell className='cell'>Extensibility with Custom code</MetricsCell>
+              <MetricsCell className='cell'>Extensibility with custom logic</MetricsCell>
               <Cell
                 title='Any language / technology'
                 description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code' // tslint:disable-line
