@@ -48,6 +48,7 @@ interface Props {
   button1Link: string,
   button2Text: string,
   button2Link: string,
+  className?: string,
 }
 
 export default class FooterCTA extends React.Component<Props, {}> {
@@ -55,7 +56,7 @@ export default class FooterCTA extends React.Component<Props, {}> {
   render() {
 
     return (
-      <Root className={cx($p.flex, $p.justifyBetween, $p.itemsCenter, $p.pb96, $p.center)}>
+      <Root className={cx($p.flex, $p.justifyBetween, $p.itemsCenter, $p.pb96, $p.center, this.props.className)}>
         <h3 className={cx($p.black50)}>
           {this.props.headline1}
           <span className={cx($p.green, $p.db, $p.fw4)}>{this.props.headline2}</span>

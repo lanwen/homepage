@@ -1,12 +1,17 @@
 import * as React from 'react'
-import Header from '../Header'
-import Footer from '../Footer/Footer'
-import FooterCTA from '../FooterCTA'
+import * as cx from 'classnames'
 import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
-import * as cx from 'classnames'
-import { breakpoints } from '../../utils/constants'
-import { persons } from './data'
+import { persons } from './Team/data'
+import Header from '../Header'
+import Mission from './Mission'
+import Values from './Values'
+import Team from './Team/Team'
+import Advisors from './Advisors/Advisors'
+import Investors from './Investors/Investors'
+import Timeline from './Timeline/Timeline'
+import FooterCTA from '../FooterCTA'
+import Footer from '../Footer/Footer'
 
 export default class AboutView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -16,7 +21,13 @@ export default class AboutView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header />
+        <Mission />
+        <Values />
+        <Team />
+        <Advisors />
+        <Investors />
+        <Timeline />
         <FooterCTA
           headline1='Ready to get started?'
           headline2='Set up a GraphQL backend or read the docs'
