@@ -47,7 +47,7 @@ export default class PlanCols extends React.Component<{}, {}> {
       columns = (
         <Box className={cx($p.flex, $p.justifyBetween)}>
 
-          {/* FIRST COLUMN - Startup */}
+          {/* FIRST COLUMN - Project */}
           <Column className={cx(
             $p.flex,
             $p.flexColumn,
@@ -58,10 +58,10 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
-              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
+              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Project</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
                 <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
-                <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
+                <div className={cx($p.f38, $p.green, $p.ph4)}>9</div>
                 <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
               </div>
 
@@ -78,14 +78,14 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>100,000</div>
+                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>500 MB</div>
                   <div>
-                    <Tooltip text={tooltips.NODE}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    <Tooltip text={tooltips.DATABASE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Database</div>
                     </Tooltip>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>90¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>7¢ / MB</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Database Storage</div>
                 </div>
               </div>
 
@@ -104,13 +104,13 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
                   <div className={cx($p.flex)}>
-                    <Tooltip text={tooltips.OPERATION}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    <Tooltip text={tooltips.REQUEST}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Requests</div>
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>6¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>15¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>
 
@@ -167,7 +167,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-          {/* SECOND COLUMN - Growth */}
+          {/* SECOND COLUMN - Startup */}
           <Column className={cx(
             $p.flex,
             $p.flexColumn,
@@ -188,10 +188,10 @@ export default class PlanCols extends React.Component<{}, {}> {
               </div>
 
               {/* TITLE */}
-              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Growth</div>
+              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Startup</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
                 <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
-                <div className={cx($p.f38, $p.green, $p.ph4)}>249</div>
+                <div className={cx($p.f38, $p.green, $p.ph4)}>49</div>
                 <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
               </div>
 
@@ -208,14 +208,14 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>1,000,000</div>
+                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>2 GB</div>
                   <div>
-                    <Tooltip text={tooltips.NODE}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    <Tooltip text={tooltips.DATABASE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Database</div>
                     </Tooltip>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>45¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>6¢ / MB</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Database Storage</div>
                 </div>
               </div>
 
@@ -234,13 +234,13 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>10,000,000</div>
                   <div className={cx($p.flex)}>
-                    <Tooltip text={tooltips.OPERATION}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    <Tooltip text={tooltips.REQUEST}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Requests</div>
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>3¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>12¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>
 
@@ -297,7 +297,7 @@ export default class PlanCols extends React.Component<{}, {}> {
             </a>
           </Column>
 
-          {/* THIRD COLUMN - Pro */}
+          {/* THIRD COLUMN - Growth */}
           <Column
             className={cx(
               $p.flex,
@@ -312,10 +312,10 @@ export default class PlanCols extends React.Component<{}, {}> {
 
             <div className={cx($p.flex, $p.flexColumn, $p.justifyStart)}>
               {/* TITLE */}
-              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Pro</div>
+              <div className={cx($p.green, $p.f14, $p.ttu, $p.tc, $p.mt25)}>Growth</div>
               <div className={cx($p.flex, $p.justifyCenter, $p.itemsEnd, $p.pb38)}>
                 <div className={cx($p.f25, $p.green, $p.pb6)}>$</div>
-                <div className={cx($p.f38, $p.green, $p.ph4)}>849</div>
+                <div className={cx($p.f38, $p.green, $p.ph4)}>449</div>
                 <div className={cx($p.f25, $p.lightgreen50, $p.pb6)}>/mo</div>
               </div>
 
@@ -332,14 +332,14 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>5,000,000</div>
+                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>10 GB</div>
                   <div>
-                    <Tooltip text={tooltips.NODE}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Nodes</div>
+                    <Tooltip text={tooltips.DATABASE}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Database</div>
                     </Tooltip>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>30¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Nodes</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>5¢ / MB</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Database Storage</div>
                 </div>
               </div>
 
@@ -358,13 +358,13 @@ export default class PlanCols extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
                   <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>50,000,000</div>
                   <div className={cx($p.flex)}>
-                    <Tooltip text={tooltips.OPERATION}>
-                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Operations</div>
+                    <Tooltip text={tooltips.REQUEST}>
+                      <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Requests</div>
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>2¢ / 1,000</div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Operations</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>10¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>
 
@@ -458,7 +458,7 @@ export default class PlanCols extends React.Component<{}, {}> {
               circleClassName={$p.bgWhite20}
               className={cx($p.mv4)}
             >
-              <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Nodes, Operations and Seats</span>&nbsp;
+              <span className={cx($p.white, $p.f16, $p.fw3)}>Unlimited Database, Requests and Seats</span>&nbsp;
 
             </PricingDimension>
 

@@ -70,9 +70,9 @@ export default class FreePlan extends React.Component<{}, {}> {
               height={12}
               className={cx($p.mb25)}
             >
-              <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
-              <Tooltip text={tooltips.NODE}>
-                <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+              <div className={cx($p.f16, $p.black60, $p.fw6)}>100 MB</div>
+              <Tooltip text={tooltips.DATABASE}>
+                <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Database</div>
               </Tooltip>
             </PricingDimension>
 
@@ -96,10 +96,10 @@ export default class FreePlan extends React.Component<{}, {}> {
               width={7}
               height={10}
             >
-              <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
+              <div className={cx($p.f16, $p.black60, $p.fw6)}>500 MB</div>
               <div className={cx($p.flex, $p.itemsEnd)}>
-                <Tooltip text={tooltips.OPERATION}>
-                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+                <Tooltip text={tooltips.REQUEST}>
+                  <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Requests</span>
                 </Tooltip>
                 <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
               </div>
@@ -133,9 +133,9 @@ export default class FreePlan extends React.Component<{}, {}> {
           height={12}
           className={cx($p.mb25)}
         >
-          <div className={cx($p.f16, $p.black60, $p.fw6)}>10,000</div>
-          <Tooltip text={tooltips.NODE}>
-            <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Nodes</div>
+          <div className={cx($p.f16, $p.black60, $p.fw6)}>250 MB</div>
+          <Tooltip text={tooltips.DATABASE}>
+            <div className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Database</div>
           </Tooltip>
         </PricingDimension>
         <PricingDimension
@@ -170,8 +170,8 @@ export default class FreePlan extends React.Component<{}, {}> {
         >
           <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
           <div className={cx($p.flex, $p.itemsEnd)}>
-            <Tooltip text={tooltips.OPERATION}>
-              <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Operations</span>
+            <Tooltip text={tooltips.REQUEST}>
+              <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Requests</span>
             </Tooltip>
             <span className={cx($p.f14, $p.fw3, $p.black60, $p.ml4)}> / Month</span>
           </div>
