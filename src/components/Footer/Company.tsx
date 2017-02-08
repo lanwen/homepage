@@ -11,8 +11,8 @@ export default () => (
       <li><Link to='/about'>About</Link></li>
       <li><Link to='/'>Jobs</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
-      <li><a href='https://github.com/graphcool' target='_blank'>Open Source</a></li>
-      <li><a href='https://slack.graph.cool' target='_blank'>Slack</a></li>
+      <li><Link to='/open-source'>Open Source</Link></li>
+      <li><a href='https://slack.graph.cool' target='_blank'>Join our Slack</a></li>
     </ul>
   </div>
 )

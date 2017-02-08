@@ -51,12 +51,6 @@ if (navigator.userAgent === 'SSR') {
   })
 }
 
-WebFont.load({
-  google: {
-    families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
-  },
-})
-
 function render() {
   ReactDOM.render(
     <AppContainer>
@@ -89,4 +83,10 @@ function initIntercom() {
 
 if (navigator.userAgent !== 'SSR') {
   FastClick.attach(document.body)
+
+  WebFont.load({
+    google: {
+      families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
+    },
+  })
 }

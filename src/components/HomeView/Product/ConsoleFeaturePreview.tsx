@@ -48,8 +48,7 @@ const Root = styled.article`
 `
 
 const Copy = styled.p`
-  margin-top: ${$v.size38};
-  
+  margin-top: ${$v.size25};
 `
 
 const PreviewImage = styled.div`
@@ -89,7 +88,7 @@ export default class FeaturePreview extends React.Component<Props, {}> {
           />
         </PreviewImage>
         <div>
-          <h3 className={cx($p.f25, $p.fw3)}>{this.props.headline}</h3>
+          <h2 className={cx($p.f25, $p.fw3)}>{this.props.headline}</h2>
           <Copy className={cx($p.black50)}>{this.props.copy}</Copy>
         </div>
       </Root>

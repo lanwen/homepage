@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
-import ComingSoonTag from '../ComingSoonTag'
+import ComingSoonTag from '../../HomeView/ComingSoonTag'
 
 const Root = styled.div`
   position: absolute;

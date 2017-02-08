@@ -26,9 +26,30 @@ export default {
       },
     },
     {
+      path: '/graphql',
+      getComponent(_, cb) {
+        System.import('./components/FeaturesGraphQLView/FeaturesGraphQLView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/functions',
+      getComponent(_, cb) {
+        System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/pricing',
       getComponent(_, cb) {
         System.import('./components/PricingView/PricingView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/open-source',
+      getComponent(_, cb) {
+        System.import('./components/OpenSourceView/OpenSourceView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },

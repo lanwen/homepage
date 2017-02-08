@@ -4,7 +4,7 @@ import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import Field from './Field'
-import Pagination from '../Pagination'
+import Pagination from '../../HomeView/Pagination'
 import HorScrollbox from '../../HorScrollbox'
 
 const Root = styled.div`

@@ -41,8 +41,8 @@ const Table = styled.div`
 
 const TableContainer = styled(HorScrollbox)`
   padding-right: ${$v.size10};
-  padding-bottom: 500px;
-  margin-bottom: -500px;
+  padding-bottom: 250px;
+  margin-bottom: -250px;
 `
 
 const RowBase = styled.div`
@@ -119,10 +119,10 @@ export default class ComparisonChart extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root className={cx($p.pb96)}>
+      <Root>
         <SectionHeader
           headline='A backend platform for more than just prototyping'
-          copy='Previous generation backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerful scalable applications.' // tslint:disable-line
+          copy='GraphQL and serverless functions enable you to iterate quickly and build scalable applications.'
         />
         <Table className={cx($p.flex, $p.justifyCenter, $p.relative)}>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>
@@ -163,7 +163,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
                   veryGood
                 />
                 <Cell
-                  title='Open Standard'
+                  title='Limited API'
                   description='API based on GraphQL. Incoherent and difficult to use'
                   bad
                 />
@@ -234,7 +234,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               <Cell
                 title='Disjointed'
                 description={`Integrations mirror external APIs and don't integrate seamlessly`}
-                good
+                bad
               />
             </Row>
             <Row>
@@ -261,7 +261,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
               />
             </Row>
             <Row>
-              <MetricsCell className='cell'>Extensibility with Custom code</MetricsCell>
+              <MetricsCell className='cell'>Extensibility with custom logic</MetricsCell>
               <Cell
                 title='Any language / technology'
                 description='You can use any language or technology to extend Graphcool. Your custom code can be self-hosted (via webhooks) or deployed as serverless code' // tslint:disable-line

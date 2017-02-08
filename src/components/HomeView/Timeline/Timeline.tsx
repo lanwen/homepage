@@ -79,24 +79,25 @@ export default class Timeline extends React.Component<{}, {}> {
 
     const data = [{
       title: 'Initial Setup',
-      old: ['Choose language/framework', 'Configure database', 'Setup server infrastructure', 'Setup deployment'],
+      old: ['Choose language/framework', 'Configure database', 'Server & deployment infrastructure'],
       new: ['Define your data schema', 'Connect your frontend app'],
       oldSegments: [10, 50, 30, 20],
-      newWegments: [20, 10],
+      newSegments: [15, 5],
+      noTime: false,
     }, {
       title: 'Iterate',
-      old: ['Write database migrations', 'Rewrite backend endpoints', 'Adjust infrastructure',
-        'Migrate database'],
-      new: ['Adjust data schema', 'Implement business logic'],
+      old: ['Write database migrations', 'Rewrite backend endpoints', 'Adjust infrastructure'],
+      new: ['Simply adjust data schema', 'Implement business logic'],
       oldSegments: [10, 30, 50, 10],
-      newWegments: [20, 10],
+      newSegments: [15, 10],
+      noTime: false,
     }, {
       title: 'Scaling',
-      old: ['Create database indexes', 'Monitor server load', 'Setup load balancer',
-        'Setup database sharding'],
-      new: ['Zero-config autoscaling', 'Cheaper than self-hosted'],
+      old: ['Monitor server load', 'Setup load balancer', 'Setup database sharding'],
+      new: ['Scales automatically'],
       oldSegments: [10, 30, 20, 40],
-      newWegments: [10, 10],
+      newSegments: [3],
+      noTime: true,
     }]
 
     return (
@@ -128,7 +129,8 @@ export default class Timeline extends React.Component<{}, {}> {
                 old={item.old}
                 new={item.new}
                 oldSegments={item.oldSegments}
-                newSegments={item.newWegments}
+                newSegments={item.newSegments}
+                noTime={item.noTime}
               />
             ))}
 

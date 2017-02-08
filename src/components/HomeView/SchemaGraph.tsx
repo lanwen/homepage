@@ -33,7 +33,7 @@ export default class SchemaGraph extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter)}>
+      <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.mb60)}>
         <SectionHeader
           headline='How it works'
           copy='Graphcool is the platform that ties everything together. Set up your data model in the console and use the simple api to store and query data. Add integrations and custom logic with serverless functions, and easily connect your frontend application using one of the many open source GraphQL clients.' // tslint:disable-line

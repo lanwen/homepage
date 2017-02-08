@@ -1,41 +1,43 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
-import FeaturesContent from './FeaturesContent'
+import Feature from './Feature'
 import SectionHeader from '../../SectionHeader'
+import Separator from '../../Separator'
 
 const Container = styled.div`
-  margin: 0 auto ${$v.size38};
-  max-width: ${breakpoints.p1250}px;
-`
-
-const SmallContainer = styled.div`
-
-  padding: ${$v.size25} ${$v.size25};
-  flex: 0 0 260px;
+  margin: 0 auto ${$v.size60};
+  max-width: ${breakpoints.p1250 + 100}px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media (max-width: ${breakpoints.p750}px) {
-    :nth-child(7) {
-      margin-left: 250px;
-    }
+  justify-content: space-between;
+  padding-left: ${$v.size25};
+  
+  @media (min-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size38};
+    align-items: flex-start;
   }
-`
-
-const Icon = styled.div`
-  width: 10rem;
-  height: 10rem;
-  padding: 1.5rem;
-  box-sizing: border-box;
-
-  img {
-    width: 100%;
-    height: 100%;
+  
+  @media (min-width: ${breakpoints.p650}px) {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
+    
+  @media (min-width: ${breakpoints.p750}px) {
+    padding-left: ${$v.size60};
+  }
+  
+  @media (min-width: ${breakpoints.p900}px) {
+    justify-content: space-around;
+    padding-left: 0;
+  }
+
+  @media (min-width: ${breakpoints.p1250 + 300}px) {
+    justify-content: space-between;
+  }
+  
 `
 
 export default class Features extends React.Component<{}, {}> {
@@ -44,83 +46,57 @@ export default class Features extends React.Component<{}, {}> {
 
     return (
       <div>
+        {window.innerWidth < 1000 &&
+        <Separator />
+        }
         <SectionHeader
           headline='Features optimized for developer experience'
-          copy='Graphcool is built by developers for developers.'
+          copy=''
         />
-        <Container className={cx($p.flex, $p.justifyCenter, $p.flexWrap)}>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-1.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Instant Setup'
-              content='Building your first backend with Graphcool is quick and easy. There’s no software to install and no infrastructure to manage, so you can get started in minutes.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-2.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Flexible Data Model'
-              content='Traditional backend services provide a limited data model that makes it difficult to expand your application as requirements change. GraphQL was invented by facebook and has been proven in production by big companies such as Github and New York Times.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-3.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Works with everything'
-              content='As an open standard you can use GraphQL from any language and any environment that can make simple http requests. On top of that great client libraries exist for a number of environments including javascript, python and ios.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-4.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Auto-Scaling'
-              content='Graphcool scales automatically to handle your current load. You don’t have to provision servers or think about what happens when the holiday sale kicks in. You simply pay for the traffic you generate and we take care of the rest.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-5.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Powerful Integrations'
-              content='Extend your application with new functionality by enabling one of the many integrations. Social login, fulltext search, online payment, geographic queries and much more can be enabled without writing custom code. ' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-6.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Unlimited Flexibility'
-              content='Implement your business logic with custom code in any language. Write and manage your code directly in the Graphcool console or host your own server for maximum flexibility.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-7.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='No Vendor Lock-In'
-              content='Your frontend application connects to Graphcool via an open standard. We don’t force you to use a proprietary sdk and actively engage with the GraphQL community to make sure that every new feature we build can be supported by other providers.' // tslint:disable-line
-            />
-          </SmallContainer>
-          <SmallContainer>
-            <Icon>
-              <img src={require('../../../assets/graphics/homepage/feature-8.svg')}/>
-            </Icon>
-            <FeaturesContent
-              headline='Interactive Docs'
-              content='Everyone has their own learning style. That’s why we provide a variety of learning resources including tutorials, example projects and interactive documentation with examples you can try out right there on the website.' // tslint:disable-line
-            />
-          </SmallContainer>
+        <Container>
+          <Feature
+            icon='resize'
+            color={$v.blue}
+            headline='Flexible Data Model'
+            copy='Create and change your data model to fit your needs without breaking your app.'
+            link='https://www.graph.cool/docs/reference/platform/data-schema-ahwoh2fohj'
+          />
+          <Feature
+            icon='radar'
+            color={$v.red}
+            headline='Real-time Subscriptions'
+            copy='Works out-of-the-box with GraphQL subscriptions for real-time applications.'
+            link='https://github.com/graphcool-examples/react-apollo-instagram-subscriptions-example'
+          />
+          <Feature
+            icon='lock'
+            color={$v.lightOrange}
+            headline='Permission Control'
+            copy='There’s no software or  infrastructure to manage, so you can get started in minutes.'
+            link='https://www.graph.cool/docs/reference/platform/permissions-iegoo0heez'
+          />
+          <Feature
+            icon='puzzle'
+            color={$v.purple}
+            headline='Powerful Integrations'
+            copy='Integrates seamlessly with many services like Algolia, Auth0, Stripe or Digits.'
+            link={'https://www.graph.cool/blog/2017-02-07-announcing-'
+                  + 'integrations-collaboration-pricing-updates-pioh2xhxea'}
+          />
+          <Feature
+            icon='braces'
+            color={$v.blue}
+            headline='Easy to Extend'
+            copy='Extend your backend and implement your custom logic using any language.'
+            link='https://www.graph.cool/docs/reference/platform/mutation-callbacks-ahlohd8ohn'
+          />
+          <Feature
+            icon='check'
+            color={$v.green}
+            headline='Apollo & Relay Compatible'
+            copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
+            link='https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai/'
+          />
         </Container>
       </div>
     )

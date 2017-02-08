@@ -11,5 +11,6 @@ master | dev
 yarn
 
 set -x BACKEND_ADDR https://api.graph.cool
+set -x DOCS_API_ADDR https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq
 yarn start
 ```

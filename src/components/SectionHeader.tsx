@@ -7,8 +7,10 @@ import { breakpoints } from '../utils/constants'
 const Root = styled.header`
   padding: ${$v.size96} ${$v.size38} ${$v.size60};
   text-align: center;
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  box-sizing: border-box;
   
   @media (min-width: ${breakpoints.p750}px) {
     padding: ${$v.size96} ${$v.size60} ${$v.size60}
@@ -18,9 +20,9 @@ const Root = styled.header`
     padding: ${$v.size96} ${$v.size60} ${$v.size60}
   }
   
-  @media (max-width: ${breakpoints.p500}px) {
-    text-align: left;
-  }
+  // @media (max-width: ${breakpoints.p500}px) {
+  //   text-align: left;
+  // }
   
   @media (max-width: ${breakpoints.p400}px) {
     padding: ${$v.size60} ${$v.size25} ${$v.size38}
@@ -39,7 +41,7 @@ const Root = styled.header`
 
 interface Props {
   headline: string | JSX.Element,
-  copy: string,
+  copy?: string,
 }
 
 export default class SectionHeader extends React.Component<Props, {}> {
@@ -48,7 +50,9 @@ export default class SectionHeader extends React.Component<Props, {}> {
     return (
       <Root>
         <h2>{this.props.headline}</h2>
+        {this.props.copy &&
         <p className={cx($p.mt25, $p.black50)}>{this.props.copy}</p>
+        }
       </Root>
     )
   }
