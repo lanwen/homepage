@@ -10,7 +10,6 @@ import Features from './Features/Features'
 import References from './References/References'
 import TwitterFeed from './TwitterFeed/TwitterFeed'
 import ComparisonChart from './ComparisonChart/ComparisonChart'
-// import SchemaGraph from './SchemaGraph'
 import { debounce } from 'lodash'
 import { isElementInViewport } from '../../utils/dom'
 import FooterCTA from '../FooterCTA'
@@ -62,7 +61,6 @@ export default class HomeView extends React.Component<{}, State> {
         <Features/>
         <References ref='references' inViewPort={this.state.referencesInViewport}/>
         <ComparisonChart/>
-        {/*<SchemaGraph/>*/}
         <TwitterFeed />
         <FooterCTA/>
         <Footer/>

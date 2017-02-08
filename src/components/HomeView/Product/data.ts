@@ -7,13 +7,13 @@ interface ProductFeature {
 
 // tslint:disable
 export const features: ProductFeature[] = [{
-  title: 'Data Browser',
-  description: `Explore your data in the powerful data browser. With built in tools to.`,
+  title: 'Manage your Data',
+  description: `Explore and manage your data visually in the Console or use our powerful GraphQL API.`,
   image: require('../../../assets/graphics/homepage/product-1.png'),
   videoUrl: '/videos/product-1.mp4',
 }, {
-  title: 'Work with Relations',
-  description: 'Create advanced data models with relations. For example a relation could specify.',
+  title: 'Define your Schema',
+  description: 'Create advanced data models with relations.',
   image: require('../../../assets/graphics/homepage/product-2.png'),
   videoUrl: '/videos/product-2.mp4',
 }, {

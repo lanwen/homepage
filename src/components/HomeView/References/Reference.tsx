@@ -3,12 +3,11 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import { $p, $v, Icon } from 'graphcool-styles'
 import { movingDuration, breakpoints, maxWidth } from '../../../utils/constants'
+import { ReferenceItem } from './data'
 import calcSize from 'calculate-size'
 
 interface Props {
-  quote: string,
-  author: string,
-  link: string,
+  reference: ReferenceItem
 }
 
 const Root = styled.div`
@@ -40,11 +39,11 @@ function getFontSize(): string {
   return $v.size25
 }
 
-export default class References extends React.Component<Props, {}> {
+export default class Reference extends React.Component<Props, {}> {
 
   render() {
     const width = Math.min(window.innerWidth - 120, maxWidth)
-    const {height} = calcSize(this.props.quote, {
+    const {height} = calcSize(this.props.reference.quote, {
       width: `${width}px`,
       font: 'Open Sans,sans-serif',
       fontSize: getFontSize(),
@@ -66,19 +65,19 @@ export default class References extends React.Component<Props, {}> {
             $p.tlCenter
           )}
           style={{
-            backgroundImage: `url(${require('../../../assets/graphics/homepage/testimonials/christianstrobl.jpg')})`
+            backgroundImage: `url(${this.props.reference.picture})`
           }}
         />
-        <h2 className={cx($p.green)}>{this.props.quote}</h2>
+        <h2 className={cx($p.green)}>{this.props.reference.quote}</h2>
         <a
           className={cx($p.lightgreen50, $p.f16, $p.fw6, $p.mt38, $p.mb38, $p.dib, $p.noUnderline)}
-          href={this.props.link}
+          href={this.props.reference.url}
           target='_blank'
         >
-          <span>{this.props.author}</span>
+          <span>{this.props.reference.who}</span>
           <Logo>
             <Icon
-              src={require('../../../assets/icons/logos/hackerbay.svg')}
+              src={this.props.reference.logo}
               height={16}
               width={112}
               color={$v.green}

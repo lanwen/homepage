@@ -122,7 +122,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
       <Root>
         <SectionHeader
           headline='A backend platform for more than just prototyping'
-          copy='Previous generation backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerful scalable applications.' // tslint:disable-line
+          copy='GraphQL and serverless functions enable you to iterate quickly and build scalable applications.'
         />
         <Table className={cx($p.flex, $p.justifyCenter, $p.relative)}>
           <TableContainer className={cx($p.flex, $p.flexColumn)}>

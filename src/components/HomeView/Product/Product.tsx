@@ -176,7 +176,7 @@ export default class Product extends React.Component<{}, State> {
                 <Copy className={cx($p.black50)}>{feature.description}</Copy>
                 <CallToAction
                   text='Learn more'
-                  url='https://graph.cool/graphql'
+                  link='https://graph.cool/graphql'
                 />
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>

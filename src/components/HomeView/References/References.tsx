@@ -37,7 +37,7 @@ export default class References extends React.Component<Props, State> {
   private rotateInterval: number | null
 
   componentDidMount() {
-    this.rotateInterval = window.setInterval(this.rotate, 5000)
+    this.rotateInterval = window.setInterval(this.rotate, 7000)
   }
 
   componentWillUnmount() {
@@ -50,16 +50,11 @@ export default class References extends React.Component<Props, State> {
       <section>
         <Separator />
         <SectionHeader
-          headline="We have the best customers"
-          copy="This is a section where we show what clients say about us."
+          headline='The fastest teams have chosen us'
         />
         <RootContainer className={cx($p.bgLightgreen10, $p.pa60, $p.pt0, $p.pb25, $p.tc)}>
           <Container>
-            <Reference
-              quote={reference.quote}
-              author={reference.who}
-              link={reference.url}
-            />
+            <Reference reference={reference}/>
           </Container>
           <div
             className={cx($p.flex, $p.justifyCenter)}
