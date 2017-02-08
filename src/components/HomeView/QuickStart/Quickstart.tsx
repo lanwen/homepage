@@ -7,6 +7,7 @@ import SectionHeader from '../../SectionHeader'
 import SecondaryCallToAction from '../../SecondaryCallToAction'
 import QuickstartTechnology from './QuickstartTechnology'
 import { breakpoints } from '../../../utils/constants'
+import {Link} from 'react-router'
 
 const Root = styled.section`
   @media (max-width: ${breakpoints.p500}px) {
@@ -31,7 +32,7 @@ const QuickstartContainer = styled.div`
         transform: scale(0.98);
       }
       
-      button {
+      a {
         opacity: 1;
       }
     }
@@ -75,9 +76,10 @@ const Plus = styled.div`
   }
 `
 
-const CallToAction = styled.button`
+const CallToAction = styled(Link)`
   opacity: 0;
   transition: opacity .4s ease;
+  text-decoration: none;
   
   @media (max-width: ${breakpoints.p500}px) {
     position: static;
@@ -195,6 +197,7 @@ export default class Quickstart extends React.Component<{}, {}> {
               $p.left50,
               $p.tlCenter,
             )}
+            to='/docs/quickstart'
           >Open Quickstart</CallToAction>
         </QuickstartContainer>
         <SecondaryCallToAction

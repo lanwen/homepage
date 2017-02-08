@@ -10,6 +10,7 @@ interface Props {
   color: string,
   headline: string,
   copy: string
+  link: string
 }
 
 const Root = styled.div`
@@ -107,7 +108,7 @@ const CallToAction = styled(SecondaryCallToAction)`
 
 export default class Feature extends React.Component<Props, {}> {
   render() {
-
+    const {link} = this.props
     return (
       <Root>
         <IconContainer color={this.props.color}>
@@ -123,8 +124,9 @@ export default class Feature extends React.Component<Props, {}> {
           <p>{this.props.copy}</p>
           <CallToAction
             text='Learn more'
-            link=''
+            link={link}
             className={cx($p.mt16)}
+            newWindow
           />
         </div>
       </Root>

@@ -66,9 +66,9 @@ export default class HomeView extends React.Component<{}, State> {
           headline1='Ready to get started?'
           headline2='Set up a GraphQL backend or read the docs'
           button1Text='Create GraphQL Backend'
-          button1Link='https://graph.cool/docs'
+          button1Link='https://console.graph.cool/signup'
           button2Text='Open Docs'
-          button2Link='https://graph.cool/quickstart'
+          button2Link='https://graph.cool/docs'
         />
         <Footer/>
       </div>

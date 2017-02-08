@@ -232,7 +232,11 @@ export default class Landing extends React.Component<{}, {}> {
     return (
       <section>
         <Hero className={cx($p.flex, $p.center)}>
-          <HeroImage className={cx($p.flexFixed, $p.relative)}>
+          <HeroImage
+            className={cx($p.flexFixed, $p.relative)}
+            href='https://www.youtube.com/watch?v=wSkZFfuAToM&t=3s'
+            target='_blank'
+          >
             <img
               className={cx($p.w100, $p.hAuto, $p.db)}
               src={require('../../../assets/graphics/homepage/landingBrowser.svg')}
@@ -248,7 +252,9 @@ export default class Landing extends React.Component<{}, {}> {
                 $p.itemsCenter,
               )}
             >
-              <PlayContainer className='play'>
+              <PlayContainer
+                className='play'
+              >
                 <Play
                   className={cx(
                   $p.relative,

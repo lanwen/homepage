@@ -5,7 +5,6 @@ import { $p } from 'graphcool-styles'
 import Footer from '../Footer/Footer'
 import FooterCTA from '../FooterCTA'
 import QueryEditor from './QueryEditor/QueryEditor'
-import FAQ from '../PricingView/FAQ'
 
 export default class FeaturesGraphQLView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -21,9 +20,9 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
           headline1='Ready to get started?'
           headline2='Set up a GraphQL backend or read the docs'
           button1Text='Create GraphQL Backend'
-          button1Link='https://graph.cool/docs'
+          button1Link='https://console.graph.cool/signup'
           button2Text='Open Docs'
-          button2Link='https://graph.cool/quickstart'
+          button2Link='https://graph.cool/docs'
           className={cx($p.mt96)}
         />
         <Footer/>
