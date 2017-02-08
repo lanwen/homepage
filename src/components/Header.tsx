@@ -7,6 +7,7 @@ import {breakpoints, maxWidth} from '../utils/constants'
 import * as cookiestore from 'cookiestore'
 
 const Root = styled.div`
+  position: relative;
   padding: ${$v.size38};
   max-width: ${maxWidth}px;
   
@@ -16,12 +17,23 @@ const Root = styled.div`
   @media (max-width: ${breakpoints.p400}px) {
     padding: ${$v.size25};
   }
+  
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0) 100%);
+  }
 `
 
 const Logo = styled.img`
   height: 36px;
   width: auto;
-  
+  position: relative;
+
   @media (min-width: ${breakpoints.p900}px) {
     height: 41px;
   }
@@ -34,6 +46,7 @@ const NavOpened = `
 `
 const Nav = styled.nav`
   font-size: ${$v.size14};
+  position: relative;
   z-index: 1000;
   
   @media (max-width: ${breakpoints.p750}px) {
@@ -88,8 +101,21 @@ const NavLinkBase = `
   }
 `
 
+const ActiveNavLink = `
+  color: ${$v.green};
+  cursor: default;
+  &:hover {
+    color: ${$v.green};
+  }
+  
+  &:before {
+    content: "";
+  }
+`
+
 const NavLink = styled(SplitLink)`
   ${NavLinkBase}
+  ${props => props.active && ActiveNavLink}
 `
 
 const TwoRowLink = styled(NavLink)`
@@ -104,12 +130,12 @@ const MultiNavLink = styled.button`
   letter-spacing: inherit;
   font-size: inherit;
   font-weight: inherit;
-  padding: ${$v.size10} 0;
+  padding: ${$v.size20} 0;
   cursor: default;
 `
 
 const NavTooltip = styled.span`
-  top: 35px;
+  top: 55px;
   left: 50%;
   white-space: initial;
   overflow: visible;
@@ -202,18 +228,24 @@ const FeatureLink = styled(Link)`
   letter-spacing: 0;
   font-weight: 400;
   color: ${$v.gray50};
-  padding: ${$v.size16} ${$v.size16} ${$v.size06};
+  padding: ${$v.size20} ${$v.size16} ${$v.size10};
   
   &:last-child {
-    padding: ${$v.size06} ${$v.size16} ${$v.size16};
+    padding: ${$v.size10} ${$v.size16} ${$v.size20};
   }
   
   @media (min-width: ${breakpoints.p900}px) {
-    padding: ${$v.size20} ${$v.size20} ${$v.size10};
+    padding: ${$v.size25} ${$v.size20} ${$v.size12};
 
     &:last-child {
-      padding: ${$v.size10} ${$v.size20} ${$v.size20};
+      padding: ${$v.size12} ${$v.size20} ${$v.size25};
     }
+  }
+  
+  transition: opacity ${$v.duration} ease;
+  
+  &:hover {
+    opacity: .75;
   }
   
 `
@@ -318,7 +350,7 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
           }
-          <NavLink to='/pricing'>Pricing</NavLink>
+          <NavLink to='/pricing' active>Pricing</NavLink>
           <NavLink to='/docs'>Docs</NavLink>
           {loggedIn ? (
             <Signin>
@@ -333,13 +365,13 @@ export default class Header extends React.Component<{}, State> {
             <Signin>
               <Button
                 href='https://console.graph.cool/login'
-                className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10)}
+                className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10, $p.dim)}
               >
                 Log in
               </Button>
               <Button
                 href='https://console.graph.cool/signup'
-                className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+                className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.dim)}
               >
                 Sign up
               </Button>

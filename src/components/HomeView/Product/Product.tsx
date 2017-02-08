@@ -8,6 +8,7 @@ import Separator from '../../Separator'
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
 import Pagination from '../Pagination'
+import SecondaryCallToAction from '../../SecondaryCallToAction'
 
 const Root = styled.div`
 
@@ -24,9 +25,20 @@ const Root = styled.div`
     margin-top: ${$v.size96};
   }
   
-  @media (max-width: ${breakpoints.p1000}px) {
+  @media (max-width: ${breakpoints.p1000 - 1}px) {
     margin-top: 0;
     padding-top: 0;
+  }
+  
+  @media (min-width: ${breakpoints.p1000}px) {
+    &:before{
+      content: "";
+      position: absolute;
+      top: ${$v.size16};
+      bottom: ${$v.size16};
+      width: 100%;
+      background: ${$v.gray02};
+    }
   }
 `
 
@@ -63,6 +75,14 @@ const FeatureDescription = styled.div`
 `
 
 const Copy = styled.p`
+  padding-top: ${$v.size25};
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding-top: ${$v.size38};
+  }
+`
+
+const CallToAction = styled(SecondaryCallToAction)`
   padding-top: ${$v.size25};
   
   @media (min-width: ${breakpoints.p1200}px) {
@@ -154,6 +174,10 @@ export default class Product extends React.Component<{}, State> {
               <article>
                 <h2>{feature.title}</h2>
                 <Copy className={cx($p.black50)}>{feature.description}</Copy>
+                <CallToAction
+                  text='Learn more'
+                  url='https://graph.cool/graphql'
+                />
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>
                 <Pagination

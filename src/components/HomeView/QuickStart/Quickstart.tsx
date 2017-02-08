@@ -21,12 +21,14 @@ const QuickstartContainer = styled.div`
   @media (min-width: ${breakpoints.p500 + 1}px) {
     > div {
       filter: blur(0px)
-      transition: filter .4s ease;
+      transition: filter .4s ease, opacity .4s ease, transform .4s ease;
     }
     
     &:hover {
       > div {
-        filter: blur(10px)
+        filter: blur(10px);
+        opacity: .5;
+        transform: scale(0.98);
       }
       
       button {

@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 const Outer = styled.div`
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
   

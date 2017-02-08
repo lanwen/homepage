@@ -79,7 +79,7 @@ export default class Timeline extends React.Component<{}, {}> {
 
     const data = [{
       title: 'Initial Setup',
-      old: ['Choose language/framework', 'Configure database', 'Setup server & deployment infrastructure'],
+      old: ['Choose language/framework', 'Configure database', 'Server & deployment infrastructure'],
       new: ['Define your data schema', 'Connect your frontend app'],
       oldSegments: [10, 50, 30, 20],
       newSegments: [15, 5],

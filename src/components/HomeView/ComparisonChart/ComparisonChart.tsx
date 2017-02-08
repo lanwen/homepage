@@ -119,7 +119,7 @@ export default class ComparisonChart extends React.Component<{}, {}> {
 
   render() {
     return (
-      <Root className={cx($p.pb96)}>
+      <Root>
         <SectionHeader
           headline='A backend platform for more than just prototyping'
           copy='Previous generation backends were great for prototyping but fell flat when it came to build real applications. GraphQL and serverless technology enables you to iterate quickly and build powerful scalable applications.' // tslint:disable-line

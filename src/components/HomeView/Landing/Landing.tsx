@@ -30,9 +30,11 @@ const Hero = styled.div`
   }
 `
 
-const HeroImage = styled.div`
+const HeroImage = styled.a`
   width: 55%;
   position: relative;
+  cursor: pointer;
+  text-decoration: none;
   
   .play {
     transform: translate3D(0,-6px,0);
@@ -57,22 +59,40 @@ const HeroImage = styled.div`
     .play {
       transform: translate3D(0,0,0);
       
+      > div {
+        transition: background .4s ease;
+        
+        svg {
+          transition: fill .4s ease;
+        }
+      }
+      
       p {
         opacity: 0;
       }
     }
   
     img {
-      transition: filter .4s ease;
+      transition: filter .4s ease, opacity .4s ease, transform .4s ease;
     }
     
     &:hover {
       img {
         filter: blur(10px);
+        opacity: .5;
+        transform: scale(0.98);
       }
       
       .play {
         transform: translate3D(0,-6px,0);
+        
+        > div {
+          background: ${$v.green};
+          
+          svg {
+            fill: ${$v.white};
+          }
+        }
         
         p {
           opacity: 1;
@@ -125,7 +145,7 @@ const PlayCopy = styled.p`
 `
 
 const HeroText = styled.div`
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: ${$v.size38};
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -141,8 +161,13 @@ const HeroText = styled.div`
   }
 
   @media (min-width: ${breakpoints.p1200}px) {
-    
     margin-left: ${$v.size60};
+    justify-content: space-between;
+  }
+  
+  @media (min-width: ${breakpoints.p1250}px) {
+    margin-top: ${$v.size16};
+    margin-bottom: ${$v.size16};
   }
 `
 
@@ -221,7 +246,6 @@ export default class Landing extends React.Component<{}, {}> {
                 $p.flex,
                 $p.justifyCenter,
                 $p.itemsCenter,
-                $p.pointer,
               )}
             >
               <PlayContainer className='play'>
@@ -249,7 +273,7 @@ export default class Landing extends React.Component<{}, {}> {
               </PlayContainer>
             </div>
           </HeroImage>
-          <HeroText className={cx($p.flex, $p.justifyBetween, $p.flexColumn, $p.pv16)}>
+          <HeroText className={cx($p.flex, $p.justifyBetween, $p.flexColumn)}>
             <div>
               <Headline>
                 Flexible backend platform combining GraphQL

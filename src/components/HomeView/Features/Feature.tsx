@@ -3,6 +3,7 @@ import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
+import SecondaryCallToAction from '../../SecondaryCallToAction';
 
 interface Props {
   icon: string,
@@ -98,6 +99,11 @@ export default class Feature extends React.Component<Props, {}> {
         <div>
           <h3 className={cx($p.pb16)}>{this.props.headline}</h3>
           <p>{this.props.copy}</p>
+          <SecondaryCallToAction
+            text='Learn more'
+            link=''
+            className={cx($p.mt16)}
+          />
         </div>
       </Root>
     )
