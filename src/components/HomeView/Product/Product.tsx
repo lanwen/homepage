@@ -12,16 +12,16 @@ import SecondaryCallToAction from '../../SecondaryCallToAction'
 
 const Root = styled.div`
 
-  padding-top: ${$v.size96};
+  // padding-top: ${$v.size96};
   margin-top: ${$v.size96};
  
   @media (min-width: ${breakpoints.p750}px) {
-    padding-top: ${$v.size96};
+    // padding-top: ${$v.size96};
     margin-top: ${$v.size96};
   }
   
   @media (min-width: ${breakpoints.p1200}px) {
-    padding-top: ${$v.size96};
+    // padding-top: ${$v.size96};
     margin-top: ${$v.size96};
   }
   
@@ -69,7 +69,11 @@ const FeatureDescription = styled.div`
   margin: ${$v.size16} 0;
   
   @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size96};
+    padding: ${$v.size60} ${$v.size96} ${$v.size38};
+  }
+  
+  @media (min-width: ${breakpoints.p1440}px) {
+    padding: ${$v.size96} ${$v.size96} ${$v.size60};
   }
   
 `
@@ -83,10 +87,10 @@ const Copy = styled.p`
 `
 
 const CallToAction = styled(SecondaryCallToAction)`
-  padding-top: ${$v.size25};
+  padding-top: ${$v.size16};
   
   @media (min-width: ${breakpoints.p1200}px) {
-    padding-top: ${$v.size38};
+    padding-top: ${$v.size25};
   }
 `
 
