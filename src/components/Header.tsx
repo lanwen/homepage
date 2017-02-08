@@ -18,15 +18,15 @@ const Root = styled.div`
     padding: ${$v.size25};
   }
   
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0) 100%);
-  }
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 300px;
+  //   background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0) 100%);
+  // }
 `
 
 const Logo = styled.img`

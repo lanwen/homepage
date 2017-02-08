@@ -16,7 +16,14 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
         <Header/>
         <QueryEditor ref='queryEditor' inViewPort={true}/>
         <FAQ/>
-        <FooterCTA/>
+        <FooterCTA
+          headline1='Ready to get started?'
+          headline2='Set up a GraphQL backend or read the docs'
+          button1Text='Create GraphQL Backend'
+          button1Link='https://graph.cool/docs'
+          button2Text='Open Docs'
+          button2Link='https://graph.cool/quickstart'
+        />
         <Footer/>
       </div>
     )
