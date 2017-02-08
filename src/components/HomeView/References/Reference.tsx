@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { $p, $v, Icon } from 'graphcool-styles'
 import { movingDuration, breakpoints, maxWidth } from '../../../utils/constants'
 import calcSize from 'calculate-size'
-import Icon from 'graphcool-styles/dist/components/Icon/Icon';
 
 interface Props {
   quote: string,

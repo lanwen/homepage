@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $g, $v } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import Separator from '../../Separator'
 import SectionHeader from '../../SectionHeader'
