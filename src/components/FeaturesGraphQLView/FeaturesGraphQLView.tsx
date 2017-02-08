@@ -1,5 +1,7 @@
 import * as React from 'react'
 import Header from '../Header'
+import * as cx from 'classnames'
+import { $p } from 'graphcool-styles'
 import Footer from '../Footer/Footer'
 import FooterCTA from '../FooterCTA'
 import QueryEditor from './QueryEditor/QueryEditor'
@@ -15,7 +17,6 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
       <div>
         <Header/>
         <QueryEditor ref='queryEditor' inViewPort={true}/>
-        <FAQ/>
         <FooterCTA
           headline1='Ready to get started?'
           headline2='Set up a GraphQL backend or read the docs'
@@ -23,6 +24,7 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
           button1Link='https://graph.cool/docs'
           button2Text='Open Docs'
           button2Link='https://graph.cool/quickstart'
+          className={cx($p.mt96)}
         />
         <Footer/>
       </div>
