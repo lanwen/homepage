@@ -1,6 +1,5 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
 import Feature from './Feature'
@@ -48,7 +47,7 @@ export default class Features extends React.Component<{}, {}> {
     return (
       <div>
         {window.innerWidth < 1000 &&
-          <Separator />
+        <Separator />
         }
         <SectionHeader
           headline='Features optimized for developer experience'

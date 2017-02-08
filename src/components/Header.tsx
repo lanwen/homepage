@@ -103,7 +103,6 @@ const NavLinkBase = `
 
 const ActiveNavLink = `
   color: ${$v.green};
-  cursor: default;
   &:hover {
     color: ${$v.green};
   }
@@ -132,6 +131,8 @@ const MultiNavLink = styled.button`
   font-weight: inherit;
   padding: ${$v.size20} 0;
   cursor: default;
+  
+  ${props => props.active && ActiveNavLink}
 `
 
 const NavTooltip = styled.span`
@@ -314,6 +315,7 @@ export default class Header extends React.Component<{}, State> {
             <MultiNavLink
               onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
               onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
+              active={['/graphql', '/functions'].includes(window.location.pathname)}
             >
               Features
               {this.state.tooltipActive &&
@@ -350,7 +352,7 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
           }
-          <NavLink to='/pricing' active>Pricing</NavLink>
+          <NavLink to='/pricing' active={window.location.pathname === '/pricing'}>Pricing</NavLink>
           <NavLink to='/docs'>Docs</NavLink>
           {loggedIn ? (
             <Signin>
