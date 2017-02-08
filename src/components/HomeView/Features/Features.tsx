@@ -80,7 +80,8 @@ export default class Features extends React.Component<{}, {}> {
             color={$v.purple}
             headline='Powerful Integrations'
             copy='Integrates seamlessly with many services like Algolia, Auth0, Stripe or Digits.'
-            link='https://www.graph.cool/blog/2017-02-07-announcing-integrations-collaboration-pricing-updates-pioh2xhxea'
+            link={'https://www.graph.cool/blog/2017-02-07-announcing-'
+                  + 'integrations-collaboration-pricing-updates-pioh2xhxea'}
           />
           <Feature
             icon='braces'

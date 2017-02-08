@@ -3,7 +3,7 @@ import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
-import SecondaryCallToAction from '../../SecondaryCallToAction';
+import SecondaryCallToAction from '../../SecondaryCallToAction'
 
 interface Props {
   icon: string,

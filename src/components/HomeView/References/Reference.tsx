@@ -62,10 +62,10 @@ export default class Reference extends React.Component<Props, {}> {
             $p.absolute,
             $p.left50,
             $p.top0,
-            $p.tlCenter
+            $p.tlCenter,
           )}
           style={{
-            backgroundImage: `url(${this.props.reference.picture})`
+            backgroundImage: `url(${this.props.reference.picture})`,
           }}
         />
         <h2 className={cx($p.green)}>{this.props.reference.quote}</h2>
