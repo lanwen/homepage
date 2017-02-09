@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router'
 import * as cx from 'classnames'
 import { $v, $p, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
@@ -31,7 +32,7 @@ const QuickstartContainer = styled.div`
         transform: scale(0.98);
       }
       
-      button {
+      a {
         opacity: 1;
       }
     }
@@ -75,7 +76,7 @@ const Plus = styled.div`
   }
 `
 
-const CallToAction = styled.button`
+const CallToAction = styled(Link)`
   opacity: 0;
   transition: opacity .4s ease;
   
@@ -87,44 +88,44 @@ const CallToAction = styled.button`
   }
 `
 
+const frontendTech = [{
+  technology: 'react',
+  color: '#00D8FF',
+  opacity: 0.1
+}, {
+  technology: 'angular',
+  color: '#DD0031',
+  opacity: 0.1
+}, {
+  technology: 'react',
+  color: '#1A7F91',
+  opacity: 0.1
+}, {
+  technology: 'ios',
+  color: '#000',
+  opacity: 0.06
+}, {
+  technology: 'android',
+  color: '#A4C439',
+  opacity: 0.1
+}, {
+  technology: 'vue',
+  color: '#41B883',
+  opacity: 0.1
+}]
+
+const clientTech = [{
+  technology: 'apollo',
+  color: '#0A2C49',
+  opacity: 0.08
+}, {
+  technology: 'relay',
+  color: '#EF6005',
+  opacity: 0.1
+}]
+
 export default class Quickstart extends React.Component<{}, {}> {
   render() {
-
-    const frontendTech = [{
-      technology: 'react',
-      color: '#00D8FF',
-      opacity: 0.1
-    }, {
-      technology: 'angular',
-      color: '#DD0031',
-      opacity: 0.1
-    }, {
-      technology: 'react',
-      color: '#1A7F91',
-      opacity: 0.1
-    }, {
-      technology: 'ios',
-      color: '#000',
-      opacity: 0.06
-    }, {
-      technology: 'android',
-      color: '#A4C439',
-      opacity: 0.1
-    }, {
-      technology: 'vue',
-      color: '#41B883',
-      opacity: 0.1
-    }]
-
-    const clientTech = [{
-      technology: 'apollo',
-      color: '#0A2C49',
-      opacity: 0.08
-    }, {
-      technology: 'relay',
-      color: '#EF6005',
-      opacity: 0.1
-    }]
 
     return (
       <Root className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.overflowHidden)}>
@@ -185,6 +186,7 @@ export default class Quickstart extends React.Component<{}, {}> {
             }
           </TechContainer>
           <CallToAction
+            to='/docs/quickstart'
             className={cx(
               $g.uppercaseButton,
               $p.bgGreen,
@@ -194,6 +196,7 @@ export default class Quickstart extends React.Component<{}, {}> {
               $p.top50,
               $p.left50,
               $p.tlCenter,
+              $p.noUnderline,
             )}
           >Open Quickstart</CallToAction>
         </QuickstartContainer>

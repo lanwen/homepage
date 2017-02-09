@@ -61,12 +61,6 @@ export default class Features extends React.Component<{}, {}> {
             copy='Create and change your data model to fit your needs without breaking your app.'
           />
           <Feature
-            icon='check'
-            color={$v.green}
-            headline='Apollo & Relay Compatible'
-            copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
-          />
-          <Feature
             icon='radar'
             color={$v.red}
             headline='Real-time Subscriptions'
@@ -89,6 +83,12 @@ export default class Features extends React.Component<{}, {}> {
             color={$v.blue}
             headline='Easy to Extend'
             copy='Extend your backend and implement your custom logic using any language.'
+          />
+          <Feature
+            icon='check'
+            color={$v.green}
+            headline='Apollo & Relay Compatible'
+            copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
           />
         </Container>
       </div>
