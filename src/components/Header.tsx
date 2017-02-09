@@ -111,18 +111,6 @@ const Button = styled.a`
   }
 `
 
-const Hamburger = styled.div`
-  position: absolute;
-  cursor: pointer;
-  top: ${$v.size38};
-  right: ${$v.size38};
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    top: ${$v.size25}
-    right: ${$v.size25}
-  }
-`
-
 const Close = styled.div`
   position: absolute;
   top: ${$v.size16};
@@ -260,6 +248,7 @@ export default class Header extends React.Component<{}, State> {
 
             @media (max-width: 750px) {
               @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
+              @p: .bgWhite, .br2, .overflowHidden, .relative, .overlayShadow, .zMax;
               right: 22px;
               top: 22px;
 
@@ -278,14 +267,22 @@ export default class Header extends React.Component<{}, State> {
             }
           }
 
+          .hamburger {
+            @p: .bgNone, .absolute, .pointer, .top38, .right38;
+
+            @media (max-width: 400px) {
+              @p: .top25, .right25;
+            }
+          }
+
         `}</style>
         <Link to='/'>
           <img className='logo' src={require('../assets/graphics/logos/graphcoolFull.svg')} />
         </Link>
         {window.innerWidth < breakpoints.p750 &&
-          <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
+          <button className='hamburger' onClick={() => this.setState({ menuOpened: true } as State)}>
             <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
-          </Hamburger>
+          </button>
         }
         <nav
           className={cx(

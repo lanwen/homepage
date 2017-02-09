@@ -50,6 +50,15 @@ const Sublines = styled.div`
   }
 `
 
+const Tag = styled.div `
+  margin-right: ${$v.size16};
+  @media (max-width: ${breakpoints.p580}px) {
+   
+   margin-right: ${$v.size10};
+  }
+  
+`
+
 export default class ContentHeader extends React.Component<Props, {}> {
 
   render() {
@@ -124,7 +133,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
               window.innerWidth < breakpoints.p580 && $p.mt06,
               )}>
             {item.tags.map(tag => (
-              <div key={tag} className={cx($p.pr16, $p.nowrap)}>#{tag}</div>
+              <Tag key={tag} className={cx($p.nowrap)}>#{tag}</Tag>
             ))}
             </div>
           </Sublines>

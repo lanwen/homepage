@@ -112,6 +112,11 @@ const Container = styled.div`
     margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
+    
+    @media (max-width: ${breakpoints.p580}px) {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
   }
   
   .CodeMirror-gutters {
@@ -125,9 +130,12 @@ const Container = styled.div`
   @media (max-width: ${breakpoints.p500}px) {
 
     p {
-      line-height: 1.5;
       color: ${$v.gray60}; 
       font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+    }
+    
+    code {
+      font-size: ${$v.size14};
     }
 
     ul li { 

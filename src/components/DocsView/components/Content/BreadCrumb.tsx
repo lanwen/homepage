@@ -14,11 +14,12 @@ interface Crumb {
 }
 
 const Container = styled.div`
-  height: 19px;
+  // height: 19px;
+  
 `
 
 const StyledLink = styled.div`
-  top: -1px;
+  // top: -1px;
 `
 
 export default class BreadCrumb extends React.Component<Props, {}> {
@@ -43,10 +44,10 @@ export default class BreadCrumb extends React.Component<Props, {}> {
     const count = crumbs.length
 
     return (
-      <Container className={cx($p.flex, $p.flexRow)}>
+      <Container className={cx($p.flex, $p.flexWrap)}>
         {crumbs.map((link, index) => (
           (index < count - 1) ? (
-              <div key={link.text} className={cx($p.flex, $p.flexRow, $p.itemsCenter)}>
+              <div key={link.text} className={cx($p.flex, $p.itemsCenter)}>
                 <div href={link.href}>{link.text}</div>
                 <Icon
                   src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
