@@ -1,16 +1,31 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
+import styled from 'styled-components'
+import { breakpoints } from '../../../../utils/constants'
 
 interface Props {
   sourceFilePath: string
 }
 
+const Root = styled.div`
+  padding: ${$v.size60};
+  
+  @media (max-width:${breakpoints.p580}px) {
+    padding: ${$v.size38};
+  }
+`
+
 export default class EditGithub extends React.Component<Props, {}> {
 
   render() {
     return (
-      <div className={cx($p.pv60, $p.flex, $p.justifyCenter)}>
+      <Root
+        className={cx(
+          $p.flex,
+          $p.justifyCenter,
+        )}
+      >
         <a
           href={`https://github.com/graphcool/content/blob/master/content/${this.props.sourceFilePath}`}
           target='_blank'
@@ -26,7 +41,7 @@ export default class EditGithub extends React.Component<Props, {}> {
             <div>Edit this page on Github</div>
           </div>
         </a>
-      </div>
+      </Root>
     )
   }
 }

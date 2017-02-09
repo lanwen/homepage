@@ -6,74 +6,6 @@ import styled from 'styled-components'
 import {breakpoints, maxWidth} from '../utils/constants'
 import * as cookiestore from 'cookiestore'
 
-const Root = styled.div`
-  position: relative;
-  padding: ${$v.size38};
-  max-width: ${maxWidth}px;
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size60};
-  }
-  @media (max-width: ${breakpoints.p400}px) {
-    padding: ${$v.size25};
-  }
-  
-  // &:before {
-  //   content: "";
-  //   position: absolute;
-  //   left: 0;
-  //   top: 0;
-  //   width: 100%;
-  //   height: 300px;
-  //   background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0) 100%);
-  // }
-`
-
-const Logo = styled.img`
-  height: 36px;
-  width: auto;
-  position: relative;
-
-  @media (min-width: ${breakpoints.p900}px) {
-    height: 41px;
-  }
-`
-
-const NavOpened = `
-  @media (max-width: ${breakpoints.p750}px) {
-    display: flex;
-  }
-`
-const Nav = styled.nav`
-  font-size: ${$v.size14};
-  position: relative;
-  z-index: 1000;
-  
-  @media (max-width: ${breakpoints.p750}px) {
-    display: none;
-    position: absolute;
-    right: 22px;
-    top: 22px;
-    background: ${$v.white};
-    flex-direction: column;
-    align-items: flex-start;
-    padding: ${$v.size16};
-    border-radius: 2px;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15)
-  }
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    right: 9px;
-    top: 9px;
-  }
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size16};
-  }
-  
-  ${props => props.opened && NavOpened}
-`
-
 const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
   to.startsWith('http')
     ? <a href={to} className={className}>{children}</a>
@@ -295,18 +227,72 @@ export default class Header extends React.Component<{}, State> {
     const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
-      <Root className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
+      <div className='root'>
+        <style jsx={true}>{`
+          .root {
+            @p: .flex, .pa38, .itemsCenter, .justifyBetween, .center, .relative;
+            max-width: 1440px;
+
+            @media (min-width: 1200px) {
+              @p: .pa60;
+            }
+
+            @media (max-width: 900px) {
+              @p: .pa38;
+            }
+
+            @media (max-width: 400px) {
+              @p: .pa25;
+            }
+          }
+
+          .logo {
+            @p: .wAuto, .relative;
+            height: 36px;
+
+            @media (min-width: 900px) {
+              height: 41px;
+            }
+          }
+
+          .nav {
+            @p: .fw6, .black30, .tracked, .ttu, .flex, .itemsCenter, .relative, .f14, .zMax;
+
+            @media (max-width: 750px) {
+              @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
+              right: 22px;
+              top: 22px;
+
+              &.opened {
+                @p: .flex;
+              }
+            }
+
+            @media (max-width: 400px) {
+              right: 9px;
+              top: 9px;
+            }
+
+            @media (min-width: 900px) {
+              @p: .f16;
+            }
+          }
+
+        `}</style>
         <Link to='/'>
-          <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
+          <img className='logo' src={require('../assets/graphics/logos/graphcoolFull.svg')} />
         </Link>
         {window.innerWidth < breakpoints.p750 &&
           <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
             <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
           </Hamburger>
         }
-        <Nav
-          className={cx($p.fw6, $p.black30, $p.tracked, $p.ttu, $p.flex, $p.itemsCenter)}
-          opened={this.state.menuOpened}
+        <nav
+          className={cx(
+            'nav', {
+              'opened': this.state.menuOpened,
+            }
+          )}
         >
           {window.innerWidth < breakpoints.p750 &&
             <Close onClick={() => this.setState({ menuOpened: false } as State)} />
@@ -379,8 +365,8 @@ export default class Header extends React.Component<{}, State> {
               </Button>
             </Signin>
           )}
-        </Nav>
-      </Root>
+        </nav>
+      </div>
     )
   }
 }

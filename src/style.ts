@@ -62,6 +62,16 @@ injectGlobal`
     }
   }
   
+  h4 {
+    font-size: ${$v.size16};
+    font-weight: 400;
+    
+    @media (min-width: ${breakpoints.p500}px) {
+      font-size: ${$v.size20};
+      font-weight: 300
+    }
+  }
+  
   p {
     font-size ${$v.size16};
 

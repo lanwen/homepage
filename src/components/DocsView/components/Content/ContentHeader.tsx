@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
 import { Item } from '../../../../types/types'
 import BreadCrumb from './BreadCrumb'
@@ -12,14 +12,42 @@ interface Props {
   item: Item
 }
 
+const Root = styled.div`
+  display: flex;
+  padding-top: ${$v.size96};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    padding-top: ${$v.size38};
+  }
+`
+
 const Beta = styled.div`
   padding-top: 1px;
   padding-bottom: 2px;
   vertical-align: super;
 `
 
+const BreadCrumbContainer = styled.div`
+  padding-bottom: ${$v.size60};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    padding-bottom: ${$v.size25};
+  }
+  
+`
+
 const IconWrapper = styled.div`
   left: -8px;
+`
+
+const Sublines = styled.div`
+  font-size: ${$v.size16};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    font-size: ${$v.size14};
+    flex-direction: column;
+    margin-top: ${$v.size16};
+  }
 `
 
 export default class ContentHeader extends React.Component<Props, {}> {
@@ -33,31 +61,25 @@ export default class ContentHeader extends React.Component<Props, {}> {
     const rightPaddingTitle = item.beta ? '50px' : 0
 
     return (
-      <div className={cx($p.flex, $p.pt96)}>
+      <Root>
         {displayIcon && (
           <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
             <CircleIcon width={44} height={44} type={item.layout}/>
           </IconWrapper>
         )}
         <div
-          className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}
-          style={{
-            width: '100%',
-          }}
+          className={cx($p.pb60, $p.pt10)}
         >
-          <div className={cx($p.pb60, $p.ttu, $p.f14, $p.black20, $p.fw6)}>
+          <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>
             <BreadCrumb item={item} />
-          </div>
+          </BreadCrumbContainer>
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsStart)}>
             <div className={$p.relative}>
               <h1
                 className={cx(
-                  $p.f38,
-                  $p.black80,
-                  $p.fw3,
+
                 )}
                 style={{
-                  flex: 1,
                   paddingRight: rightPaddingTitle,
                 }}
               >
@@ -87,12 +109,9 @@ export default class ContentHeader extends React.Component<Props, {}> {
               />
             )}
           </div>
-          <div className={cx(
+          <Sublines className={cx(
             $p.inlineFlex,
-            window.innerWidth < breakpoints.p580 && $p.flexColumn,
-            $p.black20,
-            $p.f16,
-            $p.pt6,
+            $p.black30
           )}>
             <div
               className={cx($p.pr38, $p.nowrap)}
@@ -102,15 +121,15 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <div className={cx(
               $p.flex,
               $p.flexWrap,
-              window.innerWidth < breakpoints.p580 && $p.mt16,
+              window.innerWidth < breakpoints.p580 && $p.mt06,
               )}>
             {item.tags.map(tag => (
               <div key={tag} className={cx($p.pr16, $p.nowrap)}>#{tag}</div>
             ))}
             </div>
-          </div>
+          </Sublines>
         </div>
-      </div>
+      </Root>
     )
   }
 }

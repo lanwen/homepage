@@ -102,6 +102,14 @@ class ContentHandler extends React.Component<Props, {}> {
       contentBoxMarginLeft = 61
     }
 
+    if (window.innerWidth < breakpoints.p500) {
+      contentBoxMarginLeft = 38
+    }
+
+    if (window.innerWidth < breakpoints.p400) {
+      contentBoxMarginLeft = 25
+    }
+
     let contentBoxMarginRight = 0
     if (item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200) {
       contentBoxMarginRight = 50
@@ -152,8 +160,7 @@ class ContentHandler extends React.Component<Props, {}> {
               )}
               <div
                 className={cx(
-                  $p.bbox,
-                  window.innerWidth < breakpoints.p1000 && $p.pa10,
+                  $p.bbox
                 )}
                 style={{
                   marginLeft: contentBoxMarginLeft,

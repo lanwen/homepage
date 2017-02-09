@@ -39,15 +39,23 @@ const Container = styled.div`
   }
   
   ul li {
+    position: relative;
     line-height: 2;
     font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     list-style-type: none;
-    margin-left: ${$v.size12};
-    width: calc(100% - 12px);
+    padding-left: ${$v.size16};
+    // width: calc(100% - 12px);
+    
+    .docs-codemirror {
+      margin-left: -${parseFloat($v.size25) + parseFloat($v.size16)}px;
+    }
   }
 
   ul li:before {
     content: '\\2022 \\00a0 \\00a0 \\00a0';
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   
   blockquote {
@@ -111,7 +119,7 @@ const Container = styled.div`
   }
   
   @media (max-width: ${breakpoints.p900}px) {
-    margin-left: 6px;
+    margin-left: 0;
   }
 
   @media (max-width: ${breakpoints.p500}px) {
@@ -141,10 +149,9 @@ const Container = styled.div`
     
     blockquote {
       border-left: ${$v.size06} solid ${$v.green50};
-      padding: ${$v.size12} ${$v.size06};
+      padding: ${$v.size06} ${$v.size10};
       margin-left: 0;
       width: 100%;
-      padding-bottom: 0;
     }
     
   }
@@ -158,6 +165,12 @@ const Container = styled.div`
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
   }
+`
+
+const CodeContainer = styled.div`
+  width: 100vw;
+  margin-left: -25px;
+  margin-right: -25px;
 `
 
 const QuestionWrapper = styled.div`
@@ -258,7 +271,7 @@ export default class Markdown extends React.Component<Props, {}> {
           dslValid(props.literal.trim())
         ) {
           return (
-            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
+            <CodeContainer className={cx($p.bgDarkerBlue, $p.mb25, $p.pv10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -268,13 +281,11 @@ export default class Markdown extends React.Component<Props, {}> {
                   lineWrapping: true,
                 }}
               />
-            </div>
+            </CodeContainer>
           )
         }
         return (
-          <div
-            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
-          >
+          <CodeContainer className={cx($p.bgDarkerBlue, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
             <CodeMirror
               value={props.literal.trim()}
               options={{
@@ -284,7 +295,7 @@ export default class Markdown extends React.Component<Props, {}> {
                 lineWrapping: true,
               }}
             />
-          </div>
+          </CodeContainer>
         )
       },
       HtmlBlock: (props) => {
