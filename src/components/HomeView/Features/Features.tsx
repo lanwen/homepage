@@ -97,12 +97,6 @@ export default class Features extends React.Component<{}, {}> {
             copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
             link='https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai/'
           />
-          <Feature
-            icon='check'
-            color={$v.green}
-            headline='Apollo & Relay Compatible'
-            copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
-          />
         </Container>
       </div>
     )
