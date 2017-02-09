@@ -223,8 +223,12 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
 
     const selectedProject: Project | null = this.state.selectedProject
 
+    if (!selectedProject) {
+      return null
+    }
+
     let projectId
-    if (selectedProject !== null) {
+    if (selectedProject) {
       projectId = selectedProject.id
     }
 
