@@ -54,11 +54,11 @@ const More = styled.div`
 const MoreItem = styled(Link)`
   padding: ${$v.size25} ${$v.size25} 0;
   
-  &:first-child {
+  &:first-of-type {
     padding-top: ${$v.size38};
   }
   
-  &:last-child {
+  &:last-of-type {
     padding-bottom: ${$v.size38};
   }
   
@@ -116,7 +116,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
           className={cx(
             $p.flex,
             this.props.displayAsColumns && $p.flexColumn,
-            this.props.displayAsColumns && $p.itemsStart,
+            $p.itemsStart,
             $p.ph10,
             $p.relative,
             $p.justifyCenter,
