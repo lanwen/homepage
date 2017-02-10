@@ -104,8 +104,10 @@ const data = [{
 export default class TwitterFeed extends React.Component<{}, {}> {
 
   componentDidMount() {
-    const scrollContainer = findDOMNode(this.refs['scrollContainer'])
-    scrollContainer.scrollLeft = 300
+    if (window.innerWidth > 500) {
+      const scrollContainer = findDOMNode(this.refs['scrollContainer'])
+      scrollContainer.scrollLeft = 300
+    }
   }
 
   render() {
