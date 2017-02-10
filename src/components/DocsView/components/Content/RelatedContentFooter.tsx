@@ -38,11 +38,12 @@ const Container = styled.div`
 
 const More = styled.div`
   // box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
+  width: 100%;
   max-width: 470px;
   // min-height: 350px;
     
   @media(max-width: ${breakpoints.p1000}px) {
-    margin: 25px;
+    margin: 0 25px 25px;
   }
   
   @media (max-width: ${breakpoints.p580}px) {

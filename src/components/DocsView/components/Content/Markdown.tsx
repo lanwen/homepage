@@ -23,7 +23,7 @@ interface Props {
 const Container = styled.div`
   margin-left: 50px;
   max-width: ${props => props.faq ? 880 : 920}px;
-  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 0}px;
+  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 50}px;
  
   p { 
     line-height: 1.7;
@@ -129,6 +129,7 @@ const Container = styled.div`
   
   @media (max-width: ${breakpoints.p900}px) {
     margin-left: 0;
+    margin-right: 0;
   }
 
   @media (max-width: ${breakpoints.p500}px) {
