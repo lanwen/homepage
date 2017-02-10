@@ -13,12 +13,14 @@ interface Props {
 }
 
 const Root = styled.div`
+  position: relative;
   display: flex;
-  padding-top: ${$v.size96};
+  margin-top: ${$v.size96};
   
   @media (max-width: ${breakpoints.p580}px) {
-    padding-top: ${$v.size38};
+    margin-top: ${$v.size38};
   }
+  
 `
 
 const Beta = styled.div`
@@ -28,7 +30,7 @@ const Beta = styled.div`
 `
 
 const BreadCrumbContainer = styled.div`
-  padding-bottom: ${$v.size60};
+  padding-bottom: ${$v.size38};
   
   @media (max-width: ${breakpoints.p580}px) {
     padding-bottom: ${$v.size25};
@@ -38,6 +40,7 @@ const BreadCrumbContainer = styled.div`
 
 const IconWrapper = styled.div`
   left: -8px;
+  padding-top: 72px;
 `
 
 const Sublines = styled.div`
@@ -72,12 +75,15 @@ export default class ContentHeader extends React.Component<Props, {}> {
     return (
       <Root>
         {displayIcon && (
-          <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
+          <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.relative)}>
             <CircleIcon width={44} height={44} type={item.layout}/>
           </IconWrapper>
         )}
         <div
-          className={cx($p.pb60, $p.pt10)}
+          className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
+          style={{
+            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : ''
+          }}
         >
           <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>
             <BreadCrumb item={item} />

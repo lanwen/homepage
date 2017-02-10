@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {$p} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import FeatureBox from './FeatureBox'
@@ -8,6 +8,28 @@ import {breakpoints} from '../../../../utils/constants'
 const Root = styled.div`
   max-width: 1050px;
   margin: 0 auto;
+  
+  padding-top: ${$v.size96};
+  
+  @media (max-width: ${breakpoints.p400}px) {
+    padding-left: ${$v.size25};
+    padding-right: ${$v.size25};
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    padding-top: ${$v.size60};
+    paddingright: ${$v.size60};
+  }
+  
+  @media (max-width: ${breakpoints.p900}px) {
+    padding-left: ${$v.size38};
+    padding-right: ${$v.size38};
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding-left: ${$v.size60};
+    padding-right: ${$v.size60};
+  }
 `
 
 {/*
@@ -25,7 +47,7 @@ const FeaturesBackground = styled.div`
   height: 144px;
   
   @media (max-width: ${breakpoints.p1000}px) {
-    height: 400px;
+    height: auto;
   }
 `
 
@@ -34,7 +56,6 @@ export default () => {
     <FeaturesBackground className={cx(
       $p.flex,
       $p.itemsCenter,
-      $p.mt60,
     )}>
       <Root>
         <div className={cx(

@@ -9,6 +9,8 @@ const Hover = `
 `
 
 const AnimatingOpacityView = styled.div`
+  box-sizing: border-box;
+  width: 146px;
   transition: opacity 0.5s;
   opacity: 1;
   ${props => props.decreaseOpacity && Hover}
@@ -29,13 +31,17 @@ interface Props {
   onMouseLeave?: () => void
 }
 
-export default (props: Props) => {
+const Technology = (props: Props) => {
 
-  const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor}} = props
+  const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor, isDisabled}} = props
   const {technology, onClick, className} = props
 
   return (
     <AnimatingOpacityView
+      style={{
+        opacity: isDisabled ? 0.25 : 1,
+        cursor: 'default'
+      }}
       decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}
       onClick={() => onClick(technology)}
@@ -54,7 +60,7 @@ export default (props: Props) => {
       className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}
       style={{background: `${backgroundColor}`}}>
       <Icon
-        src={require(`../../../../assets/icons/docs/${logoName}.svg`)}
+        src={require(`graphcool-styles/icons/fill/${logoName}LogoCentered.svg`)}
         color={logoColor}
         height={logoWidth}
         width={logoHeight}
@@ -66,3 +72,5 @@ export default (props: Props) => {
     </AnimatingOpacityView>
   )
 }
+
+export default Technology

@@ -22,19 +22,18 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
   return (
     <Container
       className={cx(
+        $p.absolute,
         $p.bgLightgreen20,
         $p.pa16,
         $p.f14,
         $p.green,
         window.innerWidth > breakpoints.p500 && $p.ml38,
         $p.bbox,
-        $p.relative,
+        $p.top0,
+        $p.right0,
       )}
       style={{
         width: 194,
-        flex: '0 0 194px',
-        top: -66,
-        right: -10,
       }}
     >
       <div>

@@ -51,14 +51,20 @@ const More = styled.div`
 `
 
 const MoreItem = styled(Link)`
-  padding: ${$v.size38} ${$v.size25} 0;
+  padding: ${$v.size25} ${$v.size25} 0;
+  
+  &:first-child {
+    padding-top: ${$v.size38};
+  }
   
   &:last-child {
     padding-bottom: ${$v.size38};
   }
   
   @media (max-width: ${breakpoints.p580}px) {
-    padding: ${$v.size25} ${$v.size25} 0;
+    &:first-child {
+      padding-top: ${$v.size25};
+    }
     
     &:last-child {
       padding-bottom: ${$v.size25};
@@ -153,7 +159,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
                 <MoreItem
                   to={`${item.path}-${item.alias}`}
                   key={item.alias}
-                  className={cx($p.flex, $p.noUnderline)}
+                  className={cx($p.flex, $p.noUnderline, $p.dim)}
                 >
                   <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
                     <CircleIcon type={item.layout} />
@@ -184,7 +190,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
                 <Link
                   to={`${item.path}-${item.alias}`}
                   key={item.alias}
-                  className={cx($p.flex, $p.pv10, $p.noUnderline)}
+                  className={cx($p.flex, $p.pv10, $p.noUnderline, $p.dim)}
                 >
                   <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
                     <CircleIcon type={item.layout} />

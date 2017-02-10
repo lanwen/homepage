@@ -28,8 +28,10 @@ const Container = styled.div`
   p { 
     line-height: 1.7;
     color: ${$v.gray60};
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16};
+    font-size: ${$v.size16};
     overflow: hidden;
+    font-weight: 400;
   }
   
   ul {
@@ -41,7 +43,8 @@ const Container = styled.div`
   ul li {
     position: relative;
     line-height: 2;
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    font-size: ${$v.size16};
     list-style-type: none;
     padding-left: ${$v.size16};
     // width: calc(100% - 12px);
@@ -96,7 +99,8 @@ const Container = styled.div`
   
   h3 {
     color: ${$v.gray60};
-    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    font-size: ${$v.size20};
     margin: ${$v.size25} 0;
   }
   
@@ -131,7 +135,7 @@ const Container = styled.div`
 
     p {
       color: ${$v.gray60}; 
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
     }
     
     code {
@@ -140,7 +144,7 @@ const Container = styled.div`
 
     ul li { 
       line-height: 1.7;
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
     
     h2 {
@@ -151,7 +155,7 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
     }
     
@@ -179,6 +183,10 @@ const CodeContainer = styled.div`
   width: 100vw;
   margin-left: -25px;
   margin-right: -25px;
+  border-radius: 2px;
+  @media (min-width: 920px) {
+    width: auto;
+  }
 `
 
 const QuestionWrapper = styled.div`
@@ -239,7 +247,7 @@ export default class Markdown extends React.Component<Props, {}> {
       List: (props) => {
         return (
           <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
-            <div className={cx('no-hover')}>
+            <div className={cx('no-hover', $p.w100)}>
               {ReactRenderer.renderers.List(props)}
             </div>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
@@ -279,7 +287,7 @@ export default class Markdown extends React.Component<Props, {}> {
           dslValid(props.literal.trim())
         ) {
           return (
-            <CodeContainer className={cx($p.bgDarkerBlue, $p.mb25, $p.pv10, 'docs-codemirror')}>
+            <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -293,7 +301,7 @@ export default class Markdown extends React.Component<Props, {}> {
           )
         }
         return (
-          <CodeContainer className={cx($p.bgDarkerBlue, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
+          <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
             <CodeMirror
               value={props.literal.trim()}
               options={{

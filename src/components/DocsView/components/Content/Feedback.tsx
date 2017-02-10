@@ -87,8 +87,8 @@ class Feedback extends React.Component<Props, State> {
                     className={cx(
                       $p.bbox,
                       $p.db,
+                      $p.pr10,
                       window.innerWidth > breakpoints.p500 && $p.pl38,
-                      window.innerWidth <= breakpoints.p500 && $p.pr10,
                     )}/>
                   <div
                     className={cx(

@@ -28,11 +28,11 @@ injectGlobal`
     font-weight: 300;
   
     @media (min-width: ${breakpoints.p1000}px) {
-      font-size: ${$v.size30};
+      font-size: ${$v.size32};
     }
     
     @media (min-width: ${breakpoints.p1200}px) {
-      font-size: ${$v.size32};
+      font-size: ${$v.size38};
     }
     
     @media (min-width: ${breakpoints.p1440}px) {

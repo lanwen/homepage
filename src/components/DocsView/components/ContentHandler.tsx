@@ -114,9 +114,16 @@ class ContentHandler extends React.Component<Props, {}> {
     if (item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200) {
       contentBoxMarginRight = 50
     } else if (window.innerWidth < breakpoints.p1360) {
-      contentBoxMarginRight = 25
+      contentBoxMarginRight = 60
     }
 
+    if (window.innerWidth < breakpoints.p900) {
+      contentBoxMarginLeft = 38
+    }
+
+    if (window.innerWidth < breakpoints.p400) {
+      contentBoxMarginLeft = 25
+    }
     return (
       <div onClick={this.onClick} className={cx(
         $p.w100,

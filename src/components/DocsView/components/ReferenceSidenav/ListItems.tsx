@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { Link } from 'react-router'
 import styled from 'styled-components'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import { NestedItem } from '../../../../types/types'
 
 const FirstUlStyle = styled.div`
   margin: -${$v.size38} ${$v.size16} 0 ${$v.size16};
-  box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
-  0 -8px 18px rgba(0, 0, 0, 0.1);
+  // box-shadow:0 8px 18px rgba(0, 0, 0, 0.1),
+  // 0 -8px 18px rgba(0, 0, 0, 0.1);
   padding-top: 45px;
-  border-radius: 3px;
+  // border-radius: 3px;
   
   // this is needed for consistent spacing
   .non-border {
@@ -82,7 +82,7 @@ export default class ListItems extends React.Component<Props, {}> {
         <Link
           to={`${this.props.item.path}-${this.props.item.alias}`}
           className={cx(
-            $p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db,
+            $p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db, $p.relative, $p.z1
             {
               ['active']: this.props.item.alias === currentAlias,
             },
@@ -90,7 +90,7 @@ export default class ListItems extends React.Component<Props, {}> {
           {this.props.item.shorttitle}
         </Link>
         {this.props.expanded &&
-        <FirstUlStyle className={cx($p.pb16, $p.bgWhite90)}>
+        <FirstUlStyle className={cx($p.pb16, $g.overlay, $p.zUnset)}>
           <section>
             {this.props.item.children && this.props.item.children.map((itemLvl2, index) => (
               <div key={itemLvl2.alias} className={cx(index === activeItemIndex ? 'border' : 'non-border')}>

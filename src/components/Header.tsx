@@ -111,36 +111,6 @@ const Button = styled.a`
   }
 `
 
-const Close = styled.div`
-  position: absolute;
-  top: ${$v.size16};
-  right: ${$v.size16};
-  width: 36px;
-  height: 36px;
-  opacity: .2;
-  cursor: pointer;
-  transition: opacity ${$v.duration} linear;
-  
-  &:hover {
-    opacity: .4;
-  }
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    background: ${$v.black};
-    left: 50%;
-    top: 50%;
-    width: 80%;
-    height: 2px;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-`
-
 const FeatureLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -218,25 +188,28 @@ export default class Header extends React.Component<{}, State> {
       <div className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .pa38, .itemsCenter, .justifyBetween, .center, .relative;
+            @p: .flex, .itemsCenter, .justifyBetween, .center, .relative;
             max-width: 1440px;
-
-            @media (min-width: 1200px) {
-              @p: .pa60;
-            }
-
-            @media (max-width: 900px) {
-              @p: .pa38;
-            }
 
             @media (max-width: 400px) {
               @p: .pa25;
+            }
+
+            @media (min-width: 401px) {
+              @p: .pa38;
+            }
+
+            @media (min-width: 1200px) {
+              @p: .pa60;
             }
           }
 
           .logo {
             @p: .wAuto, .relative;
-            height: 36px;
+
+            @media (max-width: 899px) {
+              height: 36px;
+            }
 
             @media (min-width: 900px) {
               height: 41px;
@@ -244,11 +217,16 @@ export default class Header extends React.Component<{}, State> {
           }
 
           .nav {
-            @p: .fw6, .black30, .tracked, .ttu, .flex, .itemsCenter, .relative, .f14, .zMax;
+            @p: .fw6, .black30, .tracked, .ttu, .f14, .zMax;
+
+            @media (max-width: 400px) {
+              right: 9px;
+              top: 9px;
+            }
 
             @media (max-width: 750px) {
               @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
-              @p: .bgWhite, .br2, .overflowHidden, .relative, .overlayShadow, .zMax;
+              @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .zMax;
               right: 22px;
               top: 22px;
 
@@ -257,9 +235,8 @@ export default class Header extends React.Component<{}, State> {
               }
             }
 
-            @media (max-width: 400px) {
-              right: 9px;
-              top: 9px;
+            @media (min-width: 751px) {
+              @p: .flex, .relative, .itemsCenter;
             }
 
             @media (min-width: 900px) {
@@ -268,10 +245,65 @@ export default class Header extends React.Component<{}, State> {
           }
 
           .hamburger {
-            @p: .bgNone, .absolute, .pointer, .top38, .right38;
+            @p: .bgNone, .absolute, .pointer;
 
             @media (max-width: 400px) {
               @p: .top25, .right25;
+            }
+
+            @media (min-width: 401px) {
+              @p: .top38, .right38;
+            }
+          }
+
+          .close {
+            @p: .absolute, .top16, .right16, .o20, .pointer, .bgNone;
+            width: 36px;
+            height: 36px;
+            transition: opacity .1s linear;
+
+            &:hover {
+              @p: .o40;
+            }
+
+            &:before, &:after {
+              content: "";
+              @p: .absolute, .bgBlack, .left50, .top50, .w80;
+              height: 2px;
+              transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+              transform: translate(-50%, -50%) rotate(-45deg);
+            }
+          }
+
+          .link {
+            @p: .black30, .mr25, .pointer, .lhSolid, .ttu;
+            transition: color .1s linear;
+
+            &:hover {
+              @p: .black50;
+            }
+
+            @media (min-width: 900px) {
+              @p: .mr38;
+            }
+
+            @media (max-width: 750px) {
+              @p: .pa10;
+            }
+
+            &.withTooltip {
+              @p: .relative, .bgNone, .pv25, .cursorDefault;
+            }
+
+            &.active {
+              @p: .green;
+
+              &:hover {
+                @p: .green;
+              }
             }
           }
 
@@ -292,13 +324,18 @@ export default class Header extends React.Component<{}, State> {
           )}
         >
           {window.innerWidth < breakpoints.p750 &&
-            <Close onClick={() => this.setState({ menuOpened: false } as State)} />
+            <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           {window.innerWidth >= breakpoints.p750 &&
-            <MultiNavLink
+            <div
+              className={cx(
+                'link',
+                'withTooltip', {
+                  'active': ['/graphql', '/functions'].includes(window.location.pathname)
+                }
+              )}
               onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
               onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
-              active={['/graphql', '/functions'].includes(window.location.pathname)}
             >
               Features
               {this.state.tooltipActive &&
@@ -327,7 +364,7 @@ export default class Header extends React.Component<{}, State> {
                 </FeatureLink>
               </NavTooltip>
               }
-            </MultiNavLink>
+            </div>
           }
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/graphql'>GraphQL<br/>Backend</TwoRowLink>
@@ -335,8 +372,13 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
           }
-          <NavLink to='/pricing' active={window.location.pathname === '/pricing'}>Pricing</NavLink>
-          <NavLink to='/docs'>Docs</NavLink>
+          <NavLink
+            active={window.location.pathname === '/pricing'}
+            to='/pricing'
+          >
+            Pricing
+          </NavLink>
+          <NavLink className='link' to='/docs'>Docs</NavLink>
           {loggedIn ? (
             <Signin>
               <Button

@@ -1,13 +1,13 @@
 import * as React from 'react'
-import {$p, $v, $g, Icon} from 'graphcool-styles'
+import { $p, $v, $g, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
 import Technology from './Technology'
 import StepIndicator from './StepIndicator'
-import {TechnologyData, frontendTechnologies, clientTechnologies} from './data/technologies'
-import {examples} from './data/examples'
+import { TechnologyData, frontendTechnologies, clientTechnologies } from './data/technologies'
+import { examples } from './data/examples'
 import Example from './Example'
-import {QuickExample} from '../../../../types/types'
-import {breakpoints} from '../../../../utils/constants'
+import { QuickExample } from '../../../../types/types'
+import { breakpoints } from '../../../../utils/constants'
 import LogoBar from '../../../HomeView/LogoBar'
 
 interface State {
@@ -15,6 +15,8 @@ interface State {
   selectedClientTechnology?: TechnologyData,
   quickExamples?: QuickExample[]
   highlightedComponentIndex?: number
+  frontendTechnologyOffset: number
+  graphQLClientOffset: number
 }
 
 interface Props {
@@ -28,7 +30,10 @@ export default class Quickstart extends React.Component<Props, State> {
     selectedClientTechnology: null,
     quickExamples: null,
     highlightedComponentIndex: null,
+    frontendTechnologyOffset: 0,
+    graphQLClientOffset: 0,
   }
+  private lastOffset: number
 
   render() {
 
@@ -38,7 +43,7 @@ export default class Quickstart extends React.Component<Props, State> {
           <LogoBar
             className={cx(
               $p.mt25,
-          )}/>
+          )} />
           <a
             href='https://github.com/graphcool/examples'
             className={cx(
@@ -53,7 +58,7 @@ export default class Quickstart extends React.Component<Props, State> {
               $p.ph25,
               $p.pv16,
             )}>
-              See Examples on GitHub
+            See Examples on GitHub
           </a>
         </div>
 
@@ -82,7 +87,7 @@ export default class Quickstart extends React.Component<Props, State> {
               quickExamples: null,
             } as State)
           }
-        }}/>
+        }} />
     )
 
     if (currentStep === 'TECHNOLOGY') {
@@ -93,9 +98,9 @@ export default class Quickstart extends React.Component<Props, State> {
             {frontendTechnologies.map((technology, index) =>
               <Technology
                 key={technology.title}
-                className={cx($p.mr60)}
+                className={cx($p.ph25)}
                 technology={technology}
-                onClick={() => this.selectFrontendTechnology(technology)}
+                onClick={() => this.selectFrontendTechnology(technology, index)}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
                 onMouseLeave={() => this.setState({
                     ...this.state,
@@ -111,34 +116,55 @@ export default class Quickstart extends React.Component<Props, State> {
       return (
         <div className={cx($p.flex, $p.flexColumn, className)}>
           {stepIndicator}
-          <div className={cx($p.flex, $p.mt25)}>
+          <div
+            className={cx($p.flex, $p.mt25, $p.relative)}
+            style={{
+              transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
+              transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
+            }}
+          >
             <Technology
-              className={cx($p.mr60)}
+              className={cx($p.ph25)}
               technology={selectedFrontendTechnology}
               decreaseOpacity={false}
+              onClick={() => {
+                this.setState({
+                  selectedFrontendTechnology: null,
+                  selectedClientTechnology: null,
+                  quickExamples: null,
+                } as State)
+              }}
             />
-            <div className={cx($p.mr60)} style={{paddingTop: 34}}>
-              <Icon
-                src={require('../../../../assets/icons/docs/plus.svg')}
-                width={27}
-                height={27}
-                color={$v.gray20}
-              />
+            <div
+              style={{
+                transition: 'opacity .3s .3s ease',
+                opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
+              }}
+              className={$p.flex}
+            >
+              <div className={cx($p.mh25)} style={{paddingTop: 34}}>
+                <Icon
+                  src={require('../../../../assets/icons/docs/plus.svg')}
+                  width={27}
+                  height={27}
+                  color={$v.gray20}
+                />
+              </div>
+              {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
+                <Technology
+                  key={technology.title}
+                  className={cx($p.ph25)}
+                  technology={technology}
+                  onClick={() => this.selectClientTechnology(technology, index)}
+                  onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
+                  onMouseLeave={() => this.setState({
+                    ...this.state,
+                    highlightedComponentIndex: null,
+                  })}
+                  decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
+                />)
+              }
             </div>
-            {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
-              <Technology
-                key={technology.title}
-                className={cx($p.mr60)}
-                technology={technology}
-                onClick={() => this.selectClientTechnology(technology)}
-                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                onMouseLeave={() => this.setState({
-                  ...this.state,
-                  highlightedComponentIndex: null,
-                })}
-                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
-              />)
-            }
           </div>
         </div>
       )
@@ -147,38 +173,72 @@ export default class Quickstart extends React.Component<Props, State> {
         <div className={cx($p.flex, className)}>
           <div className={cx($p.flex, $p.flexColumn)}>
             {stepIndicator}
-            <div className={cx($p.flex, $p.mt25)}>
+            <div
+              className={cx($p.flex, $p.mt25)}
+              style={{
+                transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
+                transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
+              }}
+            >
               <Technology
                 className={cx($p.mr25)}
                 decreaseOpacity={false}
                 technology={selectedFrontendTechnology}
               />
-              <div style={{paddingTop: 34}}>
-                <Icon
-                  src={require('../../../../assets/icons/docs/plus.svg')}
-                  width={27}
-                  height={27}
-                  color={$v.gray20}
-                />
-              </div>
-              <Technology
-                className={cx($p.ml25)}
-                decreaseOpacity={false}
-                technology={selectedClientTechnology}
-              />
-              <div className={cx($p.ml25)} style={{paddingTop: 37}}>
-                <Icon
-                  src={require('../../../../assets/icons/docs/right_arrow.svg')}
-                  width={31}
-                  height={22}
-                  color={$v.gray20}
-                />
+              <div
+                className={$p.flex}
+                style={{
+                  transition: 'opacity .3s .3s ease',
+                  opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
+                }}
+              >
+                <div style={{paddingTop: 34}}>
+                  <Icon
+                    src={require('../../../../assets/icons/docs/plus.svg')}
+                    width={27}
+                    height={27}
+                    color={$v.gray20}
+                  />
+                </div>
+                <div
+                  className={$p.flex}
+                  style={{
+                    transition: this.state.graphQLClientOffset === 0 ? '.3s ease all' : '',
+                    transform: `translateX(${this.state.graphQLClientOffset}px)`,
+                  }}
+                >
+                  <Technology
+                    className={cx($p.ml25)}
+                    decreaseOpacity={false}
+                    technology={selectedClientTechnology}
+                  />
+                  <div
+                    className={cx($p.ml25)}
+                    style={{
+                      paddingTop: 37,
+                      transition: 'opacity .3s .3s ease',
+                      opacity: this.state.graphQLClientOffset > 0 ? 0 : 1,
+                    }}>
+                    <Icon
+                      src={require('../../../../assets/icons/docs/right_arrow.svg')}
+                      width={31}
+                      height={22}
+                      color={$v.gray20}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className={cx($p.flex, $p.ml38)}>
+          <div
+            className={cx($p.flex, $p.ml38)}
+          >
             {this.state.quickExamples.map((example: QuickExample, index) =>
               <Example
+                style={{
+                  transition: 'opacity .3s .3s ease',
+                  opacity: (this.state.frontendTechnologyOffset > 0 || this.state.graphQLClientOffset > 0) > 0 ? 0 : 1,
+                }}
                 key={example.title}
                 quickExample={example}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
@@ -198,25 +258,77 @@ export default class Quickstart extends React.Component<Props, State> {
     )
   }
 
-  private selectFrontendTechnology = (technology: TechnologyData) => {
+  private selectFrontendTechnology = (technology: TechnologyData, index: number = 0) => {
     const selectedFrontendTechnology = this.setSelected(technology)
+
+
     this.setState({
-      selectedFrontendTechnology: selectedFrontendTechnology,
-      highlightedComponentIndex: null,
-    } as State)
+      frontendTechnologyOffset: index * 146,
+    } as State, () => {
+      setTimeout(() => {
+
+        let newState: any = {
+          selectedFrontendTechnology,
+          highlightedComponentIndex: null,
+        }
+
+        const clientTechnologies = this.clientTechnologiesFor(technology)
+
+        if (clientTechnologies.length === 1) {
+          newState.selectedClientTechnology = clientTechnologies[0]
+          const key = selectedFrontendTechnology.logoName + '-' + clientTechnologies[0].logoName
+          newState.quickExamples = examples[key]
+          newState.highlightedComponentIndex = 0
+        }
+
+        this.setState(newState as State, () => {
+          setTimeout(() => {
+            this.setState({
+              frontendTechnologyOffset: 0,
+              graphQLClientOffset: 0
+            })
+          }, 1)
+        })
+      }, 1)
+
+    })
   }
 
-  private selectClientTechnology = (technology: TechnologyData) => {
+  private selectClientTechnology = (technology: TechnologyData, index: number = 0) => {
+    console.log(technology)
     const selectedClientTechnology = this.setSelected(technology)
 
     const key = this.state.selectedFrontendTechnology.logoName + '-' + selectedClientTechnology.logoName
     const displayExamples = examples[key]
 
+    // this.setState({
+    //   selectedClientTechnology: selectedClientTechnology,
+    //   quickExamples: displayExamples,
+    //   highlightedComponentIndex: null,
+    //   frontendTechnologyOffset: index * 146,
+    // } as State)
+
     this.setState({
-      selectedClientTechnology: selectedClientTechnology,
-      quickExamples: displayExamples,
-      highlightedComponentIndex: null,
-    } as State)
+      graphQLClientOffset: index * 146,
+    } as State, () => {
+      setTimeout(() => {
+
+        let newState: any = {
+          selectedClientTechnology,
+          quickExamples: displayExamples,
+          highlightedComponentIndex: null,
+        }
+        this.setState(newState as State, () => {
+          setTimeout(() => {
+            this.setState({
+              graphQLClientOffset: 0,
+              frontendTechnologyOffset: 0,
+            })
+          }, 1)
+        })
+      }, 1)
+
+    })
   }
 
   private decreasedOpacityOfComponents = (index: number) => {
