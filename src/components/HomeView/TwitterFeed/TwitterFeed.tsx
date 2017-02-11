@@ -16,6 +16,8 @@ const Root = styled.section`
 
 const RootContainer = styled.div`
   position: relative;
+  width: 100%;
+  
   &:before {
     content: "";
     position: absolute;
@@ -113,7 +115,7 @@ export default class TwitterFeed extends React.Component<{}, {}> {
   render() {
 
     return (
-      <Root className={cx($p.pb96, $p.overflowHidden, $p.flex, $p.flexColumn)}>
+      <Root className={cx($p.pb96, $p.overflowHidden, $p.flex, $p.flexColumn, $p.itemsCenter)}>
         <Separator />
         <SectionHeader
           headline='What other people say about Graphcool'
