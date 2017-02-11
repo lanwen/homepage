@@ -1172,11 +1172,11 @@ babel@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/babel/-/babel-6.5.2.tgz#59140607438270920047ff56f02b2d8630c2d129"
 
-babylon@^6.11.0:
+babylon@^6.11.0, babylon@^6.14.1:
   version "6.14.1"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.14.1.tgz#956275fab72753ad9b3435d7afe58f8bf0a29815"
 
-babylon@^6.13.0, babylon@^6.14.1, babylon@^6.15.0:
+babylon@^6.13.0, babylon@^6.15.0:
   version "6.15.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.15.0.tgz#ba65cfa1a80e1759b0e89fb562e27dccae70348e"
 
@@ -5095,9 +5095,9 @@ postcss-inherit-parser@^0.1.3:
     debug "^2.2.0"
     postcss "^5.0.10"
 
-"postcss-inherit@git+https://github.com/timsuchanek/postcss-inherit#build":
+"postcss-inherit@git+https://github.com/timsuchanek/postcss-inherit#build2":
   version "4.0.2"
-  resolved "git+https://github.com/timsuchanek/postcss-inherit#460831a2027df2daa3a97390bba377e4fdc29728"
+  resolved "git+https://github.com/timsuchanek/postcss-inherit#482d4459eed9223aa7a50c400bc4c54e56c7010a"
   dependencies:
     debug "^2.2.0"
     postcss "^5.0.10"
