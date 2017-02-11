@@ -63,9 +63,9 @@ export default class Investor extends React.Component<Props, {}> {
           <p className='title'>
             {this.props.title}
             {this.props.companyLogo &&
-            <div className='companyLogo'>
+            <span className='companyLogo'>
               &nbsp;@&nbsp;<img src={this.props.companyLogo} />
-            </div>
+            </span>
             }
           </p>
         </div>
