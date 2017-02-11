@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $v } from 'graphcool-styles'
+import { $v } from 'graphcool-styles'
 import Value from './Value'
 
 export default class Values extends React.Component<{}, {}> {

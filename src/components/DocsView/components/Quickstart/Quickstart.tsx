@@ -33,7 +33,6 @@ export default class Quickstart extends React.Component<Props, State> {
     frontendTechnologyOffset: 0,
     graphQLClientOffset: 0,
   }
-  private lastOffset: number
 
   render() {
 
@@ -237,7 +236,7 @@ export default class Quickstart extends React.Component<Props, State> {
               <Example
                 style={{
                   transition: 'opacity .3s .3s ease',
-                  opacity: (this.state.frontendTechnologyOffset > 0 || this.state.graphQLClientOffset > 0) > 0 ? 0 : 1,
+                  opacity: ((this.state.frontendTechnologyOffset > 0) || (this.state.graphQLClientOffset > 0)) ? 0 : 1,
                 }}
                 key={example.title}
                 quickExample={example}
@@ -246,7 +245,6 @@ export default class Quickstart extends React.Component<Props, State> {
                   ...this.state,
                   highlightedComponentIndex: null,
                 })}
-                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
               />,
             )}
           </div>
@@ -260,7 +258,6 @@ export default class Quickstart extends React.Component<Props, State> {
 
   private selectFrontendTechnology = (technology: TechnologyData, index: number = 0) => {
     const selectedFrontendTechnology = this.setSelected(technology)
-
 
     this.setState({
       frontendTechnologyOffset: index * 146,
@@ -300,13 +297,6 @@ export default class Quickstart extends React.Component<Props, State> {
 
     const key = this.state.selectedFrontendTechnology.logoName + '-' + selectedClientTechnology.logoName
     const displayExamples = examples[key]
-
-    // this.setState({
-    //   selectedClientTechnology: selectedClientTechnology,
-    //   quickExamples: displayExamples,
-    //   highlightedComponentIndex: null,
-    //   frontendTechnologyOffset: index * 146,
-    // } as State)
 
     this.setState({
       graphQLClientOffset: index * 146,
@@ -377,7 +367,6 @@ export default class Quickstart extends React.Component<Props, State> {
     })
     return result
   }
-
 }
 
 export type Step = 'TECHNOLOGY' | 'GRAPHQL_CLIENT' | 'USE_CASE'

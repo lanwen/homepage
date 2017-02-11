@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { $p } from 'graphcool-styles'
 import SectionHeader from '../../SectionHeader'
 import { investors } from './data'
 import Investor from './Investor'

@@ -8,7 +8,7 @@ export interface TechnologyData {
   logoHeight: number
   backgroundColor: string
   isPopular?: boolean,
-  isDisabled?:boolean,
+  isDisabled?: boolean,
 }
 
 const react: TechnologyData = {

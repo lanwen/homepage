@@ -3,15 +3,22 @@ import {$p, $v, $g, Icon} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {QuickExample} from '../../../../types/types'
 import CircleIcon from '../CircleIcon'
+import styled from 'styled-components'
 
 interface Props {
   quickExample: QuickExample
   className?: string
-  decreaseOpacity: boolean
   onMouseEnter?: () => void
   onMouseLeave?: () => void
   style?: any
 }
+
+const Root = styled.div`
+  &:hover {
+    transition: opacity .1s ease !important;
+    opacity: 0.75 !important;
+  }
+`
 
 export default class Example extends React.Component<Props, {}> {
 
@@ -19,7 +26,7 @@ export default class Example extends React.Component<Props, {}> {
     const {imageSrc, imageWidth, imageHeight, link, layout, title} = this.props.quickExample
     const {style} = this.props
     let exampleStyle = {
-      width: 226
+      width: 226,
     }
     if (typeof style === 'object') {
       exampleStyle = {
@@ -28,8 +35,7 @@ export default class Example extends React.Component<Props, {}> {
       }
     }
     return (
-      <div
-        decreaseOpacity={this.props.decreaseOpacity}
+      <Root
         className={cx($p.flex, $p.flexColumn, $p.flex1, $p.noUnderline, $g.overlay, $p.mh10, $p.dim)}
         onMouseEnter={() => this.props.onMouseEnter()}
         onMouseLeave={() => this.props.onMouseLeave()}
@@ -66,7 +72,7 @@ export default class Example extends React.Component<Props, {}> {
             </div>
           </div>
         </a>
-      </div>
+      </Root>
     )
   }
 }

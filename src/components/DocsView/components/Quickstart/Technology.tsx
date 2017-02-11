@@ -40,7 +40,7 @@ const Technology = (props: Props) => {
     <AnimatingOpacityView
       style={{
         opacity: isDisabled ? 0.25 : 1,
-        cursor: 'default'
+        cursor: 'default',
       }}
       decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}

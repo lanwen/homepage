@@ -1,6 +1,4 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { $p, $v, $g } from 'graphcool-styles'
 import SectionHeader from '../../SectionHeader'
 import TeamMember from './TeamMember'
 import { persons } from './data'

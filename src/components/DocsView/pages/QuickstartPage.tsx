@@ -8,7 +8,6 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import Heading from './Overview/Heading'
-import { breakpoints } from '../../../utils/constants'
 
 const Container = styled.div`
   max-width: 1200px;

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { $p } from 'graphcool-styles'
 
 interface Props {
   name: string,

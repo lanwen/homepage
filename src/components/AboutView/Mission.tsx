@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { $p } from 'graphcool-styles'
 
 export default class Mission extends React.Component<{}, {}> {
 
@@ -29,7 +28,8 @@ export default class Mission extends React.Component<{}, {}> {
         <div className='text'>
           <h1>We build the only backend you’ll ever need.</h1>
           <p className='copy'>
-            We enable frontend developers to build products from scratch without the need to develop their own backend.<br /><br />
+            We enable frontend developers to build products from scratch without the need to develop their own backend.
+            <br /><br />
             We ourselves have built countless backend applications and got tired of reinventing the wheel over and over again.
           </p>
         </div>

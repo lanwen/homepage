@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { $p, $v, $g, Icon } from 'graphcool-styles'
+import { $v, Icon } from 'graphcool-styles'
 
 interface Props {
   image: string,
@@ -87,7 +87,7 @@ export default class TeamMember extends React.Component<Props, State> {
               <p className='title'>{this.props.title}</p>
             </div>
             <div className='links'>
-              <a href={this.props.links.linkedIn} className='link' target='_blank'>
+              <a href={this.props.links.linkedin} className='link' target='_blank'>
                 <Icon
                   src={require('../../../assets/icons/logos/linkedin.svg')}
                   width={20}

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { $p } from 'graphcool-styles'
 import SectionHeader from '../../SectionHeader'
 import Step from './Step'
 

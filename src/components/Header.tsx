@@ -3,7 +3,7 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints, maxWidth} from '../utils/constants'
+import {breakpoints} from '../utils/constants'
 import * as cookiestore from 'cookiestore'
 
 const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
@@ -53,19 +53,19 @@ const TwoRowLink = styled(NavLink)`
   line-height: 1.3;
 `
 
-const MultiNavLink = styled.button`
-  ${NavLinkBase}
-  position: relative;
-  background: none;
-  text-transform: inherit;
-  letter-spacing: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  padding: ${$v.size20} 0;
-  cursor: default;
-  
-  ${props => props.active && ActiveNavLink}
-`
+// const MultiNavLink = styled.button`
+//   ${NavLinkBase}
+//   position: relative;
+//   background: none;
+//   text-transform: inherit;
+//   letter-spacing: inherit;
+//   font-size: inherit;
+//   font-weight: inherit;
+//   padding: ${$v.size20} 0;
+//   cursor: default;
+//
+//   ${props => props.active && ActiveNavLink}
+// `
 
 const NavTooltip = styled.span`
   top: 55px;
@@ -324,7 +324,7 @@ export default class Header extends React.Component<{}, State> {
           className={cx(
             'nav', {
               'opened': this.state.menuOpened,
-            }
+            },
           )}
         >
           {window.innerWidth < breakpoints.p750 &&
@@ -335,8 +335,8 @@ export default class Header extends React.Component<{}, State> {
               className={cx(
                 'link',
                 'withTooltip', {
-                  'active': ['/graphql', '/functions'].includes(window.location.pathname)
-                }
+                  'active': ['/graphql', '/functions'].includes(window.location.pathname),
+                },
               )}
               onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
               onMouseLeave={() => this.setState({ tooltipActive: false } as State)}

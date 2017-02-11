@@ -167,7 +167,7 @@ class ContentHandler extends React.Component<Props, {}> {
               )}
               <div
                 className={cx(
-                  $p.bbox
+                  $p.bbox,
                 )}
                 style={{
                   marginLeft: contentBoxMarginLeft,

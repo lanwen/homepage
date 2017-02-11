@@ -82,7 +82,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
         <div
           className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
           style={{
-            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : ''
+            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : '',
           }}
         >
           <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>
@@ -126,7 +126,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
           </div>
           <Sublines className={cx(
             $p.inlineFlex,
-            $p.black30
+            $p.black30,
           )}>
             <div
               className={cx($p.pr38, $p.nowrap)}
