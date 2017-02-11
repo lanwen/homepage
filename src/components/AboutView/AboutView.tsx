@@ -1,11 +1,8 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { $p, $v, Icon } from 'graphcool-styles'
-import styled from 'styled-components'
-import { persons } from './Team/data'
+import { $p } from 'graphcool-styles'
 import Header from '../Header'
 import Mission from './Mission'
-import Values from './Values'
+import Values from './Values/Values'
 import Team from './Team/Team'
 import Advisors from './Advisors/Advisors'
 import Investors from './Investors/Investors'
@@ -21,6 +18,11 @@ export default class AboutView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
+        <style jsx={true}>{`
+          .footerContainer {
+            @p: .pt96, .bgBlack02;
+          }
+        `}</style>
         <Header />
         <Mission />
         <Values />
@@ -28,15 +30,18 @@ export default class AboutView extends React.Component<{}, {}> {
         <Advisors />
         <Investors />
         <Timeline />
-        <FooterCTA
-          headline1='Ready to get started?'
-          headline2='Set up a GraphQL backend or read the docs'
-          button1Text='Create GraphQL Backend'
-          button1Link='https://graph.cool/docs'
-          button2Text='Open Docs'
-          button2Link='https://graph.cool/quickstart'
-        />
-        <Footer/>
+        <div className='footerContainer'>
+          <FooterCTA
+            onGray
+            headline1='Want to know more?'
+            headline2='Talk to a real person or download our press kit.'
+            button1Text='Chat with us'
+            button1Link=''
+            button2Text='Download Press Kit'
+            button2Link=''
+          />
+        </div>
+        <Footer />
       </div>
     )
   }

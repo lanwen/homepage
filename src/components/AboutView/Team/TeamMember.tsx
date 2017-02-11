@@ -38,9 +38,32 @@ export default class TeamMember extends React.Component<Props, State> {
             @p: .brPill;
           }
 
+          .overlayContainer {
+            @p: .absolute, .left50, .tlHCenter, .flex;
+            width: 240px;
+            top: 90%;
+          }
+
           .overlay {
-            @p: .absolute, .left50, .top100, .tlHCenter, .bgWhite, .br2, .overflowHidden, .overlayShadow, .pa25, .pb0;
-            @p: .tc;
+            @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .tc, .center, .wAuto;
+            max-width: 100%;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: -6px;
+              left: 50%;
+              transform: translate(-50%,0);
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 0 6px 6px 6px;
+              border-color: transparent transparent #fff transparent;
+            }
+          }
+
+          .content {
+            @p: .pa25
           }
 
           .title {
@@ -48,39 +71,47 @@ export default class TeamMember extends React.Component<Props, State> {
           }
 
           .links {
-            @p: .pa10, .flex, .justifyCenter
+            @p: .flex, .justifyCenter, .itemsCenter, .bgBlack04
+          }
+
+          .link {
+            @p: .ph6, .pv10;
           }
         `}</style>
-        <img className='image' width='100' height='100' src={this.props.image} />
+        <img className='image' width='96' height='96' src={this.props.image} />
         {this.state.showOverlay &&
-        <div className='overlay'>
-          <h4>{this.props.name}</h4>
-          <p className='title'>{this.props.title}</p>
-          <div className='links'>
-            <a href={this.props.links.linkedIn} className='link' target='_blank'>
-              <Icon
-                src={require('../../../assets/icons/logos/linkedin.svg')}
-                width={20}
-                height={20}
-                color={$v.gray20}
-              />
-            </a>
-            <a href={this.props.links.twitter} className='link' target='_blank'>
-              <Icon
-                src={require('../../../assets/icons/logos/twitter.svg')}
-                width={20}
-                height={20}
-                color={$v.gray20}
-              />
-            </a>
-            <a href={this.props.links.github} className='link' target='_blank'>
-              <Icon
-                src={require('../../../assets/icons/logos/github.svg')}
-                width={20}
-                height={20}
-                color={$v.gray20}
-              />
-            </a>
+        <div className='overlayContainer'>
+          <div className='overlay'>
+            <div className='content'>
+              <h4>{this.props.name}</h4>
+              <p className='title'>{this.props.title}</p>
+            </div>
+            <div className='links'>
+              <a href={this.props.links.linkedIn} className='link' target='_blank'>
+                <Icon
+                  src={require('../../../assets/icons/logos/linkedin.svg')}
+                  width={20}
+                  height={20}
+                  color={$v.gray20}
+                />
+              </a>
+              <a href={this.props.links.twitter} className='link' target='_blank'>
+                <Icon
+                  src={require('../../../assets/icons/logos/twitter.svg')}
+                  width={20}
+                  height={20}
+                  color={$v.gray20}
+                />
+              </a>
+              <a href={this.props.links.github} className='link' target='_blank'>
+                <Icon
+                  src={require('../../../assets/icons/logos/github.svg')}
+                  width={20}
+                  height={20}
+                  color={$v.gray20}
+                />
+              </a>
+            </div>
           </div>
         </div>
         }

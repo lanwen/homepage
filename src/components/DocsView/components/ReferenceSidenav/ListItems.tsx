@@ -82,8 +82,7 @@ export default class ListItems extends React.Component<Props, {}> {
         <Link
           to={`${this.props.item.path}-${this.props.item.alias}`}
           className={cx(
-            $p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db, $p.relative, $p.z1
-            {
+            $p.f14, $p.fw6, $p.pl38, $p.pointer, $p.noUnderline, $p.black50, $p.ttu, 'hl', $p.db, $p.relative, $p.z1, {
               ['active']: this.props.item.alias === currentAlias,
             },
           )}>

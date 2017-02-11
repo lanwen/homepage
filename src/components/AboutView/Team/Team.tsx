@@ -18,6 +18,7 @@ export default class Team extends React.Component<{}, {}> {
 
           .teamMemberContainer {
             @p: .flex, .flexWrap, .justifyCenter;
+            padding-bottom: 80px; // 96px - 16px to balance out TeamMember padding
           }
         `}</style>
         <SectionHeader
@@ -25,8 +26,9 @@ export default class Team extends React.Component<{}, {}> {
           copy='They advise us with everything they have, and everything we need. They’re great, they are the best advisors.'
         />
         <div className='teamMemberContainer'>
-          {persons.map(person => (
+          {persons.map((person, count) => (
             <TeamMember
+              key={count}
               image={person.image}
               name={person.name}
               title={person.title}
