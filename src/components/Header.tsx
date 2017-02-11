@@ -279,11 +279,15 @@ export default class Header extends React.Component<{}, State> {
           }
 
           .link {
-            @p: .black30, .mr25, .pointer, .lhSolid, .ttu;
+            @p: .black30, .pointer, .lhSolid, .ttu;
             transition: color .1s linear;
 
             &:hover {
               @p: .black50;
+            }
+
+            @media (max-width: 899px) {
+              @p: .mr25;
             }
 
             @media (min-width: 900px) {
