@@ -39,22 +39,22 @@ export default class Values extends React.Component<{}, {}> {
           }
         `}</style>
         <Value
-          icon='resize'
-          color={$v.blue}
-          headline='Flexible Data Model'
-          copy='Create and change your data model to fit your needs without breaking your app.'
+          icon='lock'
+          color={$v.lightOrange}
+          headline='Developer Experience'
+          copy={`Building applications should be intuitive and fun.`}
         />
         <Value
           icon='radar'
           color={$v.red}
-          headline='Real-time Subscriptions'
+          headline='Reliable'
           copy='Works out-of-the-box with GraphQL subscriptions for real-time applications.'
         />
         <Value
-          icon='lock'
-          color={$v.lightOrange}
-          headline='Permission Control'
-          copy='There’s no software or  infrastructure to manage, so you can get started in minutes.'
+          icon='resize'
+          color={$v.blue}
+          headline='Extensible'
+          copy='Create and change your data model to fit your needs without breaking your app.'
         />
       </section>
     )

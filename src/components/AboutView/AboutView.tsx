@@ -32,11 +32,12 @@ export default class AboutView extends React.Component<{}, {}> {
         <div className='footerContainer'>
           <FooterCTA
             headline1='Want to know more?'
-            headline2='Talk to a real person or download our press kit.'
+            headline2='Feel free to ask us anything. We love talking to you.'
             button1Text='Chat with us'
-            button1Link=''
+            button1Link='#'
+            button1OnClick={this.openChat}
             button2Text='Download Press Kit'
-            button2Link=''
+            button2Link='http://graphcool-random.s3.amazonaws.com/press/logo.zip'
           />
         </div>
         <Footer />
@@ -46,5 +47,15 @@ export default class AboutView extends React.Component<{}, {}> {
 
   private rerender = () => {
     this.forceUpdate()
+  }
+
+  private openChat = (e: Event) => {
+    e.preventDefault()
+
+    if (typeof Intercom === 'undefined') {
+      return
+    }
+
+    Intercom('show')
   }
 }

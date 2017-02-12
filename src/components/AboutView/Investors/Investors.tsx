@@ -21,8 +21,8 @@ export default class Investors extends React.Component<{}, {}> {
         `}</style>
         <SectionHeader
           onDark
-          headline='Our Investors love us'
-          copy='They advise us with everything they have, and everything we need. They’re great, they are the best advisors.'
+          headline='Our Investors'
+          copy={`Together with our investors we're working the future of software development.`}
         />
         <div className='investors'>
           {(investors.map((investor, count) => (

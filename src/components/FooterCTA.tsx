@@ -47,8 +47,10 @@ interface Props {
   headline2: string,
   button1Text: string,
   button1Link: string,
+  button1OnClick?: (e: Event) => void,
   button2Text: string,
   button2Link: string,
+  button2OnClick?: (e: Event) => void,
   className?: string,
 }
 
@@ -66,12 +68,14 @@ export default class FooterCTA extends React.Component<Props, {}> {
           <Button
             href={this.props.button1Link}
             className={cx($g.uppercaseButton, $p.pa16, $p.dim, $p.bgGreen, $p.white, $p.noUnderline)}
+            onClick={(e) => this.props.button1OnClick && this.props.button1OnClick(e)}
           >
             {this.props.button1Text}
           </Button>
           <Button
             href={this.props.button2Link}
             className={cx($g.uppercaseButton, $p.pa16, $p.bgLightgreen20, $p.dim, $p.green, $p.noUnderline)}
+            onClick={(e) => this.props.button2OnClick && this.props.button2OnClick(e)}
           >
             {this.props.button2Text}
           </Button>

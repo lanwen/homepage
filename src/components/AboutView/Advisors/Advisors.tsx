@@ -19,8 +19,8 @@ export default class Advisors extends React.Component<{}, {}> {
         `}</style>
         <SectionHeader
           onDark
-          headline='We have great Advisors'
-          copy='They advise us with everything they have, and everything we need. They’re great, they are the best advisors.'
+          headline='Our Advisors'
+          copy={`We're fortunate to work with great thoughtleaders and industry experts building Graphcool.`}
         />
         <div className='advisors'>
           {advisors.map((advisor, count) => (

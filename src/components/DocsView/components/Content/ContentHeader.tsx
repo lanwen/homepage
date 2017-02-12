@@ -136,7 +136,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <div className={cx(
               $p.flex,
               $p.flexWrap,
-              window.innerWidth < breakpoints.p580 && $p.mt06,
+              window.innerWidth < breakpoints.p580 && $p.mt6,
               )}>
             {item.tags.map(tag => (
               <Tag key={tag} className={cx($p.nowrap)}>#{tag}</Tag>

@@ -19,8 +19,8 @@ export default class Timeline extends React.Component<{}, {}> {
           }
         `}</style>
         <SectionHeader
-          headline='We are just in time'
-          copy='They advise us with everything they have, and everything we need. They’re great, they are the best advisors.'
+          headline={`We're just getting started...`}
+          copy={`Rome wasn't built in a day. But we're pretty fast at building.`}
         />
         <div className='timeline'>
           <Step
@@ -28,7 +28,7 @@ export default class Timeline extends React.Component<{}, {}> {
             event='GraphQL announced'
           />
           <Step
-            date='Feb 2016'
+            date='Jan 2016'
             event='First Prototype'
           />
           <Step
@@ -36,7 +36,7 @@ export default class Timeline extends React.Component<{}, {}> {
             event='Developer Preview'
           />
           <Step
-            date='Dez 2016'
+            date='Dec 2016'
             event='Pre-Seed Investment'
           />
         </div>

@@ -234,7 +234,7 @@ export default class Landing extends React.Component<{}, {}> {
         <Hero className={cx($p.flex, $p.center)}>
           <HeroImage
             className={cx($p.flexFixed, $p.relative)}
-            href='https://www.youtube.com/watch?v=wSkZFfuAToM&t=3s'
+            href='https://www.youtube.com/watch?v=SooujCyMHe4'
             target='_blank'
           >
             <img

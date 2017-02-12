@@ -12,15 +12,15 @@ export const investors: Investor[] = [{
   companyLogo: require('../../../assets/graphics/investors/systemoneLogo.svg'),
   isCompany: true,
 }, {
-  name: 'Christian Bach',
-  title: 'CEO',
-  image: require('../../../assets/graphics/investors/christian.jpg'),
-  companyLogo: require('../../../assets/graphics/investors/netlifyLogo.svg')
-}, {
   name: 'Adam Wiggins',
   title: 'Founder',
   image: require('../../../assets/graphics/investors/adam.jpg'),
   companyLogo: require('../../../assets/graphics/investors/herokuLogo.svg')
+}, {
+  name: 'Christian Bach',
+  title: 'CEO',
+  image: require('../../../assets/graphics/investors/christian.jpg'),
+  companyLogo: require('../../../assets/graphics/investors/netlifyLogo.svg')
 }, {
   name: 'Jeremy Yap',
   title: 'Angel',

@@ -20,8 +20,8 @@ export default class Team extends React.Component<{}, {}> {
           }
         `}</style>
         <SectionHeader
-          headline={`We're frontend developers on our own`}
-          copy='They advise us with everything they have, and everything we need. They’re great, they are the best advisors.'
+          headline={`Graphcool is built by developers for developers`}
+          copy={`We're driven by the vision of improving developer experience building applications.`}
         />
         <div className='teamMemberContainer'>
           {persons.map((person, count) => (
