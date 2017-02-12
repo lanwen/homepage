@@ -32,7 +32,7 @@
     padding: 0 3px 0 5px;
     min-width: 20px;
     text-align: right;
-    color: #999;
+    color: rgba(0,0,0,0.3);
     white-space: nowrap;
 }
 
@@ -153,10 +153,10 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     color: white !important;
     border: none;
 }
-.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.1); }
-.cm-s-default .CodeMirror-cursor { border-left: solid thin #f8f8f0; }
-.cm-s-default .CodeMirror-linenumber { color: rgba(255,255,255,0.2); }
-.cm-s-default .CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }
+/*.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.1); }*/
+/*.cm-s-default .CodeMirror-cursor { border-left: solid thin #f8f8f0; }*/
+/*.cm-s-default .CodeMirror-linenumber { color: rgba(255,255,255,0.2); }*/
+/*.cm-s-default .CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }*/
 .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: rgba(255, 255, 255, 0.01); }
 .CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.01); }
 /*.cm-s-default span.cm-comment { color: #6272a4; }*/
@@ -357,7 +357,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     white-space: pre;
     word-wrap: normal;
     line-height: inherit;
-    color: inherit;
+    color: rgba(0,0,0,0.7);
     z-index: 2;
     position: relative;
     overflow: visible;

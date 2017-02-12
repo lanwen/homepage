@@ -6,7 +6,7 @@ import { Item } from '../../../../types/types'
 import BreadCrumb from './BreadCrumb'
 import styled from 'styled-components'
 import SimpleRelayTwin from './SimpleRelayTwin'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints, maxWidth } from '../../../../utils/constants'
 
 interface Props {
   item: Item
@@ -21,6 +21,10 @@ const Root = styled.div`
     margin-top: ${$v.size38};
   }
   
+`
+
+const RootContainer = styled.div`
+  max-width: ${maxWidth}px;
 `
 
 const Beta = styled.div`
@@ -79,7 +83,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <CircleIcon width={44} height={44} type={item.layout}/>
           </IconWrapper>
         )}
-        <div
+        <RootContainer
           className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
           style={{
             paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : '',
@@ -143,7 +147,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
             ))}
             </div>
           </Sublines>
-        </div>
+        </RootContainer>
       </Root>
     )
   }
