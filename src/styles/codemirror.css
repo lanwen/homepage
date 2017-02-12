@@ -32,7 +32,7 @@
     padding: 0 3px 0 5px;
     min-width: 20px;
     text-align: right;
-    color: rgba(0,0,0,0.3);
+    color: #999;
     white-space: nowrap;
 }
 
@@ -153,100 +153,100 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     color: white !important;
     border: none;
 }
-/*.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.1); }*/
-/*.cm-s-default .CodeMirror-cursor { border-left: solid thin #f8f8f0; }*/
-/*.cm-s-default .CodeMirror-linenumber { color: rgba(255,255,255,0.2); }*/
-/*.cm-s-default .CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }*/
+.cm-s-default .CodeMirror-gutters { color: rgba(0,0,0,0.1); }
+.cm-s-default .CodeMirror-cursor { border-left: solid thin #f8f8f0; }
+.cm-s-default .CodeMirror-linenumber { color: rgba(255,255,255,0.2); }
+.cm-s-default .CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }
 .CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: rgba(255, 255, 255, 0.01); }
 .CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.01); }
-/*.cm-s-default span.cm-comment { color: #6272a4; }*/
-/*.cm-s-default span.cm-string, .cm-s-default span.cm-string-2 { color: #f1fa8c; }*/
-/*.cm-s-default span.cm-number { color: #bd93f9; }*/
-/*.cm-s-default span.cm-variable { color: #50fa7b; }*/
-/*.cm-s-default span.cm-variable-2 { color: white; }*/
-/*.cm-s-default span.cm-def { color: #ffb86c; }*/
-/*.cm-s-default span.cm-keyword { color: #ff79c6; }*/
-/*.cm-s-default span.cm-operator { color: #ff79c6; }*/
-/*.cm-s-default span.cm-keyword { color: #ff79c6; }*/
-/*.cm-s-default span.cm-atom { color: #bd93f9; }*/
-/*.cm-s-default span.cm-meta { color: #f8f8f2; }*/
-/*.cm-s-default span.cm-tag { color: #ff79c6; }*/
-/*.cm-s-default span.cm-attribute { color: #50fa7b; }*/
-/*.cm-s-default span.cm-qualifier { color: #50fa7b; }*/
-/*.cm-s-default span.cm-property { color: #66d9ef; }*/
-/*.cm-s-default span.cm-builtin { color: #50fa7b; }*/
-/*.cm-s-default span.cm-variable-3 { color: #50fa7b; }*/
+.cm-s-default span.cm-comment { color: #6272a4; }
+.cm-s-default span.cm-string, .cm-s-default span.cm-string-2 { color: #f1fa8c; }
+.cm-s-default span.cm-number { color: #bd93f9; }
+.cm-s-default span.cm-variable { color: #50fa7b; }
+.cm-s-default span.cm-variable-2 { color: white; }
+.cm-s-default span.cm-def { color: #ffb86c; }
+.cm-s-default span.cm-keyword { color: #ff79c6; }
+.cm-s-default span.cm-operator { color: #ff79c6; }
+.cm-s-default span.cm-keyword { color: #ff79c6; }
+.cm-s-default span.cm-atom { color: #bd93f9; }
+.cm-s-default span.cm-meta { color: #f8f8f2; }
+.cm-s-default span.cm-tag { color: #ff79c6; }
+.cm-s-default span.cm-attribute { color: #50fa7b; }
+.cm-s-default span.cm-qualifier { color: #50fa7b; }
+.cm-s-default span.cm-property { color: #66d9ef; }
+.cm-s-default span.cm-builtin { color: #50fa7b; }
+.cm-s-default span.cm-variable-3 { color: #50fa7b; }
 
 
-/* Comment */
-.cm-comment {
-    color: rgba(255,255,255,.3);
-}
+/*!* Comment *!*/
+/*.cm-comment {*/
+    /*color: rgba(255,255,255,.3);*/
+/*}*/
 
-/* Punctuation */
-.cm-punctuation {
-    color: rgba(12,198,65,.5);
-}
+/*!* Punctuation *!*/
+/*.cm-punctuation {*/
+    /*color: rgba(12,198,65,.5);*/
+/*}*/
 
-/* Keyword */
-.cm-keyword {
-    color: rgb(42,126,211);
-}
+/*!* Keyword *!*/
+/*.cm-keyword {*/
+    /*color: rgb(42,126,211);*/
+/*}*/
 
-/* OperationName, FragmentName */
-.cm-def {
-    color: rgb(56,189,193);
-}
+/*!* OperationName, FragmentName *!*/
+/*.cm-def {*/
+    /*color: rgb(56,189,193);*/
+/*}*/
 
-/* FieldName */
-.cm-property {
-    color: rgb(95,179,179);
-}
+/*!* FieldName *!*/
+/*.cm-property {*/
+    /*color: rgb(95,179,179);*/
+/*}*/
 
-/* FieldAlias */
-.cm-qualifier {
-    color: #1C92A9;
-}
+/*!* FieldAlias *!*/
+/*.cm-qualifier {*/
+    /*color: #1C92A9;*/
+/*}*/
 
-/* ArgumentName and ObjectFieldName */
-.cm-attribute {
-    color: rgb(252,163,105);
-}
+/*!* ArgumentName and ObjectFieldName *!*/
+/*.cm-attribute {*/
+    /*color: rgb(252,163,105);*/
+/*}*/
 
-/* Number */
-.cm-number {
-    color: #2882F9;
-}
+/*!* Number *!*/
+/*.cm-number {*/
+    /*color: #2882F9;*/
+/*}*/
 
-/* String */
-.cm-string {
-    color: #D64292;
-}
+/*!* String *!*/
+/*.cm-string {*/
+    /*color: #D64292;*/
+/*}*/
 
-/* Boolean */
-.cm-builtin {
-    color: #D47509;
-}
+/*!* Boolean *!*/
+/*.cm-builtin {*/
+    /*color: #D47509;*/
+/*}*/
 
-/* EnumValue */
-.cm-string-2 {
-    color: #0B7FC7;
-}
+/*!* EnumValue *!*/
+/*.cm-string-2 {*/
+    /*color: #0B7FC7;*/
+/*}*/
 
-/* Variable */
-.cm-variable {
-    color: rgb(236,95,103);
-}
+/*!* Variable *!*/
+/*.cm-variable {*/
+    /*color: rgb(236,95,103);*/
+/*}*/
 
-/* Directive */
-.cm-meta {
-    color: #B33086;
-}
+/*!* Directive *!*/
+/*.cm-meta {*/
+    /*color: #B33086;*/
+/*}*/
 
-/* Type */
-.cm-atom {
-    color: rgb(249,198,87);
-}
+/*!* Type *!*/
+/*.cm-atom {*/
+    /*color: rgb(249,198,87);*/
+/*}*/
 
 .CodeMirror-activeline-background { background: rgba(255,255,255,0.1); }
 .CodeMirror-matchingbracket { text-decoration: underline; color: white !important; }
@@ -357,7 +357,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
     white-space: pre;
     word-wrap: normal;
     line-height: inherit;
-    color: rgba(0,0,0,0.7);
+    color: inherit;
     z-index: 2;
     position: relative;
     overflow: visible;
