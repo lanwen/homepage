@@ -88,7 +88,7 @@ export default class Feature extends React.Component<Props, {}> {
       <Root>
         <IconContainer color={this.props.color}>
           <Icon
-            src={require(`../../../assets/icons/features/${this.props.icon}.svg`)}
+            src={require(`../../../assets/icons/values/${this.props.icon}.svg`)}
             height={45}
             width={45}
             color={this.props.color}
