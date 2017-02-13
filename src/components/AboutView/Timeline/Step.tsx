@@ -34,12 +34,7 @@ export default class Step extends React.Component<Props, {}> {
           }
 
           .dot {
-            @p: .relative, .brPill, .bgWhite, .z1, .wS25, .hS25;
-
-            &:before {
-              content: '';
-              @p: .absolute, .brPill, .top50, .left50, .tlCenter, .bgGreen, .wS16, .hS16;
-            }
+            @p: .brPill, .bgGreen, .wS16, .hS16, .mh4;
           }
 
           .event {
