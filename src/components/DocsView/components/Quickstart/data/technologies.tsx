@@ -7,7 +7,8 @@ export interface TechnologyData {
   logoWidth: number
   logoHeight: number
   backgroundColor: string
-  isPopular?: boolean
+  isPopular?: boolean,
+  isDisabled?: boolean,
 }
 
 const react: TechnologyData = {
@@ -30,7 +31,7 @@ const angular: TechnologyData = {
 
 const reactNative: TechnologyData = {
   title: 'React Native',
-  logoName: 'react_native',
+  logoName: 'react',
   logoColor: 'rgba(26,127,145,1)',
   logoWidth: 70,
   logoHeight: 70,
@@ -44,6 +45,7 @@ const iOS: TechnologyData = {
   logoWidth: 55,
   logoHeight: 55,
   backgroundColor: $v.gray10,
+  isDisabled: true,
 }
 
 const android: TechnologyData = {
@@ -53,6 +55,7 @@ const android: TechnologyData = {
   logoWidth: 60,
   logoHeight: 60,
   backgroundColor: 'rgba(164,196,157,0.1)',
+  isDisabled: true,
 }
 
 const vue: TechnologyData = {

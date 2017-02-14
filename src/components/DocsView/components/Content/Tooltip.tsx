@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import {$p, $v} from 'graphcool-styles'
+import { $p, $v, $g } from 'graphcool-styles'
 import styled from 'styled-components'
 
 interface Props {
@@ -17,8 +17,8 @@ export default class Tooltip extends React.Component<Props, {}> {
 
     const Container = styled.div`
       .nested {
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
+        // box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1), 0 -8px 18px rgba(0, 0, 0, 0.1);
+        // border-radius: 3px;
       }
       
       .nested-parent {
@@ -51,8 +51,8 @@ export default class Tooltip extends React.Component<Props, {}> {
           className={cx($p.bbox, $p.db, $p.pointer)}
         />
         <div className={cx('nested-parent', $p.absolute, $p.pt16)}>
-          <div className={cx('nested', $p.bgWhite)}>
-            <div className={cx($p.f16, $p.pv16, $p.pl25, $p.pr16, $p.black40)}>
+          <div className={cx('nested', $p.bgWhite, $g.overlay, $p.zUnset)}>
+            <div className={cx($p.f16, $p.pv16, $p.pl25, $p.pr16, $p.black50)}>
               {text}
             </div>
           </div>

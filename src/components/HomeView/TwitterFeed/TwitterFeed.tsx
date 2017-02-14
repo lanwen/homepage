@@ -16,6 +16,8 @@ const Root = styled.section`
 
 const RootContainer = styled.div`
   position: relative;
+  width: 100%;
+  
   &:before {
     content: "";
     position: absolute;
@@ -104,14 +106,16 @@ const data = [{
 export default class TwitterFeed extends React.Component<{}, {}> {
 
   componentDidMount() {
-    const scrollContainer = findDOMNode(this.refs['scrollContainer'])
-    scrollContainer.scrollLeft = 300
+    if (window.innerWidth > 500) {
+      const scrollContainer = findDOMNode(this.refs['scrollContainer'])
+      scrollContainer.scrollLeft = 300
+    }
   }
 
   render() {
 
     return (
-      <Root className={cx($p.pb96, $p.overflowHidden, $p.flex, $p.flexColumn)}>
+      <Root className={cx($p.pb96, $p.overflowHidden, $p.flex, $p.flexColumn, $p.itemsCenter)}>
         <Separator />
         <SectionHeader
           headline='What other people say about Graphcool'

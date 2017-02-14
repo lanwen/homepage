@@ -613,6 +613,10 @@
     color: rgb(242,92,84);
 }
 
+.docs-graphiql .cm-ws {
+    color: rgba(12,198,65,.5);
+}
+
 /* Comment */
 .docs-graphiql .cm-comment {
     color: rgba(255,255,255,.3);

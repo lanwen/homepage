@@ -18,6 +18,10 @@ const VerticalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.02);
   height: calc(100% + 144px);
   
+  // Fix to prevent overflowing with footer
+  background-color: #fafafa
+  z-index: 1
+  
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
   }

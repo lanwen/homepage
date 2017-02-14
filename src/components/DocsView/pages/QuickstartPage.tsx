@@ -5,7 +5,7 @@ import { getItemsByLayout } from '../fragments/getItemsByLayout'
 import * as Helmet from 'react-helmet'
 import Quickstart from '../components/Quickstart/Quickstart'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import Heading from './Overview/Heading'
 
@@ -16,6 +16,11 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
    flex: 1 1 100px;
+`
+
+const QuickstartContainer = styled(Quickstart)`
+  margin-left: 75px;
+  margin-right: ${$v.size60};
 `
 
 class QuickstartPage extends React.Component<{}, {}> {
@@ -33,7 +38,7 @@ class QuickstartPage extends React.Component<{}, {}> {
             }
             link='/docs/quickstart'
           />
-          <Quickstart className={cx($p.mt38, $p.mb60, $p.ml60)}/>
+          <QuickstartContainer className={cx($p.mt38, $p.mb60)}/>
         </Container>
       </ContentContainer>
     )

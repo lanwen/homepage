@@ -3,6 +3,7 @@ import Youtube from 'react-youtube'
 import {$p, Icon, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
+import { breakpoints } from '../../../../utils/constants'
 
 interface Props {
   id: string
@@ -39,6 +40,21 @@ const ImageWrapper = styled.div`
 const Container = styled.div`
   margin-left: -70px;
   margin-right: -70px;
+  
+  &:first-child {
+    margin-top: 0;
+    
+    img {
+      margin-top: 0;
+    }
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    margin-left: -25px;
+    margin-right: -25px;
+  }
+  
+  
   
 `
 

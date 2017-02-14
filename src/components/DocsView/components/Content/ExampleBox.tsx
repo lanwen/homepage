@@ -13,6 +13,7 @@ const GitSquare = styled.a`
   border-radius: 4px;
   font-size: 10px;
   flex: 0 0 50px;
+  height: 30px;
 `
 
 const Container = styled.div`

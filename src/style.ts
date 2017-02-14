@@ -28,11 +28,11 @@ injectGlobal`
     font-weight: 300;
   
     @media (min-width: ${breakpoints.p1000}px) {
-      font-size: ${$v.size30};
+      font-size: ${$v.size32};
     }
     
     @media (min-width: ${breakpoints.p1200}px) {
-      font-size: ${$v.size32};
+      font-size: ${$v.size38};
     }
     
     @media (min-width: ${breakpoints.p1440}px) {
@@ -59,6 +59,16 @@ injectGlobal`
     
     @media (min-width: ${breakpoints.p500}px) {
       font-size: ${$v.size25};
+    }
+  }
+  
+  h4 {
+    font-size: ${$v.size16};
+    font-weight: 400;
+    
+    @media (min-width: ${breakpoints.p500}px) {
+      font-size: ${$v.size20};
+      font-weight: 300
     }
   }
   

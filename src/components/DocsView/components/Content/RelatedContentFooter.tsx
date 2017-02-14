@@ -1,40 +1,75 @@
 import * as React from 'react'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 import * as cx from 'classnames'
-import {$p} from 'graphcool-styles'
+import { $p, $g, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints } from '../../../../utils/constants'
 import CircleIcon from '../CircleIcon'
-import {Item} from '../../../../types/types'
+import { Item } from '../../../../types/types'
 import Tooltip from './Tooltip'
 
 const ContainerContainer = styled.div`
+    padding-bottom: ${$v.size60};
+    
     &:before {
       content: "";
       position: absolute;
-      height: calc(100% - 20px);
-      background: rgb(250,250,250);
+      top: ${$v.size10};
+      bottom: ${$v.size10};
+      background: rgba(0,0,0,0.02);
       width: 100%;
+    }
+    
+    @media (max-width: ${breakpoints.p1000}px) {
+      &:before {
+        bottom: 0;
+      }    
+    }
+        
+    @media (max-width: ${breakpoints.p580}px) {
+      padding-bottom: ${$v.size38};
     }
 `
 
 const Container = styled.div`
-  top: -10px;
-  bottom: -10px;
   max-width: 920px;
   flex: 1;
 `
 
 const More = styled.div`
-  box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
+  // box-shadow:0 8px 18px rgba(0, 0, 0, 0.03), 0 -8px 18px rgba(0, 0, 0, 0.03);
+  width: 100%;
   max-width: 470px;
-  min-height: 350px;
+  // min-height: 350px;
     
   @media(max-width: ${breakpoints.p1000}px) {
-    margin: 25px;
+    margin: 0 25px 25px;
   }
   
-  @media (max-width: ${breakpoints.p500}px) {
+  @media (max-width: ${breakpoints.p580}px) {
+    margin: 0px;
+  }
+`
+
+const MoreItem = styled(Link)`
+  padding: ${$v.size25} ${$v.size25} 0;
+  
+  &:first-of-type {
+    padding-top: ${$v.size38};
+  }
+  
+  &:last-of-type {
+    padding-bottom: ${$v.size38};
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    &:first-child {
+      padding-top: ${$v.size25};
+    }
+    
+    &:last-child {
+      padding-bottom: ${$v.size25};
+    }
   }
 `
 
@@ -43,10 +78,11 @@ const Further = styled.div`
   max-width: 300px;
   
   @media(max-width: ${breakpoints.p1000}px) {
-    margin: 25px;
+    margin: 25px 25px 0;
   }
 
   @media(max-width: ${breakpoints.p500}px) {
+    margin: ${$v.size38} ${$v.size25} 0;
   }
   
 `
@@ -71,7 +107,6 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         $p.flex,
         $p.justifyCenter,
         $p.relative,
-        $p.mb60,
         $p.w100,
       )}>
         {(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750) && (
@@ -81,7 +116,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
           className={cx(
             $p.flex,
             this.props.displayAsColumns && $p.flexColumn,
-            this.props.displayAsColumns && $p.itemsCenter,
+            $p.itemsStart,
             $p.ph10,
             $p.relative,
             $p.justifyCenter,
@@ -89,30 +124,52 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         >
           {this.props.item.relatedMore.length > 0 && (
             <More
-              className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mr25)}
+              className={cx($p.flex, $p.flexColumn, $p.bgWhite, $p.mr25, $g.overlay)}
             >
-              <div className={cx($p.inlineFlex, $p.bgLightgreen10, $p.pa16, $p.justifyBetween, $p.itemsCenter)}>
-                <div className={cx($p.flex)}>
+              <div
+                className={cx(
+                  $p.inlineFlex,
+                  $p.bgLightgreen10,
+                  $p.pa16,
+                  $p.justifyBetween,
+                  window.innerWidth >= breakpoints.p580 && $p.itemsCenter,
+                )}
+              >
+                <div
+                  className={cx(
+                    $p.flex,
+                    window.innerWidth < breakpoints.p580 && $p.flexColumn,
+                  )}
+                >
                   <span className={cx($p.lightgreen50, $p.pr6, $p.fw6, $p.f16, $p.ttu, $p.nowrap)}>More about</span>
                   <span
-                    className={cx($p.green, $p.fw6, $p.f16, $p.ttu, $p.ml6, $p.mr16)}>{relatedMoreTitle || title}</span>
+                    className={cx(
+                      $p.green,
+                      $p.fw6,
+                      $p.f16,
+                      $p.ttu,
+                      $p.mr16,
+                    )}
+                  >
+                    {relatedMoreTitle || title}
+                  </span>
                 </div>
-                <Tooltip text={relatedMoreDescription || description} right={-3}/>
+                <Tooltip text={relatedMoreDescription || description} right={-3} />
               </div>
               {this.props.item.relatedMore.map(item => (
-                <Link
+                <MoreItem
                   to={`${item.path}-${item.alias}`}
                   key={item.alias}
-                  className={cx($p.flex, $p.pb10, $p.pt25, $p.ph25, $p.noUnderline)}
+                  className={cx($p.flex, $p.noUnderline, $p.dim)}
                 >
                   <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                    <CircleIcon type={item.layout}/>
+                    <CircleIcon type={item.layout} />
                   </div>
                   <div>
                     <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>
                     <p className={cx($p.black30, $p.f14, $p.fw6)}>{item.layout}</p>
                   </div>
-                </Link>
+                </MoreItem>
               ))}
             </More>
           )}
@@ -134,10 +191,10 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
                 <Link
                   to={`${item.path}-${item.alias}`}
                   key={item.alias}
-                  className={cx($p.flex, $p.pv10, $p.noUnderline)}
+                  className={cx($p.flex, $p.pv10, $p.noUnderline, $p.dim)}
                 >
                   <div className={cx($p.bbox, $p.db, $p.mr16, $p.mt4)}>
-                    <CircleIcon type={item.layout}/>
+                    <CircleIcon type={item.layout} />
                   </div>
                   <div>
                     <p className={cx($p.black60, $p.f20, $p.fw4)}>{item.shorttitle}</p>

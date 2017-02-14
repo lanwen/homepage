@@ -12,7 +12,7 @@ const Root = styled.div`
     padding: 0 ${$v.size60} ${$v.size96}
   }
   
-  @media (max-width: 680px) {
+  @media (max-width: 850px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -26,7 +26,7 @@ const Root = styled.div`
 const ButtonContainer = styled.div`
   margin-left: ${$v.size60};
   
-  @media (max-width: 680px) {
+  @media (max-width: 850px) {
     margin-left: 0;
     margin-top: ${$v.size38};
   }
@@ -35,6 +35,7 @@ const ButtonContainer = styled.div`
 const Button = styled.a`
   font-size: ${$v.size14} !important;
   text-decoration: none;
+  margin: 0 ${$v.size12} ${$v.size25};
   
   @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
@@ -46,8 +47,10 @@ interface Props {
   headline2: string,
   button1Text: string,
   button1Link: string,
+  button1OnClick?: (e: Event) => void,
   button2Text: string,
   button2Link: string,
+  button2OnClick?: (e: Event) => void,
   className?: string,
 }
 
@@ -61,16 +64,18 @@ export default class FooterCTA extends React.Component<Props, {}> {
           {this.props.headline1}
           <span className={cx($p.green, $p.db, $p.fw4)}>{this.props.headline2}</span>
         </h3>
-        <ButtonContainer className={cx($p.flex)}>
+        <ButtonContainer className={cx($p.flex, $p.flexWrap, $p.justifyCenter, $p.flexFixed)}>
           <Button
             href={this.props.button1Link}
-            className={cx($g.uppercaseButton, $p.pa16, $p.dim, $p.bgGreen, $p.white, $p.mr25, $p.noUnderline)}
+            className={cx($g.uppercaseButton, $p.pa16, $p.dim, $p.bgGreen, $p.white, $p.noUnderline)}
+            onClick={(e) => this.props.button1OnClick && this.props.button1OnClick(e)}
           >
             {this.props.button1Text}
           </Button>
           <Button
             href={this.props.button2Link}
             className={cx($g.uppercaseButton, $p.pa16, $p.bgLightgreen20, $p.dim, $p.green, $p.noUnderline)}
+            onClick={(e) => this.props.button2OnClick && this.props.button2OnClick(e)}
           >
             {this.props.button2Text}
           </Button>

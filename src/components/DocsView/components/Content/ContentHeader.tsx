@@ -1,16 +1,31 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import CircleIcon from '../CircleIcon'
 import { Item } from '../../../../types/types'
 import BreadCrumb from './BreadCrumb'
 import styled from 'styled-components'
 import SimpleRelayTwin from './SimpleRelayTwin'
-import {breakpoints} from '../../../../utils/constants'
+import { breakpoints, maxWidth } from '../../../../utils/constants'
 
 interface Props {
   item: Item
 }
+
+const Root = styled.div`
+  position: relative;
+  display: flex;
+  margin-top: ${$v.size96};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    margin-top: ${$v.size38};
+  }
+  
+`
+
+const RootContainer = styled.div`
+  max-width: ${maxWidth}px;
+`
 
 const Beta = styled.div`
   padding-top: 1px;
@@ -18,8 +33,37 @@ const Beta = styled.div`
   vertical-align: super;
 `
 
+const BreadCrumbContainer = styled.div`
+  padding-bottom: ${$v.size38};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    padding-bottom: ${$v.size25};
+  }
+  
+`
+
 const IconWrapper = styled.div`
   left: -8px;
+  padding-top: 72px;
+`
+
+const Sublines = styled.div`
+  font-size: ${$v.size16};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    font-size: ${$v.size14};
+    flex-direction: column;
+    margin-top: ${$v.size16};
+  }
+`
+
+const Tag = styled.div `
+  margin-right: ${$v.size16};
+  @media (max-width: ${breakpoints.p580}px) {
+   
+   margin-right: ${$v.size10};
+  }
+  
 `
 
 export default class ContentHeader extends React.Component<Props, {}> {
@@ -33,31 +77,28 @@ export default class ContentHeader extends React.Component<Props, {}> {
     const rightPaddingTitle = item.beta ? '50px' : 0
 
     return (
-      <div className={cx($p.flex, $p.pt96)}>
+      <Root>
         {displayIcon && (
-          <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.pt96, $p.relative)}>
+          <IconWrapper className={cx($p.bbox, $p.db, $p.mr10, $p.relative)}>
             <CircleIcon width={44} height={44} type={item.layout}/>
           </IconWrapper>
         )}
-        <div
-          className={cx($p.flexColumn, $p.flex, $p.pb60, $p.pt10)}
+        <RootContainer
+          className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
           style={{
-            width: '100%',
+            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : '',
           }}
         >
-          <div className={cx($p.pb60, $p.ttu, $p.f14, $p.black20, $p.fw6)}>
+          <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>
             <BreadCrumb item={item} />
-          </div>
+          </BreadCrumbContainer>
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsStart)}>
             <div className={$p.relative}>
               <h1
                 className={cx(
-                  $p.f38,
-                  $p.black80,
-                  $p.fw3,
+
                 )}
                 style={{
-                  flex: 1,
                   paddingRight: rightPaddingTitle,
                 }}
               >
@@ -87,12 +128,9 @@ export default class ContentHeader extends React.Component<Props, {}> {
               />
             )}
           </div>
-          <div className={cx(
+          <Sublines className={cx(
             $p.inlineFlex,
-            window.innerWidth < breakpoints.p580 && $p.flexColumn,
-            $p.black20,
-            $p.f16,
-            $p.pt6,
+            $p.black30,
           )}>
             <div
               className={cx($p.pr38, $p.nowrap)}
@@ -102,15 +140,15 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <div className={cx(
               $p.flex,
               $p.flexWrap,
-              window.innerWidth < breakpoints.p580 && $p.mt16,
+              window.innerWidth < breakpoints.p580 && $p.mt6,
               )}>
             {item.tags.map(tag => (
-              <div key={tag} className={cx($p.pr16, $p.nowrap)}>#{tag}</div>
+              <Tag key={tag} className={cx($p.nowrap)}>#{tag}</Tag>
             ))}
             </div>
-          </div>
-        </div>
-      </div>
+          </Sublines>
+        </RootContainer>
+      </Root>
     )
   }
 }

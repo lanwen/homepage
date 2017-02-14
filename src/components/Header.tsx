@@ -3,76 +3,8 @@ import * as cx from 'classnames'
 import { Link } from 'react-router'
 import { $p, $g, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
-import {breakpoints, maxWidth} from '../utils/constants'
+import {breakpoints} from '../utils/constants'
 import * as cookiestore from 'cookiestore'
-
-const Root = styled.div`
-  position: relative;
-  padding: ${$v.size38};
-  max-width: ${maxWidth}px;
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size60};
-  }
-  @media (max-width: ${breakpoints.p400}px) {
-    padding: ${$v.size25};
-  }
-  
-  // &:before {
-  //   content: "";
-  //   position: absolute;
-  //   left: 0;
-  //   top: 0;
-  //   width: 100%;
-  //   height: 300px;
-  //   background: linear-gradient(to bottom, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0) 100%);
-  // }
-`
-
-const Logo = styled.img`
-  height: 36px;
-  width: auto;
-  position: relative;
-
-  @media (min-width: ${breakpoints.p900}px) {
-    height: 41px;
-  }
-`
-
-const NavOpened = `
-  @media (max-width: ${breakpoints.p750}px) {
-    display: flex;
-  }
-`
-const Nav = styled.nav`
-  font-size: ${$v.size14};
-  position: relative;
-  z-index: 1000;
-  
-  @media (max-width: ${breakpoints.p750}px) {
-    display: none;
-    position: absolute;
-    right: 22px;
-    top: 22px;
-    background: ${$v.white};
-    flex-direction: column;
-    align-items: flex-start;
-    padding: ${$v.size16};
-    border-radius: 2px;
-    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.15)
-  }
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    right: 9px;
-    top: 9px;
-  }
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size16};
-  }
-  
-  ${props => props.opened && NavOpened}
-`
 
 const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
   to.startsWith('http')
@@ -121,19 +53,19 @@ const TwoRowLink = styled(NavLink)`
   line-height: 1.3;
 `
 
-const MultiNavLink = styled.button`
-  ${NavLinkBase}
-  position: relative;
-  background: none;
-  text-transform: inherit;
-  letter-spacing: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  padding: ${$v.size20} 0;
-  cursor: default;
-  
-  ${props => props.active && ActiveNavLink}
-`
+// const MultiNavLink = styled.button`
+//   ${NavLinkBase}
+//   position: relative;
+//   background: none;
+//   text-transform: inherit;
+//   letter-spacing: inherit;
+//   font-size: inherit;
+//   font-weight: inherit;
+//   padding: ${$v.size20} 0;
+//   cursor: default;
+//
+//   ${props => props.active && ActiveNavLink}
+// `
 
 const NavTooltip = styled.span`
   top: 55px;
@@ -176,48 +108,6 @@ const Button = styled.a`
   
   @media (min-width: ${breakpoints.p900}px) {
     font-size: ${$v.size16} !important;
-  }
-`
-
-const Hamburger = styled.div`
-  position: absolute;
-  cursor: pointer;
-  top: ${$v.size38};
-  right: ${$v.size38};
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    top: ${$v.size25}
-    right: ${$v.size25}
-  }
-`
-
-const Close = styled.div`
-  position: absolute;
-  top: ${$v.size16};
-  right: ${$v.size16};
-  width: 36px;
-  height: 36px;
-  opacity: .2;
-  cursor: pointer;
-  transition: opacity ${$v.duration} linear;
-  
-  &:hover {
-    opacity: .4;
-  }
-  
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    background: ${$v.black};
-    left: 50%;
-    top: 50%;
-    width: 80%;
-    height: 2px;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg);
   }
 `
 
@@ -295,27 +185,161 @@ export default class Header extends React.Component<{}, State> {
     const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
-      <Root className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.center)}>
+      <div className='root'>
+        <style jsx={true}>{`
+          .root {
+            @p: .flex, .itemsCenter, .justifyBetween, .center, .relative;
+            max-width: 1440px;
+
+            @media (max-width: 400px) {
+              @p: .pa25;
+            }
+
+            @media (min-width: 401px) {
+              @p: .pa38;
+            }
+
+            @media (min-width: 1200px) {
+              @p: .pa60;
+            }
+          }
+
+          .logo {
+            @p: .wAuto, .relative;
+
+            @media (max-width: 899px) {
+              height: 36px;
+            }
+
+            @media (min-width: 900px) {
+              height: 41px;
+            }
+          }
+
+          .nav {
+            @p: .fw6, .black30, .tracked, .ttu, .f14, .zMax;
+
+            @media (max-width: 400px) {
+              right: 9px;
+              top: 9px;
+            }
+
+            @media (max-width: 750px) {
+              @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
+              @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .zMax;
+              right: 22px;
+              top: 22px;
+
+              &.opened {
+                @p: .flex;
+              }
+            }
+
+            @media (min-width: 751px) {
+              @p: .flex, .relative, .itemsCenter;
+            }
+
+            @media (min-width: 900px) {
+              @p: .f16;
+            }
+          }
+
+          .hamburger {
+            @p: .bgNone, .absolute, .pointer;
+
+            @media (max-width: 400px) {
+              @p: .top25, .right25;
+            }
+
+            @media (min-width: 401px) {
+              @p: .top38, .right38;
+            }
+          }
+
+          .close {
+            @p: .absolute, .top16, .right16, .o20, .pointer, .bgNone;
+            width: 36px;
+            height: 36px;
+            transition: opacity .1s linear;
+
+            &:hover {
+              @p: .o40;
+            }
+
+            &:before, &:after {
+              content: "";
+              @p: .absolute, .bgBlack, .left50, .top50, .w80;
+              height: 2px;
+              transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &:after {
+              transform: translate(-50%, -50%) rotate(-45deg);
+            }
+          }
+
+          .link {
+            @p: .black30, .pointer, .lhSolid, .ttu;
+            transition: color .1s linear;
+
+            &:hover {
+              @p: .black50;
+            }
+
+            @media (max-width: 899px) {
+              @p: .mr25;
+            }
+
+            @media (min-width: 900px) {
+              @p: .mr38;
+            }
+
+            @media (max-width: 750px) {
+              @p: .pa10;
+            }
+
+            &.withTooltip {
+              @p: .relative, .bgNone, .pv25, .cursorDefault;
+            }
+
+            &.active {
+              @p: .green;
+
+              &:hover {
+                @p: .green;
+              }
+            }
+          }
+
+        `}</style>
         <Link to='/'>
-          <Logo src={require('../assets/graphics/logos/graphcoolFull.svg')}/>
+          <img className='logo' src={require('../assets/graphics/logos/graphcoolFull.svg')} />
         </Link>
         {window.innerWidth < breakpoints.p750 &&
-          <Hamburger onClick={() => this.setState({ menuOpened: true } as State)}>
+          <button className='hamburger' onClick={() => this.setState({ menuOpened: true } as State)}>
             <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
-          </Hamburger>
+          </button>
         }
-        <Nav
-          className={cx($p.fw6, $p.black30, $p.tracked, $p.ttu, $p.flex, $p.itemsCenter)}
-          opened={this.state.menuOpened}
+        <nav
+          className={cx(
+            'nav', {
+              'opened': this.state.menuOpened,
+            },
+          )}
         >
           {window.innerWidth < breakpoints.p750 &&
-            <Close onClick={() => this.setState({ menuOpened: false } as State)} />
+            <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
           }
           {window.innerWidth >= breakpoints.p750 &&
-            <MultiNavLink
+            <div
+              className={cx(
+                'link',
+                'withTooltip', {
+                  'active': ['/graphql', '/functions'].includes(window.location.pathname),
+                },
+              )}
               onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
               onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
-              active={['/graphql', '/functions'].includes(window.location.pathname)}
             >
               Features
               {this.state.tooltipActive &&
@@ -344,7 +368,7 @@ export default class Header extends React.Component<{}, State> {
                 </FeatureLink>
               </NavTooltip>
               }
-            </MultiNavLink>
+            </div>
           }
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/graphql'>GraphQL<br/>Backend</TwoRowLink>
@@ -352,8 +376,13 @@ export default class Header extends React.Component<{}, State> {
           {window.innerWidth < breakpoints.p750 &&
             <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
           }
-          <NavLink to='/pricing' active={window.location.pathname === '/pricing'}>Pricing</NavLink>
-          <NavLink to='/docs'>Docs</NavLink>
+          <NavLink
+            active={window.location.pathname === '/pricing'}
+            to='/pricing'
+          >
+            Pricing
+          </NavLink>
+          <NavLink className='link' to='/docs'>Docs</NavLink>
           {loggedIn ? (
             <Signin>
               <Button
@@ -379,8 +408,8 @@ export default class Header extends React.Component<{}, State> {
               </Button>
             </Signin>
           )}
-        </Nav>
-      </Root>
+        </nav>
+      </div>
     )
   }
 }

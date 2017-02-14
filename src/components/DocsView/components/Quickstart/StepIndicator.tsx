@@ -27,7 +27,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
       case 'TECHNOLOGY':
         technology = (
           <div className={cx($p.flex, $p.itemsCenter)}>
-            <div className={cx($p.f14, $p.fw6, $p.ttu)} style={{color: `${greenSelected}`}}>
+            <div className={cx($p.f14, $p.fw6, $p.ttu, $p.pointer)} style={{color: `${greenSelected}`}}>
               Technology
             </div>
             <Icon

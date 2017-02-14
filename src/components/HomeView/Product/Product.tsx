@@ -177,10 +177,10 @@ export default class Product extends React.Component<{}, State> {
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>
                 <h2>{feature.title}</h2>
-                <Copy className={cx($p.black50)}>{feature.description}</Copy>
+                <Copy className={cx($p.black50, $p.fw4)}>{feature.description}</Copy>
                 <CallToAction
                   text='Learn more'
-                  link='https://graph.cool/graphql'
+                  link='/graphql'
                 />
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>

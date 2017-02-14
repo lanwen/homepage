@@ -12,7 +12,6 @@ module.exports = {
       './src/styles/graphiql.css',
       'codemirror/mode/javascript/javascript',
       'codemirror/mode/shell/shell',
-      'codemirror/theme/dracula.css',
       'codemirror-graphql/mode',
       './src/main.tsx',
     ],
