@@ -30,7 +30,8 @@ export default class Mission extends React.Component<{}, {}> {
           <p className='copy'>
             We enable frontend developers to build products from scratch without the need to develop their own backend.
             <br /><br />
-            We ourselves have built countless backend applications and got tired of reinventing the wheel over and over again.
+            We ourselves have built countless backend applications and
+            got tired of reinventing the wheel over and over again.
           </p>
         </div>
           <img className='image' src={require('../../assets/graphics/homepage/architecture.svg')} />

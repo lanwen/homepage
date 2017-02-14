@@ -11,6 +11,7 @@ import * as cookiestore from 'cookiestore'
 import * as WebFont from 'webfontloader'
 import routes from './routes'
 
+import './utils/polyfills'
 import './style'
 
 function shouldScrollUp(previousProps, {location}) {

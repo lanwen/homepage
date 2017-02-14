@@ -259,35 +259,42 @@ export default class Quickstart extends React.Component<Props, State> {
   private selectFrontendTechnology = (technology: TechnologyData, index: number = 0) => {
     const selectedFrontendTechnology = this.setSelected(technology)
 
-    this.setState({
-      frontendTechnologyOffset: index * 146,
-    } as State, () => {
-      setTimeout(() => {
+    this.setState(
+      {
+        frontendTechnologyOffset: index * 146,
+      } as State,
+      () => {
+        setTimeout(
+          () => {
 
-        let newState: any = {
-          selectedFrontendTechnology,
-          highlightedComponentIndex: null,
-        }
+            let newState: any = {
+              selectedFrontendTechnology,
+              highlightedComponentIndex: null,
+            }
 
-        const clientTechnologies = this.clientTechnologiesFor(technology)
+            const clientTechnologies = this.clientTechnologiesFor(technology)
 
-        if (clientTechnologies.length === 1) {
-          newState.selectedClientTechnology = clientTechnologies[0]
-          const key = selectedFrontendTechnology.logoName + '-' + clientTechnologies[0].logoName
-          newState.quickExamples = examples[key]
-          newState.highlightedComponentIndex = 0
-        }
+            if (clientTechnologies.length === 1) {
+              newState.selectedClientTechnology = clientTechnologies[0]
+              const key = selectedFrontendTechnology.logoName + '-' + clientTechnologies[0].logoName
+              newState.quickExamples = examples[key]
+              newState.highlightedComponentIndex = 0
+            }
 
-        this.setState(newState as State, () => {
-          setTimeout(() => {
-            this.setState({
-              frontendTechnologyOffset: 0,
-              graphQLClientOffset: 0
+            this.setState(newState as State, () => {
+              setTimeout(
+                () => {
+                  this.setState({
+                    frontendTechnologyOffset: 0,
+                    graphQLClientOffset: 0,
+                  })
+                },
+                1,
+              )
             })
-          }, 1)
-        })
-      }, 1)
-
+          },
+          1,
+        )
     })
   }
 
@@ -298,26 +305,32 @@ export default class Quickstart extends React.Component<Props, State> {
     const key = this.state.selectedFrontendTechnology.logoName + '-' + selectedClientTechnology.logoName
     const displayExamples = examples[key]
 
-    this.setState({
-      graphQLClientOffset: index * 146,
-    } as State, () => {
-      setTimeout(() => {
-
-        let newState: any = {
-          selectedClientTechnology,
-          quickExamples: displayExamples,
-          highlightedComponentIndex: null,
-        }
-        this.setState(newState as State, () => {
-          setTimeout(() => {
-            this.setState({
-              graphQLClientOffset: 0,
-              frontendTechnologyOffset: 0,
+    this.setState(
+      {
+        graphQLClientOffset: index * 146,
+      } as State,
+      () => {
+        setTimeout(
+          () => {
+            let newState: any = {
+              selectedClientTechnology,
+              quickExamples: displayExamples,
+              highlightedComponentIndex: null,
+            }
+            this.setState(newState as State, () => {
+              setTimeout(
+                () => {
+                  this.setState({
+                    graphQLClientOffset: 0,
+                    frontendTechnologyOffset: 0,
+                  })
+                },
+                1,
+              )
             })
-          }, 1)
-        })
-      }, 1)
-
+          },
+          1,
+        )
     })
   }
 

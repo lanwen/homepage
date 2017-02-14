@@ -54,8 +54,7 @@ const Root = styled.div`
  */
 }
 
-
-export default () => {
+const References = () => {
   return (
     <Root>
       <div className={cx(
@@ -96,3 +95,5 @@ export default () => {
     </Root>
   )
 }
+
+export default References
