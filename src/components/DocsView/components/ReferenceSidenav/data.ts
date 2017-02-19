@@ -15,13 +15,22 @@ export const elements: ReferenceSidebarElement[] = [{
   }, {
     alias: 'ahwoh2fohj', // data-schema
     children: [{
-      alias: 'ij2choozae',
+      alias: 'ij2choozae', // models
     }, {
-      alias: 'teizeit5se',
+      alias: 'teizeit5se', // fields
     }, {
       alias: 'goh5uthoc1',
     }, {
       alias: 'uhieg2shio',
+    }],
+  }, {
+    alias: 'seimeish6e', // integration
+    children: [{
+      alias: 'naed3eecie', // auth0
+    }, {
+      alias: 'iaxohpee8o', // digits
+    }, {
+      alias: 'emaig4uiki', // algolia
     }],
   }, {
     alias: 'wejileech9', // authentication
@@ -62,6 +71,13 @@ export const elements: ReferenceSidebarElement[] = [{
       alias: 'zeich1raej', // one-to-one
     }, {
       alias: 'ofee7eseiy', // one-to-many
+    }, {
+      alias: 'ubohch8quo', // nested mutations
+      children: [{
+        alias: 'vaet3eengo', // nested create
+      }, {
+        alias: 'tu9ohwa1ui', // nested update
+      }],
     }, {
       alias: 'eixu9osueb', // user-authentication
     }, {
@@ -104,6 +120,13 @@ export const elements: ReferenceSidebarElement[] = [{
       alias: 'da7pu3seew', // one-to-one
     }, {
       alias: 'ek8eizeish', // one-to-many
+    }, {
+      alias: 'yoo8vaifoa', // nested mutations
+      children: [{
+        alias: 'ma6eijae7a', // nested create
+      }, {
+        alias: 'ec6aegaiso', // nested update
+      }],
     }, {
       alias: 'yoh9thaip0', // user-authentication
     }, {
