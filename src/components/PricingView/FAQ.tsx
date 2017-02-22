@@ -130,7 +130,8 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>Can my open source project get a discount?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    We love open source! If you are the maintainer of an open source project that relies on a GraphQL backend we will upgrade you to GROWTH for free.
+                    We love open source! If you are the maintainer of an open source project that relies on a GraphQL
+                    backend we will upgrade you to GROWTH for free.
                   </div>
                 </div>
               </div>
@@ -237,7 +238,8 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>How do you count multiple mutations in one http request?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    When you submit multiple mutations or queries in the same http request they all count towards your request limit.
+                    When you submit multiple mutations or queries in the same http request they all
+                    count towards your request limit.
                   </div>
                 </div>
               </div>
@@ -261,7 +263,8 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>Do I pay for subscriptions?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    The initial request made by a subscribing client is counted. After that, all events received by the client are free of charge.
+                    The initial request made by a subscribing client is counted.
+                    After that, all events received by the client are free of charge.
                   </div>
                 </div>
               </div>

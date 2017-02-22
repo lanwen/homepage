@@ -86,13 +86,13 @@ export const elements: ReferenceSidebarElement[] = [{
   }, {
     alias: 'aip7oojeiv', // generated-subscriptions
     children: [{
-      alias: 'oe8oqu8eis' // create subscriptions
+      alias: 'oe8oqu8eis', // create subscriptions
     }, {
-      alias: 'ohmeta3pi4' // update subscriptions
+      alias: 'ohmeta3pi4', // update subscriptions
     }, {
-      alias: 'bag3ouh2ii' // delete subscriptions
+      alias: 'bag3ouh2ii', // delete subscriptions
     }, {
-      alias: 'kengor9ei3' // combining subscriptions
+      alias: 'kengor9ei3', // combining subscriptions
     }],
   }, {
     alias: 'aecou7haj9', // errors
