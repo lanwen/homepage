@@ -84,6 +84,17 @@ export const elements: ReferenceSidebarElement[] = [{
       alias: 'eetai5meic', // file-management
     }],
   }, {
+    alias: 'aip7oojeiv', // generated-subscriptions
+    children: [{
+      alias: 'oe8oqu8eis' // create subscriptions
+    }, {
+      alias: 'ohmeta3pi4' // update subscriptions
+    }, {
+      alias: 'bag3ouh2ii' // delete subscriptions
+    }, {
+      alias: 'kengor9ei3' // combining subscriptions
+    }],
+  }, {
     alias: 'aecou7haj9', // errors
   }],
 }, {
@@ -132,6 +143,8 @@ export const elements: ReferenceSidebarElement[] = [{
     }, {
       alias: 'aechiosh8u', // file-management
     }],
+  }, {
+    alias: 'eih4eew7re', // generated-subscriptions
   }, {
     alias: 'looxoo7avo', // errors
   }],
