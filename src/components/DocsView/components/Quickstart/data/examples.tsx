@@ -2,19 +2,19 @@ import { QuickExample } from '../../../../../types/types'
 
 {/*
 
- Frontend Framework Keys: 'react', 'angular', 'react_native', 'ios', 'android', 'vue'
+ Frontend Framework Keys: 'react', 'angular', 'rn', 'ios', 'android', 'vue'
  Client Framework Keys: 'apollo', 'relay'
 
  Info:
  Add new data to `examples` dictionary and use combination of key for
- frontend and client frameworks separated by a hyphen, e.g. `react_native-realy`
+ frontend and client frameworks separated by a hyphen, e.g. `rn-relay`
 
  */
 }
 
 export const availableClients: {[key: string]: String[]} = {
   'react': ['apollo, relay'],
-  'react_native': ['apollo'],
+  'rn': ['apollo'],
   'angular': ['apollo, relay'],
   'vue': ['apollo'],
   'ios': [],
@@ -58,7 +58,7 @@ export const examples: {[key: string]: QuickExample[]} = {
       title: 'Todo Example',
     },
   ],
-  'react_native-apollo': [
+  'rn-apollo': [
     {
       imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
       imageWidth: 176,
