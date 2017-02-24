@@ -14,7 +14,7 @@ import { QuickExample } from '../../../../../types/types'
 
 export const availableClients: {[key: string]: String[]} = {
   'react': ['apollo, relay'],
-  'react_native': ['apollo, relay'],
+  'react_native': ['apollo'],
   'angular': ['apollo, relay'],
   'vue': ['apollo'],
   'ios': [],
@@ -54,16 +54,6 @@ export const examples: {[key: string]: QuickExample[]} = {
       imageWidth: 176,
       imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-relay-todo-example',
-      layout: 'TUTORIAL',
-      title: 'Todo Example',
-    },
-  ],
-  'react_native-relay': [
-    {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
-      link: 'https://github.com/graphcool-examples/react-native-relay-todo-example',
       layout: 'TUTORIAL',
       title: 'Todo Example',
     },
