@@ -1,6 +1,7 @@
 import { $v } from 'graphcool-styles'
 
 export interface TechnologyData {
+  id: string
   title: string
   logoName: string
   logoColor: string
@@ -12,6 +13,7 @@ export interface TechnologyData {
 }
 
 const react: TechnologyData = {
+  id: 'react',
   title: 'React',
   logoName: 'react',
   logoColor: 'rgba(0,216,255,1)',
@@ -21,6 +23,7 @@ const react: TechnologyData = {
 }
 
 const angular: TechnologyData = {
+  id: 'angular',
   title: 'Angular',
   logoName: 'angular',
   logoColor: 'rgba(221,0,49,1)',
@@ -30,6 +33,7 @@ const angular: TechnologyData = {
 }
 
 const reactNative: TechnologyData = {
+  id: 'rn',
   title: 'React Native',
   logoName: 'react',
   logoColor: 'rgba(26,127,145,1)',
@@ -39,6 +43,7 @@ const reactNative: TechnologyData = {
 }
 
 const iOS: TechnologyData = {
+  id: 'ios',
   title: 'iOS',
   logoName: 'ios',
   logoColor: $v.black,
@@ -49,6 +54,7 @@ const iOS: TechnologyData = {
 }
 
 const android: TechnologyData = {
+  id: 'android',
   title: 'Android',
   logoName: 'android',
   logoColor: 'rgba(164,196,157,1)',
@@ -59,6 +65,7 @@ const android: TechnologyData = {
 }
 
 const vue: TechnologyData = {
+  id: 'vue',
   title: 'Vue.js',
   logoName: 'vue',
   logoColor: 'rgba(65,184,131,1)',
@@ -77,6 +84,7 @@ export const frontendTechnologies: [TechnologyData] = [
 ]
 
 const apollo: TechnologyData = {
+  id: 'apollo',
   title: 'Apollo',
   logoName: 'apollo',
   logoColor: 'rgba(10,44,73,1)',
@@ -87,6 +95,7 @@ const apollo: TechnologyData = {
 }
 
 const relay: TechnologyData = {
+  id: 'relay',
   title: 'Relay',
   logoName: 'relay',
   logoColor: 'rgba(242,107,0,1)',

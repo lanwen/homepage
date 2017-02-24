@@ -102,9 +102,8 @@ export default class Quickstart extends React.Component<Props, State> {
                 onClick={() => this.selectFrontendTechnology(technology, index)}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
                 onMouseLeave={() => this.setState({
-                    ...this.state,
                     highlightedComponentIndex: null,
-                  })}
+                  } as State)}
                 decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
               />)
             }
@@ -157,9 +156,8 @@ export default class Quickstart extends React.Component<Props, State> {
                   onClick={() => this.selectClientTechnology(technology, index)}
                   onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
                   onMouseLeave={() => this.setState({
-                    ...this.state,
                     highlightedComponentIndex: null,
-                  })}
+                  } as State)}
                   decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
                 />)
               }
@@ -242,9 +240,8 @@ export default class Quickstart extends React.Component<Props, State> {
                 quickExample={example}
                 onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
                 onMouseLeave={() => this.setState({
-                  ...this.state,
                   highlightedComponentIndex: null,
-                })}
+                } as State)}
               />,
             )}
           </div>
@@ -276,7 +273,7 @@ export default class Quickstart extends React.Component<Props, State> {
 
             if (clientTechnologies.length === 1) {
               newState.selectedClientTechnology = clientTechnologies[0]
-              const key = selectedFrontendTechnology.logoName + '-' + clientTechnologies[0].logoName
+              const key = selectedFrontendTechnology.id + '-' + clientTechnologies[0].id
               newState.quickExamples = examples[key]
               newState.highlightedComponentIndex = 0
             }
@@ -302,7 +299,7 @@ export default class Quickstart extends React.Component<Props, State> {
     console.log(technology)
     const selectedClientTechnology = this.setSelected(technology)
 
-    const key = this.state.selectedFrontendTechnology.logoName + '-' + selectedClientTechnology.logoName
+    const key = this.state.selectedFrontendTechnology.id + '-' + selectedClientTechnology.id
     const displayExamples = examples[key]
 
     this.setState(
@@ -336,9 +333,8 @@ export default class Quickstart extends React.Component<Props, State> {
 
   private decreasedOpacityOfComponents = (index: number) => {
     this.setState({
-      ...this.state,
       highlightedComponentIndex: index,
-    })
+    } as State )
   }
 
   private getCurrentStep(): Step {
@@ -356,24 +352,24 @@ export default class Quickstart extends React.Component<Props, State> {
       backgroundColor: technology.logoColor,
       logoColor: 'white',
     }
-    return selectedTechnologyData
+    return selectedTechnologyData as TechnologyData
   }
 
   private clientTechnologiesFor(frontendTechnology: TechnologyData) {
     const keys = Object.keys(examples)
     const relevantExamples = keys.filter((key) => {
-      return key.startsWith(frontendTechnology.logoName + '-')
+      return key.startsWith(frontendTechnology.id + '-')
     })
     const availableClientTechnologies = relevantExamples.map((key) => {
       const keyComponents = key.split('-')
       return keyComponents[1]
     })
     const result: TechnologyData[] = []
-    const allClientTechnologyNames = clientTechnologies.map((clientTechnology) => clientTechnology.logoName)
+    const allClientTechnologyNames = clientTechnologies.map((clientTechnology) => clientTechnology.id)
     availableClientTechnologies.forEach((client) => {
       if (allClientTechnologyNames.indexOf(client) > -1) {
         const tech = clientTechnologies.find((technology) => {
-          return client === technology.logoName
+          return client === technology.id
         })
         result.push(tech)
       }
