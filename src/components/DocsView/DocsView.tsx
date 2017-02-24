@@ -5,6 +5,8 @@ import * as cx from 'classnames'
 import Header from './components/Header/DocsHeader'
 import * as Helmet from 'react-helmet'
 import styled from 'styled-components'
+import drumstick from 'drumstick'
+import * as cookiestore from 'cookiestore'
 
 interface Props {
   location: any
@@ -18,10 +20,34 @@ const Content = styled.div`
 export default class DocsView extends React.Component<Props, {}> {
   componentDidMount() {
     window.addEventListener('resize', this.rerender)
+
+    if (
+      __HEARTBEAT_ADDR__ &&
+      cookiestore.has('graphcool_auth_token') &&
+      cookiestore.has('graphcool_last_used_project_id')
+    ) {
+      drumstick.start({
+        endpoint: __HEARTBEAT_ADDR__,
+        payload: () => ({
+          resource: 'docs',
+          token: cookiestore.get('graphcool_auth_token'),
+          projectId: cookiestore.get('graphcool_last_used_project_id'),
+        }),
+        frequency: 60 * 1000,
+      })
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.rerender)
+
+    if (
+      __HEARTBEAT_ADDR__ &&
+      cookiestore.has('graphcool_auth_token') &&
+      cookiestore.has('graphcool_last_used_project_id')
+    ) {
+      drumstick.pause()
+    }
   }
 
   render() {

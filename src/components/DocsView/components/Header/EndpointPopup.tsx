@@ -146,8 +146,14 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
   }
 
   componentWillMount() {
-    const authToken = cookiestore.get('graphcool_auth_token')
-    const lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    let authToken = ''
+    let lastUsedProjectId = ''
+    try {
+      authToken = cookiestore.get('graphcool_auth_token')
+      lastUsedProjectId = cookiestore.get('graphcool_last_used_project_id')
+    } catch (e) {
+      //
+    }
 
     const query = `
       {
@@ -217,8 +223,12 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
 
     const selectedProject: Project | null = this.state.selectedProject
 
+    if (!selectedProject) {
+      return null
+    }
+
     let projectId
-    if (selectedProject !== null) {
+    if (selectedProject) {
       projectId = selectedProject.id
     }
 

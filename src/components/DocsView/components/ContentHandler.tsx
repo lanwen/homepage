@@ -95,20 +95,35 @@ class ContentHandler extends React.Component<Props, {}> {
 
     let contentBoxMarginLeft = 0
     if (window.innerWidth < breakpoints.p1360) {
-      contentBoxMarginLeft = 25
+      contentBoxMarginLeft = 40
     } else if (item.layout === 'FAQ') {
       contentBoxMarginLeft = 121
     } else if (item.layout === 'REFERENCE') {
       contentBoxMarginLeft = 61
     }
 
+    if (window.innerWidth < breakpoints.p500) {
+      contentBoxMarginLeft = 38
+    }
+
+    if (window.innerWidth < breakpoints.p400) {
+      contentBoxMarginLeft = 25
+    }
+
     let contentBoxMarginRight = 0
     if (item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200) {
       contentBoxMarginRight = 50
     } else if (window.innerWidth < breakpoints.p1360) {
-      contentBoxMarginRight = 25
+      contentBoxMarginRight = 40
     }
 
+    if (window.innerWidth < breakpoints.p900) {
+      contentBoxMarginRight = 38
+    }
+
+    if (window.innerWidth < breakpoints.p400) {
+      contentBoxMarginRight = 25
+    }
     return (
       <div onClick={this.onClick} className={cx(
         $p.w100,
@@ -153,11 +168,10 @@ class ContentHandler extends React.Component<Props, {}> {
               <div
                 className={cx(
                   $p.bbox,
-                  window.innerWidth < breakpoints.p1000 && $p.pa10,
                 )}
                 style={{
-                  marginLeft: {contentBoxMarginLeft},
-                  marginRight: {contentBoxMarginRight},
+                  marginLeft: contentBoxMarginLeft,
+                  marginRight: contentBoxMarginRight,
                 }}
               >
                 <ContentHeader item={item}/>

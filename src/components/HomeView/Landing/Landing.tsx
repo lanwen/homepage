@@ -1,13 +1,12 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints, maxWidth } from '../../../utils/constants'
 import LandingCallToAction from './LandingCallToAction'
-import LogoBar from '../LogoBar'
 import Hint from './Hint'
-import Video from './Video'
 import Caret from './Caret'
+import CompanyLogoBar from '../CompanyLogoBar'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -31,10 +30,20 @@ const Hero = styled.div`
   }
 `
 
-const HeroImage = styled.div`
+const HeroImage = styled.a`
   width: 55%;
   position: relative;
-
+  cursor: pointer;
+  text-decoration: none;
+  
+  .play {
+    transform: translate3D(0,-6px,0);
+    
+    p {
+      opacity: 1;
+    }
+  }
+  
   @media (max-width: ${breakpoints.p900}px) {
     width: 100%;
     max-width: 95vh;
@@ -44,10 +53,99 @@ const HeroImage = styled.div`
   @media (min-width: ${breakpoints.p1200}px) {
     width: 50%;
   }
+  
+  @media (min-width: ${breakpoints.p900 + 1}px) {
+    
+    .play {
+      transform: translate3D(0,0,0);
+      
+      > div {
+        transition: background .4s ease;
+        
+        svg {
+          transition: fill .4s ease;
+        }
+      }
+      
+      p {
+        opacity: 0;
+      }
+    }
+  
+    img {
+      transition: filter .4s ease, opacity .4s ease, transform .4s ease;
+    }
+    
+    &:hover {
+      img {
+        filter: blur(10px);
+        opacity: .5;
+        transform: scale(0.98);
+      }
+      
+      .play {
+        transform: translate3D(0,-6px,0);
+        
+        > div {
+          background: ${$v.green};
+          
+          svg {
+            fill: ${$v.white};
+          }
+        }
+        
+        p {
+          opacity: 1;
+        }
+      }
+    }  
+  }
+`
+
+const PlayContainer = styled.div` 
+  transition: transform .3s ease;
+`
+
+const Play = styled.div`
+  // height: ${$v.size96}; 
+  // width: ${$v.size96}; 
+  
+  height: 80px;
+  width: 80px;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${$v.lightGreen20};
+  }
+  
+  i {
+    position: relative;
+    left: 3px;
+  }
+`
+
+const PlayCopy = styled.p`
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0)
+  bottom: -38px;
+  text-transform: uppercase;
+  color: ${$v.green};
+  letter-spacing: 1px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: ${$v.size14};
+  transition: opacity .3s ease;
 `
 
 const HeroText = styled.div`
-  justify-content: center;
+  justify-content: space-around;
   margin-left: ${$v.size38};
   
   @media (max-width: ${breakpoints.p900}px) {
@@ -63,15 +161,20 @@ const HeroText = styled.div`
   }
 
   @media (min-width: ${breakpoints.p1200}px) {
-    justify-content: space-between;
     margin-left: ${$v.size60};
+    justify-content: space-between;
+  }
+  
+  @media (min-width: ${breakpoints.p1250}px) {
+    margin-top: ${$v.size16};
+    margin-bottom: ${$v.size16};
   }
 `
 
 const Headline = styled.h1`
-  @media (min-width: ${breakpoints.p1250}px) {
-    padding-top: ${$v.size38};
-  }
+  // @media (min-width: ${breakpoints.p1250}px) {
+  //   padding-top: ${$v.size38};
+  // }
 `
 
 const BuiltFor = styled.div`
@@ -89,7 +192,7 @@ const BuiltFor = styled.div`
 
 const Copy = styled.p`
   font-size: ${$v.size16};
-  margin-top: ${$v.size25};
+  // padding: ${$v.size25} 0 ${parseFloat($v.size25) + parseFloat($v.size16)}px;
   font-weight: 400;
   
   @media (min-width: ${breakpoints.p1000}px) {
@@ -99,129 +202,20 @@ const Copy = styled.p`
   
   @media (min-width: ${breakpoints.p1360}px) {
     font-size: ${$v.size25};
-    margin-top: ${$v.size60};      
+    // padding: ${$v.size60} 0;      
   }
   
-  @media (min-width: ${breakpoints.p1440}px) {
-    margin-top: ${$v.size60};
-  }
-`
-
-const Steps = styled.div`
-  counter-reset: step;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: ${$v.size10} 0 0;
-  justify-content: flex-end;
+  // @media (min-width: ${breakpoints.p1440}px) {
+  //   padding: ${$v.size60} 0;
+  // }
   
   @media (max-width: ${breakpoints.p900}px) {
-    position: relative;
-    transform: none;
-    justify-content: center;
-  }
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    justify-content: flex-start;
-    margin-left: -25px;
-    margin-right: -25px;
-    overflow: auto;
-  }
-`
-
-const ActiveStep = `
-  cursor: default;
-  
-  > span {
-    display: inline-block;
-  }
-
-  &:before {
-    background: ${$v.green};
-    color: ${$v.white};
-  }
-  
-  @media {
-    > span {
-      opacity: 1;
-    }
-  }
-`
-
-const Step = styled.div`
-  color: ${$v.gray30};
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: ${$v.size16};
-  padding-left: ${$v.size10};
-  cursor: pointer;
-  white-space: nowrap;
-  
-  > span {
-    display: none;
-    margin-left: ${$v.size10};
-    margin-right: ${$v.size16};
-  }
-  
-  &:before {
-    counter-increment: step;
-    content: counter(step);
-    display: inline-block;
-    height: ${$v.size16};
-    width: ${$v.size16};
-    text-align: center;
-    line-height: 1;
-    font-weight: 600;
-    padding: ${$v.size10};
-    border-radius: 500px;
-    background: ${$v.lightGreen20};
-    color: ${$v.green}
+    margin-top: ${$v.size38};
   }
   
   @media (max-width: ${breakpoints.p500}px) {
-    font-size: ${$v.size14};
-    
-    > span {
-      margin-right: 0;
-    }
-    
-    &:before {
-      height: ${$v.size14};
-      width: ${$v.size14};
-    }
-  
-    &:first-child {
-      padding-left: 0
-    }
+    margin-top: ${$v.size25};
   }
-  
-  @media (max-width: ${breakpoints.p400}px) {
-    &:first-child {
-      padding-left: ${$v.size25};
-    }
-    
-    &:last-child {
-      padding-right: ${$v.size25};
-    }
-  }
-  
-  @media (min-width: ${breakpoints.p1200}px) {
-    &:last-child {
-      padding-right: ${$v.size10};
-    }
-  }
-
-  ${props => props.active && ActiveStep}
-`
-
-const VideoContainer = styled.div`
-  position: absolute;
-  width: 98.4%;
-  height: auto;
-  top: 4.7%;
-  left: 50%;
-  transform: translate(-50%,0);
 `
 
 interface State {
@@ -237,47 +231,55 @@ export default class Landing extends React.Component<{}, {}> {
   render() {
     return (
       <section>
-        <Hero className={cx($p.flex, $p.itemsStretch, $p.center)}>
-          <HeroImage className={cx($p.flexFixed, $p.relative)}>
-            <VideoContainer>
-              <Video
-                step={this.state.activeStep}
-                setStep={(step) => this.setState({ activeStep: step } as State)}
-                markers={[0, 22, 43, 61]}
-              />
-            </VideoContainer>
+        <Hero className={cx($p.flex, $p.center)}>
+          <HeroImage
+            className={cx($p.flexFixed, $p.relative)}
+            href='https://www.youtube.com/watch?v=SooujCyMHe4'
+            target='_blank'
+          >
             <img
               className={cx($p.w100, $p.hAuto, $p.db)}
-              src={require('../../../assets/graphics/homepage/browser.svg')}
+              src={require('../../../assets/graphics/homepage/landingBrowser.svg')}
             />
-            <Steps>
-              <Step
-                active={this.state.activeStep === 0}
-                onClick={() => this.setState({ activeStep: 0 } as State)}
+            <div
+              className={cx(
+                $p.absolute,
+                $p.left50,
+                $p.top50,
+                $p.tlCenter,
+                $p.flex,
+                $p.justifyCenter,
+                $p.itemsCenter,
+              )}
+            >
+              <PlayContainer
+                className='play'
               >
-                <span>Define your schema</span>
-              </Step>
-              <Step
-                active={this.state.activeStep === 1}
-                onClick={() => this.setState({ activeStep: 1 } as State)}
-              >
-                <span>Manage your data</span>
-              </Step>
-              <Step
-                active={this.state.activeStep === 2}
-                onClick={() => this.setState({ activeStep: 2 } as State)}
-              >
-                <span>Developer-friendly GraphQL API</span>
-              </Step>
-              <Step
-                active={this.state.activeStep === 3}
-                onClick={() => this.setState({ activeStep: 3 } as State)}
-              >
-                <span>Connect your app</span>
-              </Step>
-            </Steps>
+                <Play
+                  className={cx(
+                  $p.relative,
+                  $p.brPill,
+                  $p.bgWhite,
+                  $p.overflowHidden,
+                  $p.flex,
+                  $p.justifyCenter,
+                  $p.itemsCenter,
+                )}
+                >
+                  <Icon
+                    src={require('graphcool-styles/icons/fill/roundedTriangle.svg')}
+                    width={27}
+                    height={30}
+                    color={$v.green}
+                  />
+                </Play>
+                <PlayCopy>
+                  See how it works
+                </PlayCopy>
+              </PlayContainer>
+            </div>
           </HeroImage>
-          <HeroText className={cx($p.flex, $p.flexColumn)}>
+          <HeroText className={cx($p.flex, $p.justifyBetween, $p.flexColumn)}>
             <div>
               <Headline>
                 Flexible backend platform combining GraphQL
@@ -299,21 +301,21 @@ export default class Landing extends React.Component<{}, {}> {
                   <Caret options={['frontend developers.', 'backend developers.', 'startups.', 'agencies.']} />
                 </BuiltFor>
               </Headline>
-              <Copy className={cx($p.f25, $p.black50)}>
-                {
-                  `Production-ready GraphQL backend in 5 minutes. Implement your business logic with any language. Includes realtime subscriptions, user management, service integrations and more.` // tslint:disable-line
-                }
-              </Copy>
             </div>
+            <Copy className={cx($p.f25, $p.black50)}>
+              {
+                `Production-ready GraphQL backend in 5 minutes. Implement your business logic with any language. Includes realtime subscriptions, user management, service integrations and more.` // tslint:disable-line
+              }
+            </Copy>
             {(window.innerWidth >= breakpoints.p1200 || window.innerWidth <= breakpoints.p900) &&
-              <LandingCallToAction/>
+            <LandingCallToAction />
             }
           </HeroText>
         </Hero>
         {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
-          <LandingCallToAction/>
+        <LandingCallToAction />
         }
-        <LogoBar/>
+        <CompanyLogoBar />
       </section>
     )
   }

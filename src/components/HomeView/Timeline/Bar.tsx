@@ -1,12 +1,12 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $v } from 'graphcool-styles'
 import styled from 'styled-components'
 
 interface Props {
   graphcool?: boolean,
   active?: boolean,
   segments: number[],
+  noTime?: boolean,
 }
 
 export default class Bar extends React.Component<Props, {}> {
@@ -35,6 +35,17 @@ export default class Bar extends React.Component<Props, {}> {
       ${props => props.graphcool && props.active && GraphcoolActiveRoot}
     `
 
+    const NoTimeSegment = `
+      background: none !important;
+      color: ${$v.green};
+      
+      &:after {
+        content: "*";
+        position: relative;
+        top: -6px;
+      }
+    `
+
     const Segment = styled.div`
       height: 100%;
       margin-right: ${$v.size04};
@@ -44,13 +55,23 @@ export default class Bar extends React.Component<Props, {}> {
       &:last-child {
         margin-right: 0;
       }
+      
+      ${props => props.noTime && NoTimeSegment}
     `
 
     // values need to add up to at least 100% (can be more without breaking the layout)
 
     return (
       <Root active={this.props.active} graphcool={this.props.graphcool}>
-        {this.props.segments.map(size => <Segment key={size} className={cx($p[`w${size}`])}/>)}
+        {this.props.segments.map((size, i) => (
+          <Segment
+            key={i}
+            noTime={this.props.noTime}
+            style={{
+              width: this.props.noTime ? $v.size06 : `${size}%`,
+            }}
+          />
+        ))}
       </Root>
     )
   }

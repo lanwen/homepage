@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 const Outer = styled.div`
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
   
@@ -10,6 +10,14 @@ const Outer = styled.div`
     display: none;
     background: transparent;
   }
+  
+  scrollbar-base-color : rgba(0,0,0,0);
+  scrollbar-track-color : rgba(0,0,0,0);
+  scrollbar-highlight-color : rgba(0,0,0,0);
+  scrollbar-3d-light-color : rgba(0,0,0,0);
+  scrollbar-dark-shadow-color : rgba(0,0,0,0);
+  scrollbar-shadow-color : rgba(0,0,0,0);
+  scrollbar-arrow-color : rgba(0,0,0,0);
 `
 
 export default Outer

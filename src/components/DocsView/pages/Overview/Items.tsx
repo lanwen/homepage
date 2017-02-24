@@ -21,9 +21,14 @@ const StyledLink = styled(Link)`
   max-width: 325px;
   box-shadow: 0 1px 6px rgba(0,0,0,.15);
   
+  @media (max-width: ${breakpoints.p580}px) {
+    max-width: none;
+    margin-right: 0;
+  }
+  
   @media (max-width: ${breakpoints.p400}px) {
-    margin-right: 8px;
-    margin-left: 8px;
+    margin-right: 0;
+    margin-left: 0;
   }
 `
 
@@ -88,7 +93,7 @@ class Items extends React.Component<Props, {}> {
               </ImgWrapper>
             )}
             <div className={cx($p.pa25, $p.relative)}>
-              <h2 className={cx($p.f25)}>{item.title}</h2>
+              <h3>{item.title}</h3>
               <div className={cx($p.black20, $p.f14, $p.flex, $p.flexWrap, $p.nowrap, $p.mt10)}>
                 {item.tags.map(tag => (
                   <span key={tag} className={cx($p.mr6)}>#{tag}</span>

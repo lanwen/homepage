@@ -14,6 +14,10 @@ const Circle = styled.div`
   height: 24px;
 `
 
+const Question = styled.div`
+  min-height: 120px
+`
+
 export default class FAQ extends React.Component<{}, {}> {
   render() {
     return (
@@ -39,7 +43,7 @@ export default class FAQ extends React.Component<{}, {}> {
             <div className={cx($p.flex, $p.flexColumn)}>
 
               {/* FIRST QUESTION */}
-              <div className={cx($p.flex)}>
+              <Question className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
@@ -53,16 +57,14 @@ export default class FAQ extends React.Component<{}, {}> {
                 <div className={cx($p.flex, $p.flexColumn)}>
                   <div className={cx($p.fw6, $p.pl25)}>What happens when I go over my limit?</div>
                   <div className={cx($p.pl25, $p.mt10)}>
-                    Each plan has a over-quota price for additional nodes and operations. When your usage
-                    starts exceeding your plan we will notify you so you can decide if it would be better
-                    for you to change your plan.
+                    Each plan has a over-quota price for additional nodes and requests. When you
+                    start exceeding your plan we will let you know that it is time to change your plan.
                   </div>
                 </div>
-              </div>
-            </div>
+              </Question>
 
             {/* SECOND QUESTION */}
-            <div className={cx(
+            <Question className={cx(
               window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
             )}>
               <div className={cx($p.flex)}>
@@ -84,6 +86,80 @@ export default class FAQ extends React.Component<{}, {}> {
                   </div>
                 </div>
               </div>
+            </Question>
+
+            {/* THIRD QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>How do I manage multiple projects?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    Each project is billed individually. You can have as many free projects as you like.
+                  </div>
+                </div>
+              </div>
+            </Question>
+
+            {/* FOURTH QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>Can my open source project get a discount?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    We love open source! If you are the maintainer of an open source project that relies on a GraphQL
+                    backend we will upgrade you to GROWTH for free.
+                  </div>
+                </div>
+              </div>
+            </Question>
+
+            {/* FIFTH QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>Is my data backed up?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    Yes. We take periodic snapshots and can perform point in time restore up to 7 days back in time.
+                  </div>
+                </div>
+              </div>
+            </Question>
             </div>
 
           </div>
@@ -98,8 +174,8 @@ export default class FAQ extends React.Component<{}, {}> {
 
             <div className={cx($p.flex, $p.flexColumn)}>
 
-              {/* THIRD QUESTION */}
-              <div className={cx($p.flex)}>
+              {/* FIRST QUESTION */}
+              <Question className={cx($p.flex)}>
                 <div>
                   <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
                     <Icon
@@ -116,11 +192,10 @@ export default class FAQ extends React.Component<{}, {}> {
                     You still own all of your data. We do not share your data with any third parties.
                   </div>
                 </div>
-              </div>
-            </div>
+              </Question>
 
-            {/* FOURTH QUESTION */}
-            <div className={cx(
+            {/* SECOND QUESTION */}
+            <Question className={cx(
               window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
             )}>
               <div className={cx($p.flex)}>
@@ -143,9 +218,84 @@ export default class FAQ extends React.Component<{}, {}> {
                   </div>
                 </div>
               </div>
+            </Question>
 
-            </div>
+            {/* THIRD QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>How do you count multiple mutations in one http request?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    When you submit multiple mutations or queries in the same http request they all
+                    count towards your request limit.
+                  </div>
+                </div>
+              </div>
+            </Question>
+
+            {/* FOURTH QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>Do I pay for subscriptions?</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    The initial request made by a subscribing client is counted.
+                    After that, all events received by the client are free of charge.
+                  </div>
+                </div>
+              </div>
+            </Question>
+
+            {/* FIFTH QUESTION */}
+            <Question className={cx(
+              window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt38,
+            )}>
+              <div className={cx($p.flex)}>
+                <div>
+                  <Circle className={cx($p.bgGreen20, $p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter)}>
+                    <Icon
+                      src={require('../../assets/icons/pricing/question_mark.svg')}
+                      color={$v.green}
+                      height={22}
+                      width={9}
+                    />
+                  </Circle>
+                </div>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  <div className={cx($p.fw6, $p.pl25)}>How are mutation callbacks and lambda functions billed</div>
+                  <div className={cx($p.pl25, $p.mt10)}>
+                    There is no additional charge for mutation callbacks and lambda functions
+                  </div>
+                </div>
+              </div>
+            </Question>
+
           </div>
+        </div>
 
         </Box>
 
@@ -190,16 +340,15 @@ export default class FAQ extends React.Component<{}, {}> {
   }
 
   private openChat = () => {
-    if (typeof Smooch === 'undefined') {
+    if (typeof Intercom === 'undefined') {
       return
     }
-    const message = 'Hey! I have further questions to the FAQ:'
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
     if (!window.localStorage.getItem('chat_initiated_faq')) {
-      Smooch.sendMessage(message)
+      const message = 'Hey! I have further questions to the FAQ:'
+      Intercom('showNewMessage', message)
       window.localStorage.setItem('chat_initiated_faq', 'true')
+    } else {
+      Intercom('show')
     }
   }
 

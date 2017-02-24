@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {$p} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import SlackBox from './SlackBox'
@@ -10,6 +10,12 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   top: -20px;
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    padding-top: ${$v.size60};
+    padding-right: ${$v.size60};
+    padding-left: ${$v.size60};
+  }
 `
 
 const FeaturesBackground = styled.div`
@@ -19,6 +25,10 @@ const FeaturesBackground = styled.div`
   
   @media (max-width: ${breakpoints.p750}px) {
     height: 700px;    
+  }
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    height: auto;
   }
 `
 

@@ -95,13 +95,5 @@ export const examples: {[key: string]: QuickExample[]} = {
       layout: 'TUTORIAL',
       title: 'Instagram Example',
     },
-    {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
-      link: 'https://github.com/graphcool-examples/vue-apollo-todo-example',
-      layout: 'TUTORIAL',
-      title: 'Todo Example',
-    },
   ],
 }

@@ -4,16 +4,15 @@ import Header from '../Header'
 import Footer from '../Footer/Footer'
 import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
-import QueryEditor from './QueryEditor/QueryEditor'
+import Quickstart from './QuickStart/Quickstart'
 import Product from './Product/Product'
-import Functions from './Functions/Functions'
 import Features from './Features/Features'
 import References from './References/References'
+import TwitterFeed from './TwitterFeed/TwitterFeed'
 import ComparisonChart from './ComparisonChart/ComparisonChart'
-import SchemaGraph from './SchemaGraph'
-import OpenSource from './OpenSource'
 import { debounce } from 'lodash'
 import { isElementInViewport } from '../../utils/dom'
+import FooterCTA from '../FooterCTA'
 
 interface State {
   queryEditorInViewport: boolean
@@ -24,8 +23,6 @@ interface State {
 export default class HomeView extends React.Component<{}, State> {
 
   refs: {
-    queryEditor: QueryEditor,
-    functions: Functions,
     references: References,
   }
 
@@ -59,14 +56,20 @@ export default class HomeView extends React.Component<{}, State> {
         <Header/>
         <Landing/>
         <Timeline/>
-        <QueryEditor ref='queryEditor' inViewPort={this.state.queryEditorInViewport}/>
+        <Quickstart/>
         <Product/>
-        <Functions ref='functions' inViewPort={this.state.functionsInViewport}/>
         <Features/>
         <References ref='references' inViewPort={this.state.referencesInViewport}/>
         <ComparisonChart/>
-        <SchemaGraph/>
-        <OpenSource/>
+        <TwitterFeed />
+        <FooterCTA
+          headline1='Ready to get started?'
+          headline2='Set up a GraphQL backend or read the docs'
+          button1Text='Create GraphQL Backend'
+          button1Link='https://console.graph.cool/signup'
+          button2Text='Open Docs'
+          button2Link='https://graph.cool/docs'
+        />
         <Footer/>
       </div>
     )
@@ -77,14 +80,6 @@ export default class HomeView extends React.Component<{}, State> {
   }
 
   private onScroll = () => {
-    if (isElementInViewport(findDOMNode(this.refs.queryEditor)) !== this.state.queryEditorInViewport) {
-      this.setState({queryEditorInViewport: !this.state.queryEditorInViewport} as State)
-    }
-
-    if (isElementInViewport(findDOMNode(this.refs.functions)) !== this.state.functionsInViewport) {
-      this.setState({functionsInViewport: !this.state.functionsInViewport} as State)
-    }
-
     if (isElementInViewport(findDOMNode(this.refs.references)) !== this.state.referencesInViewport) {
       this.setState({referencesInViewport: !this.state.referencesInViewport} as State)
     }

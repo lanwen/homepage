@@ -1,9 +1,10 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p } from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import NegativeFeedback from './NegativeFeedback'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
+import styled from 'styled-components'
 import { Item } from '../../../../types/types'
 import {breakpoints} from '../../../../utils/constants'
 
@@ -19,6 +20,14 @@ interface Props {
   item: Item
 }
 
+const Root = styled.div`
+  margin-top: ${$v.size60};
+  
+  @media (max-width: ${breakpoints.p580}px) {
+    margin-top: ${$v.size38};
+  }
+`
+
 class Feedback extends React.Component<Props, State> {
   state = {
     showInput: false,
@@ -32,7 +41,9 @@ class Feedback extends React.Component<Props, State> {
     if (showThanks) {
       return (
         <div className={cx($p.mv38, $p.flex, $p.justifyCenter)}>
-          <h2>Thanks for your feedback 💖</h2>
+          <h2 className={cx($p.fw3, $p.f25, $p.green, $p.br2, $p.bgGreen10, $p.pv25, $p.ph38)}>
+            Thanks for your feedback. It won't be forgotten.
+          </h2>
         </div>
       )
     }
@@ -46,8 +57,7 @@ class Feedback extends React.Component<Props, State> {
     }
 
     return (
-      <div>
-        <div className={cx($p.bt, $p.bBlack10, $p.mt60, $p.mh96)}/>
+      <Root className={cx($p.bt, $p.bBlack10)}>
         {!showInput ? (
             <div
               className={cx(
@@ -55,7 +65,6 @@ class Feedback extends React.Component<Props, State> {
                 window.innerWidth < breakpoints.p500 && $p.flexColumn,
                 window.innerWidth < breakpoints.p500 && $p.itemsCenter,
                 window.innerWidth > breakpoints.p500 && $p.justifyCenter,
-                $p.mb38,
                 $p.pv38,
             )}>
               <div className={cx(
@@ -78,8 +87,8 @@ class Feedback extends React.Component<Props, State> {
                     className={cx(
                       $p.bbox,
                       $p.db,
+                      $p.pr10,
                       window.innerWidth > breakpoints.p500 && $p.pl38,
-                      window.innerWidth > breakpoints.p500 && $p.pr10,
                     )}/>
                   <div
                     className={cx(
@@ -91,11 +100,11 @@ class Feedback extends React.Component<Props, State> {
                 </div>
                 <div
                   onClick={this.showInput}
-                  className={cx($p.flex, $p.pointer)}
+                  className={cx($p.flex, $p.pointer, $p.ml38)}
                 >
                   <img
                     src={require('../../../../assets/graphics/docs/No.svg')}
-                    className={cx($p.bbox, $p.db, $p.pl38, $p.pr10)}
+                    className={cx($p.bbox, $p.db, $p.pr10)}
                   />
                   <div
                     className={cx($p.o40, $p.f20, $p.fw4, $p.pt4)}
@@ -110,7 +119,7 @@ class Feedback extends React.Component<Props, State> {
               onSubmit={() => this.sendFeedback(false)}
             />
           )}
-      </div>
+      </Root>
     )
   }
   private showInput = () => {

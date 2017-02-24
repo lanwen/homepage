@@ -7,8 +7,11 @@ import { AppContainer } from 'react-hot-loader'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
+import * as cookiestore from 'cookiestore'
+import * as WebFont from 'webfontloader'
 import routes from './routes'
 
+import './utils/polyfills'
 import './style'
 
 function shouldScrollUp(previousProps, {location}) {
@@ -29,7 +32,7 @@ export function updateApolloState(state: any): void {
 }
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: 'https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq'}),
+  networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
 })
 
 const store = createStore(
@@ -67,21 +70,24 @@ function render() {
 
 render()
 
-// if (module.hot) {
-//   module.hot.accept(render)
-// }
+const interval = setInterval(initIntercom, 1000)
 
-let interval = setInterval(initSmooch, 1000)
-
-function initSmooch() {
-  if (navigator.userAgent !== 'SSR') {
-    FastClick.attach(document.body)
-
-    if (typeof Smooch !== 'undefined') {
-      Smooch.init({
-        appToken: __SMOOCH_TOKEN__,
-      })
-      clearInterval(interval)
-    }
+function initIntercom() {
+  if (window.Intercom && navigator.userAgent !== 'SSR') {
+    Intercom('boot', {
+      app_id: __INTERCOM_ID__,
+      user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
+    })
+    clearInterval(interval)
   }
+}
+
+if (navigator.userAgent !== 'SSR') {
+  FastClick.attach(document.body)
+
+  WebFont.load({
+    google: {
+      families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
+    },
+  })
 }

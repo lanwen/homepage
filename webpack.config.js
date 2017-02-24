@@ -12,7 +12,6 @@ module.exports = {
       './src/styles/graphiql.css',
       'codemirror/mode/javascript/javascript',
       'codemirror/mode/shell/shell',
-      'codemirror/theme/dracula.css',
       'codemirror-graphql/mode',
       './src/main.tsx',
     ],
@@ -48,7 +47,9 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __BACKEND_ADDR__: JSON.stringify(process.env.BACKEND_ADDR.toString()),
-      __SMOOCH_TOKEN__: '"505tvtkv5udrd4kc5dbpppa6x"',
+      __DOCS_API_ADDR__: JSON.stringify(process.env.DOCS_API_ADDR.toString()),
+      __HEARTBEAT_ADDR__: process.env.HEARTBEAT_ADDR ? JSON.stringify(process.env.HEARTBEAT_ADDR.toString()) : false,
+      __INTERCOM_ID__: '"rqszgt2h"',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor'),

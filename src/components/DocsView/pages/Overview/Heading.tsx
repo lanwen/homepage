@@ -1,10 +1,11 @@
 import * as React from 'react'
-import {$p} from 'graphcool-styles'
+import { $p, $v } from 'graphcool-styles'
 import * as cx from 'classnames'
-import {Layout} from '../../../../types/types'
+import { Layout } from '../../../../types/types'
 import CircleIcon from '../../components/CircleIcon'
-import {Link} from 'react-router'
-import {breakpoints} from '../../../../utils/constants'
+import { Link } from 'react-router'
+import { breakpoints } from '../../../../utils/constants'
+import styled from 'styled-components'
 
 interface Props {
   layout: Layout
@@ -13,10 +14,14 @@ interface Props {
   link: string
 }
 
+const Root = styled.div`
+  padding: 0 ${$v.size60} 0 ${$v.size16};
+`
+
 const Heading = ({layout, title, text, link}: Props) => {
   const displayIcon = window.innerWidth > breakpoints.p500
   return (
-    <div>
+    <Root>
       {link.includes('http') ? (
         <a
           href={link}
@@ -62,7 +67,7 @@ const Heading = ({layout, title, text, link}: Props) => {
         )}>
         <p className={cx($p.mt25)}>{text}</p>
       </div>
-    </div>
+    </Root>
   )
 }
 

@@ -4,13 +4,32 @@ import { $p, $v, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { maxWidth, breakpoints } from '../../../utils/constants'
 import { features } from './data'
-
+import Separator from '../../Separator'
 import FeatureIndicator from './ConsoleFeatureIndicator'
 import FeaturePreview from './ConsoleFeaturePreview'
-import SectionHeader from '../../SectionHeader'
 import Pagination from '../Pagination'
+import SecondaryCallToAction from '../../SecondaryCallToAction'
 
 const Root = styled.div`
+
+  // padding-top: ${$v.size96};
+  margin-top: ${$v.size96};
+ 
+  @media (min-width: ${breakpoints.p750}px) {
+    // padding-top: ${$v.size96};
+    margin-top: ${$v.size96};
+  }
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    // padding-top: ${$v.size96};
+    margin-top: ${$v.size96};
+  }
+  
+  @media (max-width: ${breakpoints.p1000 - 1}px) {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
   @media (min-width: ${breakpoints.p1000}px) {
     &:before{
       content: "";
@@ -46,20 +65,32 @@ const BrowserContainer = styled.div`
 
 const FeatureDescription = styled.div`
   flex: 0;
-  padding: ${$v.size38};
+  padding: ${$v.size60};
   margin: ${$v.size16} 0;
   
   @media (min-width: ${breakpoints.p1200}px) {
-    padding: ${$v.size60};
+    padding: ${$v.size60} ${$v.size96} ${$v.size38};
+  }
+  
+  @media (min-width: ${breakpoints.p1440}px) {
+    padding: ${$v.size96} ${$v.size96} ${$v.size60};
   }
   
 `
 
-const Copy = styled.div`
+const Copy = styled.p`
   padding-top: ${$v.size25};
   
   @media (min-width: ${breakpoints.p1200}px) {
     padding-top: ${$v.size38};
+  }
+`
+
+const CallToAction = styled(SecondaryCallToAction)`
+  padding-top: ${$v.size16};
+  
+  @media (min-width: ${breakpoints.p1200}px) {
+    padding-top: ${$v.size25};
   }
 `
 
@@ -94,15 +125,7 @@ const ConsoleContent = styled.div`
 `
 
 const FeaturesList = styled.div`
-  &:after {
-    content: "";
-    display: block;
-    width: ${$v.size96};
-    height: ${$v.size04};
-    margin: 0 auto;
-    margin-top: ${$v.size96};
-    background: ${$v.gray20};
-  }
+  
 `
 
 interface State {
@@ -120,10 +143,6 @@ export default class Product extends React.Component<{}, State> {
 
     return (
       <section>
-        <SectionHeader
-          headline='It’s easy to control every aspect of your backend'
-          copy='With the Graphcool Console you can discover and manage every aspect of your backend.'
-        />
         <Root className={cx($p.relative)}>
 
           {window.innerWidth >= breakpoints.p1000 &&
@@ -157,8 +176,12 @@ export default class Product extends React.Component<{}, State> {
             </Browser>
             <FeatureDescription className={cx($p.flex, $p.flexColumn, $p.justifyBetween)}>
               <article>
-                <h3>{feature.title}</h3>
-                <Copy className={cx($p.black50)}>{feature.description}</Copy>
+                <h2>{feature.title}</h2>
+                <Copy className={cx($p.black50, $p.fw4)}>{feature.description}</Copy>
+                <CallToAction
+                  text='Learn more'
+                  link='/graphql'
+                />
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>
                 <Pagination
@@ -176,9 +199,9 @@ export default class Product extends React.Component<{}, State> {
             </FeatureDescription>
           </Container>
           }
-
           {window.innerWidth < breakpoints.p1000 &&
           <FeaturesList className={cx($p.overflowHidden)}>
+            <Separator />
             {features.map(feature => (
               <FeaturePreview
                 key={feature.title}

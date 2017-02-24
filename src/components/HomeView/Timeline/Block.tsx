@@ -51,6 +51,7 @@ interface Props {
   new: string[],
   oldSegments: number[],
   newSegments: number[],
+  noTime?: boolean,
 }
 
 interface State {
@@ -73,7 +74,7 @@ export default class Block extends React.Component<Props, State> {
         >
           <div className='label'>{this.props.label}</div>
           <Bar segments={this.props.oldSegments}/>
-          <Bar graphcool segments={this.props.newSegments}/>
+          <Bar noTime={this.props.noTime} graphcool segments={this.props.newSegments}/>
           {this.state.showOverlay &&
           <Overlay
             label={this.props.label}
@@ -81,6 +82,7 @@ export default class Block extends React.Component<Props, State> {
             new={this.props.new}
             oldSegments={this.props.oldSegments}
             newSegments={this.props.newSegments}
+            noTime={this.props.noTime}
           />
           }
         </div>
@@ -93,6 +95,7 @@ export default class Block extends React.Component<Props, State> {
           new={this.props.new}
           oldSegments={this.props.oldSegments}
           newSegments={this.props.newSegments}
+          noTime={this.props.noTime}
         />
         }
       </Root>

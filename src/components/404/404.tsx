@@ -64,12 +64,10 @@ export default class NotFoundView extends React.Component<{}, {}> {
   }
 
   private openChat = () => {
-    if (typeof Smooch === 'undefined') {
+    if (typeof Intercom === 'undefined') {
       return
     }
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
+    Intercom('show')
   }
 
 }

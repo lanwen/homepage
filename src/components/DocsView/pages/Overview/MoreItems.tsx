@@ -56,9 +56,10 @@ const MoreItems = ({text, color, link}: Props) => {
               $p.ba,
               $p.bw2,
               $p.bBlack05,
-              $p.mr25,
               window.innerWidth > breakpoints.p750 ? $p.pa60 : $p.pv60,
               arr.length === 2 && $p.mh60,
+              window.innerWidth < breakpoints.p580 ? $p.mr0 : $p.mr25,
+
             )}
             style={ arr.length > 1 ? {maxWidth: '325px'} : {maxWidth: '325px', minWidth: '325px'}}>
           </div>

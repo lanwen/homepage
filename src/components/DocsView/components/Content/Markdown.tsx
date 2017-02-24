@@ -23,13 +23,15 @@ interface Props {
 const Container = styled.div`
   margin-left: 50px;
   max-width: ${props => props.faq ? 880 : 920}px;
-  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 0}px;
+  margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 50}px;
  
   p { 
     line-height: 1.7;
     color: ${$v.gray60};
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16};
+    font-size: ${$v.size16};
     overflow: hidden;
+    font-weight: 400;
   }
   
   ul {
@@ -39,15 +41,24 @@ const Container = styled.div`
   }
   
   ul li {
+    position: relative;
     line-height: 2;
-    font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+    font-size: ${$v.size16};
     list-style-type: none;
-    margin-left: ${$v.size12};
-    width: calc(100% - 12px);
+    padding-left: ${$v.size16};
+    // width: calc(100% - 12px);
+    
+    .docs-codemirror {
+      margin-left: -${parseFloat($v.size25) + parseFloat($v.size16)}px;
+    }
   }
 
   ul li:before {
     content: '\\2022 \\00a0 \\00a0 \\00a0';
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   
   blockquote {
@@ -88,7 +99,8 @@ const Container = styled.div`
   
   h3 {
     color: ${$v.gray60};
-    font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    font-size: ${$v.size20};
     margin: ${$v.size25} 0;
   }
   
@@ -104,6 +116,11 @@ const Container = styled.div`
     margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
+    
+    @media (max-width: ${breakpoints.p580}px) {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
   }
   
   .CodeMirror-gutters {
@@ -111,20 +128,24 @@ const Container = styled.div`
   }
   
   @media (max-width: ${breakpoints.p900}px) {
-    margin-left: 6px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @media (max-width: ${breakpoints.p500}px) {
 
     p {
-      line-height: 1.5;
       color: ${$v.gray60}; 
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+    }
+    
+    code {
+      font-size: ${$v.size14};
     }
 
     ul li { 
       line-height: 1.7;
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
     }
     
     h2 {
@@ -135,16 +156,15 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
     }
     
     blockquote {
       border-left: ${$v.size06} solid ${$v.green50};
-      padding: ${$v.size12} ${$v.size06};
+      padding: ${$v.size06} ${$v.size10};
       margin-left: 0;
       width: 100%;
-      padding-bottom: 0;
     }
     
   }
@@ -157,6 +177,16 @@ const Container = styled.div`
   
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
+  }
+`
+
+const CodeContainer = styled.div`
+  width: 100vw;
+  margin-left: -25px;
+  margin-right: -25px;
+  border-radius: 2px;
+  @media (min-width: 920px) {
+    width: auto;
   }
 `
 
@@ -218,7 +248,7 @@ export default class Markdown extends React.Component<Props, {}> {
       List: (props) => {
         return (
           <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
-            <div className={cx('no-hover')}>
+            <div className={cx('no-hover', $p.w100)}>
               {ReactRenderer.renderers.List(props)}
             </div>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
@@ -239,44 +269,50 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       CodeBlock (props) {
+        const language = {
+          'js': 'javascript',
+          'json': { name: 'application/javascript', json: true },
+          'sh': 'shell',
+          'graphql': 'graphql',
+        }[props.language]
+
         if (window.innerWidth > breakpoints.p650 &&
-            props.language === 'graphql' &&
+            language === 'graphql' &&
             dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
-        } else if (window.innerWidth < breakpoints.p650 &&
-          props.language === 'graphql' &&
-          dslValid(props.literal.trim())) {
+        } else if (
+          window.innerWidth < breakpoints.p650 &&
+          language === 'graphql' &&
+          dslValid(props.literal.trim())
+        ) {
           return (
-            <div className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, 'docs-codemirror')}>
+            <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
-                lineNumbers: true,
-                mode: props.language,
-                readOnly: true,
-                lineWrapping: true,
-              }}
+                  lineNumbers: true,
+                  mode: language,
+                  readOnly: true,
+                  lineWrapping: true,
+                }}
               />
-            </div>
+            </CodeContainer>
           )
         }
-
         return (
-          <div
-            className={cx($p.bgDarkerBlue, $p.mv25, $p.pa10, $p.bbox, 'docs-codemirror')}
-          >
+          <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
             <CodeMirror
               value={props.literal.trim()}
               options={{
                 lineNumbers: true,
-                mode: props.language,
+                mode: language,
                 readOnly: true,
                 lineWrapping: true,
               }}
             />
-          </div>
+          </CodeContainer>
         )
       },
       HtmlBlock: (props) => {
@@ -354,16 +390,16 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   private async openChat(message: string) {
-    if (typeof Smooch === 'undefined') {
+    if (typeof Intercom === 'undefined') {
       return
     }
-    if (!Smooch.isOpened()) {
-      Smooch.open()
-    }
     if (!window.localStorage.getItem('chat_initiated')) {
-      await Smooch.sendMessage(`Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?`)
-      await Smooch.sendMessage(message.substr(0, 200) + (message.length > 200 ? '...' : ''))
+      const preview = message.substr(0, 200) + (message.length > 200 ? '...' : '')
+      const msg = `Hey! Can you help me with this part of the "${this.props.item.shorttitle}" docs?\n${preview}`
+      Intercom('showNewMessage', msg)
       window.localStorage.setItem('chat_initiated', 'true')
+    } else {
+      Intercom('show')
     }
   }
 }

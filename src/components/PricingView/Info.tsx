@@ -1,11 +1,10 @@
 import * as React from 'react'
-import {$p, $g} from 'graphcool-styles'
+import { $p, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
 import styled from 'styled-components'
 import 'rc-slider/assets/index.css'
-import PricingInfo from './PricingInfo'
 import IncludedInEveryPlanSection from './IncludedInEveryPlanSection'
-import {breakpoints} from '../../utils/constants'
+import { breakpoints } from '../../utils/constants'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -15,10 +14,8 @@ export default class Info extends React.Component<{}, {}> {
   render() {
 
     return (
-      <div className={cx($p.bgDarkBlue, $p.pb60)} style={{marginTop: -49}}>
+      <div className={cx($p.bgDarkBlue, $p.pb60, $p.pt60)} style={{marginTop: -49}}>
         <Box className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.center)}>
-
-          <PricingInfo/>
 
           {/* TITLE */}
           <h2 className={cx(

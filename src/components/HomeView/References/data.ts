@@ -1,20 +1,28 @@
-interface Reference {
+export interface ReferenceItem {
   quote: string
   who: string
   url: string
+  picture: string
+  logo: string
 }
 
 // tslint:disable
-export const references: Reference[] = [{
-  quote: 'Graphcool helped me to put together a reactive backend in record time so I could focus on building features and the user experience. They were also easy to contact whenever I got stuck and even offered suggestions on how I can better organize my data. I highly recommend Graphcool for your next project!',
-  who: 'Matthew Mueller, Developer',
-  url: 'https://github.com/matthewmueller',
+export const references: ReferenceItem[] = [{
+  quote: 'Graphcool makes working with various 3rd party APIs so much easier for us.',
+  who: 'Eric, Founder',
+  url: 'https://authory.com/',
+  picture: require('../../../assets/graphics/homepage/testimonials/eric.jpg'),
+  logo: require('../../../assets/icons/logos/authory.svg'),
 }, {
-  quote: 'We help big companies innovate like startups. Graphcools integrated console enabled us to build a product for Twitter and quickly iterate as we gathered analytics from users.',
-  who: 'Christian Strobl, Hackerbay CEO',
+  quote: 'Graphcool helped me to put together a reactive backend in record time.',
+  who: 'Matthew Mueller, Founder',
+  url: 'https://standupjack.com',
+  picture: require('../../../assets/graphics/homepage/testimonials/mattmueller.jpg'),
+  logo: require('../../../assets/icons/logos/standupjack.svg'),
+}, {
+  quote: 'Graphcool enabled us to build a product for Twitter and iterate rapidly.',
+  who: 'Christian Strobl, CEO',
   url: 'https://hackerbay.com/',
-}, {
-  quote: 'I am an experienced Angular developer but had never used GraphQL before. With Graphcool I can focus on the user experience and rely on Graphcool to handle the data and service integrations I need.',
-  who: 'Emil Møller, Developer',
-  url: 'https://github.com/emolr',
+  picture: require('../../../assets/graphics/homepage/testimonials/christianstrobl.jpg'),
+  logo: require('../../../assets/icons/logos/hackerbay.svg'),
 }]

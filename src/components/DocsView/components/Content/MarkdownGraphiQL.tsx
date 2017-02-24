@@ -1,6 +1,6 @@
 import * as React from 'react'
 // import * as GraphiQL from 'graphiql'
-import {CustomGraphiQL} from '../../../GraphiQL/CustomGraphiQL'
+import {CustomGraphiQL} from 'graphcool-graphiql'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import frontmatter = require('front-matter')
@@ -134,7 +134,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
         <CustomGraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}
-          response={this.state.response}
+          responses={[{date: this.state.response}]}
           variables={this.state.variables}
           onEditQuery={(query) => this.setState({ query } as State)}
           showViewAs={false}

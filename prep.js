@@ -16,6 +16,7 @@ exports.default = () => {
     const routes = [
       '/',
       '/about',
+      '/open-source',
       '/pricing',
       '/blog',
       '/docs',
