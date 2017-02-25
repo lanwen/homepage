@@ -3,6 +3,7 @@
 node_modules
 dist
 coverage
+.envrc
 .netlify
 .idea
 .prep-tmp
