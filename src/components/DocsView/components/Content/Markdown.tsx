@@ -14,6 +14,12 @@ import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
 
+interface ImageData {
+  caption: string
+  url: string
+  width: number | undefined
+}
+
 interface Props {
   ast: Node
   layout: Layout
@@ -366,6 +372,18 @@ export default class Markdown extends React.Component<Props, {}> {
         // if (props.literal.indexOf('__INJECT_SHARING__') > -1) {
         //   return <Sharing />
         // }
+
+        if (literal.includes('IMAGE')) {
+          const imageData = JSON.parse(literal.match(/<!-- IMAGE\((.*)\) -->/)![1]) as ImageData
+          const width = imageData.width || Math.ceil(Math.max(window.innerWidth * 0.8, 1100) * window.devicePixelRatio)
+          const url = imageData.url.replace('files', 'images') + `/${width}x10000`
+          return (
+            <div>
+              <img width={imageData.width} src={url} />
+              {imageData.caption}
+            </div>
+          )
+        }
 
         if (literal.includes('GITHUB_EXAMPLE')) {
           return (

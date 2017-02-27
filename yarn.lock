@@ -1653,11 +1653,7 @@ codemirror-graphql@^0.5.9:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.5.9.tgz#b5ca2a84bd0deae7660c726f7feba15149bac8fd"
 
-codemirror@^5.15.2, codemirror@^5.18.2:
-  version "5.22.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.22.0.tgz#281ec76ed991ef24db4071fdf4deb746e80bff18"
-
-codemirror@^5.22.2:
+codemirror@^5.15.2, codemirror@^5.18.2, codemirror@^5.22.2:
   version "5.24.2"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.24.2.tgz#b55ca950fa009709c37df68eb133310ed89cf2fe"
 
@@ -3131,9 +3127,9 @@ graphcool-styles@0.0.98:
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
 
-graphcool-styles@^0.0.102:
-  version "0.0.102"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.102.tgz#cb1cf90e38d0c19c9392060fca97089851419a76"
+graphcool-styles@^0.0.105:
+  version "0.0.105"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.105.tgz#97ca0b9e688088b2e10dbd92891306354b2027ff"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"
