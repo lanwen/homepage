@@ -396,7 +396,7 @@ export default class DocsHeader extends React.Component<{}, State> {
         )}
       >
         {window.innerWidth > breakpoints.p1000 ? WideHeader() : NarrowHeader()}
-        {loggedIn && this.state.endpointPopupOpened && (
+        {this.state.loggedIn && this.state.endpointPopupOpened && (
           <EndpointPopup
             isOpen={this.state.endpointPopupOpened}
             onRequestClose={this.closeEndpointPopup}

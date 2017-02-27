@@ -162,7 +162,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Comment */
 .cm-s-default span.cm-comment {
-    color: rgba(255,255,255,.3);
+    color: rgba(0,0,0,.3);
 }
 
 /* Punctuation */
