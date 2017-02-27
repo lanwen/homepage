@@ -72,7 +72,8 @@ export default class ContentHeader extends React.Component<Props, {}> {
   render() {
     const displayIcon = window.innerWidth > breakpoints.p900
     const {item} = this.props
-    const date = new Date(item.lastModified)
+    const lastModified = new Date(item.lastModified)
+    const created = new Date(item.publicationDate)
     const {simpleRelayTwin, path, layout} = item
 
     const rightPaddingTitle = item.beta ? '50px' : 0
@@ -136,7 +137,12 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <div
               className={cx($p.pr38, $p.nowrap)}
             >
-              Last updated {date.getMonth() + 1}/{date.getUTCDate()}/{date.getFullYear()}
+
+              {item.layout === 'BLOG' ? (
+                `Published at ${created.getMonth() + 1}/${created.getUTCDate()}/${created.getFullYear()}`
+              ) : (
+                `Last updated ${lastModified.getMonth() + 1}/${lastModified.getUTCDate()}/${lastModified.getFullYear()}`
+              )}
             </div>
             <div className={cx(
               $p.flex,

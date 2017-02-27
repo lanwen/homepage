@@ -233,6 +233,7 @@ const getItemQuery = gql`query getItem($alias: String) {
         sourceFilePath
         preview
         simpleRelayTwin
+        publicationDate
         relatedFurther {
             alias
             title

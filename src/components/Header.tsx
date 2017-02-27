@@ -172,6 +172,7 @@ const FunctionsIconContainer = styled(FeatureIconContainer)`
 interface State {
   menuOpened: boolean,
   tooltipActive: boolean,
+  loggedIn: boolean,
 }
 
 export default class Header extends React.Component<{}, State> {
@@ -179,10 +180,17 @@ export default class Header extends React.Component<{}, State> {
   state: State = {
     menuOpened: false,
     tooltipActive: false,
+    loggedIn: false,
+  }
+
+  componentDidMount() {
+    const loggedIn = cookiestore.has('graphcool_auth_token')
+    this.setState({
+      loggedIn,
+    } as State)
   }
 
   render() {
-    const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
       <div className='root'>
@@ -383,7 +391,7 @@ export default class Header extends React.Component<{}, State> {
             Pricing
           </NavLink>
           <NavLink className='link' to='/docs'>Docs</NavLink>
-          {loggedIn ? (
+          {this.state.loggedIn ? (
             <Signin>
               <Button
                 href='https://console.graph.cool'
