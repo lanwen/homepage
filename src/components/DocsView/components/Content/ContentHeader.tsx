@@ -16,6 +16,7 @@ const Root = styled.div`
   position: relative;
   display: flex;
   margin-top: ${$v.size96};
+  max-width: 970px;
   
   @media (max-width: ${breakpoints.p580}px) {
     margin-top: ${$v.size38};
@@ -49,11 +50,11 @@ const IconWrapper = styled.div`
 
 const Sublines = styled.div`
   font-size: ${$v.size16};
+  margin-top: ${$v.size16};
   
   @media (max-width: ${breakpoints.p580}px) {
     font-size: ${$v.size14};
     flex-direction: column;
-    margin-top: ${$v.size16};
   }
 `
 

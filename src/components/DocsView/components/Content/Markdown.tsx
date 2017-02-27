@@ -28,8 +28,8 @@ const Container = styled.div`
   p { 
     line-height: 1.7;
     color: ${$v.gray60};
-    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16};
-    font-size: ${$v.size16};
+    font-size: ${props => props.blog ? $v.size20 : $v.size16};
+    // font-size: ${$v.size16};
     overflow: hidden;
     font-weight: 400;
   }
@@ -43,8 +43,8 @@ const Container = styled.div`
   ul li {
     position: relative;
     line-height: 2;
-    // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
-    font-size: ${$v.size16};
+    font-size: ${props => props.blog ? $v.size20 : $v.size16};
+    // font-size: ${$v.size16};
     list-style-type: none;
     padding-left: ${$v.size16};
     // width: calc(100% - 12px);
@@ -64,13 +64,18 @@ const Container = styled.div`
   blockquote {
     border-left: ${$v.size06} solid ${$v.green50};
     padding: ${$v.size12} ${$v.size25};
-    margin-left: 0;
+    
+    margin: 0;
+    margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
+    
     width: 100%;
     box-sizing: border-box;
+    
     p {
       margin-bottom: 0;
     }
-    >div {
+    
+    > div {
       margin-bottom: 0 !important;
     }
   }
@@ -94,14 +99,17 @@ const Container = styled.div`
   h2 {
     font-size: ${$v.size25};
     color: ${$v.gray80};
-    margin: ${$v.size38} 0 ${$v.size25};
+    margin-top: ${$v.size38};
+    margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   }
   
   h3 {
     color: ${$v.gray60};
-    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    // font-size: ${props => props.blog ? $v.size20 : $v.size16}
     font-size: ${$v.size20};
     margin: ${$v.size25} 0;
+    // margin-top: ${props => props.blog ? $v.size38 : $v.size25};
+    // margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   }
   
   code {
@@ -115,7 +123,8 @@ const Container = styled.div`
     max-width: 100vw;
     margin-top: 60px;
     margin-bottom: 60px;
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     
     @media (max-width: ${breakpoints.p580}px) {
       margin-top: 25px;
@@ -136,7 +145,7 @@ const Container = styled.div`
 
     p {
       color: ${$v.gray60}; 
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+      // font-size: ${props => props.blog ? $v.size16 : $v.size14}; 
     }
     
     code {
@@ -145,7 +154,7 @@ const Container = styled.div`
 
     ul li { 
       line-height: 1.7;
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.blog ? $v.size16 : $v.size14};
     }
     
     h2 {
@@ -156,7 +165,7 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      // font-size: ${props => props.blog ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
     }
     
@@ -235,10 +244,10 @@ export default class Markdown extends React.Component<Props, {}> {
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
             style={{
-              marginBottom: 20,
+              marginBottom: this.props.layout === 'BLOG' ? 38 : 25,
             }}
           >
-            <p>{props.children}</p>
+            <p className={cx($p.w100)}>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
@@ -358,7 +367,7 @@ export default class Markdown extends React.Component<Props, {}> {
 
     return (
       <Container
-        biggerFont={this.props.layout !== 'REFERENCE'}
+        blog={this.props.layout === 'BLOG'}
         className={cx($p.relative)}
         faq={this.props.item.layout === 'FAQ'}
       >

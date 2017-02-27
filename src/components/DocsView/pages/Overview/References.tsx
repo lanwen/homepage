@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { $p, $v } from 'graphcool-styles'
-import * as cx from 'classnames'
+import { $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import FeatureBox from './FeatureBox'
 import {breakpoints} from '../../../../utils/constants'
@@ -36,7 +35,6 @@ const RootContainer = styled.div`
   
   @media (max-width: ${breakpoints.p580}px) {
     margin-top: ${$v.size38};
-    // padding-right: ${$v.size60};
   }
   
   @media (max-width: 800px) {
