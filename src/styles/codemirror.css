@@ -162,7 +162,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Comment */
 .cm-s-default span.cm-comment {
-    color: rgba(0,0,0,.3);
+    color: rgba(0,0,0,.25);
 }
 
 /* Punctuation */
@@ -172,17 +172,17 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Keyword */
 .cm-s-default span.cm-keyword {
-    color: rgb(42,126,211);
+    color: rgb(95,179,179);
+    font-weight: 600;
 }
 
-/* OperationName, FragmentName */
-.cm-s-default span.cm-def {
-    color: rgb(56,189,193);
-}
-
-/* FieldName */
+/* OperationName, FragmentName, Variable */
+.cm-s-default span.cm-def,
 .cm-s-default span.cm-property {
     color: rgb(95,179,179);
+}
+.cm-s-default span.cm-variable {
+    color: rgb(42,126,211);
 }
 
 /* FieldAlias */
@@ -197,27 +197,17 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Number */
 .cm-s-default span.cm-number {
-    color: #2882F9;
+    color: #D64292;
 }
 
 /* String */
 .cm-s-default span.cm-string, .cm-s-default span.cm-string-2 {
-    color: #D64292;
+    color: rgba(0,0,0,.5);
 }
 
 /* Boolean */
 .cm-s-default span.cm-builtin {
     color: #D47509;
-}
-
-/* EnumValue */
-.cm-s-default span.cm-string-2 {
-    color: #0B7FC7;
-}
-
-/* Variable */
-.cm-s-default span.cm-variable {
-    color: rgb(236,95,103);
 }
 
 /* Variable */
