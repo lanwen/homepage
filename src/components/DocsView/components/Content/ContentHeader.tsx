@@ -22,6 +22,14 @@ const Root = styled.div`
     margin-top: ${$v.size38};
   }
   
+  @media (max-width: 1050px) {
+    max-width: calc(100vw - 300px);
+  }
+  
+  @media (max-width: 750px) {
+    max-width: 750px;
+  }
+  
 `
 
 const RootContainer = styled.div`
@@ -88,7 +96,8 @@ export default class ContentHeader extends React.Component<Props, {}> {
         <RootContainer
           className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
           style={{
-            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : '',
+            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0
+            && window.innerWidth > 1050) ? '232px' : '',
           }}
         >
           <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>

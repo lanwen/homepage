@@ -24,6 +24,14 @@ const Container = styled.div`
   margin-left: 50px;
   max-width: ${props => props.faq ? 880 : 920}px;
   margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 50}px;
+  
+  @media (max-width: 1050px) {
+    max-width: calc(100vw - 370px);
+  }
+  
+  @media (max-width: 750px) {
+    max-width: 750px;
+  }
  
   p { 
     line-height: 1.7;
@@ -190,7 +198,7 @@ const Container = styled.div`
 `
 
 const CodeContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   margin-left: -25px;
   margin-right: -25px;
   border-radius: 2px;
@@ -224,11 +232,13 @@ const QuestionMarkWrapper = styled.div`
 const HeadingLink = styled.a`
   h1, h2, h3, h4, h5, h6 {
     position: relative;
+    left: -1em;
+    padding-left: 1em;
   }
   h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before {
     content: "#";
     position: absolute;
-    left: -1em;
+    left: 0;
     padding-right: 1em;
     color: ${$v.gray60};
   }
