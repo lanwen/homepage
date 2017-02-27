@@ -256,7 +256,12 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+          <QuestionWrapper
+            className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
+            style={{
+              marginBottom: this.props.layout === 'BLOG' ? 38 : 25,
+            }}
+          >
             <div className={cx('no-hover', $p.w100)}>
               {ReactRenderer.renderers.List(props)}
             </div>

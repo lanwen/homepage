@@ -87,7 +87,8 @@ if (navigator.userAgent !== 'SSR') {
 
   WebFont.load({
     google: {
-      families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
+      families: ['Open Sans:300,400,600', '' +
+      'Source Code Pro:500,700'],
     },
   })
 }
