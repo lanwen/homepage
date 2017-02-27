@@ -23,7 +23,7 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
     <Container
       className={cx(
         $p.absolute,
-        $p.bgLightgreen20,
+        $p.bgLightgreen10,
         $p.pa16,
         $p.f14,
         $p.green,

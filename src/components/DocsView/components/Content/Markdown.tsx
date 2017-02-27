@@ -34,7 +34,7 @@ const Container = styled.div`
   }
  
   p { 
-    line-height: 1.7;
+    line-height: ${props => props.blog ? 2 : 1.8};
     color: ${$v.gray60};
     font-size: ${props => props.blog ? $v.size20 : $v.size16};
     // font-size: ${$v.size16};
@@ -116,8 +116,6 @@ const Container = styled.div`
     // font-size: ${props => props.blog ? $v.size20 : $v.size16}
     font-size: ${$v.size20};
     margin: ${$v.size25} 0;
-    // margin-top: ${props => props.blog ? $v.size38 : $v.size25};
-    // margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   }
   
   code {
@@ -143,11 +141,6 @@ const Container = styled.div`
   .CodeMirror-gutters {
     height: auto !important;
   }
-  
-  @media (max-width: ${breakpoints.p900}px) {
-    margin-left: 0;
-    margin-right: 0;
-  }
 
   @media (max-width: ${breakpoints.p500}px) {
 
@@ -161,7 +154,7 @@ const Container = styled.div`
     }
 
     ul li { 
-      line-height: 1.7;
+      line-height: 1.8;
       // font-size: ${props => props.blog ? $v.size16 : $v.size14};
     }
     
@@ -183,15 +176,30 @@ const Container = styled.div`
       margin-left: 0;
       width: 100%;
     }
-    
   }
-  
+    
   @media (max-width: ${breakpoints.p580}px) {
     code {
       word-break: break-word;
     }
   }
+    
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
   
+  @media (max-width: ${breakpoints.p1000}px) {
+    p, ul li {
+      font-size: ${$v.size16};
+    }
+    
+    blockquote, ul li, h2 {
+      margin-bottom: ${$v.size25};
+    }
+  }
+  
+    
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
   }
@@ -208,10 +216,16 @@ const CodeContainer = styled.div`
 `
 
 const QuestionWrapper = styled.div`
+  margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
+  
+  @media (max-width: ${breakpoints.p1000}px) {
+    margin-bottom: ${$v.size25};
+  }
+  
   .hover {
     display: none;
   }
-  
+    
   &:hover .hover {
     display: block;
 
@@ -253,9 +267,7 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
-            style={{
-              marginBottom: this.props.layout === 'BLOG' ? 38 : 25,
-            }}
+            blog={this.props.layout === 'BLOG'}
           >
             <p className={cx($p.w100)}>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
@@ -268,9 +280,7 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
-            style={{
-              marginBottom: this.props.layout === 'BLOG' ? 38 : 25,
-            }}
+            blog={this.props.layout === 'BLOG'}
           >
             <div className={cx('no-hover', $p.w100)}>
               {ReactRenderer.renderers.List(props)}

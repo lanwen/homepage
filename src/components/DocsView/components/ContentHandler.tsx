@@ -154,6 +154,7 @@ class ContentHandler extends React.Component<Props, {}> {
               className={cx(
                 $p.pt96,
                 $p.flex,
+                $p.w100,
                 {
                   [$p.justifyCenter]: item.layout === 'TUTORIAL' || item.layout === 'BLOG',
                 },
@@ -168,10 +169,11 @@ class ContentHandler extends React.Component<Props, {}> {
               <div
                 className={cx(
                   $p.bbox,
+                  $p.mw100,
                 )}
                 style={{
-                  marginLeft: contentBoxMarginLeft,
-                  marginRight: contentBoxMarginRight,
+                  paddingLeft: contentBoxMarginLeft,
+                  paddingRight: contentBoxMarginRight,
                 }}
               >
                 <ContentHeader item={item}/>

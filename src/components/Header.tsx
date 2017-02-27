@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cx from 'classnames'
 import { Link } from 'react-router'
-import { $p, $g, Icon, $v } from 'graphcool-styles'
+import { $p, Icon, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import {breakpoints} from '../utils/constants'
 import * as cookiestore from 'cookiestore'
@@ -51,122 +51,6 @@ const NavLink = styled(SplitLink)`
 
 const TwoRowLink = styled(NavLink)`
   line-height: 1.3;
-`
-
-// const MultiNavLink = styled.button`
-//   ${NavLinkBase}
-//   position: relative;
-//   background: none;
-//   text-transform: inherit;
-//   letter-spacing: inherit;
-//   font-size: inherit;
-//   font-weight: inherit;
-//   padding: ${$v.size20} 0;
-//   cursor: default;
-//
-//   ${props => props.active && ActiveNavLink}
-// `
-
-const NavTooltip = styled.span`
-  top: 55px;
-  left: 50%;
-  white-space: initial;
-  overflow: visible;
-  width: 225px;
-  transform: translate(-50%, 0);
-  font-size: ${$v.size16};
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size20};
-    width: 270px;
-  }
-  
-  &:before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    transform: translate(-50%,0);
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 6px 6px 6px;
-    border-color: transparent transparent ${$v.white} transparent;
-  }
-`
-
-const Signin = styled.div`
-  @media (max-width: ${breakpoints.p750}px) {
-    padding-top: ${$v.size16};
-    display: flex;
-  }
-`
-
-const Button = styled.a`
-  font-size: ${$v.size14} !important;
-  text-decoration: none;
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    font-size: ${$v.size16} !important;
-  }
-`
-
-const FeatureLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  text-transform: none;
-  letter-spacing: 0;
-  font-weight: 400;
-  color: ${$v.gray50};
-  padding: ${$v.size20} ${$v.size16} ${$v.size10};
-  
-  &:last-child {
-    padding: ${$v.size10} ${$v.size16} ${$v.size20};
-  }
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    padding: ${$v.size25} ${$v.size20} ${$v.size12};
-
-    &:last-child {
-      padding: ${$v.size12} ${$v.size20} ${$v.size25};
-    }
-  }
-  
-  transition: opacity ${$v.duration} ease;
-  
-  &:hover {
-    opacity: .75;
-  }
-  
-`
-
-const FeatureIconContainer = styled.div`
-  position: relative;
-  margin-right: ${$v.size10};
-  
-  &:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: ${$v.size20};
-    height: ${$v.size20};
-    border-radius: 500px;    
-  }
-`
-
-const GraphQLBackendIconContainer = styled(FeatureIconContainer)`
-  &:before {
-    background: ${$v.purple20};
-  }
-`
-
-const FunctionsIconContainer = styled(FeatureIconContainer)`
-  &:before {
-    background: ${$v.lightOrange20};
-  }
 `
 
 interface State {
@@ -275,7 +159,7 @@ export default class Header extends React.Component<{}, State> {
             }
 
             &:before, &:after {
-              content: "";
+              content: '';
               @p: .absolute, .bgBlack, .left50, .top50, .w80;
               height: 2px;
               transform: translate(-50%, -50%) rotate(45deg);
@@ -319,6 +203,109 @@ export default class Header extends React.Component<{}, State> {
             }
           }
 
+          .tooltip {
+            @p: .absolute, .db, .left50, .overflowVisible, .tlHCenter, .bgWhite, .br2, .overlayShadow;
+            top: 55px;
+            white-space: initial;
+
+            @media (max-width: 899px) {
+              @p: .f16;
+              width: 225px;
+            }
+
+            @media (min-width: 900px) {
+              @p: .f20;
+              width: 270px;
+            }
+
+            &:before {
+              @p: .absolute, .left50, .tlHCenter;
+              content: '';
+              width: 0;
+              height: 0;
+              top: -8px;
+              border-style: solid;
+              border-width: 0 8px 8px 8px;
+              border-color: transparent transparent #fff transparent;
+            }
+          }
+
+          .tooltip :global(.tooltipLink) {
+            @p: .flex, .itemsCenter, .noUnderline, .ttn, .fw4, .black50;
+            letter-spacing: 0;
+            transition: opacity .1s ease;
+
+            &:hover {
+              opacity: .75;
+            }
+
+            @media (max-width: 899px) {
+              @p: .ph16, .pt20, .pb10;
+            }
+
+            @media (min-width: 900px) {
+              @p: .ph20, .pt25, .pb12;
+            }
+          }
+
+          @media (max-width: 899px) {
+            .tooltip :global(.tooltipLink):last-child {
+              @p: .pt10, .pb20;
+            }
+          }
+
+          @media (min-width: 900px) {
+            .tooltip :global(.tooltipLink):last-child {
+              @p: .pt12, .pb25;
+            }
+          }
+
+          .featureIcon {
+            @p: .relative, .mr10;
+
+            &:before {
+              content: '';
+              @p: .absolute, .left50, .top50, .tlCenter, .wS20, .hS20, .brPill;
+            }
+
+            &.graphqlBackend {
+              &:before {
+                @p: .bgPurple20;
+              }
+            }
+
+            &.serverlessFunctions {
+              &:before {
+                @p: .bgLightOrange20;
+              }
+            }
+          }
+
+          .entryPoints {
+            @media (max-width: 750px) {
+              @p: .flex, .pt16;
+            }
+          }
+
+          .button {
+            @p: .noUnderline, .dim, .ttu, .pa10, .lhSolid, .br2, .f16, .fw6, .pointer, .nowrap, .tracked;
+
+            @media (max-width: 899px) {
+              font-size: 14px !important;
+            }
+
+            @media (min-width: 900px) {
+              font-size: 16px !important;
+            }
+
+            &.secondary {
+              @p: .bgLightgreen20, .green, .mr10;
+            }
+
+            &.primary {
+              @p: .bgGreen, .white;
+            }
+          }
         `}</style>
         <Link to='/'>
           <img className='logo' src={require('../assets/graphics/logos/graphcoolFull.svg')} />
@@ -351,30 +338,31 @@ export default class Header extends React.Component<{}, State> {
             >
               Features
               {this.state.tooltipActive &&
-              <NavTooltip className={cx($g.overlay, $p.absolute)}>
-                <FeatureLink to='/graphql'>
-                  <GraphQLBackendIconContainer>
+              <span className='tooltip'>
+                <Link to='/graphql' className='tooltipLink'>
+
+                  <div className='featureIcon graphqlBackend'>
                     <Icon
                       src={require('../assets/icons/graphqlBackendLogo.svg')}
                       height={25}
                       width={25}
                       color={$v.purple}
                     />
-                  </GraphQLBackendIconContainer>
+                  </div>
                   <span className={cx($p.flexFixed)}>GraphQL Backend</span>
-                </FeatureLink>
-                <FeatureLink to='/functions'>
-                  <FunctionsIconContainer>
+                </Link>
+                <Link to='/functions' className='tooltipLink'>
+                  <div className='featureIcon serverlessFunctions'>
                     <Icon
                       src={require('../assets/icons/functionsLogo.svg')}
                       height={25}
                       width={25}
                       color={$v.lightOrange}
                     />
-                  </FunctionsIconContainer>
+                  </div>
                   <span className={cx($p.flexFixed)}>Serverless Functions</span>
-                </FeatureLink>
-              </NavTooltip>
+                </Link>
+              </span>
               }
             </div>
           }
@@ -392,29 +380,23 @@ export default class Header extends React.Component<{}, State> {
           </NavLink>
           <NavLink className='link' to='/docs'>Docs</NavLink>
           {this.state.loggedIn ? (
-            <Signin>
-              <Button
+            <div className='entryPoints'>
+              <a
                 href='https://console.graph.cool'
-                className={cx($g.uppercaseButton, $p.bgGreen, $p.white)}
+                className='button secondary'
               >
                 Go to Console
-              </Button>
-            </Signin>
+              </a>
+            </div>
           ) : (
-            <Signin>
-              <Button
-                href='https://console.graph.cool/login'
-                className={cx($g.uppercaseButton, $p.bgLightgreen20, $p.green, $p.mr10, $p.dim)}
-              >
+            <div className='entryPoints'>
+              <a href='https://console.graph.cool/login' className='button secondary'>
                 Log in
-              </Button>
-              <Button
-                href='https://console.graph.cool/signup'
-                className={cx($g.uppercaseButton, $p.bgGreen, $p.white, $p.dim)}
-              >
+              </a>
+              <a href='https://console.graph.cool/signup' className='button primary'>
                 Sign up
-              </Button>
-            </Signin>
+              </a>
+            </div>
           )}
         </nav>
       </div>
