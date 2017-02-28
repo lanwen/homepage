@@ -131,20 +131,6 @@ const Container = styled.div`
     padding: ${$v.size04}
   }
   
-  img {
-    height: auto;
-    max-width: 100vw;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media (max-width: ${breakpoints.p580}px) {
-      margin-top: 25px;
-      margin-bottom: 25px;
-    }
-  }
-  
   .CodeMirror-gutters {
     height: auto !important;
   }
@@ -377,11 +363,77 @@ export default class Markdown extends React.Component<Props, {}> {
         if (literal.includes('IMAGE')) {
           const imageData = JSON.parse(literal.match(/<!-- IMAGE\((.*)\) -->/)![1]) as ImageData
           const width = imageData.width || Math.ceil(Math.max(window.innerWidth * 0.8, 1100) * window.devicePixelRatio)
+          const hasFixedWidth = !!imageData.width
           const url = imageData.url.replace('files', 'images') + `/${width}x10000`
           return (
-            <div>
-              <img className={cx($p.mw100)} width={imageData.width} src={url} />
-              {imageData.caption}
+            <div
+              className={cx(
+                'imageContainer', {
+                  'hasFixedWidth': hasFixedWidth,
+                }
+              )}
+            >
+              <style jsx={true}>{`
+                .imageContainer {
+                  @p: .relative;
+                  margin-left: -70px;
+                  margin-right: -70px;
+                  width: auto;
+
+                  @media (max-width: 580px) {
+                    margin-left: -25px;
+                    margin-right: -25px;
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                  }
+
+                  @media (min-width: 581px) {
+                    margin-top: 60px;
+                    margin-bottom: 60px;
+                  }
+                }
+                .imageContainer.hasFixedWidth {
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
+                }
+
+                .imageContainer.hasFixedWidth .image {
+                  @p: .wAuto, .mw100;
+                }
+
+                .image {
+                  @p: .w100, .hAuto, .center, .db;
+
+                  @media (max-width: 400px) {
+                    @p: .br0;
+                  }
+
+                  @media (max-width: 580px) {
+                    @p: .br2;
+                  }
+
+                  @media (max-width: 750px) {
+                    @p: .br0;
+                  }
+
+                  @media (min-width: 751px) {
+                    @p: .br2;
+                  }
+                }
+
+                .caption {
+                  @p: .black30, .tc;
+                }
+
+              `}</style>
+              <img
+                className='image'
+                width={width}
+                src={url}
+              />
+              <p className='caption'>
+                {imageData.caption}
+              </p>
             </div>
           )
         }
