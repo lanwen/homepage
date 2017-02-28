@@ -5,6 +5,7 @@ import {breakpoints} from '../../utils/constants'
 import * as cookiestore from 'cookiestore'
 import Search from '../DocsView/components/Header/Search'
 import Nav from './Nav'
+import {withRouter} from 'react-router'
 
 // const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
 //   to.startsWith('http')
@@ -13,15 +14,16 @@ import Nav from './Nav'
 // )
 
 interface Props {
-  view: string,
+  view: string
+  router: ReactRouter.InjectedRouter
 }
 
 interface State {
-  menuOpened: boolean,
-  loggedIn: boolean,
+  menuOpened: boolean
+  loggedIn: boolean
 }
 
-export default class Header extends React.Component<Props, State> {
+class Header extends React.Component<Props, State> {
 
   state: State = {
     menuOpened: false,
@@ -178,6 +180,10 @@ export default class Header extends React.Component<Props, State> {
           .hamburger {
             @p: .bgNone, .pointer, .pa0;
           }
+
+          :global(.logoIcon), :global(.logoLink) {
+            @p: .pointer;
+          }
         `}</style>
         {this.props.view === 'HOMEPAGE' &&
           <Link to='/' className='logo'>
@@ -193,19 +199,19 @@ export default class Header extends React.Component<Props, State> {
         }
 
         {this.props.view === 'DOCS' &&
-        <div className='logo withLinks'>
-          <Icon
-            height={42}
-            width={36}
-            src={require('../../assets/icons/graphcool.svg')}
-            color={$v.green}
-            className='logoIcon'
-          />
-          <span className='logoLink active'>Docs</span>
-          <Link to='/' className='logoLink'>Console</Link>
-          <Link to='/' className='logoLink'>Homepage</Link>
-
-        </div>
+          <div className='logo withLinks'>
+            <Icon
+              height={42}
+              width={36}
+              src={require('../../assets/icons/graphcool.svg')}
+              color={$v.green}
+              className='logoIcon'
+              onClick={this.openDocs}
+            />
+            <span className='logoLink pointer active' onClick={this.openDocs}>Docs</span>
+            <Link to='/' className='logoLink'>Console</Link>
+            <Link to='/' className='logoLink'>Homepage</Link>
+          </div>
         }
 
         {this.props.view === 'DOCS' &&
@@ -226,7 +232,13 @@ export default class Header extends React.Component<Props, State> {
     )
   }
 
+  private openDocs = () => {
+    this.props.router.push('/docs')
+  }
+
   private handleMenuClosed = () => {
     this.setState({menuOpened: false} as State)
   }
 }
+
+export default withRouter(Header)
