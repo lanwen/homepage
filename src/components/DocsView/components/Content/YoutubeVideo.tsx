@@ -53,9 +53,6 @@ const Container = styled.div`
     margin-left: -25px;
     margin-right: -25px;
   }
-  
-  
-  
 `
 
 export default class YoutubeVideo extends React.Component<Props, {}> {

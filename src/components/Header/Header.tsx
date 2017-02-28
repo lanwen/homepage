@@ -56,10 +56,16 @@ export default class Header extends React.Component<Props, State> {
             @media (min-width: 1200px) {
               @p: .pa60;
             }
+
+            &:before {
+              content: '';
+              @p: .absolute, .left0, .top0, .right0, .bottom0;
+              background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0) 100%);
+            }
           }
 
           .root :global(.logo) {
-            @p: .flex, .itemsCenter, .overflowHidden, .flexFixed, .noUnderline;
+            @p: .flex, .itemsCenter, .overflowHidden, .flexFixed, .noUnderline, .relative;
             transition: width .4s ease-in-out;
           }
 
@@ -213,6 +219,7 @@ export default class Header extends React.Component<Props, State> {
         <Nav
           menuOpened={this.state.menuOpened}
           loggedIn={this.state.loggedIn}
+          view={this.props.view}
         />
       </div>
     )

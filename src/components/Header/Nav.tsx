@@ -69,6 +69,7 @@ const links = {
 interface Props {
   menuOpened: boolean,
   loggedIn: boolean,
+  view: string,
 }
 
 interface State {
@@ -92,6 +93,10 @@ export default class Nav extends React.Component<Props, State> {
       >
         <style jsx={true}>{`
           .root {
+
+          }
+
+          .rootWrapper {
             @p: .fw6, .black30, .tracked, .ttu, .f14, .zMax;
 
             @media (max-width: 400px) {
@@ -287,23 +292,24 @@ export default class Nav extends React.Component<Props, State> {
             }
           }
         `}</style>
-        {window.innerWidth < breakpoints.p750 &&
-        <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
-        }
-        {window.innerWidth >= breakpoints.p750 &&
-        <div
-          className={cx(
+        <div className='rootWrapper'>
+          {window.innerWidth < breakpoints.p750 &&
+          <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
+          }
+          {window.innerWidth >= breakpoints.p750 &&
+          <div
+            className={cx(
             'link',
             'withTooltip', {
               'active': ['/graphql', '/functions'].includes(window.location.pathname),
             },
           )}
-          onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
-          onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
-        >
-          Features
-          {this.state.tooltipActive &&
-          <span className='tooltip'>
+            onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
+            onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
+          >
+            Features
+            {this.state.tooltipActive &&
+            <span className='tooltip'>
                 <Link to='/graphql' className='tooltipLink'>
                   <div className='featureIcon graphqlBackend'>
                     <Icon
@@ -327,41 +333,42 @@ export default class Nav extends React.Component<Props, State> {
                   <span className={cx($p.flexFixed)}>Serverless Functions</span>
                 </Link>
               </span>
+            }
+          </div>
           }
+          {window.innerWidth < breakpoints.p750 &&
+          <Link className='link twoRow' to='/graphql'>GraphQL<br />Backend</Link>
+          }
+          {window.innerWidth < breakpoints.p750 &&
+          <Link className='link twoRow' to='/functions'>Serverless<br />Functions</Link>
+          }
+          <Link
+            className={cx('link', {'active' : window.location.pathname === '/pricing'})}
+            to='/pricing'
+          >
+            Pricing
+          </Link>
+          <Link className='link' to='/docs'>Docs</Link>
+          {this.props.loggedIn ? (
+            <div className='entryPoints'>
+              <a
+                href='https://console.graph.cool'
+                className='button secondary'
+              >
+                Go to Console
+              </a>
+            </div>
+          ) : (
+            <div className='entryPoints'>
+              <a href='https://console.graph.cool/login' className='button secondary'>
+                Log in
+              </a>
+              <a href='https://console.graph.cool/signup' className='button primary'>
+                Sign up
+              </a>
+            </div>
+          )}
         </div>
-        }
-        {window.innerWidth < breakpoints.p750 &&
-        <Link className='link twoRow' to='/graphql'>GraphQL<br />Backend</Link>
-        }
-        {window.innerWidth < breakpoints.p750 &&
-        <Link className='link twoRow' to='/functions'>Serverless<br />Functions</Link>
-        }
-        <Link
-          className={cx('link', {'active' : window.location.pathname === '/pricing'})}
-          to='/pricing'
-        >
-          Pricing
-        </Link>
-        <Link className='link' to='/docs'>Docs</Link>
-        {this.props.loggedIn ? (
-          <div className='entryPoints'>
-            <a
-              href='https://console.graph.cool'
-              className='button secondary'
-            >
-              Go to Console
-            </a>
-          </div>
-        ) : (
-          <div className='entryPoints'>
-            <a href='https://console.graph.cool/login' className='button secondary'>
-              Log in
-            </a>
-            <a href='https://console.graph.cool/signup' className='button primary'>
-              Sign up
-            </a>
-          </div>
-        )}
       </nav>
     )
   }

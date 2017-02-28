@@ -380,7 +380,7 @@ export default class Markdown extends React.Component<Props, {}> {
           const url = imageData.url.replace('files', 'images') + `/${width}x10000`
           return (
             <div>
-              <img width={imageData.width} src={url} />
+              <img className={cx($p.mw100)} width={imageData.width} src={url} />
               {imageData.caption}
             </div>
           )

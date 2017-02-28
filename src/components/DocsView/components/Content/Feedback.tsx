@@ -22,9 +22,11 @@ interface Props {
 
 const Root = styled.div`
   margin-top: ${$v.size60};
+  margin-bottom: ${$v.size60};
   
   @media (max-width: ${breakpoints.p580}px) {
     margin-top: ${$v.size38};
+    margin-bottom: ${$v.size38};
   }
 `
 

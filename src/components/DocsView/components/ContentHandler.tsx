@@ -86,7 +86,7 @@ class ContentHandler extends React.Component<Props, {}> {
     }
 
     const item: Item = this.props.data.Item
-    const ast = new Parser().parse(atob(this.props.data.Item.body))
+    const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
 
     let imageMeta: Meta[] = []
 
@@ -156,7 +156,6 @@ class ContentHandler extends React.Component<Props, {}> {
             </div>
             <section
               className={cx(
-                $p.pt96,
                 $p.flex,
                 $p.w100,
                 {
