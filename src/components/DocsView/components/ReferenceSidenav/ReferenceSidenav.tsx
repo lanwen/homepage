@@ -86,7 +86,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
         // leave the logging for later debugging
         // console.log('\n\n\n')
         // console.log(`containerTop + containerHeight ${containerTop+containerHeight}
-        //(threshold - 45) ${threshold - 45}`)
+        // (threshold - 45) ${threshold - 45}`)
         // console.log(`bodyHeight ${bodyHeight}\nbodyTop${bodyTop}\nthreshold ${threshold}`)
         // console.log(`footerHeight ${footerHeight}`)
         // console.log(`containerTop ${containerTop}\ncontainerHeight ${containerHeight}`)
