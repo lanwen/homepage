@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Mission from './Mission'
 import Values from './Values/Values'
 import Team from './Team/Team'
@@ -22,7 +22,9 @@ export default class AboutView extends React.Component<{}, {}> {
             @p: .pt96, .bgBlack02;
           }
         `}</style>
-        <Header />
+        <Header
+          view='HOMEPAGE'
+        />
         <Mission />
         <Values />
         <Team />

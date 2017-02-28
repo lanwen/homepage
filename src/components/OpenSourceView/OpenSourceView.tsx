@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import OpenSource from './OpenSource'
 import FooterCTA from '../FooterCTA'
@@ -12,7 +12,7 @@ export default class OpenSourceView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header view='HOMEPAGE' />
         <OpenSource/>
         <FooterCTA
           headline1='Ready to get started?'

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
@@ -14,7 +14,7 @@ export default class FeaturesFunctionsView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header view='HOMEPAGE' />
         <Functions ref='functions' inViewPort={true}/>
         <FooterCTA
           headline1='Ready to get started?'

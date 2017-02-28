@@ -1,114 +1,97 @@
 import * as React from 'react'
-import * as cx from 'classnames'
-import { Link } from 'react-router'
 import { $p, Icon, $v } from 'graphcool-styles'
-import styled from 'styled-components'
-import {breakpoints} from '../utils/constants'
-import * as cookiestore from 'cookiestore'
+import * as cx from 'classnames'
+import { breakpoints } from '../../utils/constants'
+import { Link } from 'react-router'
 
-const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
-  to.startsWith('http')
-    ? <a href={to} className={className}>{children}</a>
-    : <Link to={to} className={className}>{children}</Link>
-)
+const links = {
+  homepage: [
+    {
+      name: 'Features',
+      links: [
+        {
+          name: 'GraphQL Backend',
+          link: '/graphql',
+          icon: 'graphqlBackend'
+        },
+        {
+          name: 'Serverless Functions',
+          link: '/functions',
+          icon: 'serverlessFunctions'
+        }
+      ]
+    },
+    {
+      name: 'Pricing',
+      link: '/pricing'
+    },
+    {
+      name: 'Docs',
+      link: '/docs'
+    }
+  ],
+  docs: [
+    {
+      name: 'Quickstart',
+      link: 'docs/quickstart'
+    },
+    {
+      name: 'Resources',
+      links: [
+        {
+          name: 'Tutorials',
+          link: '/docs/tutorials',
+          icon: 'docsTutorial'
+        },
+        {
+          name: 'Examples',
+          link: '/docs/examples',
+          icon: 'docsExamples'
+        },
+        {
+          name: 'FAQ',
+          link: '/docs/faq',
+          icon: 'docsQuestion'
+        }
+      ]
+    },
+    {
+      name: 'Reference',
+      link: 'docs/reference'
+    },
+    {
+      name: 'Blog',
+      link: '/blog'
+    }
+  ]
+}
 
-const NavLinkBase = `
-  color: ${$v.gray30};
-  margin-right: ${$v.size25};
-  cursor: pointer;
-  line-height: 1;
-  transition: color ${$v.duration} linear;
-  text-decoration: none;
-
-  &:hover {
-    color: ${$v.gray50};
-  }
-  
-  @media (min-width: ${breakpoints.p900}px) {
-    margin-right: ${$v.size38};
-  }
-  
-  @media (max-width: ${breakpoints.p750}px) {
-    padding: ${$v.size10};
-  }
-`
-
-const ActiveNavLink = `
-  color: ${$v.green};
-  &:hover {
-    color: ${$v.green};
-  }
-  
-  &:before {
-    content: "";
-  }
-`
-
-const NavLink = styled(SplitLink)`
-  ${NavLinkBase}
-  ${props => props.active && ActiveNavLink}
-`
-
-const TwoRowLink = styled(NavLink)`
-  line-height: 1.3;
-`
-
-interface State {
+interface Props {
   menuOpened: boolean,
-  tooltipActive: boolean,
   loggedIn: boolean,
 }
 
-export default class Header extends React.Component<{}, State> {
+interface State {
+  tooltipActive: boolean,
+}
+
+export default class Nav extends React.Component<Props, State> {
 
   state: State = {
-    menuOpened: false,
     tooltipActive: false,
-    loggedIn: false,
-  }
-
-  componentDidMount() {
-    const loggedIn = cookiestore.has('graphcool_auth_token')
-    this.setState({
-      loggedIn,
-    } as State)
   }
 
   render() {
-
     return (
-      <div className='root'>
+      <nav
+        className={cx(
+            'root', {
+              'opened': this.props.menuOpened,
+            },
+          )}
+      >
         <style jsx={true}>{`
           .root {
-            @p: .flex, .itemsCenter, .justifyBetween, .center, .relative;
-            max-width: 1440px;
-
-            @media (max-width: 400px) {
-              @p: .pa25;
-            }
-
-            @media (min-width: 401px) {
-              @p: .pa38;
-            }
-
-            @media (min-width: 1200px) {
-              @p: .pa60;
-            }
-          }
-
-          .logo {
-            @p: .wAuto, .relative;
-
-            @media (max-width: 899px) {
-              height: 36px;
-            }
-
-            @media (min-width: 900px) {
-              height: 41px;
-            }
-          }
-
-          .nav {
             @p: .fw6, .black30, .tracked, .ttu, .f14, .zMax;
 
             @media (max-width: 400px) {
@@ -120,7 +103,7 @@ export default class Header extends React.Component<{}, State> {
               @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
               @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .zMax;
               right: 22px;
-              top: 22px;
+              top: 30px;
 
               &.opened {
                 @p: .flex;
@@ -133,18 +116,6 @@ export default class Header extends React.Component<{}, State> {
 
             @media (min-width: 900px) {
               @p: .f16;
-            }
-          }
-
-          .hamburger {
-            @p: .bgNone, .absolute, .pointer;
-
-            @media (max-width: 400px) {
-              @p: .top25, .right25;
-            }
-
-            @media (min-width: 401px) {
-              @p: .top38, .right38;
             }
           }
 
@@ -170,20 +141,16 @@ export default class Header extends React.Component<{}, State> {
             }
           }
 
-          .link {
+          .root :global(.link) {
             @p: .black30, .pointer, .lhSolid, .ttu;
             transition: color .1s linear;
 
-            &:hover {
-              @p: .black50;
-            }
-
             @media (max-width: 899px) {
-              @p: .mr25;
+              @p: .mr25, .f14;
             }
 
             @media (min-width: 900px) {
-              @p: .mr38;
+              @p: .mr38, .f16;
             }
 
             @media (max-width: 750px) {
@@ -201,7 +168,20 @@ export default class Header extends React.Component<{}, State> {
                 @p: .green;
               }
             }
+
+            &.twoRow {
+              line-height: 1.3;
+            }
           }
+
+          .root :global(.link):hover {
+            @p: .black50;
+          }
+
+          .root :global(.link).active {
+            @p: .green;
+          }
+
 
           .tooltip {
             @p: .absolute, .db, .left50, .overflowVisible, .tlHCenter, .bgWhite, .br2, .overlayShadow;
@@ -235,10 +215,6 @@ export default class Header extends React.Component<{}, State> {
             letter-spacing: 0;
             transition: opacity .1s ease;
 
-            &:hover {
-              opacity: .75;
-            }
-
             @media (max-width: 899px) {
               @p: .ph16, .pt20, .pb10;
             }
@@ -246,6 +222,10 @@ export default class Header extends React.Component<{}, State> {
             @media (min-width: 900px) {
               @p: .ph20, .pt25, .pb12;
             }
+          }
+
+          .tooltip :global(.tooltipLink):hover {
+              opacity: .75;
           }
 
           @media (max-width: 899px) {
@@ -307,43 +287,27 @@ export default class Header extends React.Component<{}, State> {
             }
           }
         `}</style>
-        <Link to='/'>
-          <img className='logo' src={require('../assets/graphics/logos/graphcoolFull.svg')} />
-        </Link>
         {window.innerWidth < breakpoints.p750 &&
-          <button className='hamburger' onClick={() => this.setState({ menuOpened: true } as State)}>
-            <Icon src={require('../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
-          </button>
+        <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
         }
-        <nav
+        {window.innerWidth >= breakpoints.p750 &&
+        <div
           className={cx(
-            'nav', {
-              'opened': this.state.menuOpened,
+            'link',
+            'withTooltip', {
+              'active': ['/graphql', '/functions'].includes(window.location.pathname),
             },
           )}
+          onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
+          onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
         >
-          {window.innerWidth < breakpoints.p750 &&
-            <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
-          }
-          {window.innerWidth >= breakpoints.p750 &&
-            <div
-              className={cx(
-                'link',
-                'withTooltip', {
-                  'active': ['/graphql', '/functions'].includes(window.location.pathname),
-                },
-              )}
-              onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
-              onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
-            >
-              Features
-              {this.state.tooltipActive &&
-              <span className='tooltip'>
+          Features
+          {this.state.tooltipActive &&
+          <span className='tooltip'>
                 <Link to='/graphql' className='tooltipLink'>
-
                   <div className='featureIcon graphqlBackend'>
                     <Icon
-                      src={require('../assets/icons/graphqlBackendLogo.svg')}
+                      src={require('../../assets/icons/graphqlBackendLogo.svg')}
                       height={25}
                       width={25}
                       color={$v.purple}
@@ -354,7 +318,7 @@ export default class Header extends React.Component<{}, State> {
                 <Link to='/functions' className='tooltipLink'>
                   <div className='featureIcon serverlessFunctions'>
                     <Icon
-                      src={require('../assets/icons/functionsLogo.svg')}
+                      src={require('../../assets/icons/functionsLogo.svg')}
                       height={25}
                       width={25}
                       color={$v.lightOrange}
@@ -363,43 +327,47 @@ export default class Header extends React.Component<{}, State> {
                   <span className={cx($p.flexFixed)}>Serverless Functions</span>
                 </Link>
               </span>
-              }
-            </div>
           }
-          {window.innerWidth < breakpoints.p750 &&
-            <TwoRowLink to='/graphql'>GraphQL<br/>Backend</TwoRowLink>
-          }
-          {window.innerWidth < breakpoints.p750 &&
-            <TwoRowLink to='/functions'>Serverless<br/>Functions</TwoRowLink>
-          }
-          <NavLink
-            active={window.location.pathname === '/pricing'}
-            to='/pricing'
-          >
-            Pricing
-          </NavLink>
-          <NavLink className='link' to='/docs'>Docs</NavLink>
-          {this.state.loggedIn ? (
-            <div className='entryPoints'>
-              <a
-                href='https://console.graph.cool'
-                className='button secondary'
-              >
-                Go to Console
-              </a>
-            </div>
-          ) : (
-            <div className='entryPoints'>
-              <a href='https://console.graph.cool/login' className='button secondary'>
-                Log in
-              </a>
-              <a href='https://console.graph.cool/signup' className='button primary'>
-                Sign up
-              </a>
-            </div>
-          )}
-        </nav>
-      </div>
+        </div>
+        }
+        {window.innerWidth < breakpoints.p750 &&
+        <Link className='link twoRow' to='/graphql'>GraphQL<br />Backend</Link>
+        }
+        {window.innerWidth < breakpoints.p750 &&
+        <Link className='link twoRow' to='/functions'>Serverless<br />Functions</Link>
+        }
+        <Link
+          className={cx('link', {'active' : window.location.pathname === '/pricing'})}
+          to='/pricing'
+        >
+          Pricing
+        </Link>
+        <Link className='link' to='/docs'>Docs</Link>
+        {this.props.loggedIn ? (
+          <div className='entryPoints'>
+            <a
+              href='https://console.graph.cool'
+              className='button secondary'
+            >
+              Go to Console
+            </a>
+          </div>
+        ) : (
+          <div className='entryPoints'>
+            <a href='https://console.graph.cool/login' className='button secondary'>
+              Log in
+            </a>
+            <a href='https://console.graph.cool/signup' className='button primary'>
+              Sign up
+            </a>
+          </div>
+        )}
+      </nav>
     )
   }
 }
+
+
+
+
+

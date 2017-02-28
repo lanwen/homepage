@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { findDOMNode } from 'react-dom'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Landing from './Landing/Landing'
 import Timeline from './Timeline/Timeline'
@@ -53,7 +53,9 @@ export default class HomeView extends React.Component<{}, State> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header
+          view='HOMEPAGE'
+        />
         <Landing/>
         <Timeline/>
         <Quickstart/>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import Footer from '../Footer/Footer'
@@ -14,7 +14,7 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header view='HOMEPAGE' />
         <QueryEditor ref='queryEditor' inViewPort={true}/>
         <FooterCTA
           headline1='Ready to get started?'
