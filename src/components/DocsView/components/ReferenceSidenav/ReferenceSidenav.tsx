@@ -83,6 +83,15 @@ class ReferenceSidenav extends React.Component<Props, State> {
         const containerTop = container.getBoundingClientRect().top + bodyTop
 
         const overThreshold = containerTop + containerHeight > (threshold - 45)
+        // leave the logging for later debugging
+        // console.log('\n\n\n')
+        // console.log(`containerTop + containerHeight ${containerTop+containerHeight}
+        //(threshold - 45) ${threshold - 45}`)
+        // console.log(`bodyHeight ${bodyHeight}\nbodyTop${bodyTop}\nthreshold ${threshold}`)
+        // console.log(`footerHeight ${footerHeight}`)
+        // console.log(`containerTop ${containerTop}\ncontainerHeight ${containerHeight}`)
+        // console.log(`containerTop+containerHeight ${containerTop + containerHeight}`)
+        // console.log(`overThreshold ${overThreshold}`)
 
         let greaterThanLastIntersection = true
 

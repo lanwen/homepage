@@ -10,13 +10,14 @@ import Tooltip from './Tooltip'
 
 const ContainerContainer = styled.div`
     padding-bottom: ${$v.size60};
+    top: -10px;
     
     &:before {
       content: "";
       position: absolute;
       top: ${$v.size10};
       bottom: ${$v.size10};
-      background: rgba(0,0,0,0.02);
+      background: #FAFAFA;
       width: 100%;
     }
     
