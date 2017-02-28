@@ -315,7 +315,7 @@ export default class Markdown extends React.Component<Props, {}> {
           dslValid(props.literal.trim())
         ) {
           return (
-            <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, 'docs-codemirror')}>
+            <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -329,7 +329,7 @@ export default class Markdown extends React.Component<Props, {}> {
           )
         }
         return (
-          <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
+          <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, $p.bbox, 'docs-codemirror')}>
             <CodeMirror
               value={props.literal.trim()}
               options={{
