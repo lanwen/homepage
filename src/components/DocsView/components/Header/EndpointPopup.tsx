@@ -241,7 +241,7 @@ export default class EndpointPopup extends React.Component<Modal, {}> {
         className={$p.buttonShadow}
         style={{
           overlay: {
-            zIndex: 999,
+            zIndex: 9999,
           },
         }}
       >

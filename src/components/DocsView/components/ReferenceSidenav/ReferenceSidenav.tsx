@@ -14,9 +14,9 @@ import { throttle } from 'lodash'
 const VerticalContainer = styled.div`
   flex: 0 0 250px;
   position: relative;
-  top: -144px;
+  top: -194px;
   background-color: rgba(0, 0, 0, 0.02);
-  height: calc(100% + 144px);
+  height: calc(100% + 194px);
   
   // Fix to prevent overflowing with footer
   background-color: #fafafa
@@ -103,7 +103,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           if (this.bodyTopAtIntersection === -1) {
             this.bodyTopAtIntersection = bodyTop
           }
-          const containerOffset = threshold - containerHeight - TOP - 45
+          const containerOffset = threshold - containerHeight - TOP - 95
           this.setState({
             absolute: true,
             fixed: false,
@@ -180,7 +180,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           window.innerWidth > breakpoints.p1360 ? $p.pl60 : 0,
         )}
         style={{
-          top: fixed ? 0 : -144,
+          top: fixed ? 0 : -194,
         }}
       >
         <FixedWrapper

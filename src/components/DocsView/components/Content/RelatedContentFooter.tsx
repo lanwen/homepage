@@ -19,6 +19,7 @@ const ContainerContainer = styled.div`
       bottom: ${$v.size10};
       background: #FAFAFA;
       width: 100%;
+      height: calc(100% + 10px);
     }
     
     @media (max-width: ${breakpoints.p1000}px) {

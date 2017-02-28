@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { Icon, $v } from 'graphcool-styles'
 import {breakpoints} from '../../utils/constants'
 import * as cookiestore from 'cookiestore'
-import Searchbar from './Searchbar'
+import Search from '../DocsView/components/Header/Search'
 import Nav from './Nav'
 
 // const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
@@ -209,7 +209,7 @@ export default class Header extends React.Component<Props, State> {
         }
 
         {this.props.view === 'DOCS' &&
-          <Searchbar />
+          <Search />
         }
         {window.innerWidth < breakpoints.p750 &&
           <button className='hamburger' onClick={() => this.setState({ menuOpened: true } as State)}>
@@ -220,8 +220,13 @@ export default class Header extends React.Component<Props, State> {
           menuOpened={this.state.menuOpened}
           loggedIn={this.state.loggedIn}
           view={this.props.view}
+          onMenuClosed={this.handleMenuClosed}
         />
       </div>
     )
+  }
+
+  private handleMenuClosed = () => {
+    this.setState({menuOpened: false} as State)
   }
 }

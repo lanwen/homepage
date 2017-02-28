@@ -1,85 +1,28 @@
 import * as React from 'react'
-import { $p, Icon, $v } from 'graphcool-styles'
+import {$p, Icon, $v} from 'graphcool-styles'
 import * as cx from 'classnames'
-import { breakpoints } from '../../utils/constants'
-import { Link } from 'react-router'
-
-const links = {
-  homepage: [
-    {
-      name: 'Features',
-      links: [
-        {
-          name: 'GraphQL Backend',
-          link: '/graphql',
-          icon: 'graphqlBackend'
-        },
-        {
-          name: 'Serverless Functions',
-          link: '/functions',
-          icon: 'serverlessFunctions'
-        }
-      ]
-    },
-    {
-      name: 'Pricing',
-      link: '/pricing'
-    },
-    {
-      name: 'Docs',
-      link: '/docs'
-    }
-  ],
-  docs: [
-    {
-      name: 'Quickstart',
-      link: 'docs/quickstart'
-    },
-    {
-      name: 'Resources',
-      links: [
-        {
-          name: 'Tutorials',
-          link: '/docs/tutorials',
-          icon: 'docsTutorial'
-        },
-        {
-          name: 'Examples',
-          link: '/docs/examples',
-          icon: 'docsExamples'
-        },
-        {
-          name: 'FAQ',
-          link: '/docs/faq',
-          icon: 'docsQuestion'
-        }
-      ]
-    },
-    {
-      name: 'Reference',
-      link: 'docs/reference'
-    },
-    {
-      name: 'Blog',
-      link: '/blog'
-    }
-  ]
-}
+import {breakpoints} from '../../utils/constants'
+import {Link} from 'react-router'
+import EndpointPopup from '../DocsView/components/Header/EndpointPopup'
+import CircleIcon from '../DocsView/components/CircleIcon'
 
 interface Props {
-  menuOpened: boolean,
-  loggedIn: boolean,
-  view: string,
+  menuOpened: boolean
+  loggedIn: boolean
+  view: string
+  onMenuClosed: () => void
 }
 
 interface State {
-  tooltipActive: boolean,
+  tooltipActive: boolean
+  endpointPopupOpened: boolean
 }
 
 export default class Nav extends React.Component<Props, State> {
 
   state: State = {
     tooltipActive: false,
+    endpointPopupOpened: false,
   }
 
   render() {
@@ -93,11 +36,7 @@ export default class Nav extends React.Component<Props, State> {
       >
         <style jsx={true}>{`
           .root {
-
-          }
-
-          .rootWrapper {
-            @p: .fw6, .black30, .tracked, .ttu, .f14, .zMax;
+            @p: .fw6, .black30, .tracked, .ttu, .f14;
 
             @media (max-width: 400px) {
               right: 9px;
@@ -121,6 +60,12 @@ export default class Nav extends React.Component<Props, State> {
 
             @media (min-width: 900px) {
               @p: .f16;
+            }
+          }
+
+          @media (max-width: 750px)  {
+            .root.opened {
+              @p: .flex;
             }
           }
 
@@ -189,7 +134,7 @@ export default class Nav extends React.Component<Props, State> {
 
 
           .tooltip {
-            @p: .absolute, .db, .left50, .overflowVisible, .tlHCenter, .bgWhite, .br2, .overlayShadow;
+            @p: .absolute, .db, .left50, .overflowVisible, .tlHCenter, .bgWhite, .br2, .overlayShadow, .z999;
             top: 55px;
             white-space: initial;
 
@@ -221,11 +166,11 @@ export default class Nav extends React.Component<Props, State> {
             transition: opacity .1s ease;
 
             @media (max-width: 899px) {
-              @p: .ph16, .pt20, .pb10;
+              @p: .ph16, .pt10, .pb10;
             }
 
             @media (min-width: 900px) {
-              @p: .ph20, .pt25, .pb12;
+              @p: .ph20, .pv12;
             }
           }
 
@@ -234,12 +179,18 @@ export default class Nav extends React.Component<Props, State> {
           }
 
           @media (max-width: 899px) {
+            .tooltip :global(.tooltipLink):first-child {
+              @p: .ph16, .pt20, .pb10;
+            }
             .tooltip :global(.tooltipLink):last-child {
               @p: .pt10, .pb20;
             }
           }
 
           @media (min-width: 900px) {
+            .tooltip :global(.tooltipLink):first-child {
+              @p: .ph20, .pt25, .pb12;
+            }
             .tooltip :global(.tooltipLink):last-child {
               @p: .pt12, .pb25;
             }
@@ -262,6 +213,22 @@ export default class Nav extends React.Component<Props, State> {
             &.serverlessFunctions {
               &:before {
                 @p: .bgLightOrange20;
+              }
+            }
+
+            &.tutorials {
+              &:before {
+                @p: .bgPurple20;
+              }
+            }
+            &.examples {
+              &:before {
+                @p: .bgLightOrange20;
+              }
+            }
+            &.faq {
+              &:before {
+                @p: .bgBlue20;
               }
             }
           }
@@ -292,71 +259,118 @@ export default class Nav extends React.Component<Props, State> {
             }
           }
         `}</style>
-        <div className='rootWrapper'>
-          {window.innerWidth < breakpoints.p750 &&
-          <button className='close' onClick={() => this.setState({ menuOpened: false } as State)} />
-          }
-          {window.innerWidth >= breakpoints.p750 &&
-          <div
-            className={cx(
-            'link',
-            'withTooltip', {
-              'active': ['/graphql', '/functions'].includes(window.location.pathname),
-            },
-          )}
-            onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
-            onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
-          >
-            Features
-            {this.state.tooltipActive &&
-            <span className='tooltip'>
-                <Link to='/graphql' className='tooltipLink'>
-                  <div className='featureIcon graphqlBackend'>
-                    <Icon
-                      src={require('../../assets/icons/graphqlBackendLogo.svg')}
-                      height={25}
-                      width={25}
-                      color={$v.purple}
-                    />
+        {window.innerWidth < breakpoints.p750 &&
+          <button className='close' onClick={this.props.onMenuClosed}/>
+        }
+        {links[this.props.view].map(link => (
+          link.hasOwnProperty('links') ? (
+              <div>
+                {window.innerWidth >= breakpoints.p750 &&
+                  <div
+                    className={cx(
+                      'link',
+                      'withTooltip', {
+                        'active': ['/graphql', '/functions'].includes(window.location.pathname),
+                      },
+                    )}
+                    onMouseEnter={() => this.setState({ tooltipActive: true } as State)}
+                    onMouseLeave={() => this.setState({ tooltipActive: false } as State)}
+                  >
+                    {link.name}
+                    {this.state.tooltipActive &&
+                      <span className='tooltip'>
+                        {link.links.map(link1 => {
+                          return (
+                            link1.link.includes('http') ? (
+                              <a href={link1.link} className='tooltipLink' target='_blank'>
+                                {link1.circleIcon ? (
+                                    <CircleIcon type={link1.circleIcon} />
+                                  ) : (
+                                    <div className={`featureIcon ${link1.icon}`}>
+                                      <Icon
+                                        src={link1.url}
+                                        height={25}
+                                        width={25}
+                                        color={link1.color || $v.purple}
+                                      />
+                                    </div>
+                                  )}
+                                <span className={cx($p.flexFixed)}>{link1.name}</span>
+                              </a>
+                            ) : (
+                              <Link to={link1.link} className='tooltipLink'>
+                                {link1.circleIcon ? (
+                                    <CircleIcon type={link1.circleIcon} />
+                                  ) : (
+                                    <div className={`featureIcon ${link1.icon}`}>
+                                      <Icon
+                                        src={link1.url}
+                                        height={25}
+                                        width={25}
+                                        color={link1.color || $v.purple}
+                                      />
+                                    </div>
+                                  )}
+                                <span className={cx($p.flexFixed)}>{link1.name}</span>
+                              </Link>
+                            )
+                          )
+                        })}
+                      </span>
+                    }
                   </div>
-                  <span className={cx($p.flexFixed)}>GraphQL Backend</span>
-                </Link>
-                <Link to='/functions' className='tooltipLink'>
-                  <div className='featureIcon serverlessFunctions'>
-                    <Icon
-                      src={require('../../assets/icons/functionsLogo.svg')}
-                      height={25}
-                      width={25}
-                      color={$v.lightOrange}
-                    />
-                  </div>
-                  <span className={cx($p.flexFixed)}>Serverless Functions</span>
-                </Link>
-              </span>
-            }
-          </div>
-          }
-          {window.innerWidth < breakpoints.p750 &&
-          <Link className='link twoRow' to='/graphql'>GraphQL<br />Backend</Link>
-          }
-          {window.innerWidth < breakpoints.p750 &&
-          <Link className='link twoRow' to='/functions'>Serverless<br />Functions</Link>
-          }
-          <Link
-            className={cx('link', {'active' : window.location.pathname === '/pricing'})}
-            to='/pricing'
-          >
-            Pricing
-          </Link>
-          <Link className='link' to='/docs'>Docs</Link>
-          {this.props.loggedIn ? (
-            <div className='entryPoints'>
-              <a
-                href='https://console.graph.cool'
-                className='button secondary'
+                }
+                {window.innerWidth < breakpoints.p750 && (
+                  link.links.map(link1 => (
+                    <Link className='link twoRow' to={link1.link}>{link1.name}</Link>
+                  ))
+                )}
+              </div>
+            ) : (
+              <Link
+                className={cx('link', {'active' : window.location.pathname === link.link})}
+                to={link.link}
               >
-                Go to Console
-              </a>
+                {link.name}
+              </Link>
+            )
+        ))}
+        {this.props.loggedIn ? (
+            <div className='entryPoints'>
+              {this.props.view === 'HOMEPAGE' && (
+                <a
+                  href='https://console.graph.cool'
+                  className='button secondary'
+                >
+                  Go to Console
+                </a>
+              )}
+              {this.props.view === 'DOCS' && (
+                <div
+                  className={cx(
+                    $p.flex,
+                    $p.bgLightgreen20,
+                    $p.green,
+                    $p.f16,
+                    $p.fw6,
+                    $p.ttu,
+                    $p.br2,
+                    $p.pv6,
+                    $p.ph10,
+                    $p.nowrap,
+                    $p.pointer,
+                  )}
+                  onClick={() => {
+                    this.handleOpenEndpointPopup()
+                    this.props.onMenuClosed()
+                  }}
+                >
+                  <img
+                    src={require('../../assets/graphics/docs/share.svg')}
+                  />
+                  <div className={cx($p.ml10)}>Api Endpoints</div>
+                </div>
+              )}
             </div>
           ) : (
             <div className='entryPoints'>
@@ -368,13 +382,93 @@ export default class Nav extends React.Component<Props, State> {
               </a>
             </div>
           )}
-        </div>
+        {this.props.loggedIn && this.state.endpointPopupOpened && (
+          <EndpointPopup
+            isOpen={this.state.endpointPopupOpened}
+            onRequestClose={this.handleCloseEndpointPopup}
+          />
+        )}
       </nav>
     )
   }
+
+  private handleOpenEndpointPopup = () => {
+    this.setState({endpointPopupOpened: true} as State)
+  }
+
+  private handleCloseEndpointPopup = () => {
+    this.setState({endpointPopupOpened: false} as State)
+  }
 }
 
-
-
-
-
+const links = {
+  HOMEPAGE: [
+    {
+      name: 'Features',
+      links: [
+        {
+          name: 'GraphQL Backend',
+          link: '/graphql',
+          icon: 'graphqlBackend',
+          url: require('assets/icons/graphqlBackendLogo.svg'),
+          color: $v.purple,
+        },
+        {
+          name: 'Serverless Functions',
+          link: '/functions',
+          icon: 'serverlessFunctions',
+          url: require('assets/icons/functionsLogo.svg'),
+          color: $v.lightOrange,
+        },
+      ],
+    },
+    {
+      name: 'Pricing',
+      link: '/pricing',
+    },
+    {
+      name: 'Docs',
+      link: '/docs',
+    },
+  ],
+  DOCS: [
+    {
+      name: 'Quickstart',
+      link: 'docs/quickstart',
+    },
+    {
+      name: 'Resources',
+      links: [
+        {
+          name: 'Tutorials',
+          link: '/docs/tutorials',
+          icon: 'tutorials',
+          url: require('graphcool-styles/icons/fill/docsTutorial.svg'),
+          color: $v.purple,
+        },
+        {
+          name: 'Examples',
+          link: 'https://github.com/graphcool-examples',
+          icon: 'examples',
+          url: require('graphcool-styles/icons/fill/docsExample.svg'),
+          color: $v.lightOrange,
+        },
+        {
+          name: 'FAQ',
+          link: '/docs/faq',
+          icon: 'faq',
+          url: require('graphcool-styles/icons/fill/docsQuestion.svg'),
+          color: $v.blue,
+        },
+      ],
+    },
+    {
+      name: 'Reference',
+      link: 'docs/reference',
+    },
+    {
+      name: 'Blog',
+      link: '/blog',
+    },
+  ],
+}

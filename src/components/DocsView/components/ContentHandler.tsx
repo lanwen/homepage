@@ -132,6 +132,13 @@ class ContentHandler extends React.Component<Props, {}> {
       <div onClick={this.onClick} className={cx(
         $p.w100,
       )}>
+        <style jsx={true}>{`
+          .side {
+            @p: .relative;
+            top: -194px;
+            height: calc(100% + 194px);
+          }
+        `}</style>
         <div className={cx($p.flex)}>
           <Helmet
             title={item.shorttitle}
@@ -148,7 +155,7 @@ class ContentHandler extends React.Component<Props, {}> {
           />
           <div className={cx($p.flexAuto, $p.flex)}>
             <div
-              className={cx($p.flex1)}
+              className={cx($p.flex1, 'side')}
               style={{
                 backgroundColor: item.layout === 'REFERENCE' ? 'rgba(0,0,0,.02)' : 'transparent',
               }}
@@ -193,7 +200,7 @@ class ContentHandler extends React.Component<Props, {}> {
               )}
             </section>
             <div
-              className={cx($p.flex1)}
+              className={cx($p.flex1, 'side')}
               style={{
                 backgroundColor: item.layout === 'FAQ' ? 'rgba(0,0,0,.02)' : 'transparent',
               }}

@@ -9,30 +9,6 @@ import {Link, withRouter} from 'react-router'
 import {throttle} from 'lodash'
 import {connect} from 'react-redux'
 
-const Searchbox = styled.input`
-  width: 100%;
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px rgba(0,0,0,.15);
-  border-radius: 2px;
-  font-size: 16px;
-  background-color: #fff;
-  padding: 12px 20px 12px 46px;
-  transition: all .3s;
-  
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    transition: .3s white;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    transition: .3s white;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    transition: .3s white;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    transition: .3s white;
-  }
-`
-
 const Results = styled.div`
   top: 46px;
   left: 0;
@@ -110,33 +86,64 @@ class Search extends React.Component<Props,{}> {
     this.index = this.client.initIndex('Simple Search')
   }
   render() {
-    const {className} = this.props
     const {query, results, activeIndex, resultsActive} = this.state
     const autoFocus = location.pathname === '/docs'
     return (
-      <div
-        className={cx($p.relative, className)}
-        style={{
-          flex: 1,
-          marginRight: 32,
-        }}
-      >
+      <div className='root'>
+        <style jsx={true}>{`
+          .root {
+            @p: .bgWhite, .br2, .overflowVisible, .relative, .buttonShadow, .w100, .pa16, .flex, .itemsCenter, .pointer;
+            @p: .z999;
+
+            &:after {
+              content: '';
+              @p: .absolute, .right16, .top0, .bottom0, .wS10;
+              background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            }
+          }
+
+          .searchbarInput {
+            @p: .black80, .pa0, .pl12, .w100, .pointer, .bgWhite;
+          }
+
+          @media (max-width: 899px) {
+            .root {
+              @p: .mr25;
+              min-width: 0;
+            }
+
+            .searchbarInput {
+              @p: .f14;
+            }
+          }
+
+          @media (min-width: 900px) {
+            .root {
+              @p: .mr38;
+              min-width: 100px;
+            }
+
+            .searchbarInput {
+              @p: .f16;
+            }
+          }
+        `}</style>
         <Icon
           width={16}
           height={16}
           src={require('graphcool-styles/icons/stroke/search.svg')}
           stroke={true}
-          color={$v.black}
-          strokeWidth={2}
-          className={cx($p.absolute, $p.left0, $p.pt16, $p.pl16, $p.pointer)}
+          color={$v.gray80}
+          strokeWidth={4}
+          className='searchbarIcon'
           onClick={this.focusInput}
         />
-        <Searchbox
+        <input
           type='text'
           name='search'
-          placeholder='Search..'
+          placeholder='Search for references, resources or articles...'
           value={query}
-          className='search-input'
+          className='searchbarInput'
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
           onBlur={this.hideResults}

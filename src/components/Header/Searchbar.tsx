@@ -56,8 +56,3 @@ export default class Searchbar extends React.Component<{},{}> {
     )
   }
 }
-
-
-
-
-
