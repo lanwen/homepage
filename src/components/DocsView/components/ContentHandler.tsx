@@ -66,7 +66,11 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // rewrite url if it doesn't already match item path
     const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
-    const currentPath = this.props.location.pathname
+    let currentPath = this.props.location.pathname
+    // normalize url if it is /the/path/#hash, because then the path has a trailing /
+    if (currentPath[currentPath.length - 1] === '/') {
+      currentPath = currentPath.slice(0, currentPath.length - 1)
+    }
     if (contentUrl !== currentPath) {
       this.props.router.push(contentUrl)
     }

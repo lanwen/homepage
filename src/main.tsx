@@ -1,3 +1,4 @@
+require('offline-plugin/runtime').install()
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
