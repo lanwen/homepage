@@ -91,6 +91,7 @@ const Container = styled.div`
     
     > div {
       margin-bottom: 0 !important;
+      padding-right: 30px;
     }
   }
   
