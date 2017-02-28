@@ -370,7 +370,7 @@ export default class Markdown extends React.Component<Props, {}> {
               className={cx(
                 'imageContainer', {
                   'hasFixedWidth': hasFixedWidth,
-                }
+                },
               )}
             >
               <style jsx={true}>{`
