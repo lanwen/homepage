@@ -158,6 +158,15 @@ export default class Nav extends React.Component<Props, State> {
               border-width: 0 8px 8px 8px;
               border-color: transparent transparent #fff transparent;
             }
+
+            &.isOnDocs {
+              @media (max-width: 899px) {
+                width: 145px;
+              }
+              @media (min-width: 900px) {
+                width: 170px;
+              }
+            }
           }
 
           .tooltip :global(.tooltipLink) {
@@ -278,7 +287,13 @@ export default class Nav extends React.Component<Props, State> {
                   >
                     {link.name}
                     {this.state.tooltipActive &&
-                      <span className='tooltip'>
+                      <span
+                        className={cx(
+                          'tooltip', {
+                            'isOnDocs': this.props.view === 'DOCS',
+                          }
+                        )}
+                      >
                         {link.links.map(link1 => {
                           return (
                             link1.link.includes('http') ? (
