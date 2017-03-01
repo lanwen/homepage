@@ -91,7 +91,7 @@ const apollo: TechnologyData = {
   logoWidth: 70,
   logoHeight: 70,
   backgroundColor: 'rgba(10,44,73,0.1)',
-  // isPopular: true
+  isPopular: true,
 }
 
 const relay: TechnologyData = {
