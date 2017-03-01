@@ -119,10 +119,17 @@ const Container = styled.div`
   }
   
   h3 {
-    color: ${$v.gray60};
+    color: ${$v.gray80};
     // font-size: ${props => props.blog ? $v.size20 : $v.size16}
     font-size: ${$v.size20};
     margin: ${$v.size25} 0;
+  }
+  
+  h4 {
+    font-size: ${props => props.blog ? $v.size20 : $v.size16}
+    font-weight: 600;
+    color: ${$v.gray80};
+    margin: ${$v.size16} 0;
   }
   
   code {
@@ -161,6 +168,10 @@ const Container = styled.div`
       color: ${$v.gray60};
       // font-size: ${props => props.blog ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
+    }
+    
+    h4 {
+      margin: ${$v.size10} 0;
     }
     
     blockquote {
@@ -208,15 +219,13 @@ const CodeContainer = styled.div`
   }
 `
 
-const ParagraphWrapper = `
+const QuestionWrapper = styled.div`
   margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   
   @media (max-width: ${breakpoints.p1000}px) {
     margin-bottom: ${$v.size25};
   }
-`
-
-const QuestionWrapper = styled.div`
+  
   .hover {
     display: none;
   }
@@ -232,9 +241,6 @@ const QuestionWrapper = styled.div`
   &:hover .no-hover .hover {
     display: none;
   }
-  
-  ${props => props.paragraph && ParagraphWrapper}
-  
 `
 
 const QuestionMarkWrapper = styled.div`
@@ -266,7 +272,7 @@ export default class Markdown extends React.Component<Props, {}> {
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
             blog={this.props.layout === 'BLOG'}
-            paragraph
+            paragraph=''
           >
             <p className={cx($p.w100)}>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>

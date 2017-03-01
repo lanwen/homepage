@@ -59,11 +59,13 @@ class Header extends React.Component<Props, State> {
               @p: .pa60;
             }
 
+            /*
             &:before {
               content: '';
               @p: .absolute, .left0, .top0, .right0, .bottom0;
               background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0) 100%);
             }
+            */
           }
 
           .root :global(.logo) {
