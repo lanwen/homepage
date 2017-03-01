@@ -208,13 +208,15 @@ const CodeContainer = styled.div`
   }
 `
 
-const QuestionWrapper = styled.div`
+const ParagraphWrapper = `
   margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   
   @media (max-width: ${breakpoints.p1000}px) {
     margin-bottom: ${$v.size25};
   }
-  
+`
+
+const QuestionWrapper = styled.div`
   .hover {
     display: none;
   }
@@ -230,6 +232,9 @@ const QuestionWrapper = styled.div`
   &:hover .no-hover .hover {
     display: none;
   }
+  
+  ${props => props.paragraph && ParagraphWrapper}
+  
 `
 
 const QuestionMarkWrapper = styled.div`
@@ -261,6 +266,7 @@ export default class Markdown extends React.Component<Props, {}> {
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
             blog={this.props.layout === 'BLOG'}
+            paragraph
           >
             <p className={cx($p.w100)}>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
