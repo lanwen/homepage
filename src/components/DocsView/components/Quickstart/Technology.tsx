@@ -49,7 +49,9 @@ interface Props {
 
 const Technology = (props: Props) => {
 
-  const {technology: {title, logoName, logoColor, logoWidth, logoHeight, backgroundColor, isDisabled, isPopular}} = props
+  const {technology: {
+    title, logoName, logoColor, logoWidth, logoHeight, backgroundColor, isDisabled, isPopular,
+  }} = props
   const {technology, onClick, className} = props
 
   return (

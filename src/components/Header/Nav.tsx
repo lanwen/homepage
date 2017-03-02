@@ -291,7 +291,7 @@ export default class Nav extends React.Component<Props, State> {
                         className={cx(
                           'tooltip', {
                             'isOnDocs': this.props.view === 'DOCS',
-                          }
+                          },
                         )}
                       >
                         {link.links.map(link1 => {

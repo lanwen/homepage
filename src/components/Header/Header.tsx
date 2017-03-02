@@ -15,7 +15,7 @@ import {withRouter} from 'react-router'
 
 interface Props {
   view: string
-  router: ReactRouter.InjectedRouter
+  router?: ReactRouter.InjectedRouter
 }
 
 interface State {
