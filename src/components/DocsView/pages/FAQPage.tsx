@@ -27,8 +27,11 @@ export default class FAQPage extends React.Component<{}, {}> {
 
   render() {
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
-        <Helmet titleTemplate='%s' />
+      <ContentContainer>
+        <Helmet
+          titleTemplate='%s'
+          title='Graphcool FAQ'
+        />
         <Container>
           <Heading
             layout='FAQ'

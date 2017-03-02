@@ -12,6 +12,7 @@ import MoreItems from './MoreItems'
 import Quickstart from '../../components/Quickstart/Quickstart'
 import * as cookiestore from 'cookiestore'
 import { breakpoints, maxWidth } from '../../../../utils/constants'
+import * as Helmet from 'react-helmet'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -85,7 +86,8 @@ export default class DocsOverview extends React.Component<{}, {}> {
     const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
+      <ContentContainer>
+        <Helmet title='Documentation & Tutorials - Graphcool' />
         <PaddedContainer>
           <Heading
             layout='REFERENCE'

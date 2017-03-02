@@ -128,10 +128,9 @@ class ContentHandler extends React.Component<Props, {}> {
     if (window.innerWidth < breakpoints.p400) {
       contentBoxMarginRight = 25
     }
+    const pageTitle = item.title + (item.layout === 'REFERENCE' ? ' - Graphcool' : '')
     return (
-      <div onClick={this.onClick} className={cx(
-        $p.w100,
-      )}>
+      <div onClick={this.onClick} className={cx($p.w100)}>
         <style jsx={true}>{`
           .side {
             @p: .relative;
@@ -141,7 +140,7 @@ class ContentHandler extends React.Component<Props, {}> {
         `}</style>
         <div className={cx($p.flex)}>
           <Helmet
-            title={item.shorttitle}
+            title={pageTitle}
             meta={[
               { name: 'description', content: item.description },
               { property: 'og:type', content: 'article' },

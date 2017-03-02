@@ -27,8 +27,8 @@ export default class TutorialsPage extends React.Component<{}, {}> {
 
   render() {
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
-        <Helmet titleTemplate='%s' />
+      <ContentContainer className={cx($p.pt96)}>
+        <Helmet titleTemplate='Tutorials - Graphcool' />
         <Container>
           <Heading
             layout='TUTORIAL'
