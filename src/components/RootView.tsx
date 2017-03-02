@@ -64,9 +64,9 @@ export default class RootView extends React.Component<Props, State> {
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.overflowHidden)} id='react-root'>
         <Helmet
-          title='Graphcool - GraphQL Backend as a Service.'
+          title='Graphcool - GraphQL Backend as a Service'
           meta={[
-            {name: 'description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},
+            {name: 'description', content: 'Flexible backend platform combining GraphQL & AWS Lambda. The fastest way to build apps with GraphQL and Apollo/Relay, React, VueJS, Angular...'},
             {property: 'og:type', content: 'website'},
             {property: 'og:title', content: 'GraphQL Backend as a Service'},
             {property: 'og:description', content: 'Flexible backend platform combining GraphQL & AWS Lambda'},

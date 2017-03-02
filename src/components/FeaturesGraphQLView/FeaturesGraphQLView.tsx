@@ -5,6 +5,7 @@ import { $p } from 'graphcool-styles'
 import Footer from '../Footer/Footer'
 import FooterCTA from '../FooterCTA'
 import QueryEditor from './QueryEditor/QueryEditor'
+import * as Helmet from 'react-helmet'
 
 export default class FeaturesGraphQLView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -14,6 +15,7 @@ export default class FeaturesGraphQLView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
+        <Helmet title='GraphQL Database & API - Graphcool'/>
         <Header view='HOMEPAGE' />
         <QueryEditor ref='queryEditor' inViewPort={true}/>
         <FooterCTA

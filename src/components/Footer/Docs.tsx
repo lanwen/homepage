@@ -12,6 +12,7 @@ export default () => (
       <li><Link to='/docs/reference/platform/overview-chohbah0eo'>Platform</Link></li>
       <li><Link to='/docs/reference/simple-api/overview-heshoov3ai'>Simple API</Link></li>
       <li><Link to='/docs/reference/relay-api/overview-aizoong9ah'>Relay API</Link></li>
+      <li><a href='/forum'>Community Forum</a></li>
     </ul>
   </div>
 )

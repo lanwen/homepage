@@ -5,6 +5,7 @@ import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import FooterCTA from '../FooterCTA'
 import Functions from './Functions/Functions'
+import * as Helmet from 'react-helmet'
 
 export default class FeaturesFunctionsView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -14,6 +15,7 @@ export default class FeaturesFunctionsView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
+        <Helmet title='Serverless Backend Platform (AWS Lambda & others) - Graphcool'/>
         <Header view='HOMEPAGE' />
         <Functions ref='functions' inViewPort={true}/>
         <FooterCTA

@@ -8,11 +8,13 @@ import PlanCols from './PlanCols'
 import Info from './Info'
 import FAQ from './FAQ'
 import CallToAction from './CallToAction'
+import * as Helmet from 'react-helmet'
 
 export default class PricingView extends React.Component<{}, {}> {
   render() {
     return (
       <div className={cx($p.bgLightgreen05)}>
+        <Helmet title='Pricing - Graphcool'/>
         <Header view='HOMEPAGE' />
         <div>
           <FreePlan/>

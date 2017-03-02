@@ -57,7 +57,7 @@ export default class DocsView extends React.Component<Props, {}> {
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.overflowHidden)}>
         <Header view='DOCS' />
-        <Helmet titleTemplate='%s | Graphcool Docs' />
+        <Helmet titleTemplate='%s - Graphcool' />
         <Content className={cx(
           $p.flex,
           !isReference && $p.justifyCenter,

@@ -3,6 +3,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import OpenSource from './OpenSource'
 import FooterCTA from '../FooterCTA'
+import * as Helmet from 'react-helmet'
 
 export default class OpenSourceView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -12,6 +13,7 @@ export default class OpenSourceView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
+        <Helmet title='We <3 Open Source - Graphcool'/>
         <Header view='HOMEPAGE' />
         <OpenSource/>
         <FooterCTA
