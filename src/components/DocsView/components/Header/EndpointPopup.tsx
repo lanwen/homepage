@@ -128,7 +128,7 @@ interface Project {
   name: string
 }
 
-export default class EndpointPopup extends React.Component<Modal, {}> {
+export default class EndpointPopup extends React.Component<Modal.Props, {}> {
 
   state = {
     endpoint: 'simple/v1' as Endpoint,
