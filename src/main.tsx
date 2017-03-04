@@ -113,3 +113,8 @@ if (navigator.userAgent !== 'SSR') {
     },
   })
 }
+
+// save last referral
+if (!cookiestore.has('graphcool_last_referral')) {
+  cookiestore.set('graphcool_last_referral', document.referrer)
+}
