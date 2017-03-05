@@ -13,7 +13,6 @@ import YoutubeVideo from './YoutubeVideo'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
-import ScrollSpy from './ScrollSpy'
 
 interface ImageData {
   caption: string
@@ -209,6 +208,10 @@ const Container = styled.div`
     
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
+  }
+  
+  .markdown-container {
+    flex: 1;
   }
 `
 
@@ -481,8 +484,9 @@ export default class Markdown extends React.Component<Props, {}> {
         faq={this.props.item.layout === 'FAQ'}
         tutorial={this.props.layout === 'TUTORIAL'}
       >
-        {renderer.render(this.props.ast)}
-        <ScrollSpy />
+        <div className='markdown-container'>
+          {renderer.render(this.props.ast)}
+        </div>
       </Container>
     )
   }

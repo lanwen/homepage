@@ -3,28 +3,28 @@ import * as React from 'react'
 const mockContents = [
   {
     title: 'What are GraphQL Subscriptions?',
-    id: 'asd'
+    id: 'asd',
   },
   {
     title: 'Setting up your Graphcool backend',
-    id: 'asd'
+    id: 'asd',
   },
   {
     title: 'Setting up the Apollo Client to use Subscriptions',
-    id: 'asd'
+    id: 'asd',
   },
   {
     title: 'Building a Real-Time Chat with Subscriptions 💬',
-    id: 'asd'
+    id: 'asd',
   },
   {
     title: 'Adding Geo-Location to the App 🗺',
-    id: 'asd'
+    id: 'asd',
   },
   {
     title: 'Summing Up',
-    id: 'asd'
-  }
+    id: 'asd',
+  },
 ]
 
 export default class ScrollSpy extends React.Component<null,null> {
@@ -33,9 +33,9 @@ export default class ScrollSpy extends React.Component<null,null> {
       <div className='scroll-spy'>
         <style jsx>{`
           .scroll-spy {
-            @p: .fixed, .right0, .top0, .bl, .bGreen, .pl16;
+            @p: .fixed, .top0, .bl, .bGreen, .pl16;
             margin-top: 290px;
-            margin-right: 50px;
+            width: 200px;
           }
           .steps {
             @p: .ttu, .fw6, .f14, .black30;

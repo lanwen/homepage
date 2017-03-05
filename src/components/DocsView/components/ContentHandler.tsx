@@ -16,6 +16,7 @@ import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
 import { breakpoints } from '../../../utils/constants'
+import ScrollSpy from './Content/ScrollSpy'
 
 interface Props {
   location: any,
@@ -133,6 +134,26 @@ class ContentHandler extends React.Component<Props, {}> {
             top: -194px;
             height: calc(100% + 194px);
           }
+          .scrollspy-container {
+            display: block;
+            background: blue;
+            margin-left: 50px;
+            width: 250px;
+            height: 100px;
+            flex: 0 0 200px;
+          }
+          @media (max-width: 960px) {
+            .scrollspy-container {
+              display: none;
+            }
+          }
+          .content-container {
+            @p: .flex;
+          }
+          .content {
+            flex-basis: auto;
+            flex-grow: 1;
+          }
         `}</style>
         <div className={cx($p.flex)}>
           <Helmet
@@ -181,12 +202,21 @@ class ContentHandler extends React.Component<Props, {}> {
                   paddingRight: contentBoxMarginRight,
                 }}
               >
-                <ContentHeader item={item}/>
-                <Markdown
-                  ast={ast}
-                  layout={item.layout}
-                  item={item}
-                />
+                <div className='content-container'>
+                  <div className='content'>
+                    <ContentHeader item={item}/>
+                    <Markdown
+                      ast={ast}
+                      layout={item.layout}
+                      item={item}
+                    />
+                  </div>
+                  {item.layout === 'TUTORIAL' && (
+                    <div className='scrollspy-container'>
+                      <ScrollSpy />
+                    </div>
+                  )}
+                </div>
                 <Feedback item={item}/>
                 {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
               </div>
