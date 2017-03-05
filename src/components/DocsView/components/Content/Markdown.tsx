@@ -13,6 +13,7 @@ import YoutubeVideo from './YoutubeVideo'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
+import ScrollSpy from './ScrollSpy'
 
 interface ImageData {
   caption: string
@@ -478,8 +479,10 @@ export default class Markdown extends React.Component<Props, {}> {
         blog={this.props.layout === 'BLOG'}
         className={cx($p.relative)}
         faq={this.props.item.layout === 'FAQ'}
+        tutorial={this.props.layout === 'TUTORIAL'}
       >
         {renderer.render(this.props.ast)}
+        <ScrollSpy />
       </Container>
     )
   }

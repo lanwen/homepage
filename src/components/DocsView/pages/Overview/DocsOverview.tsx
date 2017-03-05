@@ -85,7 +85,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
     const loggedIn = cookiestore.has('graphcool_auth_token')
 
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
+      <ContentContainer>
         <PaddedContainer>
           <Heading
             layout='REFERENCE'
