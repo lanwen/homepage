@@ -202,7 +202,7 @@ export default class Quickstart extends React.Component<{}, {}> {
         </QuickstartContainer>
         <SecondaryCallToAction
           text='Explore our docs'
-          link='https://graph.cool/docs'
+          link='/docs/'
           className={cx($p.center)}
         />
       </Root>

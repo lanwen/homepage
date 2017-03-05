@@ -8,6 +8,7 @@ import Investors from './Investors/Investors'
 import Timeline from './Timeline/Timeline'
 import FooterCTA from '../FooterCTA'
 import Footer from '../Footer/Footer'
+import * as Helmet from 'react-helmet'
 
 export default class AboutView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -17,6 +18,7 @@ export default class AboutView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
+        <Helmet title='About - Graphcool'/>
         <style jsx={true}>{`
           .footerContainer {
             @p: .pt96, .bgBlack02;

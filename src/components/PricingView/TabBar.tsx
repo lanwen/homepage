@@ -30,17 +30,17 @@ export default class TabBar extends React.Component<Props,{}> {
       <Container className={cx($p.flex, $p.justifyBetween, $p.mb4, this.props.className)}>
         <Tab
           className={cx($p.flex)}
-          title='Startup'
+          title='Project'
           onClick={() => this.props.onClick(0)}
           selected={this.props.selectedTabIndex === 0}/>
         <Tab
           className={cx($p.flex)}
-          title='Growth'
+          title='Startup'
           onClick={() => this.props.onClick(1)}
           selected={this.props.selectedTabIndex === 1}/>
         <Tab
           className={cx($p.flex)}
-          title='Pro'
+          title='Growth'
           onClick={() => this.props.onClick(2)}
           selected={this.props.selectedTabIndex === 2}/>
         <Tab

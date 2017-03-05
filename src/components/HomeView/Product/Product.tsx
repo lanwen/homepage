@@ -169,7 +169,6 @@ export default class Product extends React.Component<{}, State> {
                     <FeatureIndicator top={51} left={16} onClick={() => this.setState({activeIndex: 2} as State)}/>
                     <FeatureIndicator top={58} left={22} onClick={() => this.setState({activeIndex: 3} as State)}/>
                     <FeatureIndicator top={65} left={16} onClick={() => this.setState({activeIndex: 4} as State)}/>
-                    <FeatureIndicator top={92} left={14} onClick={() => this.setState({activeIndex: 5} as State)}/>
                   </div>
                 }
               </BrowserContainer>
@@ -180,7 +179,7 @@ export default class Product extends React.Component<{}, State> {
                 <Copy className={cx($p.black50, $p.fw4)}>{feature.description}</Copy>
                 <CallToAction
                   text='Learn more'
-                  link='/graphql'
+                  link='/graphql/'
                 />
               </article>
               <div className={cx($p.flex, $p.itemsCenter)}>

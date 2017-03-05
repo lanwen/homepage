@@ -4,6 +4,7 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import Items from './Overview/Items'
 import Heading from './Overview/Heading'
+import * as Helmet from 'react-helmet'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -26,7 +27,8 @@ export default class TutorialsPage extends React.Component<{}, {}> {
 
   render() {
     return (
-      <ContentContainer className={cx($p.pt96, $p.mt96)}>
+      <ContentContainer className={cx($p.pt96)}>
+        <Helmet titleTemplate='Tutorials - Graphcool' />
         <Container>
           <Heading
             layout='TUTORIAL'

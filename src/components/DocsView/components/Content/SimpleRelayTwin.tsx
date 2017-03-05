@@ -41,7 +41,16 @@ const SimpleRelayTwin = ({twinAlias, targetSimple}: Props) => {
       </div>
       <Link
         className={cx(
-          $p.buttonShadow, $p.bgWhite, $p.pv10, $p.ph16, $p.ttu, $p.relative, $p.mt16, $p.noUnderline, $p.fw6,
+          $p.buttonShadow,
+          $p.bgWhite,
+          $p.pv10,
+          $p.ph16,
+          $p.ttu,
+          $p.relative,
+          $p.mt16,
+          $p.noUnderline,
+          $p.fw6,
+          $p.nowrap,
         )}
         style={{
           bottom: -20,

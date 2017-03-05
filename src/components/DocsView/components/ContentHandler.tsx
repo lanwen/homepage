@@ -15,7 +15,7 @@ import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
-import {breakpoints} from '../../../utils/constants'
+import { breakpoints } from '../../../utils/constants'
 
 interface Props {
   location: any,
@@ -60,17 +60,13 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // resource not found
     if (nextProps.data.Item === null) {
-      this.props.router.push('/404')
+      this.props.router.push('/404/')
       return
     }
 
     // rewrite url if it doesn't already match item path
-    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
+    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
     let currentPath = this.props.location.pathname
-    // normalize url if it is /the/path/#hash, because then the path has a trailing /
-    if (currentPath[currentPath.length - 1] === '/') {
-      currentPath = currentPath.slice(0, currentPath.length - 1)
-    }
     if (contentUrl !== currentPath) {
       this.props.router.push(contentUrl)
     }
@@ -128,10 +124,9 @@ class ContentHandler extends React.Component<Props, {}> {
     if (window.innerWidth < breakpoints.p400) {
       contentBoxMarginRight = 25
     }
+    const pageTitle = item.title + (item.layout === 'REFERENCE' ? ' - Graphcool' : '')
     return (
-      <div onClick={this.onClick} className={cx(
-        $p.w100,
-      )}>
+      <div onClick={this.onClick} className={cx($p.w100)}>
         <style jsx={true}>{`
           .side {
             @p: .relative;
@@ -141,7 +136,7 @@ class ContentHandler extends React.Component<Props, {}> {
         `}</style>
         <div className={cx($p.flex)}>
           <Helmet
-            title={item.shorttitle}
+            title={pageTitle}
             meta={[
               { name: 'description', content: item.description },
               { property: 'og:type', content: 'article' },
@@ -220,8 +215,13 @@ class ContentHandler extends React.Component<Props, {}> {
 
   // capture internal links to navigate via react-router
   private onClick = (e: React.MouseEvent<HTMLElement>): void => {
-    if (e.target instanceof HTMLAnchorElement) {
-      if (e.target.hostname === window.location.hostname && !e.ctrlKey && !e.metaKey) {
+    if (e.target instanceof HTMLAnchorElement && e.target.hostname === window.location.hostname) {
+      // skip if click on local hash link
+      if (e.target.pathname === window.location.pathname && e.target.hash !== '') {
+        return
+      }
+
+      if (!e.ctrlKey && !e.metaKey) {
         e.preventDefault()
         this.props.router.push(e.target.pathname)
       }
@@ -230,39 +230,39 @@ class ContentHandler extends React.Component<Props, {}> {
 }
 
 const getItemQuery = gql`query getItem($alias: String) {
-    Item(alias: $alias) {
-        id
-        body
-        alias
-        path
-        layout
-        beta
-        tags
-        lastModified
-        shorttitle
-        title
-        description
-        sourceFilePath
-        preview
-        simpleRelayTwin
-        publicationDate
-        relatedFurther {
-            alias
-            title
-            shorttitle
-            path
-            layout
-        }
-        relatedMore {
-            alias
-            title
-            shorttitle
-            path
-            layout
-        }
-        relatedMoreTitle
-        relatedMoreDescription
+  Item(alias: $alias) {
+    id
+    body
+    alias
+    path
+    layout
+    beta
+    tags
+    lastModified
+    shorttitle
+    title
+    description
+    sourceFilePath
+    preview
+    simpleRelayTwin
+    publicationDate
+    relatedFurther {
+      alias
+      title
+      shorttitle
+      path
+      layout
     }
+    relatedMore {
+      alias
+      title
+      shorttitle
+      path
+      layout
+    }
+    relatedMoreTitle
+    relatedMoreDescription
+  }
 }`
 
 const ContentHandlerWithData = graphql(getItemQuery, {

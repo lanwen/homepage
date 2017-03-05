@@ -130,6 +130,7 @@ export default class TwitterFeed extends React.Component<{}, {}> {
             <PostsInnerContainer ref='scrollContainer'>
               {data.map(node => (
                 <Post
+                  key={node.url}
                   content={node.content}
                   author={node.author}
                   date={node.date}

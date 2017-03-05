@@ -32,6 +32,11 @@ export function updateApolloState(state: any): void {
   }
 }
 
+// save last referral
+if (!cookiestore.has('graphcool_last_referral')) {
+  cookiestore.set('graphcool_last_referral', document.referrer)
+}
+
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
 })

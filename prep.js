@@ -36,6 +36,7 @@ exports.default = () => {
         minifyCSS: true,
         minifyJS: true,
       },
+      additionalSitemapUrls: ['/forum'],
     }
   })
 
