@@ -273,7 +273,7 @@ export default class Nav extends React.Component<Props, State> {
         }
         {links[this.props.view].map(link => (
           link.hasOwnProperty('links') ? (
-              <div>
+              <div key={link.name}>
                 {window.innerWidth >= breakpoints.p750 &&
                   <div
                     className={cx(
@@ -294,55 +294,58 @@ export default class Nav extends React.Component<Props, State> {
                           },
                         )}
                       >
-                        {link.links.map(link1 => {
-                          return (
-                            link1.link.includes('http') ? (
-                              <a href={link1.link} className='tooltipLink' target='_blank'>
-                                {link1.circleIcon ? (
-                                    <CircleIcon type={link1.circleIcon} />
-                                  ) : (
-                                    <div className={`featureIcon ${link1.icon}`}>
-                                      <Icon
-                                        src={link1.url}
-                                        height={25}
-                                        width={25}
-                                        color={link1.color || $v.purple}
-                                      />
-                                    </div>
-                                  )}
-                                <span className={cx($p.flexFixed)}>{link1.name}</span>
-                              </a>
-                            ) : (
-                              <Link to={link1.link} className='tooltipLink'>
-                                {link1.circleIcon ? (
-                                    <CircleIcon type={link1.circleIcon} />
-                                  ) : (
-                                    <div className={`featureIcon ${link1.icon}`}>
-                                      <Icon
-                                        src={link1.url}
-                                        height={25}
-                                        width={25}
-                                        color={link1.color || $v.purple}
-                                      />
-                                    </div>
-                                  )}
-                                <span className={cx($p.flexFixed)}>{link1.name}</span>
-                              </Link>
-                            )
+                        {link.links.map(link1 => (
+                          link1.link.includes('http') ? (
+                            <a href={link1.link} key={link1.link} className='tooltipLink' target='_blank'>
+                              {link1.circleIcon ? (
+                                  <CircleIcon type={link1.circleIcon} />
+                                ) : (
+                                  <div className={`featureIcon ${link1.icon}`}>
+                                    <Icon
+                                      src={link1.url}
+                                      height={25}
+                                      width={25}
+                                      color={link1.color || $v.purple}
+                                    />
+                                  </div>
+                                )}
+                              <span className={cx($p.flexFixed)}>{link1.name}</span>
+                            </a>
+                          ) : (
+                            <Link to={link1.link} key={link1.link} className='tooltipLink'>
+                              {link1.circleIcon ? (
+                                  <CircleIcon type={link1.circleIcon} />
+                                ) : (
+                                  <div className={`featureIcon ${link1.icon}`}>
+                                    <Icon
+                                      src={link1.url}
+                                      height={25}
+                                      width={25}
+                                      color={link1.color || $v.purple}
+                                    />
+                                  </div>
+                                )}
+                              <span className={cx($p.flexFixed)}>{link1.name}</span>
+                            </Link>
                           )
-                        })}
+                        ))}
                       </span>
                     }
                   </div>
                 }
                 {window.innerWidth < breakpoints.p750 && (
                   link.links.map(link1 => (
-                    <Link className='link twoRow' to={link1.link}>{link1.name}</Link>
+                    <Link
+                      className='link twoRow'
+                      to={link1.link}
+                      key={link1.link}
+                    >{link1.name}</Link>
                   ))
                 )}
               </div>
             ) : (
               <Link
+                key={link.link}
                 className={cx('link', {'active' : window.location.pathname === link.link})}
                 to={link.link}
               >
@@ -423,14 +426,14 @@ const links = {
       links: [
         {
           name: 'GraphQL Backend',
-          link: '/graphql',
+          link: '/graphql/',
           icon: 'graphqlBackend',
           url: require('assets/icons/graphqlBackendLogo.svg'),
           color: $v.purple,
         },
         {
           name: 'Serverless Functions',
-          link: '/functions',
+          link: '/functions/',
           icon: 'serverlessFunctions',
           url: require('assets/icons/functionsLogo.svg'),
           color: $v.lightOrange,
@@ -439,24 +442,24 @@ const links = {
     },
     {
       name: 'Pricing',
-      link: '/pricing',
+      link: '/pricing/',
     },
     {
       name: 'Docs',
-      link: '/docs',
+      link: '/docs/',
     },
   ],
   DOCS: [
     {
       name: 'Quickstart',
-      link: 'docs/quickstart',
+      link: '/docs/quickstart/',
     },
     {
       name: 'Resources',
       links: [
         {
           name: 'Tutorials',
-          link: '/docs/tutorials',
+          link: '/docs/tutorials/',
           icon: 'tutorials',
           url: require('graphcool-styles/icons/fill/docsTutorial.svg'),
           color: $v.purple,
@@ -470,7 +473,7 @@ const links = {
         },
         {
           name: 'FAQ',
-          link: '/docs/faq',
+          link: '/docs/faq/',
           icon: 'faq',
           url: require('graphcool-styles/icons/fill/docsQuestion.svg'),
           color: $v.blue,
@@ -479,11 +482,11 @@ const links = {
     },
     {
       name: 'Reference',
-      link: 'docs/reference',
+      link: '/docs/reference/',
     },
     {
       name: 'Blog',
-      link: '/blog',
+      link: '/blog/',
     },
   ],
 }

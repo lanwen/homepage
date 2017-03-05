@@ -214,7 +214,7 @@ export default class FAQ extends React.Component<{}, {}> {
                   <div className={cx($p.pl25, $p.mt10)}>
                     A node can have up to 100 fields. You can see all limits for data stored in fields in the
                     <Link className={cx($p.green, $p.fw6, $p.noUnderline, $p.ml4)}
-                          to='/docs/reference/platform/fields-teizeit5se'>documentation</Link>.
+                          to='/docs/reference/platform/fields-teizeit5se/'>documentation</Link>.
                   </div>
                 </div>
               </div>
@@ -305,7 +305,7 @@ export default class FAQ extends React.Component<{}, {}> {
           window.innerWidth < breakpoints.p650 ? $p.itemsCenter : $p.justifyCenter,
           $p.mt38,
         )}>
-          <Link to='/docs/faq'
+          <Link to='/docs/faq/'
             className={cx(
               $g.uppercaseButton,
               $p.bgGreen,

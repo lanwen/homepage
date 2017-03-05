@@ -100,11 +100,16 @@ const Container = styled.div`
   }
   
   a {
-    color: ${$v.gray60};
+    color: ${$v.green};
+    text-decoration: none;
 
     &:hover {
-      color: ${$v.gray80};
+      text-decoration: underline;
     }
+  }
+
+  a.no-hover:hover {
+    text-decoration: none;
   }
   
   h2, h3 {
@@ -120,7 +125,6 @@ const Container = styled.div`
   
   h3 {
     color: ${$v.gray80};
-    // font-size: ${props => props.blog ? $v.size20 : $v.size16}
     font-size: ${$v.size20};
     margin: ${$v.size25} 0;
   }
@@ -155,7 +159,6 @@ const Container = styled.div`
 
     ul li { 
       line-height: 1.8;
-      // font-size: ${props => props.blog ? $v.size16 : $v.size14};
     }
     
     h2 {
@@ -166,7 +169,6 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      // font-size: ${props => props.blog ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
     }
     
@@ -298,11 +300,9 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       Heading: (props) => {
         const id = slug(childrenToString(props.children).toLowerCase())
-        const newProps = Object.assign({}, props, {
-          id,
-        })
+        const newProps = Object.assign({}, props, { id })
         return (
-          <HeadingLink href={`#${id}`} className={$p.noUnderline}>
+          <HeadingLink href={`#${id}`} className={cx($p.noUnderline, 'no-hover')}>
             {React.createElement('h' + props.level, getCoreProps(newProps), props.children)}
           </HeadingLink>
         )
