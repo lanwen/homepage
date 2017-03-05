@@ -15,14 +15,15 @@ exports.default = () => {
     const docsItemRoutes = result.allItems.map(({alias, path}) => `${path}-${alias}`)
     const routes = [
       '/',
-      '/about',
-      '/open-source',
-      '/pricing',
-      '/blog',
-      '/docs',
-      '/docs/faq',
-      '/docs/tutorials',
-      '/docs/quickstart',
+      '/about/',
+      '/open-source/',
+      '/pricing/',
+      '/blog/',
+      '/docs/',
+      '/docs/faq/',
+      '/docs/tutorials/',
+      '/docs/quickstart/',
+      '/forum/', // this doesn't really need to get pre-rendered but should be included in the sitemap
     ]
 
     return {

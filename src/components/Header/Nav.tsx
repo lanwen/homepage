@@ -392,10 +392,10 @@ export default class Nav extends React.Component<Props, State> {
             </div>
           ) : (
             <div className='entryPoints'>
-              <a href='https://console.graph.cool/login' className='button secondary'>
+              <a href='https://console.graph.cool/login/' className='button secondary'>
                 Log in
               </a>
-              <a href='https://console.graph.cool/signup' className='button primary'>
+              <a href='https://console.graph.cool/signup/' className='button primary'>
                 Sign up
               </a>
             </div>
