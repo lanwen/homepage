@@ -60,7 +60,7 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // resource not found
     if (nextProps.data.Item === null) {
-      this.props.router.push('/404')
+      this.props.router.push('/404/')
       return
     }
 
