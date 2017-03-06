@@ -26,42 +26,42 @@ export default {
       },
     },
     {
-      path: '/graphql',
+      path: '/graphql/',
       getComponent(_, cb) {
         System.import('./components/FeaturesGraphQLView/FeaturesGraphQLView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
     {
-      path: '/functions',
+      path: '/functions/',
       getComponent(_, cb) {
         System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
     {
-      path: '/pricing',
+      path: '/pricing/',
       getComponent(_, cb) {
         System.import('./components/PricingView/PricingView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
     {
-      path: '/open-source',
+      path: '/open-source/',
       getComponent(_, cb) {
         System.import('./components/OpenSourceView/OpenSourceView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
     {
-      path: '/about',
+      path: '/about/',
       getComponent(_, cb) {
         System.import('./components/AboutView/AboutView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
     {
-      path: '/404',
+      path: '/404/',
       getComponent(_, cb) {
         System.import('./components/404/404').then(loadRoute(cb))
           .catch(errorLoading)
@@ -74,41 +74,41 @@ export default {
       },
       childRoutes: [
         {
-          path: '/blog',
+          path: '/blog/',
           getComponent(_, cb) {
             System.import('./components/DocsView/pages/BlogPage/BlogPage').then(loadRoute(cb))
               .catch(errorLoading)
           },
         },
         {
-          path: '/docs',
+          path: '/docs/',
           getIndexRoute(_, cb) {
             cb(null, docsOverview)
           },
           childRoutes: [
             {
-              path: 'reference',
+              path: 'reference/',
               onEnter(_, replace, callback) {
-                replace('reference/platform/overview-chohbah0eo')
+                replace('reference/platform/overview-chohbah0eo/')
                 callback()
               },
             },
             {
-              path: 'quickstart',
+              path: 'quickstart/',
               getComponent(_, cb) {
                 System.import('./components/DocsView/pages/QuickstartPage').then(loadRoute(cb))
                   .catch(errorLoading)
               },
             },
             {
-              path: 'tutorials',
+              path: 'tutorials/',
               getComponent(_, cb) {
                 System.import('./components/DocsView/pages/TutorialsPage').then(loadRoute(cb))
                   .catch(errorLoading)
               },
             },
             {
-              path: 'faq',
+              path: 'faq/',
               getComponent(_, cb) {
                 System.import('./components/DocsView/pages/FAQPage').then(loadRoute(cb))
                   .catch(errorLoading)

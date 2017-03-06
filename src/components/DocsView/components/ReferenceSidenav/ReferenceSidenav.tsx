@@ -5,8 +5,6 @@ import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
 import ListItems from './ListItems'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 import { ReferenceSidebarElement, elements } from './data'
 import { Item, NestedItem } from '../../../../types/types'
 import { throttle } from 'lodash'
@@ -14,13 +12,12 @@ import { throttle } from 'lodash'
 const VerticalContainer = styled.div`
   flex: 0 0 250px;
   position: relative;
-  top: -144px;
-  background-color: rgba(0, 0, 0, 0.02);
-  height: calc(100% + 144px);
+  top: -194px;
+  height: calc(100% + 194px);
   
   // Fix to prevent overflowing with footer
-  background-color: #fafafa
-  z-index: 1
+  background-color: #fafafa;
+  z-index: 20;
   
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
@@ -38,18 +35,15 @@ const FixedWrapper = styled.div`
 `
 
 interface Props {
-  currentAlias: string,
-  data: {
-    loading: boolean,
-    allItems: Item[],
-  },
+  currentAlias: string
+  items: Item[]
 }
 
 interface State {
-  activeItemIndex: number,
-  fixed: boolean,
-  absolute: boolean,
-  containerOffset: number,
+  activeItemIndex: number
+  fixed: boolean
+  absolute: boolean
+  containerOffset: number
 }
 
 const TOP = 97
@@ -83,6 +77,15 @@ class ReferenceSidenav extends React.Component<Props, State> {
         const containerTop = container.getBoundingClientRect().top + bodyTop
 
         const overThreshold = containerTop + containerHeight > (threshold - 45)
+        // leave the logging for later debugging
+        // console.log('\n\n\n')
+        // console.log(`containerTop + containerHeight ${containerTop+containerHeight}
+        // (threshold - 45) ${threshold - 45}`)
+        // console.log(`bodyHeight ${bodyHeight}\nbodyTop${bodyTop}\nthreshold ${threshold}`)
+        // console.log(`footerHeight ${footerHeight}`)
+        // console.log(`containerTop ${containerTop}\ncontainerHeight ${containerHeight}`)
+        // console.log(`containerTop+containerHeight ${containerTop + containerHeight}`)
+        // console.log(`overThreshold ${overThreshold}`)
 
         let greaterThanLastIntersection = true
 
@@ -94,7 +97,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           if (this.bodyTopAtIntersection === -1) {
             this.bodyTopAtIntersection = bodyTop
           }
-          const containerOffset = threshold - containerHeight - TOP - 45
+          const containerOffset = threshold - containerHeight - TOP - 95
           this.setState({
             absolute: true,
             fixed: false,
@@ -119,10 +122,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
   )
 
   componentWillReceiveProps(nextProps: Props) {
-    if (nextProps.data.loading) {
-      return
-    }
-    const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
+    const nestedItems = mapToNestedItems(elements, nextProps.items)
     const findRecursive = (item: NestedItem) => item.alias === nextProps.currentAlias ||
     item.children && !!item.children.find(findRecursive)
     const activeItemIndex = nestedItems.findIndex(findRecursive)
@@ -146,11 +146,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   render() {
-    if (this.props.data.loading) {
-      return null
-    }
-
-    const nestedItems = mapToNestedItems(elements, this.props.data.allItems)
+    const nestedItems = mapToNestedItems(elements, this.props.items)
     const {currentAlias} = this.props
 
     const {activeItemIndex, fixed, absolute, containerOffset} = this.state
@@ -171,7 +167,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           window.innerWidth > breakpoints.p1360 ? $p.pl60 : 0,
         )}
         style={{
-          top: fixed ? 0 : -144,
+          top: -194,
         }}
       >
         <FixedWrapper
@@ -254,29 +250,11 @@ function mapToNestedItems(elements: ReferenceSidebarElement[], items: Item[]): N
   })
 }
 
-function extractAliases(elements: ReferenceSidebarElement[]): string[] {
+export function extractAliases(elements: ReferenceSidebarElement[]): string[] {
   return elements.reduce(
     (acc, element) => acc.concat([element.alias].concat(element.children ? extractAliases(element.children) : [])),
     [] as string[],
   )
 }
 
-const query = gql`query items($aliases: [String!]!) {
-  allItems(filter: { alias_in: $aliases }) {
-    title
-    shorttitle
-    alias
-    path
-  }
-}`
-
-const ReferenceSidenavWithData = graphql(query, {
-  options: () => {
-    const aliases = extractAliases(elements)
-    return {
-      variables: {aliases},
-    }
-  },
-})(ReferenceSidenav)
-
-export default ReferenceSidenavWithData
+export default ReferenceSidenav

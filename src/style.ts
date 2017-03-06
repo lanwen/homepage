@@ -89,4 +89,9 @@ injectGlobal`
     font-size: ${$v.size16};
     line-height: 1.5;
   }
+  
+  .CodeMirror-hint-information {
+    font-size: 12px;
+    font-weight: 400;
+  }
 `

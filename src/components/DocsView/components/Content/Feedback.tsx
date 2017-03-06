@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import NegativeFeedback from './NegativeFeedback'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -21,11 +21,7 @@ interface Props {
 }
 
 const Root = styled.div`
-  margin-top: ${$v.size60};
-  
-  @media (max-width: ${breakpoints.p580}px) {
-    margin-top: ${$v.size38};
-  }
+  flex: 1;
 `
 
 class Feedback extends React.Component<Props, State> {
@@ -40,7 +36,7 @@ class Feedback extends React.Component<Props, State> {
 
     if (showThanks) {
       return (
-        <div className={cx($p.mv38, $p.flex, $p.justifyCenter)}>
+        <div className={cx($p.mv38, $p.flex)}>
           <h2 className={cx($p.fw3, $p.f25, $p.green, $p.br2, $p.bgGreen10, $p.pv25, $p.ph38)}>
             Thanks for your feedback. It won't be forgotten.
           </h2>
@@ -50,22 +46,20 @@ class Feedback extends React.Component<Props, State> {
 
     if (sending) {
       return (
-        <div className={cx($p.mv38, $p.flex, $p.justifyCenter)}>
+        <div className={cx($p.mv38, $p.flex)}>
           <h2>Sending Feedback 🌹</h2>
         </div>
       )
     }
 
     return (
-      <Root className={cx($p.bt, $p.bBlack10)}>
+      <Root>
         {!showInput ? (
             <div
               className={cx(
                 $p.flex,
                 window.innerWidth < breakpoints.p500 && $p.flexColumn,
                 window.innerWidth < breakpoints.p500 && $p.itemsCenter,
-                window.innerWidth > breakpoints.p500 && $p.justifyCenter,
-                $p.pv38,
             )}>
               <div className={cx(
                 $p.flex,

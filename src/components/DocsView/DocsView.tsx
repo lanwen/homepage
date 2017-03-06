@@ -2,7 +2,7 @@ import * as React from 'react'
 import Footer from '../Footer/Footer'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
-import Header from './components/Header/DocsHeader'
+import Header from '../Header/Header'
 import * as Helmet from 'react-helmet'
 import styled from 'styled-components'
 import drumstick from 'drumstick'
@@ -56,8 +56,8 @@ export default class DocsView extends React.Component<Props, {}> {
 
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.overflowHidden)}>
-        <Header/>
-        <Helmet titleTemplate='%s | Graphcool Docs' />
+        <Header view='DOCS' />
+        <Helmet titleTemplate='%s' />
         <Content className={cx(
           $p.flex,
           !isReference && $p.justifyCenter,

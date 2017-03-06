@@ -23,12 +23,14 @@ const StyledLink = styled.div`
 `
 
 export default class BreadCrumb extends React.Component<Props, {}> {
-  generateCrumbs(path): Crumb[] {
+  generateCrumbs(item: Item): Crumb[] {
+    const {path} = item
     let bread = ''
     if (path.includes('/docs/reference/')) {
       bread = path.slice(16, path.length)
     } else if (path.includes('/blog')) {
-      bread = path.slice(1, path.length)
+      // bread = path.slice(1, path.length)
+      bread = 'blog/' + item.shorttitle
     } else if (path.includes('/docs/faq/') || path.includes('/docs/tutorials/')) {
       bread = path.slice(6, path.length)
     }
@@ -40,7 +42,7 @@ export default class BreadCrumb extends React.Component<Props, {}> {
 
   render() {
     const {item} = this.props
-    const crumbs = this.generateCrumbs(item.path)
+    const crumbs = this.generateCrumbs(item)
     const count = crumbs.length
 
     return (

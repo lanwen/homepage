@@ -1,8 +1,9 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import OpenSource from './OpenSource'
 import FooterCTA from '../FooterCTA'
+import * as Helmet from 'react-helmet'
 
 export default class OpenSourceView extends React.Component<{}, {}> {
   componentDidMount() {
@@ -12,15 +13,16 @@ export default class OpenSourceView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Helmet title='We <3 Open Source - Graphcool'/>
+        <Header view='HOMEPAGE' />
         <OpenSource/>
         <FooterCTA
           headline1='Ready to get started?'
           headline2='Set up a GraphQL backend or read the docs'
           button1Text='Create GraphQL Backend'
-          button1Link='https://graph.cool/docs'
+          button1Link='/docs/'
           button2Text='Open Docs'
-          button2Link='https://graph.cool/quickstart'
+          button2Link='/quickstart/'
         />
         <Footer/>
       </div>

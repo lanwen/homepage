@@ -1,3 +1,4 @@
+require('offline-plugin/runtime').install()
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
@@ -31,6 +32,11 @@ export function updateApolloState(state: any): void {
   }
 }
 
+// save last referral
+if (!cookiestore.has('graphcool_last_referral')) {
+  cookiestore.set('graphcool_last_referral', document.referrer)
+}
+
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
 })
@@ -52,6 +58,25 @@ if (navigator.userAgent === 'SSR') {
   })
 }
 
+function hashLinkScroll() {
+  const { hash } = window.location
+  if (hash !== '') {
+    // Push onto callback queue so it runs after the DOM is updated,
+    // this is required when navigating from a different page so that
+    // the element is rendered on the page before trying to getElementById.
+    setTimeout(
+      () => {
+        const id = hash.replace('#', '')
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView()
+        }
+      },
+      0,
+    )
+  }
+}
+
 function render() {
   ReactDOM.render(
     <AppContainer>
@@ -60,6 +85,7 @@ function render() {
           history={browserHistory}
           render={applyRouterMiddleware(useScroll(shouldScrollUp))}
           routes={routes}
+          onUpdate={hashLinkScroll}
         >
         </Router>
       </ApolloProvider>
@@ -87,7 +113,8 @@ if (navigator.userAgent !== 'SSR') {
 
   WebFont.load({
     google: {
-      families: ['Open Sans:300,400,600', 'Source Code Pro:400,700'],
+      families: ['Open Sans:300,400,600', '' +
+      'Source Code Pro:500,700'],
     },
   })
 }

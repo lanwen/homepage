@@ -53,9 +53,6 @@ const Container = styled.div`
     margin-left: -25px;
     margin-right: -25px;
   }
-  
-  
-  
 `
 
 export default class YoutubeVideo extends React.Component<Props, {}> {
@@ -68,7 +65,7 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
     const {videoActive} = this.state
 
     return (
-      <Container className={cx($p.mv25, $p.bgBlack)}>
+      <Container className={cx($p.mv25, $p.bgBlack, $p.br2)}>
         {videoActive ? (
           <VideoWrapper className={cx($p.pt25, $p.relative)}>
             <Youtube
@@ -87,7 +84,7 @@ export default class YoutubeVideo extends React.Component<Props, {}> {
           >
             <img
               src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-              className={cx($p.o50, $p.ma0, $p.db)}
+              className={cx($p.o50, $p.ma0, $p.db, $p.w100, $p.br2)}
             />
             <IconWrapper
               className={cx(

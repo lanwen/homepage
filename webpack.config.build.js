@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
+const OfflinePlugin = require('offline-plugin')
 
 
 module.exports = {
@@ -79,6 +80,7 @@ module.exports = {
         },
       }
     }),
+    new OfflinePlugin(),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],

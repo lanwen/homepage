@@ -130,7 +130,7 @@ export default class MarkdownGraphiQL extends React.Component<Props, State> {
     }
 
     return (
-      <Container disabled={dsl.disabled} className={cx($p.mv25, 'docs-graphiql')}>
+      <Container disabled={dsl.disabled} className={cx($p.mv25, $p.mb38, 'docs-graphiql')}>
         <CustomGraphiQL
           fetcher={graphQLFetcher}
           query={this.state.query}

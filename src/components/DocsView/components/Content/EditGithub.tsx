@@ -1,19 +1,13 @@
 import * as React from 'react'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
-import { breakpoints } from '../../../../utils/constants'
 
 interface Props {
   sourceFilePath: string
 }
 
 const Root = styled.div`
-  padding: ${$v.size60};
-  
-  @media (max-width:${breakpoints.p580}px) {
-    padding: ${$v.size38};
-  }
 `
 
 export default class EditGithub extends React.Component<Props, {}> {
@@ -24,6 +18,7 @@ export default class EditGithub extends React.Component<Props, {}> {
         className={cx(
           $p.flex,
           $p.justifyCenter,
+          $p.itemsCenter,
         )}
       >
         <a

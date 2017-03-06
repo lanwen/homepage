@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Parser } from 'commonmark'
 import Markdown from './Content/Markdown'
-import { graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import { Item } from '../../../types/types'
@@ -15,7 +15,13 @@ import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
-import {breakpoints} from '../../../utils/constants'
+import { breakpoints } from '../../../utils/constants'
+import ScrollSpy from './Content/ScrollSpy'
+import {Heading} from './Content/ScrollSpy'
+import ContentPagination from './ContentPagination'
+import {elements} from './ReferenceSidenav/data'
+import {extractAliases} from './ReferenceSidenav/ReferenceSidenav'
+import LoadingArticle from './LoadingArticle'
 
 interface Props {
   location: any,
@@ -23,6 +29,7 @@ interface Props {
   data: {
     loading: boolean,
     Item: Item,
+    allItems: Item[],
   },
   router: ReactRouter.InjectedRouter,
 }
@@ -39,13 +46,25 @@ interface Meta {
   httpEquiv?: string
 }
 
-class ContentHandler extends React.Component<Props, {}> {
+interface State {
+  headings: Heading[]
+}
+
+class ContentHandler extends React.Component<Props, State> {
 
   static contextTypes = {
     setIsLoading: React.PropTypes.func.isRequired,
   }
 
   context: Context
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      headings: [],
+    }
+  }
 
   componentWillReceiveProps(nextProps: Props) {
 
@@ -60,16 +79,16 @@ class ContentHandler extends React.Component<Props, {}> {
 
     // resource not found
     if (nextProps.data.Item === null) {
-      this.props.router.push('/404')
+      this.props.router.push('/404/')
       return
     }
 
     // rewrite url if it doesn't already match item path
-    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
-    const currentPath = this.props.location.pathname
-    if (contentUrl !== currentPath) {
-      this.props.router.push(contentUrl)
-    }
+    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
+    // let currentPath = this.props.location.pathname
+    // if (contentUrl !== currentPath) {
+    //   this.props.router.push(contentUrl)
+    // }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -78,11 +97,14 @@ class ContentHandler extends React.Component<Props, {}> {
 
   render() {
     if (this.props.data.loading) {
-      return null
+      return <LoadingArticle />
     }
+    const {headings} = this.state
 
     const item: Item = this.props.data.Item
-    const ast = new Parser().parse(atob(this.props.data.Item.body))
+    const aliases = extractAliases(elements)
+    const items: Item[] = this.props.data.allItems.sort((a, b) => aliases.indexOf(a.alias) - aliases.indexOf(b.alias))
+    const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
 
     let imageMeta: Meta[] = []
 
@@ -124,13 +146,47 @@ class ContentHandler extends React.Component<Props, {}> {
     if (window.innerWidth < breakpoints.p400) {
       contentBoxMarginRight = 25
     }
+    const pageTitle = item.title + (item.layout === 'REFERENCE' ? ' - Graphcool' : '')
     return (
-      <div onClick={this.onClick} className={cx(
-        $p.w100,
-      )}>
+      <div onClick={this.onClick} className={cx($p.w100)}>
+        <style jsx>{`
+          .side {
+            @p: .relative;
+            top: -194px;
+            height: calc(100% + 194px);
+            z-index: 20;
+          }
+          .scrollspy-container {
+            display: block;
+            margin-left: 50px;
+            width: 250px;
+            height: 0px;
+            flex: 0 0 200px;
+          }
+          @media (max-width: 960px) {
+            .scrollspy-container {
+              display: none;
+            }
+          }
+          .content-container {
+            @p: .flex;
+          }
+          .content {
+            flex-basis: auto;
+            flex-grow: 1;
+          }
+          .content-footer {
+            @p: .flex, .justifyBetween, .pv38, .bt, .bBlack10, .mv60;
+          }
+          @media (max-width: 580px) {
+            .content-footer {
+              @p: .mv38;
+            }
+          }
+        `}</style>
         <div className={cx($p.flex)}>
           <Helmet
-            title={item.shorttitle}
+            title={pageTitle}
             meta={[
               { name: 'description', content: item.description },
               { property: 'og:type', content: 'article' },
@@ -144,7 +200,7 @@ class ContentHandler extends React.Component<Props, {}> {
           />
           <div className={cx($p.flexAuto, $p.flex)}>
             <div
-              className={cx($p.flex1)}
+              className={cx($p.flex1, 'side')}
               style={{
                 backgroundColor: item.layout === 'REFERENCE' ? 'rgba(0,0,0,.02)' : 'transparent',
               }}
@@ -152,8 +208,8 @@ class ContentHandler extends React.Component<Props, {}> {
             </div>
             <section
               className={cx(
-                $p.pt96,
                 $p.flex,
+                $p.w100,
                 {
                   [$p.justifyCenter]: item.layout === 'TUTORIAL' || item.layout === 'BLOG',
                 },
@@ -163,32 +219,46 @@ class ContentHandler extends React.Component<Props, {}> {
               }}
             >
               {item.layout === 'REFERENCE' && (
-                <ReferenceSidenav currentAlias={item.alias}/>
+                <ReferenceSidenav items={items} currentAlias={item.alias}/>
               )}
               <div
                 className={cx(
                   $p.bbox,
+                  $p.mw100,
                 )}
                 style={{
-                  marginLeft: contentBoxMarginLeft,
-                  marginRight: contentBoxMarginRight,
+                  paddingLeft: contentBoxMarginLeft,
+                  paddingRight: contentBoxMarginRight,
                 }}
               >
-                <ContentHeader item={item}/>
-                <Markdown
-                  ast={ast}
-                  layout={item.layout}
-                  item={item}
-                />
-                <Feedback item={item}/>
-                {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+                <div className='content-container'>
+                  <div className='content'>
+                    <ContentHeader item={item}/>
+                    <Markdown
+                      ast={ast}
+                      layout={item.layout}
+                      item={item}
+                      onChangeHeadings={this.handleChangeHeadings}
+                    />
+                    <ContentPagination items={items} currentAlias={item.alias}/>
+                    <div className='content-footer'>
+                      <Feedback item={item}/>
+                      {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+                    </div>
+                  </div>
+                  {item.layout === 'TUTORIAL' && (
+                    <div className='scrollspy-container'>
+                      <ScrollSpy headings={headings} />
+                    </div>
+                  )}
+                </div>
               </div>
               {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
                 <FAQSidebar item={item}/>
               )}
             </section>
             <div
-              className={cx($p.flex1)}
+              className={cx($p.flex1, 'side')}
               style={{
                 backgroundColor: item.layout === 'FAQ' ? 'rgba(0,0,0,.02)' : 'transparent',
               }}
@@ -208,57 +278,76 @@ class ContentHandler extends React.Component<Props, {}> {
 
   // capture internal links to navigate via react-router
   private onClick = (e: React.MouseEvent<HTMLElement>): void => {
-    if (e.target instanceof HTMLAnchorElement) {
-      if (e.target.hostname === window.location.hostname && !e.ctrlKey && !e.metaKey) {
+    if (e.target instanceof HTMLAnchorElement && e.target.hostname === window.location.hostname) {
+      // skip if click on local hash link
+      if (e.target.pathname === window.location.pathname && e.target.hash !== '') {
+        return
+      }
+
+      if (!e.ctrlKey && !e.metaKey) {
         e.preventDefault()
         this.props.router.push(e.target.pathname)
       }
     }
   }
+
+  private handleChangeHeadings = (headings) => {
+    this.setState({headings})
+  }
 }
 
-const getItemQuery = gql`query getItem($alias: String) {
-    Item(alias: $alias) {
-        id
-        body
-        alias
-        path
-        layout
-        beta
-        tags
-        lastModified
-        shorttitle
-        title
-        description
-        sourceFilePath
-        preview
-        simpleRelayTwin
-        relatedFurther {
-            alias
-            title
-            shorttitle
-            path
-            layout
-        }
-        relatedMore {
-            alias
-            title
-            shorttitle
-            path
-            layout
-        }
-        relatedMoreTitle
-        relatedMoreDescription
+const getItemQuery = gql`query getItem($alias: String, $aliases: [String!]!) {
+  Item(alias: $alias) {
+    id
+    body
+    alias
+    path
+    layout
+    beta
+    tags
+    lastModified
+    shorttitle
+    title
+    description
+    sourceFilePath
+    preview
+    simpleRelayTwin
+    publicationDate
+    relatedFurther {
+      alias
+      title
+      shorttitle
+      path
+      layout
     }
+    relatedMore {
+      alias
+      title
+      shorttitle
+      path
+      layout
+    }
+    relatedMoreTitle
+    relatedMoreDescription
+  }
+  allItems(filter: { alias_in: $aliases }) {
+    id
+    title
+    shorttitle
+    alias
+    path
+  }
 }`
 
-const ContentHandlerWithData = graphql(getItemQuery, {
-  options: (ownProps) => {
-    const alias = getAliasFromUrl(ownProps.location.pathname)
-    return {
-      variables: {alias},
-    }
-  },
-})(ContentHandler)
-
-export default withRouter(ContentHandlerWithData)
+export default compose(
+  graphql(getItemQuery, {
+    options: (ownProps) => {
+      const alias = getAliasFromUrl(ownProps.location.pathname)
+      const aliases = extractAliases(elements)
+      return {
+        variables: {alias, aliases},
+      }
+    },
+  }),
+  withRouter,
+)(ContentHandler)

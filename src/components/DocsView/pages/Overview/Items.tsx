@@ -15,6 +15,7 @@ interface Props {
   aliases?: string[]
   showPreview?: boolean
   revert?: boolean
+  orderBy?: string
 }
 
 const StyledLink = styled(Link)`
@@ -114,12 +115,13 @@ class Items extends React.Component<Props, {}> {
 }
 
 const getItemsQuery = gql`
-  query ($first: Int, $layout: ITEM_LAYOUT, $aliases: [String!], $includeAliases: Boolean!) {
+  query ($first: Int, $layout: ITEM_LAYOUT, $aliases: [String!], $includeAliases: Boolean!, $orderBy: ItemOrderBy) {
     layout: allItems(
       filter: {
         layout: $layout
       }
       first: $first
+      orderBy: $orderBy
     ) {
       id
       path
@@ -147,12 +149,13 @@ const getItemsQuery = gql`
 `
 
 export default graphql(getItemsQuery, {
-  options: ({count, layout, aliases}) => ({
+  options: ({count, layout, aliases, orderBy}) => ({
     variables: {
       first: count || 3,
       layout: layout || 'REFERENCE',
       aliases: aliases || [],
       includeAliases: !!aliases && aliases.length > 0,
+      orderBy: orderBy || 'createdAt_DESC',
     },
   }),
 })(Items)

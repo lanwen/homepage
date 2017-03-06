@@ -15,10 +15,18 @@ interface Props {
 const Root = styled.div`
   position: relative;
   display: flex;
-  margin-top: ${$v.size96};
+  max-width: 970px;
   
   @media (max-width: ${breakpoints.p580}px) {
     margin-top: ${$v.size38};
+  }
+  
+  @media (max-width: 1050px) {
+    max-width: calc(100vw - 300px);
+  }
+  
+  @media (max-width: 750px) {
+    max-width: 750px;
   }
   
 `
@@ -49,11 +57,11 @@ const IconWrapper = styled.div`
 
 const Sublines = styled.div`
   font-size: ${$v.size16};
+  margin-top: ${$v.size16};
   
   @media (max-width: ${breakpoints.p580}px) {
     font-size: ${$v.size14};
     flex-direction: column;
-    margin-top: ${$v.size16};
   }
 `
 
@@ -71,7 +79,8 @@ export default class ContentHeader extends React.Component<Props, {}> {
   render() {
     const displayIcon = window.innerWidth > breakpoints.p900
     const {item} = this.props
-    const date = new Date(item.lastModified)
+    const lastModified = new Date(item.lastModified)
+    const created = new Date(item.publicationDate)
     const {simpleRelayTwin, path, layout} = item
 
     const rightPaddingTitle = item.beta ? '50px' : 0
@@ -86,7 +95,8 @@ export default class ContentHeader extends React.Component<Props, {}> {
         <RootContainer
           className={cx($p.pb60, $p.pt10, $p.w100, $p.bbox)}
           style={{
-            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0) ? '232px' : '',
+            paddingRight: (layout === 'REFERENCE' && simpleRelayTwin && simpleRelayTwin.length > 0
+            && window.innerWidth > 1050) ? '232px' : '',
           }}
         >
           <BreadCrumbContainer className={cx($p.ttu, $p.f14, $p.black20, $p.fw6)}>
@@ -135,7 +145,12 @@ export default class ContentHeader extends React.Component<Props, {}> {
             <div
               className={cx($p.pr38, $p.nowrap)}
             >
-              Last updated {date.getMonth() + 1}/{date.getUTCDate()}/{date.getFullYear()}
+
+              {item.layout === 'BLOG' ? (
+                `Published at ${created.getMonth() + 1}/${created.getUTCDate()}/${created.getFullYear()}`
+              ) : (
+                `Last updated ${lastModified.getMonth() + 1}/${lastModified.getUTCDate()}/${lastModified.getFullYear()}`
+              )}
             </div>
             <div className={cx(
               $p.flex,

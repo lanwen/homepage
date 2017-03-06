@@ -19,6 +19,7 @@ export interface Item {
   tags: string[]
   relatedMore: Item[]
   relatedFurther: Item[]
+  publicationDate?: Date
 }
 
 export interface NestedItem extends Item {

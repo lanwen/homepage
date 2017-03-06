@@ -59,7 +59,7 @@ export default class Features extends React.Component<{}, {}> {
             color={$v.blue}
             headline='Flexible Data Model'
             copy='Create and change your data model to fit your needs without breaking your app.'
-            link='https://www.graph.cool/docs/reference/platform/data-schema-ahwoh2fohj'
+            link='/docs/reference/platform/data-schema-ahwoh2fohj'
           />
           <Feature
             icon='radar'
@@ -73,29 +73,28 @@ export default class Features extends React.Component<{}, {}> {
             color={$v.lightOrange}
             headline='Permission Control'
             copy='There’s no software or  infrastructure to manage, so you can get started in minutes.'
-            link='https://www.graph.cool/docs/reference/platform/permissions-iegoo0heez'
+            link='/docs/reference/platform/permissions-iegoo0heez'
           />
           <Feature
             icon='puzzle'
             color={$v.purple}
             headline='Powerful Integrations'
             copy='Integrates seamlessly with many services like Algolia, Auth0, Stripe or Digits.'
-            link={'https://www.graph.cool/blog/2017-02-07-announcing-'
-                  + 'integrations-collaboration-pricing-updates-pioh2xhxea'}
+            link={'/blog/2017-02-07-announcing-integrations-collaboration-pricing-updates-pioh2xhxea'}
           />
           <Feature
             icon='braces'
             color={$v.blue}
             headline='Easy to Extend'
             copy='Extend your backend and implement your custom logic using any language.'
-            link='https://www.graph.cool/docs/reference/platform/mutation-callbacks-ahlohd8ohn'
+            link='/docs/reference/platform/mutation-callbacks-ahlohd8ohn'
           />
           <Feature
             icon='check'
             color={$v.green}
             headline='Apollo & Relay Compatible'
             copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
-            link='https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai/'
+            link='/docs/reference/simple-api/overview-heshoov3ai/'
           />
         </Container>
       </div>

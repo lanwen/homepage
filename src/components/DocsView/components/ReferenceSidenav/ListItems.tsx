@@ -55,12 +55,13 @@ const Hline = styled.div`
 `
 
 interface Props {
-  item: NestedItem,
-  expanded: boolean,
-  currentAlias: string,
+  item: NestedItem
+  expanded: boolean
+  currentAlias: string
 }
 
 export default class ListItems extends React.Component<Props, {}> {
+
   getActiveItemIndex(props: Props) {
     let activeItemIndex = 0
     if (props.item && props.item.children) {
@@ -77,8 +78,14 @@ export default class ListItems extends React.Component<Props, {}> {
 
     return (
       <div className={cx(
+        'list-items',
         expanded ? [$p.pt6, $p.mt25] : $p.mt16,
       )}>
+        <style jsx>{`
+          .list-items :global(.link) {
+            @p: .pr10;
+          }
+        `}</style>
         <Link
           to={`${this.props.item.path}-${this.props.item.alias}`}
           className={cx(
@@ -98,6 +105,7 @@ export default class ListItems extends React.Component<Props, {}> {
                     to={`${itemLvl2.path}-${itemLvl2.alias}`}
                     className={cx(
                       $p.f14, $p.pointer, $p.noUnderline, 'hl', $p.fw4, $p.db, $p.pv6,
+                      'link',
                       index === activeItemIndex ? $p.black80 : $p.black30,
                       {
                         ['active']: itemLvl2.alias === currentAlias,
@@ -108,17 +116,18 @@ export default class ListItems extends React.Component<Props, {}> {
                     {itemLvl2.shorttitle}
                   </Link>
                 </Hline>
-                {itemLvl2.children && itemLvl2.children.map(itemLvl3 => (
+                {index === activeItemIndex && itemLvl2.children && itemLvl2.children.map(itemLvl3 => (
                   <div key={itemLvl3.alias}>
                     <Hline>
                       <Link
                         to={`${itemLvl3.path}-${itemLvl3.alias}`}
                         className={cx(
-                            $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db, $p.pv6,
-                            {
-                              ['active']: itemLvl3.alias === currentAlias,
-                            },
-                          )}
+                          $p.list, $p.black30, $p.f14, $p.pointer,$p.noUnderline, 'hl', $p.db, $p.pv6,
+                          'link',
+                          {
+                            ['active']: itemLvl3.alias === currentAlias,
+                          },
+                        )}
                         style={{paddingLeft: 36}}
                       >
                         {itemLvl3.shorttitle}
@@ -129,10 +138,11 @@ export default class ListItems extends React.Component<Props, {}> {
                         <Link
                           className={cx(
                             $p.list, $p.black30, $p.f14, $p.noUnderline, 'hl', $p.db, $p.pv6,
+                            'link',
                             {
                               ['active']: itemLvl4.alias === currentAlias,
                             },
-                            )}
+                          )}
                           to={`${itemLvl4.path}-${itemLvl4.alias}`}
                           style={{paddingLeft: 52}}
                         >

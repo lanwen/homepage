@@ -178,6 +178,7 @@ const RightNav = styled.div`
 interface State {
   menuOpened: boolean
   endpointPopupOpened: boolean
+  loggedIn: boolean
 }
 
 export default class DocsHeader extends React.Component<{}, State> {
@@ -185,12 +186,19 @@ export default class DocsHeader extends React.Component<{}, State> {
   state: State = {
     menuOpened: false,
     endpointPopupOpened: false,
+    loggedIn: false,
+  }
+
+  componentDidMount() {
+    const loggedIn = cookiestore.has('graphcool_auth_token')
+      && cookiestore.has('graphcool_last_used_project_id')
+
+    this.setState({
+      loggedIn,
+    } as State)
   }
 
   render() {
-
-    const loggedIn = cookiestore.has('graphcool_auth_token')
-        && cookiestore.has('graphcool_last_used_project_id')
 
     const links = (
       <Links
@@ -280,7 +288,7 @@ export default class DocsHeader extends React.Component<{}, State> {
     )
 
     const endpoints = (
-      loggedIn ? (
+      this.state.loggedIn ? (
           <RightNav className={cx($p.mt6, $p.pointer)}>
             <div className={cx($p.relative)}>
               <div
@@ -388,7 +396,7 @@ export default class DocsHeader extends React.Component<{}, State> {
         )}
       >
         {window.innerWidth > breakpoints.p1000 ? WideHeader() : NarrowHeader()}
-        {loggedIn && this.state.endpointPopupOpened && (
+        {this.state.loggedIn && this.state.endpointPopupOpened && (
           <EndpointPopup
             isOpen={this.state.endpointPopupOpened}
             onRequestClose={this.closeEndpointPopup}

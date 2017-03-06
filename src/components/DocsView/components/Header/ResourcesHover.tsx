@@ -64,7 +64,7 @@ export default class ResourcesHover extends React.Component<{}, {}> {
     return (
       <Container
         className={cx($p.relative, $p.overflowVisible)}
-        active={location.pathname.startsWith('/docs/tutorials') || location.pathname.startsWith('/docs/faq') }
+        active={location.pathname.startsWith('/docs/tutorials/') || location.pathname.startsWith('/docs/faq/') }
       >
         <div
           className={cx(
@@ -85,7 +85,7 @@ export default class ResourcesHover extends React.Component<{}, {}> {
             Resources
           </Headline>
           <div className={cx($p.pv16, $p.ph25)}>
-            <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials'>
+            <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/tutorials/'>
               <CircleIcon type='TUTORIAL'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Tutorials</div>
             </NavigationLink>
@@ -97,7 +97,7 @@ export default class ResourcesHover extends React.Component<{}, {}> {
               <CircleIcon type='EXAMPLE'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>Examples</div>
             </HoveredA>
-            <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq'>
+            <NavigationLink className={cx($p.flex, $p.pv10, $p.noUnderline, $p.black30)} to='/docs/faq/'>
               <CircleIcon type='FAQ'/>
               <div className={cx($p.pl16, $p.pr38, $p.f20)}>FAQ</div>
             </NavigationLink>

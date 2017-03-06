@@ -281,7 +281,7 @@ export default class Examples extends React.Component<Props, State> {
                   <div className={cx($p.bgGreen, $p.white, $p.ph16, $p.pv10)}>{selectedExample.trigger.mutation}</div>
                 </div>
               </Block>
-              <Block className={cx($p.bgBlack04, $p.h100)}>
+              <Block className={cx($p.bgWhite, $p.h100)}>
                 <div className={cx($g.uppercaseLabel, $p.black20)}>Payload</div>
                 <Payload>
                   <code>
@@ -291,7 +291,7 @@ export default class Examples extends React.Component<Props, State> {
               </Block>
             </div>
             }
-            <div className={cx($p.bgDarkerBlue, $p.w100, $p.overflowAuto)}>
+            <div className={cx($p.bgWhite, $p.w100, $p.overflowAuto)}>
               <CodeBlock
                 className={cx($p.relative, $p.flex, $p.flexColumn, $p.bbox, $p.h100)}
               >

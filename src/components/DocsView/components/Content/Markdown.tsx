@@ -13,23 +13,39 @@ import YoutubeVideo from './YoutubeVideo'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
+import {Heading} from './ScrollSpy'
+
+interface ImageData {
+  caption: string
+  url: string
+  width: number | undefined
+}
 
 interface Props {
   ast: Node
   layout: Layout
   item: Item
+  onChangeHeadings: (headings: Heading[]) => void
 }
 
 const Container = styled.div`
   margin-left: 50px;
   max-width: ${props => props.faq ? 880 : 920}px;
   margin-right: ${props => props.faq && window.innerWidth > breakpoints.p900 ? 40 : 50}px;
+  
+  @media (max-width: 1050px) {
+    max-width: calc(100vw - 370px);
+  }
+  
+  @media (max-width: 750px) {
+    max-width: 750px;
+  }
  
   p { 
-    line-height: 1.7;
+    line-height: ${props => props.blog ? 2 : 1.8};
     color: ${$v.gray60};
-    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16};
-    font-size: ${$v.size16};
+    font-size: ${props => props.blog ? $v.size20 : $v.size16};
+    // font-size: ${$v.size16};
     overflow: hidden;
     font-weight: 400;
   }
@@ -43,8 +59,8 @@ const Container = styled.div`
   ul li {
     position: relative;
     line-height: 2;
-    // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
-    font-size: ${$v.size16};
+    font-size: ${props => props.blog ? $v.size20 : $v.size16};
+    // font-size: ${$v.size16};
     list-style-type: none;
     padding-left: ${$v.size16};
     // width: calc(100% - 12px);
@@ -64,14 +80,20 @@ const Container = styled.div`
   blockquote {
     border-left: ${$v.size06} solid ${$v.green50};
     padding: ${$v.size12} ${$v.size25};
-    margin-left: 0;
+    
+    margin: 0;
+    margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
+    
     width: 100%;
     box-sizing: border-box;
+    
     p {
       margin-bottom: 0;
     }
-    >div {
+    
+    > div {
       margin-bottom: 0 !important;
+      padding-right: 30px;
     }
   }
   
@@ -80,11 +102,16 @@ const Container = styled.div`
   }
   
   a {
-    color: ${$v.gray60};
+    color: ${$v.green};
+    text-decoration: none;
 
     &:hover {
-      color: ${$v.gray80};
+      text-decoration: underline;
     }
+  }
+
+  a.no-hover:hover {
+    text-decoration: none;
   }
   
   h2, h3 {
@@ -94,14 +121,21 @@ const Container = styled.div`
   h2 {
     font-size: ${$v.size25};
     color: ${$v.gray80};
-    margin: ${$v.size38} 0 ${$v.size25};
+    margin-top: ${$v.size38};
+    margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
   }
   
   h3 {
-    color: ${$v.gray60};
-    // font-size: ${props => props.biggerFont ? $v.size20 : $v.size16}
+    color: ${$v.gray80};
     font-size: ${$v.size20};
     margin: ${$v.size25} 0;
+  }
+  
+  h4 {
+    font-size: ${props => props.blog ? $v.size20 : $v.size16}
+    font-weight: 600;
+    color: ${$v.gray80};
+    margin: ${$v.size16} 0;
   }
   
   code {
@@ -110,33 +144,15 @@ const Container = styled.div`
     padding: ${$v.size04}
   }
   
-  img {
-    height: auto;
-    max-width: 100vw;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    width: 100%;
-    
-    @media (max-width: ${breakpoints.p580}px) {
-      margin-top: 25px;
-      margin-bottom: 25px;
-    }
-  }
-  
   .CodeMirror-gutters {
     height: auto !important;
-  }
-  
-  @media (max-width: ${breakpoints.p900}px) {
-    margin-left: 0;
-    margin-right: 0;
   }
 
   @media (max-width: ${breakpoints.p500}px) {
 
     p {
       color: ${$v.gray60}; 
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14}; 
+      // font-size: ${props => props.blog ? $v.size16 : $v.size14}; 
     }
     
     code {
@@ -144,8 +160,7 @@ const Container = styled.div`
     }
 
     ul li { 
-      line-height: 1.7;
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
+      line-height: 1.8;
     }
     
     h2 {
@@ -156,8 +171,11 @@ const Container = styled.div`
   
     h3 {
       color: ${$v.gray60};
-      // font-size: ${props => props.biggerFont ? $v.size16 : $v.size14};
       margin: ${$v.size20} 0;
+    }
+    
+    h4 {
+      margin: ${$v.size10} 0;
     }
     
     blockquote {
@@ -166,22 +184,41 @@ const Container = styled.div`
       margin-left: 0;
       width: 100%;
     }
-    
   }
-  
+    
   @media (max-width: ${breakpoints.p580}px) {
     code {
       word-break: break-word;
     }
   }
+    
+  @media (max-width: ${breakpoints.p900}px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
   
+  @media (max-width: ${breakpoints.p1000}px) {
+    p, ul li {
+      font-size: ${$v.size16};
+    }
+    
+    blockquote, ul li, h2 {
+      margin-bottom: ${$v.size25};
+    }
+  }
+  
+    
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
+  }
+  
+  .markdown-container {
+    flex: 1;
   }
 `
 
 const CodeContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   margin-left: -25px;
   margin-right: -25px;
   border-radius: 2px;
@@ -191,10 +228,16 @@ const CodeContainer = styled.div`
 `
 
 const QuestionWrapper = styled.div`
+  margin-bottom: ${props => props.blog ? $v.size38 : $v.size25};
+  
+  @media (max-width: ${breakpoints.p1000}px) {
+    margin-bottom: ${$v.size25};
+  }
+  
   .hover {
     display: none;
   }
-  
+    
   &:hover .hover {
     display: block;
 
@@ -215,17 +258,44 @@ const QuestionMarkWrapper = styled.div`
 const HeadingLink = styled.a`
   h1, h2, h3, h4, h5, h6 {
     position: relative;
+    left: -1em;
+    padding-left: 1em;
   }
   h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before {
     content: "#";
     position: absolute;
-    left: -1em;
+    left: 0;
     padding-right: 1em;
     color: ${$v.gray60};
   }
 `
 
 export default class Markdown extends React.Component<Props, {}> {
+  // do this outside of state as we use the render function to provide us the ast walk
+  private headings: { [id: string]: Heading } // key value to prevent dups
+
+  componentDidMount() {
+    this.updateHeadings()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.item.id !== this.props.item.id) {
+      this.updateHeadings()
+    }
+  }
+
+  setHeading(id: string, heading: Heading) {
+    this.headings = {
+      ...this.headings,
+      [id]: heading,
+    }
+  }
+
+  updateHeadings() {
+    const headings = Object.keys(this.headings).map(id => this.headings[id])
+    this.props.onChangeHeadings(headings)
+    this.headings = {}
+  }
 
   render() {
     // const self = this
@@ -234,11 +304,10 @@ export default class Markdown extends React.Component<Props, {}> {
         return (
           <QuestionWrapper
             className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
-            style={{
-              marginBottom: 20,
-            }}
+            blog={this.props.layout === 'BLOG'}
+            paragraph=''
           >
-            <p>{props.children}</p>
+            <p className={cx($p.w100)}>{props.children}</p>
             <QuestionMarkWrapper className={cx($p.pl25, 'hover', $p.absolute)}>
               <QuestionMarkOnHover onClick={() => this.openChat(childrenToString(props.children))}/>
             </QuestionMarkWrapper>
@@ -247,7 +316,10 @@ export default class Markdown extends React.Component<Props, {}> {
       },
       List: (props) => {
         return (
-          <QuestionWrapper className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}>
+          <QuestionWrapper
+            className={cx($p.inlineFlex, $p.itemsCenter, $p.w100)}
+            blog={this.props.layout === 'BLOG'}
+          >
             <div className={cx('no-hover', $p.w100)}>
               {ReactRenderer.renderers.List(props)}
             </div>
@@ -258,12 +330,14 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       Heading: (props) => {
-        const id = slug(childrenToString(props.children).toLowerCase())
-        const newProps = Object.assign({}, props, {
-          id,
-        })
+        const title = childrenToString(props.children)
+        const id = slug(title.toLowerCase())
+        const newProps = Object.assign({}, props, { id })
+        if (props.level < 3) {
+          this.setHeading(id, {title, id})
+        }
         return (
-          <HeadingLink href={`#${id}`} className={$p.noUnderline}>
+          <HeadingLink href={`#${id}`} className={cx($p.noUnderline, 'no-hover')}>
             {React.createElement('h' + props.level, getCoreProps(newProps), props.children)}
           </HeadingLink>
         )
@@ -288,7 +362,7 @@ export default class Markdown extends React.Component<Props, {}> {
           dslValid(props.literal.trim())
         ) {
           return (
-            <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, 'docs-codemirror')}>
+            <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, 'docs-codemirror')}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
@@ -302,7 +376,7 @@ export default class Markdown extends React.Component<Props, {}> {
           )
         }
         return (
-          <CodeContainer className={cx($p.bgBlack02, $p.mb25, $p.pv10, $p.bbox, 'docs-codemirror')}>
+          <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, $p.bbox, 'docs-codemirror')}>
             <CodeMirror
               value={props.literal.trim()}
               options={{
@@ -333,6 +407,84 @@ export default class Markdown extends React.Component<Props, {}> {
         //   return <Sharing />
         // }
 
+        if (literal.includes('IMAGE')) {
+          const imageData = JSON.parse(literal.match(/<!-- IMAGE\((.*)\) -->/)![1]) as ImageData
+          const width = imageData.width || Math.ceil(Math.max(window.innerWidth * 0.8, 1100) * window.devicePixelRatio)
+          const hasFixedWidth = !!imageData.width
+          const url = imageData.url.replace('files', 'images') + `/${width}x10000`
+          return (
+            <div
+              className={cx(
+                'imageContainer', {
+                  'hasFixedWidth': hasFixedWidth,
+                },
+              )}
+            >
+              <style jsx={true}>{`
+                .imageContainer {
+                  @p: .relative;
+                  margin-left: -70px;
+                  margin-right: -70px;
+                  width: auto;
+
+                  @media (max-width: 580px) {
+                    margin-left: -25px;
+                    margin-right: -25px;
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                  }
+
+                  @media (min-width: 581px) {
+                    margin-top: 60px;
+                    margin-bottom: 60px;
+                  }
+                }
+                .imageContainer.hasFixedWidth {
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
+                }
+
+                .imageContainer.hasFixedWidth .image {
+                  @p: .wAuto, .mw100;
+                }
+
+                .image {
+                  @p: .w100, .hAuto, .center, .db;
+
+                  @media (max-width: 400px) {
+                    @p: .br0;
+                  }
+
+                  @media (max-width: 580px) {
+                    @p: .br2;
+                  }
+
+                  @media (max-width: 750px) {
+                    @p: .br0;
+                  }
+
+                  @media (min-width: 751px) {
+                    @p: .br2;
+                  }
+                }
+
+                .caption {
+                  @p: .black30, .tc;
+                }
+
+              `}</style>
+              <img
+                className='image'
+                width={width}
+                src={url}
+              />
+              <p className='caption'>
+                {imageData.caption}
+              </p>
+            </div>
+          )
+        }
+
         if (literal.includes('GITHUB_EXAMPLE')) {
           return (
             <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
@@ -358,11 +510,14 @@ export default class Markdown extends React.Component<Props, {}> {
 
     return (
       <Container
-        biggerFont={this.props.layout !== 'REFERENCE'}
+        blog={this.props.layout === 'BLOG'}
         className={cx($p.relative)}
         faq={this.props.item.layout === 'FAQ'}
+        tutorial={this.props.layout === 'TUTORIAL'}
       >
-        {renderer.render(this.props.ast)}
+        <div className='markdown-container'>
+          {renderer.render(this.props.ast)}
+        </div>
       </Container>
     )
   }

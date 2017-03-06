@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Header from '../Header'
+import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import { $p, $g } from 'graphcool-styles'
 import * as cx from 'classnames'
@@ -10,7 +10,7 @@ export default class NotFoundView extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Header/>
+        <Header view='HOMEPAGE'/>
         <SectionHeader
           copy='We’re really sorry about this but now that you’re here you can…'
           headline='Uh oh. Looks like this page got lost. 😢'

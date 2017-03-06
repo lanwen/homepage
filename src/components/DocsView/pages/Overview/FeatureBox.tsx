@@ -1,18 +1,37 @@
 import * as React from 'react'
-import {$p, Icon, $v} from 'graphcool-styles'
+import {$p, Icon, $v, $g} from 'graphcool-styles'
 import * as cx from 'classnames'
 import {Link} from 'react-router'
+import styled from 'styled-components'
 
 interface Props {
   title: string
   iconSrc: string
   text: string
   link: string
-  className?: string
 }
 
-const FeatureBox = ({title, iconSrc, text, link, className}: Props) => (
-  <Link className={cx($p.buttonShadow, $p.bgWhite, $p.noUnderline, className)} to={link}>
+const Root = styled(Link)`
+  width: 33%;
+  margin: 0 ${$v.size25} 0 0;
+  
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 0 0 ${$v.size25} 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+`
+
+const FeatureBox = ({title, iconSrc, text, link}: Props) => (
+  <Root className={cx($p.db, $g.overlay, $p.noUnderline)} to={link}>
     <div className={cx($p.flex, $p.bgLightgreen10, $p.pa16, $p.itemsCenter)}>
       <Icon
         src={iconSrc}
@@ -20,12 +39,12 @@ const FeatureBox = ({title, iconSrc, text, link, className}: Props) => (
         height={28}
         color={$v.green50}
       />
-      <div className={cx($p.ttu, $p.green, $p.ml16, $p.f16)}>{title}</div>
+      <div className={cx($g.uppercaseLabel, $p.green, $p.ml16, $p.f16)}>{title}</div>
     </div>
-    <div className={cx($p.pa16)}>
+    <p className={cx($p.pa25, $p.f16, $p.fw4, $p.black50)}>
       {text}
-    </div>
-  </Link>
+    </p>
+  </Root>
 )
 
 export default FeatureBox

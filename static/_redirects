@@ -1,2 +1,2 @@
-/forum/*  http://discourse.graph.cool/forum/:splat 200
+/forum/*  http://forum.graph.cool/forum/:splat 200!
 /*        /index.html   200
