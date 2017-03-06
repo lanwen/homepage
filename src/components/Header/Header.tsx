@@ -83,14 +83,13 @@ class Header extends React.Component<Props, State> {
             }
           }
 
-          .root :global(.logo.withLinks) {
+          .root .logo.withLinks {
+            @p: .pointer, .pr16;
             @media (max-width: 899px) {
-              @p: .pr25;
               width: 100px;
             }
 
             @media (min-width: 900px) {
-              @p: .pr38;
               width: 115px;
             }
           }
@@ -182,10 +181,6 @@ class Header extends React.Component<Props, State> {
           .hamburger {
             @p: .bgNone, .pointer, .pa0;
           }
-
-          :global(.logoIcon), :global(.logoLink) {
-            @p: .pointer;
-          }
         `}</style>
         {this.props.view === 'HOMEPAGE' &&
           <Link to='/' className='logo'>
@@ -202,16 +197,17 @@ class Header extends React.Component<Props, State> {
 
         {this.props.view === 'DOCS' &&
           <div className='logo withLinks'>
-            <Icon
-              height={42}
-              width={36}
-              src={require('../../assets/icons/graphcool.svg')}
-              color={$v.green}
-              className='logoIcon'
-              onClick={this.openDocs}
-            />
-            <span className='logoLink pointer active' onClick={this.openDocs}>Docs</span>
-            <Link to='/' className='logoLink'>Console</Link>
+            <Link to='/docs/'>
+              <Icon
+                height={42}
+                width={36}
+                src={require('../../assets/icons/graphcool.svg')}
+                color={$v.green}
+                className='logoIcon'
+              />
+            </Link>
+            <Link className='logoLink' to='/docs/'>Docs</Link>
+            <a href='https://console.graph.cool' target='_blank' className='logoLink'>Console</a>
             <Link to='/' className='logoLink'>Homepage</Link>
           </div>
         }
@@ -232,10 +228,6 @@ class Header extends React.Component<Props, State> {
         />
       </div>
     )
-  }
-
-  private openDocs = () => {
-    this.props.router.push('/docs')
   }
 
   private handleMenuClosed = () => {
