@@ -278,8 +278,14 @@ export default class Markdown extends React.Component<Props, {}> {
     this.updateHeadings()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.item !== nextProps.item) {
+      this.updateHeadings()
+    }
+  }
+
   componentDidUpdate(prevProps) {
-    if (prevProps.item.id !== this.props.item.id) {
+    if (prevProps.item !== this.props.item) {
       this.updateHeadings()
     }
   }
