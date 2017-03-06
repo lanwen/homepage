@@ -25,7 +25,7 @@ const ContainerContainer = styled.div`
         position: absolute;
         background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
         width: 100%;
-        margin-top: -100px
+        margin-top: -100px;
         height: 100px;
       }
     }

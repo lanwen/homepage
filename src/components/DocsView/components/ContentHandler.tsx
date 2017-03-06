@@ -20,7 +20,7 @@ import ScrollSpy from './Content/ScrollSpy'
 import {Heading} from './Content/ScrollSpy'
 import ContentPagination from './ContentPagination'
 import {elements} from './ReferenceSidenav/data'
-import {extractAliases} from './ReferenceSidenav/ReferenceSidenav'
+import {extractAliases} from './ReferenceSidenav/ReferenceSidenav' import LoadingArticle from './LoadingArticle'
 
 interface Props {
   location: any,
@@ -95,9 +95,8 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this.props)
     if (this.props.data.loading) {
-      return null
+      return <LoadingArticle />
     }
     const {headings} = this.state
 
@@ -147,22 +146,9 @@ class ContentHandler extends React.Component<Props, State> {
       contentBoxMarginRight = 25
     }
     const pageTitle = item.title + (item.layout === 'REFERENCE' ? ' - Graphcool' : '')
-    // let event
-    // let headings = []
-    // if (ast) {
-    //   const johnny = ast.walker()
-    //   while (event = johnny.next()) {
-    //     const {node} = event
-    //     if (node.type === 'heading') {
-    //       headings.push(node)
-    //     }
-    //   }
-    //   console.log('done walking', headings)
-    //   debugger
-    // }
     return (
       <div onClick={this.onClick} className={cx($p.w100)}>
-        <style jsx={true}>{`
+        <style jsx>{`
           .side {
             @p: .relative;
             top: -194px;
