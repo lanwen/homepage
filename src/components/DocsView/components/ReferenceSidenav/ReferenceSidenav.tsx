@@ -5,8 +5,6 @@ import * as cx from 'classnames'
 import { $p } from 'graphcool-styles'
 import { breakpoints } from '../../../../utils/constants'
 import ListItems from './ListItems'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 import { ReferenceSidebarElement, elements } from './data'
 import { Item, NestedItem } from '../../../../types/types'
 import { throttle } from 'lodash'
@@ -37,18 +35,15 @@ const FixedWrapper = styled.div`
 `
 
 interface Props {
-  currentAlias: string,
-  data: {
-    loading: boolean,
-    allItems: Item[],
-  },
+  currentAlias: string
+  items: Item[]
 }
 
 interface State {
-  activeItemIndex: number,
-  fixed: boolean,
-  absolute: boolean,
-  containerOffset: number,
+  activeItemIndex: number
+  fixed: boolean
+  absolute: boolean
+  containerOffset: number
 }
 
 const TOP = 97
@@ -127,10 +122,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
   )
 
   componentWillReceiveProps(nextProps: Props) {
-    if (nextProps.data.loading) {
-      return
-    }
-    const nestedItems = mapToNestedItems(elements, nextProps.data.allItems)
+    const nestedItems = mapToNestedItems(elements, nextProps.items)
     const findRecursive = (item: NestedItem) => item.alias === nextProps.currentAlias ||
     item.children && !!item.children.find(findRecursive)
     const activeItemIndex = nestedItems.findIndex(findRecursive)
@@ -154,11 +146,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
   }
 
   render() {
-    if (this.props.data.loading) {
-      return null
-    }
-
-    const nestedItems = mapToNestedItems(elements, this.props.data.allItems)
+    const nestedItems = mapToNestedItems(elements, this.props.items)
     const {currentAlias} = this.props
 
     const {activeItemIndex, fixed, absolute, containerOffset} = this.state
@@ -262,29 +250,11 @@ function mapToNestedItems(elements: ReferenceSidebarElement[], items: Item[]): N
   })
 }
 
-function extractAliases(elements: ReferenceSidebarElement[]): string[] {
+export function extractAliases(elements: ReferenceSidebarElement[]): string[] {
   return elements.reduce(
     (acc, element) => acc.concat([element.alias].concat(element.children ? extractAliases(element.children) : [])),
     [] as string[],
   )
 }
 
-const query = gql`query items($aliases: [String!]!) {
-  allItems(filter: { alias_in: $aliases }) {
-    title
-    shorttitle
-    alias
-    path
-  }
-}`
-
-const ReferenceSidenavWithData = graphql(query, {
-  options: () => {
-    const aliases = extractAliases(elements)
-    return {
-      variables: {aliases},
-    }
-  },
-})(ReferenceSidenav)
-
-export default ReferenceSidenavWithData
+export default ReferenceSidenav

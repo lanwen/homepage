@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Parser } from 'commonmark'
 import Markdown from './Content/Markdown'
-import { graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import gql from 'graphql-tag'
 import { withRouter } from 'react-router'
 import { Item } from '../../../types/types'
@@ -18,6 +18,9 @@ import * as Helmet from 'react-helmet'
 import { breakpoints } from '../../../utils/constants'
 import ScrollSpy from './Content/ScrollSpy'
 import {Heading} from './Content/ScrollSpy'
+import ContentPagination from './ContentPagination'
+import {elements} from './ReferenceSidenav/data'
+import {extractAliases} from './ReferenceSidenav/ReferenceSidenav'
 
 interface Props {
   location: any,
@@ -25,6 +28,7 @@ interface Props {
   data: {
     loading: boolean,
     Item: Item,
+    allItems: Item[],
   },
   router: ReactRouter.InjectedRouter,
 }
@@ -79,11 +83,11 @@ class ContentHandler extends React.Component<Props, State> {
     }
 
     // rewrite url if it doesn't already match item path
-    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
-    let currentPath = this.props.location.pathname
-    if (contentUrl !== currentPath) {
-      this.props.router.push(contentUrl)
-    }
+    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
+    // let currentPath = this.props.location.pathname
+    // if (contentUrl !== currentPath) {
+    //   this.props.router.push(contentUrl)
+    // }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -91,12 +95,15 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   render() {
+    console.log(this.props)
     if (this.props.data.loading) {
       return null
     }
     const {headings} = this.state
 
     const item: Item = this.props.data.Item
+    const aliases = extractAliases(elements)
+    const items: Item[] = this.props.data.allItems.sort((a, b) => aliases.indexOf(a.alias) - aliases.indexOf(b.alias))
     const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
 
     let imageMeta: Meta[] = []
@@ -225,7 +232,7 @@ class ContentHandler extends React.Component<Props, State> {
               }}
             >
               {item.layout === 'REFERENCE' && (
-                <ReferenceSidenav currentAlias={item.alias}/>
+                <ReferenceSidenav items={items} currentAlias={item.alias}/>
               )}
               <div
                 className={cx(
@@ -246,6 +253,7 @@ class ContentHandler extends React.Component<Props, State> {
                       item={item}
                       onChangeHeadings={this.handleChangeHeadings}
                     />
+                    <ContentPagination items={items} currentAlias={item.alias}/>
                     <div className='content-footer'>
                       <Feedback item={item}/>
                       {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
@@ -301,7 +309,7 @@ class ContentHandler extends React.Component<Props, State> {
   }
 }
 
-const getItemQuery = gql`query getItem($alias: String) {
+const getItemQuery = gql`query getItem($alias: String, $aliases: [String!]!) {
   Item(alias: $alias) {
     id
     body
@@ -335,15 +343,24 @@ const getItemQuery = gql`query getItem($alias: String) {
     relatedMoreTitle
     relatedMoreDescription
   }
+  allItems(filter: { alias_in: $aliases }) {
+    id
+    title
+    shorttitle
+    alias
+    path
+  }
 }`
 
-const ContentHandlerWithData = graphql(getItemQuery, {
-  options: (ownProps) => {
-    const alias = getAliasFromUrl(ownProps.location.pathname)
-    return {
-      variables: {alias},
-    }
-  },
-})(ContentHandler)
-
-export default withRouter(ContentHandlerWithData)
+export default compose(
+  graphql(getItemQuery, {
+    options: (ownProps) => {
+      const alias = getAliasFromUrl(ownProps.location.pathname)
+      const aliases = extractAliases(elements)
+      return {
+        variables: {alias, aliases},
+      }
+    },
+  }),
+  withRouter,
+)(ContentHandler)
