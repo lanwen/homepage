@@ -4,7 +4,7 @@ import * as cx from 'classnames'
 import { $p, $v } from 'graphcool-styles'
 
 const Container = styled.div`
-  width: 920px;
+  flex: 1;
 `
 
 const TextUnderLines = styled.textarea`
@@ -46,7 +46,7 @@ export default class NegativeFeedback extends React.Component<Props, {}> {
     const {onSubmit, onChange, text} = this.props
     return (
       <div className={cx($p.flex, $p.justifyCenter)}>
-        <Container className={cx($p.flex, $p.justifyCenter, $p.mb60, $p.flexColumn, $p.ph96)}>
+        <Container className={cx($p.flex, $p.justifyCenter, $p.mb60, $p.flexColumn)}>
           <TextUnderLines
             className={cx($p.f20, $p.ph10, $p.o50, $p.blue)}
             onChange={onChange}

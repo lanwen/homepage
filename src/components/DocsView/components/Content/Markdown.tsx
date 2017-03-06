@@ -13,6 +13,7 @@ import YoutubeVideo from './YoutubeVideo'
 import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
+import {Heading} from './ScrollSpy'
 
 interface ImageData {
   caption: string
@@ -24,6 +25,7 @@ interface Props {
   ast: Node
   layout: Layout
   item: Item
+  onChangeHeadings: (headings: Heading[]) => void
 }
 
 const Container = styled.div`
@@ -269,6 +271,31 @@ const HeadingLink = styled.a`
 `
 
 export default class Markdown extends React.Component<Props, {}> {
+  // do this outside of state as we use the render function to provide us the ast walk
+  private headings: { [id: string]: Heading } // key value to prevent dups
+
+  componentDidMount() {
+    this.updateHeadings()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.item.id !== this.props.item.id) {
+      this.updateHeadings()
+    }
+  }
+
+  setHeading(id: string, heading: Heading) {
+    this.headings = {
+      ...this.headings,
+      [id]: heading,
+    }
+  }
+
+  updateHeadings() {
+    const headings = Object.keys(this.headings).map(id => this.headings[id])
+    this.props.onChangeHeadings(headings)
+    this.headings = {}
+  }
 
   render() {
     // const self = this
@@ -303,8 +330,12 @@ export default class Markdown extends React.Component<Props, {}> {
         )
       },
       Heading: (props) => {
-        const id = slug(childrenToString(props.children).toLowerCase())
+        const title = childrenToString(props.children)
+        const id = slug(title.toLowerCase())
         const newProps = Object.assign({}, props, { id })
+        if (props.level < 3) {
+          this.setHeading(id, {title, id})
+        }
         return (
           <HeadingLink href={`#${id}`} className={cx($p.noUnderline, 'no-hover')}>
             {React.createElement('h' + props.level, getCoreProps(newProps), props.children)}

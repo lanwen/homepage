@@ -12,7 +12,7 @@ const ContainerContainer = styled.div`
     padding-bottom: ${$v.size60};
     top: -10px;
     
-    &:before {
+    .before {
       content: "";
       position: absolute;
       top: ${$v.size10};
@@ -20,6 +20,14 @@ const ContainerContainer = styled.div`
       background: #FAFAFA;
       width: 100%;
       height: calc(100% + 10px);
+      &:before {
+        content: "";
+        position: absolute;
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        width: 100%;
+        margin-top: -100px
+        height: 100px;
+      }
     }
     
     @media (max-width: ${breakpoints.p1000}px) {
@@ -111,6 +119,7 @@ export default class RelatedContentFooter extends React.Component<Props, {}> {
         $p.relative,
         $p.w100,
       )}>
+        <div className='before'></div>
         {(this.props.item.layout === 'REFERENCE' && window.innerWidth > breakpoints.p750) && (
           <FakeSidebar />
         )}

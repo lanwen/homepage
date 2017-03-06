@@ -17,6 +17,7 @@ import { getAliasFromUrl } from '../../../utils'
 import * as Helmet from 'react-helmet'
 import { breakpoints } from '../../../utils/constants'
 import ScrollSpy from './Content/ScrollSpy'
+import {Heading} from './Content/ScrollSpy'
 
 interface Props {
   location: any,
@@ -40,13 +41,25 @@ interface Meta {
   httpEquiv?: string
 }
 
-class ContentHandler extends React.Component<Props, {}> {
+interface State {
+  headings: Heading[]
+}
+
+class ContentHandler extends React.Component<Props, State> {
 
   static contextTypes = {
     setIsLoading: React.PropTypes.func.isRequired,
   }
 
   context: Context
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      headings: [],
+    }
+  }
 
   componentWillReceiveProps(nextProps: Props) {
 
@@ -81,6 +94,7 @@ class ContentHandler extends React.Component<Props, {}> {
     if (this.props.data.loading) {
       return null
     }
+    const {headings} = this.state
 
     const item: Item = this.props.data.Item
     const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
@@ -126,6 +140,19 @@ class ContentHandler extends React.Component<Props, {}> {
       contentBoxMarginRight = 25
     }
     const pageTitle = item.title + (item.layout === 'REFERENCE' ? ' - Graphcool' : '')
+    // let event
+    // let headings = []
+    // if (ast) {
+    //   const johnny = ast.walker()
+    //   while (event = johnny.next()) {
+    //     const {node} = event
+    //     if (node.type === 'heading') {
+    //       headings.push(node)
+    //     }
+    //   }
+    //   console.log('done walking', headings)
+    //   debugger
+    // }
     return (
       <div onClick={this.onClick} className={cx($p.w100)}>
         <style jsx={true}>{`
@@ -133,13 +160,13 @@ class ContentHandler extends React.Component<Props, {}> {
             @p: .relative;
             top: -194px;
             height: calc(100% + 194px);
+            z-index: 20;
           }
           .scrollspy-container {
             display: block;
-            background: blue;
             margin-left: 50px;
             width: 250px;
-            height: 100px;
+            height: 0px;
             flex: 0 0 200px;
           }
           @media (max-width: 960px) {
@@ -153,6 +180,14 @@ class ContentHandler extends React.Component<Props, {}> {
           .content {
             flex-basis: auto;
             flex-grow: 1;
+          }
+          .content-footer {
+            @p: .flex, .justifyBetween, .pv38, .bt, .bBlack10, .mv60;
+          }
+          @media (max-width: 580px) {
+            .content-footer {
+              @p: .mv38;
+            }
           }
         `}</style>
         <div className={cx($p.flex)}>
@@ -209,16 +244,19 @@ class ContentHandler extends React.Component<Props, {}> {
                       ast={ast}
                       layout={item.layout}
                       item={item}
+                      onChangeHeadings={this.handleChangeHeadings}
                     />
+                    <div className='content-footer'>
+                      <Feedback item={item}/>
+                      {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
+                    </div>
                   </div>
                   {item.layout === 'TUTORIAL' && (
                     <div className='scrollspy-container'>
-                      <ScrollSpy />
+                      <ScrollSpy headings={headings} />
                     </div>
                   )}
                 </div>
-                <Feedback item={item}/>
-                {item.layout !== 'BLOG' && <EditGithub sourceFilePath={item.sourceFilePath}/>}
               </div>
               {item.layout === 'FAQ' && window.innerWidth > breakpoints.p1200 && (
                 <FAQSidebar item={item}/>
@@ -256,6 +294,10 @@ class ContentHandler extends React.Component<Props, {}> {
         this.props.router.push(e.target.pathname)
       }
     }
+  }
+
+  private handleChangeHeadings = (headings) => {
+    this.setState({headings})
   }
 }
 

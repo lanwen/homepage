@@ -72,7 +72,7 @@ function hashLinkScroll() {
           element.scrollIntoView()
         }
       },
-      500,
+      0,
     )
   }
 }

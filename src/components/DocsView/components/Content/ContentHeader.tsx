@@ -15,7 +15,6 @@ interface Props {
 const Root = styled.div`
   position: relative;
   display: flex;
-  margin-top: ${$v.size96};
   max-width: 970px;
   
   @media (max-width: ${breakpoints.p580}px) {

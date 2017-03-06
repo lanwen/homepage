@@ -15,12 +15,11 @@ const VerticalContainer = styled.div`
   flex: 0 0 250px;
   position: relative;
   top: -194px;
-  background-color: rgba(0, 0, 0, 0.02);
   height: calc(100% + 194px);
   
   // Fix to prevent overflowing with footer
-  background-color: #fafafa
-  z-index: 1
+  background-color: #fafafa;
+  z-index: 20;
   
   @media (max-width: ${breakpoints.p1360}px) {
     flex: 0 0 250px;
@@ -180,7 +179,7 @@ class ReferenceSidenav extends React.Component<Props, State> {
           window.innerWidth > breakpoints.p1360 ? $p.pl60 : 0,
         )}
         style={{
-          top: fixed ? 0 : -194,
+          top: -194,
         }}
       >
         <FixedWrapper
