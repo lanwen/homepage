@@ -57,6 +57,7 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   context: Context
+  private lastItem: Item
 
   constructor(props) {
     super(props)
@@ -92,18 +93,20 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.data.Item !== null && !nextProps.data.loading
+    return nextProps.data.Item !== null
   }
 
   render() {
-    if (this.props.data.loading) {
+    if (this.props.data.loading && !this.props.data.allItems) {
       return <LoadingArticle />
     }
     const {headings} = this.state
 
-    const item: Item = this.props.data.Item
+    const item: Item = this.props.data.Item || this.lastItem
+    this.lastItem = item
     const aliases = extractAliases(elements)
     const items: Item[] = this.props.data.allItems.sort((a, b) => aliases.indexOf(a.alias) - aliases.indexOf(b.alias))
+      || []
     const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
 
     let imageMeta: Meta[] = []
@@ -178,6 +181,9 @@ class ContentHandler extends React.Component<Props, State> {
           .content-footer {
             @p: .flex, .justifyBetween, .pv38, .bt, .bBlack10, .mv60;
           }
+          .spread {
+            @p: .w100;
+          }
           @media (max-width: 580px) {
             .content-footer {
               @p: .mv38;
@@ -233,12 +239,15 @@ class ContentHandler extends React.Component<Props, State> {
               >
                 <div className='content-container'>
                   <div className='content'>
-                    <ContentHeader item={item}/>
+                    {!this.props.data.loading && (
+                      <ContentHeader item={item}/>
+                    )}
                     <Markdown
                       ast={ast}
                       layout={item.layout}
                       item={item}
                       onChangeHeadings={this.handleChangeHeadings}
+                      loading={this.props.data.loading}
                     />
                     <ContentPagination items={items} currentAlias={item.alias}/>
                     <div className='content-footer'>

@@ -44,6 +44,7 @@ class Header extends React.Component<Props, State> {
         <style jsx={true}>{`
           .root {
             @p: .flex, .itemsCenter, .justifyBetween, .center, .relative, .w100, .bbox;
+            z-index: 21;
             max-width: 1440px;
             min-height: 51px;
 

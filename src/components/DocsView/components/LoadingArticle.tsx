@@ -5,10 +5,18 @@ const LoadingArticle = () => (
   <div className='loading-article'>
     <style jsx>{`
       .loading-article {
-        @p: .center, .ph25, .pb60;
+        @p: .center, .pv16, .pb60, .relative;
+        width: 960px;
         max-width: 960px;
+        left: -40px;
         flex-basis: auto;
         flex-grow: 1;
+      }
+      @media (max-width: 960px) {
+        .loading-article {
+          max-width: 960px;
+          width: auto;
+        }
       }
       .breadcrumb, .subtitles, .content {
         @p: .flex;

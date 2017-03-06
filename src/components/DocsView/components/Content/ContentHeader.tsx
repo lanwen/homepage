@@ -7,6 +7,10 @@ import BreadCrumb from './BreadCrumb'
 import styled from 'styled-components'
 import SimpleRelayTwin from './SimpleRelayTwin'
 import { breakpoints, maxWidth } from '../../../../utils/constants'
+const TimeAgo = require('javascript-time-ago').default
+
+require('javascript-time-ago/intl-messageformat-global')
+TimeAgo.locale(require('../../../../utils/locale'))
 
 interface Props {
   item: Item
@@ -84,6 +88,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
     const {simpleRelayTwin, path, layout} = item
 
     const rightPaddingTitle = item.beta ? '50px' : 0
+    const timeAgo = new TimeAgo('en-US')
 
     return (
       <Root>
@@ -149,7 +154,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
               {item.layout === 'BLOG' ? (
                 `Published at ${created.getMonth() + 1}/${created.getUTCDate()}/${created.getFullYear()}`
               ) : (
-                `Last updated ${lastModified.getMonth() + 1}/${lastModified.getUTCDate()}/${lastModified.getFullYear()}`
+                `Last updated ${timeAgo.format(lastModified)}`
               )}
             </div>
             <div className={cx(

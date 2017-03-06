@@ -14,6 +14,7 @@ import MarkdownGraphiQL, {dslValid, getGraphQLCode} from './MarkdownGraphiQL'
 import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
 import {Heading} from './ScrollSpy'
+import LoadingArticle from '../LoadingArticle'
 
 interface ImageData {
   caption: string
@@ -26,6 +27,7 @@ interface Props {
   layout: Layout
   item: Item
   onChangeHeadings: (headings: Heading[]) => void
+  loading: boolean
 }
 
 const Container = styled.div`
@@ -278,8 +280,14 @@ export default class Markdown extends React.Component<Props, {}> {
     this.updateHeadings()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.item !== nextProps.item) {
+      this.updateHeadings()
+    }
+  }
+
   componentDidUpdate(prevProps) {
-    if (prevProps.item.id !== this.props.item.id) {
+    if (prevProps.item !== this.props.item) {
       this.updateHeadings()
     }
   }
@@ -516,7 +524,11 @@ export default class Markdown extends React.Component<Props, {}> {
         tutorial={this.props.layout === 'TUTORIAL'}
       >
         <div className='markdown-container'>
-          {renderer.render(this.props.ast)}
+          {this.props.loading ? (
+            <LoadingArticle />
+          ) : (
+            renderer.render(this.props.ast)
+          )}
         </div>
       </Container>
     )
