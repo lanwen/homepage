@@ -181,6 +181,9 @@ class ContentHandler extends React.Component<Props, State> {
           .content-footer {
             @p: .flex, .justifyBetween, .pv38, .bt, .bBlack10, .mv60;
           }
+          .spread {
+            @p: .w100;
+          }
           @media (max-width: 580px) {
             .content-footer {
               @p: .mv38;
@@ -236,15 +239,15 @@ class ContentHandler extends React.Component<Props, State> {
               >
                 <div className='content-container'>
                   <div className='content'>
-                    {this.props.data.loading && (
-                      <LoadingArticle />
+                    {!this.props.data.loading && (
+                      <ContentHeader item={item}/>
                     )}
-                    <ContentHeader item={item}/>
                     <Markdown
                       ast={ast}
                       layout={item.layout}
                       item={item}
                       onChangeHeadings={this.handleChangeHeadings}
+                      loading={this.props.data.loading}
                     />
                     <ContentPagination items={items} currentAlias={item.alias}/>
                     <div className='content-footer'>
