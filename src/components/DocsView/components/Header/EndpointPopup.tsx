@@ -8,7 +8,6 @@ import ApolloClient from 'apollo-client'
 import * as cookiestore from 'cookiestore'
 import {find} from 'lodash'
 import * as fetch from 'isomorphic-fetch'
-import ReactModal = require('react-modal')
 
 type Endpoint = 'simple/v1' | 'relay/v1' | 'file/v1'
 
@@ -129,7 +128,7 @@ interface Project {
   name: string
 }
 
-export default class EndpointPopup extends React.Component<ReactModal, {}> {
+export default class EndpointPopup extends React.Component<Modal.Props, {}> {
 
   state = {
     endpoint: 'simple/v1' as Endpoint,
