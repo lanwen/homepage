@@ -71,7 +71,7 @@ export default class ScrollSpy extends React.Component<Props, State> {
           .content {
             @p: .mt16, .black50, .db, .noUnderline;
           }
-          .content.active {
+          .content.active, .content:hover {
             @p: .green;
           }
         `}</style>
