@@ -59,7 +59,7 @@
     "lodash": "^4.17.2",
     "offline-plugin": "^4.6.1",
     "postcss-cssnext": "^2.9.0",
-    "postcss-inherit": "git+https://github.com/timsuchanek/postcss-inherit#build2",
+    "postcss-inherit": "git+https://github.com/timsuchanek/postcss-inherit#build3",
     "postcss-inject": "^1.0.1",
     "postcss-simple-vars": "^3.0.0",
     "pre-push": "^0.1.1",
