@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Icon, $v} from 'graphcool-styles'
+import {Icon} from 'graphcool-styles'
 
 const LoadingArticle = () => (
   <div className='loading-article'>
@@ -48,36 +48,41 @@ const LoadingArticle = () => (
         margin-top: -5px;
       }
     `}</style>
-      <div className="breadcrumb">
-        <div className="left">
+      <div className='breadcrumb'>
+        <div className='left'>
         </div>
-        <div className="right flex">
-          <div className="stripe" style={{width: 78, height: 10, marginRight: 10}}></div>
-          <Icon src={require('graphcool-styles/icons/stroke/arrowRight.svg')} width={10} height={10} color='rgba(0,0,0,0.07)' />
-          <div className="stripe" style={{width: 103, height: 10, marginLeft: 10}}></div>
+        <div className='right flex'>
+          <div className='stripe' style={{width: 78, height: 10, marginRight: 10}}></div>
+          <Icon
+            src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+            width={10}
+            height={10}
+            color='rgba(0,0,0,0.07)'
+          />
+          <div className='stripe' style={{width: 103, height: 10, marginLeft: 10}}></div>
         </div>
       </div>
-    <div className="content">
-      <div className="left">
-        <div className="circle"></div>
+    <div className='content'>
+      <div className='left'>
+        <div className='circle'></div>
       </div>
-      <div className="right">
-        <div className="stripe" style={{width: '80%', height: 30}}></div>
-        <div className="subtitles">
-          <div className="stripe" style={{width: '20%', height: 12}}></div>
-          <div className="stripe" style={{width: '25%', height: 12, marginLeft: 38}}></div>
-          <div className="stripe" style={{width: '5%', height: 12, marginLeft: 13}}></div>
-          <div className="stripe" style={{width: '7%', height: 12, marginLeft: 15}}></div>
+      <div className='right'>
+        <div className='stripe' style={{width: '80%', height: 30}}></div>
+        <div className='subtitles'>
+          <div className='stripe' style={{width: '20%', height: 12}}></div>
+          <div className='stripe' style={{width: '25%', height: 12, marginLeft: 38}}></div>
+          <div className='stripe' style={{width: '5%', height: 12, marginLeft: 13}}></div>
+          <div className='stripe' style={{width: '7%', height: 12, marginLeft: 15}}></div>
         </div>
         <div style={{marginTop: 70}}>
-          <div className="stripe" style={{width: '87%', height: 15}}></div>
-          <div className="stripe" style={{width: '94%', height: 15, marginTop: 17}}></div>
-          <div className="stripe" style={{width: '74%', height: 15, marginTop: 17}}></div>
+          <div className='stripe' style={{width: '87%', height: 15}}></div>
+          <div className='stripe' style={{width: '94%', height: 15, marginTop: 17}}></div>
+          <div className='stripe' style={{width: '74%', height: 15, marginTop: 17}}></div>
         </div>
         <div style={{marginTop: 45}}>
-          <div className="stripe" style={{width: '80%', height: 15}}></div>
-          <div className="stripe" style={{width: '74%', height: 15, marginTop: 17}}></div>
-          <div className="stripe" style={{width: '84%', height: 15, marginTop: 17}}></div>
+          <div className='stripe' style={{width: '80%', height: 15}}></div>
+          <div className='stripe' style={{width: '74%', height: 15, marginTop: 17}}></div>
+          <div className='stripe' style={{width: '84%', height: 15, marginTop: 17}}></div>
         </div>
       </div>
     </div>
