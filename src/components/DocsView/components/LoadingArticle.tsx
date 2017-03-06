@@ -5,8 +5,9 @@ const LoadingArticle = () => (
   <div className='loading-article'>
     <style jsx>{`
       .loading-article {
-        @p: .center, .ph25, .pb60;
-        max-width: 960px;
+        @p: .center, .pv16, .pb60, .relative;
+        max-width: 980px;
+        left: -10px;
         flex-basis: auto;
         flex-grow: 1;
       }

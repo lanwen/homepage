@@ -87,7 +87,7 @@ export default class RootView extends React.Component<Props, State> {
           meta={meta}
         />
         {this.state.isLoading &&
-        <LoadingBar/>
+          <LoadingBar/>
         }
         {this.props.children}
       </div>
