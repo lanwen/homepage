@@ -20,9 +20,9 @@ export default class ScrollSpy extends React.Component<Props, State> {
       let visibleIndex = this.props.headings.findIndex(heading => {
         const element = document.getElementById(heading.id)
         return this.isOverOrInViewport(element)
-      })
+      }) - 1
 
-      visibleIndex = visibleIndex === -1 ? 0 : visibleIndex
+      visibleIndex = visibleIndex < 0 ? 0 : visibleIndex
 
       if (this.state.activeIndex !== visibleIndex) {
         this.setState({
@@ -40,7 +40,7 @@ export default class ScrollSpy extends React.Component<Props, State> {
     }
   }
   isOverOrInViewport(element) {
-    return element.getBoundingClientRect().top >= 0
+    return element.getBoundingClientRect().top - 50 >= 0
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
