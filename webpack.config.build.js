@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 const OfflinePlugin = require('offline-plugin')
-
+const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
 
 module.exports = {
   entry: {
@@ -70,6 +70,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
+    }),
+    new CustomScriptLocationPlugin({
+      head: /vendor/,
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
