@@ -34,7 +34,7 @@ export default class TutorialsPage extends React.Component<{}, {}> {
             layout='TUTORIAL'
             title='Tutorials & Guides'
             text='Helpful step-by-step tutorials & guides to understand how to build apps with Graphcool.'
-            link='/docs/tutorials'
+            link='/docs/tutorials/'
           />
         </Container>
         <TutorialsBackground className={cx($p.mt60, $p.pb60)}>

@@ -118,7 +118,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             layout='TUTORIAL'
             title='Tutorials & Guides'
             text='Helpful step-by-step tutorials & guides to understand how to build apps with Graphcool.'
-            link='/docs/tutorials'
+            link='/docs/tutorials/'
           />
         </PaddedContainer>
 
@@ -138,7 +138,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             <MoreItems
               color={'rgb(164, 3, 111)'}
               text='See all Tutorials'
-              link='/docs/tutorials' />
+              link='/docs/tutorials/' />
           </PaddedContainer>
         </ItemsBackground>
 
