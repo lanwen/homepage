@@ -33,6 +33,13 @@ export default {
       },
     },
     {
+      path: '/graphql-up/',
+      getComponent(_, cb) {
+        System.import('./components/GraphQLUp/GraphQLup').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/functions/',
       getComponent(_, cb) {
         System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))
