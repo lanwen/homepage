@@ -40,13 +40,13 @@ export default class IntroSection extends React.Component<Props, {}> {
         `}</style>
         <img
           className=''
-          src={require('../../assets/graphics/graphql-up.svg')}
+          src={require('../../assets/graphics/graphqlup/graphql-up.svg')}
         />
         <div className='title'>Get a ready-to-use GraphQL endpoint based on your schema</div>
 
         <img
           className=''
-          src={require('../../assets/graphics/video_placeholder.svg')}
+          src={require('../../assets/graphics/graphqlup/video_placeholder.svg')}
         />
 
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
@@ -56,7 +56,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           <div className='playButton'>
             <img
               className='ml6'
-              src={require('../../assets/graphics/play.svg')}
+              src={require('../../assets/graphics/graphqlup/play.svg')}
             />
           </div>
           <div className='playText'>Watch this 3 minute tutorial to get started</div>

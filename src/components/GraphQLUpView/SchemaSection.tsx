@@ -52,7 +52,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
 
           <img
             className=''
-            src={require('../../assets/graphics/example_schema.svg')}
+            src={require('../../assets/graphics/graphqlup/example_schema.svg')}
           />
 
 
@@ -63,7 +63,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
                 className=''
                 width={109}
                 height={20}
-                src={require('../../assets/graphics/graphql-up.svg')}
+                src={require('../../assets/graphics/graphqlup/graphql-up.svg')}
               />
             </div>
 
