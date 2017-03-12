@@ -12,10 +12,6 @@ interface Props {
 
 export default class GraphQLUp extends React.Component<Props, {}> {
 
-  componentDidMount() {
-    window.addEventListener('resize', this.rerender)
-  }
-
   render() {
     return (
       <div>
@@ -29,13 +25,8 @@ export default class GraphQLUp extends React.Component<Props, {}> {
         <IntroSection />
         <SchemaSection />
         <AddGraphQLUpSection />
-       <Footer />
+        <Footer />
       </div>
     )
   }
-
-  private rerender = () => {
-    this.forceUpdate()
-  }
-
 }

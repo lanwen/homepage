@@ -24,18 +24,18 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playVideoContainer {
-            @p: .flex, .justifyCenter, .pt38;
+            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer;
           }
 
           .playButton {
-            @p: .br100, .bgGreen20;
+            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20;
+            width: 50px;
+            height: 50px;
           }
 
           .playText {
-            @p: .f20, .fw3, .o60,;
+            @p: .f20, .fw3, .o60, .pl25;
           }
-
-
 
         `}</style>
         <img
@@ -54,9 +54,12 @@ export default class IntroSection extends React.Component<Props, {}> {
 
         <div className='playVideoContainer'>
           <div className='playButton'>
-            <img src={require('../../assets/icons/pricing/operation.svg')}/>
+            <img
+              className='ml6'
+              src={require('../../assets/graphics/play.svg')}
+            />
           </div>
-          <div>Watch this 3 minute tutorial to get started</div>
+          <div className='playText'>Watch this 3 minute tutorial to get started</div>
         </div>
 
       </section>

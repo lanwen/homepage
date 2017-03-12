@@ -35,7 +35,7 @@ export default {
     {
       path: '/graphql-up/',
       getComponent(_, cb) {
-        System.import('./components/GraphQLUp/GraphQLup').then(loadRoute(cb))
+        System.import('./components/GraphQLUpView/GraphQLUpView').then(loadRoute(cb))
           .catch(errorLoading)
       },
     },
