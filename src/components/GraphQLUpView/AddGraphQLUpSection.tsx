@@ -39,11 +39,14 @@ const booksEmoji = '📚' // not rendered in webstorm
 export default class AddGraphQLUpSection extends React.Component<Props, State> {
 
   state = {
-    schemaUrl: '',
-    markdown: `[![Build Status](https://travis-ci.org/facebook/react-native.svg?branch=master)]
-                (https://travis-ci.org/facebook/react-native)`,
+    schemaUrl: 'https://raw.githubusercontent.com/nikolasburk/ConferencePlanner/master/conference_planner.schema',
+    markdown: '',
     copied: false,
     // markdown: ``,
+  }
+
+  componentWillMount () {
+    this.update(this.state.schemaUrl)
   }
 
   render() {
@@ -101,7 +104,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             className='input'
             placeholder='Paste your URL here ...'
             value={this.state.schemaUrl}
-            onChange={(e: any) => this.setState({schemaUrl: e.target.value} as State)}
+            onChange={(e: any) => this.update(e.target.value)}
           />
 
           <div className='stepInstruction pt25'>Step 2: Copy generated markdown</div>
@@ -136,5 +139,11 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
   private onCopy = () => {
     this.setState({ copied: true } as State)
     setTimeout(() => this.setState({ copied: false } as State), 700)
+  }
+
+  private update = (schemaUrl: string) => {
+    const url = `https://www.graph.cool/graphql-up/new?source=${encodeURI(schemaUrl)}`
+    const markdown = `[![graphql-up](http://static.graph.cool/images/graphql-up.svg)](${url})`
+    this.setState({ schemaUrl, markdown } as State)
   }
 }
