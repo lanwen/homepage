@@ -33,8 +33,7 @@ type User {
   id: ID!
   name: String!
   posts: [Post!]!
-}
-`
+}`
 
 const conferencePlannerSchema = `type Conference {
   id: ID!
@@ -47,8 +46,7 @@ type Attendee {
   id: ID!
   name: String!
   conferences: [Conference!]!
-}
-`
+}`
 
 const examples: [Example] = [
   {
@@ -69,7 +67,7 @@ const examples: [Example] = [
           },
           {
             name: 'author',
-            type: 'User!'
+            type: 'User!',
           },
         ],
       },
@@ -150,9 +148,6 @@ export default class SchemaSection extends React.Component<{}, State> {
   }
 
   render() {
-
-    console.log('Render schema: ', examples[this.state.selectedExampleIndex].schema)
-
     const shouldRenderForMobile = window.innerWidth < breakpoints.p500
 
     return (
@@ -174,7 +169,6 @@ export default class SchemaSection extends React.Component<{}, State> {
             @p: .flex, .pt60;
           }
 
-
         `}</style>
         <div className='title'>Example Schema</div>
         <div className='subtitle'>
@@ -185,6 +179,7 @@ export default class SchemaSection extends React.Component<{}, State> {
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
 
           <CodeMirror
+            className='bgWhite buttonShadow pv38 ph60'
             value={examples[this.state.selectedExampleIndex].schema}
             options={{
               mode: 'graphql',
@@ -262,15 +257,15 @@ export default class SchemaSection extends React.Component<{}, State> {
           {example.types.map((type, i) => {
             if (i === example.types.length - 1) {
               return (
-                <span>{this._renderCodeElement(type.name)}</span>
+                <span key={i}>{this._renderCodeElement(type.name)}</span>
               )
             } else if (i === example.types.length - 2) {
               return (
-                <span>{this._renderCodeElement(type.name)} and </span>
+                <span key={i}>{this._renderCodeElement(type.name)} and </span>
               )
             } else {
               return (
-                <span>{this._renderCodeElement(type.name)}, </span>
+                <span key={i}>{this._renderCodeElement(type.name)}, </span>
               )
             }
           })}
@@ -281,9 +276,9 @@ export default class SchemaSection extends React.Component<{}, State> {
     )
   }
 
-  private _renderType = (type: Type): JSX.Element => {
+  private _renderType = (type: Type, i: number): JSX.Element => {
     return (
-      <div className='text'>
+      <div key={i} className='text'>
         <style jsx={true}>{`
 
           .code {
@@ -300,15 +295,15 @@ export default class SchemaSection extends React.Component<{}, State> {
         {type.fields.map((field, i) => {
           if (i === type.fields.length - 1) {
             return (
-              <span>{this._renderCodeElement(field.name)}</span>
+              <span key={i}>{this._renderCodeElement(field.name)}</span>
             )
           } else if (i === type.fields.length - 2) {
             return (
-              <span>{this._renderCodeElement(field.name)} and </span>
+              <span key={i}>{this._renderCodeElement(field.name)} and </span>
             )
           } else {
             return (
-              <span>{this._renderCodeElement(field.name)}, </span>
+              <span key={i}>{this._renderCodeElement(field.name)}, </span>
             )
           }
         })}.

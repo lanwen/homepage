@@ -167,12 +167,12 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Punctuation */
 .cm-s-default span.cm-punctuation {
-    color: rgba(12,198,65,.5);
+    color: rgba(112,236,165,1);
 }
 
 /* Keyword */
 .cm-s-default span.cm-keyword {
-    color: rgb(95,179,179);
+    color: rgb(0,119,222);
     font-weight: 600;
 }
 
@@ -227,17 +227,12 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 
 /* Type */
 .cm-s-default span.cm-atom {
-    color: rgb(249,198,87);
+    color: rgb(255,200,3);
 }
 
 /* Operator */
 .cm-s-default span.cm-operator {
     color: rgba(28,191,50,.5);
-}
-
-/* Atom */
-.cm-s-default span.cm-atom {
-    color: rgb(111,191,192);
 }
 
 /* Tag */
