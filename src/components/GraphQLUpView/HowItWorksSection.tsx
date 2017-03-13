@@ -25,7 +25,7 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
           }
 
           .instructions {
-            @p: .flex, .itemsCenter, .justifyCenter, .pb96;
+            @p: .flex, .pb96;
           }
 
           .step {
@@ -39,6 +39,7 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
 
           .arrow {
             @p: .mh16;
+            max-height: 40px;
           }
 
         `}</style>
