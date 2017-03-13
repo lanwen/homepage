@@ -45,7 +45,9 @@ export default class SchemaSection extends React.Component<Props, {}> {
 
         `}</style>
         <div className='title'>Example Schema</div>
-        <div className='subtitle'>Schema files are written using the <a className='green' href=''>GraphQL IDL notation</a>.</div>
+        <div className='subtitle'>
+          Schema files are written using the <a className='green' href=''>GraphQL IDL notation</a>.
+        </div>
         <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
 
         <div className='exampleSchemaContainer'>
@@ -54,7 +56,6 @@ export default class SchemaSection extends React.Component<Props, {}> {
             className=''
             src={require('../../assets/graphics/graphqlup/example_schema.svg')}
           />
-
 
           <div className='pl60'>
             <div className='schemaExplanationHeader'>

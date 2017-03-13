@@ -1,8 +1,6 @@
 import * as React from 'react'
 
-
 interface Props {
-  githubLink: string
 }
 
 export default class IntroSection extends React.Component<Props, {}> {
@@ -28,7 +26,9 @@ export default class IntroSection extends React.Component<Props, {}> {
         <img src={require('../../../assets/graphics/graphqlup/graphql-up_light.svg')}/>
         <div className='pl38'>
           <div className='title'>graphql-up is the fastest way to get a free & ready-to-use GraphQL API.</div>
-          <div className='subtitle'>It works out of the box with Apollo & Relay and supports GraphQL subscriptions.</div>
+          <div className='subtitle'>
+            It works out of the box with Apollo & Relay and supports GraphQL subscriptions.
+          </div>
         </div>
       </div>
     )

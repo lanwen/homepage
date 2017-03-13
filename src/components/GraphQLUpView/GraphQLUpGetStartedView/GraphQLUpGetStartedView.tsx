@@ -16,7 +16,6 @@ interface Props {
 
 export default class GraphQLUpGetStartedView extends React.Component<Props, State> {
 
-
   render() {
     return (
       <div>
@@ -28,8 +27,11 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
           view='HOMEPAGE'
         />
         <IntroSection />
+        <GenerateEndpointSection
+          schemaLink='graphcool-examples/worldchat-subscriptions-example/Worldchat.schema'
+        />
+
         <GraphQLUpFAQ />
-        <GenerateEndpointSection />
         <Footer />
       </div>
     )

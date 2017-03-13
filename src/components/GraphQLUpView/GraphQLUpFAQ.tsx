@@ -10,41 +10,40 @@ export interface FAQItem {
 interface Props {
 }
 
-
 const leftFAQItems: [FAQItem] = [
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
+    start exceeding your plan we will let you know that it is time to change your plan.`,
   },
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
+    start exceeding your plan we will let you know that it is time to change your plan.`,
   },
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
-  }
+    start exceeding your plan we will let you know that it is time to change your plan.`,
+  },
 ]
 
 const rightFAQItems: [FAQItem] = [
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
+    start exceeding your plan we will let you know that it is time to change your plan.`,
   },
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
+    start exceeding your plan we will let you know that it is time to change your plan.`,
   },
   {
     question: 'What happens when I go over my limit?',
     answer: `Each plan has a over-quota price for additional nodes and requests. When you
-    start exceeding your plan we will let you know that it is time to change your plan.`
-  }
+    start exceeding your plan we will let you know that it is time to change your plan.`,
+  },
 ]
 
 export default class GraphQLUpFAQ extends React.Component<Props, {}> {

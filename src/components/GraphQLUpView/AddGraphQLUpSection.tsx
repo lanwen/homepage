@@ -13,7 +13,6 @@ interface Props {
 
 }
 
-
 const movingCopyIndicator = keyframes`
   0% {
     opacity: 0;
@@ -35,7 +34,7 @@ const CopyIndicator = styled.div`
   animation: ${movingCopyIndicator} .7s linear
 `
 
-const booksEmoji = "📚" // not rendered in webstorm
+const booksEmoji = '📚' // not rendered in webstorm
 
 export default class AddGraphQLUpSection extends React.Component<Props, State> {
 
