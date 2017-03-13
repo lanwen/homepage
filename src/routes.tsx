@@ -40,6 +40,13 @@ export default {
       },
     },
     {
+      path: '/graphql-up/new',
+      getComponent(_, cb) {
+        System.import('./components/GraphQLUpView/GraphQLUpGetStartedView/GraphQLUpGetStartedView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/functions/',
       getComponent(_, cb) {
         System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))

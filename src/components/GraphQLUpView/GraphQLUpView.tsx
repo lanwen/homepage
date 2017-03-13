@@ -7,6 +7,7 @@ import SchemaSection from './SchemaSection'
 import HowItWorksSection from './HowItWorksSection'
 import AddGraphQLUpSection from './AddGraphQLUpSection'
 import GraphQLUpFAQ from './GraphQLUpFAQ'
+
 interface Props {
 
 }
