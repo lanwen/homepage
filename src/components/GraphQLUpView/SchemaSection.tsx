@@ -52,7 +52,7 @@ type Attendee {
 const examples: Example[] = [
   {
     title: 'Instagram',
-    link: 'https://www.graph.cool/graphql-up/new/?source=https://github.com/nikolasburk/Instagram',
+    link: 'https://raw.githubusercontent.com/nikolasburk/Instagram/master/instagram.schema',
     schema: instagramSchema,
     types: [
       {
@@ -93,7 +93,7 @@ const examples: Example[] = [
   },
   {
     title: 'Conference Planner',
-    link: 'https://www.graph.cool/graphql-up/new/?source=https://github.com/nikolasburk/ConferencePlanner',
+    link: 'https://raw.githubusercontent.com/nikolasburk/ConferencePlanner/master/conference_planner.schema',
     schema: conferencePlannerSchema,
     types: [
       {
@@ -250,12 +250,12 @@ export default class SchemaSection extends React.Component<{}, State> {
         `}</style>
         <div className='schemaExplanationHeader'>
           <div className='schemaExplanationTitle'>{example.title}</div>
-          <a target='_blank' href={example.link}>
+          <Link target='_blank' to={`https://www.graph.cool/graphql-up/new/?source=${example.link}`}>
             <img
               className=''
               src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
             />
-          </a>
+          </Link>
         </div>
 
         <div className='text pv16'>
