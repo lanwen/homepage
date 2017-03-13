@@ -40,7 +40,7 @@ const InvalidSource = ({schemaLink, message}: Props) => (
       </div>
     ) : (
       <div className='text'>
-        The source <pre>{schemaLink}</pre> is invalid. <br/>:36
+        The source <pre>{schemaLink}</pre> is invalid. <br/>
         The response is:
         <div>
           <pre className='error'>{message}</pre>
