@@ -179,7 +179,7 @@ export default class SchemaSection extends React.Component<{}, State> {
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
 
           <CodeMirror
-            className='bgWhite buttonShadow pv38 ph60'
+            className='bgWhite buttonShadow pv38 pl60 pr96'
             value={examples[this.state.selectedExampleIndex].schema}
             options={{
               mode: 'graphql',
@@ -224,9 +224,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           <div className='schemaExplanationTitle'>{example.title}</div>
           <img
             className=''
-            width={109}
-            height={20}
-            src={require('../../assets/graphics/graphqlup/graphql-up.svg')}
+            src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
           />
           <img
             className='mh16 pointer'

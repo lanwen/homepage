@@ -82,7 +82,14 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
           }
 
         `}</style>
-        <div className='title innerMaxWidth'>Add graphql-up to your repositories/docs {booksEmoji}</div>
+        <div className='title innerMaxWidth flex'>
+          Add
+          <img
+            className='mh10'
+            src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
+          />
+          to your repositories/docs {booksEmoji}
+          </div>
         <div className='subtitle innerMaxWidth'>
           You can add a graphql-up badge to your own repositories or docs to give your users a
           quick way to get their own GraphQL endpoint based on your schema.
