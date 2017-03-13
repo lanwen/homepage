@@ -348,6 +348,7 @@ export default class Examples extends React.Component<Props, State> {
                     options={{
                       lineNumbers: true,
                       mode: 'javascript',
+                      theme: 'mdn-like',
                     }}
                   />
                 </CodeContainer>

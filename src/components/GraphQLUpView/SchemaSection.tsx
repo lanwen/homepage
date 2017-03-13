@@ -183,6 +183,7 @@ export default class SchemaSection extends React.Component<{}, State> {
             value={examples[this.state.selectedExampleIndex].schema}
             options={{
               mode: 'graphql',
+              theme: 'mdn-like',
             }}
           />
 
