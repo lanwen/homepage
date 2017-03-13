@@ -181,7 +181,8 @@ export default class SchemaSection extends React.Component<{}, State> {
         `}</style>
         <div className='title'>Example Schema</div>
         <div className='subtitle'>
-          Schema files are written using the <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
+          Schema files are written using the&nbsp;
+          <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
         </div>
         <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
 
