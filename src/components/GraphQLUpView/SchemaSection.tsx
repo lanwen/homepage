@@ -154,6 +154,9 @@ export default class SchemaSection extends React.Component<{}, State> {
     return (
       <section className='root'>
         <style jsx={true}>{`
+          .root :global(.CodeMirror) {
+            height: auto !important;
+          }
 
           .root {
             @p: .flex, .flexColumn, .itemsCenter, .ph38, .pb96, .center, .bgBlack02;
@@ -194,6 +197,7 @@ export default class SchemaSection extends React.Component<{}, State> {
             options={{
               mode: 'graphql',
               theme: 'mdn-like',
+              viewportMargin: Infinity,
             }}
           />
 

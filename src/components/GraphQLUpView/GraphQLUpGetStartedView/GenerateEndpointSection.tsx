@@ -40,6 +40,9 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           .schemaImportedFromText {
             @p: .f14, .black20;
           }
+          .generate-endpoint-section-wrapper :global(.CodeMirror) {
+            height: auto !important;
+          }
         `}</style>
         <div className='generate-endpoint-section'>
           <div className='schemaImportedFromContainer'>
@@ -59,6 +62,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
               options={{
                 mode: 'graphql',
                 theme: 'mdn-like',
+                viewportMargin: Infinity,
               }}
             />
             <GenerateEndpoint
