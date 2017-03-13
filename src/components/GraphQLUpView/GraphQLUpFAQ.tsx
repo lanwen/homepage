@@ -35,17 +35,17 @@ const leftFAQItems: [FAQItem] = [
 
 const rightFAQItems: [FAQItem] = [
   {
-    question: 'Do I have to create a Graphcool account in order to use graphql-up?',
-    answer: (<span>No, graphql-up is available for absolutely everyone interested in GraphQL.
-    You don't have to create an account or leave your email address. 
-    Of course, it's also completely free of charge.</span>),
-  },
-  {
     question: 'How long can I use the GraphQL API that I created with graphql-up?',
     answer: (<span>Since projects created with graphql-up are not intended for
     production use, they will be deleted after 30 days of inactivity.
     If you're looking to build something more
     sustainable, consider creating a project with Graphcool.</span>),
+  },
+  {
+    question: 'Do I have to create a Graphcool account in order to use graphql-up?',
+    answer: (<span>No, graphql-up is available for absolutely everyone interested in GraphQL.
+    You don't have to create an account or leave your email address. 
+    Of course, it's also completely free of charge.</span>),
   },
 ]
 

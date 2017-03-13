@@ -250,7 +250,11 @@ export default class SchemaSection extends React.Component<{}, State> {
         `}</style>
         <div className='schemaExplanationHeader'>
           <div className='schemaExplanationTitle'>{example.title}</div>
-          <Link target='_blank' to={`https://www.graph.cool/graphql-up/new/?source=${example.link}`}>
+          <Link
+            className='flex'
+            target='_blank'
+            to={`https://www.graph.cool/graphql-up/new/?source=${example.link}`}
+          >
             <img
               className=''
               src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}

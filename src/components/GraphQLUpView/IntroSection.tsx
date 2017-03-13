@@ -32,7 +32,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playVideoContainer {
-            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer;
+            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer, .noUnderline;
           }
 
           .playButton {
@@ -42,7 +42,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playText {
-            @p: .f20, .fw3, .o60, .noUnderline;
+            @p: .f20, .fw3, .o60;
           }
 
         `}</style>

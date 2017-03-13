@@ -66,7 +66,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .title {
-              @p: .fw3, .pt60;
+              @p: .fw3, .pt60, .flex, .itemsCenter;
               font-size: 31.5px;
             }
 
@@ -95,16 +95,10 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
         <div className='add-graphql'>
           <div className='title innerMaxWidth flex'>
             Add
-            <a
-              href={'https://www.graph.cool/graphql-up/new?source=' +
-               'https://raw.githubusercontent.com/nikolasburk/ConferencePlanner/master/conference_planner.schema'}
-              target='_blank'
-            >
-              <img
-                className='mh10'
-                src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
-              />
-            </a>
+            <img
+              className='mh10'
+              src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
+            />
             to your repositories/docs {booksEmoji}
             </div>
           <div className='subtitle innerMaxWidth'>
