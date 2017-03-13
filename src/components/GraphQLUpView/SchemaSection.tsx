@@ -49,7 +49,7 @@ type Attendee {
   conferences: [Conference!]!
 }`
 
-const examples: [Example] = [
+const examples: Example[] = [
   {
     title: 'Instagram',
     link: 'https://github.com/nikolasburk/Instagram/blob/master/README.md',
@@ -206,7 +206,7 @@ export default class SchemaSection extends React.Component<{}, State> {
             const active = i === this.state.selectedExampleIndex
             return (
               <div
-                key={i}
+                key={example.title}
                 className={`circle ${active ? 'bgGreen' : 'bgGreen20'}`}
                 onClick={() => this.setState({selectedExampleIndex: i} as State)}
               />
