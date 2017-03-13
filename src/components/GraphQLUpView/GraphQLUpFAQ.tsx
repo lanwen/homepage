@@ -13,6 +13,28 @@ interface Props {
 
 const leftFAQItems: [FAQItem] = [
   {
+    question: 'What use cases does graphql-up cover?',
+    answer: (<span>graphql-up is ideal for anyone who wants to have a head-start with
+    GraphQL without the hazzle of having to do any work on the server. You
+    can use it to quickly spin up a GraphQL backend for mocking data, testing or simply
+    experimenting and playing around with GraphQL.
+    It's also perfect for usage in tutorials, sample projects or documentation.</span>),
+  },
+  {
+    question: 'What does the generated GraphQL API look like?',
+    answer: (<span>graphql-up generates two different APIs. The first one is
+    called <a href='https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai'>Simple API</a> and
+    follows best practices of the Graphcool platform.
+    It can be used with any GraphQL client, such as Apollo or Lokka.
+    The second is
+    a <a href='https://www.graph.cool/docs/reference/relay-api/overview-aizoong9ah/'>Relay API</a> for
+    dedicated use of Relay in the client.</span>),
+  },
+
+]
+
+const rightFAQItems: [FAQItem] = [
+  {
     question: 'Do I have to create a Graphcool account in order to use graphql-up?',
     answer: (<span>No, graphql-up is available for absolutely everyone interested in GraphQL.
     You don't have to create an account or leave your email address. 
@@ -21,30 +43,9 @@ const leftFAQItems: [FAQItem] = [
   {
     question: 'How long can I use the GraphQL API that I created with graphql-up?',
     answer: (<span>Since projects created with graphql-up are not intended for
-    production use, they will be deleted after 30 days of inactivity. 
-    If you're looking to build something more 
+    production use, they will be deleted after 30 days of inactivity.
+    If you're looking to build something more
     sustainable, consider creating a project with Graphcool.</span>),
-  },
-]
-
-const rightFAQItems: [FAQItem] = [
-  {
-    question: 'What does the generated GraphQL API look like?',
-    answer: (<span>graphql-up generates two different APIs. The first one is
-    called <a href='https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai'>Simple API</a> and
-    follows best practices of the Graphcool platform.
-    It can be used with any GraphQL client, such as Apollo or Lokka. 
-    The second is
-    a <a href='https://www.graph.cool/docs/reference/relay-api/overview-aizoong9ah/'>Relay API</a> for
-    dedicated use of Relay in the client.</span>),
-  },
-  {
-    question: 'What use cases does graphql-up cover?',
-    answer: (<span>graphql-up is ideal for anyone who wants to have a head-start with
-    GraphQL without the hazzle of having to do any work on the server. You
-    can use it to quickly spin up a GraphQL backend for mocking data, testing or simply
-    experimenting and playing around with GraphQL.
-    It's also perfect for usage in tutorials, sample projects or documentation.</span>),
   },
 ]
 
