@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {breakpoints} from '../../utils/constants'
 
 interface Props {
 
@@ -7,19 +8,22 @@ interface Props {
 export default class SchemaSection extends React.Component<Props, {}> {
 
   render() {
+
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+
     return (
       <section className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .ph96, .pb96, .center, .bgBlack02;
+            @p: .flex, .flexColumn, .itemsCenter, .ph38, .pb96, .center, .bgBlack02;
           }
 
           .title {
-            @p: .f25, .fw3, .pt60, .pb16;
+            @p: .f25, .fw3, .pt60, .pb16, .tc;
           }
 
           .subtitle {
-            @p: .f20, .fw3;
+            @p: .f20, .fw3, .tc;
           }
 
           .exampleSchemaContainer {
@@ -49,14 +53,14 @@ export default class SchemaSection extends React.Component<Props, {}> {
         </div>
         <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
 
-        <div className='exampleSchemaContainer'>
+        <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
 
           <img
             className=''
             src={require('../../assets/graphics/graphqlup/example_schema.svg')}
           />
 
-          <div className='pl60'>
+          <div className={`${shouldRenderForMobile ? 'pt38' : 'pl60'}`}>
             <div className='schemaExplanationHeader'>
               <div className='schemaExplanationTitle'>Instagram</div>
               <img
