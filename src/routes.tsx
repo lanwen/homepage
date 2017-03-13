@@ -33,6 +33,20 @@ export default {
       },
     },
     {
+      path: '/graphql-up/',
+      getComponent(_, cb) {
+        System.import('./components/GraphQLUpView/GraphQLUpView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
+      path: '/graphql-up/new/',
+      getComponent(_, cb) {
+        System.import('./components/GraphQLUpView/GraphQLUpGetStartedView/GraphQLUpGetStartedView').then(loadRoute(cb))
+          .catch(errorLoading)
+      },
+    },
+    {
       path: '/functions/',
       getComponent(_, cb) {
         System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))
@@ -90,6 +104,13 @@ export default {
               path: 'reference/',
               onEnter(_, replace, callback) {
                 replace('reference/platform/overview-chohbah0eo/')
+                callback()
+              },
+            },
+            {
+              path: 'graphql-up/',
+              onEnter(_, replace, callback) {
+                replace('reference/simple-api/overview-heshoov3ai/')
                 callback()
               },
             },

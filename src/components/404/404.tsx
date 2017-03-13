@@ -36,7 +36,7 @@ export default class NotFoundView extends React.Component<{}, {}> {
               $p.pv16,
               $p.noUnderline,
             )}
-            to='/docs'
+            to='/docs/'
           >
             Open Docs
           </Link>

@@ -56,7 +56,7 @@ export default () => (
       <SocialLink href='https://www.facebook.com/GraphcoolHQ/' target='_blank'>
         <img src={require('../../assets/graphics/logos/facebook.svg')}/>
       </SocialLink>
-      <SocialLink href='https://www.youtube.com/channel/UCptAHlN1gdwD89tFM3ENb6w' target='_blank'>
+      <SocialLink href='https://www.youtube.com/c/graphcool' target='_blank'>
         <img src={require('../../assets/graphics/logos/youtube.svg')}/>
       </SocialLink>
     </SocialLinks>

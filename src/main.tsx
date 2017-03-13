@@ -14,6 +14,7 @@ import routes from './routes'
 
 import './utils/polyfills'
 import './style'
+require('./styles/mdn-like.css')
 
 function shouldScrollUp(previousProps, {location}) {
   return location.hash === '' && (previousProps === null || previousProps.location.pathname !== location.pathname)

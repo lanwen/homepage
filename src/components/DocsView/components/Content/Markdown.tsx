@@ -356,6 +356,7 @@ export default class Markdown extends React.Component<Props, {}> {
           'json': { name: 'application/javascript', json: true },
           'sh': 'shell',
           'graphql': 'graphql',
+          'idl': 'graphql',
         }[props.language]
 
         if (window.innerWidth > breakpoints.p650 &&
@@ -378,6 +379,7 @@ export default class Markdown extends React.Component<Props, {}> {
                   mode: language,
                   readOnly: true,
                   lineWrapping: true,
+                  theme: 'mdn-like',
                 }}
               />
             </CodeContainer>
@@ -392,6 +394,7 @@ export default class Markdown extends React.Component<Props, {}> {
                 mode: language,
                 readOnly: true,
                 lineWrapping: true,
+                theme: 'mdn-like',
               }}
             />
           </CodeContainer>
