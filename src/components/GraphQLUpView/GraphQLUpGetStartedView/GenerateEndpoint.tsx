@@ -5,12 +5,14 @@ type EndpointType = 'SIMPLE' | 'RELAY'
 
 interface State {
   projectId?: string
-  loadingEndpoint: boolean
   selectedEndpointType: EndpointType
   justCopied: boolean
 }
 
 interface Props {
+  generateProject: () => void
+  loadingEndpoint: boolean
+  projectId?: string
 }
 
 export default class GenerateEndpoint extends React.Component<Props, State> {
@@ -18,22 +20,19 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
   copyTimer = null
 
   state = {
-    projectId: 'mirageflier',
-    loadingEndpoint: false,
     selectedEndpointType: 'SIMPLE' as EndpointType,
     justCopied: false,
   }
 
   render() {
 
-    const projectIdAvailable = Boolean(this.state.projectId)
-    console.log('projectId', projectIdAvailable)
+    const projectIdAvailable = Boolean(this.props.projectId)
 
     return (
-      <div className='root'>
+      <div className='generate-endpoint'>
         <style jsx={true}>{`
 
-          .root {
+          .generate-endpoint {
             @p: .flex, .flexColumn, .itemsCenter, .ph60;
           }
 
@@ -68,13 +67,13 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           </div>
         </div>
 
-        {projectIdAvailable ? this._renderGraphQLEndpoint() : this._renderGraphQLButton() }
+        {projectIdAvailable ? this.renderEndpoint() : this.renderGraphQLButton() }
 
       </div>
     )
   }
 
-  private _renderGraphQLEndpoint(): JSX.Element {
+  private renderEndpoint(): JSX.Element {
     return (
       <div>
         <style jsx={true}>{`
@@ -126,32 +125,32 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             Relay API
           </div>
         </div>
-        <div className='endpoint'>{this._generateEndpoint()}</div>
+        <div className='endpoint'>{this.getEndpoint()}</div>
         <div className='infoText'>
           The Simple API works best when using Apollo Client
           (<a target='_blank' className='docsLink' href='http://dev.apollodata.com/'>Docs</a>)
         </div>
         <div className='flex mt25 justifyBetween w100'>
           <CopyToClipboard
-            text={this._generateEndpoint()}
-            onCopy={() => this._onCopy()}
+            text={this.getEndpoint()}
+            onCopy={() => this.onCopy()}
           >
             <div className='button copyButton mr4'>{this.state.justCopied ? 'Copied!' : 'Copy Endpoint'}</div>
           </CopyToClipboard>
-          <div className='button playgroundButton ml4'>
-            <a className='noUnderline' target='_blank' href={this.state.projectId}>Open Playground</a>
-          </div>
+          <a className='button playgroundButton ml4 noUnderline' target='_blank' href={this.getEndpoint()}>
+            <div>Open Playground</div>
+          </a>
         </div>
 
       </div>
     )
   }
 
-  private _renderGraphQLButton(): JSX.Element {
+  private renderGraphQLButton(): JSX.Element {
     return (
       <div
         className='getGraphQLAPIButton pink'
-        onClick={() => this.setState({loadingEndpoint: !this.state.loadingEndpoint} as State)}
+        onClick={this.props.generateProject}
       >
         <style jsx={true}>{`
           .getGraphQLAPIButton {
@@ -172,14 +171,14 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
         <img
           width={25}
           height={20}
-          className={`${this.state.loadingEndpoint && 'rotating'}`}
+          className={`${this.props.loadingEndpoint && 'rotating'}`}
           src={require('../../../assets/graphics/graphqlup/nodes.svg')}/>
-        <div className='pl10'>{this.state.loadingEndpoint ? 'Creating GraphQL API ...' : 'Get GraphQL API'}</div>
+        <div className='pl10'>{this.props.loadingEndpoint ? 'Creating GraphQL API ...' : 'Get GraphQL API'}</div>
       </div>
     )
   }
 
-  private _onCopy() {
+  private onCopy() {
     this.setState({justCopied: true} as State)
     this.copyTimer = window.setTimeout(
       () => this.setState({justCopied: false} as State),
@@ -187,9 +186,9 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
     )
   }
 
-  private _generateEndpoint(): string {
+  private getEndpoint(): string {
     const baseURL = 'https://api.graph.cool'
     const endpoint = (this.state.selectedEndpointType as String).toLowerCase()
-    return `${baseURL}/${endpoint}/v1/${this.state.projectId}`
+    return `${baseURL}/${endpoint}/v1/${this.props.projectId}`
   }
 }

@@ -27,32 +27,32 @@ interface State {
 const instagramSchema = `type Post {
   id: ID!
   title: String!
-  author: User!
+  author: User! @relation(name: "Posts")
 }
 
 type User {
   id: ID!
   name: String!
-  posts: [Post!]!
+  posts: [Post!]! @relation(name: "Posts")
 }`
 
 const conferencePlannerSchema = `type Conference {
   id: ID!
   name: String!
   city: String!
-  attendees: [Attendee!]!
+  attendees: [Attendee!]! @relation(name: "Attendees")
 }
 
 type Attendee {
   id: ID!
   name: String!
-  conferences: [Conference!]!
+  conferences: [Conference!]! @relation(name: "Attendees")
 }`
 
 const examples: Example[] = [
   {
     title: 'Instagram',
-    link: 'https://github.com/nikolasburk/Instagram/blob/master/README.md',
+    link: 'https://www.graph.cool/graphql-up/new/?source=https://github.com/nikolasburk/Instagram',
     schema: instagramSchema,
     types: [
       {
@@ -93,7 +93,7 @@ const examples: Example[] = [
   },
   {
     title: 'Conference Planner',
-    link: 'https://github.com/nikolasburk/ConferencePlanner',
+    link: 'https://www.graph.cool/graphql-up/new/?source=https://github.com/nikolasburk/ConferencePlanner',
     schema: conferencePlannerSchema,
     types: [
       {
@@ -154,6 +154,9 @@ export default class SchemaSection extends React.Component<{}, State> {
     return (
       <section className='root'>
         <style jsx={true}>{`
+          .root :global(.CodeMirror) {
+            height: auto !important;
+          }
 
           .root {
             @p: .flex, .flexColumn, .itemsCenter, .ph38, .pb96, .center, .bgBlack02;
@@ -189,11 +192,12 @@ export default class SchemaSection extends React.Component<{}, State> {
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
 
           <CodeMirror
-            className='bgWhite buttonShadow pv38 pl60 pr96'
+            className='bgWhite buttonShadow pv16 pl60 pr96'
             value={examples[this.state.selectedExampleIndex].schema}
             options={{
               mode: 'graphql',
               theme: 'mdn-like',
+              viewportMargin: Infinity,
             }}
           />
 
@@ -234,12 +238,13 @@ export default class SchemaSection extends React.Component<{}, State> {
           }
 
           .code {
-            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60;
+            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60, .f14;
           }
 
           .text {
-            @p: .f20, .fw3;
-            max-width: 450px;
+            @p: .f16, .fw3;
+            max-width: 550px;
+            line-height: 2;
           }
 
         `}</style>
@@ -253,7 +258,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           </a>
         </div>
 
-        <div className='text pv38'>
+        <div className='text pv16'>
           This schema has {example.types.length} {example.types.length === 1 ? 'type' : 'types'}:
           {example.types.map((type, i) => {
             if (i === example.types.length - 1) {
@@ -283,14 +288,14 @@ export default class SchemaSection extends React.Component<{}, State> {
         <style jsx={true}>{`
 
           .code {
-            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60;
+            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60, .f14;
           }
 
           .text {
-            @p: .f20, .fw3;
-            max-width: 450px;
+            @p: .f16, .fw3;
+            max-width: 550px;
+            line-height: 2;
           }
-
       `}</style>
         A <span className='code'>{type.name}</span> has {type.fields.length} fields:
         {type.fields.map((field, i) => {
