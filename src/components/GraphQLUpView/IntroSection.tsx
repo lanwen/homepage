@@ -52,7 +52,7 @@ export default class IntroSection extends React.Component<Props, {}> {
         />
         <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
-        <video autoPlay onClick={(e: any) => e.target.currentTime = 0}>
+        <video autoPlay onClick={this.restartVideo}>
           <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
         </video>
 
@@ -80,5 +80,10 @@ export default class IntroSection extends React.Component<Props, {}> {
 
       </section>
     )
+  }
+
+  private restartVideo = (e: any) => {
+    e.target.currentTime = 0
+    e.target.load()
   }
 }
