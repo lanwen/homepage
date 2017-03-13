@@ -93,7 +93,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             layout='REFERENCE'
             title='Reference Documentation'
             text='Get familiar with the Graphcool platform & API and explore all features:'
-            link='/docs/reference'
+            link='/docs/reference/'
           />
         </PaddedContainer>
 
@@ -107,7 +107,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
             title='Quickstart'
             text={`The fastest way to get started. Select your technology of choice,
               download an example project and start building.`}
-            link='/docs/quickstart'
+            link='/docs/quickstart/'
           />
           <Quickstart className={cx($p.mt38, $p.ml60)} />
         </PaddedContainer>

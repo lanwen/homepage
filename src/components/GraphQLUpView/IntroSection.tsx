@@ -27,6 +27,10 @@ export default class IntroSection extends React.Component<Props, {}> {
             @p: .f20, .fw3;
           }
 
+          video {
+            max-width: 670px;
+          }
+
           .playVideoContainer {
             @p: .flex, .itemsCenter, .pt38, .pb60, .pointer;
           }
@@ -48,10 +52,9 @@ export default class IntroSection extends React.Component<Props, {}> {
         />
         <div className='title'>Get a ready-to-use GraphQL endpoint based on your schema</div>
 
-        <img
-          className=''
-          src={require('../../assets/graphics/graphqlup/video_placeholder.svg')}
-        />
+        <video autoPlay onClick={(e: any) => e.target.currentTime = 0}>
+          <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
+        </video>
 
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
         <div className='info'>It works out of the box with Apollo & Relay and supports GraphQL subscriptions.</div>
