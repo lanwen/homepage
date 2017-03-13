@@ -11,7 +11,7 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
       <div className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .ph38, .center;
+            @p: .flex, .flexColumn, .itemsCenter, .ph38, .center, .pb96;
             max-width: 1440px;
           }
 
@@ -25,7 +25,7 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
           }
 
           .instructions {
-            @p: .flex, .pb96;
+            @p: .flex;
           }
 
           .step {
@@ -40,6 +40,11 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
           .arrow {
             @p: .mh16;
             max-height: 40px;
+          }
+
+          .codeContainer {
+            @p: .br2, .bgBlack04, .black60, .ph60, .pv25;
+            font-family: 'Menlo';
           }
 
         `}</style>
@@ -65,6 +70,14 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
             <div className='stepDescription'>Connect with your app</div>
           </div>
         </div>
+
+        <div className='codeContainer mt60'>
+          <div className='pb4 o50'># Install with npm</div>
+          <div className='pb16'>npm install -g graphql-up</div>
+          <div className='pb4 o50'># Create GraphQL API using a schema file</div>
+          <div className='pb4'>graphql-up create Instagram.schema</div>
+        </div>
+
       </div>
     )
   }
