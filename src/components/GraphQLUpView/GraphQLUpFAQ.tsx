@@ -53,7 +53,7 @@ export default class GraphQLUpFAQ extends React.Component<Props, {}> {
       <div className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .pl96, .pr96, .center;
+            @p: .flex, .flexColumn, .itemsCenter, .ph96, .pb96, .center;
             max-width: 1440px;
           }
 

@@ -16,7 +16,7 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
           }
 
           .title {
-            @p: .f25, .fw3, .pb60, .pt60;
+            @p: .f25, .fw3, .pb16, .pt60;
           }
 
           .subtitle {

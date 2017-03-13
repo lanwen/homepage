@@ -11,8 +11,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
       <section className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .pl96, .pr96, .center, .bgBlack02;
-            max-width: 1440px;
+            @p: .flex, .flexColumn, .itemsCenter, .ph96, .pb96, .center, .bgBlack02;
           }
 
           .title {

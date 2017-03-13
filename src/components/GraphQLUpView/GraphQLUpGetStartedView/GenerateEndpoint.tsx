@@ -189,7 +189,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
 
   private _generateEndpoint(): string {
     const baseURL = 'https://api.graph.cool'
-    const endpoint = (this.state.selectedEndpointType as String).toLowerCase())
+    const endpoint = (this.state.selectedEndpointType as String).toLowerCase()
     return `${baseURL}/${endpoint}/v1/${this.state.projectId}`
   }
 }
