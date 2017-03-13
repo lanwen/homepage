@@ -34,4 +34,3 @@ export default class GraphQLUp extends React.Component<Props, {}> {
     )
   }
 }
-

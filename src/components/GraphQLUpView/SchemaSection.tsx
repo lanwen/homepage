@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {breakpoints} from '../../utils/constants'
+import * as CodeMirror from 'react-codemirror'
 
 interface Field {
   name: string
@@ -15,27 +16,56 @@ interface Example {
   title: string
   link: string
   types: [Type]
+  schema: string
 }
 
 interface State {
   selectedExampleIndex: number
 }
 
+const instagramSchema = `type Post {
+  id: ID!
+  title: String!
+  author: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  posts: [Post!]!
+}
+`
+
+const conferencePlannerSchema = `type Conference {
+  id: ID!
+  name: String!
+  city: String!
+  attendees: [Attendee!]!
+}
+
+type Attendee {
+  id: ID!
+  name: String!
+  conferences: [Conference!]!
+}
+`
+
 const examples: [Example] = [
   {
     title: 'Instagram',
     link: '',
+    schema: instagramSchema,
     types: [
       {
         name: 'Post',
         fields: [
           {
             name: 'id',
-            type: 'ID!'
+            type: 'ID!',
           },
           {
             name: 'title',
-            type: 'String!'
+            type: 'String!',
           },
           {
             name: 'author',
@@ -48,46 +78,47 @@ const examples: [Example] = [
         fields: [
           {
             name: 'id',
-            type: 'ID!'
+            type: 'ID!',
           },
           {
             name: 'name',
-            type: 'String!'
+            type: 'String!',
           },
           {
             name: 'posts',
-            type: '[Post!]!'
+            type: '[Post!]!',
           },
         ],
-      }
-    ]
+      },
+    ],
   },
   {
     title: 'Conference Planner',
     link: '',
+    schema: conferencePlannerSchema,
     types: [
       {
         name: 'Conference',
         fields: [
           {
             name: 'id',
-            type: 'ID!'
+            type: 'ID!',
           },
           {
             name: 'name',
-            type: 'String!'
+            type: 'String!',
           },
           {
             name: 'city',
-            type: 'String!'
+            type: 'String!',
           },
           {
             name: 'date',
-            type: 'DateTime!'
+            type: 'DateTime!',
           },
           {
             name: 'attendees',
-            type: '[Attendee!]!'
+            type: '[Attendee!]!',
           },
         ],
       },
@@ -96,22 +127,21 @@ const examples: [Example] = [
         fields: [
           {
             name: 'id',
-            type: 'ID!'
+            type: 'ID!',
           },
           {
             name: 'name',
-            type: 'String!'
+            type: 'String!',
           },
           {
             name: 'conferences',
-            type: '[Conference!]!'
+            type: '[Conference!]!',
           },
         ],
-      }
-    ]
+      },
+    ],
   },
 ]
-
 
 export default class SchemaSection extends React.Component<{}, State> {
 
@@ -120,6 +150,8 @@ export default class SchemaSection extends React.Component<{}, State> {
   }
 
   render() {
+
+    console.log('Render schema: ', examples[this.state.selectedExampleIndex].schema)
 
     const shouldRenderForMobile = window.innerWidth < breakpoints.p500
 
@@ -152,9 +184,11 @@ export default class SchemaSection extends React.Component<{}, State> {
 
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
 
-          <img
-            className=''
-            src={require('../../assets/graphics/graphqlup/example_schema.svg')}
+          <CodeMirror
+            value={examples[this.state.selectedExampleIndex].schema}
+            options={{
+              mode: 'graphql',
+            }}
           />
 
           {this._renderExample(examples[this.state.selectedExampleIndex])}
@@ -203,7 +237,7 @@ export default class SchemaSection extends React.Component<{}, State> {
             className='mh16 pointer'
             onClick={() => {
               if (this.state.selectedExampleIndex === 0) {
-                this.setState({selectedExampleIndex: examples.length-1} as State)
+                this.setState({selectedExampleIndex: examples.length - 1} as State)
               } else {
                 this.setState({selectedExampleIndex: this.state.selectedExampleIndex - 1} as State)
               }
@@ -213,7 +247,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           <img
             className='ml16 pointer'
             onClick={() => {
-              if (this.state.selectedExampleIndex === examples.length-1) {
+              if (this.state.selectedExampleIndex === examples.length - 1) {
                 this.setState({selectedExampleIndex: 0} as State)
               } else {
                 this.setState({selectedExampleIndex: this.state.selectedExampleIndex + 1} as State)
@@ -226,11 +260,11 @@ export default class SchemaSection extends React.Component<{}, State> {
         <div className='text pv38'>
           This schema has {example.types.length} {example.types.length === 1 ? 'type' : 'types'}:
           {example.types.map((type, i) => {
-            if (i === example.types.length-1) {
+            if (i === example.types.length - 1) {
               return (
                 <span>{this._renderCodeElement(type.name)}</span>
               )
-            } else if (i === example.types.length-2) {
+            } else if (i === example.types.length - 2) {
               return (
                 <span>{this._renderCodeElement(type.name)} and </span>
               )
@@ -247,7 +281,7 @@ export default class SchemaSection extends React.Component<{}, State> {
     )
   }
 
-  _renderType = (type: Type): JSX.Element => {
+  private _renderType = (type: Type): JSX.Element => {
     return (
       <div className='text'>
         <style jsx={true}>{`
@@ -264,11 +298,11 @@ export default class SchemaSection extends React.Component<{}, State> {
       `}</style>
         A <span className='code'>{type.name}</span> has {type.fields.length} fields:
         {type.fields.map((field, i) => {
-          if (i === type.fields.length-1) {
+          if (i === type.fields.length - 1) {
             return (
               <span>{this._renderCodeElement(field.name)}</span>
             )
-          } else if (i === type.fields.length-2) {
+          } else if (i === type.fields.length - 2) {
             return (
               <span>{this._renderCodeElement(field.name)} and </span>
             )
@@ -282,7 +316,7 @@ export default class SchemaSection extends React.Component<{}, State> {
     )
   }
 
-  _renderCodeElement = (text: string) : JSX.Element => {
+  private _renderCodeElement = (text: string): JSX.Element => {
     return (
       <span className='code'>
         <style jsx={true}>{`
@@ -295,34 +329,4 @@ export default class SchemaSection extends React.Component<{}, State> {
     )
   }
 
-  _generateJSXForItems = (items: [string]): JSX.Element => {
-    const result = items.reduce((previous, current, i) => {
-      if (i === 0) {
-        return current
-      } else if (i < items.length -1) {
-        return previous + ', ' + current
-      } else {
-        // last item
-        return previous + ' and ' + current + '.'
-      }
-
-    }, '')
-
-    return (<div>{result}</div>)
-  }
-
-  _generateSentenceForItems = (items: [string]): string => {
-    const result = items.reduce((previous, current, i) => {
-      if (i === 0) {
-        return current
-      } else if (i < items.length -1) {
-        return previous + ', ' + current
-      } else {
-        // last item
-        return previous + ' and ' + current + '.'
-      }
-
-    }, '')
-    return result
-  }
 }

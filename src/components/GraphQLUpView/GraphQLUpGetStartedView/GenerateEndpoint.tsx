@@ -21,7 +21,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
     projectId: 'mirageflier',
     loadingEndpoint: false,
     selectedEndpointType: 'SIMPLE' as EndpointType,
-    justCopied: false
+    justCopied: false,
   }
 
   render() {
