@@ -17,7 +17,8 @@ interface Example {
   types: [Type]
 }
 
-interface Props {
+interface State {
+  selectedExampleIndex: number
 }
 
 const examples: [Example] = [
@@ -112,7 +113,11 @@ const examples: [Example] = [
 ]
 
 
-export default class SchemaSection extends React.Component<Props, {}> {
+export default class SchemaSection extends React.Component<{}, State> {
+
+  state = {
+    selectedExampleIndex: 0,
+  }
 
   render() {
 
@@ -152,7 +157,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
             src={require('../../assets/graphics/graphqlup/example_schema.svg')}
           />
 
-          {this._renderExample(examples[0])}
+          {this._renderExample(examples[this.state.selectedExampleIndex])}
 
         </div>
 
@@ -167,6 +172,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
     return (
       <div className={`${shouldRenderForMobile ? 'pt38 ph16' : 'pl60'}`}>
         <style jsx={true}>{`
+
           .schemaExplanationHeader {
             @p: .flex, .itemsCenter;
           }
@@ -181,6 +187,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
 
           .text {
             @p: .f20, .fw3;
+            max-width: 450px;
           }
 
         `}</style>
@@ -191,6 +198,28 @@ export default class SchemaSection extends React.Component<Props, {}> {
             width={109}
             height={20}
             src={require('../../assets/graphics/graphqlup/graphql-up.svg')}
+          />
+          <img
+            className='mh16 pointer'
+            onClick={() => {
+              if (this.state.selectedExampleIndex === 0) {
+                this.setState({selectedExampleIndex: examples.length-1} as State)
+              } else {
+                this.setState({selectedExampleIndex: this.state.selectedExampleIndex - 1} as State)
+              }
+            }}
+            src={require('../../assets/graphics/graphqlup/left_arrow.svg')}
+          />
+          <img
+            className='ml16 pointer'
+            onClick={() => {
+              if (this.state.selectedExampleIndex === examples.length-1) {
+                this.setState({selectedExampleIndex: 0} as State)
+              } else {
+                this.setState({selectedExampleIndex: this.state.selectedExampleIndex + 1} as State)
+              }
+            }}
+            src={require('../../assets/graphics/graphqlup/right_arrow.svg')}
           />
         </div>
 
@@ -213,7 +242,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
           })}
           .
         </div>
-        {example.types.map(this._renderType}
+        {example.types.map(this._renderType)}
       </div>
     )
   }
@@ -222,13 +251,16 @@ export default class SchemaSection extends React.Component<Props, {}> {
     return (
       <div className='text'>
         <style jsx={true}>{`
+
           .code {
             @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60;
           }
 
           .text {
             @p: .f20, .fw3;
+            max-width: 450px;
           }
+
       `}</style>
         A <span className='code'>{type.name}</span> has {type.fields.length} fields:
         {type.fields.map((field, i) => {
