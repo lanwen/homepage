@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router'
 import {breakpoints} from '../../utils/constants'
 import * as CodeMirror from 'react-codemirror'
 
@@ -172,7 +173,7 @@ export default class SchemaSection extends React.Component<{}, State> {
         `}</style>
         <div className='title'>Example Schema</div>
         <div className='subtitle'>
-          Schema files are written using the <a className='green' href=''>GraphQL IDL notation</a>.
+          Schema files are written using the <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
         </div>
         <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
 
