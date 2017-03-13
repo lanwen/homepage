@@ -36,26 +36,19 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
       invalidSource: undefined,
     }
   }
+
   componentWillMount() {
-    const schemaLink = this.getSchemaLink()
-    if (schemaLink) {
-      fetch(schemaLink)
-        .then(res => {
-          if (!res.ok) {
-            throw new Error(res.statusText)
-          }
-          return res.text()
-        })
-        .then(schema => {
-          this.setState({schema} as State)
-        })
-        .catch(err => {
-          this.setState({invalidSource: err.message} as State)
-        })
-    }
+    this.fetchSchema(this.props.location.query)
+    console.log('mount');
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.fetchSchema(nextProps.location.query)
+    console.log('will');
+  }
+
   render() {
-    const schemaLink = this.getSchemaLink()
+    const schemaLink = this.getSchemaLink(this.props.location.query)
     const {invalidSource} = this.state
 
     return (
@@ -84,9 +77,11 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
       </div>
     )
   }
-  private getSchemaLink() {
-    return this.props.location.query && this.props.location.query.source
+
+  private getSchemaLink(query: any) {
+    return query && query.source
   }
+
   private generateProject = () => {
     const {schema} = this.state
 
@@ -107,5 +102,25 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
       })
       .catch(err => console.error(err))
     })
+  }
+
+  private fetchSchema = async(query: string | undefined) => {
+    const schemaLink = this.getSchemaLink(query)
+
+    if (schemaLink) {
+      try {
+        const res = await fetch(schemaLink)
+
+        if (!res.ok) {
+          throw new Error(res.statusText)
+        }
+
+        const schema = await res.text()
+        this.setState({schema} as State)
+
+      } catch (err) {
+        this.setState({invalidSource: err.message} as State)
+      }
+    }
   }
 }
