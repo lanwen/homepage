@@ -39,12 +39,10 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
 
   componentWillMount() {
     this.fetchSchema(this.props.location.query)
-    console.log('mount');
   }
 
   componentWillReceiveProps(nextProps) {
     this.fetchSchema(nextProps.location.query)
-    console.log('will');
   }
 
   render() {
