@@ -93,7 +93,7 @@ const examples: [Example] = [
   },
   {
     title: 'Conference Planner',
-    link: '',
+    link: 'https://github.com/nikolasburk/ConferencePlanner',
     schema: conferencePlannerSchema,
     types: [
       {
@@ -154,6 +154,7 @@ export default class SchemaSection extends React.Component<{}, State> {
     return (
       <section className='root'>
         <style jsx={true}>{`
+
           .root {
             @p: .flex, .flexColumn, .itemsCenter, .ph38, .pb96, .center, .bgBlack02;
           }
@@ -168,6 +169,13 @@ export default class SchemaSection extends React.Component<{}, State> {
 
           .exampleSchemaContainer {
             @p: .flex, .pt60;
+            height: 370px;
+          }
+
+          .circle {
+            @p: .br100, .mh4, .pointer;
+            width: 10px;
+            height: 10px;
           }
 
         `}</style>
@@ -192,6 +200,18 @@ export default class SchemaSection extends React.Component<{}, State> {
 
         </div>
 
+        <div className='flex justifyCenter itemsCenter mt25'>
+          {examples.map((example, i) => {
+            const active = i === this.state.selectedExampleIndex
+            return (
+              <div
+                key={i}
+                className={`circle ${active ? 'bgGreen' : 'bgGreen20'}`}
+                onClick={() => this.setState({selectedExampleIndex: i} as State)}
+              />
+            )
+          })}
+        </div>
       </section>
     )
   }
@@ -224,32 +244,12 @@ export default class SchemaSection extends React.Component<{}, State> {
         `}</style>
         <div className='schemaExplanationHeader'>
           <div className='schemaExplanationTitle'>{example.title}</div>
-          <img
-            className=''
-            src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
-          />
-          <img
-            className='mh16 pointer'
-            onClick={() => {
-              if (this.state.selectedExampleIndex === 0) {
-                this.setState({selectedExampleIndex: examples.length - 1} as State)
-              } else {
-                this.setState({selectedExampleIndex: this.state.selectedExampleIndex - 1} as State)
-              }
-            }}
-            src={require('../../assets/graphics/graphqlup/left_arrow.svg')}
-          />
-          <img
-            className='ml16 pointer'
-            onClick={() => {
-              if (this.state.selectedExampleIndex === examples.length - 1) {
-                this.setState({selectedExampleIndex: 0} as State)
-              } else {
-                this.setState({selectedExampleIndex: this.state.selectedExampleIndex + 1} as State)
-              }
-            }}
-            src={require('../../assets/graphics/graphqlup/right_arrow.svg')}
-          />
+          <a target='_blank' href={example.link}>
+            <img
+              className=''
+              src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
+            />
+          </a>
         </div>
 
         <div className='text pv38'>
