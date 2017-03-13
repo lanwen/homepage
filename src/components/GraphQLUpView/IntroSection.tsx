@@ -50,7 +50,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           className=''
           src={require('../../assets/graphics/graphqlup/graphql-up_light.svg')}
         />
-        <div className='title'>Get a ready-to-use GraphQL endpoint based on your schema</div>
+        <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
         <video autoPlay onClick={(e: any) => e.target.currentTime = 0}>
           <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
