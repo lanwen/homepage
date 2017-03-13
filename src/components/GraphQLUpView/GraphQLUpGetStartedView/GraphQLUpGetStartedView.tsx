@@ -31,7 +31,7 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
 
     this.state = {
       project: undefined,
-      schema: 'type Herbert {}',
+      schema: 'type Graphcool {}',
       loading: false,
       invalidSource: undefined,
     }
