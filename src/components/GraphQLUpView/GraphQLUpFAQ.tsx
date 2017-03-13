@@ -1,5 +1,6 @@
 import * as React from 'react'
 import QuestionColumn from './QuestionColumn'
+import {breakpoints} from '../../utils/constants'
 
 export interface FAQItem {
   question: string
@@ -49,11 +50,14 @@ const rightFAQItems: [FAQItem] = [
 export default class GraphQLUpFAQ extends React.Component<Props, {}> {
 
   render() {
+
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+
     return (
       <div className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .ph96, .pb96, .center;
+            @p: .flex, .flexColumn, .itemsCenter, .ph25, .pb96, .center;
             max-width: 1440px;
           }
 
@@ -62,9 +66,9 @@ export default class GraphQLUpFAQ extends React.Component<Props, {}> {
           }
         `}</style>
         <div className='title'>Frequently Asked Questions</div>
-        <div className='flex'>
+        <div className={`flex ${shouldRenderForMobile && 'flexColumn'}`}>
           <QuestionColumn faqItems={leftFAQItems} />
-          <QuestionColumn className='pl38' faqItems={rightFAQItems} />
+          <QuestionColumn className={`${shouldRenderForMobile ? '' : 'pl38'}`} faqItems={rightFAQItems} />
         </div>
       </div>
     )
