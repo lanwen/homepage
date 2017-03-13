@@ -74,8 +74,10 @@ export default class HowItWorksSection extends React.Component<Props, {}> {
         <div className='codeContainer mt60'>
           <div className='pb4 o50'># Install with npm</div>
           <div className='pb16'>npm install -g graphql-up</div>
-          <div className='pb4 o50'># Create GraphQL API using a schema file</div>
-          <div className='pb4'>graphql-up create Instagram.schema</div>
+          <div className='pb4 o50'># Create GraphQL API using a local schema file</div>
+          <div className='pb16'>graphql-up instagram.schema</div>
+          <div className='pb4 o50'># Create GraphQL API using a remote schema file</div>
+          <div className='pb16'>graphql-up https://example.com/instagram.schema</div>
         </div>
 
       </div>
