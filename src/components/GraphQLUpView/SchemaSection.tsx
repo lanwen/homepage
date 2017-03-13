@@ -60,7 +60,7 @@ export default class SchemaSection extends React.Component<Props, {}> {
             src={require('../../assets/graphics/graphqlup/example_schema.svg')}
           />
 
-          <div className={`${shouldRenderForMobile ? 'pt38' : 'pl60'}`}>
+          <div className={`${shouldRenderForMobile ? 'pt38 ph16' : 'pl60'}`}>
             <div className='schemaExplanationHeader'>
               <div className='schemaExplanationTitle'>Instagram</div>
               <img

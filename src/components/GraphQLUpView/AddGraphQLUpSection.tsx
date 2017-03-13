@@ -51,7 +51,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
       <div className='root'>
         <style jsx={true}>{`
           .root {
-            @p: .flex, .flexColumn, .itemsCenter, .pl96, .pr96, .center, .bgGreen10;
+            @p: .flex, .flexColumn, .itemsCenter, .ph38, .center, .bgGreen10;
             max-width: 1440px;
           }
 
