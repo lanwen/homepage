@@ -42,7 +42,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playText {
-            @p: .f20, .fw3, .o60;
+            @p: .f20, .fw3, .o60, .noUnderline;
           }
 
         `}</style>
@@ -59,10 +59,14 @@ export default class IntroSection extends React.Component<Props, {}> {
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
         <div className='info'>It works out of the box with Apollo & Relay and supports GraphQL subscriptions.</div>
 
-        <div className={`playVideoContainer ${shouldRenderForMobile && 'flexColumn'}`}>
+        <a
+          className={`playVideoContainer ${shouldRenderForMobile && 'flexColumn'}`}
+          href='https://www.youtube.com/watch?v=kWS7SGcp7cY'
+          target='_blank'
+        >
           {shouldRenderForMobile &&
           <div className={`playText ${shouldRenderForMobile && 'tc pb25'}`}>
-            Watch this 3 minute tutorial to get started
+            Watch this 5 minute tutorial to get started
           </div>
           }
           <div className='playButton'>
@@ -73,10 +77,10 @@ export default class IntroSection extends React.Component<Props, {}> {
           </div>
           {!shouldRenderForMobile &&
             <div className={`playText pl25`}>
-              Watch this 3 minute tutorial to get started
+              Watch this 5 minute tutorial to get started
             </div>
           }
-        </div>
+        </a>
 
       </section>
     )
