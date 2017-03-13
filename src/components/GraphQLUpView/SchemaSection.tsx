@@ -52,7 +52,7 @@ type Attendee {
 const examples: [Example] = [
   {
     title: 'Instagram',
-    link: '',
+    link: 'https://github.com/nikolasburk/Instagram/blob/master/README.md',
     schema: instagramSchema,
     types: [
       {
