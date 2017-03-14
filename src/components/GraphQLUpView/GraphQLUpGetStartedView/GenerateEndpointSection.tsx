@@ -81,7 +81,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           }
 
           .modal {
-            @p: .pt60, .;
+            @p: .pa38, .pt60;
           }
         `}</style>
         <div className='generate-endpoint-section'>
