@@ -5,7 +5,7 @@ import * as Helmet from 'react-helmet'
 import IntroSection from './IntroSection'
 import GraphQLUpFAQ from '../GraphQLUpFAQ'
 import GenerateEndpointSection from './GenerateEndpointSection'
-import InvalidSource from './InvalidSource'
+import ErrorMessage from './ErrorMessage'
 
 interface Project {
   id: string
@@ -62,7 +62,11 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
         />
         <IntroSection />
         {(invalidSource || !schemaLink) ? (
-          <InvalidSource schemaLink={schemaLink} message={invalidSource} />
+          <ErrorMessage
+            invalidSource
+            schemaLink={schemaLink}
+            errorType={invalidSource}
+          />
         ) : (
           <GenerateEndpointSection
             schemaLink={schemaLink}
