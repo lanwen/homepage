@@ -1,5 +1,6 @@
 import * as React from 'react'
 import GenerateEndpoint from './GenerateEndpoint'
+import ErrorMessage from './ErrorMessage'
 import * as CodeMirror from 'react-codemirror'
 
 interface State {
@@ -67,6 +68,14 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
               background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
             }
           }
+
+          .generate-endpoint-section-wrapper :global(.CodeMirror-linenumbers) {
+            background: white !important;
+          }
+
+          .generate-endpoint-section-wrapper :global(.CodeMirror-sizer) {
+            margin-left: 39px !important;
+          }
         `}</style>
         <div className='generate-endpoint-section'>
           <div className='schemaImportedFromContainer'>
@@ -78,11 +87,11 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
               <div className='schemaImportedFromText fw6'>{trimmedSchemaLink}</div>
             </a>
           </div>
-
+          <ErrorMessage />
           <div className='codeEndpointContainer'>
             <div className='codeContainer'>
               <CodeMirror
-                className='overflowAuto h100 pv25 pr25 bbox'
+                className='overflowAuto h100 p16 pr16 bbox'
                 value={this.props.schema}
                 options={{
                   mode: 'graphql',

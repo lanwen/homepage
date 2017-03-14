@@ -66,7 +66,7 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
             schemaLink={schemaLink}
             schema={this.state.schema}
             projectId={this.state.project && this.state.project.alias}
-            generateProject={this.generateProject}
+            generateProject={this.generateMockProject}
             loadingEndpoint={this.state.loading}
           />
         )}
@@ -80,27 +80,46 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
     return query && query.source
   }
 
-  private generateProject = () => {
-    const {schema} = this.state
-
+  private generateMockProject = () => {
     this.setState({loading: true} as State, () => {
-      fetch('https://graphql-up-api.graph.cool/create', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
+      setTimeout(
+        () => {
+          this.setState({
+            project: {
+              id: "asdf",
+              alias: "asdf",
+              name: "asdf",
+            },
+            loading: false,
+          } as State)
         },
-        body: JSON.stringify({schema}),
-      })
-      .then(res => res.json())
-      .then((res: any) => {
-        this.setState({
-          project: res.project,
-          loading: false,
-        } as State)
-      })
-      .catch(err => console.error(err))
+        500,
+      )
     })
   }
+
+  // private generateProject = () => {
+  //   const {schema} = this.state
+  //
+  //
+  //   this.setState({loading: true} as State, () => {
+  //     fetch('https://graphql-up-api.graph.cool/create', {
+  //       method: 'post',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({schema}),
+  //     })
+  //     .then(res => res.json())
+  //     .then((res: any) => {
+  //       this.setState({
+  //         project: res.project,
+  //         loading: false,
+  //       } as State)
+  //     })
+  //     .catch(err => console.error(err))
+  //   })
+  // }
 
   private fetchSchema = async(query: string | undefined) => {
     const schemaLink = this.getSchemaLink(query)
