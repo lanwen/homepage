@@ -15,7 +15,7 @@ const leftFAQItems: [FAQItem] = [
   {
     question: 'What use cases does graphql-up cover?',
     answer: (<span>graphql-up is ideal for anyone who wants to have a head-start with
-    GraphQL without the hazzle of having to do any work on the server. You
+    GraphQL without the hassle of having to do any work on the server. You
     can use it to quickly spin up a GraphQL backend for mocking data, testing or simply
     experimenting and playing around with GraphQL.
     It's also perfect for usage in tutorials, sample projects or documentation.</span>),
