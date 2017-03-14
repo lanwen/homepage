@@ -37,7 +37,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playButton {
-            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20;
+            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20, .flexFixed;
             width: 50px;
             height: 50px;
           }

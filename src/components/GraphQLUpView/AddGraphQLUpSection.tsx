@@ -66,7 +66,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .title {
-              @p: .fw3, .pt60, .flex, .itemsCenter;
+              @p: .fw3, .pt60;
               font-size: 31.5px;
             }
 
@@ -85,15 +85,20 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .copyMarkdown {
-              @p: .flex, .itemsCenter, .justifyBetween, .relative;
+              @p: .flex, .itemsCenter, .justifyBetween, .relative, .overflowAuto;
             }
 
-            .copyButton {
+            .copyMarkdown:hover :global(.copyButton) {
+              opacity: 1;
+            }
+
+            .copyMarkdown :global(.copyButton) {
               @p: .absolute, .top50, .tlVCenter, .pointer, .buttonShadow, .itemsCenter, .bgWhite, .br2, .right16;
+              opacity: 0;
             }
           `}</style>
         <div className='add-graphql'>
-          <div className='title innerMaxWidth flex'>
+          <div className='title innerMaxWidth'>
             Add
             <img
               className='mh10'
@@ -117,7 +122,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
 
             <div className='stepInstruction pt25'>Step 2: Copy generated markdown</div>
             <div className='input copyMarkdown'>
-              <div>{this.state.markdown}</div>
+              <div className='w100'>{this.state.markdown}</div>
               <CopyToClipboard text={this.state.markdown} onCopy={this.onCopy}>
                 <div
                   className='copyButton'
