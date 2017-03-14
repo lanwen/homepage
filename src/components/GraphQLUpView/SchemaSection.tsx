@@ -24,16 +24,16 @@ interface State {
   selectedExampleIndex: number
 }
 
-const instagramSchema = `type Post {
+const twitterSchema = `type Tweet {
   id: ID!
   title: String!
-  author: User! @relation(name: "Posts")
+  author: User! @relation(name: "Tweets")
 }
 
 type User {
   id: ID!
   name: String!
-  posts: [Post!]! @relation(name: "Posts")
+  tweets: [Tweet!]! @relation(name: "Tweets")
 }`
 
 const conferencePlannerSchema = `type Conference {
@@ -51,12 +51,12 @@ type Attendee {
 
 const examples: Example[] = [
   {
-    title: 'Instagram',
-    link: 'https://raw.githubusercontent.com/nikolasburk/Instagram/master/instagram.schema',
-    schema: instagramSchema,
+    title: 'Twitter',
+    link: 'https://raw.githubusercontent.com/schickling/Twitter/master/twitter.schema',
+    schema: twitterSchema,
     types: [
       {
-        name: 'Post',
+        name: 'Tweet',
         fields: [
           {
             name: 'id',
@@ -84,8 +84,8 @@ const examples: Example[] = [
             type: 'String!',
           },
           {
-            name: 'posts',
-            type: '[Post!]!',
+            name: 'tweets',
+            type: '[Tweet!]!',
           },
         ],
       },
@@ -206,7 +206,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           Schema files are written using the&nbsp;
           <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
         </div>
-        <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
+        <div className='subtitle'>This is the quickest way to describe the structure of your data model.</div>
 
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
           <div className='codeContainer'>
