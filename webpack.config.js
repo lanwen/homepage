@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-const OfflinePlugin = require('offline-plugin')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -66,8 +65,7 @@ module.exports = {
           ],
         },
       }
-    }),
-    new OfflinePlugin(),
+    })
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],

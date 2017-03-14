@@ -5,7 +5,7 @@ import * as Helmet from 'react-helmet'
 import IntroSection from './IntroSection'
 import GraphQLUpFAQ from '../GraphQLUpFAQ'
 import GenerateEndpointSection from './GenerateEndpointSection'
-import InvalidSource from './InvalidSource'
+import ErrorMessage from './ErrorMessage'
 
 interface Project {
   id: string
@@ -18,6 +18,7 @@ interface State {
   schema: string
   loading: boolean
   invalidSource?: string
+  error?: string
 }
 
 interface Props {
@@ -34,6 +35,7 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
       schema: 'type Graphcool {}',
       loading: false,
       invalidSource: undefined,
+      error: undefined,
     }
   }
 
@@ -47,7 +49,7 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
 
   render() {
     const schemaLink = this.getSchemaLink(this.props.location.query)
-    const {invalidSource} = this.state
+    const {invalidSource, error} = this.state
 
     return (
       <div>
@@ -60,7 +62,11 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
         />
         <IntroSection />
         {(invalidSource || !schemaLink) ? (
-          <InvalidSource schemaLink={schemaLink} message={invalidSource} />
+          <ErrorMessage
+            invalidSource
+            schemaLink={schemaLink}
+            errorType={invalidSource}
+          />
         ) : (
           <GenerateEndpointSection
             schemaLink={schemaLink}
@@ -68,6 +74,8 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
             projectId={this.state.project && this.state.project.alias}
             generateProject={this.generateProject}
             loadingEndpoint={this.state.loading}
+            goBack={this.goBack}
+            error={error}
           />
         )}
         <GraphQLUpFAQ />
@@ -76,9 +84,34 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
     )
   }
 
+  private goBack = () => {
+    this.setState({
+      project: undefined,
+      loading: false,
+    } as State)
+  }
+
   private getSchemaLink(query: any) {
     return query && query.source
   }
+  //
+  // private generateMockProject = () => {
+  //   this.setState({loading: true} as State, () => {
+  //     setTimeout(
+  //       () => {
+  //         this.setState({
+  //           project: {
+  //             id: "asdf",
+  //             alias: "asdf",
+  //             name: "asdf",
+  //           },
+  //           loading: false,
+  //         } as State)
+  //       },
+  //       500,
+  //     )
+  //   })
+  // }
 
   private generateProject = () => {
     const {schema} = this.state
@@ -93,12 +126,21 @@ export default class GraphQLUpGetStartedView extends React.Component<Props, Stat
       })
       .then(res => res.json())
       .then((res: any) => {
-        this.setState({
-          project: res.project,
-          loading: false,
-        } as State)
+        if (res.code) {
+          this.setState({
+            loading: false,
+            error: res.message,
+          } as State)
+        } else {
+          this.setState({
+            project: res.project,
+            loading: false,
+          } as State)
+        }
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err)
+      })
     })
   }
 

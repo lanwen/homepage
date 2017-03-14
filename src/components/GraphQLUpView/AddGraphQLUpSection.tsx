@@ -66,7 +66,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .title {
-              @p: .fw3, .pt60;
+              @p: .fw3, .pt60, .tc;
               font-size: 31.5px;
             }
 
@@ -85,26 +85,25 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .copyMarkdown {
-              @p: .flex, .itemsCenter, .justifyBetween;
+              @p: .flex, .itemsCenter, .justifyBetween, .relative, .overflowAuto;
             }
 
-            .copyButton {
-              @p: .pointer, .buttonShadow, .itemsCenter, .bgWhite, .br2, .ml25;
+            .copyMarkdown:hover :global(.copyButton) {
+              opacity: 1;
+            }
+
+            .copyMarkdown :global(.copyButton) {
+              @p: .absolute, .top50, .tlVCenter, .pointer, .buttonShadow, .itemsCenter, .bgWhite, .br2, .right16;
+              opacity: 0;
             }
           `}</style>
         <div className='add-graphql'>
-          <div className='title innerMaxWidth flex'>
+          <div className='title innerMaxWidth'>
             Add
-            <a
-              href={'https://www.graph.cool/graphql-up/new?source=' +
-               'https://raw.githubusercontent.com/nikolasburk/ConferencePlanner/master/conference_planner.schema'}
-              target='_blank'
-            >
-              <img
-                className='mh10'
-                src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
-              />
-            </a>
+            <img
+              className='mh10'
+              src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
+            />
             to your repositories/docs {booksEmoji}
             </div>
           <div className='subtitle innerMaxWidth'>
@@ -123,7 +122,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
 
             <div className='stepInstruction pt25'>Step 2: Copy generated markdown</div>
             <div className='input copyMarkdown'>
-              <div>{this.state.markdown}</div>
+              <div className='w100'>{this.state.markdown}</div>
               <CopyToClipboard text={this.state.markdown} onCopy={this.onCopy}>
                 <div
                   className='copyButton'

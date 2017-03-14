@@ -21,7 +21,6 @@ exports.default = () => {
       '/graphql',
       '/functions/',
       '/graphql-up/',
-      '/graphql-up/new/',
       '/blog/',
       '/docs/',
       '/docs/faq/',

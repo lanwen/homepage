@@ -27,22 +27,23 @@ export default class IntroSection extends React.Component<Props, {}> {
             @p: .f20, .fw3;
           }
 
-          video {
-            max-width: 670px;
+          .video {
+            width: 670px;
+            max-width: 100%;
           }
 
           .playVideoContainer {
-            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer;
+            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer, .noUnderline;
           }
 
           .playButton {
-            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20;
+            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20, .flexFixed;
             width: 50px;
             height: 50px;
           }
 
           .playText {
-            @p: .f20, .fw3, .o60, .noUnderline;
+            @p: .f20, .fw3, .o60;
           }
 
         `}</style>
@@ -52,8 +53,8 @@ export default class IntroSection extends React.Component<Props, {}> {
         />
         <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
-        <video autoPlay onClick={this.restartVideo}>
-          <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
+        <video className='video' autoPlay onClick={this.restartVideo}>
+          <source src='/videos/graphql-up.mov' type='video/mp4' />
         </video>
 
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
