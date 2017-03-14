@@ -66,7 +66,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .title {
-              @p: .fw3, .pt60;
+              @p: .fw3, .pt60, .tc;
               font-size: 31.5px;
             }
 
