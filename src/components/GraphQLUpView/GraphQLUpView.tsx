@@ -17,7 +17,7 @@ export default class GraphQLUp extends React.Component<Props, {}> {
   render() {
     const description = 'Get a ready-to-use GraphQL API for your schema'
     const title = 'graphql-up'
-    const image = '/images/graphql-up-twitter.png'
+    const image = 'https://graph.cool/images/graphql-up-twitter.png'
 
     return (
       <div>
