@@ -43,12 +43,17 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           .generate-endpoint-section-wrapper :global(.CodeMirror) {
             height: auto !important;
           }
+
+          .codeEndpointContainer {
+            @p: .ph38, .bbox, .flex, .itemsCenter, .mw100;
+          }
+
           .codeContainer {
             @p: .bgWhite, .overlayShadow, .br2, .overflowHidden, .relative;
             height: 300px;
 
             &:after, &:before {
-              @p: .absolute, .left0, .right0, .z3;
+              @p: .absolute, .left0, .right0, .z5;
               content: '';
             }
 
@@ -74,10 +79,10 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
             </a>
           </div>
 
-          <div className='flex itemsCenter'>
+          <div className='codeEndpointContainer'>
             <div className='codeContainer'>
               <CodeMirror
-                className='overflowAuto h100 pv25 ph25 bbox'
+                className='overflowAuto h100 pv25 pr25 bbox'
                 value={this.props.schema}
                 options={{
                   mode: 'graphql',
