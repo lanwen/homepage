@@ -9,7 +9,7 @@ interface Props {
 
 }
 
-export default class GenerateEndpointSection extends React.Component<Props, State> {
+export default class ErrorMessage extends React.Component<Props, State> {
 
   render() {
 
@@ -27,7 +27,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           color={$v.red}
           src={require('../../../assets/icons/errorSign.svg')}
         />
-        This is an Error
+        {this.props.children}
       </div>
     )
   }

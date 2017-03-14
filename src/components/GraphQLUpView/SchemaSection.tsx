@@ -254,7 +254,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           <Link
             className='flex'
             target='_blank'
-            to={`https://www.graph.cool/graphql-up/new/?source=${example.link}`}
+            to={`/graphql-up/new/?source=${example.link}`}
           >
             <img
               className=''
