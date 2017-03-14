@@ -171,7 +171,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           }
 
           .exampleSchemaContainer {
-            @p: .flex, .pt60, .w100, .bbox;
+            @p: .flex, .pt60, .w100, .bbox, .justifyCenter;
           }
 
           .circle {

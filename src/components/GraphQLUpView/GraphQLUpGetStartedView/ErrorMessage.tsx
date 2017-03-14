@@ -81,10 +81,15 @@ export default class ErrorMessage extends React.Component<Props, State> {
             <code>{this.props.schemaLink}</code>
           </div>
           <div className='message'>
-            Seems like your source is invalid. Please try a valid source like our Worldchat-Example, or check out our docs for further information.
+            Seems like your source is invalid. Please try a valid source like our Worldchat-Example,
+            or check out our docs for further information.
           </div>
           <div className='buttonBar'>
-            <Link to='/graphql-up/new/?source=https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema' className='button primary'>Use Worldchat Example</Link>
+            <Link
+              to={'/graphql-up/new/?source=https://raw.githubusercontent.com/graphcool-examples/' +
+               'worldchat-subscriptions-example/master/Worldchat.schema'}
+              className='button primary'
+            >Use Worldchat Example</Link>
             <Link to='/docs/faq/graphql-schema-definition-idl/' className='button'>Open Docs</Link>
           </div>
         </div>
