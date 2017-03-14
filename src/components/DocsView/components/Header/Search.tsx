@@ -236,7 +236,7 @@ class Search extends React.Component<Props,{}> {
     const {results, activeIndex} = this.state
     const item = results[activeIndex]
 
-    this.props.router.push(item.path + '-' + item.alias)
+    this.props.router.push(`${item.path}-${item.alias}/`)
   }
   private onKeyDown = (e: any) => {
     if (e.keyCode === 13 && !e.metaKey) {
