@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
+import { Icon, $v } from 'graphcool-styles'
 
 type EndpointType = 'SIMPLE' | 'RELAY'
 
@@ -86,7 +87,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           }
 
           .endpoint {
-            @p: .bgGreen10, .black60, .f14, .br2, .pa10, .tc;
+            @p: .bgGreen10, .black60, .f16, .br2, .pa10, .relative;
           }
 
           .infoText {
@@ -102,12 +103,42 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           }
 
           .copyButton {
-            @p: .bgGreen, .white, .bbox;
+            @p: .bgGreen, .white, .bbox, .pointer;
             min-width: 160px;
           }
 
           .playgroundButton {
             @p: .bgGreen20, .green;
+          }
+
+          .copy {
+            @p: .absolute, .br2, .right10, .top10, .bottom10, .flex, .itemsCenter, .buttonShadow, .bgWhite, .hS38;
+          }
+
+          .copyIndicator {
+            @p: .o0, .absolute, .f14, .fw6, .blue;
+            top: -20px;
+            left: 50%;
+            transform: translate(-50%,0);
+            animation-duration: 0.7s;
+            animation-name: movingCopyIndicator;
+            animation-timing-function: linear;
+          }
+
+          @keyframes movingCopyIndicator {
+            0% {
+              opacity: 0;
+              transform: translate(-50%, 0);
+            }
+
+            50% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+              transform: translate(-50%, -50px);
+            }
           }
 
         `}</style>
@@ -125,18 +156,32 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             Relay API
           </div>
         </div>
-        <div className='endpoint'>{this.getEndpoint()}</div>
+        <div className='endpoint'>
+          {this.getEndpoint()}
+          <CopyToClipboard
+            text={this.getEndpoint()}
+            onCopy={() => this.onCopy()}
+          >
+            <div className='copy'>
+              {this.state.justCopied &&
+              <div className='copyIndicator'>
+                Copied
+              </div>
+              }
+              <Icon
+                width={38}
+                height={38}
+                color={$v.darkerBlue}
+                src={require('graphcool-styles/icons/fill/copy.svg')}
+              />
+            </div>
+          </CopyToClipboard>
+        </div>
         <div className='infoText'>
           The Simple API works best when using Apollo Client
           (<a target='_blank' className='docsLink' href='http://dev.apollodata.com/'>Docs</a>)
         </div>
         <div className='flex mt25 justifyBetween w100'>
-          <CopyToClipboard
-            text={this.getEndpoint()}
-            onCopy={() => this.onCopy()}
-          >
-            <div className='button copyButton mr4'>{this.state.justCopied ? 'Copied!' : 'Copy Endpoint'}</div>
-          </CopyToClipboard>
           <a className='button playgroundButton ml4 noUnderline' target='_blank' href={this.getEndpoint()}>
             <div>Open Playground</div>
           </a>

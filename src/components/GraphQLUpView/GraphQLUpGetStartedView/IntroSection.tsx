@@ -20,7 +20,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .subtitle {
-            @p: .fw3, .f16, .black80;
+            @p: .fw4, .f16, .black80;
           }
 
         `}</style>
