@@ -53,7 +53,7 @@ export default class IntroSection extends React.Component<Props, {}> {
         <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
         <video autoPlay onClick={this.restartVideo}>
-          <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
+          <source src='/videos/graphql-up.mov' type='video/mp4' />
         </video>
 
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
