@@ -83,6 +83,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
                   mode: 'graphql',
                   theme: 'mdn-like',
                   viewportMargin: Infinity,
+                  lineNumbers: true,
                 }}
               />
             </div>

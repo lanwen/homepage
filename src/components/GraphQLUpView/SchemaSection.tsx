@@ -198,6 +198,7 @@ export default class SchemaSection extends React.Component<{}, State> {
               mode: 'graphql',
               theme: 'mdn-like',
               viewportMargin: Infinity,
+              lineNumbers: true,
             }}
           />
 
