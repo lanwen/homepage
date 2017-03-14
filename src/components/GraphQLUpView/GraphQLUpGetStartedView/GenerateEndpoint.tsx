@@ -219,7 +219,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
   private renderGraphQLButton(): JSX.Element {
     return (
       <div
-        className='getGraphQLAPIButton pink'
+        className={`getGraphQLAPIButton pink ${this.props.loadingEndpoint && 'pulsating'}`}
         onClick={this.props.generateProject}
       >
         <style jsx={true}>{`
@@ -232,16 +232,30 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             background-color: rgba(224, 0, 151, 1);
           }
 
-          .rotating {
-            animation: spin 1.5s linear infinite;
+          .pulsating {
+            animation: pulsate 1.5s ease infinite;
           }
 
-          @keyframes spin { 100% { transform:rotate(360deg); } }
+          @keyframes pulsate {
+            0% {
+              transform: scale(1);
+              opacity: 1;
+            }
+
+            50% {
+              transform: scale(1.02);
+              opacity: 0.8;
+            }
+
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
       `}</style>
         <img
           width={25}
           height={20}
-          className={`${this.props.loadingEndpoint && 'rotating'}`}
           src={require('../../../assets/graphics/graphqlup/nodes.svg')}/>
         <div className='pl10'>{this.props.loadingEndpoint ? 'Creating GraphQL API ...' : 'Get GraphQL API'}</div>
       </div>

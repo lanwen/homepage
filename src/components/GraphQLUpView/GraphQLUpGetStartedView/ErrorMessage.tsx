@@ -28,7 +28,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
             }
 
             .header {
-              @p: .flex, .itemsCenter, .ttu, .tracked, .fw6, .pt10, .ph12;
+              @p: .flex, .itemsCenter, .ttu, .tracked, .fw6, .pt12, .ph16;
             }
 
             .errorType {
@@ -37,7 +37,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
             }
 
             .schemaLink {
-              @p: .bgRed10, .ph12, .mt25, .pv10;
+              @p: .bgRed10, .ph16, .mt25, .pv10, .overflowHidden;
 
               code {
                 @p: .f14;
@@ -45,7 +45,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
             }
 
             .message {
-              @p: .f16, .ph12, .mt25;
+              @p: .f16, .ph16, .mt25;
             }
 
             .buttonBar {
@@ -74,15 +74,19 @@ export default class ErrorMessage extends React.Component<Props, State> {
               color={$v.red}
               src={require('../../../assets/icons/errorSign.svg')}
             />
-            Error
-            <span className='errorType'>{this.props.errorType}</span>
+            {this.props.schemaLink ? 'Error' : 'You need a schema first'}
+            {this.props.schemaLink && <span className='errorType'>{this.props.errorType}</span>}
           </header>
+          {this.props.schemaLink &&
           <div className='schemaLink'>
             <code>{this.props.schemaLink}</code>
           </div>
+          }
           <div className='message'>
-            Seems like your source is invalid. Please try a valid source like our Worldchat-Example,
-            or check out our docs for further information.
+            {this.props.schemaLink
+              ? 'Seems like your source is invalid. Please try a valid source like our Worldchat-Example, or check out our docs for further information.'
+              : 'Seems like you don’t have a schema yet. Try out our Worldchat Example to get started :)'
+            }
           </div>
           <div className='buttonBar'>
             <Link
@@ -90,7 +94,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
                'worldchat-subscriptions-example/master/Worldchat.schema'}
               className='button primary'
             >Use Worldchat Example</Link>
-            <Link to='/docs/faq/graphql-schema-definition-idl/' className='button'>Open Docs</Link>
+            <Link to='/docs/faq/graphql-schema-definition-idl/' target='_blank' className='button'>Read in Docs</Link>
           </div>
         </div>
       )
@@ -106,7 +110,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
             className='mr10'
             width={20}
             height={20}
-            color={$v.red}
+            color={this.props.schemaLink ? $v.red : $v.lightOrange}
             src={require('../../../assets/icons/errorSign.svg')}
           />
           {this.props.children}
@@ -116,18 +120,26 @@ export default class ErrorMessage extends React.Component<Props, State> {
 
     return (
       <div className='root'>
-        <div className='rootContainer'>
-          <style jsx={true}>{`
+        <style jsx={true}>{`
             .root {
               @p: .pv60, .ph96;
             }
 
             .rootContainer {
-              @p: .bgRed10, .br2, .bSolid, .bw1, .bRed30, .red, .mb38;
+              @p: .br2, .bSolid, .bw1, .mb38;
               max-width: 700px;
               margin: 0 auto;
+
+              &.error {
+                @p: .bgRed10, .bRed20, .red;
+              }
+
+              &.warning {
+                @p: .bgLightOrange10, .bLightOrange20, .lightOrange;
+              }
             }
           `}</style>
+        <div className={`rootContainer ${this.props.schemaLink ? 'error' : 'warning'}`}>
           {messageContent}
         </div>
       </div>
