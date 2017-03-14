@@ -3131,9 +3131,9 @@ graphcool-styles@0.0.98:
     react-dom "^15.3.2"
     webpack-dev-server "^1.16.2"
 
-graphcool-styles@^0.0.105:
-  version "0.0.105"
-  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.0.105.tgz#97ca0b9e688088b2e10dbd92891306354b2027ff"
+graphcool-styles@adjasd98h:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/graphcool-styles/-/graphcool-styles-0.1.2.tgz#d1d55f8f9ede3706d40d3e34a5881c2f1739e7c1"
   dependencies:
     html-webpack-plugin "^2.24.1"
     interactive "^0.1.9"
