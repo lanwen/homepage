@@ -86,29 +86,53 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             @p: .flex, .ttu, .green, .fw6, .f14, .itemsCenter, .justifyCenter, .pb10;
           }
 
+          .tabBar {
+            @p: .flex, .relative, .justifyCenter, .itemsCenter, .list;
+          }
+
+          .tab {
+            @p: .black30, .tracked, .f12, .ttu, .nowrap, .pa10, .lhSolid, .bgBlack04, .pointer;
+
+            transition: background .2s linear, color .2s linear;
+
+            &:first-child {
+              border-top-left-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+
+            &:last-child {
+              border-top-right-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+
+            &.active {
+              @p: .pa12, .bgGreen, .br2, .cursorDefault, .white;
+
+              &:hover {
+                @p: .bgGreen, .white;
+              }
+            }
+          }
+
           .endpoint {
-            @p: .bgGreen10, .black60, .f16, .br2, .pa10, .relative;
+            @p: .bgBlack04, .black60, .f16, .br2, .pa10, .relative;
           }
 
           .infoText {
-            @p: .fw3, .f14, .o60, .pt10, .tc, .w100;
+            @p: .f14, .o60, .pt16, .tc, .w100;
           }
 
           .docsLink {
-            @p: .green, .fw6, .noUnderline;
+            @p: .fw6, .noUnderline;
           }
 
-          .button {
-            @p: .br2, .ttu, .fw6, .f16, .ph16, .pv10, .pointer, .tc;
+          .playgroundButton {
+            @p: .buttonShadow, .bgGreen, .white, .br2, .ttu, .fw6, .f14, .tracked, .pv10, .ph12, .pointer;
           }
 
           .copyButton {
             @p: .bgGreen, .white, .bbox, .pointer;
             min-width: 160px;
-          }
-
-          .playgroundButton {
-            @p: .bgGreen20, .green;
           }
 
           .copy {
@@ -143,17 +167,19 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
 
         `}</style>
         <div className='header'>
-          <div
-            className={`pointer ${this.state.selectedEndpointType !== 'SIMPLE' && 'o50'}`}
-            onClick={() => this.setState({selectedEndpointType: 'SIMPLE' as EndpointType} as State)}
-          >
-            Simple API
-          </div>
-          <div
-            className={`pointer ml16 ${this.state.selectedEndpointType !== 'RELAY' && 'o50'}`}
-            onClick={() => this.setState({selectedEndpointType: 'RELAY' as EndpointType} as State)}
-          >
-            Relay API
+          <div className='tabBar'>
+            <div
+              className={`pointer ${this.state.selectedEndpointType !== 'SIMPLE' && 'o50'}`}
+              onClick={() => this.setState({selectedEndpointType: 'SIMPLE' as EndpointType} as State)}
+            >
+              Simple API
+            </div>
+            <div
+              className={`pointer ml16 ${this.state.selectedEndpointType !== 'RELAY' && 'o50'}`}
+              onClick={() => this.setState({selectedEndpointType: 'RELAY' as EndpointType} as State)}
+            >
+              Relay API
+            </div>
           </div>
         </div>
         <div className='endpoint'>
@@ -181,12 +207,11 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           The Simple API works best when using Apollo Client
           (<a target='_blank' className='docsLink' href='http://dev.apollodata.com/'>Docs</a>)
         </div>
-        <div className='flex mt25 justifyBetween w100'>
-          <a className='button playgroundButton ml4 noUnderline' target='_blank' href={this.getEndpoint()}>
-            <div>Open Playground</div>
+        <div className='flex mt25 justifyCenter w100'>
+          <a className=' playgroundButton noUnderline dim' target='_blank' href={this.getEndpoint()}>
+            Open Playground
           </a>
         </div>
-
       </div>
     )
   }
