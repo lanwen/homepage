@@ -34,7 +34,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
         <style jsx={true}>{`
 
           .generate-endpoint {
-            @p: .flex, .flexColumn, .itemsCenter, .ph60, .flexFixed;
+            @p: .flex, .flexColumn, .itemsCenter, .flexFixed;
           }
 
           .instructions {
@@ -137,6 +137,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
 
           .copy {
             @p: .absolute, .br2, .right10, .top10, .bottom10, .flex, .itemsCenter, .buttonShadow, .bgWhite, .hS38;
+            @p: .pointer;
           }
 
           .copyIndicator {
