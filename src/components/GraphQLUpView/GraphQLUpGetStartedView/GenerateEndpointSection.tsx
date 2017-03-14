@@ -102,7 +102,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           <div className='codeEndpointContainer'>
             <div className='codeContainer'>
               <CodeMirror
-                className='overflowAuto h100 ph16 pr16 bbox'
+                className='overflowAuto h100 pv16 pr16 bbox'
                 value={this.props.schema}
                 options={{
                   mode: 'graphql',

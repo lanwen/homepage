@@ -27,8 +27,9 @@ export default class IntroSection extends React.Component<Props, {}> {
             @p: .f20, .fw3;
           }
 
-          video {
-            max-width: 670px;
+          .video {
+            width: 670px;
+            max-width: 100%;
           }
 
           .playVideoContainer {
@@ -52,7 +53,7 @@ export default class IntroSection extends React.Component<Props, {}> {
         />
         <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
-        <video autoPlay onClick={this.restartVideo}>
+        <video className='video' autoPlay onClick={this.restartVideo}>
           <source src='/videos/graphql-up.mov' type='video/mp4' />
         </video>
 

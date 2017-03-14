@@ -85,11 +85,11 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .copyMarkdown {
-              @p: .flex, .itemsCenter, .justifyBetween;
+              @p: .flex, .itemsCenter, .justifyBetween, .relative;
             }
 
             .copyButton {
-              @p: .pointer, .buttonShadow, .itemsCenter, .bgWhite, .br2, .ml25;
+              @p: .absolute, .top50, .tlVCenter, .pointer, .buttonShadow, .itemsCenter, .bgWhite, .br2, .right16;
             }
           `}</style>
         <div className='add-graphql'>

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router'
-import {breakpoints} from '../../utils/constants'
+import { breakpoints } from '../../utils/constants'
 import * as CodeMirror from 'react-codemirror'
 
 interface Field {
@@ -149,7 +149,7 @@ export default class SchemaSection extends React.Component<{}, State> {
   }
 
   render() {
-    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p750
 
     return (
       <section className='root'>
@@ -171,14 +171,33 @@ export default class SchemaSection extends React.Component<{}, State> {
           }
 
           .exampleSchemaContainer {
-            @p: .flex, .pt60;
-            height: 370px;
+            @p: .flex, .pt60, .w100, .bbox;
           }
 
           .circle {
             @p: .br100, .mh4, .pointer;
             width: 10px;
             height: 10px;
+          }
+
+          .codeContainer {
+            @p: .bgWhite, .overlayShadow, .br2, .overflowHidden, .relative;
+            height: 300px;
+
+            &:after, &:before {
+              @p: .absolute, .left0, .right0, .z5;
+              content: '';
+            }
+
+            &:before {
+              @p: .top0, .hS25;
+              background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            }
+
+            &:after {
+              @p: .bottom0, .hS38;
+              background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            }
           }
 
         `}</style>
@@ -190,18 +209,18 @@ export default class SchemaSection extends React.Component<{}, State> {
         <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
 
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
-
-          <CodeMirror
-            className='bgWhite buttonShadow pv16 pl60 pr96'
-            value={examples[this.state.selectedExampleIndex].schema}
-            options={{
+          <div className='codeContainer'>
+            <CodeMirror
+              className='overflowAuto h100 pv16 pr16 bbox'
+              value={examples[this.state.selectedExampleIndex].schema}
+              options={{
               mode: 'graphql',
               theme: 'mdn-like',
               viewportMargin: Infinity,
               lineNumbers: true,
             }}
-          />
-
+            />
+          </div>
           {this._renderExample(examples[this.state.selectedExampleIndex])}
 
         </div>
@@ -224,10 +243,10 @@ export default class SchemaSection extends React.Component<{}, State> {
 
   private _renderExample = (example: Example): JSX.Element => {
 
-    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p750
 
     return (
-      <div className={`${shouldRenderForMobile ? 'pt38 ph16' : 'pl60'}`}>
+      <div className={`${shouldRenderForMobile ? 'pa25' : 'pl60'}`}>
         <style jsx={true}>{`
 
           .schemaExplanationHeader {
