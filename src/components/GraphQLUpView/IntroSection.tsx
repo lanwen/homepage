@@ -33,7 +33,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playVideoContainer {
-            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer, .noUnderline;
+            @p: .flex, .itemsCenter, .mt38, .mb60, .pointer, .noUnderline;
           }
 
           .playButton {
@@ -61,7 +61,7 @@ export default class IntroSection extends React.Component<Props, {}> {
         <div className='info'>It works out of the box with Apollo & Relay and supports GraphQL subscriptions.</div>
 
         <a
-          className={`playVideoContainer ${shouldRenderForMobile && 'flexColumn'}`}
+          className={`playVideoContainer dim ${shouldRenderForMobile && 'flexColumn'}`}
           href='https://www.youtube.com/watch?v=kWS7SGcp7cY'
           target='_blank'
         >
