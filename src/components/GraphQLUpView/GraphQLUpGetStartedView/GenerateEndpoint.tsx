@@ -34,7 +34,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
         <style jsx={true}>{`
 
           .generate-endpoint {
-            @p: .flex, .flexColumn, .itemsCenter, .flexFixed;
+            @p: .flex, .flexColumn, .itemsCenter, .ph60, .flexFixed;
           }
 
           .instructions {
