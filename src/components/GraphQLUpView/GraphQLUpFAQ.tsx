@@ -64,7 +64,8 @@ export default class GraphQLUpFAQ extends React.Component<Props, {}> {
           }
 
           .title {
-            @p: .f25, .fw3, .pb60, .pt60;
+            @p: .fw3, .pb60, .pt60;
+            font-size: 31.5px;
           }
         `}</style>
         <div className='title'>Frequently Asked Questions</div>
