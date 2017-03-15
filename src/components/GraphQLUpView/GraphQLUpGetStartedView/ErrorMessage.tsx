@@ -71,7 +71,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
               className='mr10'
               width={20}
               height={20}
-              color={$v.red}
+              color={$v.lightOrange}
               src={require('../../../assets/icons/errorSign.svg')}
             />
             {this.props.schemaLink ? 'Error' : 'You need a schema first'}
@@ -110,7 +110,7 @@ export default class ErrorMessage extends React.Component<Props, State> {
             className='mr10'
             width={20}
             height={20}
-            color={this.props.schemaLink ? $v.red : $v.lightOrange}
+            color={$v.red}
             src={require('../../../assets/icons/errorSign.svg')}
           />
           {this.props.children}

@@ -30,6 +30,7 @@ const movingCopyIndicator = keyframes`
 `
 
 const CopyIndicator = styled.div`
+  top: -20px;
   transform: translate(-50%,0);
   animation: ${movingCopyIndicator} .7s linear
 `
@@ -85,7 +86,12 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
             }
 
             .copyMarkdown {
-              @p: .flex, .itemsCenter, .justifyBetween, .relative, .overflowAuto;
+              @p: .flex, .itemsCenter, .justifyBetween, .relative;
+              padding: 0 !important;
+            }
+
+            .copyMarkdownText {
+              @p: .w100, .ph25, .pv16, .overflowAuto;
             }
 
             .copyMarkdown:hover :global(.copyButton) {
@@ -122,7 +128,7 @@ export default class AddGraphQLUpSection extends React.Component<Props, State> {
 
             <div className='stepInstruction pt25'>Step 2: Copy generated markdown</div>
             <div className='input copyMarkdown'>
-              <div className='w100'>{this.state.markdown}</div>
+              <div className='copyMarkdownText'>{this.state.markdown}</div>
               <CopyToClipboard text={this.state.markdown} onCopy={this.onCopy}>
                 <div
                   className='copyButton'

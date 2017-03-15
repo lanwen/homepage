@@ -127,6 +127,7 @@ export default class GenerateEndpointSection extends React.Component<Props, Stat
           >
             <div className='modal'>
               <GenerateEndpoint
+                className='inModal'
                 generateProject={this.props.generateProject}
                 loadingEndpoint={this.props.loadingEndpoint}
                 projectId={this.props.projectId}

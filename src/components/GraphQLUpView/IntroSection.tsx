@@ -82,7 +82,6 @@ export default class IntroSection extends React.Component<Props, {}> {
             </div>
           }
         </a>
-
       </section>
     )
   }

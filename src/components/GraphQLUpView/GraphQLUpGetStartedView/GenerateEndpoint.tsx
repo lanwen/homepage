@@ -14,6 +14,7 @@ interface Props {
   generateProject: () => void
   loadingEndpoint: boolean
   projectId?: string
+  className?: string
 }
 
 export default class GenerateEndpoint extends React.Component<Props, State> {
@@ -30,11 +31,15 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
     const projectIdAvailable = Boolean(this.props.projectId)
 
     return (
-      <div className='generate-endpoint'>
+      <div className={`generate-endpoint ${this.props.className}`}>
         <style jsx={true}>{`
 
           .generate-endpoint {
             @p: .flex, .flexColumn, .itemsCenter, .ph60, .flexFixed;
+
+            &.inModal {
+              @p: .ph0;
+            }
           }
 
           .instructions {
@@ -115,7 +120,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           }
 
           .endpoint {
-            @p: .bgBlack04, .black60, .f16, .br2, .pa10, .relative;
+            @p: .flex, .itemsCenter, .bgBlack04, .black60, .f16, .br2, .pa10, .relative;
           }
 
           .infoText {
@@ -130,14 +135,8 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             @p: .buttonShadow, .bgGreen, .white, .br2, .ttu, .fw6, .f14, .tracked, .pv10, .ph12, .pointer;
           }
 
-          .copyButton {
-            @p: .bgGreen, .white, .bbox, .pointer;
-            min-width: 160px;
-          }
-
           .copy {
-            @p: .absolute, .br2, .right10, .top10, .bottom10, .flex, .itemsCenter, .buttonShadow, .bgWhite, .hS38;
-            @p: .pointer;
+            @p: .relative, .br2, .ml10, .flex, .itemsCenter, .buttonShadow, .bgWhite, .hS38, .pointer;
           }
 
           .copyIndicator {
@@ -208,7 +207,7 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           The Simple API works best when using Apollo Client
           (<a target='_blank' className='docsLink' href='http://dev.apollodata.com/'>Docs</a>)
         </div>
-        <div className='flex mt25 justifyCenter w100'>
+        <div className='flex mt38 justifyCenter w100'>
           <a className=' playgroundButton noUnderline dim' target='_blank' href={this.getEndpoint()}>
             Open Playground
           </a>
