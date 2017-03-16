@@ -26,7 +26,7 @@ const QuickstartContainer = styled(Quickstart)`
 class QuickstartPage extends React.Component<{}, {}> {
   render() {
     return (
-      <ContentContainer className={cx($p.pv96)}>
+      <ContentContainer>
         <Helmet title='Quick Start - Graphcool'/>
         <Container>
           <Heading
@@ -38,8 +38,8 @@ class QuickstartPage extends React.Component<{}, {}> {
             }
             link='/docs/quickstart'
           />
-          <QuickstartContainer className={cx($p.mt38, $p.mb60)}/>
         </Container>
+        <QuickstartContainer className={cx($p.mt38, $p.mb60)}/>
       </ContentContainer>
     )
   }

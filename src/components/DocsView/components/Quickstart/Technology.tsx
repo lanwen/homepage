@@ -87,7 +87,7 @@ const Technology = (props: Props) => {
         <Label>Popular</Label>
       }
     </Circle>
-    <div className={cx($p.flex, $p.black60, $p.f16, $p.fw6, $p.mt25, $p.nowrap)}>
+    <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25, $p.nowrap)}>
       {title}
     </div>
     </AnimatingOpacityView>

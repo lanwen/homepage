@@ -1,78 +1,61 @@
 import * as React from 'react'
-import {$p, $v, $g, Icon} from 'graphcool-styles'
-import * as cx from 'classnames'
+// import {$p, $v, $g, Icon} from 'graphcool-styles'
+// import * as cx from 'classnames'
 import {QuickExample} from '../../../../types/types'
-import CircleIcon from '../CircleIcon'
-import styled from 'styled-components'
+// import CircleIcon from '../CircleIcon'
+// import styled from 'styled-components'
 
 interface Props {
   quickExample: QuickExample
   className?: string
   onMouseEnter?: () => void
   onMouseLeave?: () => void
-  style?: any
 }
-
-const Root = styled.div`
-  &:hover {
-    transition: opacity .1s ease !important;
-    opacity: 0.75 !important;
-  }
-`
 
 export default class Example extends React.Component<Props, {}> {
 
   render() {
-    const {imageSrc, imageWidth, imageHeight, link, layout, title} = this.props.quickExample
-    const {style} = this.props
-    let exampleStyle = {
-      width: 226,
+    const {type} = this.props.quickExample
+
+    let imageSrc, title
+
+    if (type === 'POKEDEX') {
+      imageSrc = 'pokedex.svg'
+      title = 'Pokedex'
     }
-    if (typeof style === 'object') {
-      exampleStyle = {
-        ...exampleStyle,
-        ...style,
-      }
+
+    if (type === 'INSTAGRAM') {
+      imageSrc = 'instagram.svg'
+      title = 'Instagram'
     }
+
+    if (type === 'TODOAPP') {
+      imageSrc = 'todoapp.svg'
+      title = 'Todo App'
+    }
+
     return (
-      <Root
-        className={cx($p.flex, $p.flexColumn, $p.flex1, $p.noUnderline, $g.overlay, $p.mh10, $p.dim)}
-        onMouseEnter={() => this.props.onMouseEnter()}
-        onMouseLeave={() => this.props.onMouseLeave()}
-        style={exampleStyle}
-      >
-        <a
-          className={cx($p.noUnderline)}
-          href={link}
-          target='_blank'
-          rel='noreferrer noopener'
-        >
-          {/* top */}
-          <div className={cx($p.flex, $p.flex1, $p.justifyCenter, $p.itemsCenter, $p.bgBlack04, $p.pa16)}>
-            <Icon
-              src={imageSrc}
-              width={imageWidth}
-              height={imageHeight}
-              color={$v.gray30}
-            />
-          </div>
-          {/* bottom */}
-          <div className={cx($p.flex, $p.flex1, $p.mh16, $p.mt16, $p.mb25)}>
-            <div className={cx($p.flex)}>
-              <CircleIcon
-                width={20}
-                height={20}
-                type={layout}
-                className={cx($p.mt10)}
-              />
-              <div className={cx($p.flex, $p.flexColumn, $p.ml10)}>
-                <div className={cx($p.black50, $p.f20)}>{title}</div>
-                <div className={cx($p.black30, $p.f12, $p.fw6, $p.ttu)}>{layout}</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </Root>
+      <button className='root'>
+        <style jsx={true}>{`
+          .root {
+            @p: .bgNone, .pa0, .flex, .flexColumn, .itemsCenter, .mr60;
+
+            &:last-child {
+              @p: .mr0;
+            }
+          }
+
+          .exampleIcon {
+            @p: .db;
+          }
+
+          .title {
+            @p: .fw6, .mt25, .f20, .black60;
+          }
+        `}</style>
+        <img src={require(`../../../../assets/graphics/docs/quickstart/${imageSrc}`)} className='exampleIcon' width='96' height='96'/>
+        <p className='title'>{title}</p>
+      </button>
     )
   }
 }

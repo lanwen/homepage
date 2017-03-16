@@ -24,76 +24,44 @@ export const availableClients: {[key: string]: String[]} = {
 export const examples: {[key: string]: QuickExample[]} = {
   'react-apollo': [
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-apollo-instagram-example',
-      layout: 'TUTORIAL',
-      title: 'Instagram Example',
+      type: 'INSTAGRAM'
     },
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-apollo-todo-example',
-      layout: 'TUTORIAL',
-      title: 'Todo Example',
+      type: 'TODOAPP'
     },
   ],
   'react-relay': [
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-relay-instagram-example',
-      layout: 'TUTORIAL',
-      title: 'Instagram Example',
+      type: 'INSTAGRAM'
     },
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-relay-todo-example',
-      layout: 'TUTORIAL',
-      title: 'Todo Example',
+      type: 'TODOAPP'
     },
   ],
   'rn-apollo': [
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/react-native-apollo-instagram-example',
-      layout: 'TUTORIAL',
-      title: 'Instagram Example',
+      type: 'INSTAGRAM'
     },
   ],
   'angular-apollo': [
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/angular-apollo-instagram-example',
-      layout: 'TUTORIAL',
-      title: 'Instagram Example',
+      type: 'INSTAGRAM'
     },
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/angular-apollo-todo-example',
-      layout: 'TUTORIAL',
-      title: 'Todo Example',
+      type: 'TODOAPP'
     },
   ],
   'vue-apollo': [
     {
-      imageSrc: require('../../../../../assets/icons/docs/react_apollo_guide.svg'),
-      imageWidth: 176,
-      imageHeight: 87,
       link: 'https://github.com/graphcool-examples/vue-apollo-instagram-example',
-      layout: 'TUTORIAL',
-      title: 'Instagram Example',
+      type: 'INSTAGRAM'
     },
   ],
 }
