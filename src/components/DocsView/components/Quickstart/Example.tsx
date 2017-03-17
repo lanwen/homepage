@@ -17,7 +17,8 @@ export default class Example extends React.Component<Props, {}> {
   render() {
     const {type} = this.props.quickExample
 
-    let imageSrc, title
+    let imageSrc
+    let title
 
     if (type === 'POKEDEX') {
       imageSrc = 'pokedex.svg'
@@ -53,7 +54,12 @@ export default class Example extends React.Component<Props, {}> {
             @p: .fw6, .mt25, .f20, .black60;
           }
         `}</style>
-        <img src={require(`../../../../assets/graphics/docs/quickstart/${imageSrc}`)} className='exampleIcon' width='96' height='96'/>
+        <img
+          src={require(`../../../../assets/graphics/docs/quickstart/${imageSrc}`)}
+          className='exampleIcon'
+          width='96'
+          height='96'
+        />
         <p className='title'>{title}</p>
       </button>
     )

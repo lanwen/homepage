@@ -25,43 +25,43 @@ export const examples: {[key: string]: QuickExample[]} = {
   'react-apollo': [
     {
       link: 'https://github.com/graphcool-examples/react-apollo-instagram-example',
-      type: 'INSTAGRAM'
+      type: 'INSTAGRAM',
     },
     {
       link: 'https://github.com/graphcool-examples/react-apollo-todo-example',
-      type: 'TODOAPP'
+      type: 'TODOAPP',
     },
   ],
   'react-relay': [
     {
       link: 'https://github.com/graphcool-examples/react-relay-instagram-example',
-      type: 'INSTAGRAM'
+      type: 'INSTAGRAM',
     },
     {
       link: 'https://github.com/graphcool-examples/react-relay-todo-example',
-      type: 'TODOAPP'
+      type: 'TODOAPP',
     },
   ],
   'rn-apollo': [
     {
       link: 'https://github.com/graphcool-examples/react-native-apollo-instagram-example',
-      type: 'INSTAGRAM'
+      type: 'INSTAGRAM',
     },
   ],
   'angular-apollo': [
     {
       link: 'https://github.com/graphcool-examples/angular-apollo-instagram-example',
-      type: 'INSTAGRAM'
+      type: 'INSTAGRAM',
     },
     {
       link: 'https://github.com/graphcool-examples/angular-apollo-todo-example',
-      type: 'TODOAPP'
+      type: 'TODOAPP',
     },
   ],
   'vue-apollo': [
     {
       link: 'https://github.com/graphcool-examples/vue-apollo-instagram-example',
-      type: 'INSTAGRAM'
+      type: 'INSTAGRAM',
     },
   ],
 }
