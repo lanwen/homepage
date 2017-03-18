@@ -14,7 +14,7 @@ interface State {
 export default class ExampleContent extends React.Component<Props,State> {
 
   state = {
-    copied: true
+    copied: false
   }
 
   render() {
@@ -81,7 +81,7 @@ export default class ExampleContent extends React.Component<Props,State> {
         <div className='exampleContentContainer'>
           <header className='exampleContentHeader'>
             <div className='pa25'>
-              <h2 className='title'>First, {this.props.name} download the example.</h2>
+              <h2 className='title'>First, you need to download the example.</h2>
               <p className='content'>
                 We have all in the github repository. Clone it or download it:<br />
                 <a href='https://github.com/graphcool-examples/react-native-apollo-instagram-example'>
@@ -91,7 +91,7 @@ export default class ExampleContent extends React.Component<Props,State> {
             </div>
             <div className='cloneExampleProject'>
               <code>git clone git@github.com:graphcool-examples/react-apollo-pokedex-example.git</code>
-              <CopyToClipboard text='asf'>
+              <CopyToClipboard text='asf' onCopy={this.onCopy}>
                 <div
                   className='copy'
                 >
@@ -116,5 +116,10 @@ export default class ExampleContent extends React.Component<Props,State> {
         </div>
       </article>
     )
+  }
+
+  private onCopy = () => {
+    this.setState({ copied: true } as State)
+    setTimeout(() => this.setState({ copied: false } as State), 700)
   }
 }

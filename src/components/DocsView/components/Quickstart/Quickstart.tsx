@@ -235,7 +235,13 @@ export default class Quickstart extends React.Component<Props, State> {
                     </div>
                   </div>
                 </div>
-                <div className={cx($p.flex)} style={{ marginLeft: 50 }}>
+                <div
+                  className={cx($p.flex)}
+                  style={{
+                    marginLeft: 50,
+                    transition: 'opacity .3s .3s ease',
+                  }}
+                >
                   {this.state.quickExamples.map((example: QuickExample, index) =>
                     <Example
                       key={index}

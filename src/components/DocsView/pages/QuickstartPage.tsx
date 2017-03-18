@@ -19,8 +19,7 @@ const ContentContainer = styled.div`
 `
 
 const QuickstartContainer = styled(Quickstart)`
-  margin-left: 75px;
-  margin-right: ${$v.size60};
+  padding-left: 76px;
 `
 
 class QuickstartPage extends React.Component<{}, {}> {
@@ -39,7 +38,7 @@ class QuickstartPage extends React.Component<{}, {}> {
             link='/docs/quickstart'
           />
         </Container>
-        <QuickstartContainer className={cx($p.mt38, $p.mb60)}/>
+        <QuickstartContainer className={cx($p.mt38, $p.mb60, $p.bbox)}/>
       </ContentContainer>
     )
   }
