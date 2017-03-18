@@ -49,7 +49,11 @@ export default class ExampleStep extends React.Component<{}, {}> {
         </div>
         <div className='contentContainer'>
           <h2 className='title'>Set up your Backend</h2>
-          <p className='content'>I have hinted that I would often jerk poor Queequeg from between the whale and the ship — where he would occasionally fall, from the incessant rolling and swaying of both. But this was not the only jamming jeopardy he was exposed to.</p>
+          <p className='content'>
+            I have hinted that I would often jerk poor Queequeg from between the whale and the ship —
+            where he would occasionally fall, from the incessant rolling and swaying of both.
+            But this was not the only jamming jeopardy he was exposed to.
+          </p>
         </div>
       </section>
     )

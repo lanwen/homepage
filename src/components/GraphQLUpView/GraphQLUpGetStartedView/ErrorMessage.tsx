@@ -84,7 +84,8 @@ export default class ErrorMessage extends React.Component<Props, State> {
           }
           <div className='message'>
             {this.props.schemaLink
-              ? 'Seems like your source is invalid. Please try a valid source like our Worldchat-Example, or check out our docs for further information.'
+              ? 'Seems like your source is invalid. Please try a valid source like our ' +
+              'Worldchat-Example, or check out our docs for further information.'
               : 'Seems like you don’t have a schema yet. Try out our Worldchat Example to get started :)'
             }
           </div>
