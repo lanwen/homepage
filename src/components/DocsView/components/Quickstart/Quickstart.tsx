@@ -9,16 +9,16 @@ import Example from './Example'
 import { QuickExample } from '../../../../types/types'
 import { breakpoints } from '../../../../utils/constants'
 import LogoBar from '../../../HomeView/LogoBar'
-import ExampleStep from './ExampleStep'
 import styled from 'styled-components'
+import ExampleContent from './ExampleContent';
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
   quickExamples?: QuickExample[]
-  highlightedComponentIndex?: number
   frontendTechnologyOffset: number
   graphQLClientOffset: number
+  selectedExample?: QuickExample
 }
 
 interface Props {
@@ -33,6 +33,8 @@ const RootContainer = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  z-index: 2;
+  position: relative;
 `
 
 export default class Quickstart extends React.Component<Props, State> {
@@ -41,9 +43,9 @@ export default class Quickstart extends React.Component<Props, State> {
     selectedFrontendTechnology: null,
     selectedClientTechnology: null,
     quickExamples: null,
-    highlightedComponentIndex: null,
     frontendTechnologyOffset: 0,
     graphQLClientOffset: 0,
+    selectedExample: undefined,
   }
 
   render() {
@@ -77,8 +79,10 @@ export default class Quickstart extends React.Component<Props, State> {
     }
 
     const {className} = this.props
-    const {selectedFrontendTechnology, selectedClientTechnology, highlightedComponentIndex} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology, selectedExample} = this.state
     const currentStep: Step = this.getCurrentStep()
+
+    console.log(this.state)
 
     const stepIndicator: JSX.Element = (
       <StepIndicator
@@ -90,6 +94,7 @@ export default class Quickstart extends React.Component<Props, State> {
               selectedFrontendTechnology: null,
               selectedClientTechnology: null,
               quickExamples: null,
+              selectedExample: undefined,
             } as State)
           } else if (index === 1) {
             this.setState({
@@ -113,39 +118,11 @@ export default class Quickstart extends React.Component<Props, State> {
                   className={cx($p.ph25)}
                   technology={technology}
                   onClick={() => this.selectFrontendTechnology(technology, index)}
-                  onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                  onMouseLeave={() => this.setState({
-                    highlightedComponentIndex: null,
-                  } as State)}
-                  decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
                 />)
               }
             </div>
           </RootContainer>
-          <article className='exampleContent'>
-            <style jsx={true}>{`
-              .exampleContent {
-                @p: .relative, .bt, .bBlack10, .ph60, .pv96;
-                background: #fafafa;
-
-                &:before {
-                  content: '';
-                  @p: .hS25, .wS25, .absolute, .left50, .top0, .br, .bt, .bBlack10;
-                  background: #fafafa;
-                  transform: translate(-50%, -50%) rotate(-45deg);
-                }
-              }
-
-              .exampleContentContainer {
-                @p: .center;
-                max-width: 800px;
-              }
-            `}</style>
-            <div className='exampleContentContainer'>
-              <ExampleStep />
-              <ExampleStep />
-            </div>
-          </article>
+          <ExampleContent />
         </Root>
       )
     } else if (currentStep === 'GRAPHQL_CLIENT') {
@@ -163,7 +140,6 @@ export default class Quickstart extends React.Component<Props, State> {
               <Technology
                 className={cx($p.ph25)}
                 technology={selectedFrontendTechnology}
-                decreaseOpacity={false}
                 onClick={() => {
                 this.setState({
                   selectedFrontendTechnology: null,
@@ -193,11 +169,6 @@ export default class Quickstart extends React.Component<Props, State> {
                     className={cx($p.ph25)}
                     technology={technology}
                     onClick={() => this.selectClientTechnology(technology, index)}
-                    onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                    onMouseLeave={() => this.setState({
-                    highlightedComponentIndex: null,
-                  } as State)}
-                    decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
                   />)
                 }
               </div>
@@ -220,7 +191,6 @@ export default class Quickstart extends React.Component<Props, State> {
               >
                 <Technology
                   className={cx($p.mr25)}
-                  decreaseOpacity={false}
                   technology={selectedFrontendTechnology}
                 />
                 <div
@@ -247,7 +217,6 @@ export default class Quickstart extends React.Component<Props, State> {
                   >
                     <Technology
                       className={cx($p.ml25)}
-                      decreaseOpacity={false}
                       technology={selectedClientTechnology}
                     />
                     <div
@@ -271,40 +240,15 @@ export default class Quickstart extends React.Component<Props, State> {
                     <Example
                       key={index}
                       quickExample={example}
-                      onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                      onMouseLeave={() => this.setState({
-                    highlightedComponentIndex: null,
-                  } as State)}
+                      onClick={() => this.selectExample(example)}
+                      selected={typeof selectedExample !== 'undefined' ? example === selectedExample : undefined}
                     />,
                   )}
                 </div>
               </div>
             </div>
           </RootContainer>
-          <article className='exampleContent'>
-            <style jsx={true}>{`
-              .exampleContent {
-                @p: .relative, .bgWhite, .bt, .bBlack10, .pa60;
-                background: #fafafa;
-
-                &:before {
-                  content: '';
-                  @p: .hS25, .wS25, .absolute, .left50, .top0, .br, .bt, .bBlack10;
-                  background: #fafafa;
-                  transform: translate(-50%, -50%) rotate(-45deg);
-                }
-              }
-
-              .exampleContentContainer {
-                @p: .center;
-                max-width: 1200px;
-              }
-            `}</style>
-            <div className='exampleContentContainer'>
-              <ExampleStep />
-              <ExampleStep />
-            </div>
-          </article>
+          <ExampleContent />
         </Root>
       )
     }
@@ -391,12 +335,6 @@ export default class Quickstart extends React.Component<Props, State> {
       })
   }
 
-  private decreasedOpacityOfComponents = (index: number) => {
-    this.setState({
-      highlightedComponentIndex: index,
-    } as State)
-  }
-
   private getCurrentStep(): Step {
     if (this.state.selectedClientTechnology) {
       return 'USE_CASE'
@@ -435,6 +373,10 @@ export default class Quickstart extends React.Component<Props, State> {
       }
     })
     return result
+  }
+
+  private selectExample = (selectedExample: QuickExample) => {
+    this.setState({selectedExample} as State)
   }
 }
 

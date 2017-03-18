@@ -4,16 +4,10 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import {TechnologyData} from './data/technologies'
 
-const Hover = `
-   opacity: 0.5;
-`
-
 const AnimatingOpacityView = styled.div`
   box-sizing: border-box;
   width: 146px;
   transition: opacity 0.5s;
-  opacity: 1;
-  ${props => props.decreaseOpacity && Hover}
 `
 
 const Circle = styled.div`
@@ -42,9 +36,6 @@ interface Props {
   onClick?: (technology: TechnologyData) => void
   className?: string
   isPopular?: boolean
-  decreaseOpacity: boolean
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
 }
 
 const Technology = (props: Props) => {
@@ -60,19 +51,8 @@ const Technology = (props: Props) => {
         opacity: isDisabled ? 0.25 : 1,
         cursor: 'default',
       }}
-      decreaseOpacity={props.decreaseOpacity}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}
       onClick={() => onClick(technology)}
-      onMouseEnter={() => {
-        if (props.onMouseEnter) {
-          props.onMouseEnter()
-        }
-      }}
-      onMouseLeave={() => {
-        if (props.onMouseLeave) {
-          props.onMouseLeave()
-        }
-      }}
     >
     <Circle
       className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.relative)}

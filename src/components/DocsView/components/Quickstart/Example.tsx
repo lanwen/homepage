@@ -1,6 +1,6 @@
 import * as React from 'react'
 // import {$p, $v, $g, Icon} from 'graphcool-styles'
-// import * as cx from 'classnames'
+import * as cx from 'classnames'
 import {QuickExample} from '../../../../types/types'
 // import CircleIcon from '../CircleIcon'
 // import styled from 'styled-components'
@@ -8,14 +8,15 @@ import {QuickExample} from '../../../../types/types'
 interface Props {
   quickExample: QuickExample
   className?: string
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
+  onClick: () => void
+  selected?: boolean
 }
 
 export default class Example extends React.Component<Props, {}> {
 
   render() {
     const {type} = this.props.quickExample
+    const {selected} = this.props
 
     let imageSrc, title
 
@@ -35,14 +36,39 @@ export default class Example extends React.Component<Props, {}> {
     }
 
     return (
-      <button className='root'>
+      <button
+        className={cx(
+          'example',
+          {
+            'selected': selected === true,
+            'unselected': selected === false,
+          },
+        )}
+        onClick={this.props.onClick}
+      >
         <style jsx={true}>{`
-          .root {
-            @p: .bgNone, .pa0, .flex, .flexColumn, .itemsCenter, .mr60;
+          .example {
+            @p: .bgNone, .pa0, .flex, .flexColumn, .itemsCenter, .mr60, .relative;
+            transition: opacity .2s linear, filter .2s linear;
 
             &:last-child {
               @p: .mr0;
             }
+          }
+
+          .example.selected {
+            &:before {
+              content: '';
+              @p: .hS25, .wS25, .absolute, .left50, .br, .bt, .bBlack10;
+              background: #fafafa;
+              transform: translate(-50%, 50%) rotate(-45deg);
+              bottom: -60px;
+            }
+          }
+
+          .example.unselected {
+            @p: .o50;
+            filter: blur(6px);
           }
 
           .exampleIcon {
