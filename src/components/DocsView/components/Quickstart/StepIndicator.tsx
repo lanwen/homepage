@@ -60,7 +60,7 @@ export default class StepIndicator extends React.Component<Props, {}> {
         useCase = (
           <div className={cx($p.flex, $p.itemsCenter)}>
             <div className={cx($p.f14, $p.fw6, $p.ttu, $p.nowrap)} style={{color: `${grayNotSelected}`}}>
-              Use case
+              Choose your example
             </div>
           </div>
         )

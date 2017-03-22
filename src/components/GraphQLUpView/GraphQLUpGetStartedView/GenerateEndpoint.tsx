@@ -1,16 +1,20 @@
 import * as React from 'react'
 import * as CopyToClipboard from 'react-copy-to-clipboard'
+import { Icon, $v } from 'graphcool-styles'
 
 type EndpointType = 'SIMPLE' | 'RELAY'
 
 interface State {
   projectId?: string
-  loadingEndpoint: boolean
   selectedEndpointType: EndpointType
   justCopied: boolean
 }
 
 interface Props {
+  generateProject: () => void
+  loadingEndpoint: boolean
+  projectId?: string
+  className?: string
 }
 
 export default class GenerateEndpoint extends React.Component<Props, State> {
@@ -18,23 +22,24 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
   copyTimer = null
 
   state = {
-    projectId: 'mirageflier',
-    loadingEndpoint: false,
     selectedEndpointType: 'SIMPLE' as EndpointType,
     justCopied: false,
   }
 
   render() {
 
-    const projectIdAvailable = Boolean(this.state.projectId)
-    console.log('projectId', projectIdAvailable)
+    const projectIdAvailable = Boolean(this.props.projectId)
 
     return (
-      <div className='root'>
+      <div className={`generate-endpoint ${this.props.className}`}>
         <style jsx={true}>{`
 
-          .root {
-            @p: .flex, .flexColumn, .itemsCenter, .ph60;
+          .generate-endpoint {
+            @p: .flex, .flexColumn, .itemsCenter, .ph60, .flexFixed;
+
+            &.inModal {
+              @p: .ph0;
+            }
           }
 
           .instructions {
@@ -68,13 +73,13 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
           </div>
         </div>
 
-        {projectIdAvailable ? this._renderGraphQLEndpoint() : this._renderGraphQLButton() }
+        {projectIdAvailable ? this.renderEndpoint() : this.renderGraphQLButton() }
 
       </div>
     )
   }
 
-  private _renderGraphQLEndpoint(): JSX.Element {
+  private renderEndpoint(): JSX.Element {
     return (
       <div>
         <style jsx={true}>{`
@@ -86,72 +91,136 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             @p: .flex, .ttu, .green, .fw6, .f14, .itemsCenter, .justifyCenter, .pb10;
           }
 
+          .tabBar {
+            @p: .flex, .relative, .justifyCenter, .itemsCenter, .list;
+          }
+
+          .tab {
+            @p: .black30, .tracked, .f12, .ttu, .nowrap, .pa10, .lhSolid, .bgBlack04, .pointer;
+
+            transition: background .2s linear, color .2s linear;
+
+            &:first-child {
+              border-top-left-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+
+            &:last-child {
+              border-top-right-radius: 2px;
+              border-bottom-right-radius: 2px;
+            }
+
+            &.active {
+              @p: .pa12, .bgGreen, .br2, .cursorDefault, .white;
+
+              &:hover {
+                @p: .bgGreen, .white;
+              }
+            }
+          }
+
           .endpoint {
-            @p: .bgGreen10, .black60, .f14, .br2, .pa10, .tc;
+            @p: .flex, .itemsCenter, .bgBlack04, .black60, .f16, .br2, .pa10, .relative;
           }
 
           .infoText {
-            @p: .fw3, .f14, .o60, .pt10, .tc, .w100;
+            @p: .f14, .o60, .pt16, .tc, .w100;
           }
 
           .docsLink {
-            @p: .green, .fw6, .noUnderline;
-          }
-
-          .button {
-            @p: .br2, .ttu, .fw6, .f16, .ph16, .pv10, .pointer, .tc;
-          }
-
-          .copyButton {
-            @p: .bgGreen, .white, .bbox;
-            min-width: 160px;
+            @p: .fw6, .noUnderline;
           }
 
           .playgroundButton {
-            @p: .bgGreen20, .green;
+            @p: .buttonShadow, .bgGreen, .white, .br2, .ttu, .fw6, .f14, .tracked, .pv10, .ph12, .pointer;
+          }
+
+          .copy {
+            @p: .relative, .br2, .ml10, .flex, .itemsCenter, .buttonShadow, .bgWhite, .hS38, .pointer;
+          }
+
+          .copyIndicator {
+            @p: .o0, .absolute, .f14, .fw6, .blue;
+            top: -20px;
+            left: 50%;
+            transform: translate(-50%,0);
+            animation-duration: 0.7s;
+            animation-name: movingCopyIndicator;
+            animation-timing-function: linear;
+          }
+
+          @keyframes movingCopyIndicator {
+            0% {
+              opacity: 0;
+              transform: translate(-50%, 0);
+            }
+
+            50% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+              transform: translate(-50%, -50px);
+            }
           }
 
         `}</style>
         <div className='header'>
-          <div
-            className={`pointer ${this.state.selectedEndpointType !== 'SIMPLE' && 'o50'}`}
-            onClick={() => this.setState({selectedEndpointType: 'SIMPLE' as EndpointType} as State)}
-          >
-            Simple API
-          </div>
-          <div
-            className={`pointer ml16 ${this.state.selectedEndpointType !== 'RELAY' && 'o50'}`}
-            onClick={() => this.setState({selectedEndpointType: 'RELAY' as EndpointType} as State)}
-          >
-            Relay API
+          <div className='tabBar'>
+            <div
+              className={`pointer ${this.state.selectedEndpointType !== 'SIMPLE' && 'o50'}`}
+              onClick={() => this.setState({selectedEndpointType: 'SIMPLE' as EndpointType} as State)}
+            >
+              Simple API
+            </div>
+            <div
+              className={`pointer ml16 ${this.state.selectedEndpointType !== 'RELAY' && 'o50'}`}
+              onClick={() => this.setState({selectedEndpointType: 'RELAY' as EndpointType} as State)}
+            >
+              Relay API
+            </div>
           </div>
         </div>
-        <div className='endpoint'>{this._generateEndpoint()}</div>
+        <div className='endpoint'>
+          {this.getEndpoint()}
+          <CopyToClipboard
+            text={this.getEndpoint()}
+            onCopy={() => this.onCopy()}
+          >
+            <div className='copy'>
+              {this.state.justCopied &&
+              <div className='copyIndicator'>
+                Copied
+              </div>
+              }
+              <Icon
+                width={38}
+                height={38}
+                color={$v.darkerBlue}
+                src={require('graphcool-styles/icons/fill/copy.svg')}
+              />
+            </div>
+          </CopyToClipboard>
+        </div>
         <div className='infoText'>
           The Simple API works best when using Apollo Client
           (<a target='_blank' className='docsLink' href='http://dev.apollodata.com/'>Docs</a>)
         </div>
-        <div className='flex mt25 justifyBetween w100'>
-          <CopyToClipboard
-            text={this._generateEndpoint()}
-            onCopy={() => this._onCopy()}
-          >
-            <div className='button copyButton mr4'>{this.state.justCopied ? 'Copied!' : 'Copy Endpoint'}</div>
-          </CopyToClipboard>
-          <div className='button playgroundButton ml4'>
-            <a className='noUnderline' target='_blank' href={this.state.projectId}>Open Playground</a>
-          </div>
+        <div className='flex mt38 justifyCenter w100'>
+          <a className=' playgroundButton noUnderline dim' target='_blank' href={this.getEndpoint()}>
+            Open Playground
+          </a>
         </div>
-
       </div>
     )
   }
 
-  private _renderGraphQLButton(): JSX.Element {
+  private renderGraphQLButton(): JSX.Element {
     return (
       <div
-        className='getGraphQLAPIButton pink'
-        onClick={() => this.setState({loadingEndpoint: !this.state.loadingEndpoint} as State)}
+        className={`getGraphQLAPIButton pink ${this.props.loadingEndpoint && 'pulsating'}`}
+        onClick={this.props.generateProject}
       >
         <style jsx={true}>{`
           .getGraphQLAPIButton {
@@ -163,23 +232,37 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
             background-color: rgba(224, 0, 151, 1);
           }
 
-          .rotating {
-            animation: spin 1.5s linear infinite;
+          .pulsating {
+            animation: pulsate 1.5s ease infinite;
           }
 
-          @keyframes spin { 100% { transform:rotate(360deg); } }
+          @keyframes pulsate {
+            0% {
+              transform: scale(1);
+              opacity: 1;
+            }
+
+            50% {
+              transform: scale(1.02);
+              opacity: 0.8;
+            }
+
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
       `}</style>
         <img
           width={25}
           height={20}
-          className={`${this.state.loadingEndpoint && 'rotating'}`}
           src={require('../../../assets/graphics/graphqlup/nodes.svg')}/>
-        <div className='pl10'>{this.state.loadingEndpoint ? 'Creating GraphQL API ...' : 'Get GraphQL API'}</div>
+        <div className='pl10'>{this.props.loadingEndpoint ? 'Creating GraphQL API ...' : 'Get GraphQL API'}</div>
       </div>
     )
   }
 
-  private _onCopy() {
+  private onCopy() {
     this.setState({justCopied: true} as State)
     this.copyTimer = window.setTimeout(
       () => this.setState({justCopied: false} as State),
@@ -187,9 +270,9 @@ export default class GenerateEndpoint extends React.Component<Props, State> {
     )
   }
 
-  private _generateEndpoint(): string {
+  private getEndpoint(): string {
     const baseURL = 'https://api.graph.cool'
     const endpoint = (this.state.selectedEndpointType as String).toLowerCase()
-    return `${baseURL}/${endpoint}/v1/${this.state.projectId}`
+    return `${baseURL}/${endpoint}/v1/${this.props.projectId}`
   }
 }

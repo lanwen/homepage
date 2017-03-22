@@ -9,19 +9,33 @@ import Example from './Example'
 import { QuickExample } from '../../../../types/types'
 import { breakpoints } from '../../../../utils/constants'
 import LogoBar from '../../../HomeView/LogoBar'
+import styled from 'styled-components'
+import ExampleContent from './ExampleContent';
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
   selectedClientTechnology?: TechnologyData,
   quickExamples?: QuickExample[]
-  highlightedComponentIndex?: number
   frontendTechnologyOffset: number
   graphQLClientOffset: number
+  selectedExample?: QuickExample
 }
 
 interface Props {
   className?: string
 }
+
+const Root = styled.div`
+  
+`
+
+const RootContainer = styled.div`
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+  position: relative;
+`
 
 export default class Quickstart extends React.Component<Props, State> {
 
@@ -29,9 +43,9 @@ export default class Quickstart extends React.Component<Props, State> {
     selectedFrontendTechnology: null,
     selectedClientTechnology: null,
     quickExamples: null,
-    highlightedComponentIndex: null,
     frontendTechnologyOffset: 0,
     graphQLClientOffset: 0,
+    selectedExample: undefined,
   }
 
   render() {
@@ -65,8 +79,10 @@ export default class Quickstart extends React.Component<Props, State> {
     }
 
     const {className} = this.props
-    const {selectedFrontendTechnology, selectedClientTechnology, highlightedComponentIndex} = this.state
+    const {selectedFrontendTechnology, selectedClientTechnology, selectedExample} = this.state
     const currentStep: Step = this.getCurrentStep()
+
+    console.log(this.state)
 
     const stepIndicator: JSX.Element = (
       <StepIndicator
@@ -78,6 +94,7 @@ export default class Quickstart extends React.Component<Props, State> {
               selectedFrontendTechnology: null,
               selectedClientTechnology: null,
               quickExamples: null,
+              selectedExample: undefined,
             } as State)
           } else if (index === 1) {
             this.setState({
@@ -91,105 +108,54 @@ export default class Quickstart extends React.Component<Props, State> {
 
     if (currentStep === 'TECHNOLOGY') {
       return (
-        <div className={cx($p.flex, $p.flexColumn, className)}>
-          {stepIndicator}
-          <div className={cx($p.flex, $p.mt25)}>
-            {frontendTechnologies.map((technology, index) =>
-              <Technology
-                key={technology.title}
-                className={cx($p.ph25)}
-                technology={technology}
-                onClick={() => this.selectFrontendTechnology(technology, index)}
-                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                onMouseLeave={() => this.setState({
-                    highlightedComponentIndex: null,
-                  } as State)}
-                decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
-              />)
-            }
-          </div>
-        </div>
+        <Root>
+          <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
+            {stepIndicator}
+            <div className={cx($p.flex, $p.mt25)}>
+              {frontendTechnologies.map((technology, index) =>
+                <Technology
+                  key={technology.title}
+                  className={cx($p.ph25)}
+                  technology={technology}
+                  onClick={() => this.selectFrontendTechnology(technology, index)}
+                />)
+              }
+            </div>
+          </RootContainer>
+          <ExampleContent />
+        </Root>
       )
     } else if (currentStep === 'GRAPHQL_CLIENT') {
       return (
-        <div className={cx($p.flex, $p.flexColumn, className)}>
-          {stepIndicator}
-          <div
-            className={cx($p.flex, $p.mt25, $p.relative)}
-            style={{
+        <Root>
+          <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
+            {stepIndicator}
+            <div
+              className={cx($p.flex, $p.mt25, $p.relative)}
+              style={{
               transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
               transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
             }}
-          >
-            <Technology
-              className={cx($p.ph25)}
-              technology={selectedFrontendTechnology}
-              decreaseOpacity={false}
-              onClick={() => {
+            >
+              <Technology
+                className={cx($p.ph25)}
+                technology={selectedFrontendTechnology}
+                onClick={() => {
                 this.setState({
                   selectedFrontendTechnology: null,
                   selectedClientTechnology: null,
                   quickExamples: null,
                 } as State)
               }}
-            />
-            <div
-              style={{
+              />
+              <div
+                style={{
                 transition: 'opacity .3s .3s ease',
                 opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
               }}
-              className={$p.flex}
-            >
-              <div className={cx($p.mh25)} style={{paddingTop: 34}}>
-                <Icon
-                  src={require('../../../../assets/icons/docs/plus.svg')}
-                  width={27}
-                  height={27}
-                  color={$v.gray20}
-                />
-              </div>
-              {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
-                <Technology
-                  key={technology.title}
-                  className={cx($p.ph25)}
-                  technology={technology}
-                  onClick={() => this.selectClientTechnology(technology, index)}
-                  onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                  onMouseLeave={() => this.setState({
-                    highlightedComponentIndex: null,
-                  } as State)}
-                  decreaseOpacity={highlightedComponentIndex !== null && highlightedComponentIndex !== index}
-                />)
-              }
-            </div>
-          </div>
-        </div>
-      )
-    } else if (currentStep === 'USE_CASE') {
-      return (
-        <div className={cx($p.flex, className)}>
-          <div className={cx($p.flex, $p.flexColumn)}>
-            {stepIndicator}
-            <div
-              className={cx($p.flex, $p.mt25)}
-              style={{
-                transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
-                transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
-              }}
-            >
-              <Technology
-                className={cx($p.mr25)}
-                decreaseOpacity={false}
-                technology={selectedFrontendTechnology}
-              />
-              <div
                 className={$p.flex}
-                style={{
-                  transition: 'opacity .3s .3s ease',
-                  opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
-                }}
               >
-                <div style={{paddingTop: 34}}>
+                <div className={cx($p.mh25)} style={{paddingTop: 34}}>
                   <Icon
                     src={require('../../../../assets/icons/docs/plus.svg')}
                     width={27}
@@ -197,55 +163,99 @@ export default class Quickstart extends React.Component<Props, State> {
                     color={$v.gray20}
                   />
                 </div>
+                {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
+                  <Technology
+                    key={technology.title}
+                    className={cx($p.ph25)}
+                    technology={technology}
+                    onClick={() => this.selectClientTechnology(technology, index)}
+                  />)
+                }
+              </div>
+            </div>
+          </RootContainer>
+        </Root>
+      )
+    } else if (currentStep === 'USE_CASE') {
+      return (
+        <Root>
+          <RootContainer className={cx($p.flex, className)}>
+            <div className={cx($p.flex, $p.flexColumn)}>
+              {stepIndicator}
+              <div
+                className={cx($p.flex, $p.mt25)}
+                style={{
+                  transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
+                  transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
+                }}
+              >
+                <Technology
+                  className={cx($p.mr25)}
+                  technology={selectedFrontendTechnology}
+                />
                 <div
                   className={$p.flex}
                   style={{
-                    transition: this.state.graphQLClientOffset === 0 ? '.3s ease all' : '',
-                    transform: `translateX(${this.state.graphQLClientOffset}px)`,
+                    transition: 'opacity .3s .3s ease',
+                    opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
                   }}
                 >
-                  <Technology
-                    className={cx($p.ml25)}
-                    decreaseOpacity={false}
-                    technology={selectedClientTechnology}
-                  />
-                  <div
-                    className={cx($p.ml25)}
-                    style={{
-                      paddingTop: 37,
-                      transition: 'opacity .3s .3s ease',
-                      opacity: this.state.graphQLClientOffset > 0 ? 0 : 1,
-                    }}>
+                  <div style={{paddingTop: 34}}>
                     <Icon
-                      src={require('../../../../assets/icons/docs/right_arrow.svg')}
-                      width={31}
-                      height={22}
+                      src={require('../../../../assets/icons/docs/plus.svg')}
+                      width={27}
+                      height={27}
                       color={$v.gray20}
                     />
                   </div>
+                  <div
+                    className={$p.flex}
+                    style={{
+                      transition: this.state.graphQLClientOffset === 0 ? '.3s ease all' : '',
+                      transform: `translateX(${this.state.graphQLClientOffset}px)`,
+                    }}
+                  >
+                    <Technology
+                      className={cx($p.ml25)}
+                      technology={selectedClientTechnology}
+                    />
+                    <div
+                      className={cx($p.ml25)}
+                      style={{
+                        paddingTop: 37,
+                        transition: 'opacity .3s .3s ease',
+                        opacity: this.state.graphQLClientOffset > 0 ? 0 : 1,
+                      }}>
+                      <Icon
+                        src={require('../../../../assets/icons/docs/right_arrow.svg')}
+                        width={31}
+                        height={22}
+                        color={$v.gray20}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={cx($p.flex)}
+                  style={{
+                    marginLeft: 50,
+                    transition: 'opacity .3s .3s ease',
+                  }}
+                >
+                  {this.state.quickExamples.map((example: QuickExample, index) =>
+                    <Example
+                      key={index}
+                      quickExample={example}
+                      onClick={() => this.selectExample(example)}
+                      selected={typeof selectedExample !== 'undefined' ? example === selectedExample : undefined}
+                    />,
+                  )}
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className={cx($p.flex, $p.ml38)}
-          >
-            {this.state.quickExamples.map((example: QuickExample, index) =>
-              <Example
-                style={{
-                  transition: 'opacity .3s .3s ease',
-                  opacity: ((this.state.frontendTechnologyOffset > 0) || (this.state.graphQLClientOffset > 0)) ? 0 : 1,
-                }}
-                key={example.title}
-                quickExample={example}
-                onMouseEnter={() => this.decreasedOpacityOfComponents(index)}
-                onMouseLeave={() => this.setState({
-                  highlightedComponentIndex: null,
-                } as State)}
-              />,
-            )}
-          </div>
-        </div>
+          </RootContainer>
+          <ExampleContent />
+        </Root>
       )
     }
     return (
@@ -292,7 +302,7 @@ export default class Quickstart extends React.Component<Props, State> {
           },
           1,
         )
-    })
+      })
   }
 
   private selectClientTechnology = (technology: TechnologyData, index: number = 0) => {
@@ -328,13 +338,7 @@ export default class Quickstart extends React.Component<Props, State> {
           },
           1,
         )
-    })
-  }
-
-  private decreasedOpacityOfComponents = (index: number) => {
-    this.setState({
-      highlightedComponentIndex: index,
-    } as State )
+      })
   }
 
   private getCurrentStep(): Step {
@@ -375,6 +379,10 @@ export default class Quickstart extends React.Component<Props, State> {
       }
     })
     return result
+  }
+
+  private selectExample = (selectedExample: QuickExample) => {
+    this.setState({selectedExample} as State)
   }
 }
 

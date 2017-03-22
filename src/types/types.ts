@@ -27,11 +27,7 @@ export interface NestedItem extends Item {
 }
 
 export interface QuickExample {
-  title: string
-  layout: Layout
-  imageSrc: string
-  imageWidth: number
-  imageHeight: number
+  type: string
   link: string
 }
 

@@ -20,29 +20,30 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .title {
-            @p: .f25, .pt38, .o60, .fw3, .tc;
+            @p: .f25, .pt38, .o80, .fw3, .tc;
           }
 
           .info {
-            @p: .f20, .fw3;
+            @p: .f20, .fw3, .o80;
           }
 
-          video {
-            max-width: 670px;
+          .video {
+            width: 670px;
+            max-width: 100%;
           }
 
           .playVideoContainer {
-            @p: .flex, .itemsCenter, .pt38, .pb60, .pointer;
+            @p: .flex, .itemsCenter, .mt38, .mb60, .pointer, .noUnderline;
           }
 
           .playButton {
-            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20;
+            @p: .br100, .flex, .itemsCenter, .justifyCenter, .bgGreen20, .flexFixed;
             width: 50px;
             height: 50px;
           }
 
           .playText {
-            @p: .f20, .fw3, .o60;
+            @p: .f20, .fw4, .o60;
           }
 
         `}</style>
@@ -50,19 +51,23 @@ export default class IntroSection extends React.Component<Props, {}> {
           className=''
           src={require('../../assets/graphics/graphqlup/graphql-up_light.svg')}
         />
-        <div className='title'>Get a ready-to-use GraphQL endpoint based on your schema</div>
+        <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
-        <video autoPlay onClick={(e: any) => e.target.currentTime = 0}>
-          <source src='http://static.graph.cool.s3.amazonaws.com/videos/graphql-up.mov' type='video/mp4' />
+        <video className='video' playsInline autoPlay onClick={this.restartVideo}>
+          <source src='/videos/graphql-up.mov' type='video/mp4' />
         </video>
 
         <div className='info'>graphql-up is the fastest way to get a free & ready to use GraphQL API.</div>
         <div className='info'>It works out of the box with Apollo & Relay and supports GraphQL subscriptions.</div>
 
-        <div className={`playVideoContainer ${shouldRenderForMobile && 'flexColumn'}`}>
+        <a
+          className={`playVideoContainer dim ${shouldRenderForMobile && 'flexColumn'}`}
+          href='https://www.youtube.com/watch?v=kWS7SGcp7cY'
+          target='_blank'
+        >
           {shouldRenderForMobile &&
           <div className={`playText ${shouldRenderForMobile && 'tc pb25'}`}>
-            Watch this 3 minute tutorial to get started
+            Watch this 5 minute tutorial to get started
           </div>
           }
           <div className='playButton'>
@@ -73,12 +78,16 @@ export default class IntroSection extends React.Component<Props, {}> {
           </div>
           {!shouldRenderForMobile &&
             <div className={`playText pl25`}>
-              Watch this 3 minute tutorial to get started
+              Watch this 5 minute tutorial to get started
             </div>
           }
-        </div>
-
+        </a>
       </section>
     )
+  }
+
+  private restartVideo = (e: any) => {
+    e.target.currentTime = 0
+    e.target.load()
   }
 }

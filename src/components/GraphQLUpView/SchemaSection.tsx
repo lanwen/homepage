@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router'
-import {breakpoints} from '../../utils/constants'
+import { breakpoints } from '../../utils/constants'
 import * as CodeMirror from 'react-codemirror'
 
 interface Field {
@@ -24,39 +24,39 @@ interface State {
   selectedExampleIndex: number
 }
 
-const instagramSchema = `type Post {
+const twitterSchema = `type Tweet {
   id: ID!
   title: String!
-  author: User!
+  author: User! @relation(name: "Tweets")
 }
 
 type User {
   id: ID!
   name: String!
-  posts: [Post!]!
+  tweets: [Tweet!]! @relation(name: "Tweets")
 }`
 
 const conferencePlannerSchema = `type Conference {
   id: ID!
   name: String!
   city: String!
-  attendees: [Attendee!]!
+  attendees: [Attendee!]! @relation(name: "Attendees")
 }
 
 type Attendee {
   id: ID!
   name: String!
-  conferences: [Conference!]!
+  conferences: [Conference!]! @relation(name: "Attendees")
 }`
 
-const examples: [Example] = [
+const examples: Example[] = [
   {
-    title: 'Instagram',
-    link: 'https://github.com/nikolasburk/Instagram/blob/master/README.md',
-    schema: instagramSchema,
+    title: 'Twitter',
+    link: 'https://raw.githubusercontent.com/schickling/Twitter/master/twitter.schema',
+    schema: twitterSchema,
     types: [
       {
-        name: 'Post',
+        name: 'Tweet',
         fields: [
           {
             name: 'id',
@@ -84,8 +84,8 @@ const examples: [Example] = [
             type: 'String!',
           },
           {
-            name: 'posts',
-            type: '[Post!]!',
+            name: 'tweets',
+            type: '[Tweet!]!',
           },
         ],
       },
@@ -93,7 +93,7 @@ const examples: [Example] = [
   },
   {
     title: 'Conference Planner',
-    link: 'https://github.com/nikolasburk/ConferencePlanner',
+    link: 'https://raw.githubusercontent.com/nikolasburk/ConferencePlanner/master/conference_planner.schema',
     schema: conferencePlannerSchema,
     types: [
       {
@@ -149,11 +149,14 @@ export default class SchemaSection extends React.Component<{}, State> {
   }
 
   render() {
-    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p750
 
     return (
       <section className='root'>
         <style jsx={true}>{`
+          .root :global(.CodeMirror) {
+            height: auto !important;
+          }
 
           .root {
             @p: .flex, .flexColumn, .itemsCenter, .ph38, .pb96, .center, .bgBlack02;
@@ -168,8 +171,7 @@ export default class SchemaSection extends React.Component<{}, State> {
           }
 
           .exampleSchemaContainer {
-            @p: .flex, .pt60;
-            height: 370px;
+            @p: .flex, .pt60, .w100, .bbox, .justifyCenter;
           }
 
           .circle {
@@ -178,24 +180,47 @@ export default class SchemaSection extends React.Component<{}, State> {
             height: 10px;
           }
 
+          .codeContainer {
+            @p: .bgWhite, .overlayShadow, .br2, .overflowHidden, .relative;
+            height: 300px;
+
+            &:after, &:before {
+              @p: .absolute, .left0, .right0, .z5;
+              content: '';
+            }
+
+            &:before {
+              @p: .top0, .hS25;
+              background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            }
+
+            &:after {
+              @p: .bottom0, .hS38;
+              background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            }
+          }
+
         `}</style>
         <div className='title'>Example Schema</div>
         <div className='subtitle'>
-          Schema files are written using the <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
+          Schema files are written using the&nbsp;
+          <Link className='green' to='/docs/faq/graphql-schema-definition-idl-kr84dktnp0/'>GraphQL IDL notation</Link>.
         </div>
-        <div className='subtitle'>This is the quickest to describe the structure of your data model.</div>
+        <div className='subtitle'>This is the quickest way to describe the structure of your data model.</div>
 
         <div className={`exampleSchemaContainer ${shouldRenderForMobile && 'flexColumn'}`}>
-
-          <CodeMirror
-            className='bgWhite buttonShadow pv38 pl60 pr96'
-            value={examples[this.state.selectedExampleIndex].schema}
-            options={{
+          <div className='codeContainer'>
+            <CodeMirror
+              className='overflowAuto h100 pv16 pr16 bbox'
+              value={examples[this.state.selectedExampleIndex].schema}
+              options={{
               mode: 'graphql',
               theme: 'mdn-like',
+              viewportMargin: Infinity,
+              lineNumbers: true,
             }}
-          />
-
+            />
+          </div>
           {this._renderExample(examples[this.state.selectedExampleIndex])}
 
         </div>
@@ -205,7 +230,7 @@ export default class SchemaSection extends React.Component<{}, State> {
             const active = i === this.state.selectedExampleIndex
             return (
               <div
-                key={i}
+                key={example.title}
                 className={`circle ${active ? 'bgGreen' : 'bgGreen20'}`}
                 onClick={() => this.setState({selectedExampleIndex: i} as State)}
               />
@@ -218,10 +243,10 @@ export default class SchemaSection extends React.Component<{}, State> {
 
   private _renderExample = (example: Example): JSX.Element => {
 
-    const shouldRenderForMobile = window.innerWidth < breakpoints.p500
+    const shouldRenderForMobile = window.innerWidth < breakpoints.p750
 
     return (
-      <div className={`${shouldRenderForMobile ? 'pt38 ph16' : 'pl60'}`}>
+      <div className={`${shouldRenderForMobile ? 'pa25' : 'pl60'}`}>
         <style jsx={true}>{`
 
           .schemaExplanationHeader {
@@ -233,26 +258,31 @@ export default class SchemaSection extends React.Component<{}, State> {
           }
 
           .code {
-            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60;
+            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60, .f14;
           }
 
           .text {
-            @p: .f20, .fw3;
-            max-width: 450px;
+            @p: .f16, .fw3;
+            max-width: 550px;
+            line-height: 2;
           }
 
         `}</style>
         <div className='schemaExplanationHeader'>
           <div className='schemaExplanationTitle'>{example.title}</div>
-          <a target='_blank' href={example.link}>
+          <Link
+            className='flex'
+            target='_blank'
+            to={`/graphql-up/new/?source=${example.link}`}
+          >
             <img
               className=''
               src={require('../../assets/graphics/graphqlup/graphql-up_small.svg')}
             />
-          </a>
+          </Link>
         </div>
 
-        <div className='text pv38'>
+        <div className='text pv16'>
           This schema has {example.types.length} {example.types.length === 1 ? 'type' : 'types'}:
           {example.types.map((type, i) => {
             if (i === example.types.length - 1) {
@@ -282,14 +312,14 @@ export default class SchemaSection extends React.Component<{}, State> {
         <style jsx={true}>{`
 
           .code {
-            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60;
+            @p: .br2, .pv4, .ph6, .mh4, .bgBlack07, .black60, .f14;
           }
 
           .text {
-            @p: .f20, .fw3;
-            max-width: 450px;
+            @p: .f16, .fw3;
+            max-width: 550px;
+            line-height: 2;
           }
-
       `}</style>
         A <span className='code'>{type.name}</span> has {type.fields.length} fields:
         {type.fields.map((field, i) => {

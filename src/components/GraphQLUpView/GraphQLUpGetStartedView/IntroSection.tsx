@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router'
 
 interface Props {
 }
@@ -19,11 +20,13 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .subtitle {
-            @p: .fw3, .f16, .black80;
+            @p: .fw4, .f16, .black80;
           }
 
         `}</style>
-        <img src={require('../../../assets/graphics/graphqlup/graphql-up_light.svg')}/>
+        <Link to='/graphql-up/'>
+          <img src={require('../../../assets/graphics/graphqlup/graphql-up_light.svg')}/>
+        </Link>
         <div className='pl38'>
           <div className='title'>graphql-up is the fastest way to get a free & ready-to-use GraphQL API.</div>
           <div className='subtitle'>
