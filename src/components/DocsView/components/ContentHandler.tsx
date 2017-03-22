@@ -85,10 +85,10 @@ class ContentHandler extends React.Component<Props, State> {
     }
 
     // rewrite url if it doesn't already match item path
-    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
+    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
     // let currentPath = this.props.location.pathname
     // if (contentUrl !== currentPath) {
-    //   this.props.router.push(contentUrl)
+    //   this.props.router.push(contentUrl + '/')
     // }
   }
 
