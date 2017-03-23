@@ -1,6 +1,6 @@
 #### Get your GraphQL endpoint
 
-As a very first step, you need to obtain a GraphQL endpoint so that you can connect to your own backend from the example application. 
+Next, you need to obtain a GraphQL endpoint so that you can connect to your own backend from the example application. 
 
 Using the [Graphcool CLI](https://www.npmjs.com/package/graphcool), you simply provide a data model and the GraphQL API will be generated for you. We already included the required [schema](https://github.com/graphcool-examples/angular-apollo-todo-example/blob/master/todo.schema) in the GitHub repo, here is what it looks like:
 
@@ -11,11 +11,9 @@ type Todo {
 }
 ```
 
-All you have to do is download or clone the repository and provide this schema as an input argument to `graphcool create` in a terminal:
+All you have to do now is provide this schema as an input argument to `graphcool create` in a terminal:
 
 ```sh
-git clone https://github.com/graphcool-examples/angular-apollo-todo-example/tree/master
-cd react angular-apollo-todo-example
 graphcool create todo.schema 
 ```
 

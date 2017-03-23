@@ -1,12 +1,12 @@
 #### Connect the example project with the GraphQL server
 
-Next, you have to tell Relay which GraphQL backend it should connect to. That is where we have to use the endpoint we generated in the first step.
+You now have to tell Relay which GraphQL backend it should connect to. That is where we have to use the endpoint we generated in the previous step.
 
 Open `./src/app.js` and provide the endpoint as an argument to the call where the `Relay.DefaultNetworkLayer` is being created:
 
 ```js
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer('https://api.graph.cool/relay/v1/__PROJECT_ID__')
+  new Relay.DefaultNetworkLayer('__RELAY_API_ENDPOINT__')
 );
 ```
 
@@ -15,7 +15,7 @@ Since Relay verifies your GraphQL queries and mutations at build-time, we also n
 ```
 "graphql": {
   "request": {
-    "url": "https://api.graph.cool/relay/v1/__YOUR_PROJECT_ID__/"
+    "url": "__RELAY_API_ENDPOINT__"
   }
 },
 ```
