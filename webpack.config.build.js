@@ -45,6 +45,9 @@ module.exports = {
         'file-loader',
         'image-webpack-loader',
       ],
+    }, {
+      test: /\.md$/,
+      loader: 'raw-loader',
     }],
   },
   plugins: [

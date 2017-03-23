@@ -111,8 +111,18 @@ export default class ExampleContent extends React.Component<Props,State> {
               </CopyToClipboard>
             </div>
           </header>
-          <ExampleStep />
-          <ExampleStep />
+          <ExampleStep
+            markdownFile={require('./steps/react-apollo/react-apollo-1.md')}
+            stepIndex={1}
+          />
+          <ExampleStep
+            markdownFile={require('./steps/react-apollo/react-apollo-2.md')}
+            stepIndex={2}
+          />
+          <ExampleStep
+            markdownFile={require('./steps/react-apollo/react-apollo-3.md')}
+            stepIndex={3}
+          />
         </div>
       </article>
     )

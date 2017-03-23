@@ -1,7 +1,26 @@
 import * as React from 'react'
+import Markdown from '../Content/Markdown'
+import { Parser } from 'commonmark'
+import {Item} from '../../../../types/types'
 
-export default class ExampleStep extends React.Component<{}, {}> {
+interface Props {
+  markdownFile: string
+  stepIndex: number
+}
+
+export default class ExampleStep extends React.Component<Props, {}> {
   render() {
+
+    const md = this.props.markdownFile
+    const ast = new Parser().parse(md)
+
+    const item = {
+      id: 'asd',
+      layout: 'EXAMPLE',
+      title: 'Step 1',
+      shortTitle: 'test'
+    } as Item
+
     return (
       <section className='root'>
         <style jsx={true}>{`
@@ -45,15 +64,16 @@ export default class ExampleStep extends React.Component<{}, {}> {
 
         `}</style>
         <div className='counterContainer'>
-          <span className='counter'>Step 1</span>
+          <span className='counter'>Step {this.props.stepIndex}</span>
         </div>
         <div className='contentContainer'>
-          <h2 className='title'>Set up your Backend</h2>
-          <p className='content'>
-            I have hinted that I would often jerk poor Queequeg from between the whale and the ship —
-            where he would occasionally fall, from the incessant rolling and swaying of both.
-            But this was not the only jamming jeopardy he was exposed to.
-          </p>
+          <Markdown
+            ast={ast}
+            layout='EXAMPLE'
+            item={item}
+            onChangeHeadings={() => console.log('')}
+            loading={false}
+          />
         </div>
       </section>
     )
