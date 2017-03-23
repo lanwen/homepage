@@ -306,9 +306,15 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   updateHeadings() {
-    const headings = Object.keys(this.headings).map(id => this.headings[id])
-    this.props.onChangeHeadings(headings)
-    this.headings = {}
+    if (this.headings) {
+      const headings = Object.keys(this.headings).map(id => {
+        console.log('MAP:', id, this.headings[id])
+        return this.headings[id] || {title: '', id: ''}
+      })
+      console.log('headings: ', headings)
+      this.props.onChangeHeadings(headings)
+      this.headings = {}
+    }
   }
 
   render() {
@@ -366,8 +372,8 @@ export default class Markdown extends React.Component<Props, {}> {
         }[props.language]
 
         if (window.innerWidth > breakpoints.p650 &&
-            language === 'graphql' &&
-            dslValid(props.literal.trim())) {
+          language === 'graphql' &&
+          dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
@@ -534,10 +540,10 @@ export default class Markdown extends React.Component<Props, {}> {
       >
         <div className='markdown-container'>
           {this.props.loading ? (
-            <LoadingArticle />
-          ) : (
-            renderer.render(this.props.ast)
-          )}
+              <LoadingArticle />
+            ) : (
+              renderer.render(this.props.ast)
+            )}
         </div>
       </Container>
     )

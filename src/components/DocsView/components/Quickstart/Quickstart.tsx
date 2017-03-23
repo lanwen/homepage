@@ -10,7 +10,7 @@ import { QuickExample } from '../../../../types/types'
 import { breakpoints } from '../../../../utils/constants'
 import LogoBar from '../../../HomeView/LogoBar'
 import styled from 'styled-components'
-import ExampleContent from './ExampleContent';
+import ExampleContent from './ExampleContent'
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
@@ -82,8 +82,6 @@ export default class Quickstart extends React.Component<Props, State> {
     const {selectedFrontendTechnology, selectedClientTechnology, selectedExample} = this.state
     const currentStep: Step = this.getCurrentStep()
 
-    console.log(this.state)
-
     const stepIndicator: JSX.Element = (
       <StepIndicator
         currentStep={currentStep}
@@ -117,12 +115,12 @@ export default class Quickstart extends React.Component<Props, State> {
                   key={technology.title}
                   className={cx($p.ph25)}
                   technology={technology}
+                  selectable={true}
                   onClick={() => this.selectFrontendTechnology(technology, index)}
                 />)
               }
             </div>
           </RootContainer>
-          <ExampleContent />
         </Root>
       )
     } else if (currentStep === 'GRAPHQL_CLIENT') {
@@ -168,6 +166,7 @@ export default class Quickstart extends React.Component<Props, State> {
                     key={technology.title}
                     className={cx($p.ph25)}
                     technology={technology}
+                    selectable={true}
                     onClick={() => this.selectClientTechnology(technology, index)}
                   />)
                 }
@@ -254,7 +253,13 @@ export default class Quickstart extends React.Component<Props, State> {
               </div>
             </div>
           </RootContainer>
-          <ExampleContent />
+          {this.state.selectedExample &&
+            <ExampleContent
+              frontendTechnologyId={selectedFrontendTechnology.id}
+              clientTechnologyId={selectedClientTechnology.id}
+              example={selectedExample}
+            />
+          }
         </Root>
       )
     }
@@ -306,7 +311,6 @@ export default class Quickstart extends React.Component<Props, State> {
   }
 
   private selectClientTechnology = (technology: TechnologyData, index: number = 0) => {
-    console.log(technology)
     const selectedClientTechnology = this.setSelected(technology)
 
     const key = this.state.selectedFrontendTechnology.id + '-' + selectedClientTechnology.id

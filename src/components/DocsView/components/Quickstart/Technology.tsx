@@ -36,6 +36,7 @@ interface Props {
   onClick?: (technology: TechnologyData) => void
   className?: string
   isPopular?: boolean
+  selectable?: boolean
 }
 
 const Technology = (props: Props) => {
@@ -43,15 +44,15 @@ const Technology = (props: Props) => {
   const {technology: {
     title, logoName, logoColor, logoWidth, logoHeight, backgroundColor, isDisabled, isPopular,
   }} = props
-  const {technology, onClick, className} = props
+  const {technology, selectable, onClick, className} = props
 
   return (
     <AnimatingOpacityView
       style={{
         opacity: isDisabled ? 0.25 : 1,
-        cursor: 'default',
+        cursor: selectable ? 'pointer' : 'default',
       }}
-      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}
+      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, className)}
       onClick={() => onClick(technology)}
     >
     <Circle

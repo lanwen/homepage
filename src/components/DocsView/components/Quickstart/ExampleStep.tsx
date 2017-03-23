@@ -14,12 +14,7 @@ export default class ExampleStep extends React.Component<Props, {}> {
     const md = this.props.markdownFile
     const ast = new Parser().parse(md)
 
-    const item = {
-      id: 'asd',
-      layout: 'EXAMPLE',
-      title: 'Step 1',
-      shortTitle: 'test'
-    } as Item
+    const item = this.fakeItem()
 
     return (
       <section className='root'>
@@ -77,5 +72,28 @@ export default class ExampleStep extends React.Component<Props, {}> {
         </div>
       </section>
     )
+  }
+
+  private fakeItem = (): Item => {
+    return {
+      id: '',
+      body: '',
+      alias: '',
+      title: '',
+      beta: false,
+      shorttitle: '',
+      description: '',
+      path: '',
+      preview: '',
+      lastModified: '',
+      sourceFilePath: '',
+      relatedMoreTitle: '',
+      relatedMoreDescription: '',
+      simpleRelayTwin: '',
+      layout: 'EXAMPLE',
+      tags: [],
+      relatedMore: [],
+      relatedFurther: [],
+    } as Item
   }
 }
