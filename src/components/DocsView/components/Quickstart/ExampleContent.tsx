@@ -70,7 +70,6 @@ export default class ExampleContent extends React.Component<Props,State> {
     const exampleName = `${frontendTechnologyId}-${clientTechnologyId}-${lowercaseExampleType}`
     console.log(exampleName)
     const markdownPaths = this.markdownPaths[exampleName]
-    console.log(markdownPaths)
 
     return (
       <article className='exampleContent'>
