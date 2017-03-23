@@ -68,6 +68,7 @@ export default class ExampleStep extends React.Component<Props, {}> {
             item={item}
             onChangeHeadings={() => console.log('')}
             loading={false}
+            markdownConfig={{displayLineNumbers: false, displayLinkOnHeadings: false, lineWrapping: false,}}
           />
         </div>
       </section>

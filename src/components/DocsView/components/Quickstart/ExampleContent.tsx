@@ -68,7 +68,6 @@ export default class ExampleContent extends React.Component<Props,State> {
     const {frontendTechnologyId, clientTechnologyId, example} = this.props
     const lowercaseExampleType = example.type.toLowerCase()
     const exampleName = `${frontendTechnologyId}-${clientTechnologyId}-${lowercaseExampleType}`
-    console.log(exampleName)
     const markdownPaths = this.markdownPaths[exampleName]
 
     return (
