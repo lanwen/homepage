@@ -20,6 +20,13 @@ export interface Item {
   relatedMore: Item[]
   relatedFurther: Item[]
   publicationDate?: Date
+  subitems: Subitem[]
+}
+
+export interface Subitem {
+  id: string
+  body: string
+  alias: string
 }
 
 export interface NestedItem extends Item {
