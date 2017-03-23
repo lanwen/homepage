@@ -270,7 +270,6 @@ export default class Quickstart extends React.Component<Props, State> {
 
   private selectFrontendTechnology = (technology: TechnologyData, index: number = 0) => {
     const selectedFrontendTechnology = this.setSelected(technology)
-
     this.setState(
       {
         frontendTechnologyOffset: index * 146,
@@ -279,7 +278,7 @@ export default class Quickstart extends React.Component<Props, State> {
         setTimeout(
           () => {
 
-            let newState: any = {
+            const newState: any = {
               selectedFrontendTechnology,
               highlightedComponentIndex: null,
             }
@@ -291,6 +290,10 @@ export default class Quickstart extends React.Component<Props, State> {
               const key = selectedFrontendTechnology.id + '-' + clientTechnologies[0].id
               newState.quickExamples = examples[key]
               newState.highlightedComponentIndex = 0
+
+              if (newState.quickExamples.length === 1) {
+                newState.selectedExample = newState.quickExamples[0]
+              }
             }
 
             this.setState(newState as State, () => {
@@ -323,10 +326,16 @@ export default class Quickstart extends React.Component<Props, State> {
       () => {
         setTimeout(
           () => {
-            let newState: any = {
+            const shouldSelectExample = displayExamples.length === 1
+            const newState: any = shouldSelectExample ? {
               selectedClientTechnology,
+                selectedExample: displayExamples[0],
               quickExamples: displayExamples,
               highlightedComponentIndex: null,
+            } : {
+                selectedClientTechnology,
+                quickExamples: displayExamples,
+                highlightedComponentIndex: null,
             }
             this.setState(newState as State, () => {
               setTimeout(
