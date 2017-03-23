@@ -107,7 +107,12 @@ class ContentHandler extends React.Component<Props, State> {
     const aliases = extractAliases(elements)
     const items: Item[] = this.props.data.allItems.sort((a, b) => aliases.indexOf(a.alias) - aliases.indexOf(b.alias))
       || []
-    const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
+    const parser = new Parser()
+    const ast = parser.parse(decodeURIComponent(atob(this.props.data.Item.body)))
+
+    const subitemAsts = item.subitems.map(subitem =>
+      parser.parse(decodeURIComponent(atob(subitem.body))),
+    )
 
     let imageMeta: Meta[] = []
 
@@ -249,6 +254,15 @@ class ContentHandler extends React.Component<Props, State> {
                       onChangeHeadings={this.handleChangeHeadings}
                       loading={this.props.data.loading}
                     />
+                    {subitemAsts.map(subitemAst => (
+                      <Markdown
+                        ast={subitemAst}
+                        layout={item.layout}
+                        item={item}
+                        onChangeHeadings={this.handleChangeHeadings}
+                        loading={this.props.data.loading}
+                      />
+                    ))}
                     <ContentPagination items={items} currentAlias={item.alias}/>
                     <div className='content-footer'>
                       <Feedback item={item}/>
@@ -338,6 +352,11 @@ const getItemQuery = gql`query getItem($alias: String, $aliases: [String!]!) {
     }
     relatedMoreTitle
     relatedMoreDescription
+    subitems {
+      id
+      alias
+      body
+    }
   }
   allItems(filter: { alias_in: $aliases }) {
     id
