@@ -22,41 +22,49 @@ export default class ExampleContent extends React.Component<Props,State> {
 
   private markdownPaths = {
     'react-apollo-instagram': [
+      require('./steps/react-apollo-instagram/react-apollo-instagram-0.md'),
       require('./steps/react-apollo-instagram/react-apollo-instagram-1.md'),
       require('./steps/react-apollo-instagram/react-apollo-instagram-2.md'),
       require('./steps/react-apollo-instagram/react-apollo-instagram-3.md'),
     ],
     'react-apollo-todoapp': [
+      require('./steps/react-apollo-todoapp/react-apollo-todoapp-0.md'),
       require('./steps/react-apollo-todoapp/react-apollo-todoapp-1.md'),
       require('./steps/react-apollo-todoapp/react-apollo-todoapp-2.md'),
       require('./steps/react-apollo-todoapp/react-apollo-todoapp-3.md'),
     ],
     'react-relay-instagram': [
+      require('./steps/react-relay-instagram/react-relay-instagram-0.md'),
       require('./steps/react-relay-instagram/react-relay-instagram-1.md'),
       require('./steps/react-relay-instagram/react-relay-instagram-2.md'),
       require('./steps/react-relay-instagram/react-relay-instagram-3.md'),
     ],
     'react-relay-todoapp': [
+      require('./steps/react-relay-todoapp/react-relay-todoapp-0.md'),
       require('./steps/react-relay-todoapp/react-relay-todoapp-1.md'),
       require('./steps/react-relay-todoapp/react-relay-todoapp-2.md'),
       require('./steps/react-relay-todoapp/react-relay-todoapp-3.md'),
     ],
     'rn-apollo-instagram': [
+      require('./steps/rn-apollo-instagram/rn-apollo-instagram-0.md'),
       require('./steps/rn-apollo-instagram/rn-apollo-instagram-1.md'),
       require('./steps/rn-apollo-instagram/rn-apollo-instagram-2.md'),
       require('./steps/rn-apollo-instagram/rn-apollo-instagram-3.md'),
     ],
     'angular-apollo-instagram': [
+      require('./steps/angular-apollo-instagram/angular-apollo-instagram-0.md'),
       require('./steps/angular-apollo-instagram/angular-apollo-instagram-1.md'),
       require('./steps/angular-apollo-instagram/angular-apollo-instagram-2.md'),
       require('./steps/angular-apollo-instagram/angular-apollo-instagram-3.md'),
     ],
     'angular-apollo-todoapp': [
+      require('./steps/angular-apollo-todoapp/angular-apollo-todoapp-0.md'),
       require('./steps/angular-apollo-todoapp/angular-apollo-todoapp-1.md'),
       require('./steps/angular-apollo-todoapp/angular-apollo-todoapp-2.md'),
       require('./steps/angular-apollo-todoapp/angular-apollo-todoapp-3.md'),
     ],
     'vue-apollo-instagram': [
+      require('./steps/vue-apollo-instagram/vue-apollo-instagram-0.md'),
       require('./steps/vue-apollo-instagram/vue-apollo-instagram-1.md'),
       require('./steps/vue-apollo-instagram/vue-apollo-instagram-2.md'),
       require('./steps/vue-apollo-instagram/vue-apollo-instagram-3.md'),
@@ -132,38 +140,38 @@ export default class ExampleContent extends React.Component<Props,State> {
               }
             `}</style>
         <div className='exampleContentContainer'>
-          <header className='exampleContentHeader'>
-            <div className='pa25'>
-              <h2 className='title'>First, you need to download the example.</h2>
-              <p className='content'>
-                We manage all of our examples on GitHub. Clone it or download it:<br />
-                <a href={this.props.example.link}>
-                  {this.props.example.link}
-                </a>
-              </p>
-            </div>
-            <div className='cloneExampleProject'>
-              <code>git clone {this.props.example.link}.git</code>
-              <CopyToClipboard text={`git clone ${this.props.example.link}.git`} onCopy={this.onCopy}>
-                <div
-                  className='copy'
-                >
-                  {this.state.copied &&
-                  <div className='copyIndicator'>
-                    Copied
-                  </div>
-                  }
-                  <Icon
-                    className=''
-                    width={38}
-                    height={38}
-                    color={$v.darkerBlue}
-                    src={require('graphcool-styles/icons/fill/copy.svg')}
-                  />
-                </div>
-              </CopyToClipboard>
-            </div>
-          </header>
+          {/*<header className='exampleContentHeader'>*/}
+            {/*<div className='pa25'>*/}
+              {/*<h2 className='title'>Grab the starter code from GitHub 🤓</h2>*/}
+              {/*<p className='content'>*/}
+                {/*We manage all of our examples on GitHub. Clone it or download it:<br />*/}
+                {/*<a href={this.props.example.link}>*/}
+                  {/*{this.props.example.link}*/}
+                {/*</a>*/}
+              {/*</p>*/}
+            {/*</div>*/}
+            {/*<div className='cloneExampleProject'>*/}
+              {/*<code>git clone {this.props.example.link}.git</code>*/}
+              {/*<CopyToClipboard text={`git clone ${this.props.example.link}.git`} onCopy={this.onCopy}>*/}
+                {/*<div*/}
+                  {/*className='copy'*/}
+                {/*>*/}
+                  {/*{this.state.copied &&*/}
+                  {/*<div className='copyIndicator'>*/}
+                    {/*Copied*/}
+                  {/*</div>*/}
+                  {/*}*/}
+                  {/*<Icon*/}
+                    {/*className=''*/}
+                    {/*width={38}*/}
+                    {/*height={38}*/}
+                    {/*color={$v.darkerBlue}*/}
+                    {/*src={require('graphcool-styles/icons/fill/copy.svg')}*/}
+                  {/*/>*/}
+                {/*</div>*/}
+              {/*</CopyToClipboard>*/}
+            {/*</div>*/}
+          {/*</header>*/}
           {markdownPaths.map((markdownPath, index) => (
             <ExampleStep
               key={index}
