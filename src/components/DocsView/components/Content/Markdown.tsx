@@ -22,12 +22,18 @@ interface ImageData {
   width: number | undefined
 }
 
+interface MarkdownConfiguration {
+  displayLinkOnHeadings?: boolean
+  displayLineNumbers?: boolean
+}
+
 interface Props {
   ast: Node
   layout: Layout
   item: Item
   onChangeHeadings: (headings: Heading[]) => void
   loading: boolean
+  markdownConfig?: MarkdownConfiguration
 }
 
 const Container = styled.div`

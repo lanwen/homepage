@@ -83,7 +83,7 @@ export default class ExampleContent extends React.Component<Props,State> {
             <div className='pa25'>
               <h2 className='title'>First, you need to download the example.</h2>
               <p className='content'>
-                We have all in the github repository. Clone it or download it:<br />
+                We manage all of our examples on GitHub. Clone it or download it:<br />
                 <a href='https://github.com/graphcool-examples/react-native-apollo-instagram-example'>
                   github.com/graphcool-examples/react-native-apollo-instagram-example
                 </a>
@@ -112,15 +112,15 @@ export default class ExampleContent extends React.Component<Props,State> {
             </div>
           </header>
           <ExampleStep
-            markdownFile={require('./steps/react-apollo/react-apollo-1.md')}
+            markdownFile={require('./steps/react-apollo-instagram/react-apollo-instagram-1.md')}
             stepIndex={1}
           />
           <ExampleStep
-            markdownFile={require('./steps/react-apollo/react-apollo-2.md')}
+            markdownFile={require('./steps/react-apollo-instagram/react-apollo-instagram-2.md')}
             stepIndex={2}
           />
           <ExampleStep
-            markdownFile={require('./steps/react-apollo/react-apollo-3.md')}
+            markdownFile={require('./steps/react-apollo-instagram/react-apollo-instagram-3.md')}
             stepIndex={3}
           />
         </div>

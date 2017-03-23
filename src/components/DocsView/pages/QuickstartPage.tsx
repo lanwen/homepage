@@ -5,7 +5,7 @@ import { getItemsByLayout } from '../fragments/getItemsByLayout'
 import * as Helmet from 'react-helmet'
 import Quickstart from '../components/Quickstart/Quickstart'
 import * as cx from 'classnames'
-import { $p, $v } from 'graphcool-styles'
+import { $p } from 'graphcool-styles'
 import styled from 'styled-components'
 import Heading from './Overview/Heading'
 
