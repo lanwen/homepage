@@ -32,9 +32,12 @@ interface Props {
   ast: Node
   layout: Layout
   item: Item
-  onChangeHeadings: (headings: Heading[]) => void
   loading: boolean
   markdownConfig?: MarkdownConfiguration
+  // only needed for scrollspy
+  onChangeHeadings?: (headingsId: number, headings: Heading[]) => void
+  removeHeadings?: (headingsId: number) => void
+  headingsId?: number
 }
 
 const Container = styled.div`
@@ -287,6 +290,12 @@ export default class Markdown extends React.Component<Props, {}> {
     this.updateHeadings()
   }
 
+  componentWillUnmount() {
+    if (typeof this.props.removeHeadings === 'function') {
+      this.props.removeHeadings(this.props.headingsId)
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.item !== nextProps.item) {
       this.updateHeadings()
@@ -307,11 +316,11 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   updateHeadings() {
-    if (this.headings) {
+    if (typeof this.props.onChangeHeadings === 'function' && this.headings) {
       const headings = Object.keys(this.headings).map(id => {
         return this.headings[id] || {title: '', id: ''}
       })
-      this.props.onChangeHeadings(headings)
+      this.props.onChangeHeadings(this.props.headingsId, headings)
       this.headings = {}
     }
   }

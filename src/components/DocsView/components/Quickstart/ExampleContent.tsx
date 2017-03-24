@@ -1,7 +1,5 @@
 import * as React from 'react'
 import ExampleStep from './ExampleStep'
-import * as CopyToClipboard from 'react-copy-to-clipboard'
-import { $v, Icon } from 'graphcool-styles'
 import {QuickExample} from '../../../../types/types'
 
 interface Props {
@@ -182,11 +180,6 @@ export default class ExampleContent extends React.Component<Props,State> {
         </div>
       </article>
     )
-  }
-
-  private onCopy = () => {
-    this.setState({ copied: true } as State)
-    setTimeout(() => this.setState({ copied: false } as State), 700)
   }
 
 }
