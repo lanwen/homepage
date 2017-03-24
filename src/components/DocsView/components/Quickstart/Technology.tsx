@@ -50,10 +50,15 @@ const Technology = (props: Props) => {
     <AnimatingOpacityView
       style={{
         opacity: isDisabled ? 0.25 : 1,
-        cursor: selectable ? 'pointer' : 'default',
+        cursor: isDisabled ? 'not-allowed' : selectable ? 'pointer' : 'default',
+        pointerEvents: isDisabled ? 'none' : 'all',
       }}
       className={cx($p.flex, $p.flexColumn, $p.itemsCenter, className)}
-      onClick={() => onClick(technology)}
+      onClick={() => {
+        if (typeof onClick === 'function') {
+          onClick(technology)
+        }
+      }}
     >
     <Circle
       className={cx($p.br100, $p.flex, $p.justifyCenter, $p.itemsCenter, $p.relative)}

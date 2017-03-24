@@ -19,9 +19,11 @@ export const elements: ReferenceSidebarElement[] = [{
     }, {
       alias: 'teizeit5se', // fields
     }, {
-      alias: 'goh5uthoc1',
+      alias: 'goh5uthoc1', // relations
     }, {
-      alias: 'uhieg2shio',
+      alias: 'uhieg2shio', // system artifacts
+    }, {
+      alias: 'oe3raifamo', // naming conventions
     }],
   }, {
     alias: 'seimeish6e', // integration

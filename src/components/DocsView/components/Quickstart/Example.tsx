@@ -49,7 +49,7 @@ export default class Example extends React.Component<Props, {}> {
       >
         <style jsx={true}>{`
           .example {
-            @p: .bgNone, .pa0, .flex, .flexColumn, .itemsCenter, .mr60, .relative;
+            @p: .bgNone, .pa0, .flex, .flexColumn, .itemsCenter, .mr60, .relative, .pointer;
             transition: opacity .2s linear, filter .2s linear;
 
             &:last-child {
