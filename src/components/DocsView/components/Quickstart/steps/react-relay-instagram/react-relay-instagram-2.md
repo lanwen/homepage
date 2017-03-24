@@ -1,4 +1,4 @@
-#### Connect the example project with the GraphQL server
+#### Connect the example project with the GraphQL server 🛰
 
 You now have to tell Relay which GraphQL backend it should connect to. That is where we have to use the endpoint we generated in the previous step.
 

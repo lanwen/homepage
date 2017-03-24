@@ -1,4 +1,4 @@
-#### Get your GraphQL endpoint
+#### Get your GraphQL endpoint ⚙
 
 Next, you need to obtain a GraphQL endpoint so that you can connect to your own backend from the example application. 
 
