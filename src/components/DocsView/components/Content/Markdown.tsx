@@ -22,12 +22,22 @@ interface ImageData {
   width: number | undefined
 }
 
+interface MarkdownConfiguration {
+  displayLinkOnHeadings: boolean
+  displayLineNumbers: boolean
+  lineWrapping: boolean
+}
+
 interface Props {
   ast: Node
   layout: Layout
   item: Item
-  onChangeHeadings: (headings: Heading[]) => void
   loading: boolean
+  markdownConfig?: MarkdownConfiguration
+  // only needed for scrollspy
+  onChangeHeadings?: (headingsId: number, headings: Heading[]) => void
+  removeHeadings?: (headingsId: number) => void
+  headingsId?: number
 }
 
 const Container = styled.div`
@@ -280,6 +290,12 @@ export default class Markdown extends React.Component<Props, {}> {
     this.updateHeadings()
   }
 
+  componentWillUnmount() {
+    if (typeof this.props.removeHeadings === 'function') {
+      this.props.removeHeadings(this.props.headingsId)
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.item !== nextProps.item) {
       this.updateHeadings()
@@ -300,13 +316,18 @@ export default class Markdown extends React.Component<Props, {}> {
   }
 
   updateHeadings() {
-    const headings = Object.keys(this.headings).map(id => this.headings[id])
-    this.props.onChangeHeadings(headings)
-    this.headings = {}
+    if (typeof this.props.onChangeHeadings === 'function' && this.headings) {
+      const headings = Object.keys(this.headings).map(id => {
+        return this.headings[id] || {title: '', id: ''}
+      })
+      this.props.onChangeHeadings(this.props.headingsId, headings)
+      this.headings = {}
+    }
   }
 
   render() {
-    // const self = this
+    const { markdownConfig } = this.props
+
     const renderers = {
       Paragraph: (props) => {
         return (
@@ -344,6 +365,11 @@ export default class Markdown extends React.Component<Props, {}> {
         if (props.level < 3) {
           this.setHeading(id, {title, id})
         }
+
+        if (markdownConfig && !markdownConfig.displayLinkOnHeadings) {
+          return React.createElement('h' + props.level, getCoreProps(newProps), props.children)
+        }
+
         return (
           <HeadingLink href={`#${id}`} className={cx($p.noUnderline, 'no-hover')}>
             {React.createElement('h' + props.level, getCoreProps(newProps), props.children)}
@@ -360,8 +386,8 @@ export default class Markdown extends React.Component<Props, {}> {
         }[props.language]
 
         if (window.innerWidth > breakpoints.p650 &&
-            language === 'graphql' &&
-            dslValid(props.literal.trim())) {
+          language === 'graphql' &&
+          dslValid(props.literal.trim())) {
           return (
             <MarkdownGraphiQL literal={props.literal.trim()}/>
           )
@@ -371,14 +397,21 @@ export default class Markdown extends React.Component<Props, {}> {
           dslValid(props.literal.trim())
         ) {
           return (
-            <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, 'docs-codemirror')}>
+            <CodeContainer
+              className={cx(
+                $p.bgBlack02,
+                $p.mb38,
+                $p.pv10,
+                'docs-codemirror',
+                (markdownConfig && !markdownConfig.displayLineNumbers) && $p.ph20,
+            )}>
               <CodeMirror
                 value={getGraphQLCode(props.literal.trim())}
                 options={{
-                  lineNumbers: true,
+                  lineNumbers: markdownConfig ? markdownConfig.displayLineNumbers : true,
                   mode: language,
                   readOnly: true,
-                  lineWrapping: true,
+                  lineWrapping: markdownConfig ? markdownConfig.lineWrapping : true,
                   theme: 'mdn-like',
                 }}
               />
@@ -386,14 +419,22 @@ export default class Markdown extends React.Component<Props, {}> {
           )
         }
         return (
-          <CodeContainer className={cx($p.bgBlack02, $p.mb38, $p.pv10, $p.bbox, 'docs-codemirror')}>
+          <CodeContainer
+            className={cx(
+              $p.bgBlack02,
+              $p.mb38,
+              $p.pv10,
+              $p.bbox,
+              'docs-codemirror',
+              (markdownConfig && !markdownConfig.displayLineNumbers) && $p.ph20,
+          )}>
             <CodeMirror
               value={props.literal.trim()}
               options={{
-                lineNumbers: true,
+                lineNumbers: markdownConfig ? markdownConfig.displayLineNumbers : true,
                 mode: language,
                 readOnly: true,
-                lineWrapping: true,
+                lineWrapping: markdownConfig ? markdownConfig.lineWrapping : true,
                 theme: 'mdn-like',
               }}
             />
@@ -528,10 +569,10 @@ export default class Markdown extends React.Component<Props, {}> {
       >
         <div className='markdown-container'>
           {this.props.loading ? (
-            <LoadingArticle />
-          ) : (
-            renderer.render(this.props.ast)
-          )}
+              <LoadingArticle />
+            ) : (
+              renderer.render(this.props.ast)
+            )}
         </div>
       </Container>
     )

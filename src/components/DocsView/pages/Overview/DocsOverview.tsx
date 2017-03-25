@@ -109,7 +109,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
               download an example project and start building.`}
             link='/docs/quickstart/'
           />
-          <Quickstart className={cx($p.mt38, $p.ml60)} />
+          <Quickstart className={cx($p.mt38, $p.mb60, $p.bbox)} />
         </PaddedContainer>
 
         {/* Tutorials & Guides - Heading */}

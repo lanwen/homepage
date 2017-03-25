@@ -15,8 +15,22 @@ const docsOverview = {
   },
 }
 
+function forceTrailingSlash(nextState, replace) {
+  const path = nextState.location.pathname
+  if (path.slice(-1) !== '/') {
+    replace({
+      ...nextState.location,
+      pathname: path + '/',
+    })
+  }
+}
+
 export default {
   component: RootView,
+  onEnter: forceTrailingSlash,
+  onChange: (_, nextState, replace) => {
+    forceTrailingSlash(nextState, replace)
+  },
   childRoutes: [
     {
       path: '/',

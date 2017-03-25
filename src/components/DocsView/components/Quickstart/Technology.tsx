@@ -4,16 +4,10 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import {TechnologyData} from './data/technologies'
 
-const Hover = `
-   opacity: 0.5;
-`
-
 const AnimatingOpacityView = styled.div`
   box-sizing: border-box;
   width: 146px;
   transition: opacity 0.5s;
-  opacity: 1;
-  ${props => props.decreaseOpacity && Hover}
 `
 
 const Circle = styled.div`
@@ -42,9 +36,7 @@ interface Props {
   onClick?: (technology: TechnologyData) => void
   className?: string
   isPopular?: boolean
-  decreaseOpacity: boolean
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
+  selectable?: boolean
 }
 
 const Technology = (props: Props) => {
@@ -52,25 +44,19 @@ const Technology = (props: Props) => {
   const {technology: {
     title, logoName, logoColor, logoWidth, logoHeight, backgroundColor, isDisabled, isPopular,
   }} = props
-  const {technology, onClick, className} = props
+  const {technology, selectable, onClick, className} = props
 
   return (
     <AnimatingOpacityView
       style={{
         opacity: isDisabled ? 0.25 : 1,
-        cursor: 'default',
+        cursor: isDisabled ? 'not-allowed' : selectable ? 'pointer' : 'default',
+        pointerEvents: isDisabled ? 'none' : 'all',
       }}
-      decreaseOpacity={props.decreaseOpacity}
-      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, $p.pointer, className)}
-      onClick={() => onClick(technology)}
-      onMouseEnter={() => {
-        if (props.onMouseEnter) {
-          props.onMouseEnter()
-        }
-      }}
-      onMouseLeave={() => {
-        if (props.onMouseLeave) {
-          props.onMouseLeave()
+      className={cx($p.flex, $p.flexColumn, $p.itemsCenter, className)}
+      onClick={() => {
+        if (typeof onClick === 'function') {
+          onClick(technology)
         }
       }}
     >
@@ -87,7 +73,7 @@ const Technology = (props: Props) => {
         <Label>Popular</Label>
       }
     </Circle>
-    <div className={cx($p.flex, $p.black60, $p.f16, $p.fw6, $p.mt25, $p.nowrap)}>
+    <div className={cx($p.flex, $p.black60, $p.f20, $p.fw6, $p.mt25, $p.nowrap)}>
       {title}
     </div>
     </AnimatingOpacityView>

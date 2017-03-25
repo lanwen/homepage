@@ -109,7 +109,7 @@ export default class PlanCols extends React.Component<{}, {}> {
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>15¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>10¢ / 10,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default class PlanCols extends React.Component<{}, {}> {
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>12¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>7¢ / 10,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>
@@ -332,7 +332,7 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>10 GB</div>
+                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>30 GB</div>
                   <div>
                     <Tooltip text={tooltips.DATABASE}>
                       <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Database</div>
@@ -356,14 +356,14 @@ export default class PlanCols extends React.Component<{}, {}> {
                   </Circle24>
                 </div>
                 <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>50,000,000</div>
+                  <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>150,000,000</div>
                   <div className={cx($p.flex)}>
                     <Tooltip text={tooltips.REQUEST}>
                       <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Requests</div>
                     </Tooltip>
                     <div className={cx($p.black60, $p.f14, $p.fw3, $p.pl4)}> / Month</div>
                   </div>
-                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>10¢ / 1,000</div>
+                  <div className={cx($p.black60, $p.f12, $p.fw3, $p.mt10)}>5¢ / 10,000</div>
                   <div className={cx($p.black60, $p.f12, $p.fw3)}>Additional Requests</div>
                 </div>
               </div>

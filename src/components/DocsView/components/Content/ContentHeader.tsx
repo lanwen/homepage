@@ -90,6 +90,24 @@ export default class ContentHeader extends React.Component<Props, {}> {
     const rightPaddingTitle = item.beta ? '50px' : 0
     const timeAgo = new TimeAgo('en-US')
 
+//    const title = (() => {
+//      const backtickMatches = item.title.match(/.*(\`.*\`).*/)
+//      if (backtickMatches && backtickMatches.length > 1) {
+//        const [,...matches] = backtickMatches
+//        let title = item.title as any
+//        for (const match of matches) {
+//          const replacement = (
+//            <span className='code'>match.substring(1, match.length - 1)</span>
+//          )
+//          title = title.replace(match, replacement)
+//        }
+//
+//        return title
+//      } else {
+//        return item.title
+//      }
+//    })()
+
     return (
       <Root>
         {displayIcon && (

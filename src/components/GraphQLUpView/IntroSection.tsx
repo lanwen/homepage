@@ -20,11 +20,11 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .title {
-            @p: .f25, .pt38, .o60, .fw3, .tc;
+            @p: .f25, .pt38, .o80, .fw3, .tc;
           }
 
           .info {
-            @p: .f20, .fw3;
+            @p: .f20, .fw3, .o80;
           }
 
           .video {
@@ -43,7 +43,7 @@ export default class IntroSection extends React.Component<Props, {}> {
           }
 
           .playText {
-            @p: .f20, .fw3, .o60;
+            @p: .f20, .fw4, .o60;
           }
 
         `}</style>
@@ -53,7 +53,7 @@ export default class IntroSection extends React.Component<Props, {}> {
         />
         <div className='title'>Get a ready-to-use GraphQL API for your schema</div>
 
-        <video className='video' autoPlay onClick={this.restartVideo}>
+        <video className='video' playsInline autoPlay onClick={this.restartVideo}>
           <source src='/videos/graphql-up.mov' type='video/mp4' />
         </video>
 
@@ -82,7 +82,6 @@ export default class IntroSection extends React.Component<Props, {}> {
             </div>
           }
         </a>
-
       </section>
     )
   }

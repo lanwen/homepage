@@ -149,7 +149,7 @@ module.exports = (context, cb) => {
   }, function(err, charge) {
     if (err && err.type === 'StripeCardError') {
       setTransactionStatus(transaction.id, "DECLINED")
-      .then(() => cb(e, {}))
+      .then(() => cb(err, {}))
     } else {
       setTransactionStatus(transaction.id, "COMPLETED")
       .then(() => cb(null, 'success'))

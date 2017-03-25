@@ -22,6 +22,7 @@ import ContentPagination from './ContentPagination'
 import {elements} from './ReferenceSidenav/data'
 import {extractAliases} from './ReferenceSidenav/ReferenceSidenav'
 import LoadingArticle from './LoadingArticle'
+import {omit, flatMap} from 'lodash'
 
 interface Props {
   location: any,
@@ -47,7 +48,7 @@ interface Meta {
 }
 
 interface State {
-  headings: Heading[]
+  headings: { [headingsId: number]: Heading[] }
 }
 
 class ContentHandler extends React.Component<Props, State> {
@@ -63,7 +64,7 @@ class ContentHandler extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      headings: [],
+      headings: {},
     }
   }
 
@@ -85,10 +86,10 @@ class ContentHandler extends React.Component<Props, State> {
     }
 
     // rewrite url if it doesn't already match item path
-    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
+    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
     // let currentPath = this.props.location.pathname
     // if (contentUrl !== currentPath) {
-    //   this.props.router.push(contentUrl)
+    //   this.props.router.push(contentUrl + '/')
     // }
   }
 
@@ -100,14 +101,21 @@ class ContentHandler extends React.Component<Props, State> {
     if (this.props.data.loading && !this.props.data.allItems) {
       return <LoadingArticle />
     }
-    const {headings} = this.state
+
+    // merge all objects
+    const headings = flatMap(Object.keys(this.state.headings), id => this.state.headings[id])
 
     const item: Item = this.props.data.Item || this.lastItem
     this.lastItem = item
     const aliases = extractAliases(elements)
     const items: Item[] = this.props.data.allItems.sort((a, b) => aliases.indexOf(a.alias) - aliases.indexOf(b.alias))
       || []
-    const ast = new Parser().parse(decodeURIComponent(atob(this.props.data.Item.body)))
+    const parser = new Parser()
+    const ast = parser.parse(decodeURIComponent(atob(this.props.data.Item.body)))
+
+    const subitemAsts = item.subitems.map(subitem =>
+      parser.parse(decodeURIComponent(atob(subitem.body))),
+    )
 
     let imageMeta: Meta[] = []
 
@@ -247,8 +255,21 @@ class ContentHandler extends React.Component<Props, State> {
                       layout={item.layout}
                       item={item}
                       onChangeHeadings={this.handleChangeHeadings}
+                      removeHeadings={this.handleRemoveHeadings}
                       loading={this.props.data.loading}
+                      headingsId={0}
                     />
+                    {subitemAsts.map((subitemAst, index) => (
+                      <Markdown
+                        ast={subitemAst}
+                        layout={item.layout}
+                        item={item}
+                        onChangeHeadings={this.handleChangeHeadings}
+                        removeHeadings={this.handleRemoveHeadings}
+                        loading={this.props.data.loading}
+                        headingsId={index}
+                      />
+                    ))}
                     <ContentPagination items={items} currentAlias={item.alias}/>
                     <div className='content-footer'>
                       <Feedback item={item}/>
@@ -300,8 +321,21 @@ class ContentHandler extends React.Component<Props, State> {
     }
   }
 
-  private handleChangeHeadings = (headings) => {
-    this.setState({headings})
+  private handleChangeHeadings = (headingsId, headings) => {
+    this.setState(state => ({
+      ...state,
+      headings: {
+        ...state.headings,
+        [headingsId]: headings,
+      },
+    }))
+  }
+
+  private handleRemoveHeadings = (headingsId) => {
+    this.setState(state => ({
+      ...state,
+      headings: omit(state.headings, headingsId),
+    } as State))
   }
 }
 
@@ -338,6 +372,11 @@ const getItemQuery = gql`query getItem($alias: String, $aliases: [String!]!) {
     }
     relatedMoreTitle
     relatedMoreDescription
+    subitems {
+      id
+      alias
+      body
+    }
   }
   allItems(filter: { alias_in: $aliases }) {
     id
