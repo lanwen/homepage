@@ -164,7 +164,7 @@ export default class DocsOverview extends React.Component<{}, {}> {
           <Heading
             layout='COMMUNITY'
             title='Community'
-            text='Come and join thousands of other developers in the Graphcool community. 👋'
+            text='Get in contact, collaborate and take part in making graph.cool the best GraphQL backend.'
             link='https://slack.graph.cool/'
           />
         </PaddedContainer>
