@@ -3,6 +3,7 @@ import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
+import * as MediaQuery from 'react-responsive'
 
 const Root = styled.div`
   padding: ${$v.size25};
@@ -132,7 +133,9 @@ export default class TryOut extends React.Component<Props, {}> {
     return (
       <Root className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
         <div className={cx($g.uppercaseLabel, $p.black20)}>
-          {window.innerWidth > 1100 ? 'Try out example:' : 'Try it out'}
+          <MediaQuery minWidth={1100}>
+            {matches => matches ? 'Try out example' : 'Try it out'}
+          </MediaQuery>
         </div>
         <Steps className={cx($p.flex, $p.itemsCenter)}>
           <Step>
