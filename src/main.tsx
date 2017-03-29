@@ -5,7 +5,7 @@ import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
 import { createStore, combineReducers, applyMiddleware, compose, Reducer } from 'redux'
 import { useScroll } from 'react-router-scroll'
 import { AppContainer } from 'react-hot-loader'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import ApolloClient, { createBatchingNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
 import * as cookiestore from 'cookiestore'
@@ -39,7 +39,11 @@ if (!cookiestore.has('graphcool_last_referral')) {
 }
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
+  networkInterface: createBatchingNetworkInterface({
+    uri: __DOCS_API_ADDR__,
+    batchInterval: 10,
+  }),
+  dataIdFromObject: (o: any) => o.id,
 })
 
 const store = createStore(

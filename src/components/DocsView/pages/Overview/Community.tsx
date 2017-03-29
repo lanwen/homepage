@@ -23,7 +23,7 @@ const Container = styled.div`
 `
 
 interface Props {
-  data: Data
+  data?: Data
 }
 
 interface Data {
