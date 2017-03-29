@@ -77,14 +77,16 @@ const data = [
     url: 'https://twitter.com/nickhudkins/status/845017426177769472',
   },
   {
-    content: 'Just went through the super helpful @graphcool onboarding Can\'t wait to build something now with @GraphQL',
+    content: 'Just went through the super helpful @graphcool ' +
+    'onboarding Can\'t wait to build something now with @GraphQL',
     author: 'Joe Seifi',
     date: '20. Jan',
     profilePicture: 'https://pbs.twimg.com/profile_images/836779186979131392/xfNMbEVF_bigger.jpg',
     url: 'https://twitter.com/joeseifi/status/822331170587164672',
   },
   {
-    content: 'Am getting super productive with @getexponent , @apollographql and @graphcool. Got so much done in a week.',
+    content: 'Am getting super productive with @getexponent , ' +
+    '@apollographql and @graphcool. Got so much done in a week.',
     author: 'Gopi Donthireddy',
     date: '17. Jan',
     profilePicture: 'https://pbs.twimg.com/profile_images/2936249191/e7fb0e4ad08a621efcdc76f3879190c8_bigger.jpeg',
