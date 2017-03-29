@@ -138,7 +138,8 @@ export default class DocsOverview extends React.Component<{}, {}> {
             <MoreItems
               color={'rgb(164, 3, 111)'}
               text='See all Tutorials'
-              link='/docs/tutorials/' />
+              link='/docs/tutorials/'
+            />
           </PaddedContainer>
         </ItemsBackground>
 

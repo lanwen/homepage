@@ -16,15 +16,15 @@ const Button = styled.a`
 export default class OpenConsole extends React.Component<{}, {}> {
   render() {
     return (
-      <div className={cx(
-        $p.flex,
-        $p.flexColumn,
-        $p.justifyCenter,
-        $p.itemsCenter,
-        $p.pt38,
-        $p.pb96,
-        window.innerWidth < breakpoints.p400 && $p.mt96,
-      )}>
+      <div>
+        <style jsx={true}>{`
+          div {
+            @p: .flex, .flexColumn, .justifyCenter, .itemsCenter, .pt38, .pb96;
+            @media (max-width: 400px) {
+              @p: .mt96;
+            }
+          }
+        `}</style>
         <Button
           href='https://console.graph.cool'
           target='_blank'
