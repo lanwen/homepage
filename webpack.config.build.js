@@ -86,7 +86,9 @@ module.exports = {
         },
       }
     }),
-    new OfflinePlugin(),
+    new OfflinePlugin({
+      version: '[hash]',
+    }),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
