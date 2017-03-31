@@ -39,6 +39,7 @@ if (!cookiestore.has('graphcool_last_referral')) {
 }
 
 const client = new ApolloClient({
+  initialState: window.__APOLLO_STATE__,
   networkInterface: createBatchingNetworkInterface({
     uri: __DOCS_API_ADDR__,
     batchInterval: 10,
@@ -50,7 +51,7 @@ const store = createStore(
   combineReducers({
     apollo: client.reducer() as Reducer<any>,
   }),
-  window.__APOLLO_STATE__ || {}, // initial state
+  {}, // initial state
   compose(
     applyMiddleware(client.middleware()),
   ),

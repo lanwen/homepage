@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -30,6 +32,10 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
+      test: /\.js(x?)$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
       loader: 'babel-loader!awesome-typescript-loader',
@@ -55,7 +61,6 @@ module.exports = {
       __INTERCOM_ID__: '"rqszgt2h"',
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
@@ -68,7 +73,13 @@ module.exports = {
           ],
         },
       }
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'app',
+      async: true,
+      children: true,
+    }),
+    new BundleAnalyzerPlugin(),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
