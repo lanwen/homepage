@@ -31,7 +31,7 @@ module.exports = {
     ],
   },
   output: {
-    path: __dirname + '/dist-babili',
+    path: __dirname + '/dist',
     filename: '[name].[hash].js',
     publicPath: '/',
   },
