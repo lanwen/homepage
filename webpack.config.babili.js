@@ -124,7 +124,6 @@ module.exports = {
     new OfflinePlugin({
       version: '[hash]',
     }),
-    new BundleAnalyzerPlugin()
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
