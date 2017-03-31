@@ -43,10 +43,7 @@ module.exports = {
       exclude: /node_modules/,
     }, {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader'
-      })
+      loader: 'style-loader!css-loader',
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
@@ -88,14 +85,6 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin('[name].[contenthash].css'),
-    new PurifyCSSPlugin({
-      paths: mergeCssSources([
-        'src/*.tsx',
-        'node_modules/graphcool-graphiql/babelbuild/*.js',
-        'node_modules/graphiql/dist/components/*.js'
-      ])
-    }),
     new Lodash(),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
