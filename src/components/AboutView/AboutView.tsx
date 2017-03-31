@@ -8,7 +8,7 @@ import Investors from './Investors/Investors'
 import Timeline from './Timeline/Timeline'
 import FooterCTA from '../FooterCTA'
 import Footer from '../Footer/Footer'
-import * as Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 export default class AboutView extends React.Component<{}, {}> {
   componentDidMount() {

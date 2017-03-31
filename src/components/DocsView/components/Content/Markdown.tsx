@@ -219,7 +219,6 @@ const Container = styled.div`
     }
   }
   
-    
   .docs-codemirror .CodeMirror-scroll {
     height: auto;
   }

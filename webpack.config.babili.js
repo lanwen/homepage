@@ -1,12 +1,21 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const glob = require('glob')
 const config = require('./webpack.config')
 const OfflinePlugin = require('offline-plugin')
 const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
 const BabiliPlugin = require('babili-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const Lodash = require('lodash-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const PurifyCSSPlugin = require('purifycss-webpack')
+const _ = require('lodash')
+
+
+function mergeCssSources(sources) {
+  return _.flatMap(sources, source => glob.sync(path.join(__dirname, source)))
+}
 
 module.exports = {
   entry: {
@@ -34,7 +43,10 @@ module.exports = {
       exclude: /node_modules/,
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader',
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader'
+      })
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
@@ -76,12 +88,21 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin('[name].[contenthash].css'),
+    new PurifyCSSPlugin({
+      paths: mergeCssSources([
+        'src/*.tsx',
+        'node_modules/graphcool-graphiql/babelbuild/*.js',
+        'node_modules/graphiql/dist/components/*.js'
+      ])
+    }),
     new Lodash(),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
       async: true,
       minChunks: 3,
     }),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new BabiliPlugin(),
     new HtmlWebpackPlugin({

@@ -12,7 +12,7 @@ import MoreItems from './MoreItems'
 import Quickstart from '../../components/Quickstart/Quickstart'
 import * as cookiestore from 'cookiestore'
 import { breakpoints, maxWidth } from '../../../../utils/constants'
-import * as Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 const Container = styled.div`
   max-width: 1050px;
@@ -48,9 +48,6 @@ const ContentContainer = styled.div`
   // padding-right: ${$v.size38};
     max-width: ${maxWidth}px;
   
-
-   
-   
   //  @media (max-width: ${breakpoints.p1000}px){
   //    max-width: 850px;
   //  }

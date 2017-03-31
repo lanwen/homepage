@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-client'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
-import * as Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import { throttle } from 'lodash'
 
 interface Props {

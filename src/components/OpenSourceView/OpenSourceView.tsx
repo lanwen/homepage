@@ -3,7 +3,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import OpenSource from './OpenSource'
 import FooterCTA from '../FooterCTA'
-import * as Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 export default class OpenSourceView extends React.Component<{}, {}> {
   componentDidMount() {

@@ -132,7 +132,6 @@ export default class Nav extends React.Component<Props, State> {
             @p: .green;
           }
 
-
           .tooltip {
             @p: .absolute, .db, .left50, .overflowVisible, .tlHCenter, .bgWhite, .br2, .overlayShadow, .z999;
             top: 55px;
