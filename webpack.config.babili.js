@@ -4,6 +4,8 @@ const path = require('path')
 const config = require('./webpack.config')
 const OfflinePlugin = require('offline-plugin')
 const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
+const BabiliPlugin = require('babili-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   entry: {
@@ -19,7 +21,7 @@ module.exports = {
     ],
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist-babili',
     filename: '[name].[hash].js',
     publicPath: '/',
   },
@@ -43,7 +45,10 @@ module.exports = {
           ]
         }
       }, {
-        loader: 'awesome-typescript-loader'
+        loader: 'awesome-typescript-loader',
+        query: {
+          configFileName: 'tsconfig.es2015.json'
+        }
       }],
     },{
       test: /icons\/.*\.svg$/,
@@ -70,15 +75,12 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false,
-      }
+    new webpack.optimize.CommonsChunkPlugin({
+      children: true,
+      minChunks: 6,
     }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new BabiliPlugin(),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
@@ -98,6 +100,7 @@ module.exports = {
     new OfflinePlugin({
       version: '[hash]',
     }),
+    new BundleAnalyzerPlugin()
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
