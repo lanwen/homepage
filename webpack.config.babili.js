@@ -88,7 +88,6 @@ module.exports = {
     new Lodash(),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
-      async: true,
       minChunks: 3,
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
@@ -110,9 +109,7 @@ module.exports = {
         },
       }
     }),
-    new OfflinePlugin({
-      version: '[hash]',
-    }),
+    new OfflinePlugin(),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
