@@ -6,6 +6,7 @@ const OfflinePlugin = require('offline-plugin')
 const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
 const BabiliPlugin = require('babili-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const Lodash = require('lodash-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -75,9 +76,11 @@ module.exports = {
       },
     }),
     new webpack.NamedModulesPlugin(),
+    new Lodash(),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
-      minChunks: 6,
+      async: true,
+      minChunks: 3,
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new BabiliPlugin(),
