@@ -135,7 +135,8 @@ asyncBootstrapper(app).then(() => {
   render()
 })
 
-const interval = setInterval(initIntercom, 1000)
+// const interval = setInterval(initIntercom, 1000)
+initIntercom()
 
 function initIntercom() {
   if (window.Intercom && navigator.userAgent !== 'SSR') {
@@ -143,7 +144,7 @@ function initIntercom() {
       app_id: __INTERCOM_ID__,
       user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
     })
-    clearInterval(interval)
+    // clearInterval(interval)
   }
 }
 
