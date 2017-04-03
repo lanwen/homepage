@@ -1,19 +1,22 @@
+import * as React from 'react'
+import {Route, Redirect, IndexRoute} from 'react-router'
 import RootView from './components/RootView'
-
-function loadRoute(cb) {
-  return module => cb(null, module.default)
-}
-
-function errorLoading(err) {
-  console.error('Dynamic page loading failed', err)
-}
-
-const docsOverview = {
-  getComponent(_, cb) {
-    System.import('./components/DocsView/pages/Overview/DocsOverview').then(loadRoute(cb))
-      .catch(errorLoading)
-  },
-}
+import HomeView from './components/HomeView/HomeView'
+import FeaturesGraphQLView from './components/FeaturesGraphQLView/FeaturesGraphQLView'
+import GraphQLUpView from './components/GraphQLUpView/GraphQLUpView'
+import PricingView from './components/PricingView/PricingView'
+import FeaturesFunctionsView from './components/FeaturesFunctionsView/FeaturesFunctionsView'
+import OpenSourceView from './components/OpenSourceView/OpenSourceView'
+import AboutView from './components/AboutView/AboutView'
+import GraphQLUpGetStartedView from './components/GraphQLUpView/GraphQLUpGetStartedView/GraphQLUpGetStartedView'
+import DocsView from './components/DocsView/DocsView'
+import BlogPage from './components/DocsView/pages/BlogPage/BlogPage'
+import NotFoundView from './components/404/404'
+import FAQPage from './components/DocsView/pages/FAQPage'
+import TutorialsPage from './components/DocsView/pages/TutorialsPage'
+import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
+import QuickstartPage from './components/DocsView/pages/QuickstartPage'
+import ContentHandler from './components/DocsView/components/ContentHandler'
 
 function forceTrailingSlash(nextState, replace) {
   const path = nextState.location.pathname
@@ -25,140 +28,32 @@ function forceTrailingSlash(nextState, replace) {
   }
 }
 
-export default {
-  component: RootView,
-  onEnter: forceTrailingSlash,
-  onChange: (_, nextState, replace) => {
-    forceTrailingSlash(nextState, replace)
-  },
-  childRoutes: [
-    {
-      path: '/',
-      getComponent(_, cb) {
-        System.import('./components/HomeView/HomeView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/graphql/',
-      getComponent(_, cb) {
-        System.import('./components/FeaturesGraphQLView/FeaturesGraphQLView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/graphql-up/',
-      getComponent(_, cb) {
-        System.import('./components/GraphQLUpView/GraphQLUpView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/graphql-up/new/',
-      getComponent(_, cb) {
-        System.import('./components/GraphQLUpView/GraphQLUpGetStartedView/GraphQLUpGetStartedView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/functions/',
-      getComponent(_, cb) {
-        System.import('./components/FeaturesFunctionsView/FeaturesFunctionsView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/pricing/',
-      getComponent(_, cb) {
-        System.import('./components/PricingView/PricingView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/open-source/',
-      getComponent(_, cb) {
-        System.import('./components/OpenSourceView/OpenSourceView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/about/',
-      getComponent(_, cb) {
-        System.import('./components/AboutView/AboutView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      path: '/404/',
-      getComponent(_, cb) {
-        System.import('./components/404/404').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-    },
-    {
-      getComponent(_, cb) {
-        System.import('./components/DocsView/DocsView').then(loadRoute(cb))
-          .catch(errorLoading)
-      },
-      childRoutes: [
-        {
-          path: '/blog/',
-          getComponent(_, cb) {
-            System.import('./components/DocsView/pages/BlogPage/BlogPage').then(loadRoute(cb))
-              .catch(errorLoading)
-          },
-        },
-        {
-          path: '/docs/',
-          getIndexRoute(_, cb) {
-            cb(null, docsOverview)
-          },
-          childRoutes: [
-            {
-              path: 'reference/',
-              onEnter(_, replace, callback) {
-                replace('reference/platform/overview-chohbah0eo/')
-                callback()
-              },
-            },
-            {
-              path: 'graphql-up/',
-              onEnter(_, replace, callback) {
-                replace('reference/simple-api/overview-heshoov3ai/')
-                callback()
-              },
-            },
-            {
-              path: 'quickstart/',
-              getComponent(_, cb) {
-                System.import('./components/DocsView/pages/QuickstartPage').then(loadRoute(cb))
-                  .catch(errorLoading)
-              },
-            },
-            {
-              path: 'tutorials/',
-              getComponent(_, cb) {
-                System.import('./components/DocsView/pages/TutorialsPage').then(loadRoute(cb))
-                  .catch(errorLoading)
-              },
-            },
-            {
-              path: 'faq/',
-              getComponent(_, cb) {
-                System.import('./components/DocsView/pages/FAQPage').then(loadRoute(cb))
-                  .catch(errorLoading)
-              },
-            },
-          ],
-        },
-        {
-          path: '*',
-          getComponent(_, cb) {
-            System.import('./components/DocsView/components/ContentHandler').then(loadRoute(cb))
-              .catch(errorLoading)
-          },
-        },
-      ],
-    },
-  ],
+function rootOnChange(_, nextState, replace) {
+  forceTrailingSlash(nextState, replace)
 }
+
+export default (
+  <Route component={RootView} onEnter={forceTrailingSlash} onChange={rootOnChange}>
+    <Route path='/' component={HomeView} />
+    <Route path='/graphql/' component={FeaturesGraphQLView} />
+    <Route path='/graphql-up/' component={GraphQLUpView} />
+    <Route path='/graphql-up/new/' component={GraphQLUpGetStartedView} />
+    <Route path='/functions/' component={FeaturesFunctionsView} />
+    <Route path='/pricing/' component={PricingView} />
+    <Route path='/open-source/' component={OpenSourceView} />
+    <Route path='/about/' component={AboutView} />
+    <Route path='/404/' component={NotFoundView} />
+    <Route component={DocsView}>
+      <Route path='/blog/' component={BlogPage} />
+      <Route path='/docs/'>
+        <IndexRoute component={DocsOverview} />
+        <Redirect from='reference/' to='reference/platform/overview-chohbah0eo' />
+        <Redirect from='graphql-up/' to='reference/simple-api/overview-heshoov3ai/' />
+        <Route path='quickstart/' component={QuickstartPage} />
+        <Route path='tutorials/' component={TutorialsPage} />
+        <Route path='faq/' component={FAQPage} />
+      </Route>
+      <Route path='*' component={ContentHandler} />
+    </Route>
+  </Route>
+)

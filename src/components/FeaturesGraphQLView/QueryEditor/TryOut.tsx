@@ -134,7 +134,9 @@ export default class TryOut extends React.Component<Props, {}> {
       <Root className={cx($p.flex, $p.justifyCenter, $p.itemsCenter)}>
         <div className={cx($g.uppercaseLabel, $p.black20)}>
           <MediaQuery minWidth={1100}>
-            {matches => matches ? 'Try out example' : 'Try it out'}
+            <span>
+              {matches => matches ? 'Try out example' : 'Try it out'}
+            </span>
           </MediaQuery>
         </div>
         <Steps className={cx($p.flex, $p.itemsCenter)}>

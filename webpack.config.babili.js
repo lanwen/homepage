@@ -4,7 +4,6 @@ const path = require('path')
 const glob = require('glob')
 const config = require('./webpack.config')
 const OfflinePlugin = require('offline-plugin')
-const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
 const BabiliPlugin = require('babili-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const Lodash = require('lodash-webpack-plugin')
@@ -20,7 +19,6 @@ function mergeCssSources(sources) {
 module.exports = {
   entry: {
     app: [
-      'whatwg-fetch',
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
       './src/styles/graphiql.css',
@@ -88,7 +86,8 @@ module.exports = {
     new Lodash(),
     new webpack.optimize.CommonsChunkPlugin({
       children: true,
-      minChunks: 3,
+      async: true,
+      minChunks: 2,
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -96,9 +95,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
-    }),
-    new CustomScriptLocationPlugin({
-      head: /vendor/,
     }),
     new webpack.LoaderOptionsPlugin({
       options: {

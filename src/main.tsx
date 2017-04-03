@@ -1,4 +1,5 @@
-require('offline-plugin/runtime').install()
+require('babel-core/register')
+require('babel-polyfill')
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
@@ -11,10 +12,13 @@ import * as FastClick from 'fastclick'
 import * as cookiestore from 'cookiestore'
 import * as WebFont from 'webfontloader'
 import routes from './routes'
-
+import {AsyncComponentProvider, createAsyncContext} from 'react-async-component'
+import asyncBootstrapper from 'react-async-bootstrapper'
 import './utils/polyfills'
 import './style'
-require('./styles/mdn-like.css')
+import * as offline from 'offline-plugin/runtime'
+import './styles/mdn-like.css'
+offline.install()
 
 function shouldScrollUp(previousProps, {location}) {
   return location.hash === '' && (previousProps === null || previousProps.location.pathname !== location.pathname)
@@ -29,6 +33,19 @@ export function updateApolloState(state: any): void {
     const newEl = document.createElement('script') as HTMLScriptElement
     newEl.text = text
     newEl.id = '__APOLLO_STATE__'
+    document.head.appendChild(newEl)
+  }
+}
+
+export function updateAsyncState(state: any): void {
+  const el = document.getElementById('ASYNC_COMPONENTS_STATE') as HTMLScriptElement
+  const text = `window.ASYNC_COMPONENTS_STATE = ${JSON.stringify(state)}`
+  if (el) {
+    el.text = text
+  } else {
+    const newEl = document.createElement('script') as HTMLScriptElement
+    newEl.text = text
+    newEl.id = 'ASYNC_COMPONENTS_STATE'
     document.head.appendChild(newEl)
   }
 }
@@ -83,9 +100,13 @@ function hashLinkScroll() {
   }
 }
 
-function render() {
-  ReactDOM.render(
-    <AppContainer>
+const asyncContext = createAsyncContext()
+
+const rehydratedState = window['ASYNC_COMPONENTS_STATE']
+
+const app = (
+  <AppContainer>
+    <AsyncComponentProvider asyncContext={asyncContext} rehydrateState={rehydratedState}>
       <ApolloProvider store={store} client={client}>
         <Router
           history={browserHistory}
@@ -95,12 +116,24 @@ function render() {
         >
         </Router>
       </ApolloProvider>
-    </AppContainer>,
+    </AsyncComponentProvider>
+  </AppContainer>
+)
+
+function render() {
+  ReactDOM.render(
+    app,
     document.getElementById('root'),
   )
 }
 
-render()
+asyncBootstrapper(app).then(() => {
+  if (navigator.userAgent === 'SSR') {
+    const asyncState = asyncContext.getState()
+    updateAsyncState(asyncState)
+  }
+  render()
+})
 
 const interval = setInterval(initIntercom, 1000)
 

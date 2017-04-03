@@ -4,7 +4,6 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import 'rc-slider/assets/index.css'
 import IncludedInEveryPlanSection from './IncludedInEveryPlanSection'
-import { breakpoints } from '../../utils/constants'
 
 const Box = styled.div`
   max-width: 1202px;
@@ -14,24 +13,44 @@ export default class Info extends React.Component<{}, {}> {
   render() {
 
     return (
-      <div className={cx($p.bgDarkBlue, $p.pb60, $p.pt60)} style={{marginTop: -49}}>
+      <div className='info'>
+        <style jsx={true}>{`
+          .info {
+            @p: .bgDarkBlue, .pb60, .pt60;
+            margin-top: -49px;
+          }
+          h2 {
+            @p: .white, .fw3, .tc;
+            @media (max-width: 649px) {
+              @p: .pt25;
+            }
+            @media (min-width: 650px) {
+              @p: .pt38;
+            }
+          }
+          .plan {
+            @p: .flex, .flexColumn, .ph25;
+            @media (max-width: 649px) {
+              @p: .mt38;
+            }
+            @media (min-width: 650px) {
+              @p: .mt96;
+            }
+          }
+          .included {
+            @p: .flex, .flexColumn;
+            @media (max-width: 649px) {
+              @p: .itemsStart, .ml4, .mt16;
+            }
+            @media (min-width: 650px) {
+              @p: .justifyEnd, .ml60, .mt0;
+            }
+          }
+        `}</style>
         <Box className={cx($p.flex, $p.flexColumn, $p.justifyBetween, $p.center)}>
-
           {/* TITLE */}
-          <h2 className={cx(
-            $p.white,
-            $p.fw3,
-            $p.tc,
-            window.innerWidth < breakpoints.p650 ? $p.pt25 : $p.pt38,
-          )}>Included in every plan</h2>
-
-          <div className={cx(
-            $p.flex,
-            $p.flexColumn,
-            $p.ph25,
-            window.innerWidth < breakpoints.p650 ? $p.mt38 : $p.mt96,
-          )}>
-
+          <h2>Included in every plan</h2>
+          <div className='plan'>
             <IncludedInEveryPlanSection
               title='File Storage'
               description={`Graphcool has an integrated file management system. Easily store
@@ -42,13 +61,7 @@ export default class Info extends React.Component<{}, {}> {
               iconWidth={28}
               iconHeight={34}
               children={(
-                <div className={cx(
-                  $p.flex,
-                  $p.flexColumn,
-                  window.innerWidth < breakpoints.p650 ? $p.itemsStart : $p.justifyEnd,
-                  window.innerWidth < breakpoints.p650 ? $p.ml4 : $p.ml60,
-                  window.innerWidth < breakpoints.p650 ? $p.mt16 : $p.mt0,
-                )}>
+                <div className='included'>
                   <div className={cx($p.lightBlue, $p.tr, $p.fw6, $p.nowrap)}>Included for free:</div>
                   <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB Volume</div>
                   <div className={cx($p.lightBlue, $p.tr, $p.nowrap)}>10 GB / mo Traffic</div>
@@ -85,7 +98,6 @@ export default class Info extends React.Component<{}, {}> {
               iconHeight={34}
               className={$p.mt38}
             />
-
             <div className={cx($p.flex, $p.justifyCenter, $p.mt38)}>
               <a
                 className={cx($g.uppercaseButton, $p.bgBlue, $p.white, $p.tc, $p.ph38, $p.pv16, $p.noUnderline)}

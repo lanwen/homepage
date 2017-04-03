@@ -8,6 +8,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
+      'babel-polyfill',
       'react-hot-loader/patch',
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
@@ -87,8 +88,8 @@ module.exports = {
       name: 'app',
       async: true,
       children: true,
+      minChunks: 3,
     }),
-    new BundleAnalyzerPlugin(),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],
