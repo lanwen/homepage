@@ -29,8 +29,7 @@ exports.default = () => {
     ]
 
     return {
-      // routes: routes.concat(docsItemRoutes),
-      routes: ['/', '/graphql/', '/graphql-up/'],
+      routes: routes.concat(docsItemRoutes),
       https: true,
       timeout: 2000,
       hostname: 'https://www.graph.cool',
