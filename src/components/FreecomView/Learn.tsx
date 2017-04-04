@@ -10,12 +10,12 @@ const data = [
   {
     n: 1,
     description: `Preparing the GraphQL Server`,
-    link: 'https://www.graph.cool/docs/tutorials/relay-vs-apollo-iechu0shia/',
+    link: 'https://www.graph.cool/docs/tutorials/freecom-overview-e8a6ajt8ax/',
   },
   {
     n: 2,
     description: `Integrating Apollo Client, Queries & Mutations`,
-    link: null,
+    link: 'https://www.graph.cool/docs/tutorials/freecom-graphql-server-8uakjj68lp/',
   },
   {
     n: 3,
@@ -59,12 +59,7 @@ const Learn = ({}: Props) => (
         @p: .mt96, .mb38;
       }
       .features {
-        @p: .mt60, .flex;
-      }
-      @media (max-width: 650px) {
-        .features {
-          @p: .flexColumn, .itemsCenter;
-        }
+        @p: .mt60, .flex, .flexWrap, .justifyCenter;
       }
     `}</style>
     <div className='learn'>
