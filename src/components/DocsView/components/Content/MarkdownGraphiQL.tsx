@@ -3,7 +3,7 @@ import * as React from 'react'
 import {CustomGraphiQL} from 'graphcool-graphiql'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
-import frontmatter = require('front-matter')
+import * as frontmatter from 'front-matter'
 import styled from 'styled-components'
 import './graphiql_light.css'
 

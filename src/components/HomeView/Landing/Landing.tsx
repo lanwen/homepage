@@ -7,6 +7,7 @@ import LandingCallToAction from './LandingCallToAction'
 import Hint from './Hint'
 import Caret from './Caret'
 import CompanyLogoBar from '../CompanyLogoBar'
+import * as MediaQuery from 'react-responsive'
 
 const Hero = styled.div`
   padding-left: ${$v.size16};
@@ -307,14 +308,17 @@ export default class Landing extends React.Component<{}, {}> {
                 `Production-ready GraphQL backend in 5 minutes. Implement your business logic with any language. Includes realtime subscriptions, user management, service integrations and more.` // tslint:disable-line
               }
             </Copy>
-            {(window.innerWidth >= breakpoints.p1200 || window.innerWidth <= breakpoints.p900) &&
-            <LandingCallToAction />
-            }
+            <MediaQuery minWidth={1200}>
+              <LandingCallToAction />
+            </MediaQuery>
+            <MediaQuery maxWidth={900}>
+              <LandingCallToAction />
+            </MediaQuery>
           </HeroText>
         </Hero>
-        {breakpoints.p900 < window.innerWidth && window.innerWidth < breakpoints.p1200 &&
-        <LandingCallToAction />
-        }
+        <MediaQuery maxWidth={1200}>
+          <LandingCallToAction />
+        </MediaQuery>
         <CompanyLogoBar />
       </section>
     )

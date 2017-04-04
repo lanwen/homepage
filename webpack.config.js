@@ -1,11 +1,14 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
+      'babel-polyfill',
       'react-hot-loader/patch',
       'graphcool-styles/dist/styles.css',
       './src/styles/codemirror.css',
@@ -30,9 +33,22 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
+      test: /\.js(x?)$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader!awesome-typescript-loader',
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['es2015', {modules: false}]
+          ]
+        }
+      }, {
+        loader: 'awesome-typescript-loader'
+      }],
     }, {
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
@@ -42,7 +58,7 @@ module.exports = {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
-    },{
+    }, {
       test: /\.md$/,
       loader: 'raw-loader',
     }],
@@ -55,7 +71,6 @@ module.exports = {
       __INTERCOM_ID__: '"rqszgt2h"',
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
     new HtmlWebpackPlugin({
       favicon: 'static/favicon.png',
       template: 'src/index.html',
@@ -68,7 +83,13 @@ module.exports = {
           ],
         },
       }
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'app',
+      async: true,
+      children: true,
+      minChunks: 3,
+    }),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],

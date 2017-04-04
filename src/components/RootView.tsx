@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-client'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
-import * as Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import { throttle } from 'lodash'
 
 interface Props {
@@ -65,7 +65,7 @@ export default class RootView extends React.Component<Props, State> {
 
     if (navigator.userAgent !== 'SSR' && window.__APOLLO_STATE__) {
       // TODO https://github.com/apollostack/apollo-client/issues/1186
-      // this.context.client.resetStore()
+      this.context.client.resetStore()
     }
   }
 

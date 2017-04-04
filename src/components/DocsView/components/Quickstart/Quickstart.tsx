@@ -7,10 +7,10 @@ import { TechnologyData, frontendTechnologies, clientTechnologies } from './data
 import { examples } from './data/examples'
 import Example from './Example'
 import { QuickExample } from '../../../../types/types'
-import { breakpoints } from '../../../../utils/constants'
 import LogoBar from '../../../HomeView/LogoBar'
 import styled from 'styled-components'
 import ExampleContent from './ExampleContent'
+import * as MediaQuery from 'react-responsive'
 
 interface State {
   selectedFrontendTechnology?: TechnologyData,
@@ -24,10 +24,6 @@ interface State {
 interface Props {
   className?: string
 }
-
-const Root = styled.div`
-  
-`
 
 const RootContainer = styled.div`
   max-width: 1200px;
@@ -49,34 +45,6 @@ export default class Quickstart extends React.Component<Props, State> {
   }
 
   render() {
-
-    if (window.innerWidth < breakpoints.p1000) {
-      return (
-        <div className={cx($p.flex, $p.flexColumn)}>
-          <LogoBar
-            className={cx(
-              $p.mt25,
-          )} />
-          <a
-            href='https://github.com/graphcool/examples'
-            className={cx(
-              $g.uppercaseButton,
-              $p.flex,
-              $p.justifyCenter,
-              $p.bgGreen,
-              $p.white,
-              $p.noUnderline,
-              $p.mt25,
-              $p.center,
-              $p.ph25,
-              $p.pv16,
-            )}>
-            See Examples on GitHub
-          </a>
-        </div>
-
-      )
-    }
 
     const {className} = this.props
     const {selectedFrontendTechnology, selectedClientTechnology, selectedExample} = this.state
@@ -104,167 +72,184 @@ export default class Quickstart extends React.Component<Props, State> {
         }} />
     )
 
-    if (currentStep === 'TECHNOLOGY') {
-      return (
-        <Root>
-          <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
-            {stepIndicator}
-            <div className={cx($p.flex, $p.mt25)}>
-              {frontendTechnologies.map((technology, index) =>
-                <Technology
-                  key={technology.title}
-                  className={cx($p.ph25)}
-                  technology={technology}
-                  selectable={true}
-                  onClick={() => this.selectFrontendTechnology(technology, index)}
-                />)
-              }
-            </div>
-          </RootContainer>
-        </Root>
-      )
-    } else if (currentStep === 'GRAPHQL_CLIENT') {
-      return (
-        <Root>
-          <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
-            {stepIndicator}
-            <div
-              className={cx($p.flex, $p.mt25, $p.relative)}
-              style={{
-              transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
-              transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
-            }}
-            >
-              <Technology
-                className={cx($p.ph25)}
-                technology={selectedFrontendTechnology}
-                onClick={() => {
-                this.setState({
-                  selectedFrontendTechnology: null,
-                  selectedClientTechnology: null,
-                  quickExamples: null,
-                } as State)
-              }}
-              />
-              <div
-                style={{
-                transition: 'opacity .3s .3s ease',
-                opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
-              }}
-                className={$p.flex}
-              >
-                <div className={cx($p.mh25)} style={{paddingTop: 34}}>
-                  <Icon
-                    src={require('../../../../assets/icons/docs/plus.svg')}
-                    width={27}
-                    height={27}
-                    color={$v.gray20}
-                  />
+    return (
+      <MediaQuery maxDeviceWidth={1000}>
+        {matches => matches ? (
+          <div className={cx($p.flex, $p.flexColumn)}>
+            <LogoBar className={cx($p.mt25)} />
+            <a
+              href='https://github.com/graphcool/examples'
+              className={cx(
+                $g.uppercaseButton,
+                $p.flex,
+                $p.justifyCenter,
+                $p.bgGreen,
+                $p.white,
+                $p.noUnderline,
+                $p.mt25,
+                $p.center,
+                $p.ph25,
+                $p.pv16,
+              )}>
+              See Examples on GitHub
+            </a>
+          </div>
+        ) : (
+          currentStep === 'TECHNOLOGY' ? (
+            <div>
+              <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
+                {stepIndicator}
+                <div className={cx($p.flex, $p.mt25)}>
+                  {frontendTechnologies.map((technology, index) =>
+                    <Technology
+                      key={technology.title}
+                      className={cx($p.ph25)}
+                      technology={technology}
+                      selectable={true}
+                      onClick={() => this.selectFrontendTechnology(technology, index)}
+                    />)
+                  }
                 </div>
-                {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
-                  <Technology
-                    key={technology.title}
-                    className={cx($p.ph25)}
-                    technology={technology}
-                    selectable={true}
-                    onClick={() => this.selectClientTechnology(technology, index)}
-                  />)
-                }
-              </div>
+              </RootContainer>
             </div>
-          </RootContainer>
-        </Root>
-      )
-    } else if (currentStep === 'USE_CASE') {
-      return (
-        <Root>
-          <RootContainer className={cx($p.flex, className)}>
-            <div className={cx($p.flex, $p.flexColumn)}>
-              {stepIndicator}
-              <div
-                className={cx($p.flex, $p.mt25)}
-                style={{
-                  transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
-                  transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
-                }}
-              >
-                <Technology
-                  className={cx($p.mr25)}
-                  technology={selectedFrontendTechnology}
-                />
-                <div
-                  className={$p.flex}
-                  style={{
-                    transition: 'opacity .3s .3s ease',
-                    opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
-                  }}
-                >
-                  <div style={{paddingTop: 34}}>
-                    <Icon
-                      src={require('../../../../assets/icons/docs/plus.svg')}
-                      width={27}
-                      height={27}
-                      color={$v.gray20}
-                    />
-                  </div>
+          ) : currentStep === 'GRAPHQL_CLIENT' ? (
+                <div>
+                  <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
+                    {stepIndicator}
+                    <div
+                      className={cx($p.flex, $p.mt25, $p.relative)}
+                      style={{
+                        transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
+                        transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
+                      }}
+                    >
+                      <Technology
+                        className={cx($p.ph25)}
+                        technology={selectedFrontendTechnology}
+                        onClick={() => {
+                          this.setState({
+                            selectedFrontendTechnology: null,
+                            selectedClientTechnology: null,
+                            quickExamples: null,
+                          } as State)
+                        }}
+                      />
+                      <div
+                        style={{
+                          transition: 'opacity .3s .3s ease',
+                          opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
+                        }}
+                        className={$p.flex}
+                      >
+                        <div className={cx($p.mh25)} style={{paddingTop: 34}}>
+                          <Icon
+                            src={require('../../../../assets/icons/docs/plus.svg')}
+                            width={27}
+                            height={27}
+                            color={$v.gray20}
+                          />
+                        </div>
+                        {(this.clientTechnologiesFor(selectedFrontendTechnology)).map((technology, index) =>
+                          <Technology
+                            key={technology.title}
+                            className={cx($p.ph25)}
+                            technology={technology}
+                            selectable={true}
+                            onClick={() => this.selectClientTechnology(technology, index)}
+                          />)
+                        }
+                      </div>
+                    </div>
+                  </RootContainer>
+                </div>
+          ) : currentStep === 'USE_CASE' ? (
+            <div>
+              <RootContainer className={cx($p.flex, className)}>
+                <div className={cx($p.flex, $p.flexColumn)}>
+                  {stepIndicator}
                   <div
-                    className={$p.flex}
+                    className={cx($p.flex, $p.mt25)}
                     style={{
-                      transition: this.state.graphQLClientOffset === 0 ? '.3s ease all' : '',
-                      transform: `translateX(${this.state.graphQLClientOffset}px)`,
+                      transition: this.state.frontendTechnologyOffset === 0 ? '.3s ease all' : '',
+                      transform: `translateX(${this.state.frontendTechnologyOffset}px)`,
                     }}
                   >
                     <Technology
-                      className={cx($p.ml25)}
-                      technology={selectedClientTechnology}
+                      className={cx($p.mr25)}
+                      technology={selectedFrontendTechnology}
                     />
                     <div
-                      className={cx($p.ml25)}
+                      className={$p.flex}
                       style={{
-                        paddingTop: 37,
                         transition: 'opacity .3s .3s ease',
-                        opacity: this.state.graphQLClientOffset > 0 ? 0 : 1,
-                      }}>
-                      <Icon
-                        src={require('../../../../assets/icons/docs/right_arrow.svg')}
-                        width={31}
-                        height={22}
-                        color={$v.gray20}
-                      />
+                        opacity: this.state.frontendTechnologyOffset > 0 ? 0 : 1,
+                      }}
+                    >
+                      <div style={{paddingTop: 34}}>
+                        <Icon
+                          src={require('../../../../assets/icons/docs/plus.svg')}
+                          width={27}
+                          height={27}
+                          color={$v.gray20}
+                        />
+                      </div>
+                      <div
+                        className={$p.flex}
+                        style={{
+                          transition: this.state.graphQLClientOffset === 0 ? '.3s ease all' : '',
+                          transform: `translateX(${this.state.graphQLClientOffset}px)`,
+                        }}
+                      >
+                        <Technology
+                          className={cx($p.ml25)}
+                          technology={selectedClientTechnology}
+                        />
+                        <div
+                          className={cx($p.ml25)}
+                          style={{
+                            paddingTop: 37,
+                            transition: 'opacity .3s .3s ease',
+                            opacity: this.state.graphQLClientOffset > 0 ? 0 : 1,
+                          }}>
+                          <Icon
+                            src={require('../../../../assets/icons/docs/right_arrow.svg')}
+                            width={31}
+                            height={22}
+                            color={$v.gray20}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={cx($p.flex)}
+                      style={{
+                        marginLeft: 50,
+                        transition: 'opacity .3s .3s ease',
+                      }}
+                    >
+                      {this.state.quickExamples.map((example: QuickExample, index) =>
+                        <Example
+                          key={index}
+                          quickExample={example}
+                          onClick={() => this.selectExample(example)}
+                          selected={typeof selectedExample !== 'undefined' ? example === selectedExample : undefined}
+                        />,
+                      )}
                     </div>
                   </div>
                 </div>
-                <div
-                  className={cx($p.flex)}
-                  style={{
-                    marginLeft: 50,
-                    transition: 'opacity .3s .3s ease',
-                  }}
-                >
-                  {this.state.quickExamples.map((example: QuickExample, index) =>
-                    <Example
-                      key={index}
-                      quickExample={example}
-                      onClick={() => this.selectExample(example)}
-                      selected={typeof selectedExample !== 'undefined' ? example === selectedExample : undefined}
-                    />,
-                  )}
-                </div>
-              </div>
+              </RootContainer>
+              {this.state.selectedExample &&
+                <ExampleContent
+                  frontendTechnologyId={selectedFrontendTechnology.id}
+                  clientTechnologyId={selectedClientTechnology.id}
+                  example={selectedExample}
+                />
+              }
             </div>
-          </RootContainer>
-          {this.state.selectedExample &&
-            <ExampleContent
-              frontendTechnologyId={selectedFrontendTechnology.id}
-              clientTechnologyId={selectedClientTechnology.id}
-              example={selectedExample}
-            />
-          }
-        </Root>
-      )
-    }
-    return (
-      <div>UNKNOWN</div>
+          ) : null
+        )}
+      </MediaQuery>
     )
   }
 

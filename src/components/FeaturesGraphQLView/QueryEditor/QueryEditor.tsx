@@ -2,13 +2,14 @@ import * as React from 'react'
 import * as cx from 'classnames'
 import { $p, $v, $g, Icon } from 'graphcool-styles'
 import styled, { keyframes } from 'styled-components'
-import CopyToClipboard = require('react-copy-to-clipboard')
+import * as CopyToClipboard from 'react-copy-to-clipboard'
 import SectionHeader from '../../SectionHeader'
 import Field from './Field'
 import TryOut from './TryOut'
 import { breakpoints, maxWidth, movingDuration, isTouch } from '../../../utils/constants'
 import QueryBox from './QueryBox'
 import { projects } from './data'
+import * as MediaQuery from 'react-responsive'
 
 const Root = styled.section`
   position: relative;
@@ -325,81 +326,85 @@ export default class QueryEditor extends React.Component<Props, State> {
         <Root>
           <Container>
             <Editor className={cx($p.bgDarkerBlue, $p.flex, $p.mt16, $p.overflowHidden)}>
-              { window.innerWidth >= breakpoints.p1000 &&
-              <Schema className={cx($p.bgDarkBlue, $p.flex, $p.flexColumn)}>
-                <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16, $p.flexFixed)}>
-                  <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
-                  <TabBar>
-                    <ViewTab active>Visual</ViewTab>
-                    <ViewTab>IDL</ViewTab>
-                  </TabBar>
-                </div>
-                <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
-                  <TabBar
-                    touch={isTouch}
-                    className={cx($p.absolute, $p.tlVCenter, $p.ph10)}
-                  >
-                    {activeProject.models.map(model => (
-                      <SchemaTab
-                        key={model.name}
-                        active={activeModel.name === model.name}
-                        onClick={() => this.setState({ activeModelName: model.name } as State)}
-                      >
-                        {model.name}
-                      </SchemaTab>
-                    ))}
-                  </TabBar>
-                  <div className={cx($p.flex, $p.flexColumn)}>
-                    {activeModel.fields.map(field => (
-                      <Field
-                        key={field.name}
-                        title={field.name}
-                        type={field.type}
-                        required={field.required}
-                        system={field.system}
-                        relation={field.relation}
-                      />
-                    ))}
+              <MediaQuery minWidth={1000}>
+                <Schema className={cx($p.bgDarkBlue, $p.flex, $p.flexColumn)}>
+                  <div className={cx($p.flex, $p.itemsCenter, $p.justifyBetween, $p.hS16, $p.flexFixed)}>
+                    <div className={cx($g.uppercaseLabel, $p.white30)}>Schema</div>
+                    <TabBar>
+                      <ViewTab active>Visual</ViewTab>
+                      <ViewTab>IDL</ViewTab>
+                    </TabBar>
                   </div>
-                </Models>
-                <EndpointContainer className={cx($p.pt38, $p.flexFixed)}>
-                  <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
-                  <Endpoint
-                    className={cx(
-                      $p.br2, $p.bgDarkerBlue, $p.w100, $p.lhSolid, $p.white, $p.relative, $p.ph16, $p.bbox,
-                    )}
-                  >
-                    <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
-                      <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
-                        {activeProject.endpoint}
-                      </div>
-                    </div>
-                    <CopyToClipboard text={activeProject.endpoint} onCopy={this.onCopy}>
-                      <Copy
-                        className={cx($p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter)}
-                      >
-                        {this.state.copied &&
-                        <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
-                          Copied
-                        </CopyIndicator>
-                        }
-                        <Icon
-                          width={38}
-                          height={38}
-                          color={$v.darkerBlue}
-                          src={require('graphcool-styles/icons/fill/copy.svg')}
+                  <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
+                    <TabBar
+                      touch={isTouch}
+                      className={cx($p.absolute, $p.tlVCenter, $p.ph10)}
+                    >
+                      {activeProject.models.map(model => (
+                        <SchemaTab
+                          key={model.name}
+                          active={activeModel.name === model.name}
+                          onClick={() => this.setState({ activeModelName: model.name } as State)}
+                        >
+                          {model.name}
+                        </SchemaTab>
+                      ))}
+                    </TabBar>
+                    <div className={cx($p.flex, $p.flexColumn)}>
+                      {activeModel.fields.map(field => (
+                        <Field
+                          key={field.name}
+                          title={field.name}
+                          type={field.type}
+                          required={field.required}
+                          system={field.system}
+                          relation={field.relation}
                         />
-                      </Copy>
-                    </CopyToClipboard>
-                  </Endpoint>
-                </EndpointContainer>
-              </Schema>
-              }
+                      ))}
+                    </div>
+                  </Models>
+                  <EndpointContainer className={cx($p.pt38, $p.flexFixed)}>
+                    <div className={cx($g.uppercaseLabel, $p.white30, $p.mb16)}>API Endpoint</div>
+                    <Endpoint
+                      className={cx(
+                        $p.br2, $p.bgDarkerBlue, $p.w100, $p.lhSolid, $p.white, $p.relative, $p.ph16, $p.bbox,
+                      )}
+                    >
+                      <div className={cx($p.overflowHidden, $p.relative, $p.pv16, $p.h100, $p.bbox)}>
+                        <div className={cx($p.absolute, $p.top50, $p.left0, $p.tlVCenter)}>
+                          {activeProject.endpoint}
+                        </div>
+                      </div>
+                      <CopyToClipboard text={activeProject.endpoint} onCopy={this.onCopy}>
+                        <Copy
+                          className={cx(
+                            $p.absolute, $p.br2, $p.right10, $p.top10, $p.bottom10, $p.flex, $p.itemsCenter,
+                          )}
+                        >
+                          {this.state.copied &&
+                          <CopyIndicator className={cx($p.o0, $p.absolute, $p.f14, $p.fw6, $p.white)}>
+                            Copied
+                          </CopyIndicator>
+                          }
+                          <Icon
+                            width={38}
+                            height={38}
+                            color={$v.darkerBlue}
+                            src={require('graphcool-styles/icons/fill/copy.svg')}
+                          />
+                        </Copy>
+                      </CopyToClipboard>
+                    </Endpoint>
+                  </EndpointContainer>
+                </Schema>
+              </MediaQuery>
               <QueryBox endpoint={activeProject.endpoint} defaultQuery={activeProject.defaultQuery} />
             </Editor>
-            {window.innerWidth > breakpoints.p580 && activeProject.code &&
-            <TryOut reactLink={activeProject.code.reactLink} angularLink={activeProject.code.angularLink} />
-            }
+            {activeProject.code && (
+              <MediaQuery minWidth={580}>
+                <TryOut reactLink={activeProject.code.reactLink} angularLink={activeProject.code.angularLink} />
+              </MediaQuery>
+            )}
           </Container>
         </Root>
       </section>

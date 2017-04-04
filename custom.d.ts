@@ -29,3 +29,5 @@ declare interface Window {
 interface NodeModule {
   hot: { accept: Function }
 }
+
+declare var require: any

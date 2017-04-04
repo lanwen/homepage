@@ -24,7 +24,6 @@ const Root = styled.header`
     font-weight: 400;
   }
   
-  
   ${props => props.onDark && OnDark}
     
   @media (min-width: ${breakpoints.p750}px) {

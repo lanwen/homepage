@@ -16,7 +16,7 @@ interface State {
 }
 
 interface Props {
-  submitFeedback: (itemAlias: string, text: string | null, wasHelpful: boolean) => Promise<{}>
+  submitFeedback?: (itemAlias: string, text: string | null, wasHelpful: boolean) => Promise<{}>
   item: Item
 }
 

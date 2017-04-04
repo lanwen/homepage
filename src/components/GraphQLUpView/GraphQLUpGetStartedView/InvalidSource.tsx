@@ -34,8 +34,12 @@ const InvalidSource = ({schemaLink, message}: Props) => (
         You didn't provide a source in the url. <br/>
         Please try a valid source like
         <div>
-          <Link to='/graphql-up/new/?source=https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema'> {/* tslint:disable-line */}
-            <pre>https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema</pre> {/* tslint:disable */}
+          <Link
+            to={'/graphql-up/new/?source=https://raw.githubusercontent.com/graphcool-examples/' +
+             'worldchat-subscriptions-example/master/Worldchat.schema'}
+          >
+            <pre>{'https://raw.githubusercontent.com/graphcool-examples/' +
+            'worldchat-subscriptions-example/master/Worldchat.schema'}</pre>
           </Link>
         </div>
       </div>
@@ -48,8 +52,12 @@ const InvalidSource = ({schemaLink, message}: Props) => (
         </div>
         Please try a valid source like
         <div>
-          <Link to='/graphql-up/new/?source=https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema'> {/* tslint:disable-line */}
-            <pre>https://raw.githubusercontent.com/graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema</pre> {/* tslint:disable-line */}
+          <Link to={'/graphql-up/new/?source=https://raw.githubusercontent.com/' +
+           'graphcool-examples/worldchat-subscriptions-example/master/Worldchat.schema'}>
+            <pre>
+              {'https://raw.githubusercontent.com/graphcool-examples/' +
+              'worldchat-subscriptions-example/master/Worldchat.schema'}
+            </pre>
           </Link>
         </div>
       </div>

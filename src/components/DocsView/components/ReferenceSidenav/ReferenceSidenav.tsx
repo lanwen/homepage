@@ -69,8 +69,13 @@ class ReferenceSidenav extends React.Component<Props, State> {
       const activeOffset = this.offsets[activeItemIndex] - 32
       const container = ReactDOM.findDOMNode(this.containerRef)
       if (container) {
-        const footerHeight = document.getElementById('footer').clientHeight
-        const bodyHeight = document.getElementById('react-root').clientHeight
+        const footer = document.getElementById('footer')
+        const reactRoot = document.getElementById('react-root')
+        if (!footer || !reactRoot) {
+          return
+        }
+        const footerHeight = footer.clientHeight
+        const bodyHeight = reactRoot.clientHeight
         const bodyTop = document.body.scrollTop
         const threshold = bodyHeight - footerHeight
         const containerHeight = container.clientHeight

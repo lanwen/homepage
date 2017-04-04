@@ -8,6 +8,7 @@ import Pagination from '../../HomeView/Pagination'
 import { examples } from './data'
 import * as CodeMirror from 'react-codemirror'
 import HorScrollbox from '../../HorScrollbox'
+import * as MediaQuery from 'react-responsive'
 
 const Root = styled.div`
   
@@ -250,15 +251,15 @@ export default class Examples extends React.Component<Props, State> {
       >
         <Container className={cx($p.flex, $p.relative)}>
           <Selection className={cx()}>
-            {window.innerWidth <= breakpoints.p900 &&
-            <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
-              <Pagination
-                bullets={3}
-                active={0}
-                onSelect={() => null}
-              />
-            </div>
-            }
+            <MediaQuery maxWidth={900}>
+              <div className={cx($p.flex, $p.justifyCenter, $p.pb25)}>
+                <Pagination
+                  bullets={3}
+                  active={0}
+                  onSelect={() => null}
+                />
+              </div>
+            </MediaQuery>
             <ExamplesContainer className={cx($p.flex)}>
               {examples.map((e, i) => (
                 <Example
@@ -296,51 +297,53 @@ export default class Examples extends React.Component<Props, State> {
                 className={cx($p.relative, $p.flex, $p.flexColumn, $p.bbox, $p.h100)}
               >
                 <div className={cx($p.flex, $p.justifyBetween, $p.pb25)}>
-                  { window.innerWidth < breakpoints.p500 && !this.state.showTrigger &&
-                  <Switch
-                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pv16, $p.pr16, $p.pointer)}
-                    onClick={() => this.setState({ showTrigger: true } as State)}
-                  >
-                    <Icon
-                      src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
-                      width={9}
-                      height={15}
-                      color={$v.white}
-                      stroke
-                      strokeWidth={10}
-                      className={cx($p.mr16)}
-                    />
-                    Trigger
-                  </Switch>
+                  {!this.state.showTrigger &&
+                    <MediaQuery maxWidth={500}>
+                      <Switch
+                        className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pv16, $p.pr16, $p.pointer)}
+                        onClick={() => this.setState({ showTrigger: true } as State)}
+                      >
+                        <Icon
+                          src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
+                          width={9}
+                          height={15}
+                          color={$v.white}
+                          stroke
+                          strokeWidth={10}
+                          className={cx($p.mr16)}
+                        />
+                        Trigger
+                      </Switch>
+                    </MediaQuery>
                   }
                   <div className={cx($g.uppercaseLabel, $p.white30, $p.mr16)}>Code</div>
-                  { window.innerWidth >= breakpoints.p500 &&
-                  <TabBar className={cx($p.mr16)}>
-                    {selectedExample.snippets.map(({language}) => (
-                      <Tab
-                        key={language}
-                        active={language === selectedSnippet.language}
-                      >
-                        {language.toUpperCase()}
-                      </Tab>
-                    ))}
-                  </TabBar>
-                  }
-                  { window.innerWidth < breakpoints.p500 && this.state.showTrigger &&
-                  <Switch
-                    className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pa16, $p.pointer)}
-                    onClick={() => this.setState({ showTrigger: false } as State)}
-                  >
-                    <Icon
-                      src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-                      width={9}
-                      height={15}
-                      color={$v.white}
-                      stroke
-                      strokeWidth={10}
-                    />
-                  </Switch>
-                  }
+                  <MediaQuery minWidth={500}>
+                    <TabBar className={cx($p.mr16)}>
+                      {selectedExample.snippets.map(({language}) => (
+                        <Tab
+                          key={language}
+                          active={language === selectedSnippet.language}
+                        >
+                          {language.toUpperCase()}
+                        </Tab>
+                      ))}
+                    </TabBar>
+                  </MediaQuery>
+                  <MediaQuery maxWidth={500}>
+                    <Switch
+                      className={cx($g.uppercaseLabel, $p.white, $p.flex, $p.pa16, $p.pointer)}
+                      onClick={() => this.setState({ showTrigger: false } as State)}
+                    >
+                      <Icon
+                        src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                        width={9}
+                        height={15}
+                        color={$v.white}
+                        stroke
+                        strokeWidth={10}
+                      />
+                    </Switch>
+                  </MediaQuery>
                 </div>
                 <CodeContainer className={cx($p.overflowAuto, $p.absolute, $p.left0, $p.right0, $p.bottom0)}>
                   <CodeMirror

@@ -48,11 +48,11 @@ export default class SlackBox extends React.Component<Props, State> {
     const emailValid = this.emailValid(email)
 
     return (
-      <div className={cx($p.buttonShadow, $p.bgWhite, $p.overflowHidden, this.props.className)}>
+      <div className={cx($p.buttonShadow, $p.bgWhite, $p.overflowHidden, $p.pa25, $p.pb16, this.props.className)}>
         <ImgWrapper className={cx($p.flex, $p.itemsCenter, $p.justifyCenter)}>
           <img src={require('../../../../assets/graphics/docs/community/slack.svg')} />
         </ImgWrapper>
-        <div className={cx($p.mt16, $p.ph25)}>
+        <div className={cx($p.mt16)}>
           To join our slack channel, just type your email-address. You’ll get invited.
         </div>
           {emailSent ?
@@ -65,7 +65,7 @@ export default class SlackBox extends React.Component<Props, State> {
                 </div>
               </div>
             ) : (
-              <div className={cx($p.flex, $p.mt25, $p.itemsCenter, $p.pb38, $p.ph25)}>
+              <div className={cx($p.flex, $p.mt25, $p.itemsCenter, $p.pt25)}>
                 <StyledInput
                   type='text'
                   onChange={this.onChange}
@@ -102,6 +102,13 @@ export default class SlackBox extends React.Component<Props, State> {
                 )}
               </div>
             )}
+            <style jsx>{`
+              .joined {
+                @p: .ttu, .black30, .f14, .fw6, .mt10;
+                letter-spacing: 0.53px;
+              }
+            `}</style>
+            <div className='joined'>307 joined last month</div>
       </div>
     )
   }

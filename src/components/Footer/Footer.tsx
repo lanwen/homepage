@@ -10,6 +10,7 @@ import Docs from './Docs'
 import Company from './Company'
 import Social from './Social'
 import LogoBar from '../HomeView/LogoBar'
+import * as MediaQuery from 'react-responsive'
 
 const Root = styled.footer`
   padding: 0 ${$v.size38} ${$v.size96};
@@ -105,58 +106,58 @@ const Footer = () => (
         <Icon src={require('../../assets/icons/graphcool.svg')} width={18} height={21} color={$v.white}/>
       </LogoFlag>
 
-      {window.innerWidth < breakpoints.p1360 &&
-      <MissionColumn>
-        <ServiceStatus/>
-        <Mission/>
-        {window.innerWidth < breakpoints.p580 &&
-          <Social/>
-        }
-      </MissionColumn>
-      }
+      <MediaQuery maxWidth={1350}>
+        <MissionColumn>
+          <ServiceStatus/>
+          <Mission/>
+          <MediaQuery maxWidth={580}>
+            <Social/>
+          </MediaQuery>
+        </MissionColumn>
+      </MediaQuery>
 
-      {window.innerWidth >= breakpoints.p1360 &&
-      <MissionColumn>
-        <Mission/>
-      </MissionColumn>
-      }
+      <MediaQuery maxWidth={1360}>
+        <MissionColumn>
+          <Mission/>
+        </MissionColumn>
+      </MediaQuery>
 
-      {window.innerWidth >= breakpoints.p1360 &&
-      <Column>
-        <ServiceStatus/>
-      </Column>
-      }
+      <MediaQuery minWidth={1360}>
+        <Column>
+          <ServiceStatus/>
+        </Column>
+      </MediaQuery>
 
       <Column>
         <Product/>
-        {window.innerWidth < breakpoints.p1000 &&
-        <Docs/>
-        }
-        {window.innerWidth < breakpoints.p580 &&
+        <MediaQuery maxWidth={1000}>
+          <Docs/>
+        </MediaQuery>
+        <MediaQuery maxWidth={580}>
           <Company/>
-        }
+        </MediaQuery>
       </Column>
 
-      {window.innerWidth >= breakpoints.p1000 &&
-      <Column>
-        <Docs/>
-      </Column>
-      }
+      <MediaQuery minWidth={1000}>
+        <Column>
+          <Docs/>
+        </Column>
+      </MediaQuery>
 
-      {window.innerWidth >= breakpoints.p750 &&
-      <Column>
-        <Company/>
-      </Column>
-      }
-
-      {window.innerWidth >= breakpoints.p580 &&
-      <SocialColumn>
-        {window.innerWidth < breakpoints.p750 &&
+      <MediaQuery minWidth={750}>
+        <Column>
           <Company/>
-        }
-        <Social/>
-      </SocialColumn>
-      }
+        </Column>
+      </MediaQuery>
+
+      <MediaQuery minWidth={580}>
+        <SocialColumn>
+          <MediaQuery maxWidth={750}>
+            <Company/>
+          </MediaQuery>
+          <Social/>
+        </SocialColumn>
+      </MediaQuery>
 
     </Container>
     <LogoBar white/>

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Icon, $v} from 'graphcool-styles'
-import CopyToClipboard = require('react-copy-to-clipboard')
+import * as CopyToClipboard from 'react-copy-to-clipboard'
 import styled, { keyframes } from 'styled-components'
 
 interface State {

@@ -19,7 +19,7 @@ module.exports = {
     ],
   },
   output: {
-    path: './dist',
+    path: __dirname + '/dist',
     filename: '[name].[hash].js',
     publicPath: '/',
   },
@@ -35,8 +35,17 @@ module.exports = {
     }, {
       test: /\.ts(x?)$/,
       exclude: /node_modules/,
-      loader: 'babel-loader!awesome-typescript-loader',
-    }, {
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['es2015', {modules: false}]
+          ]
+        }
+      }, {
+        loader: 'awesome-typescript-loader'
+      }],
+    },{
       test: /icons\/.*\.svg$/,
       loader: 'raw-loader!svgo-loader',
     }, {
@@ -86,7 +95,9 @@ module.exports = {
         },
       }
     }),
-    new OfflinePlugin(),
+    new OfflinePlugin({
+      version: '[hash]',
+    }),
   ],
   resolve: {
     modules: [path.resolve('./src'), 'node_modules'],

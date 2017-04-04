@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Link } from 'react-router'
 import { Icon, $v } from 'graphcool-styles'
-import {breakpoints} from '../../utils/constants'
 import * as cookiestore from 'cookiestore'
 import Search from '../DocsView/components/Header/Search'
 import Nav from './Nav'
 import {withRouter} from 'react-router'
+import * as MediaQuery from 'react-responsive'
 
 // const SplitLink = ({ to, children, className }: {to: string, children: JSX.Element, className: string}) => (
 //   to.startsWith('http')
@@ -216,11 +216,11 @@ class Header extends React.Component<Props, State> {
         {this.props.view === 'DOCS' &&
           <Search />
         }
-        {window.innerWidth < breakpoints.p750 &&
+        <MediaQuery maxWidth={750}>
           <button className='hamburger' onClick={() => this.setState({ menuOpened: true } as State)}>
             <Icon src={require('../../assets/icons/hamburger.svg')} width={36} height={36} color={$v.gray20}/>
           </button>
-        }
+        </MediaQuery>
         <Nav
           menuOpened={this.state.menuOpened}
           loggedIn={this.state.loggedIn}

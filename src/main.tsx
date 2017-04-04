@@ -1,20 +1,24 @@
-require('offline-plugin/runtime').install()
+require('babel-core/register')
+require('babel-polyfill')
 import * as React from 'react' // tslint:disable-line
 import * as ReactDOM from 'react-dom'
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
 import { createStore, combineReducers, applyMiddleware, compose, Reducer } from 'redux'
 import { useScroll } from 'react-router-scroll'
 import { AppContainer } from 'react-hot-loader'
-import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import ApolloClient, { createBatchingNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import * as FastClick from 'fastclick'
 import * as cookiestore from 'cookiestore'
 import * as WebFont from 'webfontloader'
 import routes from './routes'
-
+import {AsyncComponentProvider, createAsyncContext} from 'react-async-component'
+import asyncBootstrapper from 'react-async-bootstrapper'
 import './utils/polyfills'
 import './style'
-require('./styles/mdn-like.css')
+import * as offline from 'offline-plugin/runtime'
+import './styles/mdn-like.css'
+offline.install()
 
 function shouldScrollUp(previousProps, {location}) {
   return location.hash === '' && (previousProps === null || previousProps.location.pathname !== location.pathname)
@@ -33,20 +37,38 @@ export function updateApolloState(state: any): void {
   }
 }
 
+export function updateAsyncState(state: any): void {
+  const el = document.getElementById('ASYNC_COMPONENTS_STATE') as HTMLScriptElement
+  const text = `window.ASYNC_COMPONENTS_STATE = ${JSON.stringify(state)}`
+  if (el) {
+    el.text = text
+  } else {
+    const newEl = document.createElement('script') as HTMLScriptElement
+    newEl.text = text
+    newEl.id = 'ASYNC_COMPONENTS_STATE'
+    document.head.appendChild(newEl)
+  }
+}
+
 // save last referral
 if (!cookiestore.has('graphcool_last_referral')) {
   cookiestore.set('graphcool_last_referral', document.referrer)
 }
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({uri: __DOCS_API_ADDR__ }),
+  initialState: window.__APOLLO_STATE__,
+  networkInterface: createBatchingNetworkInterface({
+    uri: __DOCS_API_ADDR__,
+    batchInterval: 10,
+  }),
+  dataIdFromObject: (o: any) => o.id,
 })
 
 const store = createStore(
   combineReducers({
     apollo: client.reducer() as Reducer<any>,
   }),
-  window.__APOLLO_STATE__ || {}, // initial state
+  {}, // initial state
   compose(
     applyMiddleware(client.middleware()),
   ),
@@ -78,9 +100,13 @@ function hashLinkScroll() {
   }
 }
 
-function render() {
-  ReactDOM.render(
-    <AppContainer>
+const asyncContext = createAsyncContext()
+
+const rehydratedState = window['ASYNC_COMPONENTS_STATE']
+
+const app = (
+  <AppContainer>
+    <AsyncComponentProvider asyncContext={asyncContext} rehydrateState={rehydratedState}>
       <ApolloProvider store={store} client={client}>
         <Router
           history={browserHistory}
@@ -90,14 +116,27 @@ function render() {
         >
         </Router>
       </ApolloProvider>
-    </AppContainer>,
+    </AsyncComponentProvider>
+  </AppContainer>
+)
+
+function render() {
+  ReactDOM.render(
+    app,
     document.getElementById('root'),
   )
 }
 
-render()
+asyncBootstrapper(app).then(() => {
+  if (navigator.userAgent === 'SSR') {
+    const asyncState = asyncContext.getState()
+    updateAsyncState(asyncState)
+  }
+  render()
+})
 
-const interval = setInterval(initIntercom, 1000)
+// const interval = setInterval(initIntercom, 1000)
+initIntercom()
 
 function initIntercom() {
   if (window.Intercom && navigator.userAgent !== 'SSR') {
@@ -105,7 +144,7 @@ function initIntercom() {
       app_id: __INTERCOM_ID__,
       user_id: cookiestore.has('graphcool_customer_id') ? cookiestore.get('graphcool_customer_id') : undefined,
     })
-    clearInterval(interval)
+    // clearInterval(interval)
   }
 }
 

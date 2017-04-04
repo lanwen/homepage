@@ -9,6 +9,7 @@ import { QueryEditor } from 'graphiql/dist/components/QueryEditor'
 import { ResultViewer } from 'graphiql/dist/components/ResultViewer'
 import { validate } from 'graphql/validation/validate'
 import { parse } from 'graphql/language'
+import * as MediaQuery from 'react-responsive'
 
 const CodeSection = styled.div`
   padding: ${$v.size25} 0 ${$v.size25} ${$v.size25};
@@ -130,29 +131,55 @@ export default class QueryBox extends React.Component<Props, State> {
   }
 
   render() {
+    const secondCodeSection = (
+      <CodeSection>
+        <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
+          { window.innerWidth < breakpoints.p500 &&
+          <Switch
+            className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
+            onClick={() => this.setState({ responseVisible: false } as State)}
+          >
+            <Icon
+              src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
+              width={9}
+              height={15}
+              color={$v.white}
+              stroke
+              strokeWidth={10}
+              className={cx($p.mr10)}
+            />
+            Query
+          </Switch>
+          }
+          <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
+        </div>
+        <ResultViewer value={this.state.result}/>
+      </CodeSection>
+    )
+
     return (
       <div className={cx($p.flex, $p.w100, $p.bbox)}>
         { !this.state.responseVisible &&
         <CodeSection>
           <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
             <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Query</div>
-            { window.innerWidth < breakpoints.p500 &&
-            <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
-              onClick={() => this.setState({ responseVisible: true } as State)}
-            >
-              Response
-              <Icon
-                src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
-                width={9}
-                height={15}
-                color={$v.white}
-                stroke
-                strokeWidth={10}
-                className={cx($p.ml10)}
-              />
-            </Switch>
-            }
+            <MediaQuery maxWidth={500}>
+              <Switch
+                className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
+                onClick={() => this.setState({ responseVisible: true } as State)}
+              >
+                Response
+                <Icon
+                  src={require('graphcool-styles/icons/stroke/arrowRight.svg')}
+                  width={9}
+                  height={15}
+                  color={$v.white}
+                  stroke
+                  strokeWidth={10}
+                  className={cx($p.ml10)}
+                />
+              </Switch>
+            </MediaQuery>
           </div>
           <QueryEditor
             schema={this.state.schema}
@@ -161,34 +188,12 @@ export default class QueryBox extends React.Component<Props, State> {
           />
         </CodeSection>
         }
-        { window.innerWidth >= breakpoints.p500 &&
-        <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}/>
-        }
-        { (window.innerWidth >= breakpoints.p500 || this.state.responseVisible) &&
-        <CodeSection>
-          <div className={cx($p.flex, $p.justifyBetween, $p.itemsCenter)}>
-            { window.innerWidth < breakpoints.p500 &&
-            <Switch
-              className={cx($g.uppercaseLabel, $p.white, $p.pt16, $p.pb25, $p.flex, $p.pointer)}
-              onClick={() => this.setState({ responseVisible: false } as State)}
-            >
-              <Icon
-                src={require('graphcool-styles/icons/stroke/arrowLeft.svg')}
-                width={9}
-                height={15}
-                color={$v.white}
-                stroke
-                strokeWidth={10}
-                className={cx($p.mr10)}
-              />
-              Query
-            </Switch>
-            }
-            <div className={cx($g.uppercaseLabel, $p.white30, $p.pb25)}>Response</div>
-          </div>
-          <ResultViewer value={this.state.result}/>
-        </CodeSection>
-        }
+        <MediaQuery minWidth={500}>
+          <Separator className={cx($p.relative, $p.flexFixed, $p.wS04, $p.bgDarkBlue)}/>
+        </MediaQuery>
+        <MediaQuery minWidth={500}>
+          {matches => matches ? (secondCodeSection) : (this.state.responseVisible && secondCodeSection)}
+        </MediaQuery>
       </div>
     )
   }
