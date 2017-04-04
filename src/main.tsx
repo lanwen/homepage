@@ -1,3 +1,4 @@
+// import {getDataFromTree} from './utils/server'
 require('babel-core/register')
 require('babel-polyfill')
 import * as React from 'react' // tslint:disable-line
@@ -121,19 +122,22 @@ const app = (
 )
 
 function render() {
+  console.log('rendering root')
   ReactDOM.render(
     app,
     document.getElementById('root'),
   )
 }
 
-asyncBootstrapper(app).then(() => {
-  if (navigator.userAgent === 'SSR') {
-    const asyncState = asyncContext.getState()
-    updateAsyncState(asyncState)
-  }
-  render()
-})
+asyncBootstrapper(app)
+// .then(() => getDataFromTree(app)) TODO: make it work with the async components
+  .then(() => {
+    if (navigator.userAgent === 'SSR') {
+      const asyncState = asyncContext.getState()
+      updateAsyncState(asyncState)
+    }
+    render()
+  })
 
 // const interval = setInterval(initIntercom, 1000)
 initIntercom()
