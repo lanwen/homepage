@@ -35,7 +35,8 @@
 //     let child
 //
 //     // Are we are a react class?
-//     //   https://github.com/facebook/react/blob/master/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js#L66
+//     //
+// https://github.com/facebook/react/blob/master/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js#L66
 //     if (Component.prototype && Component.prototype.isReactComponent) {
 //       const instance = new Component(props, context)
 //       // In case the user doesn't pass these to super in the constructor
@@ -51,7 +52,8 @@
 //       }
 //
 //       // this is a poor man's version of
-//       //   https://github.com/facebook/react/blob/master/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js#L181
+//       //
+// https://github.com/facebook/react/blob/master/src/renderers/shared/stack/reconciler/ReactCompositeComponent.js#L181
 //       if (instance.componentWillMount) {
 //         instance.componentWillMount()
 //       }
@@ -136,7 +138,8 @@
 //   })
 //
 //   // Run all queries. If there are errors, still wait for all queries to execute
-//   // so the caller can ignore them if they wish. See https://github.com/apollographql/react-apollo/pull/488#issuecomment-284415525
+//   // so the caller can ignore them if they wish.
+// See https://github.com/apollographql/react-apollo/pull/488#issuecomment-284415525
 //   return Promise.all(mappedQueries).then(_ => {
 //     if (errors.length > 0) {
 //       const error = errors.length === 1
@@ -153,4 +156,3 @@
 //     for (let field of fieldsToNotShip) delete apolloState.queries[queryId][field]
 //   }
 // }
-

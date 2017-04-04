@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --hot --inline --content-base static --progress --history-api-fallback --host 0.0.0.0 --port 5000",
     "clean-scripts": "node cleanup-scripts.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
-    "build-babili": "webpack --config webpack.config.babili.js && cp -r static/* dist",
+    "build-babili": "rm -rf dist && webpack --config webpack.config.babili.js && cp -r static/* dist",
     "deploy": "npm run build-babili && npm run prep && npm run clean-scripts && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN",
     "prep": "prep dist",
     "prep-docker": "docker run --rm -v $PWD:/app graphcool/prep prep dist",
