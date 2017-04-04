@@ -4,16 +4,21 @@ interface Props {
   image: string
   chapter: number
   description: string
+  link?: string
 }
 
-const Feature = ({image, chapter, description}: Props) => (
-  <div className='feature'>
+const Feature = ({image, chapter, description, link}: Props) => (
+  <a
+    target='_blank'
+    href={link || ''}
+    className={`feature ${link || 'inactiveLink'}`}
+  >
     <style jsx={true}>{`
-      .feature {
-        width: 290px;
+      .inactiveLink {
+        @p: .cursorDefault, .o20;
       }
       .feature + .feature {
-        margin-left: 50px;
+        margin-left: 38px;
       }
       img {
         @p: .br2, .brTop, .w100;
@@ -36,6 +41,9 @@ const Feature = ({image, chapter, description}: Props) => (
           @p: .ml0;
         }
       }
+      a {
+        @p: .noUnderline;
+      }
     `}</style>
     <img src={image} alt='' />
     <div className='content'>
@@ -44,7 +52,7 @@ const Feature = ({image, chapter, description}: Props) => (
         <span>{description}</span>
       </p>
     </div>
-  </div>
+  </a>
 )
 
 export default Feature

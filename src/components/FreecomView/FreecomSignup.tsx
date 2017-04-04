@@ -30,7 +30,7 @@ export default class FreecomSignup extends React.Component<Props, State> {
       <button className={cn({invalid})} onClick={this.submit}>
         <style jsx>{`
           button {
-            @p: .bgGreen, .white, .br2, .flexFixed, .f16, .fw6, .pv10, .ph16, .pointer, .ttu, .buttonShadow;
+            @p: .bgBlue, .white, .br2, .flexFixed, .f16, .fw6, .pv10, .ph16, .pointer, .ttu, .buttonShadow;
           }
           button.invalid {
             cursor: not-allowed;

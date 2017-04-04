@@ -10,26 +10,32 @@ const data = [
   {
     n: 1,
     description: `Preparing the GraphQL Server`,
+    link: 'https://www.graph.cool/docs/tutorials/relay-vs-apollo-iechu0shia/',
   },
   {
     n: 2,
     description: `Integrating Apollo Client, Queries & Mutations`,
+    link: null,
   },
   {
     n: 3,
     description: `Realtime Functionality with Subscriptions`,
+    link: null,
   },
   {
     n: 4,
     description: `Controlling Data Access with Permissions`,
+    link: null,
   },
   {
     n: 5,
     description: `Mutation Callbacks & Serverless Functions`,
+    link: null,
   },
   {
     n: 6,
     description: `File Management with Graphcool`,
+    link: null,
   },
 ]
 
@@ -41,7 +47,7 @@ const Learn = ({}: Props) => (
       }
       .learn {
         @p: .center, .ph25;
-        max-width: 970px;
+        max-width: 1200px;
       }
       h1 {
         @p: .white, .f38, .fw3, .tc;
@@ -74,6 +80,7 @@ const Learn = ({}: Props) => (
             image={require('assets/graphics/freecom/chapter.png')}
             chapter={date.n}
             description={date.description}
+            link={date.link}
           />
         ))}
       </div>
