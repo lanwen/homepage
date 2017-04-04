@@ -51,6 +51,15 @@ const Intro = ({}: Props) => (
         .freecomLogo {
           @p: .mb38;
         }
+
+        .title {
+          padding-left: 0 !important;
+          @p: .tc;
+        }
+
+        .blue {
+          @p: .mt16;
+        }
       }
 
     `}</style>
