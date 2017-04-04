@@ -41,7 +41,7 @@ const Technologies = ({}: Props) => (
           margin-top: 16px !important;
         }
         .technologies {
-          justify-content: flex-start !important;
+          justify-content: center !important;
         }
         .technology {
           margin-right: 25px !important;
@@ -50,6 +50,7 @@ const Technologies = ({}: Props) => (
           margin-left: 0 !important;
           margin-bottom: 38px !important;
         }
+
       }
     `}</style>
     <h1>Based on the newest technologies</h1>
