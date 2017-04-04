@@ -106,7 +106,7 @@ const Footer = () => (
         <Icon src={require('../../assets/icons/graphcool.svg')} width={18} height={21} color={$v.white}/>
       </LogoFlag>
 
-      <MediaQuery maxWidth={1350}>
+      <MediaQuery maxWidth={1360}>
         <MissionColumn>
           <ServiceStatus/>
           <Mission/>
@@ -116,7 +116,7 @@ const Footer = () => (
         </MissionColumn>
       </MediaQuery>
 
-      <MediaQuery maxWidth={1360}>
+      <MediaQuery minWidth={1360}>
         <MissionColumn>
           <Mission/>
         </MissionColumn>
