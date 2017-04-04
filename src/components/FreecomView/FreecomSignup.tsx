@@ -37,7 +37,9 @@ export default class FreecomSignup extends React.Component<Props, State> {
           }
           @media (max-width: 480px) {
             button {
-              @p: .w100, .pv16;
+              @p: .w100;
+              padding-top: 16px !important;
+              padding-bottom: 16px !important;
             }
           }
         `}</style>
@@ -108,11 +110,11 @@ export default class FreecomSignup extends React.Component<Props, State> {
             onChange={this.onChangeEmail}
             onKeyDown={this.onKeyDown}
           />
-          <MediaQuery minWidth={650}>
+          <MediaQuery minWidth={480}>
             {this.renderButton()}
           </MediaQuery>
         </div>
-        <MediaQuery maxWidth={650}>
+        <MediaQuery maxWidth={480}>
           {this.renderButton()}
         </MediaQuery>
       </div>

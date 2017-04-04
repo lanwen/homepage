@@ -23,14 +23,14 @@ const Feature = ({image, chapter, description, link}: Props) => (
         @p: .cursorDefault, .o20;
       }
       .feature {
-        @p: .flexAuto, .mr38;
-        width: calc(33% - 38px);
+        @p: .flexAuto, .mr38, .flex, .flexColumn, .mb38;
+        width: calc(33% - 25px);
       }
       img {
-        @p: .br2, .brTop, .w100;
+        @p: .br2, .brTop, .w100, .flexFixed;
       }
       .content {
-        @p: .pa25, .bWhite10, .br2, .brBottom, .bl, .bb, .br, .relative, .bgDarkBlue;
+        @p: .pa25, .bWhite10, .br2, .brBottom, .bl, .bb, .br, .relative, .bgDarkBlue, .flexAuto;
         top: -7px;
       }
       p {
@@ -39,10 +39,18 @@ const Feature = ({image, chapter, description, link}: Props) => (
           @p: .fw6;
         }
       }
-      @media (max-width: 650px) {
+      @media (min-width: 792px) {
+        .feature:nth-child(3), .feature:nth-child(6) {
+          margin-right: 0;
+        }
+      }
+      @media (max-width: 791px) {
         .feature {
           @p: .mt16;
           width: calc(50% - 38px) !important;
+        }
+        .feature:nth-child(even) {
+          margin-right: 0;
         }
         .feature + .feature {
           @p: .ml0;
@@ -51,6 +59,7 @@ const Feature = ({image, chapter, description, link}: Props) => (
       @media (max-width: 480px) {
         .feature {
           @p: .mt16;
+          margin-right: 0 !important;
           width: 100% !important;
         }
       }
