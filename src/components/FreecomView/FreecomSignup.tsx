@@ -105,7 +105,6 @@ export default class FreecomSignup extends React.Component<Props, State> {
           <input
             type='text'
             placeholder='Just type your Email'
-            autoFocus
             onChange={this.onChangeEmail}
             onKeyDown={this.onKeyDown}
           />

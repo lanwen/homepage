@@ -5,6 +5,11 @@ interface Props {
 
 }
 
+const restartVideo = (e: any) => {
+  e.target.currentTime = 0
+  e.target.load()
+}
+
 const Intro = ({}: Props) => (
   <div className='intro'>
     <style jsx>{`
@@ -54,8 +59,9 @@ const Intro = ({}: Props) => (
         </div>
       </div>
     </div>
-
-    <img className='preview' src={require('assets/graphics/freecom/intro.png')} alt='Freecom Chat in Action' />
+    <video className='preview' playsInline autoPlay onClick={restartVideo}>
+      <source src='/videos/freecom.mov' type='video/mp4' />
+    </video>
     <p>
       Throughout this course you’ll learn everything you need to build a
       functional Intercom clone with cutting-edge technologies. We'll cover how
