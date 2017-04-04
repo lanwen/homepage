@@ -47,7 +47,7 @@ const Intro = ({}: Props) => (
     <div className='titleContainer'>
       <img
         className='freecomLogo'
-        src={require('../../assets/graphics/freecom/freecom.png')}
+        src={require('../../assets/graphics/freecom/freecom.svg')}
         alt='Freecom Logo'
       />
       <div className='title'>
