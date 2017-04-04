@@ -6071,9 +6071,9 @@ react-async-bootstrapper@^0.0.5:
   dependencies:
     react-tree-walker "^2.0.0-alpha.3"
 
-"react-async-component@git+https://github.com/timsuchanek/react-async-component#build4":
-  version "1.0.0-alpha.1"
-  resolved "git+https://github.com/timsuchanek/react-async-component#1aeb0f42dfee693ca9e7ce01c68a3b6ab27ec3b1"
+react-async-component@1.0.0-alpha.2:
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-1.0.0-alpha.2.tgz#0925d194ba731cf0c512ba873e24b8c1c5488bc1"
 
 react-codemirror@^0.3.0:
   version "0.3.0"

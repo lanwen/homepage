@@ -37,7 +37,9 @@ const Intro = ({}: Props) => (
         Join our 6 week course to build your own customer chat.
       </div>
     </div>
-    <img className='preview' src={require('assets/graphics/freecom/intro.png')} alt='Freecom Chat in Action' />
+    <video className='preview' playsInline autoPlay onClick={this.restartVideo}>
+      <source src='/videos/freecom.mov' type='video/mp4' />
+    </video>
     <p>
       Throughout this course you’ll learn everything you need to build a
       functional Intercom clone with cutting-edge technologies. We'll cover how
