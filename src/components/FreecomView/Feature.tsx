@@ -70,7 +70,9 @@ const Feature = ({image, chapter, description, link}: Props) => (
     <img src={image} alt='' />
     <div className='content'>
       <p>
-        <span className='b'>Chapter {chapter}: </span>
+        <span className='b'>
+          {chapter === 0 ? 'Overview' : `Chapter ${chapter}`}
+          : </span>
         <span>{description}</span>
       </p>
     </div>

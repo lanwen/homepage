@@ -8,34 +8,46 @@ interface Props {
 
 const data = [
   {
+    n: 0,
+    description: `Building a production-ready Intercom-clone`,
+    link: 'https://www.graph.cool/docs/tutorials/freecom-overview-e8a6ajt8ax/',
+    image: require('assets/graphics/freecom/freecom-overview.png'),
+  },
+  {
     n: 1,
     description: `Preparing the GraphQL Server`,
-    link: 'https://www.graph.cool/docs/tutorials/freecom-overview-e8a6ajt8ax/',
+    link: 'https://www.graph.cool/docs/tutorials/freecom-graphql-server-8uakjj68lp/',
+    image: require('assets/graphics/freecom/freecom-part-1.png'),
   },
   {
     n: 2,
     description: `Integrating Apollo Client, Queries & Mutations`,
-    link: 'https://www.graph.cool/docs/tutorials/freecom-graphql-server-8uakjj68lp/',
+    link: null,
+    image: require('assets/graphics/freecom/freecom-part-2.png'),
   },
   {
     n: 3,
     description: `Realtime Functionality with Subscriptions`,
     link: null,
+    image: require('assets/graphics/freecom/freecom-part-3.png'),
   },
   {
     n: 4,
     description: `Controlling Data Access with Permissions`,
     link: null,
+    image: require('assets/graphics/freecom/freecom-part-4.png'),
   },
   {
     n: 5,
     description: `Mutation Callbacks & Serverless Functions`,
     link: null,
+    image: require('assets/graphics/freecom/freecom-part-5.png'),
   },
   {
     n: 6,
     description: `File Management with Graphcool`,
     link: null,
+    image: require('assets/graphics/freecom/freecom-part-6.png'),
   },
 ]
 
@@ -72,7 +84,7 @@ const Learn = ({}: Props) => (
         {data.map(date => (
           <Feature
             key={date.n}
-            image={require('assets/graphics/freecom/chapter.png')}
+            image={date.image}
             chapter={date.n}
             description={date.description}
             link={date.link}
