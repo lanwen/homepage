@@ -132,16 +132,11 @@ function render() {
 asyncBootstrapper(app)
   .then(() => getDataFromTree(app)) // TODO: make it work with the async components
   .then(() => {
-    setTimeout(
-      () => {
-        if (navigator.userAgent === 'SSR') {
-          const asyncState = asyncContext.getState()
-          updateAsyncState(asyncState)
-        }
-        render()
-      },
-      1000,
-    )
+    if (navigator.userAgent === 'SSR') {
+      const asyncState = asyncContext.getState()
+      updateAsyncState(asyncState)
+    }
+    render()
   })
 
 // const interval = setInterval(initIntercom, 1000)

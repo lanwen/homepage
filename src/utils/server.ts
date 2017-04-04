@@ -97,7 +97,6 @@ function getQueriesFromTree(
 
   walkTree(rootElement, rootContext, (element, instance, context) => {
 
-    console.log('looking at', element, instance)
     const skipRoot = !fetchRoot && (element === rootElement)
     if (instance && typeof instance.fetchData === 'function' && !skipRoot) {
       const query = instance.fetchData()
