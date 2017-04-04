@@ -87,7 +87,7 @@ export default class ContentHeader extends React.Component<Props, {}> {
 
     return (
       <div className='root'>
-        <style>{`
+        <style jsx>{`
           .root {
             @p: .relative, .flex;
             max-width: 970px;
