@@ -11,7 +11,7 @@
     "clean-scripts": "node cleanup-scripts.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
     "build-babili": "rm -rf dist && webpack --config webpack.config.babili.js && cp -r static/* dist",
-    "deploy": "npm run build-babili && npm run prep && npm run clean-scripts && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN",
+    "deploy": "npm run build && npm run prep && npm run clean-scripts && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN",
     "prep": "prep dist",
     "prep-docker": "docker run --rm -v $PWD:/app graphcool/prep prep dist",
     "test": "tslint \"src/**/*.ts{,x}\""

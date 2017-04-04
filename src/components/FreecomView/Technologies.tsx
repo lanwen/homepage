@@ -54,7 +54,8 @@ const Technologies = ({}: Props) => (
     `}</style>
     <h1>Based on the newest technologies</h1>
     <p>
-      They advise us with everything they have, and everything we need. They’re great, they are the best advisors.
+     To build Freecom, we're using cutting-edge technologies. The frontend will be built with React and Apollo.
+      On the backend, we're using Graphcool and integrate serverless functions with StdLib.
     </p>
     <div className='technologies'>
       {data.map(technology => (

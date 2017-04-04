@@ -6,6 +6,33 @@ interface Props {
 
 }
 
+const data = [
+  {
+    n: 1,
+    description: `Preparing the GraphQL Server`,
+  },
+  {
+    n: 2,
+    description: `Integrating Apollo Client, Queries & Mutations`,
+  },
+  {
+    n: 3,
+    description: `Realtime Functionality with Subscriptions`,
+  },
+  {
+    n: 4,
+    description: `Controlling Data Access with Permissions`,
+  },
+  {
+    n: 5,
+    description: `Mutation Callbacks & Serverless Functions`,
+  },
+  {
+    n: 6,
+    description: `File Management with Graphcool`,
+  },
+]
+
 const Learn = ({}: Props) => (
   <div className='learn-container'>
     <style jsx>{`
@@ -41,12 +68,12 @@ const Learn = ({}: Props) => (
         with cutting-edge technologies.
       </p>
       <div className='features'>
-        {[1,2,3].map(n => (
+        {data.map(date => (
           <Feature
-            key={n}
+            key={date.n}
             image={require('assets/graphics/freecom/chapter.png')}
-            chapter={n}
-            description='Setting up your GraphQL Schema'
+            chapter={date.n}
+            description={date.description}
           />
         ))}
       </div>

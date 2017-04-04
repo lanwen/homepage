@@ -186,6 +186,7 @@ class ContentHandler extends React.Component<Props, State> {
             @p: .flex;
           }
           .content {
+            @p: .w100;
             flex-basis: auto;
             flex-grow: 1;
           }

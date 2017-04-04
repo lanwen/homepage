@@ -34,14 +34,16 @@ const Intro = ({}: Props) => (
         <span className='b'>Freecom</span>, build a modern Intercom alternative.
       </div>
       <div className='green'>
-        Join our 7 week course to build your own customer chat.
+        Join our 6 week course to build your own customer chat.
       </div>
     </div>
     <img className='preview' src={require('assets/graphics/freecom/intro.png')} alt='Freecom Chat in Action' />
     <p>
       Throughout this course you’ll learn everything you need to build a
-      functional Intercom clone with cutting-edge technologies. Throughout
-      this course you’ll learn everything you need to build a functional Intercom clone.
+      functional Intercom clone with cutting-edge technologies. We'll cover how
+      to get started with your own Graphcool backend and interact with it
+      using Apollo Client and React.
+
     </p>
     <FreecomSignup />
   </div>

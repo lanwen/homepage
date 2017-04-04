@@ -17,6 +17,7 @@ exports.default = () => {
       '/',
       '/about/',
       '/open-source/',
+      '/freecom/',
       '/pricing/',
       '/graphql',
       '/functions/',
@@ -29,7 +30,8 @@ exports.default = () => {
     ]
 
     return {
-      routes: routes.concat(docsItemRoutes),
+      // routes: routes.concat(docsItemRoutes),
+      routes: routes,
       https: true,
       timeout: 2000,
       hostname: 'https://www.graph.cool',
