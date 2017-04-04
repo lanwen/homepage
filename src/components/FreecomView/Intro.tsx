@@ -43,6 +43,16 @@ const Intro = ({}: Props) => (
         height: 85px;
       }
 
+      @media (max-width: 500px) {
+        .titleContainer {
+          @p: .flexColumn;
+        }
+
+        .freecomLogo {
+          @p: .mb38;
+        }
+      }
+
     `}</style>
     <div className='titleContainer'>
       <img
