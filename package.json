@@ -81,7 +81,7 @@
     "react-algoliasearch": "^2.0.0",
     "react-apollo": "1.0.0",
     "react-async-bootstrapper": "^0.0.5",
-    "react-async-component": "git+https://github.com/timsuchanek/react-async-component#build4",
+    "react-async-component": "git+https://github.com/timsuchanek/react-async-component#build5",
     "react-codemirror": "^0.3.0",
     "react-copy-to-clipboard": "^4.2.3",
     "react-dom": "^15.4.1",
