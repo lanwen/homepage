@@ -23,7 +23,7 @@ const Feature = ({image, chapter, description, link}: Props) => (
         @p: .cursorDefault, .o20;
       }
       .feature {
-        @p: .flexAuto, .mr38, .flex, .flexColumn, .mb38;
+        @p: .flexFixed, .mr38, .flex, .flexColumn, .mb38;
         width: calc(33% - 25px);
       }
       img {
@@ -62,6 +62,9 @@ const Feature = ({image, chapter, description, link}: Props) => (
           margin-right: 0 !important;
           width: 100% !important;
         }
+      }
+      .feature:last-child {
+        margin-right: 0 !important;
       }
       a {
         @p: .noUnderline;
