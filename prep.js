@@ -30,8 +30,8 @@ exports.default = () => {
     ]
 
     return {
-      // routes: routes.concat(docsItemRoutes),
-      routes: routes,
+      routes: routes.concat(docsItemRoutes),
+      // routes: routes,
       https: true,
       timeout: 2000,
       hostname: 'https://www.graph.cool',
