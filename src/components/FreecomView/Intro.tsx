@@ -5,6 +5,11 @@ interface Props {
 
 }
 
+const restartVideo = (e: any) => {
+  e.target.currentTime = 0
+  e.target.load()
+}
+
 const Intro = ({}: Props) => (
   <div className='intro'>
     <style jsx>{`
@@ -37,7 +42,7 @@ const Intro = ({}: Props) => (
         Join our 6 week course to build your own customer chat.
       </div>
     </div>
-    <video className='preview' playsInline autoPlay onClick={this.restartVideo}>
+    <video className='preview' playsInline autoPlay onClick={restartVideo}>
       <source src='/videos/freecom.mov' type='video/mp4' />
     </video>
     <p>
