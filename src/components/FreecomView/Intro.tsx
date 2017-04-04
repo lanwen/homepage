@@ -55,7 +55,7 @@ const Intro = ({}: Props) => (
           <span className='b'>Freecom</span>, build a modern Intercom alternative.
         </div>
         <div className='blue'>
-          Full-stack tutorial series to build your own customer support chat.
+          Full-stack tutorial series to build your own customer chat.
         </div>
       </div>
     </div>
