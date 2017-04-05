@@ -51,7 +51,6 @@ export default class Nav extends React.Component<Props, State> {
             @media (max-width: 750px) {
               @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
               @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .zMax;
-              left: 25px;
               right: 25px;
               top: 25px;
 
