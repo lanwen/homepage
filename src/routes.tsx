@@ -17,6 +17,7 @@ import TutorialsPage from './components/DocsView/pages/TutorialsPage'
 import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
 import QuickstartPage from './components/DocsView/pages/QuickstartPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
+import FreecomView from './components/FreecomView/FreecomView'
 
 function forceTrailingSlash(nextState, replace) {
   const path = nextState.location.pathname
@@ -38,6 +39,7 @@ export default (
     <Route path='/graphql/' component={FeaturesGraphQLView} />
     <Route path='/graphql-up/' component={GraphQLUpView} />
     <Route path='/graphql-up/new/' component={GraphQLUpGetStartedView} />
+    <Route path='/freecom/' component={FreecomView} />
     <Route path='/functions/' component={FeaturesFunctionsView} />
     <Route path='/pricing/' component={PricingView} />
     <Route path='/open-source/' component={OpenSourceView} />

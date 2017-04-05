@@ -6065,15 +6065,15 @@ react-apollo@1.0.0:
   optionalDependencies:
     react-dom "0.14.x || 15.* || ^15.0.0"
 
-react-async-bootstrapper@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/react-async-bootstrapper/-/react-async-bootstrapper-0.0.5.tgz#0df7e3bd5b78a7d850f094aee4d71c3f3c5c2b00"
+react-async-bootstrapper@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-async-bootstrapper/-/react-async-bootstrapper-1.0.1.tgz#8a7ce80547ee274d2dd9c355329029c3f0cf1027"
   dependencies:
-    react-tree-walker "^2.0.0-alpha.3"
+    react-tree-walker "^2.0.1"
 
-"react-async-component@git+https://github.com/timsuchanek/react-async-component#build4":
-  version "1.0.0-alpha.1"
-  resolved "git+https://github.com/timsuchanek/react-async-component#1aeb0f42dfee693ca9e7ce01c68a3b6ab27ec3b1"
+react-async-component@1.0.0-alpha.2:
+  version "1.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-1.0.0-alpha.2.tgz#0925d194ba731cf0c512ba873e24b8c1c5488bc1"
 
 react-codemirror@^0.3.0:
   version "0.3.0"
@@ -6194,9 +6194,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^0.2.2"
 
-react-tree-walker@2.0.0-alpha.3, react-tree-walker@^2.0.0-alpha.3:
-  version "2.0.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-2.0.0-alpha.3.tgz#c22665646825c706534c4715d79de42cf7d5d1e5"
+react-tree-walker@2.0.1, react-tree-walker@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-tree-walker/-/react-tree-walker-2.0.1.tgz#42141f1e4564f6ab0adbdf6054b221092338cfd1"
 
 react-virtualized@^8.11.3:
   version "8.11.4"

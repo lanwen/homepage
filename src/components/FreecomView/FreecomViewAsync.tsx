@@ -2,11 +2,9 @@ import * as React from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import {Helmet} from 'react-helmet'
-import IntroSection from './IntroSection'
-import SchemaSection from './SchemaSection'
-import HowItWorksSection from './HowItWorksSection'
-import AddGraphQLUpSection from './AddGraphQLUpSection'
-import GraphQLUpFAQ from './GraphQLUpFAQ'
+import Intro from './Intro'
+import Technologies from './Technologies'
+import Learn from './Learn'
 
 interface Props {
 
@@ -15,16 +13,18 @@ interface Props {
 export default class GraphQLUpViewAsync extends React.Component<Props, {}> {
 
   render() {
-    const description = 'Get a ready-to-use GraphQL API for your schema'
-    const title = 'graphql-up'
-    const image = 'https://graph.cool/images/graphql-up-twitter.png'
+    const description = 'Throughout this course you’ll learn everything you need to build a' +
+                        ' functional Intercom clone with cutting-edge technologies. Throughout' +
+                        ' this course you’ll learn everything you need to build a functional Intercom clone.'
+    const title = 'Freecom - Full-stack GraphQL tutorial'
+    const image = 'https://www.graph.cool/images/freecom.png'
 
     return (
       <div>
         <Helmet
-          title='graphql-up - Get a ready-to-use GraphQL API for your schema'
+          title='Freecom, build a modern Intercom alternative.'
           meta={[
-            { name: 'description', content: 'graphql-up is the fastest way to get a free & ready to use GraphQL API.' },
+            { name: 'description', content: 'Freecom, build a modern Intercom alternative.' },
             { property: 'og:type', content: 'article' },
             { property: 'og:title', content: title },
             { property: 'og:description', content: description },
@@ -41,11 +41,9 @@ export default class GraphQLUpViewAsync extends React.Component<Props, {}> {
         <Header
           view='HOMEPAGE'
         />
-        <IntroSection />
-        <SchemaSection />
-        <HowItWorksSection />
-        <AddGraphQLUpSection />
-        <GraphQLUpFAQ />
+        <Intro />
+        <Learn />
+        <Technologies />
         <Footer />
       </div>
     )
