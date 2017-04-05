@@ -1,26 +1,12 @@
 import * as React from 'react'
 import { $p, $v, Icon } from 'graphcool-styles'
 import * as cx from 'classnames'
-import styled from 'styled-components'
 import SlackBox from './SlackBox'
 import {breakpoints} from '../../../../utils/constants'
 import gql from 'graphql-tag'
 import {graphql} from 'react-apollo'
 import {Item} from '../../../../types/types'
 import {Link} from 'react-router'
-
-const Container = styled.div`
-  max-width: 1050px;
-  margin: 0 auto;
-  position: relative;
-  top: -20px;
-  
-  @media (max-width: ${breakpoints.p580}px) {
-    padding-top: ${$v.size60};
-    padding-right: ${$v.size60};
-    padding-left: ${$v.size60};
-  }
-`
 
 interface Props {
   data?: Data
@@ -36,17 +22,11 @@ const Community = ({data}: Props) => (
     <style jsx>{`
       .community-wrapper {
         background: rgba(0,0,0,.02);
-        height: 260px;
+        min-height: 260px;
         margin: 25px 0;
       }
       .community {
-        @p: .f20, .black70, .fw5, .ttu, .flex, .itemsCenter, .mt6;
-      }
-      @media (max-width: 750px) {
-        .community {
-          flex-direction: column;
-          height: 700px;
-        }
+        @p: .f20, .black70, .fw5, .ttu, .flex, .itemsCenter, .mt6, .flexWrap;
       }
       @media (max-width: 580px) {
         .community {
@@ -60,7 +40,7 @@ const Community = ({data}: Props) => (
         @p: .ml6;
       }
       .forum-header {
-        @p: .mb16, .flex;
+        @p: .mb16, .inlineFlex;
       }
       .forum-text {
         @p: .mt10;
@@ -75,10 +55,12 @@ const Community = ({data}: Props) => (
       }
       .feature {
         @p: .ph38;
+        width: 30%;
       }
       @media (max-width: 750px) {
         .feature {
           @p: .mt60;
+          width: 100% !important;
         }
       }
       .latest-posts {
@@ -95,11 +77,19 @@ const Community = ({data}: Props) => (
           @p: .ml10, .black60, .f16, .fw6;
         }
       }
+      .container {
+        @p: .flex, .itemsCenter;
+        max-width: 1050px;
+        margin: 0 auto;
+        position: relative;
+        top: -20px;
+
+        @media (max-width: ${breakpoints.p750}px) {
+          @p: .pt25, .pl25, .pr25, .flexColumn;
+        }
+      }
     `}</style>
-    <Container className={cx(
-      $p.flex,
-      $p.itemsCenter,
-    )}>
+    <div className='container'>
       <SlackBox
         className={cx(
           $p.pt25,
@@ -142,7 +132,7 @@ const Community = ({data}: Props) => (
           ))
         )}
       </div>
-    </Container>
+    </div>
   </div>
 )
 

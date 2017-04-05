@@ -41,7 +41,7 @@ const MoreItems = ({text, color, link}: Props) => {
     arr = [0]
   }
   return (
-    <div className={cx($p.relative)}>
+    <div className={cx($p.relative, $p.dn)}>
       <Container className={cx(
         $p.flex,
         $p.justifyCenter,
@@ -52,6 +52,7 @@ const MoreItems = ({text, color, link}: Props) => {
           <div
             key={n}
             className={cx(
+              'item',
               $p.flex1,
               $p.ba,
               $p.bw2,
@@ -59,9 +60,15 @@ const MoreItems = ({text, color, link}: Props) => {
               window.innerWidth > breakpoints.p750 ? $p.pa60 : $p.pv60,
               arr.length === 2 && $p.mh60,
               window.innerWidth < breakpoints.p580 ? $p.mr0 : $p.mr25,
-
             )}
             style={ arr.length > 1 ? {maxWidth: '325px'} : {maxWidth: '325px', minWidth: '325px'}}>
+            <style jsx>{`
+              @media (max-width: 480px) {
+                .item {
+                  min-width: 0 !important;
+                }
+              }
+            `}</style>
           </div>
         ))}
       </Container>
