@@ -101,6 +101,7 @@ function getQueriesFromTree(
     if (instance && typeof instance.fetchData === 'function' && !skipRoot) {
       const query = instance.fetchData()
       if (query) {
+        console.log('server.ts: found something', element, context)
         queries.push({ query, element, context })
 
         // Tell walkTree to not recurse inside this component  we will
@@ -117,6 +118,7 @@ function getQueriesFromTree(
 export function getDataFromTree(rootElement, rootContext: any = {}, fetchRoot: boolean = true): Promise<void> {
 
   let queries = getQueriesFromTree({ rootElement, rootContext }, fetchRoot)
+  console.log('server.ts: found queries', queries)
 
   // no queries found, nothing to do
   if (!queries.length) {

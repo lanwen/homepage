@@ -13,17 +13,19 @@ function reorderScripts(fileName) {
   const $ = cheerio.load(file)
   const regex = /^\/[\d]{1,2}\.[a-z0-9]{20,20}\.js/
 
+  let removed = 0
+
   $('head script').toArray().forEach(script => {
     if (regex.test(script.attribs.src)) {
       const element = $(script)
-      console.log('removing', script.attribs.src)
+      removed++
       element.remove()
-    } else {
-      console.log('nope, not removing')
     }
   })
 
   const newFile = $.html()
+
+  console.log(`cleanup-scripts.js: Removed ${removed} scripts from ${fileName}`)
 
   fs.writeFileSync(fileName.replace('index.html', 'index.html'), newFile, 'utf-8')
 }

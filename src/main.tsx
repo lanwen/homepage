@@ -76,10 +76,10 @@ const store = createStore(
 )
 
 if (navigator.userAgent === 'SSR') {
-  store.subscribe(() => {
-    const state = store.getState()
-    updateApolloState(state)
-  })
+  // store.subscribe(() => {
+  //   const state = store.getState()
+  //   updateApolloState(state)
+  // })
 }
 
 function hashLinkScroll() {
@@ -130,7 +130,7 @@ function render() {
 }
 
 asyncBootstrapper(app)
-  .then(() => getDataFromTree(app)) // TODO: make it work with the async components
+  .then(() => getDataFromTree(app))
   .then(() => {
     if (navigator.userAgent === 'SSR') {
       const asyncState = asyncContext.getState()

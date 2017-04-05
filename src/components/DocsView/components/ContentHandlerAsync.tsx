@@ -66,6 +66,8 @@ class ContentHandler extends React.Component<Props, State> {
     this.state = {
       headings: {},
     }
+    console.log('ContentHandlerAsync: constructor')
+    global['h'] = this
   }
 
   componentWillReceiveProps(nextProps: Props) {
@@ -98,6 +100,7 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   render() {
+    console.log('ContentHandlerAsync: render', this.props)
     if (this.props.data.loading && !this.props.data.allItems) {
       return <LoadingArticle />
     }
