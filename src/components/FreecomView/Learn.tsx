@@ -16,7 +16,7 @@ const data = [
   {
     n: 1,
     description: `Preparing the GraphQL Server`,
-    link: 'https://www.graph.cool/docs/tutorials/freecom-graphql-server-8uakjj68lp/',
+    link: 'https://www.graph.cool/docs/tutorials/freecom-graphql-server-xuakjj68lp/',
     image: require('assets/graphics/freecom/freecom-part-1.png'),
   },
   {
