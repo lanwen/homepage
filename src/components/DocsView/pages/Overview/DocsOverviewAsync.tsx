@@ -23,8 +23,8 @@ const PaddedContainer = styled(Container)`
   padding-top: ${$v.size96};
   
   @media (max-width: ${breakpoints.p400}px) {
-    padding-left: ${$v.size25};
-    padding-right: ${$v.size25};
+    padding-left: ${$v.size25} !important;
+    padding-right: ${$v.size25} !important;
   }
   
   @media (max-width: ${breakpoints.p580}px) {
@@ -43,31 +43,8 @@ const PaddedContainer = styled(Container)`
 `
 
 const ContentContainer = styled.div`
-   // flex: 1 1 auto;
-  
-  // padding-right: ${$v.size38};
     max-width: ${maxWidth}px;
-  
-  //  @media (max-width: ${breakpoints.p1000}px){
-  //    max-width: 850px;
-  //  }
-  //
-  //  @media (max-width: ${breakpoints.p750}px){
-  //    max-width: 600px;
-  //  }
-  // 
-  // @media (max-width: ${breakpoints.p650}px){
-  //    max-width: 475px;
-  //  }
-  //
-  //  @media (max-width: ${breakpoints.p500}px){
-  //    max-width: 350px;
-  //  }
-  // 
-  //  @media (max-width: ${breakpoints.p400}px){
-  //    max-width: 300px;
-  //  }
-
+    width: 100%;
 `
 
 const ItemsBackground = styled.div`

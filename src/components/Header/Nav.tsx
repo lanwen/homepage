@@ -35,6 +35,11 @@ export default class Nav extends React.Component<Props, State> {
           )}
       >
         <style jsx={true}>{`
+          @media (max-width: 750px) {
+            .root :global(a) {
+              @p: .db;
+            }
+          }
           .root {
             @p: .fw6, .black30, .tracked, .ttu, .f14;
 
@@ -46,8 +51,8 @@ export default class Nav extends React.Component<Props, State> {
             @media (max-width: 750px) {
               @p: .dn, .absolute, .flexColumn, .itemsStart, .pa16;
               @p: .bgWhite, .br2, .overflowHidden, .overlayShadow, .zMax;
-              right: 22px;
-              top: 30px;
+              right: 25px;
+              top: 25px;
 
               &.opened {
                 @p: .flex;

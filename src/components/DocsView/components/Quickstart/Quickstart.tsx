@@ -26,11 +26,6 @@ interface Props {
 }
 
 const RootContainer = styled.div`
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 2;
-  position: relative;
 `
 
 export default class Quickstart extends React.Component<Props, State> {
@@ -73,7 +68,7 @@ export default class Quickstart extends React.Component<Props, State> {
     )
 
     return (
-      <MediaQuery maxDeviceWidth={1000}>
+      <MediaQuery maxWidth={1000}>
         {matches => matches ? (
           <div className={cx($p.flex, $p.flexColumn)}>
             <LogoBar className={cx($p.mt25)} />
@@ -97,20 +92,28 @@ export default class Quickstart extends React.Component<Props, State> {
         ) : (
           currentStep === 'TECHNOLOGY' ? (
             <div>
-              <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
-                {stepIndicator}
-                <div className={cx($p.flex, $p.mt25)}>
-                  {frontendTechnologies.map((technology, index) =>
-                    <Technology
-                      key={technology.title}
-                      className={cx($p.ph25)}
-                      technology={technology}
-                      selectable={true}
-                      onClick={() => this.selectFrontendTechnology(technology, index)}
-                    />)
-                  }
-                </div>
-              </RootContainer>
+              <style jsx>{`
+                .quickstart {
+                  @p: .flex, .flexColumn, .relative, .center, .z2, .overflowAuto, .w100;
+                  max-width: 1200px;
+                }
+              `}</style>
+              <div className='quickstart'>
+                <RootContainer className={cx($p.flex, $p.flexColumn, className)}>
+                  {stepIndicator}
+                  <div className={cx($p.flex, $p.mt25)}>
+                    {frontendTechnologies.map((technology, index) =>
+                      <Technology
+                        key={technology.title}
+                        className={cx($p.ph25)}
+                        technology={technology}
+                        selectable={true}
+                        onClick={() => this.selectFrontendTechnology(technology, index)}
+                      />)
+                    }
+                  </div>
+                </RootContainer>
+              </div>
             </div>
           ) : currentStep === 'GRAPHQL_CLIENT' ? (
                 <div>
