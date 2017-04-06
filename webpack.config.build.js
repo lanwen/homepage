@@ -10,6 +10,7 @@ module.exports = {
     app: [
       'whatwg-fetch',
       'graphcool-styles/dist/styles.css',
+      './src/styles/codemirror.css',
       './src/styles/graphiql.css',
       'codemirror/mode/javascript/javascript',
       'codemirror/mode/shell/shell',
