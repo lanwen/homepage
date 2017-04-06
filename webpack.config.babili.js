@@ -20,7 +20,6 @@ module.exports = {
   entry: {
     app: [
       'graphcool-styles/dist/styles.css',
-      './src/styles/codemirror.css',
       './src/styles/graphiql.css',
       'codemirror/mode/javascript/javascript',
       'codemirror/mode/shell/shell',

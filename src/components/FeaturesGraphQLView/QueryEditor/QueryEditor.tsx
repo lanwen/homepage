@@ -338,7 +338,7 @@ export default class QueryEditor extends React.Component<Props, State> {
                   <Models className={cx($p.mt60, $p.br2, $p.bSolid, $p.bWhite10, $p.bw2, $p.relative, $p.flexFixed)}>
                     <TabBar
                       touch={isTouch}
-                      className={cx($p.absolute, $p.tlVCenter, $p.ph10)}
+                      className={cx($p.relative, $p.tlVCenter, $p.ph10)}
                     >
                       {activeProject.models.map(model => (
                         <SchemaTab
