@@ -609,6 +609,7 @@ div.CodeMirror-lint-message-error, div.CodeMirror-lint-message-warning {
 .cm-property { color: #66d9ef; }
 .cm-builtin { color: #50fa7b; }
 .cm-variable-3 { color: #50fa7b; }
+.cm-punctuation { color: rgb(230,230,230) }
 
 .graphiql-container .doc-explorer {
   background: white;
