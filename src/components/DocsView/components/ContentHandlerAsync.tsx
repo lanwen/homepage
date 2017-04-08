@@ -22,6 +22,7 @@ import ContentPagination from './ContentPagination'
 import {elements} from './ReferenceSidenav/data'
 import {extractAliases} from './ReferenceSidenav/ReferenceSidenav'
 import LoadingArticle from './LoadingArticle'
+import * as cookiestore from 'cookiestore'
 import {omit, flatMap, orderBy} from 'lodash'
 
 interface Props {
@@ -83,16 +84,18 @@ class ContentHandler extends React.Component<Props, State> {
 
     // resource not found
     if (nextProps.data.Item === null) {
+      this.logFailedLink(nextProps.location.pathname, true)
       this.props.router.push('/404/')
       return
     }
 
     // rewrite url if it doesn't already match item path
-    // const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}`
-    // let currentPath = this.props.location.pathname
-    // if (contentUrl !== currentPath) {
-    //   this.props.router.push(contentUrl + '/')
-    // }
+    const contentUrl = `${nextProps.data.Item.path}-${nextProps.data.Item.alias}/`
+    let currentPath = this.props.location.pathname
+    if (contentUrl !== currentPath) {
+      this.logFailedLink(nextProps.location.pathname, false)
+      this.props.router.replace(contentUrl)
+    }
   }
 
   shouldComponentUpdate(nextProps) {
@@ -344,6 +347,22 @@ class ContentHandler extends React.Component<Props, State> {
       headings: omit(state.headings, headingsId),
     } as State))
   }
+
+  private logFailedLink = (pathname: string, missing: boolean) => {
+    const referral = cookiestore.get('graphcool_last_referral')
+    const query = `
+      mutation {
+        createFailedLink(pathname: "${pathname}" referral: "${referral}" missing: ${missing}) { id }
+      }
+    `
+    return fetch(__DOCS_API_ADDR__, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query }),
+    })
+}
 }
 
 const getItemQuery = gql`query getItem($alias: String, $aliases: [String!]!) {
