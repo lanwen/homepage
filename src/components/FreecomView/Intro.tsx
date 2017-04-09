@@ -18,7 +18,7 @@ const Intro = ({}: Props) => (
         max-width: 1025px;
       }
       .title {
-        @p: .hf30, .lhTitle, .pl38;
+        @p: .hf30, .lhTitle, .pl25;
         .top {
           @p: .black80;
         }
@@ -71,7 +71,7 @@ const Intro = ({}: Props) => (
       />
       <div className='title'>
         <div className='top'>
-          <span className='b'>Freecom</span>, build a modern Intercom alternative.
+          <span className='b'>Freecom</span>, how to build a modern Intercom alternative.
         </div>
         <div className='blue'>
           Full-stack tutorial series to build your own customer chat.
