@@ -33,10 +33,10 @@ exports.default = () => {
       routes: routes.concat(docsItemRoutes),
       // routes: routes,
       https: true,
-      timeout: 2000,
+      timeout: 4000,
       hostname: 'https://www.graph.cool',
       useragent: 'SSR',
-      concurrency: 10,
+      concurrency: 100,
       minify: {
         minifyCSS: true,
         minifyJS: true,
