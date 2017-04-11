@@ -22,7 +22,7 @@ export default class GraphQLUpViewAsync extends React.Component<Props, {}> {
     return (
       <div>
         <Helmet
-          title='Freecom, build a modern Intercom alternative.'
+          title='Freecom, build a modern Intercom alternative'
           meta={[
             { name: 'description', content: 'Freecom, build a modern Intercom alternative.' },
             { property: 'og:type', content: 'article' },
