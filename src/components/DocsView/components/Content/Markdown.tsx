@@ -15,6 +15,7 @@ import ExampleBox from './ExampleBox'
 import {breakpoints} from '../../../../utils/constants'
 import {Heading} from './ScrollSpy'
 import LoadingArticle from '../LoadingArticle'
+import FreecomSignup from '../../../FreecomView/FreecomSignup'
 
 interface ImageData {
   caption: string
@@ -549,6 +550,20 @@ export default class Markdown extends React.Component<Props, {}> {
           if (videoId) {
             return <YoutubeVideo id={videoId}/>
           }
+        }
+
+        if (literal.includes('FREECOM_SIGNUP')) {
+          return (
+            <div className='mt25'>
+              <style jsx={true}>{`
+                .title {
+                  @p: .tc, .f20, .black50, .mb25;
+                }
+              `}</style>
+              <div className='title'>Get a notification when we release a new chapter!</div>
+              <FreecomSignup />
+            </div>
+          )
         }
 
         return ReactRenderer.renderers.HtmlBlock(props)
