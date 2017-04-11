@@ -39,7 +39,7 @@ const data = [
   },
   {
     n: 5,
-    description: `Implementing Business Logic with Serverless Functions`,
+    description: `Business Logic with Serverless Functions`,
     link: null,
     image: require('assets/graphics/freecom/freecom-part-5.png'),
   },
