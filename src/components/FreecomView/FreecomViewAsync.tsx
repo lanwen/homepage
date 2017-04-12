@@ -17,12 +17,12 @@ export default class GraphQLUpViewAsync extends React.Component<Props, {}> {
                         ' functional Intercom clone with cutting-edge technologies. Throughout' +
                         ' this course you’ll learn everything you need to build a functional Intercom clone.'
     const title = 'Freecom - Full-stack GraphQL tutorial'
-    const image = 'https://www.graph.cool/images/freecom.png'
+    const image = 'https://www.graph.cool/images/freecom.png?v2'
 
     return (
       <div>
         <Helmet
-          title='Freecom, build a modern Intercom alternative.'
+          title='Freecom, build a modern Intercom alternative'
           meta={[
             { name: 'description', content: 'Freecom, build a modern Intercom alternative.' },
             { property: 'og:type', content: 'article' },

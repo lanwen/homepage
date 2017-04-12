@@ -3,7 +3,7 @@ const {Transport} = require('lokka-transport-http')
 
 exports.default = () => {
   const client = new Lokka({
-    transport: new Transport('https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq')
+    transport: new Transport(process.env.DOCS_API_ADDR),
   })
 
   return client.query(`{
@@ -33,10 +33,10 @@ exports.default = () => {
       routes: routes.concat(docsItemRoutes),
       // routes: routes,
       https: true,
-      timeout: 4000,
+      timeout: 15000,
       hostname: 'https://www.graph.cool',
       useragent: 'SSR',
-      concurrency: 100,
+      concurrency: 50,
       minify: {
         minifyCSS: true,
         minifyJS: true,

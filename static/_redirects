@@ -1,3 +1,5 @@
 /forum/*  http://forum.graph.cool/forum/:splat 200!
 /docs/tutorials/relay-vs-apollo-overview-iu5niesain/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
+/docs/tutorials/relay-vs-apollo-requirements-iep9yi0ri6/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
+/docs/tutorials/relay-vs-apollo-mutations-koht6ethe3/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
 /*        /index.html   200
