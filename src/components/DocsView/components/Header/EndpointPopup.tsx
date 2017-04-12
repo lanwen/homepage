@@ -278,9 +278,9 @@ export default class EndpointPopup extends React.Component<Modal.Props, {}> {
               $p.pointer,
             )}
             onClick={
-              () => {
+              (e) => {
                 if (typeof this.props.onRequestClose === 'function') {
-                  this.props.onRequestClose()
+                  this.props.onRequestClose(e as any)
                 }
               }}
           >
