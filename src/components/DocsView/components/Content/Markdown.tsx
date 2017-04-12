@@ -39,6 +39,7 @@ interface Props {
   onChangeHeadings?: (headingsId: number, headings: Heading[]) => void
   removeHeadings?: (headingsId: number) => void
   headingsId?: number
+  noResize?: boolean
 }
 
 const Container = styled.div`
@@ -460,10 +461,11 @@ export default class Markdown extends React.Component<Props, {}> {
         // }
 
         if (literal.includes('IMAGE')) {
+          const {noResize} = this.props
           const imageData = JSON.parse(literal.match(/<!-- IMAGE\((.*)\) -->/)![1]) as ImageData
           const width = imageData.width || Math.ceil(Math.max(window.innerWidth * 0.8, 1100) * window.devicePixelRatio)
           const hasFixedWidth = !!imageData.width
-          const url = imageData.url.replace('files', 'images') + `/${width}x10000`
+          const url = imageData.url.replace('files', 'images') + (noResize ? '' : `/${width}x10000`)
           return (
             <div
               className={cx(

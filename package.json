@@ -8,13 +8,14 @@
   },
   "scripts": {
     "start": "webpack-dev-server --hot --inline --content-base static --progress --history-api-fallback --host 0.0.0.0 --port 5000",
-    "clean-scripts": "node cleanup-scripts.js",
+    "clean-scripts": "node utils/cleanup-scripts.js",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.config.build.js && cp -r static/* dist",
     "build-babili": "rm -rf dist && webpack --config webpack.config.babili.js && cp -r static/* dist",
     "deploy": "npm run build && npm run prep && npm run clean-scripts && netlify deploy -p dist -s $NETLIFY_ID -t $NETLIFY_TOKEN",
     "prep": "prep-cloud dist",
     "prep-docker": "docker run --rm -v $PWD:/app graphcool/prep prep dist",
-    "test": "tslint \"src/**/*.ts{,x}\""
+    "test": "tslint \"src/**/*.ts{,x}\"",
+    "start-edit": "concurrently \"npm start\" \"node utils/content-reload.js\" \"cd $CONTENT_PATH && http-server -p 5001 --cors\""
   },
   "pre-push": [],
   "resolutions": {
@@ -50,9 +51,11 @@
     "babili": "0.0.12",
     "babili-webpack-plugin": "0.0.11",
     "calculate-size": "^1.1.1",
+    "chokidar": "^1.6.1",
     "classnames": "^2.2.5",
     "commonmark": "^0.27.0",
     "commonmark-react-renderer": "^4.3.2",
+    "concurrently": "^3.4.0",
     "cookiestore": "^1.1.0",
     "drumstick": "^1.0.8",
     "extract-text-webpack-plugin": "^2.1.0",
@@ -64,6 +67,7 @@
     "graphiql": "^0.8.0",
     "graphql": "^0.8.2",
     "graphql-tag": "^1.1.2",
+    "http-server": "^0.9.0",
     "intl-messageformat": "^1.3.0",
     "javascript-time-ago": "^0.4.8",
     "json-loader": "^0.5.4",
@@ -106,7 +110,8 @@
     "typed-graphql": "^1.0.2",
     "webfontloader": "^1.6.27",
     "webpack-bundle-analyzer": "^2.3.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "ws": "^2.2.3"
   },
   "devDependencies": {
     "@types/node": "^6.0.48",

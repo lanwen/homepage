@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Markdown from '../Content/Markdown'
 import { Parser } from 'commonmark'
-import {Item} from '../../../../types/types'
+import {fakeItem} from '../../../../utils/fakeItem'
 
 interface Props {
   markdownFile: string
@@ -13,8 +13,6 @@ export default class ExampleStep extends React.Component<Props, {}> {
 
     const md = this.props.markdownFile
     const ast = new Parser().parse(md)
-
-    const item = this.fakeItem()
 
     return (
       <section className='root'>
@@ -65,7 +63,7 @@ export default class ExampleStep extends React.Component<Props, {}> {
           <Markdown
             ast={ast}
             layout='EXAMPLE'
-            item={item}
+            item={fakeItem}
             onChangeHeadings={() => console.log('')}
             loading={false}
             markdownConfig={{displayLineNumbers: false, displayLinkOnHeadings: false, lineWrapping: false}}
@@ -73,28 +71,5 @@ export default class ExampleStep extends React.Component<Props, {}> {
         </div>
       </section>
     )
-  }
-
-  private fakeItem = (): Item => {
-    return {
-      id: '',
-      body: '',
-      alias: '',
-      title: '',
-      beta: false,
-      shorttitle: '',
-      description: '',
-      path: '',
-      preview: '',
-      lastModified: '',
-      sourceFilePath: '',
-      relatedMoreTitle: '',
-      relatedMoreDescription: '',
-      simpleRelayTwin: '',
-      layout: 'EXAMPLE',
-      tags: [],
-      relatedMore: [],
-      relatedFurther: [],
-    } as Item
   }
 }
