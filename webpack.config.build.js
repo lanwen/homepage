@@ -52,7 +52,7 @@ module.exports = {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
       loaders: [
         'file-loader',
-        'image-webpack-loader',
+        'image-webpack-loader&bypassOnDebug',
       ],
     }, {
       test: /\.md$/,
