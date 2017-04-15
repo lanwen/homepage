@@ -50,7 +50,7 @@ module.exports = {
       loader: 'raw-loader!svgo-loader',
     }, {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
-      loader: 'file-loader!image-webpack-loader&bypassOnDebug',
+      loader: 'file-loader!image-webpack-loader?bypassOnDebug',
     }, {
       test: /\.md$/,
       loader: 'raw-loader',

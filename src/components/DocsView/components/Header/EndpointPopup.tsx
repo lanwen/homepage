@@ -7,7 +7,7 @@ import * as cx from 'classnames'
 import ApolloClient from 'apollo-client'
 import * as cookiestore from 'cookiestore'
 import {find} from 'lodash'
-import * as fetch from 'isomorphic-fetch'
+const fetch = require('isomorphic-fetch')
 
 type Endpoint = 'simple/v1' | 'relay/v1' | 'file/v1'
 
