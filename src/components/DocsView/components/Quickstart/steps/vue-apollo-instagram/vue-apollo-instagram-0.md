@@ -1,8 +1,9 @@
-#### Grab the code from GitHub 🤓
+#### Download example project 
 
-We manage all of our examples on GitHub, you can [download](https://github.com/graphcool-examples/vue-apollo-instagram-example) or clone the code for this example like so:
+You can [download](https://github.com/graphcool-examples/vue-apollo-instagram-example) or clone this example project from GitHub:
 
 ```sh
 git clone https://github.com/graphcool-examples/vue-apollo-instagram-example.git
 cd vue-apollo-instagram-example
 ```
+
