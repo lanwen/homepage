@@ -1,18 +1,17 @@
-#### Connect the example project with the GraphQL server 🛰
+#### Connect the example project with the GraphQL server
 
-You now have to tell Relay which GraphQL backend it should connect to. That is where we have to use the endpoint we generated in the previous step.
-
-Open `./src/app.js` and provide the endpoint as an argument to the call where the `Relay.DefaultNetworkLayer` is being created:
+Copy the `Relay API` endpoint to `./src/app.js` as the argument for the constructor of `Relay.DefaultNetworkLayer`, replacing `__RELAY_API_ENDPOINT__ `:
 
 ```js
+// replace `__RELAY_API_ENDPOINT__ ` with the endpoint from the previous step
 Relay.injectNetworkLayer(
   new Relay.DefaultNetworkLayer('__RELAY_API_ENDPOINT__')
 );
 ```
 
-Since Relay verifies your GraphQL queries and mutations at build-time, we also need to add the endpoint to the `package.json` like so:
+Further, open `package.json` and paste the endpoint as the value for the `url` key, again replacing `__RELAY_API_ENDPOINT__ `:
 
-```
+```js
 "graphql": {
   "request": {
     "url": "__RELAY_API_ENDPOINT__"
@@ -20,6 +19,4 @@ Since Relay verifies your GraphQL queries and mutations at build-time, we also n
 },
 ```
 
-You can read more about why that's necessary [here](https://github.com/graphcool/babel-plugin-react-relay).
-
-Awesome, Relay is now prepared to talk to the GraphQL server that you created in the step 1!
+Awesome! Relay now knows which GraphQL server it can talk to.

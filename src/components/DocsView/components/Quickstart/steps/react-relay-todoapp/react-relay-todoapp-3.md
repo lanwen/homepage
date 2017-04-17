@@ -1,4 +1,4 @@
-#### Run the example 🎉
+#### Run the example
 
 All that's left to do now is installing the app's dependencies and then running the application:
 
@@ -7,4 +7,4 @@ yarn install
 yarn start
 ```
 
-That's it, have fun exploring the project 🚀
+That's it, have fun exploring the project 🚀 
