@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {Node} from 'commonmark'
 import * as ReactRenderer from 'commonmark-react-renderer'
 import * as CodeMirror from 'react-codemirror'
 import * as slug from 'slugify'
@@ -30,7 +29,7 @@ interface MarkdownConfiguration {
 }
 
 interface Props {
-  ast: Node
+  ast: any
   layout: Layout
   item: Item
   loading: boolean

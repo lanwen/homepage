@@ -349,10 +349,9 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   private logFailedLink = (pathname: string, missing: boolean) => {
-    const referral = cookiestore.get('graphcool_last_referral')
     const query = `
       mutation {
-        createFailedLink(pathname: "${pathname}" referral: "${referral}" missing: ${missing}) { id }
+        createFailedLink(pathname: "${pathname}" referral: "${document.referrer}" missing: ${missing}) { id }
       }
     `
     return fetch(__DOCS_API_ADDR__, {

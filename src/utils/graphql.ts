@@ -1,7 +1,8 @@
 import { introspectionQuery } from 'graphql/utilities/introspectionQuery'
 import { GraphQLSchema } from 'graphql/type/schema'
 import { buildClientSchema } from 'graphql'
-import * as fetch from 'isomorphic-fetch'
+// import * as fetch from 'isomorphic-fetch'
+const fetch = require('isomorphic-fetch')
 
 export function getSchema(endpoint: string): Promise<GraphQLSchema> {
   return queryEndpoint(endpoint, introspectionQuery)
