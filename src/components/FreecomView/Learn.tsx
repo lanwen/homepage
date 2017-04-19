@@ -10,25 +10,25 @@ const data = [
   {
     n: 0,
     description: `Building Intercom with GraphQL, Apollo & React`,
-    link: '/docs/tutorials/freecom-overview-e8a6ajt8ax/',
+    link: '/docs/tutorials/freecom-overview-intercom-tutorial-e8a6ajt8ax/',
     image: require('assets/graphics/freecom/freecom-overview.png'),
   },
   {
     n: 1,
     description: `Designing the Schema & GraphQL Server`,
-    link: '/docs/tutorials/freecom-1-graphql-server-xuakjj68lp/',
+    link: '/docs/tutorials/freecom-1-schema-graphql-server-xuakjj68lp/',
     image: require('assets/graphics/freecom/freecom-part-1.png'),
   },
   {
     n: 2,
     description: `Apollo Setup & GraphQL Queries/Mutations in React`,
-    link: '/docs/tutorials/freecom-2-apollo-queries-mutations-oe8ahyo2ei',
+    link: '/docs/tutorials/freecom-2-apollo-queries-mutations-oe8ahyo2ei/',
     image: require('assets/graphics/freecom/freecom-part-2.png'),
   },
   {
     n: 3,
     description: `Realtime Updates with GraphQL Subscriptions`,
-    link: null,
+    link: '/docs/tutorials/freecom-3-subscriptions-die6mewitu/',
     image: require('assets/graphics/freecom/freecom-part-3.png'),
   },
   {

@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const config = require('./webpack.config')
 const OfflinePlugin = require('offline-plugin')
-const CustomScriptLocationPlugin = require('./CustomScriptLocationPlugin')
+const CustomScriptLocationPlugin = require('./utils/CustomScriptLocationPlugin')
 
 module.exports = {
   entry: {
@@ -50,10 +50,7 @@ module.exports = {
       loader: 'raw-loader!svgo-loader',
     }, {
       test: /(graphics|gifs)\/.*\.(svg|png|gif|jpg)$/,
-      loaders: [
-        'file-loader',
-        'image-webpack-loader',
-      ],
+      loader: 'file-loader!image-webpack-loader?bypassOnDebug',
     }, {
       test: /\.md$/,
       loader: 'raw-loader',

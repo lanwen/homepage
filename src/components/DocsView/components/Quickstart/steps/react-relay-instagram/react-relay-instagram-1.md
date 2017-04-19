@@ -1,8 +1,12 @@
-#### Get your GraphQL endpoint ⚙
+#### Create your GraqhQL backend
 
-Next, you need to obtain a GraphQL endpoint so that you can connect to your own backend from the example application. 
+You're now ready to set up your GraphQL backend using the [Graphcool CLI](https://www.npmjs.com/package/graphcool) which can be installed via npm:
 
-Using the [Graphcool CLI](https://www.npmjs.com/package/graphcool), you simply provide a data model and the GraphQL API will be generated for you. We already included the required [schema](https://github.com/graphcool-examples/react-relay-instagram-example/blob/master/instagram.schema) in the GitHub repo, here is what it looks like:
+```sh
+npm install -g graphcool
+```
+
+The data schema for this example is specified in a syntax called [GraphQL IDL](https://www.graph.cool/docs/faq/graphql-idl-schema-definition-language-kr84dktnp0/) and is the foundation for your GraphQL backend. Here is what it looks like:
 
 ```graphql
 type Post {
@@ -11,23 +15,15 @@ type Post {
 }
 ```
 
-All you have to do now is provide this schema as an input argument to `graphcool create` in a terminal:
+To create your GraphQL backend, provide a URL to the schema to the `graphcool init` command:
 
 ```sh
-graphcool create instagram.schema 
+graphcool init --url graph.cool/schemas/instagram 
 ```
 
-This will generate two GraphQL endpoints:
+From the two generated GraphQL endpoints, we're using the [`Relay API`]() endpoint since it's constructed to cope with the specific [server-side requirements]() of Relay.
 
-- `Relay API`: Optimized for usage with [Relay](https://facebook.github.io/relay/)
-- `Simple API`: Can be used with any GraphQL client but optimized for [Apollo](http://dev.apollodata.com/)
+In the future, you can change your GraphQL schema by editing the generated configuration file `project.graphcool` and running `graphcool push`.
 
-Since we're using Relay in this example, we need to use the endpoint for the Relay API!
-
-
-> **What is the Graphcool CLI and how do I get it?**
-> 
-> The Graphcool CLI is a command-line tool that allows to interact with our platform from a terminal. It provides similar capabalities as the [Graphcool console](https://console.graph.cool) and particularly makes it easy to create new projects using the `graphcool create` command.
-You can easily install the the Graphcool CLI by calling `npm install graphcool` in a terminal. 
-
+> Note: You can also use the [Graphcool Console](https://console.graph.cool) to create your GraphQL backend using a UI.
 

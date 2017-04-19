@@ -15,3 +15,8 @@ set -x DOCS_API_ADDR https://api.graph.cool/simple/v1/ciwkuhq2s0dbf0131rcb3isiq
 # set -x DOCS_API_ADDR https://api.graph.cool/simple/v1/ciyn862op3bgx01208bxt03x6
 yarn start
 ```
+
+## Editing Conent
+```sh
+set -x CONTENT_PATH ../content/content/; npm run start-edit
+```

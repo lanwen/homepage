@@ -18,6 +18,7 @@ import DocsOverview from './components/DocsView/pages/Overview/DocsOverview'
 import QuickstartPage from './components/DocsView/pages/QuickstartPage'
 import ContentHandler from './components/DocsView/components/ContentHandler'
 import FreecomView from './components/FreecomView/FreecomView'
+import Preview from './components/Preview/Preview'
 
 function forceTrailingSlash(nextState, replace) {
   const path = nextState.location.pathname
@@ -36,6 +37,7 @@ function rootOnChange(_, nextState, replace) {
 export default (
   <Route component={RootView} onEnter={forceTrailingSlash} onChange={rootOnChange}>
     <Route path='/' component={HomeView} />
+    <Route path='/preview' component={Preview} />
     <Route path='/graphql/' component={FeaturesGraphQLView} />
     <Route path='/graphql-up/' component={GraphQLUpView} />
     <Route path='/graphql-up/new/' component={GraphQLUpGetStartedView} />
