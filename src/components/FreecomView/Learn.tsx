@@ -28,7 +28,7 @@ const data = [
   {
     n: 3,
     description: `Realtime Updates with GraphQL Subscriptions`,
-    link: null,
+    link: "/docs/tutorials/freecom-3-subscriptions-die6mewitu",
     image: require('assets/graphics/freecom/freecom-part-3.png'),
   },
   {
