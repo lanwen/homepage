@@ -18,7 +18,7 @@ type Post {
 To create your GraphQL backend, provide a URL to the schema to the `graphcool init` command:
 
 ```sh
-graphcool init --url graph.cool/schemas/instagram 
+graphcool init --url http://graphqlbin.com/instagram.graphql
 ```
 
 From the two generated GraphQL endpoints, we're using the [`Relay API`]() endpoint since it's constructed to cope with the specific [server-side requirements]() of Relay.
