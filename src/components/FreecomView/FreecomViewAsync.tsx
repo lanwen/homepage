@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../components/Helmet'
 import Intro from './Intro'
 import Technologies from './Technologies'
 import Learn from './Learn'

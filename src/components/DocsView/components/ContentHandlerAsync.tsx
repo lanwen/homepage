@@ -14,7 +14,7 @@ import RelatedContentFooter from './Content/RelatedContentFooter'
 import Feedback from './Content/Feedback'
 import EditGithub from './Content/EditGithub'
 import { getAliasFromUrl } from '../../../utils'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../../components/Helmet'
 import { breakpoints } from '../../../utils/constants'
 import ScrollSpy from './Content/ScrollSpy'
 import {Heading} from './Content/ScrollSpy'
@@ -66,7 +66,6 @@ class ContentHandler extends React.Component<Props, State> {
     this.state = {
       headings: {},
     }
-    console.log('ContentHandlerAsync: constructor')
     global['h'] = this
   }
 
@@ -102,7 +101,6 @@ class ContentHandler extends React.Component<Props, State> {
   }
 
   render() {
-    console.log('ContentHandlerAsync: render', this.props)
     if (this.props.data.loading && !this.props.data.allItems) {
       return <LoadingArticle />
     }

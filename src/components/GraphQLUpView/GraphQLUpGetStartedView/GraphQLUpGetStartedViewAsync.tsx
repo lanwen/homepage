@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Header from '../../Header/Header'
 import Footer from '../../Footer/Footer'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../../components/Helmet'
 import IntroSection from './IntroSection'
 import GraphQLUpFAQ from '../GraphQLUpFAQ'
 import GenerateEndpointSection from './GenerateEndpointSection'

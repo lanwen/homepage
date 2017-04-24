@@ -5,7 +5,7 @@ import { $p } from 'graphcool-styles'
 import Footer from '../Footer/Footer'
 import FooterCTA from '../FooterCTA'
 import QueryEditor from './QueryEditor/QueryEditor'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../components/Helmet'
 
 export default class FeaturesGraphQLView extends React.Component<{}, {}> {
   componentDidMount() {

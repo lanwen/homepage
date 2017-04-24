@@ -8,7 +8,7 @@ import PlanCols from './PlanCols'
 import Info from './Info'
 import FAQ from './FAQ'
 import CallToAction from './CallToAction'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../components/Helmet'
 
 export default class PricingView extends React.Component<{}, {}> {
   render() {

@@ -28,6 +28,7 @@ export function walkTree(
   visitor: (element: any, instance: any, context: any) => boolean | void,
 ) {
   const Component = element.type
+
   // a stateless functional component or a class
   if (typeof Component === 'function') {
     const props = assign({}, Component.defaultProps, element.props)
@@ -101,7 +102,6 @@ function getQueriesFromTree(
     if (instance && typeof instance.fetchData === 'function' && !skipRoot) {
       const query = instance.fetchData()
       if (query) {
-        console.log('server.ts: found something', element, context)
         queries.push({ query, element, context })
 
         // Tell walkTree to not recurse inside this component  we will

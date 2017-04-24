@@ -27,6 +27,7 @@ exports.default = () => {
       '/docs/faq/',
       '/docs/tutorials/',
       '/docs/quickstart/',
+      '/docs/faq/graphql-idl-schema-definition-language-kr84dktnp0/'
     ]
 
     return {

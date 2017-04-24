@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-client'
 import { $p } from 'graphcool-styles'
 import * as cx from 'classnames'
 import LoadingBar from './LoadingBar'
-import {Helmet} from 'react-helmet'
+import Helmet from '../components/Helmet'
 import { throttle } from 'lodash'
 
 interface Props {
@@ -83,7 +83,7 @@ export default class RootView extends React.Component<Props, State> {
     return (
       <div className={cx($p.flex, $p.flexColumn, $p.overflowHidden)} id='react-root'>
         <Helmet
-          title='Graphcool - GraphQL Backend as a Service'
+          title='Graphcool - GraphQL Backend as a Service 2'
           meta={meta}
         />
         {this.state.isLoading &&
