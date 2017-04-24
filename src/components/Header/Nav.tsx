@@ -5,6 +5,7 @@ import {breakpoints} from '../../utils/constants'
 import {Link} from 'react-router'
 import EndpointPopup from '../DocsView/components/Header/EndpointPopup'
 import CircleIcon from '../DocsView/components/CircleIcon'
+import {handleOutgoingLink} from '../../utils/link'
 
 interface Props {
   menuOpened: boolean
@@ -29,10 +30,10 @@ export default class Nav extends React.Component<Props, State> {
     return (
       <nav
         className={cx(
-            'root', {
-              'opened': this.props.menuOpened,
-            },
-          )}
+          'root', {
+            'opened': this.props.menuOpened,
+          },
+        )}
       >
         <style jsx={true}>{`
           @media (max-width: 750px) {
@@ -396,10 +397,20 @@ export default class Nav extends React.Component<Props, State> {
             </div>
           ) : (
             <div className='entryPoints'>
-              <a href='https://console.graph.cool/login/' className='button secondary'>
+              <a
+                href='https://console.graph.cool/login/'
+                className='button secondary'
+              >
                 Log in
               </a>
-              <a href='https://console.graph.cool/signup/' className='button primary'>
+              <a
+                href='https://console.graph.cool/signup/'
+                className='button primary'
+                onClick={e => {
+                  ga('send', 'event', 'homepage', 'clicked', 'signup', 'top')
+                  handleOutgoingLink(e, 'https://console.graph.cool/signup')
+                }}
+              >
                 Sign up
               </a>
             </div>

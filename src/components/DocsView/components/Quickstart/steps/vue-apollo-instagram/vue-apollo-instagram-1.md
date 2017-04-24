@@ -18,7 +18,7 @@ type Post {
 To create your GraphQL backend, provide a URL to the schema to the `graphcool init` command:
 
 ```sh
-graphcool init --url graph.cool/schemas/instagram 
+graphcool init --url http://graphqlbin.com/instagram.graphql
 ```
 
 From the two generated GraphQL endpoints, we're using the [`Simple API`](https://www.graph.cool/docs/reference/simple-api/overview-heshoov3ai/) endpoint since it works best with [Apollo Client](http://dev.apollodata.com/).

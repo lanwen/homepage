@@ -13,6 +13,7 @@ import ComparisonChart from './ComparisonChart/ComparisonChart'
 import { debounce } from 'lodash'
 import { isElementInViewport } from '../../utils/dom'
 import FooterCTA from '../FooterCTA'
+import {handleOutgoingLink} from '../../utils/link'
 
 interface State {
   queryEditorInViewport: boolean
@@ -71,6 +72,14 @@ export default class HomeView extends React.Component<{}, State> {
           button1Link='https://console.graph.cool/signup'
           button2Text='Open Docs'
           button2Link='https://graph.cool/docs'
+          button1OnClick={e => {
+            ga('send', 'event', 'homepage', 'clicked', 'signup', 'bottom')
+            handleOutgoingLink(e, 'https://console.graph.cool/signup')
+          }}
+          button2OnClick={e => {
+            ga('send', 'event', 'homepage', 'read', 'docs', 'bottom')
+            handleOutgoingLink(e, 'https://console.graph.cool/signup')
+          }}
         />
         <Footer/>
       </div>

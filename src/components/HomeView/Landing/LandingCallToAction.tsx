@@ -3,6 +3,7 @@ import * as cx from 'classnames'
 import { $p, $g, $v } from 'graphcool-styles'
 import styled from 'styled-components'
 import { breakpoints } from '../../../utils/constants'
+import {handleOutgoingLink} from '../../../utils/link'
 
 const Root = styled.div`
   
@@ -48,6 +49,10 @@ export default class LandingCallToAction extends React.Component<{}, {}> {
         <Button
           href='https://console.graph.cool/signup'
           className={cx($g.uppercaseButton, $p.dim, $p.pa16, $p.bgGreen, $p.white, $p.mr25, $p.noUnderline)}
+          onClick={e => {
+            ga('send', 'event', 'homepage', 'clicked', 'signup', 'top_hero')
+            handleOutgoingLink(e, 'https://console.graph.cool/signup')
+          }}
         >
           Sign Up
         </Button>

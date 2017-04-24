@@ -11,6 +11,7 @@ interface Props {
   headline: string,
   copy: string
   link: string
+  onClick?: () => void
 }
 
 const Root = styled.div`
@@ -127,6 +128,7 @@ export default class Feature extends React.Component<Props, {}> {
             link={link}
             className={cx($p.mt16)}
             newWindow
+            onClick={this.props.onClick}
           />
         </div>
       </Root>

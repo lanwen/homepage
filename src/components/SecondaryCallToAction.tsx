@@ -9,6 +9,7 @@ interface Props {
   link: string,
   className?: string,
   newWindow?: boolean,
+  onClick?: () => void
 }
 
 const Root = styled.a`
@@ -47,6 +48,7 @@ export default class SecondaryCallToAction extends React.Component<Props, {}> {
           this.props.className,
         )}
         target={this.props.newWindow ? '_blank' : '_self'}
+        onClick={this.props.onClick}
       >
         {this.props.text}
         <Arrow className={cx($p.ml10)}>
