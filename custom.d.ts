@@ -20,6 +20,7 @@ declare var __INTERCOM_ID__: string
 declare var __BACKEND_ADDR__: string
 declare var __DOCS_API_ADDR__: string
 declare var __HEARTBEAT_ADDR__: string | boolean
+declare var graphcool_initialized: boolean
 
 declare interface Window {
   analytics: any

@@ -12,7 +12,7 @@ import MoreItems from './MoreItems'
 import Quickstart from '../../components/Quickstart/Quickstart'
 import * as cookiestore from 'cookiestore'
 import { breakpoints, maxWidth } from '../../../../utils/constants'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../../../components/Helmet'
 
 const Container = styled.div`
   max-width: 1050px;

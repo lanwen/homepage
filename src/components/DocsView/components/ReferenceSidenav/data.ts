@@ -8,9 +8,7 @@ export const elements: ReferenceSidebarElement[] = [{
   children: [{
     alias: 'uh8shohxie', // console
     children: [{
-      alias: 'ahlohd8ohn',
-    }, {
-      alias: 'iegoo0heez',
+      alias: 'ahlohd8ohn', // mutation callbacks
     }],
   }, {
     alias: 'ahwoh2fohj', // data-schema
@@ -26,6 +24,15 @@ export const elements: ReferenceSidebarElement[] = [{
       alias: 'oe3raifamo', // naming conventions
     }],
   }, {
+    alias: 'wejileech9', // authentication
+  }, {
+    alias: 'iegoo0heez', // authorization
+    children: [{
+      alias: 'iox3aqu0ee', // permission queries
+    }, {
+      alias: 'zievoo3oht', // examples-and-patterns
+    }],
+  }, {
     alias: 'seimeish6e', // integration
     children: [{
       alias: 'naed3eecie', // auth0
@@ -35,10 +42,10 @@ export const elements: ReferenceSidebarElement[] = [{
       alias: 'emaig4uiki', // algolia
     }],
   }, {
-    alias: 'wejileech9', // authentication
-  }, {
     alias: 'eer4wiang0', // file-management
   }],
+}, {
+  alias: 'kie1quohli', // cli
 }, {
   alias: 'heshoov3ai', // simple-api
   children: [{

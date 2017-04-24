@@ -132,15 +132,26 @@ function render() {
   )
 }
 
+logTitle('Before Anything')
 asyncBootstrapper(app)
-  .then(() => getDataFromTree(app))
   .then(() => {
+    logTitle('Before getDataFromTree')
+    return getDataFromTree(app)
+  })
+  .then(() => {
+    logTitle('Before Render')
     if (navigator.userAgent === 'SSR') {
       const asyncState = asyncContext.getState()
       updateAsyncState(asyncState)
     }
+    window['graphcool_initialized'] = true
     render()
+    logTitle('After Render')
   })
+
+function logTitle(msg) {
+  console.log(msg, document.title)
+}
 
 // const interval = setInterval(initIntercom, 1000)
 initIntercom()

@@ -4,7 +4,7 @@ import * as cx from 'classnames'
 import styled from 'styled-components'
 import Items from '../Overview/Items'
 import Heading from '../Overview/Heading'
-import {Helmet} from 'react-helmet'
+import Helmet from '../../../../components/Helmet'
 
 const Container = styled.div`
   max-width: 1050px;
