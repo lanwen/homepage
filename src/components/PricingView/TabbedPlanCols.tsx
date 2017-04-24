@@ -373,7 +373,7 @@ export default class TabbedPlanCols extends React.Component<{}, State> {
                       </Circle24>
                     </div>
                     <div className={cx($p.flex, $p.flexColumn, $p.ml25)}>
-                      <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>50,000,000</div>
+                      <div className={cx($p.black60, $p.f16, $p.fw6, $p.mb4)}>150,000,000</div>
                       <div className={cx($p.flex)}>
                         <Tooltip text={tooltips.REQUEST}>
                           <div className={cx($p.green, $p.f14, $p.fw3, $p.underline)}>Requests</div>

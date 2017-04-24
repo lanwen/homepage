@@ -96,7 +96,7 @@ export default class FreePlan extends React.Component<{}, {}> {
               width={7}
               height={10}
             >
-              <div className={cx($p.f16, $p.black60, $p.fw6)}>500 MB</div>
+              <div className={cx($p.f16, $p.black60, $p.fw6)}>100,000</div>
               <div className={cx($p.flex, $p.itemsEnd)}>
                 <Tooltip text={tooltips.REQUEST}>
                   <span className={cx($p.f14, $p.fw3, $p.green, $p.underline)}>Requests</span>
