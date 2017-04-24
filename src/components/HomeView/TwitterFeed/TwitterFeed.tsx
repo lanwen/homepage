@@ -130,6 +130,9 @@ export default class TwitterFeed extends React.Component<{}, {}> {
           className={cx($p.mb60)} text='Follow us on Twitter'
           link='https://twitter.com/graphcool'
           newWindow
+          onClick={() => {
+            ga('send', 'event', 'homepage', 'clicked', 'twitter')
+          }}
         />
         <RootContainer>
           <PostsContainer className={cx($p.flex, $p.itemsStretch)}>

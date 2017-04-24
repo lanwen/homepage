@@ -60,6 +60,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Flexible Data Model'
             copy='Create and change your data model to fit your needs without breaking your app.'
             link='/docs/reference/platform/data-schema-ahwoh2fohj'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'database')
+            }}
           />
           <Feature
             icon='radar'
@@ -67,6 +70,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Real-time Subscriptions'
             copy='Works out-of-the-box with GraphQL subscriptions for real-time applications.'
             link='https://github.com/graphcool-examples/react-apollo-instagram-subscriptions-example'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'subscriptions')
+            }}
           />
           <Feature
             icon='lock'
@@ -74,6 +80,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Permission Control'
             copy='There’s no software or  infrastructure to manage, so you can get started in minutes.'
             link='/docs/reference/platform/permissions-iegoo0heez'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'permissions')
+            }}
           />
           <Feature
             icon='puzzle'
@@ -81,6 +90,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Powerful Integrations'
             copy='Integrates seamlessly with many services like Algolia, Auth0, Stripe or Digits.'
             link={'/blog/2017-02-07-announcing-integrations-collaboration-pricing-updates-pioh2xhxea'}
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'integrations')
+            }}
           />
           <Feature
             icon='braces'
@@ -88,6 +100,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Easy to Extend'
             copy='Extend your backend and implement your custom logic using any language.'
             link='/docs/reference/platform/mutation-callbacks-ahlohd8ohn'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'serverless')
+            }}
           />
           <Feature
             icon='check'
@@ -95,6 +110,9 @@ export default class Features extends React.Component<{}, {}> {
             headline='Apollo & Relay Compatible'
             copy='Optimized endpoints for every GraphQL client like Apollo and Relay.'
             link='/docs/reference/simple-api/overview-heshoov3ai/'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'features', 'clients')
+            }}
           />
         </Container>
       </div>

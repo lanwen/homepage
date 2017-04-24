@@ -75,11 +75,9 @@ const store = createStore(
   ),
 )
 
-if (navigator.userAgent === 'SSR') {
-  // store.subscribe(() => {
-  //   const state = store.getState()
-  //   updateApolloState(state)
-  // })
+function handleRouteChange() {
+  hashLinkScroll()
+  logPageView()
 }
 
 function hashLinkScroll() {
@@ -105,6 +103,11 @@ const asyncContext = createAsyncContext()
 
 const rehydratedState = window['ASYNC_COMPONENTS_STATE']
 
+function logPageView() {
+  ga('set', 'page', window.location.pathname)
+  ga('send', 'pageview', window.location.pathname)
+}
+
 const app = (
   <AppContainer>
     <AsyncComponentProvider asyncContext={asyncContext} rehydrateState={rehydratedState}>
@@ -113,7 +116,7 @@ const app = (
           history={browserHistory}
           render={applyRouterMiddleware(useScroll(shouldScrollUp))}
           routes={routes}
-          onUpdate={hashLinkScroll}
+          onUpdate={handleRouteChange}
         >
         </Router>
       </ApolloProvider>
@@ -161,4 +164,9 @@ if (navigator.userAgent !== 'SSR') {
       'Source Code Pro:500,700'],
     },
   })
+}
+
+if (typeof ga !== 'undefined') {
+  const isCustomer = cookiestore.has('graphcool_customer_id') ? '1' : '0'
+  ga('set', 'isCustomer', isCustomer)
 }

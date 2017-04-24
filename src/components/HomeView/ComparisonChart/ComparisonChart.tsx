@@ -116,10 +116,18 @@ const MetricsCell = styled.div`
 `
 
 export default class ComparisonChart extends React.Component<{}, {}> {
+  read = false
 
   render() {
     return (
-      <Root>
+      <Root
+        onMouseEnter={() => {
+          if (!this.read) {
+            ga('send', 'event', 'homepage', 'clicked', 'features', 'serverless')
+            this.read = true
+          }
+        }}
+      >
         <SectionHeader
           headline='A backend platform for more than just prototyping'
           copy='GraphQL and serverless functions enable you to iterate quickly and build scalable applications.'

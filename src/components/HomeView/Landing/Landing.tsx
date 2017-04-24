@@ -237,6 +237,9 @@ export default class Landing extends React.Component<{}, {}> {
             className={cx($p.flexFixed, $p.relative)}
             href='https://www.youtube.com/watch?v=SooujCyMHe4'
             target='_blank'
+            onClick={() => {
+              ga('send', 'event', 'homepage', 'clicked', 'video')
+            }}
           >
             <img
               className={cx($p.w100, $p.hAuto, $p.db)}
