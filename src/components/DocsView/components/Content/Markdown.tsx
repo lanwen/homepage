@@ -570,7 +570,7 @@ export default class Markdown extends React.Component<Props, {}> {
 
         if (literal.includes('PERMISSION_EXAMPLES')) {
           return (
-            <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
+            <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv60)}>
               <PermissionsExamplesBox />
             </div>
           )
