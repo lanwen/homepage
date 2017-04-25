@@ -46,7 +46,7 @@ query permitCreatePosts($user_id: ID!) {
     operation: 'Update Post',
     needsAuthentication: true,
     appliesToSentence: 'Operation applies to fields:',
-    appliesToItems: ['text', 'isPublished'],
+    appliesToItems: ['isPublished'],
     snippet: `\
 query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
   somePostExists(filter: {
@@ -79,8 +79,8 @@ query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
     title: 'Only the author or admins can delete a Post',
     operation: 'Delete Post',
     needsAuthentication: true,
-    appliesToSentence: 'Operation is not applicable to any fields',
-    appliesToItems: [],
+    appliesToSentence: 'Operation applies to',
+    appliesToItems: ['whole node'],
     snippet: `\
 query permitDeletePosts($node_id: ID!, $user_id: ID!) {
   someUserExists(filter: {
@@ -105,20 +105,12 @@ query permitDeletePosts($node_id: ID!, $user_id: ID!) {
     appliesToSentence: 'Operation applies when connecting nodes',
     appliesToItems: ['text'],
     snippet: `\
-query permitPostCollaborators($node_id, $user_id: ID!, $collaboratorsUserId: ID!) {
-  somPostExists(filter: {
-    id: $node_id
+query permitPostCollaborators($postsPost_id: ID!, $collaboratorsUser_id: ID!) {
+  somePostExists(filter: {
+    id: $postsPost_id
     author: {
       friends_some: {
-        id: $collaboratorsUserId
-      }
-    }
-    friends_some: {
-      posts_some: {
-        id: $node_id
-        author: {
-          
-        }
+        id: $collaboratorsUser_id
       }
     }
   })
