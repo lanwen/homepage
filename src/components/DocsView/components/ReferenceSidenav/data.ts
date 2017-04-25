@@ -29,8 +29,6 @@ export const elements: ReferenceSidebarElement[] = [{
     alias: 'iegoo0heez', // authorization
     children: [{
       alias: 'iox3aqu0ee', // permission queries
-    }, {
-      alias: 'zievoo3oht', // examples-and-patterns
     }],
   }, {
     alias: 'seimeish6e', // integration
