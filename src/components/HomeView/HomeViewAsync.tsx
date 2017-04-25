@@ -14,6 +14,7 @@ import { debounce } from 'lodash'
 import { isElementInViewport } from '../../utils/dom'
 import FooterCTA from '../FooterCTA'
 import {handleOutgoingLink} from '../../utils/link'
+import PermissionsExampleBox from '../DocsView/Standalone/PermissionsExamplesBox'
 
 interface State {
   queryEditorInViewport: boolean

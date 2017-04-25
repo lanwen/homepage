@@ -15,6 +15,7 @@ import {breakpoints} from '../../../../utils/constants'
 import {Heading} from './ScrollSpy'
 import LoadingArticle from '../LoadingArticle'
 import FreecomSignup from '../../../FreecomView/FreecomSignup'
+import PermissionsExamplesBox from '../../Standalone/PermissionsExamplesBox'
 
 interface ImageData {
   caption: string
@@ -563,6 +564,14 @@ export default class Markdown extends React.Component<Props, {}> {
               `}</style>
               <div className='title'>Get a notification when we release a new chapter!</div>
               <FreecomSignup />
+            </div>
+          )
+        }
+
+        if (literal.includes('PERMISSION_EXAMPLES')) {
+          return (
+            <div className={cx($p.flex, $p.itemsCenter, $p.justifyCenter, $p.mv25)}>
+              <PermissionsExamplesBox />
             </div>
           )
         }
