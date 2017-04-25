@@ -153,8 +153,9 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
     }
     return (
       <MediaQuery minWidth={480}>
-        <div className='permissions-example-box'>
-          <style jsx={true}>{`
+        {matches => matches ? (
+            <div className='permissions-example-box'>
+              <style jsx={true}>{`
             .permissions-example-box {
               @p: .bBlue, .ba, .bw2, .mh38;
               max-width: 1200px;
@@ -188,24 +189,27 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
             }
 
           `}</style>
-          <div className='content'>
-            <div className=''>
-              <div className='demo'>Demo</div>
-              <div className='flex flexColumn itemsCenter'>
-                <PermissionScenarioSelection
-                  scenarioTitles={scenarioTitles}
-                  selectedIndex={this.state.selectedScenarioIndex}
-                  onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
+              <div className='content'>
+                <div className=''>
+                  <div className='demo'>Demo</div>
+                  <div className='flex flexColumn itemsCenter'>
+                    <PermissionScenarioSelection
+                      scenarioTitles={scenarioTitles}
+                      selectedIndex={this.state.selectedScenarioIndex}
+                      onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
+                    />
+                  </div>
+
+                </div>
+                <PermissionScenarioDetails
+                  className=''
+                  scenario={scenarios[this.state.selectedScenarioIndex]}
                 />
               </div>
-
             </div>
-            <PermissionScenarioDetails
-              className=''
-              scenario={scenarios[this.state.selectedScenarioIndex]}
-            />
-          </div>
-        </div>
+        ) : (
+          <h2>Please open this page on a desktop device</h2>
+        )}
       </MediaQuery>
     )
   }
