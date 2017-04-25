@@ -29,8 +29,6 @@ export const elements: ReferenceSidebarElement[] = [{
     alias: 'iegoo0heez', // authorization
     children: [{
       alias: 'iox3aqu0ee', // permission queries
-    }, {
-      alias: 'zievoo3oht', // examples-and-patterns
     }],
   }, {
     alias: 'seimeish6e', // integration
@@ -44,9 +42,9 @@ export const elements: ReferenceSidebarElement[] = [{
   }, {
     alias: 'eer4wiang0', // file-management
   }],
-}, {
+}, /*{
   alias: 'kie1quohli', // cli
-}, {
+},*/ {
   alias: 'heshoov3ai', // simple-api
   children: [{
     alias: 'koo4eevun4', // making-api-requests
