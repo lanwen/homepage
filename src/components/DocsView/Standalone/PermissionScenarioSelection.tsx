@@ -43,7 +43,7 @@ export default class PermissionScenarioSelection extends React.Component<Props, 
           .row.selected {
             @p: .blue;
             padding-left: 14px;
-            max-width: 375px;
+            width: 375px;
             box-shadow: 0px 1px 3px 0px rgba(50,50,93,.2);
             border-top-right-radius: 2px;
             border-bottom-right-radius: 2px;
