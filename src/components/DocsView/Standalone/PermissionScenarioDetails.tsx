@@ -67,6 +67,10 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
             @p: .relative;
           }
 
+          .code-mirror-wrap :global(.Codemirror-scroll) {
+            height: auto !important;
+          }
+
         `}</style>
         <div className='open-schema'>
           <a target='_blank' className='noUnderline' href='http://graphqlbin.com/blogging.graphql'>Open IDL schema</a>
