@@ -21,12 +21,17 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
           }
 
           .open-schema {
-            @p: .blue, .o50, .pt10, .pr10, .tr;
+            @p: .o50, .pt10, .pr10, .tr;
+          }
+
+          .open-schema a {
+            @p: .blue;
           }
 
           .content {
-            @p: .flex, .flexColumn, .ph38, .pt38;
-            width: 475px;
+            @p: .flex, .flexColumn, .pt38;
+            width: 380px;
+            padding: 0 50px 0 50px;
           }
 
           .top-row {
@@ -56,7 +61,6 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
             content: "";
             height: 100px;
             background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
-
           }
 
           .code-mirror-wrap {

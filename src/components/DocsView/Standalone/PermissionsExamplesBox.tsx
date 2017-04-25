@@ -48,7 +48,10 @@ query permitCreatePosts($user_id: ID!) {
     appliesToSentence: 'Operation applies to fields:',
     appliesToItems: ['isPublished'],
     snippet: `\
-query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
+query permitUpdatePosts(
+  $node_id: ID!, 
+  $user_id: ID!
+) {
   somePostExists(filter: {
     id: $node_id
     owner: {
@@ -65,7 +68,10 @@ query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
     appliesToSentence: 'Operation applies to fields:',
     appliesToItems: ['text'],
     snippet: `\
-query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
+query permitUpdatePosts(
+  $node_id: ID!, 
+  $user_id: ID!
+) {
   somePostExists(filter: {
     id: $node_id
     collaborators_some: {
@@ -82,7 +88,10 @@ query permitUpdatePosts($node_id: ID!, $user_id: ID!) {
     appliesToSentence: 'Operation applies to',
     appliesToItems: ['whole node'],
     snippet: `\
-query permitDeletePosts($node_id: ID!, $user_id: ID!) {
+query permitDeletePosts(
+  $node_id: ID!, 
+  $user_id: ID!
+) {
   someUserExists(filter: {
     AND: [{
       id: $user_id
@@ -161,7 +170,7 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
             width: 90px;
           }
 
-          @media(max-width: 1100px) {
+          @media(max-width: 1250px) {
             div.content {
               @p: .flexColumn;
             }
@@ -169,7 +178,7 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
 
         `}</style>
         <div className='content'>
-          <div className='flex1'>
+          <div className=''>
             <div className='demo'>Demo</div>
             <div className='flex flexColumn itemsCenter'>
               <PermissionScenarioSelection
@@ -181,7 +190,7 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
 
           </div>
           <PermissionScenarioDetails
-            className='flex1'
+            className=''
             scenario={scenarios[this.state.selectedScenarioIndex]}
           />
         </div>
