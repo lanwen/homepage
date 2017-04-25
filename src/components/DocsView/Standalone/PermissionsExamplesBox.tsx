@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as MediaQuery from 'react-responsive'
 import PermissionScenarioSelection from './PermissionScenarioSelection'
 import PermissionScenarioDetails from './PermissionScenarioDetails'
 
@@ -147,54 +148,65 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
 
   render() {
     const scenarioTitles = scenarios.map(scenario => scenario.title)
+    if (navigator.userAgent === 'SSR') {
+      return null
+    }
     return (
-      <div className='permissions-example-box'>
-        <style jsx={true}>{`
-          .permissions-example-box {
-            @p: .bBlue, .ba, .bw2, .mh38;
-            max-width: 1200px;
-            border-radius: 4px;
-          }
-
-          .content {
-            @p: .flex, .flexRow, .justifyBetween;
-          }
-
-          .top-row {
-            @p: .flex, .flexRow, .justifyBetween;
-          }
-
-          .demo {
-            @p: .bgBlue, .white, .ttu, .tc, .fw6, .f14, .pv4;
-            border-bottom-right-radius: 4px;
-            width: 90px;
-          }
-
-          @media(max-width: 1250px) {
-            div.content {
-              @p: .flexColumn;
+      <MediaQuery minWidth={480}>
+        <div className='permissions-example-box'>
+          <style jsx={true}>{`
+            .permissions-example-box {
+              @p: .bBlue, .ba, .bw2, .mh38;
+              max-width: 1200px;
+              border-radius: 4px;
             }
-          }
 
-        `}</style>
-        <div className='content'>
-          <div className=''>
-            <div className='demo'>Demo</div>
-            <div className='flex flexColumn itemsCenter'>
-              <PermissionScenarioSelection
-                scenarioTitles={scenarioTitles}
-                selectedIndex={this.state.selectedScenarioIndex}
-                onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
-              />
+            @media (max-width: 520px) {
+              div.permissions-example-box {
+                @p: .w100, .mh0;
+              }
+            }
+
+            .content {
+              @p: .flex, .flexRow, .justifyBetween;
+            }
+
+            .top-row {
+              @p: .flex, .flexRow, .justifyBetween;
+            }
+
+            .demo {
+              @p: .bgBlue, .white, .ttu, .tc, .fw6, .f14, .pv4;
+              border-bottom-right-radius: 4px;
+              width: 90px;
+            }
+
+            @media(max-width: 1250px) {
+              div.content {
+                @p: .flexColumn;
+              }
+            }
+
+          `}</style>
+          <div className='content'>
+            <div className=''>
+              <div className='demo'>Demo</div>
+              <div className='flex flexColumn itemsCenter'>
+                <PermissionScenarioSelection
+                  scenarioTitles={scenarioTitles}
+                  selectedIndex={this.state.selectedScenarioIndex}
+                  onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
+                />
+              </div>
+
             </div>
-
+            <PermissionScenarioDetails
+              className=''
+              scenario={scenarios[this.state.selectedScenarioIndex]}
+            />
           </div>
-          <PermissionScenarioDetails
-            className=''
-            scenario={scenarios[this.state.selectedScenarioIndex]}
-          />
         </div>
-      </div>
+      </MediaQuery>
     )
   }
 }
