@@ -147,8 +147,9 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
       <div className='permissions-example-box'>
         <style jsx={true}>{`
           .permissions-example-box {
-            @p: .bBlue, .ba, .bw2, .br2;
+            @p: .bBlue, .ba, .bw2, .mh38;
             max-width: 1200px;
+            border-radius: 4px;
           }
 
           .content {
@@ -161,7 +162,7 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
 
           .demo {
             @p: .bgBlue, .white, .ttu, .tc, .fw6, .f14, .pv4;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
             width: 90px;
           }
 
@@ -175,11 +176,14 @@ export default class PermissionsExamplesBox extends React.Component<{}, State> {
         <div className='content'>
           <div className='flex1'>
             <div className='demo'>Demo</div>
-            <PermissionScenarioSelection
-              scenarioTitles={scenarioTitles}
-              selectedIndex={this.state.selectedScenarioIndex}
-              onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
-            />
+            <div className='flex flexColumn itemsCenter'>
+              <PermissionScenarioSelection
+                scenarioTitles={scenarioTitles}
+                selectedIndex={this.state.selectedScenarioIndex}
+                onRowSelected={(index) => this.setState({ selectedScenarioIndex: index })}
+              />
+            </div>
+
           </div>
           <PermissionScenarioDetails
             className='flex1'

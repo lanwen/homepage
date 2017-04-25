@@ -44,18 +44,37 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
             @p: .flex, .flexRow, .f14, .black40, .pt16, .pb38;
           }
 
+          .code-mirror-box {
+            @p: .relative, .nosb;
+            max-height: 275px;
+            overflow-y: auto;
+          }
+
+          .code-mirror-wrap:after {
+            @p: .absolute, .left0, .right0, .bottom0, .z999;
+            content: "";
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(250,250,250,0), rgba(250,250,250,1));
+
+          }
+
+          .code-mirror-wrap {
+            @p: .relative;
+          }
+
         `}</style>
         <div className='open-schema'>
-          <a className='noUnderline' href='www.google.com'>Open IDL schema</a>
+          <a target='_blank' className='noUnderline' href='http://graphqlbin.com/blogging.graphql'>Open IDL schema</a>
         </div>
-        <div className='content'>
-          <div className='top-row'>
-            <div className='operation'>{this.props.scenario.operation}</div>
-            {this.props.scenario.needsAuthentication &&
+        <div className='flex flexColumn itemsCenter'>
+          <div className='content'>
+            <div className='top-row'>
+              <div className='operation'>{this.props.scenario.operation}</div>
+              {this.props.scenario.needsAuthentication &&
               <div className='flex itemsCenter'>
                 <Icon
                   className='ml10'
-                  src={require('../../../assets/icons/features/lock.svg')}
+                  src={require('../../../assets/icons/lock.svg')}
                 />
                 <div
                   className='needs-authentication'
@@ -63,25 +82,29 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
                   Needs Authentication
                 </div>
               </div>
-            }
+              }
+            </div>
+            <div className='operation-applies'>
+              <div>{this.props.scenario.appliesToSentence}</div>
+              {this.props.scenario.appliesToItems.map((fieldName, index) => (
+                <div
+                  key={index}
+                  className='fw6 ml6'
+                >{fieldName + (index < this.props.scenario.appliesToItems.length - 1 ? ',' : '')}</div>
+              ))}
+            </div>
+            <div className='code-mirror-wrap'>
+            <div className='code-mirror-box'>
+              <Codemirror
+                value={this.props.scenario.snippet}
+                options={{
+                mode: 'graphql',
+                theme: 'mdn-like',
+              } as EditorConfiguration}
+              />
+            </div>
+            </div>
           </div>
-          <div className='operation-applies'>
-            <div>{this.props.scenario.appliesToSentence}</div>
-            {this.props.scenario.appliesToItems.map((fieldName, index) => (
-              <div
-                key={index}
-                className='fw6 ml6'
-              >{fieldName + (index < this.props.scenario.appliesToItems.length - 1 ? ',' : '')}</div>
-            ))}
-          </div>
-          <Codemirror
-            value={this.props.scenario.snippet}
-            options={{
-            mode: 'graphql',
-            theme: 'dracula',
-          } as EditorConfiguration}
-          />
-
         </div>
       </div>
     )

@@ -10,10 +10,6 @@ interface Props {
 
 export default class PermissionScenarioSelection extends React.Component<Props, {}> {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div className={cx('permission-scenario-selection', this.props.className)}>
@@ -32,24 +28,31 @@ export default class PermissionScenarioSelection extends React.Component<Props, 
           }
 
           .row {
-            @p: .f16, .black60, .pointer, .pv4, .mb4, .pl16;
+            @p: .f16, .black60, .pointer, .flex, .flexRow, .itemsCenter;
+            height: 34px;
+            margin-bottom: 8px;
+            padding-left: 22px;
           }
 
           .row.selected {
-            @p: .blue, .buttonShadow;
-            padding-left: 8px;
+            @p: .blue;
+            padding-left: 14px;
             width: 375px;
+            box-shadow: 0px 1px 3px 0px rgba(50,50,93,.2);
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
           }
 
           .selection-indicator {
             @p: .bgBlue;
             width: 8px;
             height: 34px;
-            margin-top: -4px;
+            margin-top: -8px;
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
-
+            box-shadow: 0px 1px 3px 0px rgba(50,50,93,.2);
           }
+
         `}</style>
         <div className='title'>
           Permission Examples
