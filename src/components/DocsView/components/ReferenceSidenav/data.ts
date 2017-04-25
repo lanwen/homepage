@@ -44,9 +44,9 @@ export const elements: ReferenceSidebarElement[] = [{
   }, {
     alias: 'eer4wiang0', // file-management
   }],
-}, {
+}, /*{
   alias: 'kie1quohli', // cli
-}, {
+},*/ {
   alias: 'heshoov3ai', // simple-api
   children: [{
     alias: 'koo4eevun4', // making-api-requests
