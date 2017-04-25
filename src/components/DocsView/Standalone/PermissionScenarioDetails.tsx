@@ -26,6 +26,7 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
 
           .content {
             @p: .flex, .flexColumn, .ph38, .pt38;
+            width: 475px;
           }
 
           .top-row {
@@ -100,6 +101,7 @@ export default class PermissionScenarioDetails extends React.Component<Props, {}
                 options={{
                 mode: 'graphql',
                 theme: 'mdn-like',
+                readOnly: true,
               } as EditorConfiguration}
               />
             </div>

@@ -105,7 +105,10 @@ query permitDeletePosts($node_id: ID!, $user_id: ID!) {
     appliesToSentence: 'Operation applies when connecting nodes',
     appliesToItems: ['text'],
     snippet: `\
-query permitPostCollaborators($postsPost_id: ID!, $collaboratorsUser_id: ID!) {
+query permitPostCollaborators(
+    $postsPost_id: ID!, 
+    $collaboratorsUser_id: ID!
+) {
   somePostExists(filter: {
     id: $postsPost_id
     author: {
